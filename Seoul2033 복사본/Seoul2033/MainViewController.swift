@@ -189,17 +189,20 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
 }
     
     // 페이지 업데이트
+    // didSelectRowAt 함수 내에서 바뀌는 것들은 거의 대부분이 gameCharacter 스트럭처 인스턴스임. 그래서 저기다가 다 넣을 수 있을 것 같은데... 문제는 코드들이 모두 indexpath.row 값을 필요로 한다는 거? 그걸 위해서 이 함수 내에다가 다 구현을 한 건데...  이걸 스트럭처 내에 내장해도 오류 없이 돌아갈까? 담주에 브랜치 새로 파서 이것저것 해봐야겠다
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
         let santaNeed = santa.gameCharacter.currentPage().choice[indexPath.row].needAbility
         if santaNeed == [] || Seoul2033.checkHaveNeedAbility(needAbilitys: santaNeed, myAbilitys: santa.gameCharacter.ability) == true {
-            
+       
         // ar 나올 페이지 지정하고, 해당 페이지는 AR뷰컨으로 푸쉬하기
+        //*코드분산* Page 스트럭처에다가 추가. 만약 ARView 사용 씬이 많아지면 그것들 다 하나의 함수에다가 묶어놓아야함
         if santa.gameCharacter.currentPage().storyText == "목자재를 치워봅시다."  {
                            performSegue(withIdentifier: "goToARView", sender: nil)
                        }
       
         // 체력 / 멘탈 / 돈 데이터 업뎃
+        //*코드분산* 모두 gameCharacter 스트럭처에 추가.
         santa.gameCharacter.health += santa.gameCharacter.currentPage().choice[indexPath.row].health
         santa.gameCharacter.mental += santa.gameCharacter.currentPage().choice[indexPath.row].mental
         santa.gameCharacter.money += santa.gameCharacter.currentPage().choice[indexPath.row].money
@@ -213,15 +216,18 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
             }
             
         // 위 세 개 3 이상 넘어가는 것 방지하기
+        //*코드분산* gameCharacter 스트럭처에 추가.
         limitHpMtMoney()
             
         
         // 체력 / 멘탈 / 돈 이미지 업뎃
+        //*코드분산* 아웃렛이라 고대로 여기에
         healthImage.image = UIImage(named: "health\(santa.gameCharacter.health)")
         mentalImage.image = UIImage(named: "mental\(santa.gameCharacter.mental)")
         moneyImage.image = UIImage(named: "money\(santa.gameCharacter.money)")
         
         // 능력 주기 or 뺏기
+        //*코드분산* gameCharacger 스트럭처에 추가.
         if santa.gameCharacter.currentPage().choice[indexPath.row].ability != [] {
             if santa.gameCharacter.currentPage().choice[indexPath.row].abilityGive == true {
                 santa.gameCharacter.ability += santa.gameCharacter.currentPage().choice[indexPath.row].ability
@@ -236,6 +242,7 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
         }
 // 프롤로그EP 내에서 랜덤한 능력 주는 페이지로 이동할 때 해당 능력 캐릭터에게 추가해주기
         //첫 번째 능력 추가해주기
+        //*코드분산* gameCharacter 스트럭처에 추가.
         if santa.gameCharacter.currentEpisodeIndex == 0 && santa.gameCharacter.currentEpPageIndex == 2 {
             if santa.gameCharacter.currentPage().choice[indexPath.row].nextPageIndex == 3 {
             santa.gameCharacter.ability += [.leadership]
@@ -256,7 +263,8 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
           }
         }
 
-        // 현재 보유 능력 AbilityLable에 띄우기(뜨긴 뜨는데.. String으로 안 듬)
+    // 현재 보유 능력 AbilityLable에 띄우기(뜨긴 뜨는데.. String으로 안 듬)
+    //*코드분산* gameCharacter 스트럭처에 추가.
         abilityStringVer = []
         for ability in santa.gameCharacter.ability {
         abilityStringVer += [ability.abilityNamed()]
@@ -266,16 +274,16 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
         abilityLabel.text = "\(abilityStringVer)"
         print(abilityStringVer)
         
-       
+    //*코드분산* gameCharacter 스트럭처에 추가.
         santa.gameCharacter.pageIndex += 1
         
             
-        
+        //*코드분산* gameCharacter 스트럭처에 추가.
         //페이지 인덱스값 올려서 넘기기 & 다음 페이지 없으면(666이면) 에피소드 넘기고 페이지인덱스값 0 만들기
         santa.gameCharacter.currentEpPageIndex = santa.gameCharacter.currentPage().choice[indexPath.row].nextPageIndex
         //에피소드 넘기기
             
-            
+            //*코드분산* gameCharacter 스트럭처에 추가.
         if santa.gameCharacter.currentEpPageIndex == 666 {
             santa.gameCharacter.currentEpisodeIndex = getRandomEpNumber(epList: RealFullStory, currentEpIndex: santa.gameCharacter.currentEpisodeIndex)
             santa.gameCharacter.currentEpPageIndex = 0
@@ -284,11 +292,15 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
            }
             
                 //메인 스토리 테이블뷰 속 어레이에 값 넣기
+            //*코드분산* 여기에 그대로
                 labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
                 imageArrayInTable.append(santa.gameCharacter.currentPage().storyImage ?? "noImage")
                 
                 scrollToBottom()
         
+            
+            
+            
         // 페이지 storytext & 쪽넘버 & 능력창 String 업뎃
         //testLable.text = "\(santa.gameCharacter.currentPage().storyText)"
             mainStoryTableView.reloadData()
