@@ -53,6 +53,8 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
     //                tableView.allowsSelection = false
     //            }
                 let cell = tableView.dequeueReusableCell(withIdentifier: "choiceCell") as! ChoiceTableViewCell
+                // tableViewCell 투명화
+                cell.backgroundColor = .clear
                 cell.choiceLable.text = list.choiceText
                 cell.choiceLabelUpdate()
                 
@@ -92,6 +94,7 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
     @IBOutlet var abilityPanel: UIView!
     @IBOutlet var abilityLabel: UILabel!
     @IBOutlet var mainStoryTableView: UITableView!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     
     
@@ -101,7 +104,8 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
         self.choiceTableView.delegate = self
         self.mainStoryTableView.dataSource = self
         self.mainStoryTableView.delegate = self
-        
+        // tableView 투명화
+        choiceTableView.backgroundColor = .clear
         // 체력 / 멘탈 / 돈 글자 지정
         healthLabel.text = "체력"
         mentalLable.text = "멘탈"
@@ -210,6 +214,11 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
             if santa.gameCharacter.currentPage().choice[indexPath.row].health < 0{
                 AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             } else if santa.gameCharacter.currentPage().choice[indexPath.row].mental < 0{
+                print("작동됨")
+                mentalImage.image = UIImage(named: "mental3_red")
+                do {
+                    sleep(1)
+                }
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             } else if santa.gameCharacter.currentPage().choice[indexPath.row].money < 0{
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
@@ -222,6 +231,7 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
         
         // 체력 / 멘탈 / 돈 이미지 업뎃
         //*코드분산* 아웃렛이라 고대로 여기에
+        
         healthImage.image = UIImage(named: "health\(santa.gameCharacter.health)")
         mentalImage.image = UIImage(named: "mental\(santa.gameCharacter.mental)")
         moneyImage.image = UIImage(named: "money\(santa.gameCharacter.money)")
@@ -323,11 +333,21 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
              santa.totalDying += 1
              */
 
-        
+            UIView.animate(withDuration: 3) {
+                self.mentalImage.transform = self.mentalImage.transform.scaledBy(x: 1.1, y: 1.1)
+            }
+            //completion : 듀레이션 지나고 실행
+            UIView.animate(withDuration: 3) {
+                self.mentalImage.transform.scaledBy(x: 1.1, y: 1.1)
+            } completion: { (re) in
+                //이미지가 교체되는 코드가 여기에
+            }
+
         
         //tableView들 업뎃
-        self.choiceTableView.reloadData()
+            self.choiceTableView.reloadData()
             self.mainStoryTableView.reloadData()
+            self.choiceTableView.reloadRows(at: [IndexPath(row: 1, section: 1)], with: UITableView.RowAnimation.automatic)
         }  else {
             
         }
