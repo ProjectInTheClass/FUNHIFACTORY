@@ -333,21 +333,27 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
              santa.totalDying += 1
              */
 
-            UIView.animate(withDuration: 3) {
-                self.mentalImage.transform = self.mentalImage.transform.scaledBy(x: 1.1, y: 1.1)
-            }
+            UIView.animate(withDuration: 2) {
+                          self.mentalImage.transform.scaledBy(x: 1.3, y: 1.3)
+                      }
             //completion : 듀레이션 지나고 실행
-            UIView.animate(withDuration: 3) {
-                self.mentalImage.transform.scaledBy(x: 1.1, y: 1.1)
-            } completion: { (re) in
-                //이미지가 교체되는 코드가 여기에
+          
+            UIView.animate(withDuration: 2) {
+                self.mentalImage.transform.scaledBy(x: 1.3, y: 1.3)
+            } completion: { (Bool) in
+                UIView.animate(withDuration: 2) {
+                    if Bool {
+                        self.mentalImage.transform.scaledBy(x: 0.9, y: 0.9)
+                    }
+                }
             }
+          
 
         
         //tableView들 업뎃
             self.choiceTableView.reloadData()
             self.mainStoryTableView.reloadData()
-            self.choiceTableView.reloadRows(at: [IndexPath(row: 1, section: 1)], with: UITableView.RowAnimation.automatic)
+//            self.choiceTableView.reloadRows(at: [IndexPath(row: 1, section: 1)], with: UITableView.RowAnimation.automatic)
         }  else {
             
         }
