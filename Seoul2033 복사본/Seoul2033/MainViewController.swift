@@ -44,6 +44,7 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
                 let storyImage: String = imageArrayInTable[indexPath.row]
                 storyCell.storyLabelUpdate(size: santa.setting.fontSize)
                 storyCell.update(image: storyImage, text: storyLine)
+                storyCell.backgroundColor = .clear
                  cellToReturn = storyCell
                 
             } else if tableView == choiceTableView{
@@ -54,12 +55,13 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
     //            }
                 let cell = tableView.dequeueReusableCell(withIdentifier: "choiceCell") as! ChoiceTableViewCell
                 // tableViewCell 투명화
-                cell.backgroundColor = .clear
+                
                 cell.choiceLable.text = list.choiceText
                 cell.choiceLabelUpdate()
-                
+                cell.backgroundColor = .clear
                 cellToReturn = cell
             }
+            
             return cellToReturn
         }
     
@@ -106,6 +108,7 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
         self.mainStoryTableView.delegate = self
         // tableView 투명화
         choiceTableView.backgroundColor = .clear
+        mainStoryTableView.backgroundColor = .clear
         // 체력 / 멘탈 / 돈 글자 지정
         healthLabel.text = "체력"
         mentalLable.text = "멘탈"
@@ -143,6 +146,22 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
         self.mainStoryTableView.estimatedRowHeight = 200
     
     }
+    
+    
+    
+    
+    func typingEffect() {
+        var pageLableIndex: Int = 0
+        var insertPageLableString: String = ""
+        
+
+        while insertPageLableString.count != [Character](santa.gameCharacter.currentPage().storyText).count  {
+            insertPageLableString.append([Character](santa.gameCharacter.currentPage().storyText)[pageLableIndex])
+            pageLableIndex += 1
+            mainStoryTableView.reloadRows(at: [[0] as IndexPath], with: .none)
+        }
+    }
+        
    //하단 바 클릭하면 패널 올라오기
     @IBAction func tabOpen(_ sender: Any) {
         abilityPanel.isHidden = false
@@ -216,9 +235,7 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
             } else if santa.gameCharacter.currentPage().choice[indexPath.row].mental < 0{
                 print("작동됨")
                 mentalImage.image = UIImage(named: "mental3_red")
-                do {
-                    sleep(1)
-                }
+               
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             } else if santa.gameCharacter.currentPage().choice[indexPath.row].money < 0{
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
