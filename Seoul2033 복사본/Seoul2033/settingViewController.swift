@@ -23,17 +23,17 @@ class settingViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         letterSize.text = String(santa.setting.fontSize)
-        exampleText.font = UIFont(name: exampleText.font.fontName, size: CGFloat(santa.setting.fontSize))
+        exampleText.font = UIFont(name: "KoPubWorldBatangPM", size: CGFloat(santa.setting.fontSize))
     }
     @IBAction func letterSizeMinus(_ sender: Any) {
         santa.setting.fontSize -= 1
         letterSize.text = String(santa.setting.fontSize)
-        exampleText.font = UIFont(name: exampleText.font.fontName, size: CGFloat(santa.setting.fontSize))
+        exampleText.font = UIFont(name: "KoPubWorldBatangPM", size: CGFloat(santa.setting.fontSize))
         }
     @IBAction func letterSizePlus(_ sender: Any) {
         santa.setting.fontSize += 1
         letterSize.text = String(santa.setting.fontSize)
-        exampleText.font = UIFont(name: exampleText.font.fontName, size: CGFloat(santa.setting.fontSize))
+        exampleText.font = UIFont(name: "KoPubWorldBatangPM", size: CGFloat(santa.setting.fontSize))
     }
     @IBAction func rowSizeMinus(_ sender: Any) {
         santa.setting.rowSpacing -= 1

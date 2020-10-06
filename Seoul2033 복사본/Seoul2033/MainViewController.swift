@@ -149,7 +149,7 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
       
         self.mainStoryTableView.rowHeight = UITableView.automaticDimension
         self.mainStoryTableView.estimatedRowHeight = 200
-    
+
     }
     
     
