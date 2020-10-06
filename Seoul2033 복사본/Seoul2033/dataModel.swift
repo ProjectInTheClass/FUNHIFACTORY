@@ -104,7 +104,7 @@ struct GameCharacter {
     }
     func currentPage() -> Page {
         return currentEpisode()[currentEpPageIndex]
-    }
+    } 
     var pageIndex = 1
     
 }
