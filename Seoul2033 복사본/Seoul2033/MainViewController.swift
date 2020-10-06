@@ -76,7 +76,8 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
             }
             return CGFloat(height)
         }
-
+        
+        
    
 // 아웃렛
  
@@ -98,6 +99,7 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
     @IBOutlet var mainStoryTableView: UITableView!
     @IBOutlet weak var backgroundImage: UIImageView!
     
+    @IBOutlet weak var choiceTableViewHeight: NSLayoutConstraint!
     
     
     override func viewDidLoad() {
@@ -142,6 +144,9 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
         tabOpenButton.setTitle("\(abilityStringVer)", for: .normal)
         abilityLabel.text = "\(abilityStringVer)"
         //santa.gameCharacter.currentEpPageIndex += 1
+        //choiceTableView 높이 지정
+        choiceTableViewHeight.constant = CGFloat(55*santa.gameCharacter.currentPage().choice.count)
+      
         self.mainStoryTableView.rowHeight = UITableView.automaticDimension
         self.mainStoryTableView.estimatedRowHeight = 200
     
@@ -207,6 +212,9 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
         tabOpenButton.setTitle("\(abilityStringVer)", for: .normal)
         labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
         imageArrayInTable.append(santa.gameCharacter.currentPage().storyImage ?? "noImage")
+        //choiceTableView 높이 지정
+        choiceTableViewHeight.constant = CGFloat(55*santa.gameCharacter.currentPage().choice.count)
+      
         mainStoryTableView.reloadData()
         self.choiceTableView.reloadData()
 }
@@ -371,8 +379,9 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
                 }
             }, completion: nil)
           
-
-        
+//테이블 뷰 높이 질문 개수에 따라 바꾸기 : height constant 아웃렛 연결 후 값 지정해줌, 셀 1개 높이가 55임
+            choiceTableViewHeight.constant = CGFloat(55*santa.gameCharacter.currentPage().choice.count)
+          
         //tableView들 업뎃
             self.choiceTableView.reloadData()
             self.mainStoryTableView.reloadData()
