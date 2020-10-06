@@ -333,20 +333,26 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
              santa.totalDying += 1
              */
 
-            UIView.animate(withDuration: 2) {
-                          self.mentalImage.transform.scaledBy(x: 1.3, y: 1.3)
-                      }
+            
             //completion : 듀레이션 지나고 실행
           
-            UIView.animate(withDuration: 2) {
-                self.mentalImage.transform.scaledBy(x: 1.3, y: 1.3)
-            } completion: { (Bool) in
-                UIView.animate(withDuration: 2) {
-                    if Bool {
-                        self.mentalImage.transform.scaledBy(x: 0.9, y: 0.9)
-                    }
+//            UIView.animate(withDuration: 2) {
+//                self.mentalImage.transform.scaledBy(x: 1.3, y: 1.3)
+//            } completion: { finished in
+//                UIView.animate(withDuration: 2) {
+//                    if Bool {
+//                        self.mentalImage.transform.scaledBy(x: 0.9, y: 0.9)
+//                    }
+//                }
+//            }
+            UIView.animateKeyframes(withDuration: 3, delay: 0, options: [], animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0.7, relativeDuration: 0.7) {
+                    self.mentalImage.transform.scaledBy(x: 1.3, y: 1.3)
                 }
-            }
+                UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.3) {
+                    self.mentalImage.transform.scaledBy(x: 0.9, y: 0.9)
+                }
+            }, completion: nil)
           
 
         
