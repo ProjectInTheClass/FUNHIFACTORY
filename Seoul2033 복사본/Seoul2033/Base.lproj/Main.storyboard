@@ -259,6 +259,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="IMG_8417" translatesAutoresizingMaskIntoConstraints="NO" id="Wiy-wd-4JU">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="845"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRc-2f-lIK">
                                 <rect key="frame" x="20" y="48" width="45" height="49"/>
                                 <constraints>
@@ -285,7 +289,7 @@
                                     <segue destination="sNh-jl-aZ0" kind="show" id="ZRq-Hc-gNt"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gAr-Ee-xCP">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gAr-Ee-xCP">
                                 <rect key="frame" x="30" y="148" width="347" height="437"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="Apc-mY-hgt"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="BMg-2h-uYd"/>
@@ -426,7 +430,7 @@
                                             <action selector="restartGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F4x-e9-sYd"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="능력이 들어갈 자리입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHC-dl-dVt">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="능력이 들어갈 자리입니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHC-dl-dVt">
                                         <rect key="frame" x="36" y="58" width="342" height="275"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -541,9 +545,6 @@
                             <constraint firstItem="6DH-yN-0l4" firstAttribute="trailing" secondItem="wHN-qC-TEL" secondAttribute="trailing" id="zKq-Uv-Fow"/>
                         </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="gAr-Ee-xCP"/>
-                            </mask>
                             <mask key="constraints">
                                 <exclude reference="oHa-oC-IUM"/>
                             </mask>
@@ -554,7 +555,9 @@
                         <outlet property="PagescrollView" destination="gAr-Ee-xCP" id="G03-BF-NPr"/>
                         <outlet property="abilityLabel" destination="NHC-dl-dVt" id="qpb-ID-XWa"/>
                         <outlet property="abilityPanel" destination="6DH-yN-0l4" id="mbJ-d1-p6u"/>
+                        <outlet property="backgroundImage" destination="Wiy-wd-4JU" id="Ofd-Dp-kMv"/>
                         <outlet property="choiceTableView" destination="HVi-V1-Nug" id="9GY-RL-hAg"/>
+                        <outlet property="choiceTableViewHeight" destination="ptH-tR-NAA" id="H1G-Mw-hdS"/>
                         <outlet property="healthImage" destination="XeI-eJ-HEs" id="kfH-cd-7BV"/>
                         <outlet property="healthLabel" destination="Fkr-WC-hnk" id="xxc-Ej-M8h"/>
                         <outlet property="mainStoryTableView" destination="LD2-IM-WIi" id="GOC-7q-klD"/>
@@ -570,7 +573,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042.0289855072465" y="137.94642857142856"/>
+            <point key="canvasLocation" x="913.04347826086962" y="158.70535714285714"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Opf-qn-HIm">
@@ -820,6 +823,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="IMG_8417" width="828" height="602"/>
         <image name="bitcoinsign.circle" catalog="system" width="128" height="121"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="greyButton" width="577" height="553"/>

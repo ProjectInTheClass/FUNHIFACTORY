@@ -183,9 +183,10 @@ func limitHpMtMoney() {
 }
 
 
+
 //--------------------------------여기부터 인스턴스---------------------------------------
 // 아래 유저의 플레이어 인스턴스
-
+// json으로 분리ㅣㅣ리ㅣ릴
 
 
 var santaCharacter1: GameCharacter = GameCharacter(health: 3, mental: 3, money: 3, ability: [])
