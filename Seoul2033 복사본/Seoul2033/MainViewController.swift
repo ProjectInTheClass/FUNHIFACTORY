@@ -135,7 +135,7 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
         for ability in santa.gameCharacter.ability {
             
         //메인 스토리 테이블뷰 속 어레이에 값 넣기
-        labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
+        labelArrayInTable.append(/*santa.gameCharacter.currentPage().storyText*/"")
         imageArrayInTable.append(santa.gameCharacter.currentPage().storyImage ?? "noImage")
            
     
@@ -149,23 +149,16 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
       
         self.mainStoryTableView.rowHeight = UITableView.automaticDimension
         self.mainStoryTableView.estimatedRowHeight = 200
-
-    }
-    
-    
-    
-    
-    func typingEffect() {
-        var pageLableIndex: Int = 0
-        var insertPageLableString: String = ""
         
-
-        while insertPageLableString.count != [Character](santa.gameCharacter.currentPage().storyText).count  {
-            insertPageLableString.append([Character](santa.gameCharacter.currentPage().storyText)[pageLableIndex])
-            pageLableIndex += 1
-            mainStoryTableView.reloadRows(at: [[0] as IndexPath], with: .none)
-        }
+      
+    
     }
+    
+    
+    
+    
+    
+     
         
    //하단 바 클릭하면 패널 올라오기
     @IBAction func tabOpen(_ sender: Any) {
@@ -328,7 +321,7 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
             
                 //메인 스토리 테이블뷰 속 어레이에 값 넣기
             //*코드분산* 여기에 그대로
-                labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
+                labelArrayInTable.append(/*santa.gameCharacter.currentPage().storyText*/"")
                 imageArrayInTable.append(santa.gameCharacter.currentPage().storyImage ?? "noImage")
                 
                 scrollToBottom()
@@ -386,6 +379,19 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
             self.choiceTableView.reloadData()
             self.mainStoryTableView.reloadData()
 //            self.choiceTableView.reloadRows(at: [IndexPath(row: 1, section: 1)], with: UITableView.RowAnimation.automatic)
+            
+            var pageLableIndex: Int = 0
+            var insertPageLableString: String = ""
+            
+
+            while [Character](insertPageLableString).count != [Character](santa.gameCharacter.currentPage().storyText).count  {
+                insertPageLableString.append([Character](santa.gameCharacter.currentPage().storyText)[pageLableIndex])
+                pageLableIndex += 1
+                
+                mainStoryTableView.reloadRows(at: [IndexPath(row: santa.gameCharacter.pageIndex-1, section: 0)], with: .none)
+                let cadence: Double = 180
+                Thread.sleep(forTimeInterval: 60/cadence)
+            }
         }  else {
             
         }
