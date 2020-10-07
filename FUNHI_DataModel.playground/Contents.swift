@@ -52,7 +52,8 @@ struct GameCharacter {
     //이전 에피소드 골드 + 현재 에피소드 골드. 캐릭 죽으면 현재 챕터 골드 리셋.
     var totalGold: Int
     //현재 챕터 골드 : 캐릭 죽을 시 현재 챕터에서 얻은 골드만 날리기 위해서 만듦.
-    var currentChaptergold: Int
+    var currentChapterGold: Int
+    var previousChapterGold : Int
     var GameFullStory:[[[Page]]] = [[[]]]
     var currentEpPageIndex: Int = 0
     var currentEpisodeIndex : Int = 0
@@ -109,10 +110,26 @@ struct Quest {
     var questClearOX: Bool = false {
         didSet {
             if self.questClearOX == true {
-                //리워드를 유저에게 주기
+                santa.totalGold += reward
+                santa.currentChapterGold += reward
             }
         }
     }
     //클리어 시 보상 금액(n냥)
-    var reword: Int
+    var reward: Int
 }
+
+func chaptherCleared(){
+    santa.previousChapterGold += santa.currentChapterGold
+    santa.currentChapterGold = 0
+}
+func normalRebirth(){
+    santa.currentChapterGold = 0
+    santa.totalGold = santa.previousChapterGold
+}
+func specialRebirth(){
+    santa.totalGold -= 30
+    santa.currentChapterGold -= 30
+}
+
+var santa = GameCharacter(sowalWarning: 0, totalGold: 0, currentChapterGold: 0, previousChapterGold: 0)
