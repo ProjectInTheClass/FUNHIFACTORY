@@ -127,7 +127,7 @@ var santa = GameCharacter(totalGold: 0, currentChapterGold: 0, previousChapterGo
 let ep001: [Page] = [
     Page(storyText: " 한 나라의 왕인 나는 굵은 포승줄로 묶인 채 고개를 떨궜다. 이 자리에 발을 딛는 것도 이것이 마지막이겠거니 싶었다. 난 그저 초점 없는 눈으로 땅바닥을 바라보며 무릎을 꿇었다.", storyImage: nil, choice: [
             Choice(choiceText: "다음", nextPageIndex: 2, questIdentifier: "", endingScore: 0)]),
-        Page(storyText: " 나는 내가 내뱉는 숨 하나하나를 의심했다. 이게 정녕 꿈이 아닌 것인지, 내가 어찌 이런 처지가 되었는지 말이다. 내가 아버지의 미움을 버티면서까지 겨우 이 자리에 섰는데 이리 되어버린 게 현실이 아니기를 바랐다. 날 이렇게 만든 자들을 결코 용서할 수 없다.", storyImage: nil, choice: [
+    Page(storyText: " 나는 내가 내뱉는 숨 하나하나를 의심했다. 이게 정녕 꿈이 아닌 것인지, 내가 어찌 이런 처지가 되었는지 말이다. 내가 아버지의 미움을 버티면서까지 겨우 이 자리에 섰는데 이리 되어버린 게 현실이 아니기를 바랐다. 날 이렇게 만든 자들을 결코 용서할 수 없다.", storyImage: nil, choice: [
                 Choice(choiceText: "다음", nextPageIndex: 2, questIdentifier: "", endingScore: 0)
         ]),
     Page(storyText: "뒤이어 나온 대비는 나를 죽일 기세로 쏘아 보았다. 나에게 참아왔던 한이 그리 많았던 것인지, 화와 후련함이 섞인 듯한 표정이었다.\n\n \"소성정의 왕대비*는 이렇게 이르노라. 하늘이 많은 백성을 내고 임금을 세우게 하신 것은 인륜을 펴고 법도를 세워 위로 종묘를 받들고 아래로 백성을 잘 다스리게 하려고 하신 것이다. 선조 대왕(宣祖大王)께서 불행하게도 적자(適子)가 없어 일시의 법도에 따라 나이의 순서를 뛰어넘고 광해를 세자로 삼았다.\n 그런데 그는 동궁에 있을 때부터 잘못하는 행위가 드러났으므로 선조께서 만년에 몹시 후회하고 한스럽게 여기셨고, 그가 왕위를 계승한 뒤에는 도리어 어긋나는 짓을 하자 몹시 후회하셨다.", storyImage: nil, choice: [
