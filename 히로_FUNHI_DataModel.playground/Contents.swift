@@ -23,7 +23,7 @@ struct Page {
     let index: Int
     let storyText: String
     let storyImage: String?
-    let choice : Array = [Choice]()
+    var choice : Array = [Choice]()
    
     //에피소드 마지막 페이지 식별자. 666같은 인트보다는 불 값이 더 낫지 않을까? true면 마지막 쪽 맞음, false면 페이지 더 있음. 기본값은 false.
     var endEpisodePage: Bool = false
@@ -122,4 +122,4 @@ func specialRebirth(){
     santa.currentChapterGold -= 30
 }
 
-var santa = GameCharacter(sowalWarning: 0, totalGold: 0, currentChapterGold: 0, previousChapterGold: 0)
+var santa = GameCharacter(totalGold: 0, currentChapterGold: 0, previousChapterGold: 0, totalEndingScore: 0)
