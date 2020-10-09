@@ -121,7 +121,8 @@ func specialRebirth(){
     santa.currentChapterGold -= 30
 }
 
-var santa = GameCharacter(totalGold: 0, currentChapterGold: 0, previousChapterGold: 0)
+var santa = GameCharacter(totalGold: 0, currentChapterGold: 0, previousChapterGold: 0, totalEndingScore: 0)
+
 
 
 let ep001: [Page] = [
@@ -147,15 +148,16 @@ let ep001: [Page] = [
             Choice(choiceText: "현실을 수긍한다.", nextPageIndex: 9, questIdentifier: "", endingScore: 0),
             Choice(choiceText: "복수를 꿈꾼다.", nextPageIndex: 10, questIdentifier: "", endingScore: 0)]),
     Page(storyText: " ‘잃을 게 많은 자리에 올라, 내 덕을 쌓지 못한 채 한순간에 물거품이 되어 추락하는구나. 올라오기 위해 노력한 순간이 자리에 앉아 있는 순간보다 갑절은 더 길다. 나는 대체 무엇을 위해 올라온 것이냐. 그렇게 악착같이 살아서 결국 내 손에 흐르는 것은 비릿비릿하고 역겨운 진한 핏물뿐이구나.’", storyImage: nil, choice: [
-            Choice(choiceText: "", nextPageIndex: 11, questIdentifier: "", endingScore: 0)]),
+            Choice(choiceText: "", nextPageIndex: 11, questIdentifier: "", endingScore: 0)], endEpisodePage: true),
     Page(storyText: " ‘숨이 턱턱 막히는구나. 아득바득 올라왔는데 한 순간에 미끄러져 땅바닥으로 추락하니. 참 내 꼴이 우습다, 우스워. 아아, 이제 나에게 남은 건 무엇이란 말인가? 그렇게 악착같이 살아서 결국 내 손에 흐르는 것은 비릿비릿하고 역겨운 진한 핏물뿐이구나. 이미 더럽혀진 손, 더 더러워진다고 티가 날까. 난 복수를 꿈 꿀 것이다.’", storyImage: nil, choice: [
-            Choice(choiceText: "", nextPageIndex: 11, questIdentifier: "", endingScore: 0)
-])]
+        Choice(choiceText: "", nextPageIndex: 11, questIdentifier: "", endingScore: 0)
+        ], endEpisodePage: true
+    )]
     
 
 let ep002: [Page] = [
     Page(storyText: "그를 지켜보던 소월신(素月神)은 가볍게 피식 웃고는 시간의 물레방아를 돌렸다. 19바퀴를 돌린 후 멈추고 시간의 한 조각을 꺼내 그에게 지난 과거로 자신이 돌아가는 꿈을 꾸는 도술인 과아귀몽술(過我歸夢術)을 부렸다.", storyImage: nil, choice: [
-        Choice(choiceText: "", nextPageIndex: 666, questIdentifier: "", endingScore: 0)])]
+        Choice(choiceText: "", nextPageIndex: 666, questIdentifier: "", endingScore: 0)], endEpisodePage: true)]
 
 let ep101: [Page] = [
     Page(storyText: " “세자 저하, 감축드리옵니다.”\n\n 동궁에서 나오니 모든 관료들이 나를 향해 축하를 올렸다.\n\n ‘드디어 내가 세자가 되었단 말인가?’", storyImage: nil, choice: [
@@ -164,13 +166,13 @@ let ep101: [Page] = [
             Choice(choiceText: "살짝 미소를 짓는다.", nextPageIndex: 3, questIdentifier: "", endingScore: 0)]),
     Page(storyText: " 나는 애써 덤덤한 척 일말의 표정도 바꾸지 않았다.", storyImage: nil, choice: [
         Choice(choiceText: "", nextPageIndex: 666, questIdentifier: "", endingScore: 0)
-    ]),
+    ], endEpisodePage: true),
     Page(storyText: " 내가 드디어 인정을 받은 것 같았다. 서글픈 내 세월을 위로받는 기분이었다. 아무리 내 감정을 숨기려야 숨겨지지가 않았다.\n\n “그리 좋으십니까? 아까부터 줄곧 웃음꽃이 핀 듯합니다.”\n “너라면 웃음이 안 나겠느냐? 아버지께 조금이라도 인정을 받은 것 같구나.”", storyImage: nil, choice: [
         Choice(choiceText: "", nextPageIndex: 666, questIdentifier: "", endingScore: 0)
-    ]),
+    ], endEpisodePage: true),
     Page(storyText: " 내가 드디어 인정을 받은 것 같았다. 서글픈 내 세월을 위로받는 기분이었다. 체통은 지켜야 하니 너무 좋아할 순 없었다. 하지만 입꼬리는 자꾸만 위로 솟아올랐다.", storyImage: nil, choice: [
         Choice(choiceText: "", nextPageIndex: 666, questIdentifier: "", endingScore: 0)
-])]
+], endEpisodePage: true)]
 
 let ep102: [Page] = [
     Page(storyText: " 한 내시가 다급하게 나를 불렀다.\n\n “저하, 급히 피란을 가셔야 하옵니다. 떠날 채비를 서두르십시오.”\n\n 급히 채비를 하고 동궁 밖으로 나오자 차가운 새벽 내음이 느껴졌다. 처마를 따라 빗물이 떨어지고 있었다.\n\n ‘아아, 하늘마저 우리의 편이 아닌 것인가.’\n\n 나의 손끝에 스치는 빗물을 따라 냉랭하게 느껴졌다. 아버지를 기다리기 위해 인정전으로 향했다. 인정전에는 이미 모든 벼슬아치들과 마부와 말 등이 대궐 뜰을 가득 메웠다.", storyImage: nil, choice: [
@@ -178,7 +180,7 @@ let ep102: [Page] = [
     ]),
     Page(storyText: " 비는 그칠 줄을 몰랐다. 아버지와 나는 말을 타고, 소상대비는 뚜껑 있는 교자를 타고 갔다. 홍제원*에 이르자 비는 더 극심히 왔고, 숙의* 이하는 교자를 버리고 말을 탔다.\n 뒤에서는 통곡하는 궁인들의 목소리가 들렸다. 점심을 먹으려고 하니, 반찬은 커녕 밥도 제대로 먹지를 못했다. 급작스레 떠나게 된 피란길이라서 그렇다고 애써 위안 삼았다.", storyImage: nil, choice: [
             Choice(choiceText: "", nextPageIndex: 666, questIdentifier: "", endingScore: 0),
-    ])
+    ], endEpisodePage: true)
 ]
 
 let ep103: [Page] = [
@@ -189,10 +191,10 @@ let ep103: [Page] = [
             Choice(choiceText: "아버지를 이해하지 못 한다..", nextPageIndex: 3, questIdentifier: "", endingScore: 0)
     ]),
     Page(storyText: " 사실 내가 아버지였어도 아버지와 똑같은 선택을 하지 않았을까 싶다. 적들과 마주치지 않기 위해, 제 목숨을 살리기 위해, 한 나라의 왕이 비참하게 죽지 않기 위해서 말이다.\n\n 아버지는 불어넘치는 강물에 두려워하셨을 것이다. 피란을 가지 못할까 봐 무서우셨을 것이다. 강을 미처 건너지 못한 궁인들에게 미안해하실 것이다. 아마 그럴 것이다. 그렇게 믿고 싶다.", storyImage: nil, choice: [              Choice(choiceText: "", nextPageIndex: 666, questIdentifier: "", endingScore: 0)
-    ]),
+    ], endEpisodePage: true),
     Page(storyText: " 제 목숨을 살리기 위해 다른 이들을 포기하는 건 내 입장에서는 이해할 수가 없다. 그것이 정말 현명한 판단이었을까? 내가 아버지라면 절반이 넘는 궁인들을 두고 떠나지는 않았을 것이다. 애초에 궁을 떠나지는 않았을 것이다. 한 나라의 왕이 어찌 자리를 비울 수 있단 말인가? 죽더라도 조선의 심장에서 죽겠다.", storyImage: nil, choice: [
             Choice(choiceText: "", nextPageIndex: 666, questIdentifier: "", endingScore: 0)
-    ])
+    ], endEpisodePage: true)
 ]
 
 let ep104: [Page] = [
@@ -218,15 +220,15 @@ let ep104: [Page] = [
     ]),
     Page(storyText: " 나는 내가 잘못 생각하고 있겠거니 했다. 하지만 어쩐지 어딘가 찜찜한 기운은 가시질 않았다.", storyImage: nil, choice: [
             Choice(choiceText: "", nextPageIndex: 666, questIdentifier: "", endingScore: 0)
-    ]),
+    ], endEpisodePage: true),
     Page(storyText: " “너, 이 이야기를 나와 한 적이 있느냐?”\n “아니요, 이번이 처음입니다만, 무슨 일인지요?”\n “한데 어찌 이리 익숙하단 말이냐. 내가 기억이 이상해 진 게 틀림없다. 의원을 봐야겠다. 어서 의원을 불러라. 어서!”\n “아, 예. 불러오겠습니다.”\n\n 내가 드디어 미친 건가 싶었다. 난생처음 겪는 일이니 도무지 원인을 알 방도가 없었다. 내가 그렇게 고민하고 있을 사이에 의원이 왔다.", storyImage: nil, choice: [
             Choice(choiceText: "다음", nextPageIndex: 8, questIdentifier: "", endingScore: 0)
     ]),
     Page(storyText: "", storyImage: nil, choice: [
             Choice(choiceText: "", nextPageIndex: 666, questIdentifier: "", endingScore: 0)
-    ])
+    ], endEpisodePage: true)
 ]
 
 let prologue: Chapter = Chapter(Episodes: [ep001, ep002], quests: [])
-let chapter1: Chapter = Chapter(Episodes: [ep101, ep102, ep103, ep104], quests: []])
+let chapter1: Chapter = Chapter(Episodes: [ep101, ep102, ep103, ep104], quests: [])
 
