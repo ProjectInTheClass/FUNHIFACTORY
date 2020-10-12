@@ -9,7 +9,7 @@
 import UIKit
 import AudioToolbox
 
-class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
    
     
     override func viewWillAppear(_ animated: Bool) {
@@ -351,9 +351,9 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
              santa.totalDying += 1
              */
 
-            
-            //completion : 듀레이션 지나고 실행
-          
+//
+//            completion : 듀레이션 지나고 실행
+//
 //            UIView.animate(withDuration: 2) {
 //                self.mentalImage.transform.scaledBy(x: 1.3, y: 1.3)
 //            } completion: { finished in
@@ -389,7 +389,7 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
                 pageLableIndex += 1
                 
                 mainStoryTableView.reloadRows(at: [IndexPath(row: santa.gameCharacter.pageIndex-1, section: 0)], with: .none)
-                let cadence: Double = 180
+                let cadence: Double = 1800
                 Thread.sleep(forTimeInterval: 60/cadence)
             }
         }  else {

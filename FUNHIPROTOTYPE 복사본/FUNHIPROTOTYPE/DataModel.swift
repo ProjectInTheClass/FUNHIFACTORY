@@ -124,3 +124,5 @@ func specialRebirth(){
     santa.currentChapterGold -= 30
 }
 
+var santa = GameCharacter(totalGold: 0, currentChapterGold: 0, previousChapterGold: 0, totalEndingScore: 0)
+

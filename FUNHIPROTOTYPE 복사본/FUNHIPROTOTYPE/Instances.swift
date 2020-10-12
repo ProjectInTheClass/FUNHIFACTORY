@@ -8,7 +8,6 @@
 import Foundation
 
 
-var santa = GameCharacter(totalGold: 0, currentChapterGold: 0, previousChapterGold: 0, totalEndingScore: 0)
 
 
 
