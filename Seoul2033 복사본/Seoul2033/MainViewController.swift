@@ -11,7 +11,7 @@ import AudioToolbox
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
    
-    
+    // 스토리테이블뷰 선택 안 되게 함
     override func viewWillAppear(_ animated: Bool) {
         mainStoryTableView.allowsSelection = false
         
@@ -25,7 +25,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             var intToReturn : Int = 0
             if tableView == mainStoryTableView{
-                let story = labelArrayInTable.count
+                let story: Int = labelArrayInTable.count
                 intToReturn = story
             } else if tableView == choiceTableView{
                 let currentChoice = santa.gameCharacter.currentPage().choice.count
@@ -40,9 +40,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             var cellToReturn = UITableViewCell()
             if tableView == mainStoryTableView{
                 let storyCell = tableView.dequeueReusableCell(withIdentifier: "storyCell", for: indexPath) as! storyTableViewCell
+                // 셀 위치에 맞는 스토리텍스트
                 let storyLine: String = labelArrayInTable[indexPath.row]
                 let storyImage: String = imageArrayInTable[indexPath.row]
                 storyCell.storyLabelUpdate(size: santa.setting.fontSize)
+                // 셀 레이블/이미지뷰에  알맞는 스토리텍스트, 이미지 지정함.
                 storyCell.update(image: storyImage, text: storyLine)
                 storyCell.backgroundColor = .clear
                  cellToReturn = storyCell
@@ -74,7 +76,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             } else if tableView == choiceTableView{
                 height = 55
             }
-            return CGFloat(height)
+         return CGFloat(height)
         }
         
         
@@ -101,7 +103,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var choiceTableViewHeight: NSLayoutConstraint!
     
-    
+    //labelArrayInTable : lable. 하나만 있는 상태이다가 선택지 누를 때마다 하나씩 늘어나고, 에피 넘어가면 리셋되는 임시 스트링 어레이.
+      var labelArrayInTable : [String] = ["핵전쟁으로 세상이 멸망하고 난 뒤 서울은 폐허가 되었지만 몇몇 현명한 사람들은 누구에게도 들키지 않을 곳에 은신처를 만드는 데 성공했습니다. \n당신 부모님도 마찬가지였죠. 당신은 이 인구 100명도 채 안 되는 작은 마을에서 자랐습니다, 이 곳 사람들은 감자와 고구마 같은 것들을 키우며 오순도순 살아가고 있습니다."]
+      var imageArrayInTable : [String] = ["ex"]
+      
     override func viewDidLoad() {
         super.viewDidLoad()
         self.choiceTableView.dataSource = self
@@ -169,10 +174,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         abilityPanel.isHidden = true
         tabOpenButton.isHidden = false
     }
-  //메인 스토리 테이블뷰 어레이
-    var labelArrayInTable : [String] = ["핵전쟁으로 세상이 멸망하고 난 뒤 서울은 폐허가 되었지만 몇몇 현명한 사람들은 누구에게도 들키지 않을 곳에 은신처를 만드는 데 성공했습니다. \n당신 부모님도 마찬가지였죠. 당신은 이 인구 100명도 채 안 되는 작은 마을에서 자랐습니다, 이 곳 사람들은 감자와 고구마 같은 것들을 키우며 오순도순 살아가고 있습니다."]
-    var imageArrayInTable : [String] = ["ex"]
-    
+
   //메인 스토리 테이블뷰 업데이트하기
     
     func scrollToBottom(){

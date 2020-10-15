@@ -10,24 +10,24 @@ import Foundation
 
 
 //개별 페이지 안의 선택지.
+// 퀘스트 식별자. 자세한 내용은 Quest struct에서
+// 엔딩 스코어 : 이 점수의 높고 낮음에 따라서 결말이 바뀜. 화를 많이 냈을 때의 엔딩과,
+// 순종적인 태도를 가졌을 때의 엔딩이 있다면, 화를 내는 선택지에는 2를 주고 순종적인 선택지에는 0을 주는 등
+// 태도의 차이를 낸다.
 struct Choice {
     let choiceText: String
     let nextPageIndex: Int
-    // 퀘스트 식별자. 자세한 내용은 Quest struct에서
-    let questIdentifier: String
-    // 엔딩 스코어 : 이 점수의 높고 낮음에 따라서 결말이 바뀜. 화를 많이 냈을 때의 엔딩과,
-    // 순종적인 태도를 가졌을 때의 엔딩이 있다면, 화를 내는 선택지에는 2를 주고 순종적인 선택지에는 0을 주는 등
-    // 태도의 차이를 낸다.
+   
     let endingScore: Int
     }
 
 // 게임 개별 페이지. 책으로 치면 각 쪽.
+// 스트럭처 안에다가 주석 넣으면.. 프라퍼티 인식 안 될 수도 있음. 무슨 일이 있어도 앤간해서는 빼는 게 좋을 듯
 struct Page {
     let storyText: String
     let storyImage: String?
     let choice :[Choice]
-   
-    //에피소드 마지막 페이지 식별자. 666같은 인트보다는 불 값이 더 낫지 않을까? true면 마지막 쪽 맞음, false면 페이지 더 있음. 기본값은 false.
+    let questIdentifier: String
     var endEpisodePage: Bool = false
 
 }
@@ -45,16 +45,16 @@ struct GameCharacter {
     //현재 챕터 골드 : 캐릭 죽을 시 현재 챕터에서 얻은 골드만 날리기 위해서 만듦.
     var currentChapterGold: Int
     var previousChapterGold : Int
-    var GameFullStory:[[[Page]]] = [[[]]]
+    var GameFullStory:[Chapter] = [prologue,chapter1]
     var currentEpPageIndex: Int = 0
     var currentEpisodeIndex : Int = 0
     var currentChapterIndex : Int = 0
     
-    func currentChapter() -> [[Page]] {
-        return GameFullStory[currentChapterIndex]
+    func currentChapter() -> Chapter {
+        return santa.gameCharacter.GameFullStory[currentChapterIndex]
     }
     func currentEpisode() -> [Page] {
-        return currentChapter()[currentEpisodeIndex]
+        return currentChapter().Episodes[currentEpisodeIndex]
     }
     func currentPage() -> Page {
         return currentEpisode()[currentEpPageIndex]
@@ -74,8 +74,8 @@ struct User {
 struct Setting{
     // 슬라이더 값은 0.0 ~ 1.0
     var bgmVolume : Double = 0.5
-    var fontSize: Int = 15
-    var rowSpacing : Int = 24
+    var fontSize: Int = 16
+    var rowSpacing : Int = 28
 }
 
 struct Quest {
@@ -102,8 +102,8 @@ struct Quest {
     var questClearOX: Bool = false {
         didSet {
             if self.questClearOX == true {
-                santa.totalGold += reward
-                santa.currentChapterGold += reward
+                santa.gameCharacter.totalGold += reward
+                santa.gameCharacter.currentChapterGold += reward
             }
         }
     }
@@ -112,17 +112,18 @@ struct Quest {
 }
 
 func chaptherCleared(){
-    santa.previousChapterGold += santa.currentChapterGold
-    santa.currentChapterGold = 0
+    santa.gameCharacter.previousChapterGold += santa.gameCharacter.currentChapterGold
+    santa.gameCharacter.currentChapterGold = 0
 }
 func normalRebirth(){
-    santa.currentChapterGold = 0
-    santa.totalGold = santa.previousChapterGold
+    santa.gameCharacter.currentChapterGold = 0
+    santa.gameCharacter.totalGold = santa.gameCharacter.previousChapterGold
 }
 func specialRebirth(){
-    santa.totalGold -= 30
-    santa.currentChapterGold -= 30
+    santa.gameCharacter.totalGold -= 30
+    santa.gameCharacter.currentChapterGold -= 30
 }
 
-var santa = GameCharacter(totalGold: 0, currentChapterGold: 0, previousChapterGold: 0, totalEndingScore: 0)
+var santa = User(gameCharacter: santaGameCharacter, setting: Setting())
 
+var santaGameCharacter = GameCharacter(totalGold: 0, currentChapterGold: 0, previousChapterGold: 0, totalEndingScore: 0)
