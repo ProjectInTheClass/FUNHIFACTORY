@@ -22,7 +22,7 @@ import Foundation
         Page(storyText: " 나는 아무 말도 할 수 없었다.\n\n “우리나라가 중국을 섬겨온 지 2백여 년이 지났으니 의리에 있어서는 군신의 사이지만 은혜에 있어서는 부자의 사이와 같았고, 임진년에 나라를 다시 일으켜준 은혜는 영원토록 잊을 수 없다.\n 이리하여 선왕께서 40년간 보위에 계시면서 지성으로 중국을 섬기시며 평생에 한 번도 서쪽으로 등을 돌리고 앉으신 적이 없었다. 그런데 광해는 은덕을 저버리고 천자의 명을 두려워하지 않았으며 배반하는 마음을 품고 오랑캐와 화친하였다.", storyImage: nil, choice: [Choice(choiceText: "다음", nextPageIndex: 7,  endingScore: 0)], questIdentifier: ""),
         Page(storyText: " \"내가 나 좋다고 그랬겠소? 내가 나라이자 나라가 나일 것이니, 모두 나라가 잘 되자고 한 일이 아니겠는가.\"\n\n “닥치거라. 우리나라가 중국을 섬겨온 지 2백여 년이 지났으니 의리에 있어서는 군신의 사이지만 은혜에 있어서는 부자의 사이와 같았고, 임진년에 나라를 다시 일으켜준 은혜는 영원토록 잊을 수 없다.\n 이리하여 선왕께서 40년간 보위에 계시면서 지성으로 중국을 섬기시며 평생에 한 번도 서쪽으로 등을 돌리고 앉으신 적이 없었다. 그런데 광해는 은덕을 저버리고 천자의 명을 두려워하지 않았으며 배반하는 마음을 품고 오랑캐와 화친하였다.", storyImage: nil, choice: [Choice(choiceText: "다음", nextPageIndex: 7,  endingScore: 0)], questIdentifier: ""),
         Page(storyText: " 이리하여 기미년(1308)에 중국이 오랑캐를 정벌할 때 장수에게 사태를 예상하여 그들을 좇을지 등을 질지를 결정하라고 은밀히 지시하였다. 그 끝내 우리 군사 모두를 오랑캐에게 투항하게 하여 추악한 명성이 온 천하게 전파되게 하였다.\n 그리고 우리나라에 온 중국 사신을 구속 수금하는 데 있어 감옥의 죄수들보다 더하였고, 황제가 칙서를 여러 번 내렸으나 군사를 보낼 생각을 하지 아니하였다. 그리하여 예의의 나라인 우리 삼한으로 하여금 이적 금수의 나라가 되는 것을 모면하지 못하게 하였으니, 가슴 아픈 일을 어떻게 다 말할 수 있겠는가.", storyImage: nil, choice: [Choice(choiceText: "다음", nextPageIndex: 8,  endingScore: 0)], questIdentifier: ""),
-        Page(storyText: " 하늘의 이치를 멸절시키고 인륜을 막아 위로는 중국 조정에 죄를 짓고 아래로 백성들에게 원한을 사고 있는데 이러한 죄악을 저지른 자가 어떻게 나라의 임금으로서 백성의 부모가 될 수 있으며, 임금의 자리에 있으면서 종묘, 사직의 신령을 받들 수 있겠는가. 이에 그를 폐위시키노라.”\n\n 그렇게 나는 폐위되었다. 이제 더 이상 한 나라의 왕이 아니다.", storyImage: nil, choice: [Choice(choiceText: "현실을 수긍한다.", nextPageIndex: 9,  endingScore: 0),Choice(choiceText: "복수를 꿈꾼다.", nextPageIndex: 10,  endingScore: 0)], questIdentifier: ""),
+        Page(storyText: " 하늘의 이치를 멸절시키고 인륜을 막아 위로는 중국 조정에 죄를 짓고 아래로 백성들에게 원한을 사고 있는데 이러한 죄악을 저지른 자가 어떻게 나라의 임금으로서 백성의 부모가 될 수 있으며, 임금의 자리에 있으면서 종묘, 사직의 신령을 받들 수 있겠는가. 이에 그를 폐위시키노라.”\n\n 그렇게 나는 폐위되었다. 이제 더 이상 한 나라의 왕이 아니다.", storyImage: nil, choice: [Choice(choiceText: "현실을 수긍한다.", nextPageIndex: 9,  endingScore: 1),Choice(choiceText: "복수를 꿈꾼다.", nextPageIndex: 10,  endingScore: 5)], questIdentifier: ""),
         Page(storyText: " ‘잃을 게 많은 자리에 올라, 내 덕을 쌓지 못한 채 한순간에 물거품이 되어 추락하는구나. 올라오기 위해 노력한 순간이 자리에 앉아 있는 순간보다 갑절은 더 길다. 나는 대체 무엇을 위해 올라온 것이냐. 그렇게 악착같이 살아서 결국 내 손에 흐르는 것은 비릿비릿하고 역겨운 진한 핏물뿐이구나.’", storyImage: nil, choice: [Choice(choiceText: "", nextPageIndex: 11,  endingScore: 0)], questIdentifier: "", endEpisodePage: true),
         Page(storyText: " ‘숨이 턱턱 막히는구나. 아득바득 올라왔는데 한 순간에 미끄러져 땅바닥으로 추락하니. 참 내 꼴이 우습다, 우스워. 아아, 이제 나에게 남은 건 무엇이란 말인가? 그렇게 악착같이 살아서 결국 내 손에 흐르는 것은 비릿비릿하고 역겨운 진한 핏물뿐이구나. 이미 더럽혀진 손, 더 더러워진다고 티가 날까. 난 복수를 꿈 꿀 것이다.’", storyImage: nil, choice: [Choice(choiceText: "", nextPageIndex: 11,  endingScore: 0)
         ], questIdentifier: "", endEpisodePage: true
@@ -50,7 +50,7 @@ import Foundation
 
     let ep103: [Page] = [
         Page(storyText: "해가 떨어질 때 즈음 임진강 나루에 닿아 배에 올랐다. 아버지는 신하들을 보고 엎드려서 통곡하니 좌우가 눈물을 흘리면서 감히 쳐다보지를 못했다. 밤은 칠흑같이 어두운데 단 한 개의 불도 없었다. 나는 아버지를 똑바로 쳐다볼 순 없었고, 그저 뒷모습만 또렷이 볼 뿐이었다.\n 밤이 깊은 후에야 겨우 소식이 닿았다. 아버지가 배를 가라앉히고 나루를 끊고 가까운 곳의 집도 철거시키도록 명했다. 이는 적들이 그것을 뗏목으로 이용할 것을 염려한 때문이었다. 백관들은 굶주리고 지쳐 촌가에 흩어져 잤다.", storyImage: nil, choice: [Choice(choiceText: "다음", nextPageIndex: 1,  endingScore: 0)], questIdentifier: "chapter1quest1"),
-        Page(storyText: " “여봐라, 강을 건너지 못한 이가 몇이나 있는지 아느냐?”\n “확실한 수는 잘 모르겠지만, 지금 보았을 땐 강을 건너지 못한 이는 반이 족히 넘을 듯 하옵니다, 저하.”\n\n 비는 여전히 오고 있었다. 나는 걸어온 길을 되돌아보았다.  내가 걸어온 그 길에는 출렁이는 강물만이 흐르고 있었다.\n\n 아버지께서는 그게 정말 최선의 선택이었을까?", storyImage: nil, choice: [Choice(choiceText: "아버지를 이해한다.", nextPageIndex: 2,  endingScore: 0),Choice(choiceText: "아버지를 이해하지 못 한다..", nextPageIndex: 3,  endingScore: 0)
+        Page(storyText: " “여봐라, 강을 건너지 못한 이가 몇이나 있는지 아느냐?”\n “확실한 수는 잘 모르겠지만, 지금 보았을 땐 강을 건너지 못한 이는 반이 족히 넘을 듯 하옵니다, 저하.”\n\n 비는 여전히 오고 있었다. 나는 걸어온 길을 되돌아보았다.  내가 걸어온 그 길에는 출렁이는 강물만이 흐르고 있었다.\n\n 아버지께서는 그게 정말 최선의 선택이었을까?", storyImage: nil, choice: [Choice(choiceText: "아버지를 이해한다.", nextPageIndex: 2,  endingScore: 1),Choice(choiceText: "아버지를 이해하지 못 한다..", nextPageIndex: 3,  endingScore: 5)
         ], questIdentifier: ""),
         Page(storyText: " 사실 내가 아버지였어도 아버지와 똑같은 선택을 하지 않았을까 싶다. 적들과 마주치지 않기 위해, 제 목숨을 살리기 위해, 한 나라의 왕이 비참하게 죽지 않기 위해서 말이다.\n\n 아버지는 불어넘치는 강물에 두려워하셨을 것이다. 피란을 가지 못할까 봐 무서우셨을 것이다. 강을 미처 건너지 못한 궁인들에게 미안해하실 것이다. 아마 그럴 것이다. 그렇게 믿고 싶다.", storyImage: nil, choice: [              Choice(choiceText: "", nextPageIndex: 666,  endingScore: 0)
         ], questIdentifier: "", endEpisodePage: true),
@@ -87,13 +87,13 @@ import Foundation
                 Choice(choiceText: "다음", nextPageIndex: 8,  endingScore: 0)
         ], questIdentifier: ""),
         Page(storyText: " “저하, 어디가 불편하신지요?”\n “기억이…..기억이…막 이상하구나. 처음 겪는 일인데도 이미 예전에 겪어본 것만 같아. 가끔 내가 왜 이 말을 하고 있지?라는 생각도 들어. 내가 미친 게냐?”\n “증상만 듣고는 소인은 잘 모르겠습니다. 제가 맥 좀 짚어보겠습니다.\n\n 침묵이 이어졌고, 이윽고 의원이 내게 말했다.\n\n “흠…이상합니다. 맥도 정상하고 아주 건강하십니다.”\n “그럼 내가 미쳤다는 말인 게냐?”\n “아..아닙니다.”\n “됐다. 물러가라.”\n\n 원인을 알 수 없는 이상한 증세에 나는 자꾸만 심기가 거슬렸다.\n\n “원인이라도 알 수 있으면 좀 좋을 터만..”", storyImage: nil, choice: [
-                Choice(choiceText: "", nextPageIndex: 666,  endingScore: 0)
-        ], questIdentifier: "chapter1quest2", endEpisodePage: true)
+                       Choice(choiceText: "", nextPageIndex: 666,  endingScore: 0)
+               ], questIdentifier: "chapter1quest2", endEpisodePage: true)
     ]
 
 
     let ep105 : [Page] = [
-        Page(storyText: "\"전하, 세자 저하께서 문안 인사를 드리러 왔사옵니다. \n\"\"세자라니. 도대체 누가 세자란 말인가? 명나라의 황제의 승인을 받지 못한 자가 어찌 세자라고 불릴 수가 있는가? 어서 물러가라 하라.\" \n“저하, 전하께서…….”", storyImage: nil, choice: [Choice(choiceText: "문안 인사를 포기하고 그만 돌아간다.", nextPageIndex: 1,  endingScore: 0), Choice(choiceText: "끝까지 남아 기다린다.", nextPageIndex: 2,  endingScore: 0)], questIdentifier: "", endEpisodePage: false),
+        Page(storyText: "\"전하, 세자 저하께서 문안 인사를 드리러 왔사옵니다. \n\"\"세자라니. 도대체 누가 세자란 말인가? 명나라의 황제의 승인을 받지 못한 자가 어찌 세자라고 불릴 수가 있는가? 어서 물러가라 하라.\" \n“저하, 전하께서…….”", storyImage: nil, choice: [Choice(choiceText: "문안 인사를 포기하고 그만 돌아간다.", nextPageIndex: 1,  endingScore: 1), Choice(choiceText: "끝까지 남아 기다린다.", nextPageIndex: 2,  endingScore: 5)], questIdentifier: "", endEpisodePage: false),
         //5-1
         Page(storyText: "“됐네. 이만 물러가겠소.”\n\n나는 다시 동궁으로 걸어갔다.\n\n‘전쟁 통에는 저를 방패로 내세우시더니, 이제는 자신을 향한 창이라 생각하시어 저를 버리시는 겁니까? 제가 이 나라를 살리기 위해, 아버지는 도망을 가셨어도 저는 끝까지 한양에 남아 지켰습니다. 명나라가 저를 세자로 보지 않아도, 전쟁 중에 저를 세자로 책봉하셨어도, 어찌 됐든 저는 조선의 ‘세자’요, 아버지의 아들이지 않습니까?’", storyImage: nil, choice: [Choice(choiceText: "다음", nextPageIndex: 3,  endingScore: 0)], questIdentifier: "", endEpisodePage: false),
         //5-2
@@ -104,7 +104,7 @@ import Foundation
     ]
 
     let ep106 : [Page] = [
-        Page(storyText: "“저하, 전하께서 재혼을 하신다고 하온데…….”\n“그게 무슨 소리인가?”\n\n갑자기 이게 무슨 말이지? 난 분명 동궁으로 가던 길에 쓰러졌을 텐데. 내가 어찌 이미 들어와 있는 것인지 도통 영문을 알 수 없었다. 내가 생각하지도 않은 말이 저절로 나와버리니 요즘 내가 많이 이상해진 건가 싶었다.\n\n“신하들이 저하의 책봉을 주청(奏請)* 할 것을 청하자 재혼을 하시겠다고 밝혔사옵니다.”\n\n나는 내 당혹스러움을 감출 수가 없었다.\n\n‘아버지께 문안 인사를 올린 날로부터 몇 날 며칠이 흐른 것인지 종잡을 수가 없구나. 내가 정말 미친 것인지에 대해 생각하는 것에도 갈피를 잡지를 못하겠는데, 아버지의 재혼 소식이라니.’", storyImage: nil, choice: [Choice(choiceText: "표정을 숨길 여유조차 없다.", nextPageIndex: 1,  endingScore: 0), Choice(choiceText: "덤덤하게 행동한다.", nextPageIndex: 2,  endingScore: 0), Choice(choiceText: "화를 낸다.", nextPageIndex: 3,  endingScore: 0)],  questIdentifier: "", endEpisodePage: false),
+        Page(storyText: "“저하, 전하께서 재혼을 하신다고 하온데…….”\n“그게 무슨 소리인가?”\n\n갑자기 이게 무슨 말이지? 난 분명 동궁으로 가던 길에 쓰러졌을 텐데. 내가 어찌 이미 들어와 있는 것인지 도통 영문을 알 수 없었다. 내가 생각하지도 않은 말이 저절로 나와버리니 요즘 내가 많이 이상해진 건가 싶었다.\n\n“신하들이 저하의 책봉을 주청(奏請)* 할 것을 청하자 재혼을 하시겠다고 밝혔사옵니다.”\n\n나는 내 당혹스러움을 감출 수가 없었다.\n\n‘아버지께 문안 인사를 올린 날로부터 몇 날 며칠이 흐른 것인지 종잡을 수가 없구나. 내가 정말 미친 것인지에 대해 생각하는 것에도 갈피를 잡지를 못하겠는데, 아버지의 재혼 소식이라니.’", storyImage: nil, choice: [Choice(choiceText: "표정을 숨길 여유조차 없다.", nextPageIndex: 1,  endingScore: 3), Choice(choiceText: "덤덤하게 행동한다.", nextPageIndex: 2,  endingScore: 1), Choice(choiceText: "화를 낸다.", nextPageIndex: 3,  endingScore: 5)],  questIdentifier: "", endEpisodePage: false),
         Page(storyText: "나는 생각이 많은 까닭에 굳은 표정을 숨길 여유조차 없었다.", storyImage: nil, choice: [Choice(choiceText: "다음", nextPageIndex: 0,  endingScore: 0)],  questIdentifier: "", endEpisodePage: true),
         Page(storyText: " 생각이 많아졌다. 엎친 데 덮친 격으로 아버지의 재혼 소식은 마치 내게 청천벽력 같은 소리였다. 잘못하다간 겨우 얻은 내 세자 자리가 까딱하면 사라지게 되는 것이다. 아버지는 결코 내게 온전한 세자 자리를 주고 싶지 않아 하시는 걸까. 나는 애써 놀란 표정을 감추고 덤덤하게 굴었다. 나를 무시하셔도, 난 여전히 그 자리에 있다는 것을 보여주기 위해서.", storyImage: nil, choice: [], questIdentifier: "", endEpisodePage: true),
         Page(storyText: "나는 화를 참을 수가 없었다.\n\n“무어라? 정녕 나를 세자로 온전히 인정하시지 않겠다는 말이 아닌가? 드디어 아버지께 인정을 받은 줄만 알았는데, 그것도 아니란 말인 건가. 난 도대체 아버지께 아들이 맞긴 한가? 너, 내가 세자로 보이긴 하느냐? 어? 얼른 바른대로 말하거라!”\n\n나는 눈 앞에 보이는 꽃병을 집어던졌다. 쨍그랑 소리와 함께 모두들 놀란 눈치였다. 나는 신하들이 눈치를 보든 말든 상관없었다. 그냥 그 상황 자체가 나에겐 지옥같았다.", storyImage: nil, choice: [Choice(choiceText: "다음", nextPageIndex: 4,  endingScore: 0)], questIdentifier: "chapter1quest3", endEpisodePage: false),
@@ -119,8 +119,8 @@ import Foundation
     ]
     let ep109 : [Page] = [
         Page(storyText: " 머리를 식힐 겸 궁 내를 거닐고 있는데 한 시녀가 울고 있었다.\n\n“무슨 일이냐?”\n\n 시녀는 나를 쳐다보더니 놀라서 재빠르게 허리를 수그렸고, 떨리는 목소리로 말했다.\n\n“저…저하……. 아무 일도 아니 옵니다.”\n“아무 일도 아니라기엔 자네가 울고 있지 않는가?”\n“실은… 동궁 소속의 시녀라는 이유만으로 차별을 당하고 있사옵니다.”\n“그게 무슨 말이냐?”\n“동궁 소속의 시녀들은 모두 무시를 당하고 있사옵니다. 같은 시녀라고 할지라도 맞먹을 수 없다고 하온데….”\n“무시하는 자들은 누구이더냐?”\n“대부분의 궁 안의 자들이며, 심지어는 중궁전의 시녀들까지 기세등등하여 무시를 하고 있사옵니다.”", storyImage: nil, choice: [
-                Choice(choiceText: "참는다", nextPageIndex: 1,  endingScore: 0),
-                Choice(choiceText: "무시한 자들을 찾아가려고 한다", nextPageIndex: 2,  endingScore: 0)
+                Choice(choiceText: "참는다", nextPageIndex: 1,  endingScore: 1),
+                Choice(choiceText: "무시한 자들을 찾아가려고 한다", nextPageIndex: 2,  endingScore: 5)
         ], questIdentifier: "",  endEpisodePage: false),
         Page(storyText: "나는 크게 한숨을 쉬었다.\n\n“그래, 알았다. 어서 가 보거라.”\n“예.”\n\n 이제는 궁 안의 시녀들까지 나를 기어코 무시를 하는구나. 동궁 소속의 궁인들을 무시한다는 것은 곧 나를 무시하는 것과 다를 바가 없지 않은가?", storyImage: nil, choice: [], questIdentifier: "", endEpisodePage: true),
         Page(storyText: " “그래 알았다. 어서 가 보거라.”\n“예.”\n\n나는 내 뒤에 있던 신하에게 말했다.\n\n“누구인지 알아야겠다.”\n“알아서 무슨 일을 하시렵니까?”\n“당연히 벌을 내려야 하지 않겠는가? 아직 하늘은 푸르고 내가 이리 살아 있는데, 어찌 날 욕보인 자들을 살려 둘 수 있겠는가?”\n“아직은 자중하시지요, 저하. 전하께서도 그리 이야기를 하신지 얼마나 지나셨다고 그리하십니까? 저하께서 그런 나인들의 말 하나하나에 신경을 쓰시면, 그거야말로 저하께서 찔려서 벌을 내렸다는 더 큰 소문이 돌 것입니다. 아직은 성품을 온화하게 가지는 게 좋을 것 같습니다.”\n“네 말을 듣고 보니 그 말도 일리가 있구나. 내가 여기서 참는 것이 더 좋은 결과를 가지고 오면 좋겠는데.”", storyImage: nil, choice: [], questIdentifier: "", endEpisodePage: true)
@@ -134,8 +134,8 @@ import Foundation
     ]
     let ep112 : [Page] = [
         Page(storyText: "나는 아버지 곁에서 병시중을 하였다.", storyImage: nil, choice: [
-                Choice(choiceText: "아버지께 죄송한 마음이 든다.", nextPageIndex: 1,  endingScore: 0),
-                Choice(choiceText: "아버지께 죄책감이 들지 않는다.", nextPageIndex: 2,  endingScore: 0)
+                Choice(choiceText: "아버지께 죄송한 마음이 든다.", nextPageIndex: 1,  endingScore: 1),
+                Choice(choiceText: "아버지께 죄책감이 들지 않는다.", nextPageIndex: 2,  endingScore: 5)
         ], questIdentifier: "", endEpisodePage: false),
         
         Page(storyText: " ‘영창대군은 열 살 남짓하고, 지금 아버지께서 돌아가시면 내가 왕이 되는 것이 아닌가?’\n\n 이런 생각을 하게 만든 아버지가 원망스럽기도, 이런 생각을 하고 있는 것이 죄송스럽기도 하였다. 나는 감히 아버지를 죽일 용기가 없었고, 불효자가 되기도 싫었다. 이런 내 마음이 원망에서 그치길 바랐다.", storyImage: nil, choice: [Choice(choiceText: "다음", nextPageIndex: 3,  endingScore: 0)], questIdentifier: "", endEpisodePage: false),
@@ -166,8 +166,8 @@ import Foundation
         Page(storyText: " 아버지를 잃은 슬픔에서 나올 틈도 없이 즉위식이 거행되었다. 서러움에 갇힌 세자의 삶에서 벗어나 이제서야 겨우 왕이 되었는데, 나에겐 너무나도 익숙한 느낌이었다.", storyImage: nil, choice: [], questIdentifier: "", endEpisodePage: true)
     ]
 
-    let prologue: Chapter = Chapter(Episodes: [ep001, ep002], quests: [])
-    let chapter1: Chapter = Chapter(Episodes: [ep101, ep102, ep103, ep104, ep105, ep106, ep107, ep108, ep109, ep110, ep111, ep112, ep113, ep114, ep115, ep116, ep117], quests: [
+    var prologue: Chapter = Chapter(Episodes: [ep001, ep002], quests: [])
+    var chapter1: Chapter = Chapter(Episodes: [ep101, ep102, ep103, ep104, ep105, ep106, ep107, ep108, ep109, ep110, ep111, ep112, ep113, ep114, ep115, ep116, ep117], quests: [
                                         Quest(questName: "임진강 나루에 도착하기", questClearJoGeun: ["chapter1quest1"], reward: 5),
                                         Quest(questName: "의원에게 진찰받기", questClearJoGeun: ["chapter1quest2"], reward: 5),
                                         Quest(questName: "꽃병을 집어 던지기", questClearJoGeun: ["chapter1quest3"], reward: 10)])

@@ -25,9 +25,9 @@ struct Choice {
 // 스트럭처 안에다가 주석 넣으면.. 프라퍼티 인식 안 될 수도 있음. 무슨 일이 있어도 앤간해서는 빼는 게 좋을 듯
 struct Page {
     let storyText: String
-    let storyImage: String?
-    let choice :[Choice]
-    let questIdentifier: String
+    var storyImage: String?
+    var choice :[Choice]
+    var questIdentifier: String
     var endEpisodePage: Bool = false
 
 }
@@ -86,6 +86,8 @@ struct Quest {
     // 예상하는 로직 : 루프를 돌려서 이 어레이와 초이스의 퀘스트식별자 비교, 동일할 때마다 해당 조건을 이 어레이에서 삭제하고 "finish"를 1개 추가함.
     var questClearJoGeun: [String]
     
+   
+  
     // 모든 엘리먼트가 "finish"로 바뀌면, questClearOX를 true로 바꿈.
     mutating func changeQuestClearOX() {
         var finishCount: Int = 0
