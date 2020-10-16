@@ -12,6 +12,7 @@ class MainGameTableViewCell: UITableViewCell {
     @IBOutlet weak var StoryTableViewCellLable: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        fontSizeUpdate()
         // Initialization code
     }
 
@@ -36,7 +37,10 @@ class MainGameTableViewCell: UITableViewCell {
         
     }
     
-
+    func fontSizeUpdate(){
+        StoryTableViewCellLable.font.withSize(CGFloat(santa.setting.fontSize))
+        StoryTableViewCellLable.setLineSpacing(lineSpacing: CGFloat(santa.setting.rowSpacing))
+    }
 
 }
 
@@ -46,6 +50,7 @@ class ChoiceTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        fontRowUpdate()
         // Initialization code
     }
 
@@ -54,9 +59,9 @@ class ChoiceTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    func choiceLabelUpdate(){
-        choiceTableViewCellLabel.font = UIFont(name: choiceTableViewCellLabel.font.fontName, size: CGFloat(santa.setting.fontSize))
+    func fontRowUpdate(){
+        choiceTableViewCellLabel.font.withSize(CGFloat(santa.setting.fontSize))
     }
+   
 
 }

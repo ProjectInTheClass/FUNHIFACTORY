@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class SettingViewController: UIViewController {
+class SettingViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
   
     @IBOutlet weak var questLabel1: UILabel!
@@ -24,25 +25,46 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var textSizeLabel: UILabel!
     @IBOutlet weak var lineSpacingLabel: UILabel!
     @IBOutlet weak var textStyleSampleLabel: UILabel!
+    @IBOutlet var bgmGauge: UISlider!
+
     
+    override func viewWillAppear(_ animated: Bool) {
+        textSizeLabel.text = String(santa.setting.fontSize)
+        lineSpacingLabel.text = String(santa.setting.rowSpacing)
+        textStyleSampleLabel.font = textStyleSampleLabel.font.withSize(CGFloat(santa.setting.fontSize))
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+       
     }
     
     @IBAction func backToMainGameViewButtonAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func decreaseText(_ sender: Any) {
+        santa.setting.fontSize -= 1
+        textStyleSampleLabel.font = textStyleSampleLabel.font.withSize(CGFloat(santa.setting.fontSize))
+        textSizeLabel.text = String(santa.setting.fontSize)
     }
-    */
-
+    @IBAction func increaseText(_ sender: Any) {
+        santa.setting.fontSize += 1
+        textStyleSampleLabel.font = textStyleSampleLabel.font.withSize(CGFloat(santa.setting.fontSize))
+        textSizeLabel.text = String(santa.setting.fontSize)
+    }
+    @IBAction func decreaseRow(_ sender: Any) {
+        if santa.setting.rowSpacing == 0 {
+            print("최소 크기입니다.")
+        } else{
+            santa.setting.rowSpacing -= 1
+        }
+        textStyleSampleLabel.setLineSpacing(lineSpacing: CGFloat(santa.setting.rowSpacing))
+        lineSpacingLabel.text = String(santa.setting.rowSpacing)
+    }
+    @IBAction func increaseRow(_ sender: Any) {
+        santa.setting.rowSpacing += 1
+        textStyleSampleLabel.setLineSpacing(lineSpacing: CGFloat(santa.setting.rowSpacing))
+        lineSpacingLabel.text = String(santa.setting.rowSpacing)
+    }
 }

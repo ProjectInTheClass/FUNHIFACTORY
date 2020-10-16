@@ -20,6 +20,7 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var endEpisodeButton: UIButton!
     @IBOutlet weak var choiceTableViewHeight: NSLayoutConstraint!
     
+
     //메인 스토리 테이블뷰 어레이
     var labelArrayInTable : [String] = [" 한 나라의 왕인 나는 굵은 포승줄로 묶인 채 고개를 떨궜다. 이 자리에 발을 딛는 것도 이것이 마지막이겠거니 싶었다. 난 그저 초점 없는 눈으로 땅바닥을 바라보며 무릎을 꿇었다."]
       
@@ -63,14 +64,17 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
                 // tableViewCell 투명화
                 
                 cell.choiceTableViewCellLabel.text = list.choiceText
-                cell.choiceLabelUpdate()
+                
                 cell.backgroundColor = .clear
                 cellToReturn = cell
             }
             
             return cellToReturn
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        storyTableView.reloadData()
+        choiceTableView.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.choiceTableView.dataSource = self
@@ -227,3 +231,30 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
     
  
+extension UILabel {
+
+    func setLineSpacing(lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0) {
+
+        guard let labelText = self.text else { return }
+
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = lineSpacing
+        paragraphStyle.lineHeightMultiple = lineHeightMultiple
+
+        let attributedString:NSMutableAttributedString
+        if let labelattributedText = self.attributedText {
+            attributedString = NSMutableAttributedString(attributedString: labelattributedText)
+        } else {
+            attributedString = NSMutableAttributedString(string: labelText)
+        }
+
+        // (Swift 4.2 and above) Line spacing attribute
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+
+
+        // (Swift 4.1 and 4.0) Line spacing attribute
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+
+        self.attributedText = attributedString
+    }
+}

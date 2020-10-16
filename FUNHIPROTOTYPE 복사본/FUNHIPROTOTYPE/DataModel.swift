@@ -75,7 +75,7 @@ struct Setting{
     // 슬라이더 값은 0.0 ~ 1.0
     var bgmVolume : Double = 0.5
     var fontSize: Int = 16
-    var rowSpacing : Int = 28
+    var rowSpacing : Double = 0
 }
 
 struct Quest {
