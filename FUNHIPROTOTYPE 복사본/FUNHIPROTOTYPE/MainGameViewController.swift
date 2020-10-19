@@ -38,7 +38,6 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
             intToReturn = story
         } else if tableView == choiceTableView{
             let currentChoice = santa.gameCharacter.currentPage().choice.count
-            print(currentChoice)
             intToReturn = currentChoice
         }
         return intToReturn
@@ -95,7 +94,9 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
         // tableView 투명화
         choiceTableView.backgroundColor = .clear
         storyTableView.backgroundColor = .clear
-    
+        
+        //빌드 중에 현재 페이지가 어떤 건지 파악 위한 거
+        print("현재 페이지 : 챕터\(santa.gameCharacter.currentChapterIndex) 에피소드\(santa.gameCharacter.currentEpisodeIndex + 1) \(santa.gameCharacter.currentEpPageIndex)페이지(인스턴스 기준)")
         
       
         self.storyTableView.rowHeight = UITableView.automaticDimension
@@ -118,19 +119,13 @@ func scrollToBottom(){
     // 체력/멘탈/돈/페이지인덱스/능력/풀에피소드/현재 에피, 에피 내 인덱스 초기화
     endEpisodeButton.isHidden = true
     santa.gameCharacter.pageIndex = 1
-
     santa.gameCharacter.currentEpisodeIndex = 0
     santa.gameCharacter.currentEpPageIndex = 0
     santa.gameCharacter.currentChapterIndex = 0
-   
     
     // 본문 테이블 뷰 텍스트,이미지 / 테이블 뷰 리로드 /
-   
     labelArrayInTable.removeAll()
-
-    
     labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
-   
     //choiceTableView 높이 지정
     choiceTableViewHeight.constant = CGFloat(55*santa.gameCharacter.currentPage().choice.count)
   
@@ -140,44 +135,29 @@ func scrollToBottom(){
 
 
 func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    // 쪽번호
-    santa.gameCharacter.pageIndex += 1
+    //엔딩스코어 업뎃
+    decideEnding(indexPathRow: indexPath.row)
     //다음 페이지로 넘기기
     updatePage(indexPath: indexPath.row)
+    updateStoryTableView()
+    
+    //왜 questLogic 두 개를 넣어야 제 타이밍에 퀘스트 리워드가 캐릭터에게 주어지지..? 이유를 모르겠음.
+    questLogic()
+    questLogic()
     choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
-
     scrollToBottom()
-    
-    //게임 오버 구현하기 + 죽은 횟수 저장하기 : santa.totalDying += 1
-
-    // 셀 높이
-    choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
-      
-    //tableView들 업뎃
-        self.choiceTableView.reloadData()
-        self.storyTableView.reloadData()
-
-   
+    self.choiceTableView.reloadData()
+    self.storyTableView.reloadData()
         }
-    
-    func updatePage(indexPath: Int) {
-        
-        santa.gameCharacter.currentEpPageIndex = santa.gameCharacter.currentPage().choice[indexPath].nextPageIndex
-        if santa.gameCharacter.currentPage().endEpisodePage == true {
-            endEpisodeButton.isHidden = false
-            choiceTableView.isHidden = true
-        } else {
-            endEpisodeButton.isHidden = true
-            choiceTableView.isHidden = false
-        }
-        labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
-    
-    }
     
 
     @IBAction func endEpisodeButtonAction(_ sender: Any) {
         
-        updateEpisode()
+        updateEpisodeAndChapter()
+        updateStoryTableView()
+       //왜 questLogic 두 개를 넣어야 제 타이밍에 퀘스트 리워드가 캐릭터에게 주어지지..? 이유를 모르겠음.
+        questLogic()
+        questLogic()
        
         self.choiceTableView.reloadData()
         self.storyTableView.reloadData()
@@ -186,19 +166,31 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     @IBAction func goToSettingButtonAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-   
-    func updateEpisode() {
-        
-        
+    
+    func updatePage(indexPath: Int) {
+        //currentPage 넘기긱
+        santa.gameCharacter.currentEpPageIndex = santa.gameCharacter.currentPage().choice[indexPath].nextPageIndex
+      
+    }
+    
+    func updateEpisodeAndChapter() {
+        // 마지막 에피 마지막 페이지일 때 챕터 넘기기, 아니면 에피만 넘기기(이 함수 실행되는 곳인 화살표 누르는 페이지는 마지막 페이지지용)
         if santa.gameCharacter.currentEpisodeIndex == santa.gameCharacter.currentChapter().Episodes.count-1 {
             santa.gameCharacter.currentChapterIndex += 1
             santa.gameCharacter.currentEpisodeIndex = 0
         } else {
             santa.gameCharacter.currentEpisodeIndex += 1
         }
+        // currentEpPageIndex, 테이블 뷰 텍스트 리셋
         santa.gameCharacter.currentEpPageIndex = 0
-       
         labelArrayInTable.removeAll()
+    }
+    
+    func updateStoryTableView() {
+        
+        //확인용
+        print("현재 챕터 : \(santa.gameCharacter.currentChapterIndex) / 현재 에피 : \(santa.gameCharacter.currentEpisodeIndex) / 현재 페이지 : \(santa.gameCharacter.currentEpPageIndex)")
+        // 선택지 or 화살표 띄우기
         if santa.gameCharacter.currentPage().endEpisodePage == true {
             endEpisodeButton.isHidden = false
             choiceTableView.isHidden = true
@@ -206,13 +198,54 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             endEpisodeButton.isHidden = true
             choiceTableView.isHidden = false
         }
-        labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
+        //선택지 TableView 높이
         choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
-
-        self.choiceTableView.reloadData()
-        self.storyTableView.reloadData()
+        // 본문 업뎃
+        labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
+       
+       
     }
     
+    func questLogic() {
+            
+        var chapterGolds: Int = 0
+        //챕터 내 퀘스트들 중 한 개의 퀘스트
+        for quest in santa.gameCharacter.currentChapter().quests.enumerated(){
+            //한 개의 퀘스트의 조건 하나
+            for questJogeon in quest.element.questClearJoGeun.enumerated(){
+                if questJogeon.element == santa.gameCharacter.currentPage().questIdentifier {
+                    santa.gameCharacter.GameFullStory[santa.gameCharacter.currentChapterIndex].quests[quest.offset].questClearJoGeun.remove(at: questJogeon.offset)
+                }
+            }
+            if quest.element.questClearJoGeun.isEmpty {
+                chapterGolds += quest.element.reward
+            }
+        }
+        santa.gameCharacter.currentChapterGold = chapterGolds
+        print("현재 캐릭터 보유 금 : \(santa.gameCharacter.currentChapterGold)금")
+        }
+        
+    func decideEnding(indexPathRow: Int) {
+        santa.gameCharacter.totalEndingScore += santa.gameCharacter.currentPage().choice[indexPathRow].endingScore
+        print("현재 결말 스코어는 \(santa.gameCharacter.totalEndingScore)점입니다.")
+        
+        //엔딩 결정하는 로직 - 일단 임의로 값이랑 변수 지정함.
+        if santa.gameCharacter.currentPage().storyText == "마지막장" {
+            let _ = "엔딩 화면으로 이동함.(들어가야 할 코드 메모한 거임)"
+            var 엔딩lable: String = ""
+            switch santa.gameCharacter.totalEndingScore {
+            case 0...30:
+                엔딩lable = ""
+            case 31...60:
+                엔딩lable = ""
+            case 61...90:
+                엔딩lable = ""
+            default:
+                엔딩lable = ""
+            }
+        }
+        
+    }
    
 }
 

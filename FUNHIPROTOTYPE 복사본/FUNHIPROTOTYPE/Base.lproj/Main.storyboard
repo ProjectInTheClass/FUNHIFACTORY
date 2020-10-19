@@ -191,25 +191,28 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eBB-I5-GcP">
                                 <rect key="frame" x="16" y="130" width="343" height="153.66666666666663"/>
                                 <color key="backgroundColor" red="0.95686274509803915" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="153.66999999999999" id="QH7-qj-aNk"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0X-F5-UoR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0X-F5-UoR">
                                 <rect key="frame" x="286" y="158" width="15" height="18"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8c5-Ux-KvE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8c5-Ux-KvE">
                                 <rect key="frame" x="286" y="232" width="15" height="18"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8LM-ch-tYt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8LM-ch-tYt">
                                 <rect key="frame" x="286" y="195" width="15" height="18"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
                                 <nil key="textColor"/>
@@ -356,10 +359,9 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1장 퀘스트" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4N8-Jw-ybA">
-                                <rect key="frame" x="26" y="112" width="63" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1장 퀘스트" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4N8-Jw-ybA">
+                                <rect key="frame" x="26.000000000000004" y="112" width="59.333333333333343" height="16"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="63" id="9NK-QP-ZJX"/>
                                     <constraint firstAttribute="height" constant="16" id="gnA-xY-gkI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="13"/>
@@ -544,10 +546,12 @@
                     <navigationItem key="navigationItem" id="n8o-Kq-gdP"/>
                     <connections>
                         <outlet property="bgmGauge" destination="t5H-LP-U9q" id="DcU-kM-hhw"/>
+                        <outlet property="currentChapterLabel" destination="4N8-Jw-ybA" id="Kr4-DD-HEi"/>
                         <outlet property="lineSpacingLabel" destination="BLM-80-Bjt" id="JOZ-Wb-P9l"/>
                         <outlet property="quest1rewardLable" destination="B0X-F5-UoR" id="mao-gL-cDT"/>
                         <outlet property="quest2rewardLable" destination="8LM-ch-tYt" id="HFo-1y-KJM"/>
                         <outlet property="quest3rewardLable" destination="8c5-Ux-KvE" id="gSL-tQ-wCs"/>
+                        <outlet property="questChapterLabelBoxWidth" destination="zKB-Pb-pWF" id="oFD-SH-hap"/>
                         <outlet property="questLabel1" destination="ynT-Vb-7re" id="dzg-iN-3ap"/>
                         <outlet property="questLabel2" destination="16v-gv-zbt" id="IxS-Ao-jKl"/>
                         <outlet property="questLabel3" destination="zKl-SO-rB0" id="jAU-sl-qdx"/>
