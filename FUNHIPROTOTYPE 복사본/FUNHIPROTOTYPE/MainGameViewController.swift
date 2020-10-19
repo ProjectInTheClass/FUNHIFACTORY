@@ -47,11 +47,11 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
             var cellToReturn = UITableViewCell()
             if tableView == storyTableView{
                 let storyCell = tableView.dequeueReusableCell(withIdentifier: "storyTableViewCell", for: indexPath) as! MainGameTableViewCell
-                let storyLine: String = labelArrayInTable[indexPath.row]
+                //let storyLine: String = labelArrayInTable[indexPath.row]
                
+                let story = labelArrayInTable[indexPath.row]
                 
-                
-                storyCell.storyLableUpdate(text: storyLine)
+                storyCell.storyLableUpdate(text: story)
                 storyCell.storyLabelSizeUpdate(size: santa.setting.fontSize)
                 storyCell.backgroundColor = .clear
                 storyCell.selectionStyle = .none
@@ -143,6 +143,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     //다음 페이지로 넘기기
     updatePage(indexPath: indexPath.row)
     updateStoryTableView()
+    typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: indexPath.row)
     
     //왜 questLogic 두 개를 넣어야 제 타이밍에 퀘스트 리워드가 캐릭터에게 주어지지..? 이유를 모르겠음.
     questLogic()
@@ -173,7 +174,6 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     func updatePage(indexPath: Int) {
         //currentPage 넘기긱
         santa.gameCharacter.currentEpPageIndex = santa.gameCharacter.currentPage().choice[indexPath].nextPageIndex
-      
     }
     
     func updateEpisodeAndChapter() {
@@ -204,7 +204,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //선택지 TableView 높이
         choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
         // 본문 업뎃
-        labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
+        //labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
        
        
     }
@@ -250,6 +250,39 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
    
+    func typeOn(exampleText : String, indexPath: Int) {
+        var characterArray = [Character](exampleText)
+        var characterIndex = 0
+        labelArrayInTable.append(" ")
+        
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [self] (timer) in
+                if characterArray[characterIndex] != "$" {
+                    while characterArray[characterIndex] == " " {
+                        labelArrayInTable[indexPath].append(" ")
+                        storyTableView.reloadData()
+                        characterIndex += 1
+                        if characterIndex == characterArray.count {
+                            //CurrentTextArrayIndex += 1
+                            characterArray.removeAll()
+                            timer.invalidate()
+                            return
+                        }
+                    }
+                    labelArrayInTable[indexPath].append(characterArray[characterIndex])
+                    storyTableView.reloadData()
+                }
+                characterIndex += 1
+                if characterIndex == characterArray.count {
+                    //CurrentTextArrayIndex += 1
+                    characterArray.removeAll()
+                    timer.invalidate()
+                }
+            
+            }
+        
+        }
+    
+    
 }
 
   
@@ -265,7 +298,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
     */
 
-    
+
  
 extension UILabel {
 

@@ -111,7 +111,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     }
     
     @IBAction func settingButtonClicked(_ sender: Any) {
-        if let mail = URL(string: "mailto://rlagofls7924@gmail.com"){
+        if let mail = URL(string: "mailto: rlagofls7924@gmail.com"){
             if UIApplication.shared.canOpenURL(mail){
                 UIApplication.shared.open(mail)
                 } else {
