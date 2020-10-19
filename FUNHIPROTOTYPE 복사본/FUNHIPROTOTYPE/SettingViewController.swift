@@ -110,6 +110,17 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         lineSpacingLabel.text = String(santa.setting.rowSpacing)
     }
     
+    @IBAction func settingButtonClicked(_ sender: Any) {
+        if let mail = URL(string: "mailto://rlagofls7924@gmail.com"){
+            if UIApplication.shared.canOpenURL(mail){
+                UIApplication.shared.open(mail)
+                } else {
+                print("I can't open mail app.")
+            }
+        }
+       
+    }
+    
     func showFinishedQuest() {
         for quest in santa.gameCharacter.currentChapter().quests.enumerated() {
             if quest.element.questClearJoGeun == [] {
