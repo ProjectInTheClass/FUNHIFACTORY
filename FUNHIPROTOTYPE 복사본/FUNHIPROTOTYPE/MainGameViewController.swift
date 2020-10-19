@@ -80,6 +80,9 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
         self.choiceTableView.delegate = self
         self.storyTableView.dataSource = self
         self.storyTableView.delegate = self
+        
+        choiceTableView.separatorColor = UIColor(displayP3Red: 112/255, green: 112/255, blue: 112/255, alpha: 1)
+        
         choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
 
         

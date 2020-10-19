@@ -44,6 +44,12 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         
         
         if santa.gameCharacter.currentChapter().quests.count == 3 {
+          
+
+            
+
+
+            
         questLabel1.text = santa.gameCharacter.currentChapter().quests[0].questName
         questLabel2.text = santa.gameCharacter.currentChapter().quests[1].questName
         questLabel3.text = santa.gameCharacter.currentChapter().quests[2].questName
