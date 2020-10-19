@@ -135,7 +135,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     decideEnding(indexpathRow: indexPath.row)
     //다음 페이지로 넘기기
     updatePage(indexPath: indexPath.row)
-    updateStoryTableView()
+    updateMainGameUI()
     
     //왜 questLogic 두 개를 넣어야 제 타이밍에 퀘스트 리워드가 캐릭터에게 주어지지..? 이유를 모르겠음.
     questLogic()
@@ -152,7 +152,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     @IBAction func endEpisodeButtonAction(_ sender: Any) {
         
         updateEpisodeAndChapter()
-        updateStoryTableView()
+        updateMainGameUI()
        //왜 questLogic 두 개를 넣어야 제 타이밍에 퀘스트 리워드가 캐릭터에게 주어지지..? 이유를 모르겠음.
         questLogic()
         questLogic()
@@ -173,11 +173,13 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
     
     func updateEpisodeAndChapter() {
-        // 마지막 에피 마지막 페이지일 때 챕터 넘기기, 아니면 에피만 넘기기(이 함수 실행되는 곳인 화살표 누르는 페이지는 마지막 페이지지용)
+        // 마지막 에피 마지막 페이지일 때 챕터 넘기기
         if santa.gameCharacter.currentEpisodeIndex == santa.gameCharacter.currentChapter().Episodes.count-1 {
             santa.gameCharacter.currentChapterIndex += 1
             santa.gameCharacter.currentEpisodeIndex = 0
+            
         } else {
+            //아니면 에피만 넘기기(이 함수 실행되는 곳인 화살표 누르는 페이지는 에피소드의 마지막 페이지지용)
             santa.gameCharacter.currentEpisodeIndex += 1
         }
         // currentEpPageIndex, 테이블 뷰 텍스트 리셋
@@ -185,7 +187,8 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         labelArrayInTable.removeAll()
     }
     
-    func updateStoryTableView() {
+    //UI 업데이트
+    func updateMainGameUI() {
         
         //확인용
         print("현재 챕터 : \(santa.gameCharacter.currentChapterIndex) / 현재 에피 : \(santa.gameCharacter.currentEpisodeIndex) / 현재 페이지 : \(santa.gameCharacter.currentEpPageIndex)")
@@ -205,6 +208,8 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
     }
     
+    
+    // 퀘스트 완료 여부를 체크하고, 완료 시 리워드를 캐릭터에게 줌.
     func questLogic() {
             
         var chapterGolds: Int = 0
@@ -221,9 +226,11 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             }
         }
         santa.gameCharacter.currentChapterGold = chapterGolds
+        //확인용
         print("현재 캐릭터 보유 금 : \(santa.gameCharacter.currentChapterGold)금")
         }
-        
+    
+        // 엔딩스코어(다른 결말을 보게 할 수 있는 점수를 선택지에다가 줌. 그걸 합산해서 엔딩을 결정함.)
     func decideEnding(indexpathRow: Int) {
         santa.gameCharacter.totalEndingScore += santa.gameCharacter.currentPage().choice[indexpathRow].endingScore
         print("현재 결말 스코어는 \(santa.gameCharacter.totalEndingScore)점입니다.")
@@ -244,6 +251,14 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             }
         }
         
+    }
+    
+    func showChapterCover() {
+        if santa.gameCharacter.currentChapterIndex==0  {
+            
+        } else if santa.gameCharacter.currentChapterIndex>0 {
+            
+        }
     }
     
     
