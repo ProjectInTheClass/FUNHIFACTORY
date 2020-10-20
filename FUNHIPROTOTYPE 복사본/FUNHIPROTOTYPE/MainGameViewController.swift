@@ -255,7 +255,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var characterIndex = 0
         labelArrayInTable.append(" ")
         
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [self] (timer) in
+        Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { [self] (timer) in
                 if characterArray[characterIndex] != "$" {
                     while characterArray[characterIndex] == " " {
                         labelArrayInTable[indexPath].append(" ")
