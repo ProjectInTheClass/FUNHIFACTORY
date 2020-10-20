@@ -518,7 +518,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xm2-EM-ZBT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4485.6000000000004" y="-760.34482758620697"/>
+            <point key="canvasLocation" x="4785" y="-124"/>
         </scene>
         <!--Main Game View-->
         <scene sceneID="tne-QT-ifu">
@@ -759,6 +759,25 @@
                                     <action selector="chapterCoverFullButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xnk-rj-SML"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAC-NP-bbY">
+                                <rect key="frame" x="67" y="213" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.1803921568627451" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="F2P-16-gf7"/>
+                                    <constraint firstAttribute="width" constant="107" id="fgL-O6-LMD"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -788,6 +807,11 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="73F-fF-3rm" secondAttribute="trailing" constant="22" id="riQ-2k-3mq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ry8-Ub-HuA" secondAttribute="bottom" constant="20" id="wJ7-2N-EGQ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="FAC-NP-bbY"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="9kT-Fk-gEH"/>
                     <connections>
@@ -823,8 +847,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="양귀비 -30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDG-Vm-txx">
+                                <rect key="frame" x="267" y="655" width="77" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="93" translatesAutoresizingMaskIntoConstraints="NO" id="o4c-Qv-CGo">
-                                <rect key="frame" x="47" y="98" width="320" height="549.33333333333337"/>
+                                <rect key="frame" x="27" y="97" width="320" height="549.33333333333337"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" restorationIdentifier="소월신 이미지" translatesAutoresizingMaskIntoConstraints="NO" id="Qxy-es-iby" userLabel="소월신 이미지">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
@@ -852,13 +883,6 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="양귀비 -30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDG-Vm-txx">
-                                <rect key="frame" x="279" y="655" width="77" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OYW-rM-fSg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -867,7 +891,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ucE-p8-vla" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4782" y="115"/>
+            <point key="canvasLocation" x="4786" y="549"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FJm-5T-jB4">
@@ -892,7 +916,7 @@
         <image name="arrow.forward.circle" catalog="system" width="128" height="121"/>
         <image name="gold" width="132.33332824707031" height="95"/>
         <image name="knife" width="42.666667938232422" height="42.666667938232422"/>
-        <image name="menu" width="95" height="99.5"/>
+        <image name="menu" width="63.333332061767578" height="66.333335876464844"/>
         <image name="minus" width="63.333332061767578" height="66.333335876464844"/>
         <image name="people" width="42.666667938232422" height="42.666667938232422"/>
         <image name="posion" width="42.666667938232422" height="42.666667938232422"/>

@@ -152,7 +152,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     //다음 페이지로 넘기기
     updatePage(indexPath: indexPath.row)
     updateMainGameUI()
-    
+    typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: indexPath.row)
     //왜 questLogic 두 개를 넣어야 제 타이밍에 퀘스트 리워드가 캐릭터에게 주어지지..? 이유를 모르겠음.
     questLogic()
     questLogic()
@@ -349,6 +349,40 @@ self.choiceTableView.reloadData()
         characterGage.isHidden = false
         
     }
+    
+    //타이핑
+     func typeOn(exampleText : String, indexPath: Int) {
+         var characterArray = [Character](exampleText)
+         var characterIndex = 0
+         labelArrayInTable.append(" ")
+         
+         Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { [self] (timer) in
+                 if characterArray[characterIndex] != "$" {
+                     while characterArray[characterIndex] == " " {
+                         labelArrayInTable[indexPath].append(" ")
+                         storyTableView.reloadData()
+                         characterIndex += 1
+                         if characterIndex == characterArray.count {
+                             //CurrentTextArrayIndex += 1
+                             characterArray.removeAll()
+                             timer.invalidate()
+                             return
+                         }
+                     }
+                     labelArrayInTable[indexPath].append(characterArray[characterIndex])
+                     storyTableView.reloadData()
+                 }
+                 characterIndex += 1
+                 if characterIndex == characterArray.count {
+                     //CurrentTextArrayIndex += 1
+                     characterArray.removeAll()
+                     timer.invalidate()
+                 }
+             
+             }
+         
+         }
+     
   
 
 
