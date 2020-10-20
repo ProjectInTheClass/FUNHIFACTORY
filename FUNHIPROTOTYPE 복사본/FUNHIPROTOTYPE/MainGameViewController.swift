@@ -19,7 +19,7 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var choiceTableView: UITableView!
     @IBOutlet weak var endEpisodeButton: UIButton!
     @IBOutlet weak var choiceTableViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var mainStoryView: UIView!
+    @IBOutlet weak var characterGage: UIStackView!
     
     // 표지 띄우기 위한 것
     
@@ -30,13 +30,13 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var chapterCoverChoice2Button: UIButton!
     
     
-    @IBOutlet weak var mainGameStackView: UIStackView!
+   
     @IBOutlet weak var chapterCoverStackView: UIStackView!
     @IBOutlet weak var chapterCoverFullButton: UIButton!
     @IBOutlet weak var chapterCoverChoiceStackView: UIStackView!
     
     //메인 스토리 테이블뷰 어레이
-    var labelArrayInTable : [String] = [" 한 나라의 왕인 나는 굵은 포승줄로 묶인 채 고개를 떨궜다. 이 자리에 발을 딛는 것도 이것이 마지막이겠거니 싶었다. 난 그저 초점 없는 눈으로 땅바닥을 바라보며 무릎을 꿇었다."]
+    var labelArrayInTable : [String] = []
       
     
     
@@ -113,6 +113,7 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
         self.storyTableView.estimatedRowHeight = 200
         
       
+       
         // Do any additional setup after loading the view.
     }
     
@@ -157,10 +158,14 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     questLogic()
     choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
     scrollToBottom()
-    self.choiceTableView.reloadData()
+    
+
+self.choiceTableView.reloadData()
+    
+    
     self.storyTableView.reloadData()
     }
-    
+     
    
     
 
@@ -173,6 +178,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         questLogic()
        
         self.choiceTableView.reloadData()
+        
         self.storyTableView.reloadData()
     }
     
@@ -181,14 +187,27 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
    
     @IBAction func chapterCoverFullButtonAction(_ sender: Any) {
+        hideChapterCover()
+        self.choiceTableView.reloadData()
+        self.storyTableView.reloadData()
         
     }
     
     @IBAction func chapterCoverChoiceButton1Action(_ sender: Any) {
-        
+        hideChapterCover()
+        santa.gameCharacter.currentEpPageIndex = 1
+        print(santa.gameCharacter.currentPage().storyText)
+        labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
+        self.choiceTableView.reloadData()
+        self.storyTableView.reloadData()
     }
     
     @IBAction func chapterCoverChoiceButton2Action(_ sender: Any) {
+        hideChapterCover()
+        santa.gameCharacter.currentEpPageIndex = 0
+        labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
+        self.choiceTableView.reloadData()
+        self.storyTableView.reloadData()
     }
     
     
@@ -280,24 +299,30 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
     // 챕터 표지 띄우기(상황에 맞춰서)
     func showChapterCover() {
-        
         if santa.gameCharacter.currentEpPageIndex==0 && santa.gameCharacter.currentEpisodeIndex==0 {
-        mainGameStackView.isHidden = true
+      
+        print("표지 나옴")
         chapterCoverStackView.isHidden = false
+        goToSettingViewControlerButton.isHidden = true
+        storyTableView.isHidden = true
+        characterGage.isHidden = true
         choiceTableView.isHidden = true
-            mainStoryView.isHidden = true
-            goToSettingViewControlerButton.isHidden = true
-        chapterCoverNameLabel.text = "      \(santa.gameCharacter.currentChapter().chapterName)"
+            // 앞 공백 스페이즈 6칸 있는 거 정상임 건드리면 안 돼여
+        chapterCoverNameLabel.text = "      "+"\(santa.gameCharacter.currentChapter().chapterName)"
             
+            // 챕터 번호 0일 때 프롤로그, 아니면 "제 n장"으로 함
             if santa.gameCharacter.currentChapter().chapterNumber == 0 {
                 chapterCoverNumberLabel.text = "프롤로그"
             } else {
                 chapterCoverNumberLabel.text = "제 \(santa.gameCharacter.currentChapter().chapterNumber)장"
             }
+            chapterCoverIllustImage.image = UIImage(named: santa.gameCharacter.currentChapter().chapterIllust)
+            //챕터 표지에 선택지 2개일 때만
+            if santa.gameCharacter.currentChapter().chapterChoice.count == 2 {
         
-        chapterCoverIllustImage.image = UIImage(named: santa.gameCharacter.currentChapter().chapterIllust)
         chapterCoverChoice1Button.setTitle(santa.gameCharacter.currentChapter().chapterChoice[0].choiceText, for: .normal)
-        chapterCoverChoice1Button.setTitle(santa.gameCharacter.currentChapter().chapterChoice[0].choiceText, for: .normal)
+        chapterCoverChoice2Button.setTitle(santa.gameCharacter.currentChapter().chapterChoice[1].choiceText, for: .normal)
+            }
         //프롤로그일 때(선택지 클릭해서 화면 전환)
         if santa.gameCharacter.currentChapterIndex==0  {
           
@@ -309,16 +334,21 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             santa.gameCharacter.currentChapterIndex>0 {
             chapterCoverFullButton.isHidden = false
             chapterCoverChoiceStackView.isHidden = true
+            }
         }
     }
     
-    
-
-    
-    
-    
-}
-
+    func hideChapterCover() {
+        
+        chapterCoverStackView.isHidden = true
+        choiceTableView.isHidden = false
+        goToSettingViewControlerButton.isHidden = false
+        chapterCoverFullButton.isHidden = true
+        chapterCoverChoiceStackView.isHidden = true
+        storyTableView.isHidden = false
+        characterGage.isHidden = false
+        
+    }
   
 
 
