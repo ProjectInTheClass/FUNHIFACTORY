@@ -278,19 +278,28 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gold" translatesAutoresizingMaskIntoConstraints="NO" id="pgX-84-tjR">
-                                <rect key="frame" x="162" y="51" width="29" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="29" id="AJm-aX-Og4"/>
-                                    <constraint firstAttribute="height" constant="21" id="ThU-Q4-5jQ"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7az-5k-lQ0">
-                                <rect key="frame" x="200" y="55" width="14" height="13.333333333333329"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="LXt-wU-gdP">
+                                <rect key="frame" x="162" y="51" width="52" height="21"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gold" translatesAutoresizingMaskIntoConstraints="NO" id="pgX-84-tjR">
+                                        <rect key="frame" x="0.0" y="0.0" width="29" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="29" id="3uo-pF-woO"/>
+                                            <constraint firstAttribute="height" constant="21" id="WsP-Gf-wAC"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7az-5k-lQ0">
+                                        <rect key="frame" x="38" y="4.0000000000000009" width="14" height="13.333333333333336"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="14" id="5I8-Dl-Adc"/>
+                                            <constraint firstAttribute="height" constant="13.333333333333329" id="XlT-Wg-69I"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="첫번째 퀘스트" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynT-Vb-7re">
                                 <rect key="frame" x="48" y="158" width="195" height="19.333333333333343"/>
                                 <constraints>
@@ -356,6 +365,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1장 퀘스트" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4N8-Jw-ybA">
                                 <rect key="frame" x="26.000000000000004" y="112" width="59.333333333333343" height="16"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="59.329999999999998" id="6wF-AF-whS"/>
                                     <constraint firstAttribute="height" constant="16" id="gnA-xY-gkI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="13"/>
@@ -486,7 +496,6 @@
                             <constraint firstItem="v0K-QV-pu0" firstAttribute="top" secondItem="eBB-I5-GcP" secondAttribute="bottom" constant="40" id="E0V-Vl-4Wk"/>
                             <constraint firstItem="t5H-LP-U9q" firstAttribute="top" secondItem="v0K-QV-pu0" secondAttribute="bottom" constant="15" id="Fpf-Yn-SP0"/>
                             <constraint firstItem="4N8-Jw-ybA" firstAttribute="top" secondItem="vWE-Wz-xMA" secondAttribute="bottom" constant="36" id="Fwh-AG-qT3"/>
-                            <constraint firstItem="Rro-SB-kBX" firstAttribute="leading" secondItem="7az-5k-lQ0" secondAttribute="trailing" constant="125.67" id="GHU-O1-tug"/>
                             <constraint firstItem="5pl-tQ-245" firstAttribute="top" secondItem="uFa-hB-FNZ" secondAttribute="top" constant="2" id="GZc-V4-Uv1"/>
                             <constraint firstItem="bel-hW-QNV" firstAttribute="top" secondItem="vWE-Wz-xMA" secondAttribute="bottom" constant="33" id="Hcp-bZ-u5O"/>
                             <constraint firstItem="ynT-Vb-7re" firstAttribute="leading" secondItem="uFa-hB-FNZ" secondAttribute="leading" constant="48" id="IYy-Id-has"/>
@@ -496,7 +505,6 @@
                             <constraint firstItem="uFa-hB-FNZ" firstAttribute="trailing" secondItem="eBB-I5-GcP" secondAttribute="trailing" constant="16" id="Qec-dn-KPi"/>
                             <constraint firstItem="t5H-LP-U9q" firstAttribute="leading" secondItem="uFa-hB-FNZ" secondAttribute="leading" constant="32" id="Qkh-z8-4NC"/>
                             <constraint firstItem="Ouw-fr-sSn" firstAttribute="top" secondItem="uFa-hB-FNZ" secondAttribute="top" constant="9" id="Qnh-Wi-DtM"/>
-                            <constraint firstItem="7az-5k-lQ0" firstAttribute="top" secondItem="uFa-hB-FNZ" secondAttribute="top" constant="11" id="RVw-Fl-0JG"/>
                             <constraint firstItem="pb4-j9-FUv" firstAttribute="leading" secondItem="uFa-hB-FNZ" secondAttribute="leading" constant="31" id="T5m-iM-i99"/>
                             <constraint firstItem="uFa-hB-FNZ" firstAttribute="trailing" secondItem="Eod-0C-Ocv" secondAttribute="trailing" constant="35" id="TSV-pk-ZVd"/>
                             <constraint firstItem="Rro-SB-kBX" firstAttribute="top" secondItem="uFa-hB-FNZ" secondAttribute="top" constant="6.6699999999999999" id="UTZ-Y7-EqD"/>
@@ -505,7 +513,6 @@
                             <constraint firstItem="AJc-Hw-qgC" firstAttribute="top" secondItem="0Yd-oe-rEE" secondAttribute="bottom" constant="16" id="XiR-aE-YPp"/>
                             <constraint firstItem="v0K-QV-pu0" firstAttribute="leading" secondItem="uFa-hB-FNZ" secondAttribute="leading" constant="31" id="Xwx-RZ-gWl"/>
                             <constraint firstItem="uFa-hB-FNZ" firstAttribute="trailing" secondItem="tRT-2e-GOj" secondAttribute="trailing" constant="30" id="Y0p-bY-y5u"/>
-                            <constraint firstItem="pgX-84-tjR" firstAttribute="top" secondItem="uFa-hB-FNZ" secondAttribute="top" constant="7" id="YJO-Xa-01k"/>
                             <constraint firstItem="tRT-2e-GOj" firstAttribute="centerX" secondItem="5pl-tQ-245" secondAttribute="centerX" id="aa9-6H-jzA"/>
                             <constraint firstItem="Eod-0C-Ocv" firstAttribute="leading" secondItem="B0X-F5-UoR" secondAttribute="trailing" constant="10" id="apJ-dt-0ha"/>
                             <constraint firstItem="Eod-0C-Ocv" firstAttribute="top" secondItem="B0X-F5-UoR" secondAttribute="top" id="bIe-CU-dyt"/>
@@ -528,7 +535,6 @@
                             <constraint firstItem="oJo-GY-lVG" firstAttribute="leading" secondItem="uFa-hB-FNZ" secondAttribute="leading" constant="31" id="nU5-7Z-PC0"/>
                             <constraint firstItem="Eod-0C-Ocv" firstAttribute="top" secondItem="ynT-Vb-7re" secondAttribute="top" id="o9x-4y-kyi"/>
                             <constraint firstItem="5pl-tQ-245" firstAttribute="leading" secondItem="vWE-Wz-xMA" secondAttribute="trailing" constant="6" id="oEQ-x3-lUP"/>
-                            <constraint firstItem="pgX-84-tjR" firstAttribute="leading" secondItem="vWE-Wz-xMA" secondAttribute="trailing" constant="16" id="pn7-DO-SSn"/>
                             <constraint firstItem="vWE-Wz-xMA" firstAttribute="top" secondItem="uFa-hB-FNZ" secondAttribute="top" constant="2" id="rdG-28-Pg2"/>
                             <constraint firstItem="zRd-Hc-Cqf" firstAttribute="leading" secondItem="uFa-hB-FNZ" secondAttribute="leading" constant="29" id="uEr-xy-U0V"/>
                             <constraint firstItem="0Yd-oe-rEE" firstAttribute="leading" secondItem="8LM-ch-tYt" secondAttribute="trailing" constant="10" id="vJn-8d-un7"/>
@@ -559,7 +565,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xm2-EM-ZBT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4551" y="-715"/>
+            <point key="canvasLocation" x="4549.6000000000004" y="-715.27093596059115"/>
         </scene>
         <!--Main Game View-->
         <scene sceneID="tne-QT-ifu">
