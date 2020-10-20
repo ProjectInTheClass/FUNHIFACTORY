@@ -33,8 +33,12 @@ struct Page {
 }
 
 struct Chapter {
-    var Episodes: [[Page]]
+    let episodes: [[Page]]
     var quests: [Quest]
+    let chapterNumber: Int
+    let chapterName: String
+    let chapterIllust: String
+    let chapterChoice: [Choice]
 }
 
 //게임 캐릭터. 플레이 시작 시 생성, 죽으면 삭제
@@ -54,7 +58,7 @@ struct GameCharacter {
         return santa.gameCharacter.GameFullStory[currentChapterIndex]
     }
     func currentEpisode() -> [Page] {
-        return currentChapter().Episodes[currentEpisodeIndex]
+        return currentChapter().episodes[currentEpisodeIndex]
     }
     func currentPage() -> Page {
         return currentEpisode()[currentEpPageIndex]

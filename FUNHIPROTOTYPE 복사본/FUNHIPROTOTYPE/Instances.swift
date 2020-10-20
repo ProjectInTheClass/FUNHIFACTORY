@@ -166,10 +166,10 @@ import Foundation
         Page(storyText: " 아버지를 잃은 슬픔에서 나올 틈도 없이 즉위식이 거행되었다. 서러움에 갇힌 세자의 삶에서 벗어나 이제서야 겨우 왕이 되었는데, 나에겐 너무나도 익숙한 느낌이었다.", storyImage: nil, choice: [], questIdentifier: "", endEpisodePage: true)
     ]
 
-    var prologue: Chapter = Chapter(Episodes: [ep001, ep002], quests: [])
-    var chapter1: Chapter = Chapter(Episodes: [ep101, ep102, ep103, ep104, ep105, ep106, ep107, ep108, ep109, ep110, ep111, ep112, ep113, ep114, ep115, ep116, ep117], quests: [
+var prologue: Chapter = Chapter(episodes: [ep001, ep002], quests: [], chapterNumber: 0, chapterName: "프롤로그 챕터 이름", chapterIllust: "chapter1Illust", chapterChoice: [Choice(choiceText: "나는 현실에 수긍한다.", nextPageIndex: 0, endingScore: 1),Choice(choiceText: "나는 현실을 부정하며 받아들이지 못한다.", nextPageIndex: 1, endingScore: 5)])
+var chapter1: Chapter = Chapter(episodes: [ep101, ep102, ep103, ep104, ep105, ep106, ep107, ep108, ep109, ep110, ep111, ep112, ep113, ep114, ep115, ep116, ep117], quests: [
                                         Quest(questName: "임진강 나루에 도착하기", questClearJoGeun: ["chapter1quest1"], reward: 5),
                                         Quest(questName: "의원에게 진찰받기", questClearJoGeun: ["chapter1quest2"], reward: 5),
-                                        Quest(questName: "꽃병을 집어 던지기", questClearJoGeun: ["chapter1quest3"], reward: 10)])
+                                        Quest(questName: "꽃병을 집어 던지기", questClearJoGeun: ["chapter1quest3"], reward: 10)],chapterNumber: 1, chapterName: "1장 챕터 이름", chapterIllust: "chapter1Illust", chapterChoice: [])
 
 

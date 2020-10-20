@@ -19,6 +19,21 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var choiceTableView: UITableView!
     @IBOutlet weak var endEpisodeButton: UIButton!
     @IBOutlet weak var choiceTableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var mainStoryView: UIView!
+    
+    // 표지 띄우기 위한 것
+    
+    @IBOutlet weak var chapterCoverNumberLabel: UILabel!
+    @IBOutlet weak var chapterCoverNameLabel: UILabel!
+    @IBOutlet weak var chapterCoverIllustImage: UIImageView!
+    @IBOutlet weak var chapterCoverChoice1Button: UIButton!
+    @IBOutlet weak var chapterCoverChoice2Button: UIButton!
+    
+    
+    @IBOutlet weak var mainGameStackView: UIStackView!
+    @IBOutlet weak var chapterCoverStackView: UIStackView!
+    @IBOutlet weak var chapterCoverFullButton: UIButton!
+    @IBOutlet weak var chapterCoverChoiceStackView: UIStackView!
     
     //메인 스토리 테이블뷰 어레이
     var labelArrayInTable : [String] = [" 한 나라의 왕인 나는 굵은 포승줄로 묶인 채 고개를 떨궜다. 이 자리에 발을 딛는 것도 이것이 마지막이겠거니 싶었다. 난 그저 초점 없는 눈으로 땅바닥을 바라보며 무릎을 꿇었다."]
@@ -90,7 +105,7 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
         // tableView 투명화
         choiceTableView.backgroundColor = .clear
         storyTableView.backgroundColor = .clear
-    
+        showChapterCover()
         
         print("현재 페이지 : 챕터\(santa.gameCharacter.currentChapterIndex) 에피소드\(santa.gameCharacter.currentEpisodeIndex + 1) \(santa.gameCharacter.currentEpPageIndex)페이지(인스턴스 기준)")
 
@@ -165,6 +180,17 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.navigationController?.popViewController(animated: true)
     }
    
+    @IBAction func chapterCoverFullButtonAction(_ sender: Any) {
+        
+    }
+    
+    @IBAction func chapterCoverChoiceButton1Action(_ sender: Any) {
+        
+    }
+    
+    @IBAction func chapterCoverChoiceButton2Action(_ sender: Any) {
+    }
+    
     
     func updatePage(indexPath: Int) {
         //currentPage 넘기긱
@@ -174,10 +200,10 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
     func updateEpisodeAndChapter() {
         // 마지막 에피 마지막 페이지일 때 챕터 넘기기
-        if santa.gameCharacter.currentEpisodeIndex == santa.gameCharacter.currentChapter().Episodes.count-1 {
+        if santa.gameCharacter.currentEpisodeIndex == santa.gameCharacter.currentChapter().episodes.count-1 {
             santa.gameCharacter.currentChapterIndex += 1
             santa.gameCharacter.currentEpisodeIndex = 0
-            
+            showChapterCover()
         } else {
             //아니면 에피만 넘기기(이 함수 실행되는 곳인 화살표 누르는 페이지는 에피소드의 마지막 페이지지용)
             santa.gameCharacter.currentEpisodeIndex += 1
@@ -252,12 +278,37 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         }
         
     }
-    
+    // 챕터 표지 띄우기(상황에 맞춰서)
     func showChapterCover() {
+        
+        if santa.gameCharacter.currentEpPageIndex==0 && santa.gameCharacter.currentEpisodeIndex==0 {
+        mainGameStackView.isHidden = true
+        chapterCoverStackView.isHidden = false
+        choiceTableView.isHidden = true
+            mainStoryView.isHidden = true
+            goToSettingViewControlerButton.isHidden = true
+        chapterCoverNameLabel.text = "      \(santa.gameCharacter.currentChapter().chapterName)"
+            
+            if santa.gameCharacter.currentChapter().chapterNumber == 0 {
+                chapterCoverNumberLabel.text = "프롤로그"
+            } else {
+                chapterCoverNumberLabel.text = "제 \(santa.gameCharacter.currentChapter().chapterNumber)장"
+            }
+        
+        chapterCoverIllustImage.image = UIImage(named: santa.gameCharacter.currentChapter().chapterIllust)
+        chapterCoverChoice1Button.setTitle(santa.gameCharacter.currentChapter().chapterChoice[0].choiceText, for: .normal)
+        chapterCoverChoice1Button.setTitle(santa.gameCharacter.currentChapter().chapterChoice[0].choiceText, for: .normal)
+        //프롤로그일 때(선택지 클릭해서 화면 전환)
         if santa.gameCharacter.currentChapterIndex==0  {
+          
+            chapterCoverFullButton.isHidden = true
+            chapterCoverChoiceStackView.isHidden = false
             
-        } else if santa.gameCharacter.currentChapterIndex>0 {
-            
+        } else if
+            // 아닐 때(화면 전체 클릭해서 화면 전환)
+            santa.gameCharacter.currentChapterIndex>0 {
+            chapterCoverFullButton.isHidden = false
+            chapterCoverChoiceStackView.isHidden = true
         }
     }
     
@@ -283,3 +334,4 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
     
  
+}
