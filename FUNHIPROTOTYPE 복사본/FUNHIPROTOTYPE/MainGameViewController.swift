@@ -114,28 +114,9 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
 func scrollToBottom(){
     DispatchQueue.main.async {
         let indexPath = IndexPath(row: self.labelArrayInTable.count-1, section: 0)
-        self.storyTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        self.storyTableView.scrollToRow(at: indexPath, at: .bottom, animated: false) //true로 바꾸면 좀 더 천천히 내려가긴 하는데, 못 따라오는 경우도 있다.
     }
 }
-//게임 재시작하기
-@IBAction func restartGame(_ sender: Any) {
-    // 체력/멘탈/돈/페이지인덱스/능력/풀에피소드/현재 에피, 에피 내 인덱스 초기화
-    endEpisodeButton.isHidden = true
-    santa.gameCharacter.pageIndex = 1
-    santa.gameCharacter.currentEpisodeIndex = 0
-    santa.gameCharacter.currentEpPageIndex = 0
-    santa.gameCharacter.currentChapterIndex = 0
-    
-    // 본문 테이블 뷰 텍스트,이미지 / 테이블 뷰 리로드 /
-    labelArrayInTable.removeAll()
-    labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
-    //choiceTableView 높이 지정
-    choiceTableViewHeight.constant = CGFloat(55*santa.gameCharacter.currentPage().choice.count)
-  
-    self.storyTableView.reloadData()
-    self.choiceTableView.reloadData()
-}
-
 
 func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     //엔딩스코어 업뎃
@@ -149,9 +130,9 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     questLogic()
     questLogic()
     choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
-    scrollToBottom()
     self.choiceTableView.reloadData()
     self.storyTableView.reloadData()
+    scrollToBottom()
         }
     
 
@@ -249,43 +230,75 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         }
         
     }
+    var isRunning = false
    //타이핑
     func typeOn(exampleText : String, indexPath: Int) {
         var characterArray = [Character](exampleText)
         var characterIndex = 0
         labelArrayInTable.append(" ")
+        changeTrueFalse()
         
-        Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { [self] (timer) in
-                if characterArray[characterIndex] != "$" {
-                    while characterArray[characterIndex] == " " {
-                        labelArrayInTable[indexPath].append(" ")
-                        storyTableView.reloadData()
-                        characterIndex += 1
-                        if characterIndex == characterArray.count {
-                            //CurrentTextArrayIndex += 1
-                            characterArray.removeAll()
-                            timer.invalidate()
-                            return
+        if isRunning == true{
+            Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true)
+            { [self] (timer) in
+                    //$는 텍스트의 타이핑 속도를 느려지게 하는 부분에서 사용할 수 있다. 먼저 $가 아닌 것들을 조건으로 놓는다.
+                    if characterArray[characterIndex] != "$" //&& isRunning == true
+                    {
+                        while characterArray[characterIndex] == " "
+                        {
+                            labelArrayInTable[indexPath].append(" ")
+                            storyTableView.reloadData()
+                            scrollToBottom()
+                            characterIndex += 1
+                            if characterIndex == characterArray.count
+                            {
+                                characterArray.removeAll()
+                                timer.invalidate()
+                                isRunning = false
+                                return
+                            }
                         }
+                        labelArrayInTable[indexPath].append(characterArray[characterIndex])
+                        storyTableView.reloadData()
+                        scrollToBottom()
                     }
-                    labelArrayInTable[indexPath].append(characterArray[characterIndex])
-                    storyTableView.reloadData()
-                }
                 characterIndex += 1
-                if characterIndex == characterArray.count {
+                if characterIndex == characterArray.count
+                {
                     //CurrentTextArrayIndex += 1
                     characterArray.removeAll()
+                    //scrollToBottom()
+                    isRunning = false
                     timer.invalidate()
                 }
-            
+                if isRunning == false{
+                    timer.invalidate()
+                    labelArrayInTable.remove(at: indexPath)
+                    labelArrayInTable[indexPath].append(exampleText)
+                    storyTableView.reloadData()
+                    scrollToBottom()
+                }
             }
+        }
+        
         
         }
     
+    func changeTrueFalse(){
+        if isRunning == true{
+            isRunning = false
+        }  else if isRunning == false{
+            isRunning = true
+        }
+    }
     
+    
+
 }
 
-  
+
+
+
 
 
     /*
