@@ -10,7 +10,7 @@ import UIKit
 class MainGameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
    
-
+    //메인 게임 뷰
     @IBOutlet var rootView: UIView!
     @IBOutlet weak var warningImage1: UIImageView!
     @IBOutlet weak var warningImage2: UIImageView!
@@ -24,24 +24,24 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var questPopUpView: UIView!
     
     // 표지 띄우기 위한 것
-    
     @IBOutlet weak var chapterCoverNumberLabel: UILabel!
     @IBOutlet weak var chapterCoverNameLabel: UILabel!
     @IBOutlet weak var chapterCoverIllustImage: UIImageView!
     @IBOutlet weak var chapterCoverChoice1Button: UIButton!
     @IBOutlet weak var chapterCoverChoice2Button: UIButton!
+    @IBOutlet weak var chapterCoverStackView: UIStackView!
+     @IBOutlet weak var chapterCoverFullButton: UIButton!
+     @IBOutlet weak var chapterCoverChoiceStackView: UIStackView!
     
+    // 페이드인/아웃 위한 까만 전체뷰
+    @IBOutlet weak var faidBlackView: UIView!
     
    
-    @IBOutlet weak var chapterCoverStackView: UIStackView!
-    @IBOutlet weak var chapterCoverFullButton: UIButton!
-    @IBOutlet weak var chapterCoverChoiceStackView: UIStackView!
+ 
     
     //메인 스토리 테이블뷰 어레이
     var labelArrayInTable : [String] = []
       
-    
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -66,9 +66,10 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
                 let storyLine: String = labelArrayInTable[indexPath.row]
                
                 
-                
+                // 텍스트 스타일 반영하기
                 storyCell.storyLableUpdate(text: storyLine)
                 storyCell.storyLabelSizeUpdate(size: santa.setting.fontSize)
+                
                 storyCell.backgroundColor = .clear
                 storyCell.selectionStyle = .none
                  cellToReturn = storyCell
@@ -108,7 +109,9 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
         choiceTableView.backgroundColor = .clear
         storyTableView.backgroundColor = .clear
         questPopUpView.isHidden = true
+        faidBlackView.isHidden = true
         showChapterCover()
+        showChapterCoverOutlet()
         
         print("현재 페이지 : 챕터\(santa.gameCharacter.currentChapterIndex) 에피소드\(santa.gameCharacter.currentEpisodeIndex + 1) \(santa.gameCharacter.currentEpPageIndex)페이지(인스턴스 기준)")
 
@@ -129,23 +132,6 @@ func scrollToBottom(){
     }
 }
 //게임 재시작하기
-@IBAction func restartGame(_ sender: Any) {
-    // 체력/멘탈/돈/페이지인덱스/능력/풀에피소드/현재 에피, 에피 내 인덱스 초기화
-    endEpisodeButton.isHidden = true
-    santa.gameCharacter.pageIndex = 1
-    santa.gameCharacter.currentEpisodeIndex = 0
-    santa.gameCharacter.currentEpPageIndex = 0
-    santa.gameCharacter.currentChapterIndex = 0
-    
-    // 본문 테이블 뷰 텍스트,이미지 / 테이블 뷰 리로드 /
-    labelArrayInTable.removeAll()
-    labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
-    //choiceTableView 높이 지정
-    choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
-  
-    self.storyTableView.reloadData()
-    self.choiceTableView.reloadData()
-}
 
 
 func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -171,18 +157,16 @@ self.choiceTableView.reloadData()
      
    
     
-
+//화살표 버튼 액션
     @IBAction func endEpisodeButtonAction(_ sender: Any) {
         
         updateEpisodeAndChapter()
-        updateMainGameUI()
+        
        //왜 questLogic 두 개를 넣어야 제 타이밍에 퀘스트 리워드가 캐릭터에게 주어지지..? 이유를 모르겠음.
         questLogic()
         questLogic()
        
-        self.choiceTableView.reloadData()
-        
-        self.storyTableView.reloadData()
+       
     }
     
     @IBAction func goToSettingButtonAction(_ sender: Any) {
@@ -222,28 +206,16 @@ self.choiceTableView.reloadData()
     
     func updateEpisodeAndChapter() {
         // 마지막 에피 마지막 페이지일 때 챕터 넘기기
-        
-            
         if santa.gameCharacter.currentEpisodeIndex==santa.gameCharacter.currentChapter().episodes.count-1 {
-            hideChapterCover()
-               
-            UIView.animate(withDuration: 2.0) {
-                self.rootView.backgroundColor = .black
-            } completion: { (i) in
-                UIView.animate(withDuration: 2.0) {
-                    self.rootView.backgroundColor = .white}
-                }
             
-
-                
             santa.gameCharacter.currentChapterIndex += 1
             santa.gameCharacter.currentEpisodeIndex = 0
             santa.gameCharacter.currentEpPageIndex = 0
-            showChapterCover()
+            showChapterCoverOutlet()
             
             
+           
 
-            
         } else {
             //아니면 에피만 넘기기(이 함수 실행되는 곳인 화살표 누르는 페이지는 에피소드의 마지막 페이지지용)
             santa.gameCharacter.currentEpisodeIndex += 1
@@ -258,6 +230,7 @@ self.choiceTableView.reloadData()
         
         //확인용
         print("현재 챕터 : \(santa.gameCharacter.currentChapterIndex) / 현재 에피 : \(santa.gameCharacter.currentEpisodeIndex) / 현재 페이지 : \(santa.gameCharacter.currentEpPageIndex)")
+        print("현재 선택지들 : \(santa.gameCharacter.currentPage().choice)")
         // 선택지 or 화살표 띄우기
         if santa.gameCharacter.currentPage().endEpisodePage == true {
             endEpisodeButton.isHidden = false
@@ -270,10 +243,7 @@ self.choiceTableView.reloadData()
         choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
         // 본문 업뎃
         labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
-       
-       
     }
-    
     
     // 퀘스트 완료 여부를 체크하고, 완료 시 리워드를 캐릭터에게 줌.
     func questLogic() {
@@ -330,17 +300,10 @@ self.choiceTableView.reloadData()
     }
     // 챕터 표지 띄우기(상황에 맞춰서)
     func showChapterCover() {
-        if santa.gameCharacter.currentEpPageIndex==0 && santa.gameCharacter.currentEpisodeIndex==0 {
       
         print("표지 나옴")
-        chapterCoverStackView.isHidden = false
-        goToSettingViewControlerButton.isHidden = true
-        storyTableView.isHidden = true
-        characterGage.isHidden = true
-        choiceTableView.isHidden = true
-            
-        chapterCoverStackView.alpha = 1
-           
+
+       
             // 앞 공백 스페이즈 6칸 있는 거 정상임 건드리면 안 돼여
         chapterCoverNameLabel.text = "      "+"\(santa.gameCharacter.currentChapter().chapterName)"
             
@@ -357,39 +320,23 @@ self.choiceTableView.reloadData()
         chapterCoverChoice1Button.setTitle(santa.gameCharacter.currentChapter().chapterChoice[0].choiceText, for: .normal)
         chapterCoverChoice2Button.setTitle(santa.gameCharacter.currentChapter().chapterChoice[1].choiceText, for: .normal)
             }
-            
-            
-        //프롤로그일 때 화면 끄기: 선택지 띄우기(선택지 클릭해서 화면 전환)
-        if santa.gameCharacter.currentChapterIndex==0  {
-          
-            chapterCoverFullButton.isHidden = true
-            chapterCoverChoiceStackView.isHidden = false
-            
-        } else if
-            // 아닐 때 화면 끄기: 안보이는 전체 버튼 띄우기(화면 전체 클릭해서 화면 전환)
-            santa.gameCharacter.currentChapterIndex>0 {
-            chapterCoverFullButton.isHidden = false
-            chapterCoverChoiceStackView.isHidden = true
-            }
-            
-            
-
         }
-    }
+    
     
     func hideChapterCover() {
        
-        
+        // 메인 뷰
         choiceTableView.isHidden = false
         goToSettingViewControlerButton.isHidden = false
-        chapterCoverFullButton.isHidden = true
-        chapterCoverChoiceStackView.isHidden = true
         storyTableView.isHidden = false
         characterGage.isHidden = false
-        UIView.animate(withDuration: 1.0) {
-            self.chapterCoverStackView.alpha = 0
-        }
-        chapterCoverStackView.isHidden = true
+        
+        //표지 뷰
+        chapterCoverFullButton.isHidden = true
+        chapterCoverChoiceStackView.isHidden = true
+        self.chapterCoverStackView.isHidden = true
+       
+       
     }
     
     
@@ -427,7 +374,59 @@ self.choiceTableView.reloadData()
          
          }
      
-  
+    func showChapterCoverOutlet() {
+        // 직전
+        
+            // 메인 뷰
+            choiceTableView.isHidden = false
+            goToSettingViewControlerButton.isHidden = false
+            storyTableView.isHidden = false
+            characterGage.isHidden = false
+            
+            // 페이드 뷰
+            self.faidBlackView.isHidden = false
+            self.faidBlackView.alpha = 0
+             self.faidBlackView.backgroundColor = .black
+            //표지 뷰
+            self.chapterCoverFullButton.isHidden = true
+            self.chapterCoverChoiceStackView.isHidden = true
+            self.chapterCoverStackView.isHidden = true
+        
+        // 첫 애니메이션
+        UIView.animate(withDuration: 2.0) {
+            self.faidBlackView.alpha = 1
+       
+        // 두번째 애니메이션
+        } completion: { (i) in
+            UIView.animate(withDuration: 2.0) {
+                self.updateMainGameUI()
+                self.showChapterCover()
+                
+                self.choiceTableView.reloadData()
+                self.storyTableView.reloadData()
+            //메인 스토리 뷰
+            self.choiceTableView.isHidden = true
+            self.goToSettingViewControlerButton.isHidden = true
+            self.storyTableView.isHidden = true
+            self.characterGage.isHidden = true
+            
+            
+            
+            // 표지 뷰
+            self.chapterCoverStackView.isHidden = false
+            if santa.gameCharacter.currentChapterIndex==0  {
+                self.chapterCoverChoiceStackView.isHidden = false
+            } else {
+                self.chapterCoverFullButton.isHidden = false
+            }
+                // 페이드 뷰
+                self.faidBlackView.alpha = 0
+            } completion: { (i) in
+                // 애니메이션 직후 : 오버레이 히든 걸기
+                    self.faidBlackView.isHidden = true
+            }
+        }
+    }
 
 
     /*
