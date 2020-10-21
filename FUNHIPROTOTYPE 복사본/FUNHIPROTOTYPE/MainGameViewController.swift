@@ -11,6 +11,7 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
     
    
 
+    @IBOutlet var rootView: UIView!
     @IBOutlet weak var warningImage1: UIImageView!
     @IBOutlet weak var warningImage2: UIImageView!
     @IBOutlet weak var warningImage3: UIImageView!
@@ -20,6 +21,7 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var endEpisodeButton: UIButton!
     @IBOutlet weak var choiceTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var characterGage: UIStackView!
+    @IBOutlet weak var questPopUpView: UIView!
     
     // 표지 띄우기 위한 것
     
@@ -105,6 +107,7 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
         // tableView 투명화
         choiceTableView.backgroundColor = .clear
         storyTableView.backgroundColor = .clear
+        questPopUpView.isHidden = true
         showChapterCover()
         
         print("현재 페이지 : 챕터\(santa.gameCharacter.currentChapterIndex) 에피소드\(santa.gameCharacter.currentEpisodeIndex + 1) \(santa.gameCharacter.currentEpPageIndex)페이지(인스턴스 기준)")
@@ -152,7 +155,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     //다음 페이지로 넘기기
     updatePage(indexPath: indexPath.row)
     updateMainGameUI()
-    typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: indexPath.row)
+    //typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: indexPath.row)
     //왜 questLogic 두 개를 넣어야 제 타이밍에 퀘스트 리워드가 캐릭터에게 주어지지..? 이유를 모르겠음.
     questLogic()
     questLogic()
@@ -219,10 +222,28 @@ self.choiceTableView.reloadData()
     
     func updateEpisodeAndChapter() {
         // 마지막 에피 마지막 페이지일 때 챕터 넘기기
-        if santa.gameCharacter.currentEpisodeIndex == santa.gameCharacter.currentChapter().episodes.count-1 {
+        
+            
+        if santa.gameCharacter.currentEpisodeIndex==santa.gameCharacter.currentChapter().episodes.count-1 {
+            hideChapterCover()
+               
+            UIView.animate(withDuration: 2.0) {
+                self.rootView.backgroundColor = .black
+            } completion: { (i) in
+                UIView.animate(withDuration: 2.0) {
+                    self.rootView.backgroundColor = .white}
+                }
+            
+
+                
             santa.gameCharacter.currentChapterIndex += 1
             santa.gameCharacter.currentEpisodeIndex = 0
+            santa.gameCharacter.currentEpPageIndex = 0
             showChapterCover()
+            
+            
+
+            
         } else {
             //아니면 에피만 넘기기(이 함수 실행되는 곳인 화살표 누르는 페이지는 에피소드의 마지막 페이지지용)
             santa.gameCharacter.currentEpisodeIndex += 1
@@ -268,6 +289,16 @@ self.choiceTableView.reloadData()
             }
             if quest.element.questClearJoGeun.isEmpty {
                 chapterGolds += quest.element.reward
+                questPopUpView.isHidden = false
+                questPopUpView.alpha = 0
+                UIView.animate(withDuration: 1.0) {
+                    self.questPopUpView.alpha = 1
+                } completion: { (i) in
+                    UIView.animate(withDuration: 2.0) {
+                        self.questPopUpView.alpha = 0
+                    }
+                }
+
             }
         }
         santa.gameCharacter.currentChapterGold = chapterGolds
@@ -307,6 +338,9 @@ self.choiceTableView.reloadData()
         storyTableView.isHidden = true
         characterGage.isHidden = true
         choiceTableView.isHidden = true
+            
+        chapterCoverStackView.alpha = 1
+           
             // 앞 공백 스페이즈 6칸 있는 거 정상임 건드리면 안 돼여
         chapterCoverNameLabel.text = "      "+"\(santa.gameCharacter.currentChapter().chapterName)"
             
@@ -323,33 +357,43 @@ self.choiceTableView.reloadData()
         chapterCoverChoice1Button.setTitle(santa.gameCharacter.currentChapter().chapterChoice[0].choiceText, for: .normal)
         chapterCoverChoice2Button.setTitle(santa.gameCharacter.currentChapter().chapterChoice[1].choiceText, for: .normal)
             }
-        //프롤로그일 때(선택지 클릭해서 화면 전환)
+            
+            
+        //프롤로그일 때 화면 끄기: 선택지 띄우기(선택지 클릭해서 화면 전환)
         if santa.gameCharacter.currentChapterIndex==0  {
           
             chapterCoverFullButton.isHidden = true
             chapterCoverChoiceStackView.isHidden = false
             
         } else if
-            // 아닐 때(화면 전체 클릭해서 화면 전환)
+            // 아닐 때 화면 끄기: 안보이는 전체 버튼 띄우기(화면 전체 클릭해서 화면 전환)
             santa.gameCharacter.currentChapterIndex>0 {
             chapterCoverFullButton.isHidden = false
             chapterCoverChoiceStackView.isHidden = true
             }
+            
+            
+
         }
     }
     
     func hideChapterCover() {
+       
         
-        chapterCoverStackView.isHidden = true
         choiceTableView.isHidden = false
         goToSettingViewControlerButton.isHidden = false
         chapterCoverFullButton.isHidden = true
         chapterCoverChoiceStackView.isHidden = true
         storyTableView.isHidden = false
         characterGage.isHidden = false
-        
+        UIView.animate(withDuration: 1.0) {
+            self.chapterCoverStackView.alpha = 0
+        }
+        chapterCoverStackView.isHidden = true
     }
     
+    
+  
     //타이핑
      func typeOn(exampleText : String, indexPath: Int) {
          var characterArray = [Character](exampleText)

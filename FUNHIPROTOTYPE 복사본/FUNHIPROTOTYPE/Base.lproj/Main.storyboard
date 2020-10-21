@@ -759,12 +759,32 @@
                                     <action selector="chapterCoverFullButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xnk-rj-SML"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAC-NP-bbY">
-                                <rect key="frame" x="67" y="213" width="240" height="128"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAC-NP-bbY" userLabel="QuestPopUpView">
+                                <rect key="frame" x="134" y="183" width="107" height="36"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gold" translatesAutoresizingMaskIntoConstraints="NO" id="FFM-S0-t7W">
+                                        <rect key="frame" x="11" y="9" width="24" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="gEN-f9-JGf"/>
+                                            <constraint firstAttribute="width" constant="24" id="pa9-1T-vBH"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="퀘스트 보상!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHJ-ET-Bm7">
+                                        <rect key="frame" x="40" y="10.666666666666657" width="56" height="15"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="10"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.1803921568627451" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="dHJ-ET-Bm7" firstAttribute="centerY" secondItem="FAC-NP-bbY" secondAttribute="centerY" id="1Oa-qC-ZKk"/>
                                     <constraint firstAttribute="height" constant="36" id="F2P-16-gf7"/>
+                                    <constraint firstItem="FFM-S0-t7W" firstAttribute="leading" secondItem="FAC-NP-bbY" secondAttribute="leading" constant="11" id="Kox-sI-Da7"/>
+                                    <constraint firstItem="dHJ-ET-Bm7" firstAttribute="leading" secondItem="FFM-S0-t7W" secondAttribute="trailing" constant="5" id="RhI-GT-lXx"/>
+                                    <constraint firstItem="FFM-S0-t7W" firstAttribute="centerY" secondItem="FAC-NP-bbY" secondAttribute="centerY" id="eu5-3Y-aKV"/>
                                     <constraint firstAttribute="width" constant="107" id="fgL-O6-LMD"/>
+                                    <constraint firstAttribute="trailing" secondItem="dHJ-ET-Bm7" secondAttribute="trailing" constant="11" id="hVN-4L-nHi"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -780,12 +800,13 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Haj-me-0G4" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="37" id="0ER-2s-V6g"/>
                             <constraint firstItem="Abk-T5-qkB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="AUw-P9-t5N"/>
                             <constraint firstItem="CHZ-BH-bm0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Gim-8a-NfK"/>
                             <constraint firstItem="gKF-gW-I0x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="36" id="Iyq-gu-ola"/>
+                            <constraint firstItem="FAC-NP-bbY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JjK-59-mZq"/>
                             <constraint firstItem="CHZ-BH-bm0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="JrY-jA-isq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vhE-wl-lcP" secondAttribute="trailing" constant="22" id="P1s-2X-deq"/>
                             <constraint firstAttribute="bottom" secondItem="vhE-wl-lcP" secondAttribute="bottom" constant="50" id="PZ1-vL-1MW"/>
@@ -806,12 +827,8 @@
                             <constraint firstItem="gKF-gW-I0x" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="r9D-ZF-Zgw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="73F-fF-3rm" secondAttribute="trailing" constant="22" id="riQ-2k-3mq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ry8-Ub-HuA" secondAttribute="bottom" constant="20" id="wJ7-2N-EGQ"/>
+                            <constraint firstItem="FAC-NP-bbY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="139" id="zl8-lh-aZT"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="FAC-NP-bbY"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="9kT-Fk-gEH"/>
                     <connections>
@@ -828,6 +845,8 @@
                         <outlet property="choiceTableViewHeight" destination="8mW-xb-18Q" id="2Mu-mE-bRI"/>
                         <outlet property="endEpisodeButton" destination="73F-fF-3rm" id="5Nw-ut-GR1"/>
                         <outlet property="goToSettingViewControlerButton" destination="zUF-rL-uWx" id="XOj-mi-5ZT"/>
+                        <outlet property="questPopUpView" destination="FAC-NP-bbY" id="nlr-TF-Ano"/>
+                        <outlet property="rootView" destination="8bC-Xf-vdC" id="9so-D4-2pI"/>
                         <outlet property="storyTableView" destination="Abk-T5-qkB" id="qIx-ez-Qgl"/>
                         <outlet property="warningImage1" destination="gZ6-xB-WCu" id="hbP-uX-m3s"/>
                         <outlet property="warningImage2" destination="cNp-C6-55x" id="cu9-sd-8L5"/>
