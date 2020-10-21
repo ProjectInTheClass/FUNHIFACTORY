@@ -114,7 +114,7 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
 func scrollToBottom(){
     DispatchQueue.main.async {
         let indexPath = IndexPath(row: self.labelArrayInTable.count-1, section: 0)
-        self.storyTableView.scrollToRow(at: indexPath, at: .bottom, animated: false) //true로 바꾸면 좀 더 천천히 내려가긴 하는데, 못 따라오는 경우도 있다.
+        self.storyTableView.scrollToRow(at: indexPath, at: .bottom, animated: true) //true로 바꾸면 좀 더 천천히 내려가긴 하는데, 못 따라오는 경우도 있다.
     }
 }
 
@@ -130,16 +130,20 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     questLogic()
     questLogic()
     choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
-    self.choiceTableView.reloadData()
+    if isRunning == false{
+        self.choiceTableView.reloadData()
+    }
+    
     self.storyTableView.reloadData()
     scrollToBottom()
         }
     
 
     @IBAction func endEpisodeButtonAction(_ sender: Any) {
-        
         updateEpisodeAndChapter()
         updateStoryTableView()
+        
+        
        //왜 questLogic 두 개를 넣어야 제 타이밍에 퀘스트 리워드가 캐릭터에게 주어지지..? 이유를 모르겠음.
         questLogic()
         questLogic()
@@ -184,8 +188,11 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         }
         //선택지 TableView 높이
         choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
-        // 본문 업뎃
-        //labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
+        // 마지막 페이지일 경우 업데이트 (에피소드 넘기면 타이핑 효과를 주기 위해 넣음)
+        if santa.gameCharacter.currentEpisodeIndex == santa.gameCharacter.currentChapter().Episodes.count-1 || (santa.gameCharacter.currentEpisodeIndex == 0 && santa.gameCharacter.currentEpPageIndex == 0) {
+            typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: 0)
+        }
+        
        
        
     }
@@ -241,6 +248,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if isRunning == true{
             Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true)
             { [self] (timer) in
+                
                     //$는 텍스트의 타이핑 속도를 느려지게 하는 부분에서 사용할 수 있다. 먼저 $가 아닌 것들을 조건으로 놓는다.
                     if characterArray[characterIndex] != "$" //&& isRunning == true
                     {
@@ -270,6 +278,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                     //scrollToBottom()
                     isRunning = false
                     timer.invalidate()
+                    return
                 }
                 if isRunning == false{
                     timer.invalidate()
@@ -280,7 +289,6 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                 }
             }
         }
-        
         
         }
     
