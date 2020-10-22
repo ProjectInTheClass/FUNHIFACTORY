@@ -11,10 +11,6 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
     
    
 
-    @IBOutlet weak var warningImage1: UIImageView!
-    @IBOutlet weak var warningImage2: UIImageView!
-    @IBOutlet weak var warningImage3: UIImageView!
-    @IBOutlet weak var goToSettingViewControlerButton: UIButton!
     @IBOutlet weak var storyTableView: UITableView!
     @IBOutlet weak var choiceTableView: UITableView!
     @IBOutlet weak var endEpisodeButton: UIButton!
@@ -152,6 +148,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.storyTableView.reloadData()
     }
     
+    //설정 버튼
     @IBAction func goToSettingButtonAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
