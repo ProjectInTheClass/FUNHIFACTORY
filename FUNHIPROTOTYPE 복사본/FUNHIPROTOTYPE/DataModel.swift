@@ -29,6 +29,7 @@ struct Page {
     let choice :[Choice]
     let questIdentifier: String
     var endEpisodePage: Bool = false
+    let annotation : String?
 
 }
 
