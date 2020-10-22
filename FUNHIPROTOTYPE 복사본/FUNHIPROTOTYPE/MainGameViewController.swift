@@ -157,7 +157,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
     
     func updatePage(indexPath: Int) {
-        //currentPage 넘기긱
+        //currentPage 넘기기
         santa.gameCharacter.currentEpPageIndex = santa.gameCharacter.currentPage().choice[indexPath].nextPageIndex
     }
     
@@ -188,7 +188,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         }
         //선택지 TableView 높이
         choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
-        // 마지막 페이지일 경우 업데이트 (에피소드 넘기면 타이핑 효과를 주기 위해 넣음)
+        // 마지막 페이지일 경우 업데이트 + 새로운 챕터의 첫 페이지일 경우 업데이트
         if santa.gameCharacter.currentEpisodeIndex == santa.gameCharacter.currentChapter().Episodes.count-1 || (santa.gameCharacter.currentEpisodeIndex == 0 && santa.gameCharacter.currentEpPageIndex == 0) {
             typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: 0)
         }
@@ -237,6 +237,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         }
         
     }
+    //현재 코드를 실행중인지 체크하는 bool
     var isRunning = false
    //타이핑
     func typeOn(exampleText : String, indexPath: Int) {
@@ -245,6 +246,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         labelArrayInTable.append(" ")
         changeTrueFalse()
         
+        //터치를 한번 이상 하면 실행되지 않도록 하는 조건
         if isRunning == true{
             Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true)
             { [self] (timer) in
@@ -280,6 +282,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                     timer.invalidate()
                     return
                 }
+                //터치를 한번 더 했을 때, 현재 타이핑되는 텍스트를 초기화하고 전체 문장을 더하는 것.
                 if isRunning == false{
                     timer.invalidate()
                     labelArrayInTable.remove(at: indexPath)
@@ -291,7 +294,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         }
         
         }
-    
+    //true값 false로 전환하는 코드
     func changeTrueFalse(){
         if isRunning == true{
             isRunning = false
@@ -320,7 +323,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     */
 
 
- 
+ //글 높이 조정하는 코드 
 extension UILabel {
 
     func setLineSpacing(lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0) {
