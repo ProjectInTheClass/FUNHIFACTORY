@@ -139,7 +139,8 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     //엔딩스코어 업뎃
     decideEnding(indexpathRow: indexPath.row)
     //다음 페이지로 넘기기
-    updatePage(indexPath: indexPath.row)
+    /*updatePage(indexPath: indexPath.row)*/
+    santa.gameCharacter.currentEpPageIndex = santa.gameCharacter.currentPage().choice[indexPath.row].nextPageIndex
     updateMainGameUI()
     //typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: indexPath.row)
     //왜 questLogic 두 개를 넣어야 제 타이밍에 퀘스트 리워드가 캐릭터에게 주어지지..? 이유를 모르겠음.
@@ -168,18 +169,18 @@ self.choiceTableView.reloadData()
        
        
     }
-    
+    // 세팅뷰 가는 버튼
     @IBAction func goToSettingButtonAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-   
+   // 챕터 표지 눌렀을 때 꺼지는 버튼(눈에는 안 보임)
     @IBAction func chapterCoverFullButtonAction(_ sender: Any) {
         hideChapterCover()
         self.choiceTableView.reloadData()
         self.storyTableView.reloadData()
         
     }
-    
+    //챕터 표지의 선택지 1버튼
     @IBAction func chapterCoverChoiceButton1Action(_ sender: Any) {
         hideChapterCover()
         santa.gameCharacter.currentEpPageIndex = 1
@@ -188,7 +189,7 @@ self.choiceTableView.reloadData()
         self.choiceTableView.reloadData()
         self.storyTableView.reloadData()
     }
-    
+    //챕터 표지의 선택지 2버튼
     @IBAction func chapterCoverChoiceButton2Action(_ sender: Any) {
         hideChapterCover()
         santa.gameCharacter.currentEpPageIndex = 0
@@ -197,35 +198,40 @@ self.choiceTableView.reloadData()
         self.storyTableView.reloadData()
     }
     
-    
+    //페이지 인덱스값 변경, didselect에서만 사용됨
     func updatePage(indexPath: Int) {
         //currentPage 넘기긱
         santa.gameCharacter.currentEpPageIndex = santa.gameCharacter.currentPage().choice[indexPath].nextPageIndex
       
     }
-    
+    // 에피소드랑 챕터 변경,화살표 버튼에서만 사용됨.
     func updateEpisodeAndChapter() {
         // 마지막 에피 마지막 페이지일 때 챕터 넘기기
+        // currentEpisodeIndex는 0부터 시작, episodes.count는 1부터 시작하기 때문에 -1 함.
         if santa.gameCharacter.currentEpisodeIndex==santa.gameCharacter.currentChapter().episodes.count-1 {
-            
+            santa.gameCharacter.currentEpPageIndex = 0
             santa.gameCharacter.currentChapterIndex += 1
             santa.gameCharacter.currentEpisodeIndex = 0
-            santa.gameCharacter.currentEpPageIndex = 0
+            labelArrayInTable.removeAll()
             showChapterCoverOutlet()
             
-            
-           
-
         } else {
             //아니면 에피만 넘기기(이 함수 실행되는 곳인 화살표 누르는 페이지는 에피소드의 마지막 페이지지용)
             santa.gameCharacter.currentEpisodeIndex += 1
+            santa.gameCharacter.currentEpPageIndex = 0
+            labelArrayInTable.removeAll()
+            self.updateMainGameUI()
+            
+            self.choiceTableView.reloadData()
+            self.storyTableView.reloadData()
         }
         // currentEpPageIndex, 테이블 뷰 텍스트 리셋
-        santa.gameCharacter.currentEpPageIndex = 0
-        labelArrayInTable.removeAll()
+       
+        
+        
     }
     
-    //UI 업데이트
+    //UI 업데이트 : 선택지/화살표 중 하나 선정, 초이스테블뷰 높이 결정, 스토리테이블뷰에 셀 추가함(currentPage()값 업뎃된 후여야 함)
     func updateMainGameUI() {
         
         //확인용
@@ -245,10 +251,12 @@ self.choiceTableView.reloadData()
         labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
     }
     
-    // 퀘스트 완료 여부를 체크하고, 완료 시 리워드를 캐릭터에게 줌.
+    // 퀘스트 완료 여부 체크, 완료 시 리워드 give / 팝업창 뜸
     func questLogic() {
             
         var chapterGolds: Int = 0
+        
+    //현재 페이지가 퀘스트 완료 조건인지 식별, 맞을 시 데이터에서 삭제
         //챕터 내 퀘스트들 중 한 개의 퀘스트
         for quest in santa.gameCharacter.currentChapter().quests.enumerated(){
             //한 개의 퀘스트의 조건 하나
@@ -257,10 +265,12 @@ self.choiceTableView.reloadData()
                     santa.gameCharacter.GameFullStory[santa.gameCharacter.currentChapterIndex].quests[quest.offset].questClearJoGeun.remove(at: questJogeon.offset)
                 }
             }
+    //퀘스트 완료 시 팝업뷰 실행
             if quest.element.questClearJoGeun.isEmpty {
                 chapterGolds += quest.element.reward
-                questPopUpView.isHidden = false
                 questPopUpView.alpha = 0
+                questPopUpView.isHidden = false
+
                 UIView.animate(withDuration: 1.0) {
                     self.questPopUpView.alpha = 1
                 } completion: { (i) in
@@ -283,7 +293,7 @@ self.choiceTableView.reloadData()
         
         //엔딩 결정하는 로직 - 일단 임의로 값이랑 변수 지정함.
         if santa.gameCharacter.currentPage().storyText == "마지막장" {
-            let _ = "엔딩 화면으로 이동함.(들어가야 할 코드 메모한 거임)"
+            // 엔딩 화면으로 이동함.(self.pushviewnavigation 같은 코드 짜기)
             var 엔딩lable: String = ""
             switch santa.gameCharacter.totalEndingScore {
             case 0...30:
@@ -298,31 +308,32 @@ self.choiceTableView.reloadData()
         }
         
     }
-    // 챕터 표지 띄우기(상황에 맞춰서)
+    // 챕터 표지의 값(value) 세팅하기
     func showChapterCover() {
       
-        print("표지 나옴")
+        print("표지 데이터 설정")
 
        
-            // 앞 공백 스페이즈 6칸 있는 거 정상임 건드리면 안 돼여
+        // 챕터이름 : 앞 공백 스페이즈 6칸 있는 거 정상임 건드리면 안 돼여
         chapterCoverNameLabel.text = "      "+"\(santa.gameCharacter.currentChapter().chapterName)"
             
-            // 챕터 번호 0일 때 프롤로그, 아니면 "제 n장"으로 함
-            if santa.gameCharacter.currentChapter().chapterNumber == 0 {
+        // 챕터 번호 : 0일 때 프롤로그, 아니면 "제 n장"으로 함
+        if santa.gameCharacter.currentChapter().chapterNumber == 0 {
                 chapterCoverNumberLabel.text = "프롤로그"
-            } else {
+        } else {
                 chapterCoverNumberLabel.text = "제 \(santa.gameCharacter.currentChapter().chapterNumber)장"
-            }
-            chapterCoverIllustImage.image = UIImage(named: santa.gameCharacter.currentChapter().chapterIllust)
-            //챕터 표지에 선택지 2개일 때만
-            if santa.gameCharacter.currentChapter().chapterChoice.count == 2 {
+        }
+        //챕터 일러스트
+        chapterCoverIllustImage.image = UIImage(named: santa.gameCharacter.currentChapter().chapterIllust)
         
+        //챕터 선택지 버튼 : 표지에 선택지 2개일 때만 실행하기
+        if santa.gameCharacter.currentChapter().chapterChoice.count == 2 {
         chapterCoverChoice1Button.setTitle(santa.gameCharacter.currentChapter().chapterChoice[0].choiceText, for: .normal)
         chapterCoverChoice2Button.setTitle(santa.gameCharacter.currentChapter().chapterChoice[1].choiceText, for: .normal)
             }
         }
     
-    
+    // 표지 끄고 본문으로 돌아가게 함
     func hideChapterCover() {
        
         // 메인 뷰
@@ -373,7 +384,7 @@ self.choiceTableView.reloadData()
              }
          
          }
-     
+     // 페이드인/아웃 모션 담음.
     func showChapterCoverOutlet() {
         // 직전
         
