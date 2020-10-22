@@ -29,8 +29,11 @@ struct Page {
     let choice :[Choice]
     let questIdentifier: String
     var endEpisodePage: Bool = false
-    let annotation : String?
-
+    let annotation : [Note]?
+}
+struct Note{
+    let word : String
+    let explanation : String
 }
 
 struct Chapter {

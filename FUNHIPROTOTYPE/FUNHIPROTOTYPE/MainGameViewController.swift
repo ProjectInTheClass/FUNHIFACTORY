@@ -304,8 +304,8 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
     
     func displayAnnotation(){
-        annotationView.isHidden = false
-        annotationText.text = "*ass 123"
+        //annotationView.isHidden = false
+        //annotationText.text =
     }
 }
 
