@@ -46,7 +46,7 @@ import Foundation
 
     let ep102: [Page] = [Page(storyText: " 한 내시가 다급하게 나를 불렀다.\n\n “저하, 급히 피란을 가셔야 하옵니다. 떠날 채비를 서두르십시오.”\n\n 급히 채비를 하고 동궁 밖으로 나오자 차가운 새벽 내음이 느껴졌다. 처마를 따라 빗물이 떨어지고 있었다.\n\n ‘아아, 하늘마저 우리의 편이 아닌 것인가.’\n\n 나의 손끝에 스치는 빗물을 따라 냉랭하게 느껴졌다. 아버지를 기다리기 위해 인정전으로 향했다. 인정전에는 이미 모든 벼슬아치들과 마부와 말 등이 대궐 뜰을 가득 메웠다.", storyImage: nil, choice: [
                                 Choice(choiceText: "다음.", nextPageIndex: 1,  endingScore: 0)], questIdentifier: "", annotation: nil
-    ),Page(storyText: " 비는 그칠 줄을 몰랐다. 아버지와 나는 말을 타고, 소상대비는 뚜껑 있는 교자를 타고 갔다. 홍제원*에 이르자 비는 더 극심히 왔고, 숙의* 이하는 교자를 버리고 말을 탔다.\n 뒤에서는 통곡하는 궁인들의 목소리가 들렸다. 점심을 먹으려고 하니, 반찬은 커녕 밥도 제대로 먹지를 못했다. 급작스레 떠나게 된 피란길이라서 그렇다고 애써 위안 삼았다.", storyImage: nil, choice: [Choice(choiceText: "", nextPageIndex: 666,  endingScore: 0)], questIdentifier: "", endEpisodePage: true, annotation: "111")
+    ),Page(storyText: " 비는 그칠 줄을 몰랐다. 아버지와 나는 말을 타고, 소상대비는 뚜껑 있는 교자를 타고 갔다. 홍제원*에 이르자 비는 더 극심히 왔고, 숙의** 이하는 교자를 버리고 말을 탔다.\n 뒤에서는 통곡하는 궁인들의 목소리가 들렸다. 점심을 먹으려고 하니, 반찬은 커녕 밥도 제대로 먹지를 못했다. 급작스레 떠나게 된 피란길이라서 그렇다고 애써 위안 삼았다.", storyImage: nil, choice: [Choice(choiceText: "", nextPageIndex: 666,  endingScore: 0)], questIdentifier: "", endEpisodePage: true, annotation: "111")
     ]
 
     let ep103: [Page] = [
