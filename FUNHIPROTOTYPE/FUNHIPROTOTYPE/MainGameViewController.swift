@@ -11,6 +11,8 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
     
    
 
+    @IBOutlet var annotationView: UIView!
+    @IBOutlet var noteStackView: UIStackView!
     @IBOutlet weak var warningImage1: UIImageView!
     @IBOutlet weak var warningImage2: UIImageView!
     @IBOutlet weak var warningImage3: UIImageView!
@@ -105,7 +107,7 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
         self.storyTableView.rowHeight = UITableView.automaticDimension
         self.storyTableView.estimatedRowHeight = 200
         
-      
+        
         // Do any additional setup after loading the view.
     }
     
@@ -119,24 +121,38 @@ func scrollToBottom(){
 }
 
 func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //엔딩스코어 업뎃
-    decideEnding(indexPathRow: indexPath.row)
-    //다음 페이지로 넘기기
-    updatePage(indexPath: indexPath.row)
-    updateStoryTableView()
-    typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: indexPath.row)
-    
-    //왜 questLogic 두 개를 넣어야 제 타이밍에 퀘스트 리워드가 캐릭터에게 주어지지..? 이유를 모르겠음.
-    questLogic()
-    questLogic()
-    choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
-    if isRunning == false{
-        self.choiceTableView.reloadData()
+    if tableView == storyTableView{
+        if isRunning == true{
+            typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: indexPath.row)
+        } else if isRunning == false{
+            if santa.gameCharacter.currentPage().annotation.count == 0 {
+                return
+            } else {
+                popUpNotes(indexPath: indexPath.row)
+            }
+        }
+    } else if tableView == choiceTableView{
+        //엔딩스코어 업뎃
+        decideEnding(indexPathRow: indexPath.row)
+        //다음 페이지로 넘기기
+        updatePage(indexPath: indexPath.row)
+        updateStoryTableView()
+        typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: indexPath.row)
+        
+        //왜 questLogic 두 개를 넣어야 제 타이밍에 퀘스트 리워드가 캐릭터에게 주어지지..? 이유를 모르겠음.
+        questLogic()
+        questLogic()
+        choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
+        if isRunning == false{
+            self.choiceTableView.reloadData()
+        }
+        
+       //팝업노트
+        self.storyTableView.reloadData()
+        scrollToBottom()
     }
     
-    self.storyTableView.reloadData()
-    scrollToBottom()
-        }
+}
     
 
     @IBAction func endEpisodeButtonAction(_ sender: Any) {
@@ -179,13 +195,13 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //확인용
         print("현재 챕터 : \(santa.gameCharacter.currentChapterIndex) / 현재 에피 : \(santa.gameCharacter.currentEpisodeIndex) / 현재 페이지 : \(santa.gameCharacter.currentEpPageIndex)")
         // 선택지 or 화살표 띄우기
-        if santa.gameCharacter.currentPage().endEpisodePage == true {
-            endEpisodeButton.isHidden = false
-            choiceTableView.isHidden = true
-        } else {
-            endEpisodeButton.isHidden = true
-            choiceTableView.isHidden = false
+        endEpisodeButton.isHidden = true
+        if santa.gameCharacter.currentEpisodeIndex == 0 && santa.gameCharacter.currentEpPageIndex == 0{
+                choiceTableView.isHidden = false
         }
+        checkItIsLastPage()
+            
+        
         //선택지 TableView 높이
         choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
         // 마지막 페이지일 경우 업데이트 + 새로운 챕터의 첫 페이지일 경우 업데이트
@@ -244,6 +260,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var characterArray = [Character](exampleText)
         var characterIndex = 0
         labelArrayInTable.append(" ")
+        choiceTableView.isHidden = true
         changeTrueFalse()
         
         //터치를 한번 이상 하면 실행되지 않도록 하는 조건
@@ -265,6 +282,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                                 characterArray.removeAll()
                                 timer.invalidate()
                                 isRunning = false
+                                checkItIsLastPage()
                                 return
                             }
                         }
@@ -280,6 +298,8 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                     //scrollToBottom()
                     isRunning = false
                     timer.invalidate()
+                    choiceTableView.isHidden = false
+                    checkItIsLastPage()
                     return
                 }
                 //터치를 한번 더 했을 때, 현재 타이핑되는 텍스트를 초기화하고 전체 문장을 더하는 것.
@@ -289,6 +309,8 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                     labelArrayInTable[indexPath].append(exampleText)
                     storyTableView.reloadData()
                     scrollToBottom()
+                    choiceTableView.isHidden = false
+                    checkItIsLastPage()
                 }
             }
         }
@@ -303,9 +325,43 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         }
     }
     
-    func displayAnnotation(){
-        //annotationView.isHidden = false
-        //annotationText.text =
+    func popUpNotes(indexPath : Int){
+        guard isRunning == false else { return }
+        annotationView.isHidden = false
+        for i in santa.gameCharacter.currentPage().annotation{
+            let rect = CGRect(x: 0, y: 0, width: 268, height: 84)
+            let note = UIView(frame: rect)
+            note.layer.cornerRadius = 10
+            let titleLabel = UILabel(frame: CGRect(x: 15, y: 13, width: 238, height: 18))
+            /*if number == 1{
+                titleLabel.text = "*"+i.word
+            } else if number == 2 {
+                titleLabel.text = "**"+i.word
+            }else if number == 3{
+                titleLabel.text = "***"+i.word
+            }*/
+            let informationLabel = UILabel(frame: CGRect(x: 15, y: 32.67, width: 238, height: 42))
+            informationLabel.text = i.explanation
+            titleLabel.text = i.word
+            titleLabel.font = UIFont(name: "NANUMBARUNGOTHICBOLD", size: CGFloat(santa.setting.fontSize))
+            informationLabel.font = UIFont(name: "NANUMBARUNGOTHIC", size: CGFloat(santa.setting.fontSize))
+            informationLabel.textAlignment = .center
+            titleLabel.textAlignment = .center
+            note.addSubview(informationLabel)
+            note.addSubview(titleLabel)
+            note.backgroundColor = .white
+            informationLabel.numberOfLines = 0
+            noteStackView.addSubview(note)
+        }
+    }
+    @IBAction func tapAnnotationView(_ sender: Any) {
+        annotationView.isHidden = true
+    }
+    func checkItIsLastPage(){
+        if santa.gameCharacter.currentPage().endEpisodePage == true {
+            endEpisodeButton.isHidden = false
+            choiceTableView.isHidden = true
+        }
     }
 }
 
