@@ -30,6 +30,7 @@ struct Page {
     let questIdentifier: String
     var endEpisodePage: Bool = false
     let annotation : [Note]
+    var warningInt: Int = 0
 }
 struct Note{
     let word : String
@@ -37,8 +38,12 @@ struct Note{
 }
 
 struct Chapter {
-    var Episodes: [[Page]]
+    var episodes: [[Page]]
     var quests: [Quest]
+    let chapterNumber: Int
+    let chapterName: String
+    let chapterIllust: String
+    let chapterChoice: [Choice]
 }
 
 //게임 캐릭터. 플레이 시작 시 생성, 죽으면 삭제
@@ -49,6 +54,7 @@ struct GameCharacter {
     //현재 챕터 골드 : 캐릭 죽을 시 현재 챕터에서 얻은 골드만 날리기 위해서 만듦.
     var currentChapterGold: Int
     var previousChapterGold : Int
+    var totalWarning: Int = 0
     var GameFullStory:[Chapter] = [prologue,chapter1]
     var currentEpPageIndex: Int = 0
     var currentEpisodeIndex : Int = 0
@@ -58,7 +64,7 @@ struct GameCharacter {
         return santa.gameCharacter.GameFullStory[currentChapterIndex]
     }
     func currentEpisode() -> [Page] {
-        return currentChapter().Episodes[currentEpisodeIndex]
+        return currentChapter().episodes[currentEpisodeIndex]
     }
     func currentPage() -> Page {
         return currentEpisode()[currentEpPageIndex]
@@ -89,28 +95,7 @@ struct Quest {
     //퀘스트 클리어 조건 : 위 퀘스트 식별자와 동일한 스트링 배열. 이 배열 안에 있는 것과 동일한 스트링의 식별자를 가지고 있는 choice를 발견해서 달성 여부를 결정.
     // 예상하는 로직 : 루프를 돌려서 이 어레이와 초이스의 퀘스트식별자 비교, 동일할 때마다 해당 조건을 이 어레이에서 삭제하고 "finish"를 1개 추가함.
     var questClearJoGeun: [String]
-    
-    // 모든 엘리먼트가 "finish"로 바뀌면, questClearOX를 true로 바꿈.
-    mutating func changeQuestClearOX() {
-        var finishCount: Int = 0
-        for joGeon in questClearJoGeun {
-            if joGeon == "finish" {
-                finishCount += 1
-            }
-        }
-        if finishCount == questClearJoGeun.count {
-            questClearOX = true
-        }
-    }
-    // 퀘스트 클리어 여부.
-    var questClearOX: Bool = false {
-        didSet {
-            if self.questClearOX == true {
-                santa.gameCharacter.totalGold += reward
-                santa.gameCharacter.currentChapterGold += reward
-            }
-        }
-    }
+    var questClear: Bool = false
     //클리어 시 보상 금액(n냥)
     var reward: Int
 }
