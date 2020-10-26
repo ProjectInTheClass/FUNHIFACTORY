@@ -140,6 +140,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
                     break
                 }
             }
-        }
+    
     }
+}
 }

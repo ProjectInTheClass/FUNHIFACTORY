@@ -14,13 +14,13 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     @IBOutlet weak var questChapterLabelBoxWidth: NSLayoutConstraint!
     
     @IBOutlet weak var questLabel1: UILabel!
-    @IBOutlet weak var quest1rewardLable: UILabel!
+    @IBOutlet weak var quest1rewardLabel: UILabel!
    
     @IBOutlet weak var questLabel2: UILabel!
-    @IBOutlet weak var quest2rewardLable: UILabel!
+    @IBOutlet weak var quest2rewardLabel: UILabel!
 
     @IBOutlet weak var questLabel3: UILabel!
-    @IBOutlet weak var quest3rewardLable: UILabel!
+    @IBOutlet weak var quest3rewardLabel: UILabel!
     
     @IBOutlet weak var totalGoldLabel: UILabel!
     
@@ -54,17 +54,17 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         questLabel2.text = santa.gameCharacter.currentChapter().quests[1].questName
         questLabel3.text = santa.gameCharacter.currentChapter().quests[2].questName
         
-        quest1rewardLable.text = String(santa.gameCharacter.currentChapter().quests[0].reward)
-        quest2rewardLable.text = String(santa.gameCharacter.currentChapter().quests[1].reward)
-        quest3rewardLable.text = String(santa.gameCharacter.currentChapter().quests[2].reward)
+        quest1rewardLabel.text = String(santa.gameCharacter.currentChapter().quests[0].reward)
+        quest2rewardLabel.text = String(santa.gameCharacter.currentChapter().quests[1].reward)
+        quest3rewardLabel.text = String(santa.gameCharacter.currentChapter().quests[2].reward)
         } else {
             questLabel1.text = ""
             questLabel2.text = ""
             questLabel3.text = ""
             
-            quest1rewardLable.text = ""
-            quest2rewardLable.text = ""
-            quest3rewardLable.text = ""
+            quest1rewardLabel.text = ""
+            quest2rewardLabel.text = ""
+            quest3rewardLabel.text = ""
         }
         //캐릭터 골드 양
             
@@ -110,7 +110,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         lineSpacingLabel.text = String(santa.setting.rowSpacing)
     }
     
-    @IBAction func settingButtonClicked(_ sender: Any) {
+    @IBAction func settingMailButtonClicked(_ sender: Any) {
         if let mail = URL(string: "mailto: rlagofls7924@gmail.com"){
             if UIApplication.shared.canOpenURL(mail){
                 UIApplication.shared.open(mail)
@@ -127,13 +127,13 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
                 switch quest.offset {
                 case 0:
                     questLabel1.textColor = .gray
-                    quest1rewardLable.textColor = .gray
+                    quest1rewardLabel.textColor = .gray
                 case 1:
                     questLabel2.textColor = .gray
-                    quest2rewardLable.textColor = .gray
+                    quest2rewardLabel.textColor = .gray
                 case 2:
                     questLabel3.textColor = .gray
-                    quest3rewardLable.textColor = .gray
+                    quest3rewardLabel.textColor = .gray
                    
                     
                 default:
