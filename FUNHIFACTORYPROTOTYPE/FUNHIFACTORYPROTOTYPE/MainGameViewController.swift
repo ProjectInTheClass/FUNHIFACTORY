@@ -211,9 +211,10 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         /*updatePage(indexPath: indexPath.row)*/
         santa.gameCharacter.currentEpPageIndex = santa.gameCharacter.currentPage().choice[indexPath.row].nextPageIndex
         
-        typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: indexPath.row)
         updateWarningInt()
         updateMainGameUI()
+        typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: indexPath.row)
+        
         
         //왜 questLogic 두 개를 넣어야 제 타이밍에 퀘스트 리워드가 캐릭터에게 주어지지..? 이유를 모르겠음.
         questLogic()
@@ -545,7 +546,7 @@ func showChapterCover() {
                                 timer.invalidate()
                                 isRunning = false
                                 checkItIsLastPage()
-                                updateMainGameUI()
+                                choiceTableView.isHidden = false
                                 return
                             }
                         }
@@ -562,7 +563,7 @@ func showChapterCover() {
                     isRunning = false
                     timer.invalidate()
                     checkItIsLastPage()
-                    updateMainGameUI()
+                    choiceTableView.isHidden = false
                     return
                 }
                 //터치를 한번 더 했을 때, 현재 타이핑되는 텍스트를 초기화하고 전체 문장을 더하는 것.
@@ -595,7 +596,7 @@ func showChapterCover() {
             let rect = CGRect(x: 0, y: 0, width: 268, height: 84)
             let note = UIView(frame: rect)
             note.layer.cornerRadius = 10
-            let titleLabel = UILabel(frame: CGRect(x: 15, y: 13, width: 238, height: 18))
+            let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 242, height: 19))
             /*if number == 1{
                 titleLabel.text = "*"+i.word
             } else if number == 2 {
@@ -603,7 +604,7 @@ func showChapterCover() {
             }else if number == 3{
                 titleLabel.text = "***"+i.word
             }*/
-            let informationLabel = UILabel(frame: CGRect(x: 15, y: 32.67, width: 238, height: 42))
+            let informationLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 238, height: 38))
             informationLabel.text = i.explanation
             titleLabel.text = i.word
             titleLabel.font = UIFont(name: "NANUMBARUNGOTHICBOLD", size: CGFloat(santa.setting.fontSize))
@@ -615,6 +616,10 @@ func showChapterCover() {
             note.backgroundColor = .white
             informationLabel.numberOfLines = 0
             noteStackView.addSubview(note)
+            giveAll0ToView(viewA: note, targetView: noteStackView)
+            titleLabelConstraint(titleLabel: titleLabel, note: note)
+            informationLabelConstraint(titleLabel: titleLabel, informationLabel: informationLabel, note: note)
+            
         }
     }
     @IBAction func tapAnnotationView(_ sender: Any) {
