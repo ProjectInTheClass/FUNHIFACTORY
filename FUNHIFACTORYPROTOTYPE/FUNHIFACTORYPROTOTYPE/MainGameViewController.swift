@@ -34,7 +34,7 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
     
 
     //메인 스토리 테이블뷰 어레이
-    var labelArrayInTable : [String] = []/*" 한 나라의 왕인 나는 굵은 포승줄로 묶인 채 고개를 떨궜다. 이 자리에 발을 딛는 것도 이것이 마지막이겠거니 싶었다. 난 그저 초점 없는 눈으로 땅바닥을 바라보며 무릎을 꿇었다."]*/
+    var labelArrayInTable : [String] = [""]
       
     
     
@@ -61,7 +61,7 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
                 let storyCell = tableView.dequeueReusableCell(withIdentifier: "storyTableViewCell", for: indexPath) as! MainGameTableViewCell
                 //let storyLine: String = labelArrayInTable[indexPath.row]
                
-                let story = labelArrayInTable[indexPath.row]
+                let story = labelArrayInTable[santa.gameCharacter.pageIndex]
                 
                 storyCell.storyLableUpdate(text: story)
                 storyCell.storyLabelSizeUpdate()
@@ -188,7 +188,7 @@ func scrollToBottom(){
 func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if tableView == storyTableView{
         if isRunning == true{
-            typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: indexPath.row)
+            typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: santa.gameCharacter.pageIndex)
         } else if isRunning == false{
             if santa.gameCharacter.currentPage().annotation.count == 0 {
                 return
@@ -197,8 +197,6 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             }
         }
     } else if tableView == choiceTableView{
-        
-        
         /*
         decideEnding(indexPathRow: indexPath.row)
         updatePage(indexPath: indexPath.row)
@@ -213,7 +211,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         updateWarningInt()
         updateMainGameUI()
-        typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: indexPath.row)
+        typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: santa.gameCharacter.pageIndex)
         
         
         //왜 questLogic 두 개를 넣어야 제 타이밍에 퀘스트 리워드가 캐릭터에게 주어지지..? 이유를 모르겠음.
@@ -231,6 +229,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.storyTableView.reloadData()
         scrollToBottom()
     }
+    print("현재 스토리 : \(labelArrayInTable)")
     
 }
     
@@ -336,8 +335,6 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         }
         //선택지 TableView 높이
         choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
-        // 본문 업뎃
-        //labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
         self.choiceTableView.reloadData()
         self.storyTableView.reloadData()
     }
@@ -529,13 +526,13 @@ func showChapterCover() {
     func typeOn(exampleText : String, indexPath: Int) {
         var characterArray = [Character](exampleText)
         var characterIndex = 0
-        labelArrayInTable.append(" ")
+        //labelArrayInTable.append("")
         choiceTableView.isHidden = true
         changeTrueFalse()
         
         //터치를 한번 이상 하면 실행되지 않도록 하는 조건
         if isRunning == true{
-            Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true)
+            Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true)
             { [self] (timer) in
                 
                     //$는 텍스트의 타이핑 속도를 느려지게 하는 부분에서 사용할 수 있다. 먼저 $가 아닌 것들을 조건으로 놓는다.
@@ -543,12 +540,15 @@ func showChapterCover() {
                     {
                         while characterArray[characterIndex] == " "
                         {
-                            labelArrayInTable[indexPath].append(" ")
+                        //기본 띄어쓰기
+                            labelArrayInTable[santa.gameCharacter.pageIndex].append(" ")
                             storyTableView.reloadData()
                             scrollToBottom()
                             characterIndex += 1
+                        //타이핑이 완료됐을 떄
                             if characterIndex == characterArray.count
                             {
+                                santa.gameCharacter.pageIndex += 1
                                 characterArray.removeAll()
                                 timer.invalidate()
                                 isRunning = false
@@ -556,13 +556,15 @@ func showChapterCover() {
                                 return
                             }
                         }
-                        labelArrayInTable[indexPath].append(characterArray[characterIndex])
+                        labelArrayInTable[santa.gameCharacter.pageIndex].append(characterArray[characterIndex])
                         storyTableView.reloadData()
                         scrollToBottom()
                     }
                 characterIndex += 1
+            //타이핑이 완료됐을 떄
                 if characterIndex == characterArray.count
                 {
+                    santa.gameCharacter.pageIndex += 1
                     //CurrentTextArrayIndex += 1
                     characterArray.removeAll()
                     //scrollToBottom()
@@ -571,15 +573,16 @@ func showChapterCover() {
                     checkItIsLastPage()
                     return
                 }
-                //터치를 한번 더 했을 때, 현재 타이핑되는 텍스트를 초기화하고 전체 문장을 더하는 것.
+            //터치를 한번 더 했을 때, 현재 타이핑되는 텍스트를 초기화하고 전체 문장을 더하는 것.
                 if isRunning == false{
                     timer.invalidate()
                     labelArrayInTable.remove(at: indexPath)
-                    labelArrayInTable[indexPath].append(exampleText)
+                    labelArrayInTable.append(exampleText)
                     storyTableView.reloadData()
+                    santa.gameCharacter.pageIndex += 1
                     scrollToBottom()
                     choiceTableView.isHidden = false
-                    checkItIsLastPage()
+                    //checkItIsLastPage()
                 }
             }
         }

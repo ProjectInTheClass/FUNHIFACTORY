@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 //개별 페이지 안의 선택지.
 // 퀘스트 식별자. 자세한 내용은 Quest struct에서
 // 엔딩 스코어 : 이 점수의 높고 낮음에 따라서 결말이 바뀜. 화를 많이 냈을 때의 엔딩과,
@@ -30,7 +28,7 @@ struct Page {
     let questIdentifier: String
     var endEpisodePage: Bool = false
     let annotation : [Note]
-    static var warningInt: Int = 0
+    var warningInt: Int = 0
 }
 struct Note{
     let word : String
@@ -70,7 +68,7 @@ struct GameCharacter {
         return currentEpisode()[currentEpPageIndex]
     }
     //게임 쪽 번호, 현재 기획 내용에 없는데 혹시 몰라서 남겨둠
-    var pageIndex = 1
+    var pageIndex = 0
     var totalEndingScore: Int
     
 }

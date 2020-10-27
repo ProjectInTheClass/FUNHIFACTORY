@@ -62,6 +62,4 @@ class ChoiceTableViewCell: UITableViewCell {
     func fontRowUpdate(){
         choiceTableViewCellLabel.font.withSize(CGFloat(santa.setting.fontSize))
     }
-   
-
 }

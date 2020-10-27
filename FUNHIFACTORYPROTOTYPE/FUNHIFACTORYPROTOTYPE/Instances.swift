@@ -172,9 +172,8 @@ var chapter1: Chapter = Chapter(episodes: [ep101, ep102, ep103, ep104, ep105, ep
                                         Quest(questName: "임진강 나루에 도착하기", questClearJoGeun: ["chapter1quest1"], reward: 5),
                                         Quest(questName: "의원에게 진찰받기", questClearJoGeun: ["chapter1quest2"], reward: 5),
                                         Quest(questName: "꽃병을 집어 던지기", questClearJoGeun: ["chapter1quest3"], reward: 10)],chapterNumber: 1, chapterName: "1장 챕터 이름", chapterIllust: "chapter1Illust", chapterChoice: [])
-var chapter2: Chapter = Chapter(episodes: <#T##[[Page]]#>, quests: <#T##[Quest]#>, chapterNumber: 2, chapterName: "기회", chapterIllust: "chapter2Illust", chapterChoice: [])
+//var chapter2: Chapter = Chapter(episodes: <#T##[[Page]]#>, quests: <#T##[Quest]#>, chapterNumber: 2, chapterName: "기회", chapterIllust: "chapter2Illust", chapterChoice: [])
 let ep201 : [Page] = [
     Page(storyText: " 즉위식이 끝난 날 밤, 홀로 후원을 거닐었다. 달빛이 아른거리는 연못이 일렁이는 것을 보며 그의 마음 어딘가가 일렁거렸다.\n\n“아직 완전한 기억은 되찾지 못했나보군.”\n\n전에 들어봤던 목소리였다. 뒤를 돌자 성별도, 나이도 알 수 없는 누군가가 서 있었다.", storyImage: nil, choice: [Choice(choiceText: "나는 놀라서 말이 제대로 나오지를 않았다.", nextPageIndex: 1, endingScore: 0), Choice(choiceText: "겁을 뒤로 하고 소리를 쳤다.", nextPageIndex: 2, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
-    Page(storyText: " 즉위식이 끝난 날 밤, 홀로 후원을 거닐었다. 달빛이 아른거리는 연못이 일렁이는 것을 보며 그의 마음 어딘가가 일렁거렸다.\n\n“아직 완전한 기억은 되찾지 못했나보군.”\n\n전에 들어봤던 목소리였다. 뒤를 돌자 성별도, 나이도 알 수 없는 누군가가 서 있었다.", storyImage: nil, choice: [Choice(choiceText: "나는 놀라서 말이 제대로 나오지를 않았다.", nextPageIndex: 1, endingScore: 0), Choice(choiceText: "겁을 뒤로 하고 소리를 쳤다.", nextPageIndex: 2, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
-
+    Page(storyText: " 즉위식이 끝난 날 밤, 홀로 후원을 거닐었다. 달빛이 아른거리는 연못이 일렁이는 것을 보며 그의 마음 어딘가가 일렁거렸다.\n\n“아직 완전한 기억은 되찾지 못했나보군.”\n\n전에 들어봤던 목소리였다. 뒤를 돌자 성별도, 나이도 알 수 없는 누군가가 서 있었다.", storyImage: nil, choice: [Choice(choiceText: "나는 놀라서 말이 제대로 나오지를 않았다.", nextPageIndex: 1, endingScore: 0), Choice(choiceText: "겁을 뒤로 하고 소리를 쳤다.", nextPageIndex: 2, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: [])
 ]
