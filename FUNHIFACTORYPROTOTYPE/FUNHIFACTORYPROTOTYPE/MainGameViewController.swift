@@ -222,6 +222,9 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
         if isRunning == false{
             self.choiceTableView.reloadData()
+        } else {
+            self.choiceTableView.reloadData()
+            self.choiceTableView.isHidden = true
         }
         
        //팝업노트
@@ -249,6 +252,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         questLogic()
         questLogic()
         updateWarningInt()
+        updateMainGameUI()
     }
 
     // 챕터 표지 눌렀을 때 꺼지는 버튼(눈에는 안 보임)
@@ -262,7 +266,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
      //챕터 표지의 선택지 1버튼
      @IBAction func chapterCoverChoiceButton1Action(_ sender: Any) {
          hideChapterCover()
-         santa.gameCharacter.currentEpPageIndex = 1
+         santa.gameCharacter.currentEpPageIndex = 0
          print(santa.gameCharacter.currentPage().storyText)
          //labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
          self.choiceTableView.reloadData()
@@ -272,7 +276,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
      //챕터 표지의 선택지 2버튼
      @IBAction func chapterCoverChoiceButton2Action(_ sender: Any) {
          hideChapterCover()
-         santa.gameCharacter.currentEpPageIndex = 0
+         santa.gameCharacter.currentEpPageIndex = 1
          //labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
          self.choiceTableView.reloadData()
          self.storyTableView.reloadData()
@@ -312,6 +316,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             self.storyTableView.reloadData()*/
         }
       
+        updateMainGameUI()
         
     }
     
@@ -333,6 +338,8 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
         // 본문 업뎃
         //labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
+        self.choiceTableView.reloadData()
+        self.storyTableView.reloadData()
     }
     
     func updateStoryTableView() {
@@ -419,8 +426,8 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 func showChapterCover() {
     mainGameTopBar.isHidden = true
         print("표지 데이터 설정")
-        // 챕터이름 : 앞 공백 스페이즈 6칸 있는 거 정상임 건드리면 안 돼여
-        chapterCoverNameLabel.text = "      "+"\(santa.gameCharacter.currentChapter().chapterName)"
+        // 챕터이름 
+        chapterCoverNameLabel.text = "\(santa.gameCharacter.currentChapter().chapterName)"
             
         // 챕터 번호 : 0일 때 프롤로그, 아니면 "제 n장"으로 함
         if santa.gameCharacter.currentChapter().chapterNumber == 0 {
@@ -528,7 +535,7 @@ func showChapterCover() {
         
         //터치를 한번 이상 하면 실행되지 않도록 하는 조건
         if isRunning == true{
-            Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true)
+            Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true)
             { [self] (timer) in
                 
                     //$는 텍스트의 타이핑 속도를 느려지게 하는 부분에서 사용할 수 있다. 먼저 $가 아닌 것들을 조건으로 놓는다.
