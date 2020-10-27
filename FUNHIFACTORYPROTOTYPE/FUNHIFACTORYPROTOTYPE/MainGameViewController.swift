@@ -60,7 +60,7 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
                 let storyCell = tableView.dequeueReusableCell(withIdentifier: "storyTableViewCell", for: indexPath) as! MainGameTableViewCell
                 //let storyLine: String = labelArrayInTable[indexPath.row]
                
-                let story = labelArrayInTable[indexPath.row]
+                let story = labelArrayInTable[0]
                 
                 storyCell.storyLableUpdate(text: story)
                 storyCell.storyLabelSizeUpdate()
@@ -302,6 +302,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             santa.gameCharacter.currentChapterIndex += 1
             santa.gameCharacter.currentEpisodeIndex = 0
             labelArrayInTable.removeAll()
+            labelArrayInTable.append("")
             showChapterCoverOutlet()
             
         } else {
@@ -309,6 +310,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             santa.gameCharacter.currentEpisodeIndex += 1
             santa.gameCharacter.currentEpPageIndex = 0
             labelArrayInTable.removeAll()
+            labelArrayInTable.append("")
             
             /*self.updateMainGameUI()
             self.choiceTableView.reloadData()
@@ -528,7 +530,6 @@ func showChapterCover() {
     func typeOn(exampleText : String, indexPath: Int) {
         var characterArray = [Character](exampleText)
         var characterIndex = 0
-        labelArrayInTable.append(" ")
         choiceTableView.isHidden = true
         changeTrueFalse()
         
@@ -542,7 +543,7 @@ func showChapterCover() {
                     {
                         while characterArray[characterIndex] == " "
                         {
-                            labelArrayInTable[indexPath].append(" ")
+                            labelArrayInTable[0].append(" ")
                             storyTableView.reloadData()
                             scrollToBottom()
                             characterIndex += 1
@@ -555,7 +556,7 @@ func showChapterCover() {
                                 return
                             }
                         }
-                        labelArrayInTable[indexPath].append(characterArray[characterIndex])
+                        labelArrayInTable[0].append(characterArray[characterIndex])
                         storyTableView.reloadData()
                         scrollToBottom()
                     }
@@ -564,7 +565,7 @@ func showChapterCover() {
                 {
                     //CurrentTextArrayIndex += 1
                     characterArray.removeAll()
-                    //scrollToBottom()
+                       //scrollToBottom()
                     isRunning = false
                     timer.invalidate()
                     checkItIsLastPage()
@@ -573,8 +574,9 @@ func showChapterCover() {
                 //터치를 한번 더 했을 때, 현재 타이핑되는 텍스트를 초기화하고 전체 문장을 더하는 것.
                 if isRunning == false{
                     timer.invalidate()
-                    labelArrayInTable.remove(at: indexPath)
-                    labelArrayInTable[indexPath].append(exampleText)
+                    labelArrayInTable.remove(at: 0)
+                    labelArrayInTable.append("")
+                    labelArrayInTable[0].append(exampleText)
                     storyTableView.reloadData()
                     scrollToBottom()
                     choiceTableView.isHidden = false
