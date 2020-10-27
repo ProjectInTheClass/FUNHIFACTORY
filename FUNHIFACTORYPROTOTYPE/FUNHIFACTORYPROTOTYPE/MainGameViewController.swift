@@ -546,7 +546,6 @@ func showChapterCover() {
                                 timer.invalidate()
                                 isRunning = false
                                 checkItIsLastPage()
-                                choiceTableView.isHidden = false
                                 return
                             }
                         }
@@ -563,7 +562,6 @@ func showChapterCover() {
                     isRunning = false
                     timer.invalidate()
                     checkItIsLastPage()
-                    choiceTableView.isHidden = false
                     return
                 }
                 //터치를 한번 더 했을 때, 현재 타이핑되는 텍스트를 초기화하고 전체 문장을 더하는 것.
@@ -629,11 +627,11 @@ func showChapterCover() {
         if santa.gameCharacter.currentPage().endEpisodePage == true {
             endEpisodeButton.isHidden = false
             choiceTableView.isHidden = true
-        }
+        } else {
+            choiceTableView.isHidden = false
     }
 }
-
-
+}
 
 
 
