@@ -12,6 +12,8 @@ class IllustViewController: UIViewController {
     @IBOutlet weak var illustPopUpVIew: UIView!
     @IBOutlet weak var blackFullView: UIView!
     
+    @IBOutlet weak var imageButton: UIButton!
+    
     @IBOutlet weak var prologueButton: UIButton!
     @IBOutlet weak var ep1Button: UIButton!
     @IBOutlet weak var ep2Button: UIButton!
@@ -21,6 +23,7 @@ class IllustViewController: UIViewController {
     @IBOutlet weak var ep2View: UIView!
     @IBOutlet weak var ep3View: UIView!
     
+    @IBOutlet weak var sampleImageVIew: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +41,7 @@ class IllustViewController: UIViewController {
         self.ep1View.backgroundColor = .lightGray
         self.ep2View.backgroundColor = .lightGray
         self.ep3View.backgroundColor = .lightGray
+        self.imageButton.isHidden = false
         // Do any additional setup after loading the view.
     }
     
@@ -62,7 +66,9 @@ class IllustViewController: UIViewController {
         self.ep2View.backgroundColor = .lightGray
         self.ep3View.backgroundColor = .lightGray
         
+        self.imageButton.isHidden = false
         
+        self.sampleImageVIew.backgroundColor = .systemYellow
     }
     
     @IBAction func chapter1ButtonClicked(_ sender: Any) {
@@ -74,6 +80,9 @@ class IllustViewController: UIViewController {
         self.ep1View.backgroundColor = .black
         self.ep2View.backgroundColor = .lightGray
         self.ep3View.backgroundColor = .lightGray
+        
+        self.imageButton.isHidden = true
+        self.sampleImageVIew.backgroundColor = .lightGray
     }
     @IBAction func chapter2ButtonClicked(_ sender: Any) {
         self.prologueButton.setTitleColor(UIColor.lightGray, for: .normal)
@@ -84,6 +93,9 @@ class IllustViewController: UIViewController {
         self.ep1View.backgroundColor = .lightGray
         self.ep2View.backgroundColor = .black
         self.ep3View.backgroundColor = .lightGray
+        
+        self.imageButton.isHidden = true
+        self.sampleImageVIew.backgroundColor = .lightGray
     }
     @IBAction func chapter3ButtonClicked(_ sender: Any) {
         self.prologueButton.setTitleColor(UIColor.lightGray, for: .normal)
@@ -94,6 +106,9 @@ class IllustViewController: UIViewController {
         self.ep1View.backgroundColor = .lightGray
         self.ep2View.backgroundColor = .lightGray
         self.ep3View.backgroundColor = .black
+        
+        self.imageButton.isHidden = true
+        self.sampleImageVIew.backgroundColor = .lightGray
     }
     /*
     // MARK: - Navigation
