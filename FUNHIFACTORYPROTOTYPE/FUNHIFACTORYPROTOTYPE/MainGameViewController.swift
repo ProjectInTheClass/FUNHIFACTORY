@@ -18,6 +18,7 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var choiceTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var mainGameTopBar: UIView!
     @IBOutlet weak var questPopUpView: UIView!
+  
     
     // 표지 띄우기 위한 것
     @IBOutlet weak var chapterCoverNumberLabel: UILabel!
@@ -72,7 +73,8 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
                 let list: Choice = santa.gameCharacter.currentPage().choice[indexPath.row]
                 let cell = tableView.dequeueReusableCell(withIdentifier: "choiceTableViewCell") as! ChoiceTableViewCell
                 // tableViewCell 투명화
-                
+                cell.choiceTableViewCellBorderView.layer.borderWidth = 1
+                cell.choiceTableViewCellBorderView.layer.borderColor = CGColor(red: 112/255, green: 112/255, blue: 112/255, alpha: 1)
                 cell.choiceTableViewCellLabel.text = list.choiceText
                 
                 cell.backgroundColor = .clear

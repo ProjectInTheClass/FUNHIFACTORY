@@ -10,6 +10,7 @@ import UIKit
 class MainGameTableViewCell: UITableViewCell {
 
     @IBOutlet weak var StoryTableViewCellLable: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         fontSizeUpdate()
@@ -47,7 +48,8 @@ class MainGameTableViewCell: UITableViewCell {
 class ChoiceTableViewCell: UITableViewCell {
 
     @IBOutlet weak var choiceTableViewCellLabel: UILabel!
-    
+    @IBOutlet weak var choiceTableViewCellBorderView: UIView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         fontRowUpdate()
