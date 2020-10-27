@@ -30,7 +30,7 @@ struct Page {
     let questIdentifier: String
     var endEpisodePage: Bool = false
     let annotation : [Note]
-    var warningInt: Int = 0
+    static var warningInt: Int = 0
 }
 struct Note{
     let word : String
