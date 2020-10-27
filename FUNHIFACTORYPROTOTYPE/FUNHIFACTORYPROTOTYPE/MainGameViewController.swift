@@ -35,7 +35,6 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
 
     //메인 스토리 테이블뷰 어레이
     var labelArrayInTable : [String] = [""]
-      
     
     
     
@@ -61,7 +60,7 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
                 let storyCell = tableView.dequeueReusableCell(withIdentifier: "storyTableViewCell", for: indexPath) as! MainGameTableViewCell
                 //let storyLine: String = labelArrayInTable[indexPath.row]
                
-                let story = labelArrayInTable[santa.gameCharacter.pageIndex]
+                let story = labelArrayInTable[indexPath.row]
                 
                 storyCell.storyLableUpdate(text: story)
                 storyCell.storyLabelSizeUpdate()
@@ -188,7 +187,7 @@ func scrollToBottom(){
 func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if tableView == storyTableView{
         if isRunning == true{
-            typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: santa.gameCharacter.pageIndex)
+            typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: indexPath.row)
         } else if isRunning == false{
             if santa.gameCharacter.currentPage().annotation.count == 0 {
                 return
@@ -197,6 +196,8 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             }
         }
     } else if tableView == choiceTableView{
+        
+        
         /*
         decideEnding(indexPathRow: indexPath.row)
         updatePage(indexPath: indexPath.row)
@@ -211,7 +212,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         updateWarningInt()
         updateMainGameUI()
-        typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: santa.gameCharacter.pageIndex)
+        typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: indexPath.row)
         
         
         //왜 questLogic 두 개를 넣어야 제 타이밍에 퀘스트 리워드가 캐릭터에게 주어지지..? 이유를 모르겠음.
@@ -229,8 +230,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.storyTableView.reloadData()
         scrollToBottom()
     }
-    print("현재 스토리 : \(labelArrayInTable)")
-    
+    print("현재 어레이 : \(labelArrayInTable)")
 }
     
     
@@ -335,6 +335,8 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         }
         //선택지 TableView 높이
         choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
+        // 본문 업뎃
+        //labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
         self.choiceTableView.reloadData()
         self.storyTableView.reloadData()
     }
@@ -423,7 +425,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 func showChapterCover() {
     mainGameTopBar.isHidden = true
         print("표지 데이터 설정")
-        // 챕터이름 
+        // 챕터이름
         chapterCoverNameLabel.text = "\(santa.gameCharacter.currentChapter().chapterName)"
             
         // 챕터 번호 : 0일 때 프롤로그, 아니면 "제 n장"으로 함
@@ -526,7 +528,7 @@ func showChapterCover() {
     func typeOn(exampleText : String, indexPath: Int) {
         var characterArray = [Character](exampleText)
         var characterIndex = 0
-        //labelArrayInTable.append("")
+        labelArrayInTable.append(" ")
         choiceTableView.isHidden = true
         changeTrueFalse()
         
@@ -540,15 +542,12 @@ func showChapterCover() {
                     {
                         while characterArray[characterIndex] == " "
                         {
-                        //기본 띄어쓰기
-                            labelArrayInTable[santa.gameCharacter.pageIndex].append(" ")
+                            labelArrayInTable[indexPath].append(" ")
                             storyTableView.reloadData()
                             scrollToBottom()
                             characterIndex += 1
-                        //타이핑이 완료됐을 떄
                             if characterIndex == characterArray.count
                             {
-                                santa.gameCharacter.pageIndex += 1
                                 characterArray.removeAll()
                                 timer.invalidate()
                                 isRunning = false
@@ -556,15 +555,13 @@ func showChapterCover() {
                                 return
                             }
                         }
-                        labelArrayInTable[santa.gameCharacter.pageIndex].append(characterArray[characterIndex])
+                        labelArrayInTable[indexPath].append(characterArray[characterIndex])
                         storyTableView.reloadData()
                         scrollToBottom()
                     }
                 characterIndex += 1
-            //타이핑이 완료됐을 떄
                 if characterIndex == characterArray.count
                 {
-                    santa.gameCharacter.pageIndex += 1
                     //CurrentTextArrayIndex += 1
                     characterArray.removeAll()
                     //scrollToBottom()
@@ -573,16 +570,15 @@ func showChapterCover() {
                     checkItIsLastPage()
                     return
                 }
-            //터치를 한번 더 했을 때, 현재 타이핑되는 텍스트를 초기화하고 전체 문장을 더하는 것.
+                //터치를 한번 더 했을 때, 현재 타이핑되는 텍스트를 초기화하고 전체 문장을 더하는 것.
                 if isRunning == false{
                     timer.invalidate()
                     labelArrayInTable.remove(at: indexPath)
-                    labelArrayInTable.append(exampleText)
+                    labelArrayInTable[indexPath].append(exampleText)
                     storyTableView.reloadData()
-                    santa.gameCharacter.pageIndex += 1
                     scrollToBottom()
                     choiceTableView.isHidden = false
-                    //checkItIsLastPage()
+                    checkItIsLastPage()
                 }
             }
         }
@@ -680,3 +676,4 @@ extension UILabel {
         self.attributedText = attributedString
     }
 }
+
