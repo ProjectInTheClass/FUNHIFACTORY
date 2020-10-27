@@ -80,7 +80,7 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
                 cell.backgroundColor = .clear
                 cellToReturn = cell
             }
-            
+            currentIndexPathRow = indexPath.row
             return cellToReturn
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -189,7 +189,7 @@ func scrollToBottom(){
 func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if tableView == storyTableView{
         if isRunning == true{
-            typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: indexPath.row)
+            typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: 0)
         } else if isRunning == false{
             if santa.gameCharacter.currentPage().annotation.count == 0 {
                 return
@@ -214,7 +214,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         updateWarningInt()
         updateMainGameUI()
-        typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: indexPath.row)
+        typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: 0)
         
         
         //왜 questLogic 두 개를 넣어야 제 타이밍에 퀘스트 리워드가 캐릭터에게 주어지지..? 이유를 모르겠음.
@@ -253,7 +253,6 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         questLogic()
         questLogic()
         updateWarningInt()
-        updateMainGameUI()
     }
 
     // 챕터 표지 눌렀을 때 꺼지는 버튼(눈에는 안 보임)
@@ -299,13 +298,15 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     func updateEpisodeAndChapter() {
         // 마지막 에피 마지막 페이지일 때 챕터 넘기기
         // currentEpisodeIndex는 0부터 시작, episodes.count는 1부터 시작하기 때문에 -1 함.
-        if santa.gameCharacter.currentEpisodeIndex==santa.gameCharacter.currentChapter().episodes.count-1 {
+        if santa.gameCharacter.currentPage().choice[currentIndexPathRow].nextPageIndex==666 {
+            choiceTableView.isHidden = true
             santa.gameCharacter.currentEpPageIndex = 0
             santa.gameCharacter.currentChapterIndex += 1
             santa.gameCharacter.currentEpisodeIndex = 0
             labelArrayInTable.removeAll()
             labelArrayInTable.append("")
             showChapterCoverOutlet()
+            print("챕터 하나가 끝났습니다.")
             
         } else {
             //아니면 에피만 넘기기(이 함수 실행되는 곳인 화살표 누르는 페이지는 에피소드의 마지막 페이지지용)
@@ -313,13 +314,11 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             santa.gameCharacter.currentEpPageIndex = 0
             labelArrayInTable.removeAll()
             labelArrayInTable.append("")
+            typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: 0)
+            print("에피소드 하나가 넘어갔습니다. ")
+            updateMainGameUI()
             
-            /*self.updateMainGameUI()
-            self.choiceTableView.reloadData()
-            self.storyTableView.reloadData()*/
         }
-      
-        updateMainGameUI()
         
     }
     
@@ -339,10 +338,8 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         }
         //선택지 TableView 높이
         choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
-        // 본문 업뎃
-        //labelArrayInTable.append(santa.gameCharacter.currentPage().storyText)
         self.choiceTableView.reloadData()
-        self.storyTableView.reloadData()
+        //self.storyTableView.reloadData()
     }
     
     func updateStoryTableView() {
@@ -468,7 +465,7 @@ func showChapterCover() {
        // 직전
        
        // 메인 뷰
-       choiceTableView.isHidden = false
+       //choiceTableView.isHidden = false
        storyTableView.isHidden = false
        
        // 페이드 뷰
@@ -487,6 +484,7 @@ func showChapterCover() {
        // 두번째 애니메이션
        } completion: { (i) in
             UIView.animate(withDuration: 2.0) {
+                //챕터 넘기고 나서도 계속 초이스테이블뷰가 떠서 잠깐 주석처리
                 self.updateMainGameUI()
                 self.showChapterCover()
                 self.choiceTableView.reloadData()
@@ -583,6 +581,7 @@ func showChapterCover() {
                     scrollToBottom()
                     choiceTableView.isHidden = false
                     checkItIsLastPage()
+                    print(santa.gameCharacter.currentPage().choice)
                 }
             }
         }

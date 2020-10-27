@@ -35,28 +35,28 @@ import Foundation
 
     let ep101: [Page] = [
         Page(storyText: " “세자 저하, 감축드리옵니다.”\n\n 동궁에서 나오니 모든 관료들이 나를 향해 축하를 올렸다.\n\n ‘드디어 내가 세자가 되었단 말인가?’", storyImage: nil, choice: [Choice(choiceText: "애써 덤덤한 척 한다. ", nextPageIndex: 1,  endingScore: 0),Choice(choiceText: "행복해 한다.", nextPageIndex: 2,  endingScore: 0),Choice(choiceText: "살짝 미소를 짓는다.", nextPageIndex: 3,  endingScore: 0)], questIdentifier: "", annotation: []),
-        Page(storyText: " 나는 애써 덤덤한 척 일말의 표정도 바꾸지 않았다.", storyImage: nil, choice: [Choice(choiceText: "", nextPageIndex: 666,  endingScore: 0)
+        Page(storyText: " 나는 애써 덤덤한 척 일말의 표정도 바꾸지 않았다.", storyImage: nil, choice: [Choice(choiceText: "", nextPageIndex: 0,  endingScore: 0)
         ], questIdentifier: "", endEpisodePage: true, annotation: []),
         Page(storyText: " 내가 드디어 인정을 받은 것 같았다. 서글픈 내 세월을 위로받는 기분이었다. 아무리 내 감정을 숨기려야 숨겨지지가 않았다.\n\n “그리 좋으십니까? 아까부터 줄곧 웃음꽃이 핀 듯합니다.”\n “너라면 웃음이 안 나겠느냐? 아버지께 조금이라도 인정을 받은 것 같구나.”", storyImage: nil, choice: [
-            Choice(choiceText: "", nextPageIndex: 666,  endingScore: 0)
+            Choice(choiceText: "", nextPageIndex: 0,  endingScore: 0)
         ], questIdentifier: "", endEpisodePage: true, annotation: []),
         Page(storyText: " 내가 드디어 인정을 받은 것 같았다. 서글픈 내 세월을 위로받는 기분이었다. 체통은 지켜야 하니 너무 좋아할 순 없었다. 하지만 입꼬리는 자꾸만 위로 솟아올랐다.", storyImage: nil, choice: [
-            Choice(choiceText: "", nextPageIndex: 666,  endingScore: 0)
+            Choice(choiceText: "", nextPageIndex: 0,  endingScore: 0)
         ], questIdentifier: "", endEpisodePage: true, annotation: [])]
 
     let ep102: [Page] = [Page(storyText: " 한 내시가 다급하게 나를 불렀다.\n\n “저하, 급히 피란을 가셔야 하옵니다. 떠날 채비를 서두르십시오.”\n\n 급히 채비를 하고 동궁 밖으로 나오자 차가운 새벽 내음이 느껴졌다. 처마를 따라 빗물이 떨어지고 있었다.\n\n ‘아아, 하늘마저 우리의 편이 아닌 것인가.’\n\n 나의 손끝에 스치는 빗물을 따라 냉랭하게 느껴졌다. 아버지를 기다리기 위해 인정전으로 향했다. 인정전에는 이미 모든 벼슬아치들과 마부와 말 등이 대궐 뜰을 가득 메웠다.", storyImage: nil, choice: [
                                 Choice(choiceText: "다음.", nextPageIndex: 1,  endingScore: 0)], questIdentifier: "", annotation: []
-    ),Page(storyText: " 비는 그칠 줄을 몰랐다. 아버지와 나는 말을 타고, 소상대비는 뚜껑 있는 교자를 타고 갔다. 홍제원*에 이르자 비는 더 극심히 왔고, 숙의* 이하는 교자를 버리고 말을 탔다.\n 뒤에서는 통곡하는 궁인들의 목소리가 들렸다. 점심을 먹으려고 하니, 반찬은 커녕 밥도 제대로 먹지를 못했다. 급작스레 떠나게 된 피란길이라서 그렇다고 애써 위안 삼았다.", storyImage: nil, choice: [Choice(choiceText: "", nextPageIndex: 666,  endingScore: 0)], questIdentifier: "", endEpisodePage: true, annotation: [Note(word: "홍제원", explanation: "조선 시대에 중국 사신이 서울로 올 때 성 안에 들어오기 전에 묵던 공관(여관)"), Note(word: "숙의", explanation: "조선 시대 후궁에게 내리던 종 2품 내명부의 품계")])
+    ),Page(storyText: " 비는 그칠 줄을 몰랐다. 아버지와 나는 말을 타고, 소상대비는 뚜껑 있는 교자를 타고 갔다. 홍제원*에 이르자 비는 더 극심히 왔고, 숙의* 이하는 교자를 버리고 말을 탔다.\n 뒤에서는 통곡하는 궁인들의 목소리가 들렸다. 점심을 먹으려고 하니, 반찬은 커녕 밥도 제대로 먹지를 못했다. 급작스레 떠나게 된 피란길이라서 그렇다고 애써 위안 삼았다.", storyImage: nil, choice: [Choice(choiceText: "", nextPageIndex: 0,  endingScore: 0)], questIdentifier: "", endEpisodePage: true, annotation: [Note(word: "홍제원", explanation: "조선 시대에 중국 사신이 서울로 올 때 성 안에 들어오기 전에 묵던 공관(여관)"), Note(word: "숙의", explanation: "조선 시대 후궁에게 내리던 종 2품 내명부의 품계")])
     ]
 
     let ep103: [Page] = [
         Page(storyText: " 해가 떨어질 때 즈음 임진강 나루에 닿아 배에 올랐다. 아버지는 신하들을 보고 엎드려서 통곡하니 좌우가 눈물을 흘리면서 감히 쳐다보지를 못했다. 밤은 칠흑같이 어두운데 단 한 개의 불도 없었다. 나는 아버지를 똑바로 쳐다볼 순 없었고, 그저 뒷모습만 또렷이 볼 뿐이었다.\n 밤이 깊은 후에야 겨우 소식이 닿았다. 아버지가 배를 가라앉히고 나루를 끊고 가까운 곳의 집도 철거시키도록 명했다. 이는 적들이 그것을 뗏목으로 이용할 것을 염려한 때문이었다. 백관들은 굶주리고 지쳐 촌가에 흩어져 잤다.", storyImage: nil, choice: [Choice(choiceText: "다음", nextPageIndex: 1,  endingScore: 0)], questIdentifier: "chapter1quest1", annotation: []),
         Page(storyText: " “여봐라, 강을 건너지 못한 이가 몇이나 있는지 아느냐?”\n “확실한 수는 잘 모르겠지만, 지금 보았을 땐 강을 건너지 못한 이는 반이 족히 넘을 듯 하옵니다, 저하.”\n\n 비는 여전히 오고 있었다. 나는 걸어온 길을 되돌아보았다.  내가 걸어온 그 길에는 출렁이는 강물만이 흐르고 있었다.\n\n 아버지께서는 그게 정말 최선의 선택이었을까?", storyImage: nil, choice: [Choice(choiceText: "아버지를 이해한다.", nextPageIndex: 2,  endingScore: 0),Choice(choiceText: "아버지를 이해하지 못 한다..", nextPageIndex: 3,  endingScore: 0)
         ], questIdentifier: "", annotation: []),
-        Page(storyText: " 사실 내가 아버지였어도 아버지와 똑같은 선택을 하지 않았을까 싶다. 적들과 마주치지 않기 위해, 제 목숨을 살리기 위해, 한 나라의 왕이 비참하게 죽지 않기 위해서 말이다.\n\n 아버지는 불어넘치는 강물에 두려워하셨을 것이다. 피란을 가지 못할까 봐 무서우셨을 것이다. 강을 미처 건너지 못한 궁인들에게 미안해하실 것이다. 아마 그럴 것이다. 그렇게 믿고 싶다.", storyImage: nil, choice: [              Choice(choiceText: "", nextPageIndex: 666,  endingScore: 0)
+        Page(storyText: " 사실 내가 아버지였어도 아버지와 똑같은 선택을 하지 않았을까 싶다. 적들과 마주치지 않기 위해, 제 목숨을 살리기 위해, 한 나라의 왕이 비참하게 죽지 않기 위해서 말이다.\n\n 아버지는 불어넘치는 강물에 두려워하셨을 것이다. 피란을 가지 못할까 봐 무서우셨을 것이다. 강을 미처 건너지 못한 궁인들에게 미안해하실 것이다. 아마 그럴 것이다. 그렇게 믿고 싶다.", storyImage: nil, choice: [              Choice(choiceText: "", nextPageIndex: 0,  endingScore: 0)
         ], questIdentifier: "", endEpisodePage: true, annotation: []),
         Page(storyText: " 제 목숨을 살리기 위해 다른 이들을 포기하는 건 내 입장에서는 이해할 수가 없다. 그것이 정말 현명한 판단이었을까? 내가 아버지라면 절반이 넘는 궁인들을 두고 떠나지는 않았을 것이다. 애초에 궁을 떠나지는 않았을 것이다. 한 나라의 왕이 어찌 자리를 비울 수 있단 말인가? 죽더라도 조선의 심장에서 죽겠다.", storyImage: nil, choice: [
-                Choice(choiceText: "", nextPageIndex: 666,  endingScore: 0)
+                Choice(choiceText: "", nextPageIndex: 0,  endingScore: 0)
         ], questIdentifier: "", endEpisodePage: true, annotation: [])
     ]
 
@@ -82,13 +82,13 @@ import Foundation
                 Choice(choiceText: "나 자신을 의심한다.", nextPageIndex: 7,  endingScore: 0)
         ], questIdentifier: "", annotation: []),
         Page(storyText: " 나는 내가 잘못 생각하고 있겠거니 했다. 하지만 어쩐지 어딘가 찜찜한 기운은 가시질 않았다.", storyImage: nil, choice: [
-                Choice(choiceText: "", nextPageIndex: 666,  endingScore: 0)
+                Choice(choiceText: "", nextPageIndex: 0,  endingScore: 0)
         ], questIdentifier: "", endEpisodePage: true, annotation: []),
         Page(storyText: " “너, 이 이야기를 나와 한 적이 있느냐?”\n “아니요, 이번이 처음입니다만, 무슨 일인지요?”\n “한데 어찌 이리 익숙하단 말이냐. 내가 기억이 이상해 진 게 틀림없다. 의원을 봐야겠다. 어서 의원을 불러라. 어서!”\n “아, 예. 불러오겠습니다.”\n\n 내가 드디어 미친 건가 싶었다. 난생처음 겪는 일이니 도무지 원인을 알 방도가 없었다. 내가 그렇게 고민하고 있을 사이에 의원이 왔다.", storyImage: nil, choice: [
                 Choice(choiceText: "다음", nextPageIndex: 8,  endingScore: 0)
         ], questIdentifier: "", annotation: []),
         Page(storyText: " “저하, 어디가 불편하신지요?”\n “기억이…..기억이…막 이상하구나. 처음 겪는 일인데도 이미 예전에 겪어본 것만 같아. 가끔 내가 왜 이 말을 하고 있지?라는 생각도 들어. 내가 미친 게냐?”\n “증상만 듣고는 소인은 잘 모르겠습니다. 제가 맥 좀 짚어보겠습니다.\n\n 침묵이 이어졌고, 이윽고 의원이 내게 말했다.\n\n “흠…이상합니다. 맥도 정상하고 아주 건강하십니다.”\n “그럼 내가 미쳤다는 말인 게냐?”\n “아..아닙니다.”\n “됐다. 물러가라.”\n\n 원인을 알 수 없는 이상한 증세에 나는 자꾸만 심기가 거슬렸다.\n\n “원인이라도 알 수 있으면 좀 좋을 터만..”", storyImage: nil, choice: [
-                Choice(choiceText: "", nextPageIndex: 666,  endingScore: 0)
+                Choice(choiceText: "", nextPageIndex: 0,  endingScore: 0)
         ], questIdentifier: "chapter1quest2", endEpisodePage: true, annotation: [])
     ]
 

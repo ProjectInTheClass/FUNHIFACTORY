@@ -115,3 +115,4 @@ var santa = User(gameCharacter: santaGameCharacter, setting: Setting())
 
 var santaGameCharacter = GameCharacter(totalGold: 0, currentChapterGold: 0, previousChapterGold: 0, totalEndingScore: 0)
 
+var currentIndexPathRow = 0
