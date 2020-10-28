@@ -18,7 +18,8 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var choiceTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var mainGameTopBar: UIView!
     @IBOutlet weak var questPopUpView: UIView!
-  
+    @IBOutlet weak var warningPopUpView: UIView!
+    
     
     // 표지 띄우기 위한 것
     @IBOutlet weak var chapterCoverNumberLabel: UILabel!
@@ -167,6 +168,7 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
         storyTableView.backgroundColor = .clear
         questPopUpView.isHidden = true
         faidBlackView.isHidden = true
+        warningPopUpView.isHidden = true
         showChapterCover()
         showChapterCoverOutlet()
         //빌드 중에 현재 페이지가 어떤 건지 파악 위한 거
@@ -510,17 +512,50 @@ func showChapterCover() {
     }
 
    func updateWarningInt() {
-       // currentPage()값 업뎃 된 이후에 해야 할 것임.
-       if santa.gameCharacter.currentPage().warningInt != 0 {
-           santa.gameCharacter.totalWarning += santa.gameCharacter.currentPage().warningInt
-       }
-       if santa.gameCharacter.currentPage().warningInt == 3 {
-           performSegue(withIdentifier: "gameOverViewSegue", sender: nil)
-       }
-       if santa.gameCharacter.currentPage().storyText == "해가 떨어질 때 즈음 임진강 나루에 닿아 배에 올랐다. 아버지는 신하들을 보고 엎드려서 통곡하니 좌우가 눈물을 흘리면서 감히 쳐다보지를 못했다. 밤은 칠흑같이 어두운데 단 한 개의 불도 없었다. 나는 아버지를 똑바로 쳐다볼 순 없었고, 그저 뒷모습만 또렷이 볼 뿐이었다.\n 밤이 깊은 후에야 겨우 소식이 닿았다. 아버지가 배를 가라앉히고 나루를 끊고 가까운 곳의 집도 철거시키도록 명했다. 이는 적들이 그것을 뗏목으로 이용할 것을 염려한 때문이었다. 백관들은 굶주리고 지쳐 촌가에 흩어져 잤다." {
-           performSegue(withIdentifier: "gameOverViewSegue", sender: nil)
-       }
-   }
+    // currentPage()값 업뎃 된 이후에 해야 할 것임.
+    // 현재 페이지에 소월신 경고값이 있으면 아래 코드를 실행함
+    if santa.gameCharacter.currentPage().warningInt != 0 {
+        //
+        santa.gameCharacter.totalWarning += santa.gameCharacter.currentPage().warningInt
+        
+        // 현재 페이지의 소월신 경고값을 캐릭터에게 반영했는데 아직 3회 이하면 아래 코드 실행(소월신 경고 팝업창 애니메이션 보여주는 내용임)
+        if santa.gameCharacter.totalWarning < 3 {
+        faidBlackView.backgroundColor = UIColor(cgColor: CGColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.8))
+        faidBlackView.isHidden = false
+        faidBlackView.alpha = 0
+       
+        warningPopUpView.layer.shadowColor = UIColor.black.cgColor
+        warningPopUpView.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+        warningPopUpView.layer.shadowOpacity = 0.8
+        warningPopUpView.layer.shadowRadius = 20.0
+        
+        warningPopUpView.isHidden = false
+        warningPopUpView.alpha = 0
+        
+        UIView.animate(withDuration: 2.0) {
+            self.warningPopUpView.alpha = 1
+            self.faidBlackView.alpha = 0.5
+        } completion: { (i) in
+            UIView.animate(withDuration: 2.0, delay: 1) {
+                self.warningPopUpView.alpha = 0
+                self.faidBlackView.alpha = 0
+            }
+           
+        }
+        
+        print(santa.gameCharacter.currentPage().warningInt)
+        // 현재 캐릭터가 소월신의 경고를 총 3번 받았다면 게임오버 뷰로 이동
+        }
+        if santa.gameCharacter.totalWarning == 3 {
+            
+            performSegue(withIdentifier: "gameOverViewSegue", sender: nil)
+            
+        }
+    }
+
+    
+    
+}
   
     
     
