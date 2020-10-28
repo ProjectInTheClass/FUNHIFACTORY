@@ -19,6 +19,7 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var mainGameTopBar: UIView!
     @IBOutlet weak var questPopUpView: UIView!
     @IBOutlet weak var warningPopUpView: UIView!
+    @IBOutlet weak var topBarChapterName: UILabel!
     
     
     // 표지 띄우기 위한 것
@@ -86,42 +87,50 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     override func viewWillAppear(_ animated: Bool) {
         
-        // 플레이어가 부활한 직후의 뷰어피어일 때
         if endingIS == "restartFromChapter" || endingIS == "restartFromBack" {
             
-        //게임오버 뷰에서 넘어온 직후 : 화면은 미리 깔려 있어야 함, 그 위로 하얀 페이드 뷰 덮여져 있어야 함.
+        
+        
+        //게임 오버뷰에서 넘어온 직후 : 화면은 미리 깔려 있어야 함, 그 위로 하얀 페이드 뷰 덮여져 있어야 함.
         //그 후 애니메이션 : 페이드 뷰 알파 -> 0, 끝난 후에는 페이드 뷰 히든 이용해서 숨기기
         self.faidBlackView.isHidden = false
         self.faidBlackView.alpha = 1
         self.faidBlackView.backgroundColor = .white
         
+        // 부활 방법에 따른 화면 재조정 :
         if endingIS == "restartFromChapter" {
             santa.gameCharacter.currentEpPageIndex = 0
             santa.gameCharacter.currentEpisodeIndex = 0
+            showChapterCover()
+            self.choiceTableView.isHidden = true
+            
+            self.storyTableView.isHidden = true
+         
         } else if endingIS == "restartFromBack" {
-            santa.gameCharacter.currentEpPageIndex -= 1
+            self.choiceTableView.isHidden = false
+           
+            self.storyTableView.isHidden = false
+           
+//            santa.gameCharacter.currentEpPageIndex -= 1
         }
-        showChapterCover()
+        
         self.updateMainGameUI()
-        self.showChapterCover()
+        
         self.choiceTableView.reloadData()
         self.storyTableView.reloadData()
                 //메인 스토리 뷰
-        self.choiceTableView.isHidden = true
-        self.storyTableView.isHidden = true
-        self.mainGameTopBar.isHidden = true
         
                 
                 
-                
-        // 표지 뷰
-        self.chapterCoverStackView.isHidden = false
-        if santa.gameCharacter.currentChapterIndex==0  {
-            self.chapterCoverChoiceStackView.isHidden = false
-        } else {
-            self.chapterCoverFullButton.isHidden = false
+        if endingIS ==  "restartFromChapter" {
+            // 표지 뷰
+            self.chapterCoverStackView.isHidden = false
+            if santa.gameCharacter.currentChapterIndex==0  {
+                self.chapterCoverChoiceStackView.isHidden = false
+            } else {
+                self.chapterCoverFullButton.isHidden = false
+            }
         }
-        
         // 애니메이션 직후 : 오버레이 히든 걸기
            
         endingIS = ""
@@ -139,9 +148,12 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
             } completion: { (i) in
                 self.faidBlackView.isHidden = true
             }
+   
+   
+       
+      
+       
         }
-        storyTableView.reloadData()
-        choiceTableView.reloadData()
     }
     
     
@@ -154,7 +166,7 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
         
         choiceTableView.separatorColor = UIColor(displayP3Red: 112/255, green: 112/255, blue: 112/255, alpha: 1)
         choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
-
+        topBarChapterName.text = "제\(santa.gameCharacter.currentChapterIndex)장 \(santa.gameCharacter.currentChapter().chapterName)"
         if santa.gameCharacter.currentPage().endEpisodePage == true {
             endEpisodeButton.isHidden = false
             choiceTableView.isHidden = true
@@ -338,6 +350,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             endEpisodeButton.isHidden = true
             choiceTableView.isHidden = false
         }
+        topBarChapterName.text = "제\(santa.gameCharacter.currentChapterIndex)장 \(santa.gameCharacter.currentChapter().chapterName)"
         //선택지 TableView 높이
         choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
         self.choiceTableView.reloadData()

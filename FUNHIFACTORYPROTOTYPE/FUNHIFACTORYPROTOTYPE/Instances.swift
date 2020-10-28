@@ -165,13 +165,193 @@ import Foundation
         Page(storyText: " 아버지를 잃은 슬픔에서 나올 틈도 없이 즉위식이 거행되었다. 서러움에 갇힌 세자의 삶에서 벗어나 이제서야 겨우 왕이 되었는데, 나에겐 너무나도 익숙한 느낌이었다.", storyImage: nil, choice: [], questIdentifier: "", endEpisodePage: true, annotation: [])
     ]
 
-var prologue: Chapter = Chapter(episodes: [ep001, ep002], quests: [], chapterNumber: 0, chapterName: "프롤로그 챕터 이름", chapterIllust: "chapter1Illust", chapterChoice: [Choice(choiceText: "나는 현실에 수긍한다.", nextPageIndex: 0, endingScore: 1),Choice(choiceText: "나는 현실을 부정하며 받아들이지 못한다.", nextPageIndex: 1, endingScore: 5)])
+
+    
+
+    let ep201 : [Page] = [
+        Page(storyText: " 즉위식이 끝난 날 밤, 홀로 후원을 거닐었다. 달빛이 아른거리는 연못이 일렁이는 것을 보며 그의 마음 어딘가가 일렁거렸다.\n\n“아직 완전한 기억은 되찾지 못했나보군.”\n\n전에 들어봤던 목소리였다. 뒤를 돌자 성별도, 나이도 알 수 없는 누군가가 서 있었다.", storyImage: nil, choice: [
+                Choice(choiceText: "나는 놀라서 말이 제대로 나오지를 않았다.", nextPageIndex: 1, endingScore: 0),
+                Choice(choiceText: "겁을 뒤로 하고 소리를 쳤다.", nextPageIndex: 2, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: " 나는 놀라서 소리도 지르지 못한 채 뒤로 자빠졌다.\n\n “거…거기 누구인가? 궁 내에서는 보지 못했던 사람인데. 옷 매무새를 보아하니 궁인은 아닌 듯 하고. 아 지금 꿈을 꾸고 있는 건가?”\n “이 곳은 너의 꿈 속이긴 하나, 그렇다고 ‘꿈’이라고 단정 지을 수 있는 공간이 아니다. 해서 넌 지금 꿈을 꾸고 있기도, 꾸고 있지 않기도 하다.”\n\n 나는 소월신에게서 뿜어져 나오는 아우라와 겉모습을 보고 본능적으로 그가 신적인 존재임을 깨달았고, 자연스럽게 존칭하기 시작했다.\n\n “그게 무슨 말씀입니까?”", storyImage: nil, choice: [
+                Choice(choiceText: "다음", nextPageIndex: 4, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: " 저 자가 이 세상 사람, 아니 사람이라고 할 수가 있을까? 어쨌든 이 세상에 사는 이는 아닐 듯 싶었다. 그렇다고 왕인 내가, 꿀릴 것이 없다고 생각했다.\n\n “그래서 그게 무슨 말이냐?”\n\n 수상한 자는 고개를 갸우뚱하며 날 쳐다보더니 갑자기 빵하고 웃음을 터뜨렸다.\n\n “하하하하. 내가 누구인지 알긴 하느냐. 참으로 웃기도다. 나에게 그렇게 대한 자는 네가 처음이니.”\n “그래서, 무슨 말인지 물었다.”\n “쯧, 내 대답을 듣기 전에 네 버릇부터 좀 고쳐주어야 겠다.”\n “허억..”", storyImage: nil, choice: [
+                Choice(choiceText: "다음", nextPageIndex: 3, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: " 그가 내 목을 향해 주먹을 쥐니 갑자기 숨이 턱하고 막혔다. 숨이 제대로 쉬어지지를 않았다. 빈틈으로 겨우 숨을 쉬는데, 색색거리는 숨 소리가 거칠게 느껴졌다. 다리는 부들거렸고, 서 있는 것조차 힘들다는 생각이 들 때 바로 나는 땅바닥으로 쓰러졌다. 내 쉬어 지지 않는 숨 소리와 내 핏줄, 손, 다리가 모두 엉킨 듯한 느낌이 들었다. 온 몸의 혈관이 터질 것 같았다.\n\n “이제 내가 어쩐 존재인지 알겠느냐?”\n\n 나는 숨이 쉬어지지를 않아 말도 잘 할 수가 없었다. 그래서 고개를 계속 그떡였다. 제발 잡은 내 숨을 놓아달라는 눈빛으로 쳐다보면서 말이다.\n\n “그래, 이 정도면 깨달았겠지.”\n 막힌 숨이 뚫리자 답답한 숨을 내 쉬었다.\n\n “커억…헉..”\n\n 나는 그를 감히 쳐다볼 수 없었다. 그저 땅만 쳐다본 채 말했다.\n\n “그래서….아까 이야기 하셨던 말은 무슨 뜻인지요?”", storyImage: nil, choice: [
+                Choice(choiceText: "다음", nextPageIndex: 4, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: "“일단, 네 존재부터 깨달아야겠지.”\n\n 그가 내 머리에 손을 가져다 대자 그의 눈 앞이 새하얘지더니 정신이 번뜩였다. 정신을 차린 나는 혼자 중얼거렸다.\n\n “분명 유배지에서 잠들었던 것 같은데, 이 곳은 꿈인가? 꿈이라고 하기엔 너무나도 생생하구나.”\n “그럴만도 하지. 현실의 이혼*이 이 세계의 이혼 대신 들어온 것이니.”\n “예? 그게 무슨 말씀이신지 정녕 모르겠습니다.”\n “네가 매일 밤마다 달을 보며 소원을 빌지 않았느냐? 폐위되고 장장 19년간 다시 왕위에 오르는 희망이 있길 기도하더구나. 네 명이 다하기 전에 그 기도를 들어주려한다.”\n “제가 기도한 것은 어찌 아십니까?”\n “난 소월신**이다. 네 아우성을 안 들을 래야 그럴 수가 없었다. 항상 같은 마음으로 19년 동안 기도를 하였는데, 그에 대한 기대에 부응해줘야 이치에 맞는 것 아니겠느냐?”", storyImage: nil, choice: [
+                Choice(choiceText: "다음", nextPageIndex: 5, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: [
+                    Note(word: "* 이혼(李琿)", explanation: "광해군의 이름"),
+                    Note(word: "** 소월신(素月神)", explanation: "밝고 흰 달이자 보름달의 신")]),
+            
+        Page(storyText: " 소월신은 따스한 미소를 지으며 말했다.\n\n “해서 너에게 기회를 주고자 하는 것이다. 이 기회가 너에게 상이 될 지, 벌이 될 지는 네 행동에 달려 있다.\n 네 삶을 다시 한 번 살아보거라. 네가 지금껏 살아오면서 바꾸고 싶었던 순간이 한 두 번이었으랴? 남에게 휘둘려 판단을 내리기도, 잠깐의 감정에 눈이 멀어 잘못된 선택을 하기도 하지 않았느냐?”\n “왜 저에게 그런 기회를 주시는 겁니까?”\n “말했다시피 너의 염원을 들어주려는 것이다. 또한 자신의 미래를 아는 자가 과거로 돌아가면 어떻게 행동할 지도 조금 궁금해지기도 했다. 그렇기에 너에게 기회를 주는 것이다. 물론, 아무 것도 바꾸지 않은 채 살아간다면 내 시간을 할애하여 너에게 쓴 의미가 사라지지만 말이다.”", storyImage: nil, choice: [
+                Choice(choiceText: "다음", nextPageIndex: 6, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: " “허나 제가 꿈 속에서 제 삶을 살아도 현생에서는 바뀌는게 없지 않소이까?”\n “정말 그렇게 생각하느냐? 현실 속의 너는 이 세계의 너와 다른 사람이 아니다. 둘은 같은 미래를 보며 걸어오고 있지. 단지 누가 먼저 그 미래를 밟는가의 차이다. 넌 지금 제주에 유배를 가 있지 않는가?”\n “예, 맞습니다.”\n “네가 미래를 한 번, 두 번 바꿀 때 마다 네가 꿈에서 깨어나 일어났을 때의 장소가 바뀔 것이다. 그대로 유배지에서 눈을 뜰 수도, 대조전에서 눈을 뜰 수도, 혹은 눈을 뜨지 못할 수도 있다는 말이다.”", storyImage: nil, choice: [
+                Choice(choiceText: "고민한다.", nextPageIndex: 7, endingScore: 0),
+                Choice(choiceText: "다시 살아보겠다고 말한다.", nextPageIndex: 10, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: "나는 섣불리 다시 살아보겠다고 말을 할 수가 없었다.\n\n ‘내가 과연 과거를 바꾸는 것이 맞는 일일까? 혹여 바꿨다가 현재보다 더 최악의 결과를 불러온다면…….’\n\n “네가 걸어온 모든 길은 너가 선택한 길이다. 과거에 손을 대서 바꾼 결과가 지금보다 더 안 좋은 결과라 할지라도 그 모든 것은 네 운명 아니겠느냐? 어찌 보면 내가 널 찾아온 것 또한 너의 운명이었을지도.”\n\n 소월신은 그의 생각을 꿰뚫어보는 듯 하였다.", storyImage: nil, choice: [
+                Choice(choiceText: "다음", nextPageIndex: 8, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: " “저에게 이러한 기회를 주시는 것은 황송하오나 제게 이런 기회를 주셔봤자 당신께 이득이 되는 게 있습니까?”\n\n “나는 조금 더 재미있게 살고 싶다. 지금의 내 삶은 너무 따분해서 지쳐 죽겠다. 네가 다른 삶을 사는 것을 지켜보는 것이 내 무료함을 달랠 수 있지 않겠느냐?”\n\n ‘소월신의 본 목적은 그의 무료함을 달래기 위함인 듯 하다. 내 기도를 들어준다는 말은 그저 나를 꾀어내려는 말이라면?’\n\n 나는 잠시 생각에 빠졌다.\n\n “만일 네가 기회를 얻고 싶지 않다면 그만 두어도 된다. 소원을 비는 이는 넘치니 상관없다. 꿈 속의 모든 기억을 지우고 꿈 속에서 일어나게 해주마.”", storyImage: nil, choice: [
+                Choice(choiceText: "다음", nextPageIndex: 9, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: " 하지만 나에겐 너무나도 솔깃한 제안이었다. 소월신의 놀음 판 위의 말이 되어 놀아나더라도 그 손을 잡지 않으면 후에 두고 두고 후회할 것만 같았기 때문이다.\n\n “저에게 주신 기회를 받겠습니다.”\n\n 대답을 듣자 소월신은 알싸한 미소를 지었다.\n\n “그럴 줄 알았다. 너 같은 인간들을 수 없이 봐 왔다. 수 백 번, 수 천 번 흔들려도 인간들은 내가 내민 손을 뿌리친 적이 없다. 자신의 이익을 위해서 움직이는, 그게 바로 인간이지.”", storyImage: nil, choice: [
+                Choice(choiceText: "다음", nextPageIndex: 11, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: "“저에게 주신 기회를 받겠습니다.”\n\n 그의 대답을 듣자 소월신은 알싸한 미소를 지었다.\n\n “그럴 줄 알았다. 너 같은 인간들을 수 없이 봐 왔다. 수 백 번, 수 천 번 흔들려도 인간들은 내가 내민 손을 뿌리친 적이 없다. 자신의 이익을 위해서 움직이는, 그게 바로 인간이지.”\n “하나 궁금한 것이 있습니다.”\n “말해보라.”\n “제게 이런 기회를 주는 이유는 무엇입니까? 당신께 득이 되는 것이 없어보입니다.”\n “나는 그저 재미있게 살고 싶다. 지금 내 삶은 너무 따분해 죽겠다. 네가 또 다른 삶을 사는 것을 지켜보는게 무척 재미있어 보인다.”", storyImage: nil, choice: [
+                Choice(choiceText: "다음", nextPageIndex: 11, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: " “그럼 혹시 저 이외에도 기회를 주신 적이 있으십니까?”\n “그걸 너에게 알려줄 이유는 없다. 아무튼 모든 일에는 신중히 하거라. 네가 일찍 죽어버리면 난 너에게 손 내민 의미가 없단 말이다. 과거를 바꾸면 네 기억은 바로 바뀔 것이다. 나의 재미를 위해서, 그리고 너의 의미를 위해서 움직이거라. 모든 길 끝에는 또 다른 길이 있길 마련이니.”\n\n 나는 무언가에 홀려 소월신의 꾀에 홀려 넘어갔다고 생각했지만, 그때는 이미 늦어버렸다. 소월신의 손아귀에서 빠져나올 수 없었다.", storyImage: nil, choice: [
+                Choice(choiceText: "다음", nextPageIndex: 12, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: " “잠깐…….”\n\n 소월신을 부르려고 했으나 이미 소월신은 사라졌고, 하얀 양귀비 한 송이가 내 발 밑으로 떨어졌다.\n\n “양귀비? 갑자기 어디서 나타난 것이지?”\n 나는 한참을 멍하니 바라보았다.\n\n “바라보고 있자니 참으로 곱구나. 빈 병에 꽂아두면 아름답겠구나.”\n\n 나는 다시 침전으로 향했다. 도착해서 약간의 물이 들은 빈 병에 양귀비를 꽂고 잠이 들었다.", storyImage: nil, choice: [
+                Choice(choiceText: "다음", nextPageIndex: 666, endingScore: 0)], questIdentifier: "", endEpisodePage: true, annotation: [])
+            ]
+
+        let ep301 : [Page] = [
+        
+            Page(storyText: " 정신을 차려보니 어느 순간 나는 잠 들어 있었고 아침이 밝았다. 나는 꿈 속이라는 것이 정말 실감이 났다. 모든 순간 이성을 가지고 행동하는 것이 아니라 기억을 찾고 이성을 가지고 있는 것이 드물었기 때문이다. 여느 때와 다를 것 없는 일상이었지만 생각할 게 많아진 탓에 머리가 아파왔다.", storyImage: nil, choice: [
+                    Choice(choiceText: "", nextPageIndex: 666, endingScore: 0)], questIdentifier: "", endEpisodePage: true, annotation: [])
+        ]
+
+        let ep302 : [Page] = [
+        
+            Page(storyText: " 장령* 윤양, 지평** 민덕남  등이 내게 아뢰었다.", storyImage: nil, choice: [
+                    Choice(choiceText: "다음", nextPageIndex: 1, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: [
+                        Note(word: "* 장령", explanation: " 정사를 논하고 백관을 규찰하는 사헌부의 정4품 관직"),
+                        Note(word: "** 지평", explanation: "정사를 논하고 백관을 규찰하는 사헌부의 정5품 관직")]),
+            
+            Page(storyText: " “전하, 임해군 이진(李珒)은 오랫동안 다른 마음을 품고서 사사로이 전쟁 무기를 저장하고 몰래 사사*를 양성하였습니다. 지난해 10월 대행 대왕**께서 병으로 인하여 몸이 편치 못하실 때부터 역적의 무리들을 많이 모았을 뿐만이 아니라 또한 많은 이름난 장수들과도 결탁하여 무사들을 불러 모아놓고 밤낮으로 은밀히 반역을 도모하고 있었습니다. 이는 나라 사람들이 다같이 분명히 알고 있는 것입니다. 그러다가 선왕께서 승하하시는 날에 이르러서는 발상***하기 전에 공공연히 그의 집에서 나갔다가 한참 시간이 지난 뒤에야 달려 들어왔으니, 그 흔적이 비밀스러워 개인 병사를 지휘한 정상이 환히 드러났습니다.”", storyImage: nil, choice: [
+                    Choice(choiceText: "다음", nextPageIndex: 2, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: [
+                        Note(word: "* 사사", explanation: "죽기를 각오하고 나서는 군사"),
+                        Note(word: "** 대행 대왕", explanation: "왕이 죽은 뒤 시호(諡號)를 올리기 전에 높여 이르던 말"),
+                        Note(word: "*** 발상", explanation: "상례에서, 죽은 사람의 혼을 부르고 나서 상제가 머리를 풀고 슬피 울어 초상난 것을 알림")]),
+            
+            Page(storyText: " “이제 가까이에서 영조*한다는 거짓 핑계를 대고 쇠몽둥이와 군복에 갖추어 차던 군도를 빈 가마니에 싸서 많은 숫자를 들여 갔으니, 헤아릴 수 없는 화가 금방 닥치게 되어 있습니다. 나라를 보존시킬 천지를 위하여 속히 대신과 병조로 하여금 조속히 처치하게 하여 육지로부터 멀리 떨어진 외딴 섬으로 유배시킴으로써 성상께서 우애하는 지극한 정을 온전히 하고 중외 사람들의 의구해 하는 마음을 안정시키소서.”\n\n 정신을 차려 보니 임해군에 대한 이야기를 듣고 있었다. 형님의 유배에 대해 이야기가 나오는 걸 보니 내가 형을 죽인 그 이야기가 시작되려나 싶었다. 나는 비망기**로 삼사에 답을 하였다.", storyImage: nil, choice: [
+                    Choice(choiceText: "형을 안쓰러워 한다.", nextPageIndex: 3, endingScore: 0),
+                    Choice(choiceText: "형을 죽이려고 한다.", nextPageIndex: 4, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: [
+                        Note(word: "* 영조", explanation: "집 따위를 짓거나 물건을 만듦"),
+                        Note(word: "** 비망기", explanation: "임금이 명령을 적어서 승지에게 전하던 문서")]),
+            
+            Page(storyText: " “나의 형이 어찌 그럴 리가 있겠는가. 내가 계사*를 보고 안타까워 눈물이 흐르는 것을 견딜 수가 없구나. 불행하게도 이런 논의가 유발되었으니, 대신에게 문의하여 처리하라.”\n\n 하지만 내 본심은 그러하지 않았다.\n\n ‘내 형은 분명 틀림없이 그랬을 거다. 거기서든 여기서든.’", storyImage: nil, choice: [
+                    Choice(choiceText: "", nextPageIndex: 1, endingScore: 666)], questIdentifier: "", endEpisodePage: true, annotation: []),
+            
+            Page(storyText: " “짐이 곧 나라이니, 짐을 위협하는 자들은 애초에 싹을 모두 잘라 버려야 한다. 해서 형을 죽…”\n\n 나는 멈칫 했다. 모처럼 얻은 기회인데, 현실과 똑같이 형을 죽이기에는 죽이지 않은 현실이 너무 궁금했다.\n\n “다시 생각해보니, 내 형을 죽이고 싶지도 않고, 내 자비를 베풀어 기회를 한 번 더 주고자 한다. 더 이상 이런 논의가 들리지 않도록, 대신에게 문의해 처리하도록 해라.”\n\n 난 형을 믿지 않는다. 형은 분명 그랬을 것이다. 하지만 자비롭다는 내 명성도 얻고, 새로운 역사를 마주치는게 너무 흥미롭지 않은가? ", storyImage: nil, choice: [
+                    Choice(choiceText: "", nextPageIndex: 1, endingScore: 666)], questIdentifier: "", endEpisodePage: true, annotation: [])
+        
+       
+       
+           
+        ]
+        
+    let ep303 : [Page] = [
+
+        Page(storyText: " “전하, 임해군 이진이 지금 옷으로 얼굴을 가리고 부인의 차림새로 꾸며 사람에게 업혀 나아가는 것을 조정의 낭청이 순찰할 때 마침 보고서 발각하였습니다. 그리하여 무사를 시켜 급급히 찾아내어 지금 문 밖의 비변사에 들여다 놓고 장수를 정하여 지키게 하였습니다.”\n\n 라는 말을 듣자 나는….", storyImage: nil, choice: [
+                Choice(choiceText: "형은 참 한결같다.", nextPageIndex: 1, endingScore: 0),
+                Choice(choiceText: "다시 한 번 형을 믿어보려고 한다.", nextPageIndex: 2, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: " ‘형은 참으로 한결같구나. 어찌 행동 하나하나가 똑같은지. 아, 똑같을 수 밖에 없는 것인가.’", storyImage: nil, choice: [
+                Choice(choiceText: "다음", nextPageIndex: 3, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: " ‘이렇게 내 믿음을 저버리는 형을 또 다시 믿는게 맞을까? 어찌 내 가족을 내 손으로 죽일 수가 있단 말인가. 두 번 다시는 그런 일을 벌이고 싶지 않다.’", storyImage: nil, choice: [
+                Choice(choiceText: "다음", nextPageIndex: 3, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: " 라고 생각했다. 나는 한숨을 크게 쉰 후 말했다.\n\n “알았다. 이미 삼사에 알렸다.”", storyImage: nil, choice: [
+                Choice(choiceText: "형을 용서할 수 없다.", nextPageIndex: 4, endingScore: 0),
+                Choice(choiceText: "형을 용서한다.", nextPageIndex: 5, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        
+        Page(storyText: " 나는 아무리 한 번 겪은 일이라고 할 지 언정 이 세계에서나 임해군이 반역을 도모한 것을 다시금 곱씹어 보니 화가 나는 것을 멈출 수가 없었다. 나는 의금부에 전교하였다.\n\n “임해군 이진이 짐에게 오랫동안 배반하는 마음을 품고 반역을 은밀히 꾀하여 온 것은 나라 사람들이 다 함께 분명히 알고 있는 것이다. 음모가 발각된 뒤에 도성 문 밖에 유치시켜 놓았으나 뜻밖의 환란을 차마 말하기 어려운 점이 있다. 따라서 가족이라는 사정 때문에 그를 용서할 수는 없는 부분이다. 단서가 드러날 때까지 진도에 귀양을 보내도록 하라.”", storyImage: nil, choice: [
+                Choice(choiceText: "", nextPageIndex: 1, endingScore: 666)], questIdentifier: "", endEpisodePage: true, annotation: []),
+        
+        Page(storyText: " 형이 나를 향해 칼을 쥐고 있는 것은 현실에서나 이 곳에서나 변치 않는 사실이다. 하지만 어찌 천륜을 욕되게 하겠는가? 이미 한 번으로는 족하다. 허나 내 심장을 찌를 수도 있는 칼을 곁에 두는 건 매우 위험한 도박과도 같나니. 그를 귀양 보내는 게 나와 형의 안녕으로써 최선이다. 나는 의금부에 전교했다.\n\n “임해군 이진이 짐에게 오랫동안 배반하는 마음을 품고 반역을 숨어서 꾀하여 온 것은 모두가 분명 알고 있는 것이다. 그의 음모가 발각된 뒤에 도성 문 밖에 유치시켜 놓았으나, 뜻밖의 근심을 차마 말하기 힘들다. 나의 형제이기에 그의 아우로서 그를 용서하고자 한다. 허나 그의 정확한 단서와 뉘우침이 있을 때까지 진도에 귀양을 보내도록 하라.”", storyImage: nil, choice: [
+                Choice(choiceText: "", nextPageIndex: 1, endingScore: 666)], questIdentifier: "", endEpisodePage: true, annotation: [])
+           
+    ]
+
+    let ep304 : [Page] = [
+
+        Page(storyText: " 임해군에게 육지에서 멀리 떨어져 있는 외딴 섬으로 보내 살게 하는 절도안치 형벌을 내리자 그날로 그의 혐의를 기정사실화하며 수용했다. 이윽고 옥사가 본격적으로 시작되었고, 같이 붙잡혀 온 종들은 자신들의 혐의를 부인했다.\n\n “궁노인 마치, 막동, 세복, 애현, 용이, 만금, 인수, 금동에게 각각 1차의 형문을 가하였으나 굳게 숨겨 바른대로 고하지 않고 있으니, 가형하여 실정을 알아내게 하소서. 범손은 1차 형문을 하였는데 그의 진술에서 드러난 계집종 이대가 칼 두 자루를 묻었다고 하였습니다”\n\n 이 외에도 추국청*에서 검오송, 성창령, 이함 등의 죄에 대하여 아뢰었다.", storyImage: nil, choice: [
+                Choice(choiceText: "철저하게 신문하며 가형해라.", nextPageIndex: 1, endingScore: 0),
+                Choice(choiceText: "신문하되, 가형하지는 마라.", nextPageIndex: 2, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: [
+                    Note(word: "* 추국청", explanation: "의금부에서 임금의 특명에 따라 중한 죄인을 신문하기 위해 임시로 설치한 특별 재판기관")]),
+        
+        Page(storyText: " “윤허한다. 검오송은 속히 체포하게 하라. 성창령, 이함, 정언침 등에 대해서는 다시 범손에게 신문하여 의심스러운 사람은 모두 잡아다 국문하라. 그간에 접선하여 일을 꾀하는 헤아릴 수 없는 짓을 한 정상이 환히 드러나 숨길 수 없는데도 한결같이 굳게 숨기고 있으니, 이들이 참으로 이른바 사사(死士)들이다. 이들은 하나하나 철저히 국문해야 한다. 또 춘동의 진술에서 이름을 알 수 없는 계집종이 하나 있었는데 그와 함께 길에서 이야기했다고 했으니, 샘에 던지고 상자를 불태운 내용을 그집의 계집종들 가운데 반드시 아는 자가 있을 것이다. 계집종 아무아무 등을 아울러 잡아다가 국문하라.”", storyImage: nil, choice: [
+                Choice(choiceText: "다음", nextPageIndex: 3, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: " “윤허한다. 검오송을 속히 체포하라. 성창령, 이함, 정언침 등에 대해서는 다시 범손을 신문하여 의심스러운 사람들 모두를 잡아라. 또 춘동의 진술에서 이름 모를 계집종이 그와 함께 길에서 이야기를 했다고 하니, 샘에 던지고 상자를 불태웠다는 걸 그 집 계집종들 가운데 분명 아는 이가 있을 것이다. 그 또한 불러서 신문하라.”\n\n 나는 생각에 잠겼다. 진술 과정 내에서 형문을 가한다고 모두 바른대로 고할 지는 모르겠다. 현실에서는 내가 너무 마음이 급한 나머지 바로 죽여버렸다. 두 번 다시 똑같은 실수를 해서는 안 된다.\n\n “다만, 신문 과정에서 형문을 가하지는 마라. 오직 말로만 신문을 하고, 형문을 가하고자 할 때에는 짐에게 물어보고 하라.”", storyImage: nil, choice: [
+                Choice(choiceText: "다음", nextPageIndex: 3, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: "그 순간 모든 것이 얼어붙은 듯 꼼짝 움직이질 않았고, 나만이 움직일 수 있었다. 주위를 둘러보니 소월신이 나타나있었다.", storyImage: nil, choice: [
+                Choice(choiceText: "과거의 자신의 행동을 반성하지 않는다.", nextPageIndex: 4, endingScore: 0),
+                Choice(choiceText: "과거의 자신의 행동을 반성한다.", nextPageIndex: 6, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: " “너와 이야기를 하러 왔다.”“무슨 이야기말입니까?”\n “네가 왜 폭군이라고 불리오는지 알고 있는 게냐?”\n “폭군이라…. 그 말은 듣기 좀 거북한 말이군요.”\n\n 소월신은 소리치며 다그쳤다.\n “낙형, 압슬형이 무시로 가해지고, 그로 인해 죽는 이가 몇 인지 알고 형을 내리는 것이냐? 그러는 네 모습이 폭군이 아니면 도대체 무어란 말이냐. 한 번 손에 피를 묻히면 끝도 없이 피를 보게 된다.”\n “걱정 마십시오. 이미 더러워질 대로 더러워진 손입니다. 또한 국가를 향해 칼을 뽑은 자에게 벌을 내리지 않는다면, 법도에 어긋날 뿐더러, 나라가 위태로워 질 것입니다. 화의 근원을 없애 것이 우선 아니겠습니까?”", storyImage: nil, choice: [
+                Choice(choiceText: "다음", nextPageIndex: 1, endingScore: 5)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: " “허면 임해군 이진을 저번처럼 죽일 셈이냐?”\n “아니오. 그때 임해군을 죽였다가 전쟁을 치를 뻔 했지 뭡니까. 임해군을 살려둔다면 그런 일이 나타나지 않을 것 아닙니까? 해서 이번은 살려두고자 합니다. 이미 한 번 앗아간 그의 목숨을 이번은 살려주어 제 명대로 살게 하는 것은 제가 그에게 내릴 수 있는 가장 큰 자비일 듯 합니다. 대의가 비록 엄하기는 하나 천륜 역시 중요합니다.”\n “말의 앞과 뒤가 다르구나. 뿌리를 뽑는다면서 뿌리만 남겨두고 자르는 셈 아니더냐. 너의 그 이중적인 면모가 네 앞 길을 막을 것 같아 보이는 구나.”\n “하하하. 그리보이십니까? 방금 말씀드린 것들은 표면적인 이유에 그칠 뿐입니다. 이진의 종들에게 현실에서보다 이 곳에서 형벌을 더 가하는 속내는, 현실에서는 종들에게서 아무 말도 듣지 못한 채 죽여버렸기 때문입니다. 더 무시한 형벌을 가하면 종들이 고통스러움을 참지 못하고 바른 대로 고할 것입니다. 제 형이 반역을 도모했다는 것에 믿음이 부여된 이후에 죽여도 괜찮지 않겠습니까?”", storyImage: nil, choice: [
+                Choice(choiceText: "다음", nextPageIndex: 1, endingScore: 7)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: " “잘 하고 있구나, 혼아.”\n “또 뵙습니다.”\n “네가 현실에서 폭군으로 불린 이유를 알겠느냐?”\n “이제껏 생각해 본 적이 없지만, 당신께서 준 기회를 가지고 나서 돌이켜 보니, 제가 참 잔인한 사람이었던 것 같습니다.”\n “그래. 그래서 이진을 죽이지 않겠다는 거냐?”\n “형님을 죽이지 않는 건 다른 이유도 있습니다. 현실에서 형님을 죽였다가 전쟁을 치를 뻔 했지 뭡니까. 그를 살려둔다면 그런 일이 나타나지 않을 것 아닙니까? 해서 이번은 살려두고자 합니다.”\n “생각보다 시시하구나, 혼아.”\n “네?”\n\n  대체 뭐가 시시하다는 건 지 도통 알 수가 없었다.\n\n “내가 널 잘못 본 건가…”\n “그게 무슨 말씀입니까?”", storyImage: nil, choice: [
+                Choice(choiceText: "다음", nextPageIndex: 1, endingScore: 7)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: " 나를 쳐다보는 소월신의 눈빛이 이상하리만치 초점이 없고, 입은 웃고 있었다.", storyImage: nil, choice: [
+                Choice(choiceText: "저를 꾸며낼 것입니다.", nextPageIndex: 8, endingScore: 0),
+                Choice(choiceText: "저의 이면을 인정합니다.", nextPageIndex: 9, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: " “아, 폭군이라 하셨지요? 그깟 종들이 하는 말 따위 상관없습니다. 임해를 살려두고, 그 명분으로 저의 자비로운 마음과 형제간의 우애, 뭐 이런 말을 들먹인다면 과연 폭군이라고 할 수 있겠습니까? 이중 인격이라고 한들 전 상관없습니다. 이면을 가지고 있어야 저를 꾸며낼 수 있기 때문이지요.”", storyImage: nil, choice: [
+                Choice(choiceText: "다음", nextPageIndex: 1, endingScore: 10)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: " “아, 제 현실의 모습이 폭군이라 하셨지요? 지금 제게 그 모습이 없다는 건 거짓입니다. 같은 사람인데 어찌 한 순간에 사람이 바뀌겠습니까? 현실에서의 저와 이 세계에서의 저는 같으나 다릅니다. 말 그대로 이중인격인 셈이지요. 제 이면이 언제 또 다시 나올지 겁이 납니다. 허나 저는 후회만 가득한 제 삶을 바꿀 것입니다.”", storyImage: nil, choice: [
+                Choice(choiceText: "다음", nextPageIndex: 1, endingScore: 10)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: " 나도 모르게 입꼬리가 자꾸 씰룩거렸다. 소월신은 그 모습을 보고 흥분한 듯 보였고 작게 중얼거렸다.\n\n “그래. 그래야지. 아, 역시. 내 기대를 저버리지는 않겠군. 내가 듣고 싶은 이야기는 다 들었으니 이만 가 보겠다.”\n\n 소월신이 사라지자 얼어붙었던 시간은 어느새 녹아 무슨 일이 있었냐는 듯이 다시 움직였다.\n\n “아까 기대를 저버리지 않는다고 이야기 하신 듯 한데, 무슨 의미일까?”\n\n 나는 혼자 중얼거렸고 소월신이 사라진 자리엔 자주빛 양귀비가 떨어져 있었다.\n\n “저번에도 그러더니, 당신께서 사라지는 그 자리엔 항상 양귀비가 남아있는 구나. 자색 양귀비도 실로 아름답다.”\n\n 나는 양귀비를 주워 전에 흰 양귀비를 꽂았던 병에 같이 꽂았다.", storyImage: nil, choice: [
+                Choice(choiceText: "", nextPageIndex: 666, endingScore: 0)], questIdentifier: "", endEpisodePage: true, annotation: [])
+                
+           
+    ]
+
+    let ep305 : [Page] = [
+
+        Page(storyText: " 시간이 흐를 수록 진실을 찾기 위해 임해군의 종들의 형벌을 가혹해졌고, 영창대군의 편에 섰던 유영경 또한 형벌이 정해지면서 자주 언급이 되었다. 그러면서도 끊임없이 임해군을 없애야 한다는 목소리가 자주 나왔다. 나는 홍문관에 답하였다.\n\n “임해는 적들에게 빠져 제정신을 잃고 흉악한 자들에게 속은 것일 뿐이다. 동기간에 이런 커다란 변고가 있게 된 것은 내가 부덕하기 때문이니, 내 어찌 차마 은혜를 끊고 죽일 수 있겠는가. 다시는 번거롭게 하지 말거라.”", storyImage: nil, choice: [
+                Choice(choiceText: "", nextPageIndex: 666, endingScore: 0)], questIdentifier: "", endEpisodePage: true, annotation: [])
+       
+    ]
+
+    let ep306 : [Page] = [
+
+        Page(storyText: " “전하, 임해군이 교동에서 병사로 죽었다 합니다.”\n\n 나는 떨리는 가슴을 부여잡고 침착하게 비망기로 일렀다.\n\n “임해군을 장사지낼 때 상여와 여러 기구를 본 고을로 하여금 갖추어 준비해서 쓰게 하고, 장사 지내는 곳에 쓸 일꾼을 정해 주어라.”\n\n 심장이 철렁했다. 임해군이 병사로 죽었다는 말은 거짓말이며 교살(絞殺)당한 것이 진실이라는 것 또한 기억이 났다. 이것을 기억이 났다고 표현을 해야 할까. 원래 이런 역사였던 것처럼 기억은 어느새 바뀌어 스며들었고 본래의 기억은 재가 되어 흩어졌다.", storyImage: nil, choice: [
+                Choice(choiceText: "형의 죽음에 대해 자책한다.", nextPageIndex: 1, endingScore: 0),
+                Choice(choiceText: "형의 죽음은 그의 운명이라고 생각한다.", nextPageIndex: 2, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        
+        Page(storyText: "나는 불안해졌다. 원래는 죽었어야 할 사람에게 자비를 베푼다는 이유로 살려두었다가 다른 이에게 죽었다는 사실이 내 이성을 요동치게 했다.\n\n ‘어차피 형은 죽었어야 했어. 잠깐의 세월을 더 살게 해준 것 뿐인데 왜 이리 죄책감이 드는 것인가. 흔들리지 말자. 신경쓰지 말자.’\n\n 그렇게 생각할수록 마음은 울렁거렸다.", storyImage: nil, choice: [
+                Choice(choiceText: "", nextPageIndex: 666, endingScore: 0)], questIdentifier: "", endEpisodePage: true, annotation: []),
+        
+        Page(storyText: "심장 고동 소리가 온 몸에 전해졌다. 나는 눈을 감고 마음을 진정시켰다. 형의 죽음은 결코 내 탓이 아니며 원래 일어 났어야 하는 일이라고. 내가 죽이든, 살인을 당하든 어쨌든 죽는다는 결말은 똑같지 않는가? 내가 죄책감 들 필요는 없다. 그것이 형의 운명인 것이니.", storyImage: nil, choice: [
+                Choice(choiceText: "", nextPageIndex: 666, endingScore: 0)], questIdentifier: "", endEpisodePage: true, annotation: [])
+       
+    ]
+
+
+var prologue: Chapter = Chapter(episodes: [ep001, ep002], quests: [], chapterNumber: 0, chapterName: "", chapterIllust: "chapter1Illust", chapterChoice: [Choice(choiceText: "나는 현실에 수긍한다.", nextPageIndex: 0, endingScore: 1),Choice(choiceText: "나는 현실을 부정하며 받아들이지 못한다.", nextPageIndex: 1, endingScore: 5)])
+
 var chapter1: Chapter = Chapter(episodes: [ep101, ep102, ep103, ep104, ep105, ep106, ep107, ep108, ep109, ep110, ep111, ep112, ep113, ep114, ep115, ep116, ep117], quests: [
-                                        Quest(questName: "임진강 나루에 도착하기", questClearJoGeun: ["chapter1quest1"], reward: 5),
-                                        Quest(questName: "의원에게 진찰받기", questClearJoGeun: ["chapter1quest2"], reward: 5),
-                                        Quest(questName: "꽃병을 집어 던지기", questClearJoGeun: ["chapter1quest3"], reward: 10)],chapterNumber: 1, chapterName: "1장 챕터 이름", chapterIllust: "chapter1Illust", chapterChoice: [])
-//var chapter2: Chapter = Chapter(episodes: <#T##[[Page]]#>, quests: <#T##[Quest]#>, chapterNumber: 2, chapterName: "기회", chapterIllust: "chapter2Illust", chapterChoice: [])
-let ep201 : [Page] = [
-    Page(storyText: " 즉위식이 끝난 날 밤, 홀로 후원을 거닐었다. 달빛이 아른거리는 연못이 일렁이는 것을 보며 그의 마음 어딘가가 일렁거렸다.\n\n “아직 완전한 기억은 되찾지 못했나보군.”\n\n 전에 들어봤던 목소리였다. 뒤를 돌자 성별도, 나이도 알 수 없는 누군가가 서 있었다.", storyImage: nil, choice: [Choice(choiceText: "나는 놀라서 말이 제대로 나오지를 않았다.", nextPageIndex: 1, endingScore: 0), Choice(choiceText: "겁을 뒤로 하고 소리를 쳤다.", nextPageIndex: 2, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
-    Page(storyText: " 즉위식이 끝난 날 밤, 홀로 후원을 거닐었다. 달빛이 아른거리는 연못이 일렁이는 것을 보며 그의 마음 어딘가가 일렁거렸다.\n\n “아직 완전한 기억은 되찾지 못했나보군.”\n\n 전에 들어봤던 목소리였다. 뒤를 돌자 성별도, 나이도 알 수 없는 누군가가 서 있었다.", storyImage: nil, choice: [Choice(choiceText: "나는 놀라서 말이 제대로 나오지를 않았다.", nextPageIndex: 1, endingScore: 0), Choice(choiceText: "겁을 뒤로 하고 소리를 쳤다.", nextPageIndex: 2, endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: [])
-]
+            Quest(questName: "임진강 나루에 도착하기", questClearJoGeun: ["chapter1quest1"], reward: 5),
+            Quest(questName: "의원에게 진찰받기", questClearJoGeun: ["chapter1quest2"], reward: 5),
+            Quest(questName: "꽃병을 집어 던지기", questClearJoGeun: ["chapter1quest3"], reward: 10)],chapterNumber: 1, chapterName: "1장 챕터 이름", chapterIllust: "chapter1Illust", chapterChoice: [])
+
+var chapter2: Chapter = Chapter(episodes: [ep201], quests: [
+            Quest(questName: "누군가에게 목 졸리기", questClearJoGeun: ["chapter2quest1"], reward: 10),
+            Quest(questName: "무엇을 고민하기", questClearJoGeun: ["chapter2quest2"], reward: 5),
+            Quest(questName: "양귀비 모으기", questClearJoGeun: ["chapter2quest3"], reward: 5)], chapterNumber: 2, chapterName: "기회", chapterIllust: "chapter2Illust", chapterChoice: [])
+
+var chapter3: Chapter = Chapter(episodes: [ep301, ep302, ep303, ep304, ep305, ep306], quests: [
+            Quest(questName: "임해군을 귀양 보내기", questClearJoGeun: ["chapter3quest1"], reward: 5),
+            Quest(questName: "궁노인들을 형벌하기", questClearJoGeun: ["chapter3quest2"], reward: 5),
+            Quest(questName: "자신이 벌인 일에 대해 죄책감 갖기", questClearJoGeun: ["chapter3quest3"], reward: 10)], chapterNumber: 2, chapterName: "흔들림", chapterIllust: "chapter2Illust", chapterChoice: [])
+

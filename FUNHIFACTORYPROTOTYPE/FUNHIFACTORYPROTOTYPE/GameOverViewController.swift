@@ -79,7 +79,17 @@ class GameOverViewController: UIViewController {
         self.faidBlackVIew.isHidden = false
         self.faidBlackVIew.alpha = 0
         endingIS = "restartFromBack"
-        self.navigationController?.popViewController(animated: false)
+        // 첫 애니메이션
+        UIView.animate(withDuration: 2.0) {
+            self.faidBlackVIew.alpha = 1
+       
+        // 두번째 애니메이션
+        } completion: { (i) in
+            santa.gameCharacter.totalWarning = 0
+            self.navigationController?.popViewController(animated: false)
+            
+    }
+    
     }
     
 }
