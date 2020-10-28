@@ -343,7 +343,7 @@ var prologue: Chapter = Chapter(episodes: [ep001, ep002], quests: [], chapterNum
 var chapter1: Chapter = Chapter(episodes: [ep101, ep102, ep103, ep104, ep105, ep106, ep107, ep108, ep109, ep110, ep111, ep112, ep113, ep114, ep115, ep116, ep117], quests: [
             Quest(questName: "임진강 나루에 도착하기", questClearJoGeun: ["chapter1quest1"], reward: 5),
             Quest(questName: "의원에게 진찰받기", questClearJoGeun: ["chapter1quest2"], reward: 5),
-            Quest(questName: "꽃병을 집어 던지기", questClearJoGeun: ["chapter1quest3"], reward: 10)],chapterNumber: 1, chapterName: "1장 챕터 이름", chapterIllust: "chapter1Illust", chapterChoice: [])
+            Quest(questName: "꽃병을 집어 던지기", questClearJoGeun: ["chapter1quest3"], reward: 10)],chapterNumber: 1, chapterName: "시작", chapterIllust: "chapter1Illust", chapterChoice: [])
 
 var chapter2: Chapter = Chapter(episodes: [ep201], quests: [
             Quest(questName: "누군가에게 목 졸리기", questClearJoGeun: ["chapter2quest1"], reward: 10),

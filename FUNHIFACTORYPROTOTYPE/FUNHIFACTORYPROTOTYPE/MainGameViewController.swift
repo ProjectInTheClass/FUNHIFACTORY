@@ -326,7 +326,9 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             //아니면 에피만 넘기기(이 함수 실행되는 곳인 화살표 누르는 페이지는 에피소드의 마지막 페이지지용)
             santa.gameCharacter.currentEpisodeIndex += 1
             santa.gameCharacter.currentEpPageIndex = 0
+            
             labelArrayInTable.removeAll()
+            
             labelArrayInTable.append("")
             typeOn(exampleText: santa.gameCharacter.currentPage().storyText, indexPath: 0)
             print("에피소드 하나가 넘어갔습니다. ")
