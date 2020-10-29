@@ -23,10 +23,10 @@ func titleLabelConstraint(titleLabel : UIView, note : UIView){
 }
 func informationLabelConstraint(titleLabel : UIView, informationLabel : UIView, note : UIView){
     informationLabel.translatesAutoresizingMaskIntoConstraints = false
-    informationLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor,constant: 1).isActive = true
-    informationLabel.leftAnchor.constraint(equalTo: note.leftAnchor, constant: 0).isActive = true // ---- 2
-    informationLabel.rightAnchor.constraint(equalTo: note.rightAnchor, constant: 0).isActive = true // ---- 3
-    informationLabel.bottomAnchor.constraint(equalTo: note.bottomAnchor, constant: 12).isActive = true // ---- 4
+    informationLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,constant: 2).isActive = true
+    informationLabel.leftAnchor.constraint(equalTo: note.leftAnchor, constant: 13).isActive = true // ---- 2
+    informationLabel.rightAnchor.constraint(equalTo: note.rightAnchor, constant: -13).isActive = true // ---- 3
+    informationLabel.bottomAnchor.constraint(equalTo: note.bottomAnchor, constant: -23).isActive = true // ---- 4
 }
 
 //주석을 모아넣는 스택뷰에 사용할 코드

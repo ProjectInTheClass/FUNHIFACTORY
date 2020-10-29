@@ -19,6 +19,7 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var mainGameTopBar: UIView!
     @IBOutlet weak var questPopUpView: UIView!
     @IBOutlet weak var warningPopUpView: UIView!
+    @IBOutlet weak var warningPopUpViewImage: UIImageView!
     @IBOutlet weak var topBarChapterName: UILabel!
     
     
@@ -102,6 +103,7 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
         self.faidBlackView.isHidden = false
         self.faidBlackView.alpha = 1
         self.faidBlackView.backgroundColor = .white
+            self.choiceTableView.isHidden = true
         
         // 부활 방법에 따른 화면 재조정 :
         if endingIS == "restartFromChapter" {
@@ -355,6 +357,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             endEpisodeButton.isHidden = true
             choiceTableView.isHidden = false
         }
+        
         topBarChapterName.text = "제\(santa.gameCharacter.currentChapterIndex)장 \(santa.gameCharacter.currentChapter().chapterName)"
         //선택지 TableView 높이
         choiceTableViewHeight.constant = CGFloat(47*santa.gameCharacter.currentPage().choice.count)
@@ -535,6 +538,9 @@ func showChapterCover() {
     if santa.gameCharacter.currentPage().warningInt != 0 {
         //
         santa.gameCharacter.totalWarning += santa.gameCharacter.currentPage().warningInt
+            
+        
+       
         
         // 현재 페이지의 소월신 경고값을 캐릭터에게 반영했는데 아직 3회 이하면 아래 코드 실행(소월신 경고 팝업창 애니메이션 보여주는 내용임)
         if santa.gameCharacter.totalWarning < 3 {
@@ -550,11 +556,11 @@ func showChapterCover() {
         warningPopUpView.isHidden = false
         warningPopUpView.alpha = 0
         
-        UIView.animate(withDuration: 2.0) {
+        UIView.animate(withDuration: 1.0) {
             self.warningPopUpView.alpha = 1
             self.faidBlackView.alpha = 0.5
         } completion: { (i) in
-            UIView.animate(withDuration: 2.0, delay: 1) {
+            UIView.animate(withDuration: 1.0, delay: 1) {
                 self.warningPopUpView.alpha = 0
                 self.faidBlackView.alpha = 0
             }
@@ -569,6 +575,15 @@ func showChapterCover() {
             performSegue(withIdentifier: "gameOverViewSegue", sender: nil)
             
         }
+    }
+    if santa.gameCharacter.currentPage().warningInt == 1 {
+        warningPopUpViewImage.image = UIImage(named: "warning1")
+    } else if  santa.gameCharacter.currentPage().warningInt == 2 {
+        warningPopUpViewImage.image = UIImage(named: "warning2")
+    }  else if santa.gameCharacter.currentPage().warningInt == 3 {
+        warningPopUpViewImage.image = UIImage(named: "warning3")
+    } else if  santa.gameCharacter.currentPage().warningInt == 0 {
+        warningPopUpViewImage.image = UIImage(named: "warning0")
     }
 
     
@@ -672,6 +687,8 @@ func showChapterCover() {
             titleLabel.textAlignment = .center
             note.addSubview(informationLabel)
             note.addSubview(titleLabel)
+            titleLabelConstraint(titleLabel: titleLabel, note: note)
+            informationLabelConstraint(titleLabel: titleLabel, informationLabel: informationLabel, note: note)
             note.backgroundColor = .white
             informationLabel.numberOfLines = 0
             noteStackView.addArrangedSubview(note)
