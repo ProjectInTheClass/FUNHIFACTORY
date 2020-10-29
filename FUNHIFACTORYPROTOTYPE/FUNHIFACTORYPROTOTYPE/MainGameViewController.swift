@@ -10,9 +10,9 @@ import UIKit
 class MainGameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var rootView: UIView!
-    @IBOutlet var noteStackView: UIStackView!
     @IBOutlet var annotationView: UIView!
     @IBOutlet weak var storyTableView: UITableView!
+    @IBOutlet var noteStackView: UIStackView!
     @IBOutlet weak var choiceTableView: UITableView!
     @IBOutlet weak var endEpisodeButton: UIButton!
     @IBOutlet weak var choiceTableViewHeight: NSLayoutConstraint!
@@ -31,6 +31,12 @@ class MainGameViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var chapterCoverStackView: UIStackView!
      @IBOutlet weak var chapterCoverFullButton: UIButton!
     @IBOutlet weak var chapterCoverChoiceStackView: UIStackView!
+    
+    //주석 관련 constraint
+    @IBOutlet var rightAnnotation: NSLayoutConstraint!
+    @IBOutlet var leftAnnotation: NSLayoutConstraint!
+    @IBOutlet var topAnnotation: NSLayoutConstraint!
+    @IBOutlet var bottomAnnotation: NSLayoutConstraint!
     
     // 페이드인/아웃 위한 까만 전체뷰
     @IBOutlet weak var faidBlackView: UIView!
@@ -257,10 +263,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
     
     
-    
-    @IBAction func noteTapped(_ sender: Any) {
-        annotationView.isHidden = true
-    }
+
     
     @IBAction func endEpisodeButtonAction(_ sender: Any) {
         updateEpisodeAndChapter()
@@ -645,42 +648,55 @@ func showChapterCover() {
             isRunning = true
         }
     }
-    
+    //현재 페이지에 있는 주석의 갯수
+    var amountOfNotes = 0
     func popUpNotes(indexPath : Int){
         guard isRunning == false else { return }
         annotationView.isHidden = false
+        amountOfNotes = santa.gameCharacter.currentPage().annotation.count
+        
         for i in santa.gameCharacter.currentPage().annotation{
+            //노트 + 넣을 텍스트 만들기
             let rect = CGRect(x: 0, y: 0, width: 268, height: 84)
             let note = UIView(frame: rect)
             note.layer.cornerRadius = 10
-            let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 242, height: 19))
-            /*if number == 1{
-                titleLabel.text = "*"+i.word
-            } else if number == 2 {
-                titleLabel.text = "**"+i.word
-            }else if number == 3{
-                titleLabel.text = "***"+i.word
-            }*/
-            let informationLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 238, height: 38))
+            note.heightAnchor.constraint(equalToConstant: 84).isActive = true
+            note.widthAnchor.constraint(equalToConstant: 268).isActive = true
+            let titleLabel = UILabel(frame: CGRect(x: 13, y: 14, width: 242, height: 18))
+            let informationLabel = UILabel(frame: CGRect(x: 13, y: 36, width: 242, height: 36))
             informationLabel.text = i.explanation
             titleLabel.text = i.word
-            titleLabel.font = UIFont(name: "NANUMBARUNGOTHICBOLD", size: CGFloat(santa.setting.fontSize))
-            informationLabel.font = UIFont(name: "NANUMBARUNGOTHIC", size: CGFloat(santa.setting.fontSize))
+            titleLabel.font = UIFont(name: "NANUMBARUNGOTHICBOLD", size: CGFloat(15))
+            informationLabel.font = UIFont(name: "NANUMBARUNGOTHIC", size: CGFloat(15))
             informationLabel.textAlignment = .center
             titleLabel.textAlignment = .center
             note.addSubview(informationLabel)
             note.addSubview(titleLabel)
             note.backgroundColor = .white
             informationLabel.numberOfLines = 0
-            noteStackView.addSubview(note)
-            giveAll0ToView(viewA: note, targetView: noteStackView)
-            titleLabelConstraint(titleLabel: titleLabel, note: note)
-            informationLabelConstraint(titleLabel: titleLabel, informationLabel: informationLabel, note: note)
-            
+            noteStackView.addArrangedSubview(note)
+        }
+        
+        if amountOfNotes == 1{
+            displayOneNote(noteView: noteStackView, topBar: mainGameTopBar, exitButton: exitAnnotationButton, wholeView: wholeView)
+        } else if amountOfNotes == 2{
+            displayDoubleNote(noteView: noteStackView, topBar: mainGameTopBar, exitButton: exitAnnotationButton, wholeView: wholeView)
+        } else if amountOfNotes == 3{
+            displayTripleNote(noteView: noteStackView, topBar: mainGameTopBar, exitButton: exitAnnotationButton, wholeView: wholeView)
         }
     }
+    
+    @IBOutlet var wholeView: UIView!
+    @IBOutlet var exitAnnotationButton: UIButton!
     @IBAction func tapAnnotationView(_ sender: Any) {
         annotationView.isHidden = true
+        for i in noteStackView.arrangedSubviews{
+            noteStackView.removeArrangedSubview(i)
+        }
+        topAnnotation.isActive = false
+        bottomAnnotation.isActive = false
+        leftAnnotation.isActive = false
+        rightAnnotation.isActive = false
     }
     func checkItIsLastPage(){
         if santa.gameCharacter.currentPage().endEpisodePage == true {

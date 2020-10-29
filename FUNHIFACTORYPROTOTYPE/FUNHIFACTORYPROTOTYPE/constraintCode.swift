@@ -36,7 +36,8 @@ func informationLabelConstraint(titleLabel : UIView, informationLabel : UIView, 
             noteView.topAnchor.constraint(equalTo: topBar.bottomAnchor,constant: 245).isActive = true
             noteView.bottomAnchor.constraint(equalTo: wholeView.bottomAnchor,constant: -448).isActive = true
             noteView.centerXAnchor.constraint(equalTo:wholeView.centerXAnchor).isActive = true
-            noteView.frame = CGRect(x: 0, y: 0, width: 268, height: 84)
+            noteView.heightAnchor.constraint(equalToConstant: 84).isActive = true
+            noteView.widthAnchor.constraint(equalToConstant: 268).isActive = true
             
             exitButton.translatesAutoresizingMaskIntoConstraints = false
             exitButton.topAnchor.constraint(equalTo: topBar.bottomAnchor,constant: 183).isActive = true
@@ -66,3 +67,5 @@ func informationLabelConstraint(titleLabel : UIView, informationLabel : UIView, 
             exitButton.topAnchor.constraint(equalTo: topBar.bottomAnchor,constant: 66).isActive = true
             exitButton.rightAnchor.constraint(equalTo: wholeView.rightAnchor, constant: -33).isActive = true
         }
+
+
