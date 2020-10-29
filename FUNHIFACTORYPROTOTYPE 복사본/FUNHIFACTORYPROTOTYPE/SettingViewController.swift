@@ -108,15 +108,17 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     }
     
     @IBAction func settingMailButtonClicked(_ sender: Any) {
-        if let mail = URL(string: "mailto: rlagofls7924@gmail.com"){
-            if UIApplication.shared.canOpenURL(mail){
-                UIApplication.shared.open(mail)
-                } else {
-                print("I can't open mail app.")
-            }
+        let mail = MFMailComposeViewController()
+        mail.setToRecipients(["rlagofls7924@gmail.com"])
+        mail.mailComposeDelegate = self
+        if let filePath = Bundle.main.path(forResource: "sampleData", ofType: "json") {
+                 if let data = NSData(contentsOfFile: filePath) {
+                    mail.addAttachmentData(data as Data, mimeType: "application/json" , fileName: "sampleData.json")
+                 }
+              }
+              present(mail, animated: true)
         }
-       
-    }
+    
     
     func showFinishedQuest() {
         for quest in santa.gameCharacter.currentChapter().quests.enumerated() {
