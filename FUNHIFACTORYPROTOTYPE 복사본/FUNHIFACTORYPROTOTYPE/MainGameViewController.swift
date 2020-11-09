@@ -706,7 +706,8 @@ func showChapterCover() {
     @IBAction func tapAnnotationView(_ sender: Any) {
         annotationView.isHidden = true
         for i in noteStackView.arrangedSubviews{
-            noteStackView.removeArrangedSubview(i)
+            i.removeFromSuperview()
+            //noteStackView.removeArrangedSubview(i)
         }
         topAnnotation.isActive = false
         bottomAnnotation.isActive = false
