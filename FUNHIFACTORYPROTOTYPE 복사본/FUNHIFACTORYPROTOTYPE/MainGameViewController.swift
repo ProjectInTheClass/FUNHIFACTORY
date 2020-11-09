@@ -405,16 +405,18 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                 chapterGolds += quest.element.reward
                 santa.gameCharacter.GameFullStory[santa.gameCharacter.currentChapterIndex]
     .quests[quest.offset].questClear = true
-                questPopUpView.alpha = 0
+                
+                // 여기부터는 퀘스트팝업뷰 애니메이
+                questPopUpView.alpha = 1
                 questPopUpView.isHidden = false
 
-                UIView.animate(withDuration: 1.0) {
-                    self.questPopUpView.alpha = 1
-                } completion: { (i) in
-                    UIView.animate(withDuration: 2.0, delay: 0.5) {
-                        self.questPopUpView.alpha = 0
-                    }
-                }
+//                UIView.animate(withDuration: 1.0) {
+//                    self.questPopUpView.alpha = 1
+//                } completion: { (i) in
+//                    UIView.animate(withDuration: 2.0, delay: 0.5) {
+//                        self.questPopUpView.alpha = 0
+//                    }
+//                }
             }
         }
             
