@@ -410,13 +410,13 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                 questPopUpView.alpha = 1
                 questPopUpView.isHidden = false
 
-//                UIView.animate(withDuration: 1.0) {
-//                    self.questPopUpView.alpha = 1
-//                } completion: { (i) in
-//                    UIView.animate(withDuration: 2.0, delay: 0.5) {
-//                        self.questPopUpView.alpha = 0
-//                    }
-//                }
+                UIView.animate(withDuration: 1.0) {
+                    self.questPopUpView.alpha = 1
+                } completion: { (i) in
+                    UIView.animate(withDuration: 2.0, delay: 0.5) {
+                        self.questPopUpView.alpha = 0
+                    }
+                }
             }
         }
             
@@ -605,7 +605,7 @@ func showChapterCover() {
         
         //터치를 한번 이상 하면 실행되지 않도록 하는 조건
         if isRunning == true{
-            Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true)
+            Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true)
             { [self] (timer) in
                 
                     //$는 텍스트의 타이핑 속도를 느려지게 하는 부분에서 사용할 수 있다. 먼저 $가 아닌 것들을 조건으로 놓는다.
