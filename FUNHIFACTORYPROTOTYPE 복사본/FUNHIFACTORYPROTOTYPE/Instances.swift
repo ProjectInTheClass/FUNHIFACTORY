@@ -94,7 +94,7 @@ import Foundation
 
 
     let ep105 : [Page] = [
-        Page(storyText: "\"전하, 세자 저하께서 문안 인사를 드리러 왔사옵니다. \n\"\"세자라니. 도대체 누가 세자란 말인가? 명나라의 황제의 승인을 받지 못한 자가 어찌 세자라고 불릴 수가 있는가? 어서 물러가라 하라.\" \n “저하, 전하께서.......”", storyImage: nil, choice: [Choice(choiceText: "문안 인사를 포기하고 그만 돌아간다.", nextPageIndex: 1,  endingScore: 0), Choice(choiceText: "끝까지 남아 기다린다.", nextPageIndex: 2,  endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
+        Page(storyText: "\"전하, 세자 저하께서 문안 인사를 드리러 왔사옵니다.\" \n\"세자라니. 도대체 누가 세자란 말인가? 명나라의 황제의 승인을 받지 못한 자가 어찌 세자라고 불릴 수가 있는가? 어서 물러가라 하라.\" \n “저하, 전하께서.......”", storyImage: nil, choice: [Choice(choiceText: "문안 인사를 포기하고 그만 돌아간다.", nextPageIndex: 1,  endingScore: 0), Choice(choiceText: "끝까지 남아 기다린다.", nextPageIndex: 2,  endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
         //5-1
         Page(storyText: "“됐네. 이만 물러가겠소.”\n\n 나는 다시 동궁으로 걸어갔다.\n\n ‘전쟁 통에는 저를 방패로 내세우시더니, 이제는 자신을 향한 창이라 생각하시어 저를 버리시는 겁니까? 제가 이 나라를 살리기 위해, 아버지는 도망을 가셨어도 저는 끝까지 한양에 남아 지켰습니다. 명나라가 저를 세자로 보지 않아도, 전쟁 중에 저를 세자로 책봉하셨어도, 어찌 됐든 저는 조선의 ‘세자’요, 아버지의 아들이지 않습니까?’", storyImage: nil, choice: [Choice(choiceText: "다음", nextPageIndex: 3,  endingScore: 0)], questIdentifier: "", endEpisodePage: false, annotation: []),
         //5-2
