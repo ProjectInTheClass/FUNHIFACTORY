@@ -101,7 +101,7 @@ struct GameCharacter {
 //----------얘는 유저스트럭처에 포함됨-----------
 
 //유저가 파악한 현재 인물들 정보를 반영해 넣을 스트럭처
-struct GameCharacters {
+struct GameCharacters {                                                                                                 //현재 유저가 발견한 캐릭터만 확인되는 형태라면, 이름이 직관적이지 않다.
     let kirell: GameCharacter
     let hilde: GameCharacter
     let argo: GameCharacter
