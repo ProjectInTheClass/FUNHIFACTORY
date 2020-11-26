@@ -116,7 +116,7 @@ struct User {
     var tickets: Int
     var currentHistories: [History]
     var currentAchievements: [Achievement]
-    var timellne: nil
+    //var timellne: nil
     var gameChracters: GameCharacters
 }
 
