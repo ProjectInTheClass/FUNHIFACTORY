@@ -17,7 +17,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w7s-fG-sQi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1294" y="1018"/>
+            <point key="canvasLocation" x="-994" y="1160"/>
         </scene>
         <!--Cover View Controller-->
         <scene sceneID="vPj-yE-1k3">
@@ -38,6 +38,9 @@
                                 <rect key="frame" x="184" y="668" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="goToNextView:" destination="dC1-Fy-qze" eventType="touchUpInside" id="azj-1A-RKT"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qwy-ft-PlB"/>
@@ -104,6 +107,9 @@
                                 <state key="normal" title="Start">
                                     <color key="titleColor" systemColor="systemOrangeColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="goToGameView:" destination="26O-3G-BxK" eventType="touchUpInside" id="5ZS-ay-HLR"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="0Ki-gj-0Du">
                                 <rect key="frame" x="49" y="779" width="316" height="45"/>
@@ -116,7 +122,7 @@
                                             <imageReference key="image" image="book.closed.fill" catalog="system" symbolScale="large"/>
                                         </state>
                                         <connections>
-                                            <segue destination="ddX-u8-Yoa" kind="show" identifier="historySegue" id="ZzK-3A-M6b"/>
+                                            <action selector="goToHistoryAchievementView:" destination="26O-3G-BxK" eventType="touchUpInside" id="nHl-aT-UHx"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0J-Ou-wF9">
@@ -127,7 +133,7 @@
                                             <imageReference key="image" image="rosette" catalog="system" symbolScale="large"/>
                                         </state>
                                         <connections>
-                                            <segue destination="ddX-u8-Yoa" kind="show" identifier="achievementSegue" id="OzM-d8-9gt"/>
+                                            <action selector="goToHistoryAchievementView:" destination="26O-3G-BxK" eventType="touchUpInside" id="8Vm-xJ-8BB"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5N-CC-nDi">
@@ -137,6 +143,9 @@
                                             <color key="titleColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <imageReference key="image" image="clock.fill" catalog="system" symbolScale="large"/>
                                         </state>
+                                        <connections>
+                                            <action selector="goToTimelineView:" destination="26O-3G-BxK" eventType="touchUpInside" id="cLq-6a-Ch0"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyn-cm-w9e">
                                         <rect key="frame" x="270" y="0.0" width="46" height="45"/>
@@ -146,7 +155,7 @@
                                             <imageReference key="image" image="gearshape.fill" catalog="system" symbolScale="large"/>
                                         </state>
                                         <connections>
-                                            <segue destination="tJ0-eJ-ynx" kind="show" identifier="settingSegue" id="vLO-Hr-BwX"/>
+                                            <action selector="goToSettingView:" destination="26O-3G-BxK" eventType="touchUpInside" id="bl9-wR-eQ5"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -174,7 +183,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="E2s-Dr-pgZ"/>
                     <connections>
-                        <segue destination="Mqu-6S-bbD" kind="show" id="30c-yw-IUd"/>
+                        <segue destination="Mqu-6S-bbD" kind="show" identifier="goToGameViewSegue" id="30c-yw-IUd"/>
+                        <segue destination="ddX-u8-Yoa" kind="show" identifier="goToHistoryAchievementViewSegue" id="L0f-x6-Toc"/>
+                        <segue destination="u2j-8U-AaL" kind="show" identifier="goToTimelineViewSegue" id="Ml8-Pc-Ah2"/>
+                        <segue destination="tJ0-eJ-ynx" kind="show" identifier="goToMainSettingViewSegue" id="Tk3-4H-Cdu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9VW-eJ-8Jc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -201,6 +213,9 @@
                                                 <state key="normal">
                                                     <imageReference key="image" image="chevron.left.circle" catalog="system" symbolScale="large"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="backToMainView:" destination="ddX-u8-Yoa" eventType="touchUpInside" id="JZe-M9-7Sb"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="히스토리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raS-pi-AT1">
                                                 <rect key="frame" x="33" y="0.0" width="86.5" height="30"/>
@@ -288,7 +303,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qoQ-IN-OOH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1062" y="2244"/>
+            <point key="canvasLocation" x="-1439" y="2244"/>
         </scene>
         <!--Main Setting View Controller-->
         <scene sceneID="ICE-en-HN1">
@@ -310,6 +325,9 @@
                                                 <state key="normal">
                                                     <imageReference key="image" image="chevron.left.circle" catalog="system" symbolScale="large"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="backToMainView:" destination="tJ0-eJ-ynx" eventType="touchUpInside" id="uED-69-2bX"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sV3-g2-VHa">
                                                 <rect key="frame" x="33" y="0.0" width="43.5" height="30"/>
@@ -331,7 +349,7 @@
                                 <rect key="frame" x="0.0" y="102" width="414" height="794"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="aG7-hr-8HX" kind="embed" id="6m1-be-ebS"/>
+                                    <segue destination="aG7-hr-8HX" kind="embed" identifier="" id="6m1-be-ebS"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -347,7 +365,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yT9-Ef-QBk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="333" y="2244"/>
+            <point key="canvasLocation" x="-139" y="2244"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tav-RQ-8sp">
@@ -545,7 +563,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbC-J0-3HV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1813" y="2181"/>
+            <point key="canvasLocation" x="-138" y="2936"/>
         </scene>
         <!--Main Timeline View Controller-->
         <scene sceneID="Gr7-dA-Eym">
@@ -567,6 +585,9 @@
                                                 <state key="normal">
                                                     <imageReference key="image" image="chevron.left.circle" catalog="system" symbolScale="large"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="backToMainView:" destination="u2j-8U-AaL" eventType="touchUpInside" id="4hQ-vN-RUq"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타임라인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wib-xk-Rci">
                                                 <rect key="frame" x="33" y="0.0" width="86.5" height="30"/>
@@ -611,7 +632,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QuP-O4-1k3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-367" y="2244"/>
+            <point key="canvasLocation" x="-787" y="2244"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="nVT-tf-w2O">
@@ -681,7 +702,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDc-ZD-XNn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="499" y="1572"/>
+            <point key="canvasLocation" x="-790" y="2936"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="P0L-ct-9a8">
@@ -774,12 +795,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fWO-mD-LNw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-138.40579710144928" y="1510.7142857142856"/>
+            <point key="canvasLocation" x="-1350" y="2823"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZzK-3A-M6b"/>
-        <segue reference="Seb-lf-h7k"/>
+        <segue reference="30c-yw-IUd"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="book.closed.fill" catalog="system" width="115" height="128"/>

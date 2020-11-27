@@ -16,6 +16,22 @@ class MainViewController: UIViewController {
     }
     
 
+    @IBAction func goToGameView(_ sender: Any) {
+        performSegue(withIdentifier: "goToGameViewSegue", sender: nil)
+    }
+    
+    @IBAction func goToHistoryAchievementView(_ sender: Any) {
+        performSegue(withIdentifier: "goToHistoryAchievementViewSegue", sender: nil)
+    }
+    
+    @IBAction func goToTimelineView(_ sender: Any) {
+        performSegue(withIdentifier: "goToTimelineViewSegue", sender: nil)
+    }
+    
+    @IBAction func goToSettingView(_ sender: Any) {
+        performSegue(withIdentifier: "goToSettingViewSegue", sender: nil)
+        
+    }
     /*
     // MARK: - Navigation
 
