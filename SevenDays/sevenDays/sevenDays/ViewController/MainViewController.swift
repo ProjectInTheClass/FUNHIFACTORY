@@ -14,10 +14,12 @@ class MainViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
+    let mainGameStoryBoard = UIStoryboard(name: "MainGame", bundle: nil)
 
-    @IBAction func goToGameView(_ sender: Any) {
+    
+    @IBAction func goToGameView(_ sender: UIButton) {
         performSegue(withIdentifier: "goToGameViewSegue", sender: nil)
+        
     }
     
     @IBAction func goToHistoryAchievementView(_ sender: Any) {
