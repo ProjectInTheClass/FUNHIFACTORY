@@ -203,6 +203,7 @@ enum GameCharactersEnum {
     case unknown
     case wolf
     case ballam
+    case karon
     
     func info() -> GameCharacter {
         switch self {
@@ -216,6 +217,8 @@ enum GameCharactersEnum {
             return GameCharacter(name: "상처 입은 남자", profileImage: "", backgroundImage: "", infomation: [], Mission: "")
         case .ballam:
             return GameCharacter(name: "발람", profileImage: "", backgroundImage: "", infomation: [], Mission: "")
+        case .karon:
+            return GameCharacter(name: "카론", profileImage: "", backgroundImage: "", infomation: [], Mission: "")
         }
     }
 }
