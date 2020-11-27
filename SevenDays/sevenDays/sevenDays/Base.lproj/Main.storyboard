@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X81-3S-QOr">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
@@ -19,10 +19,10 @@
             </objects>
             <point key="canvasLocation" x="-1294" y="1018"/>
         </scene>
-        <!--View Controller-->
+        <!--Cover View Controller-->
         <scene sceneID="vPj-yE-1k3">
             <objects>
-                <viewController id="dC1-Fy-qze" sceneMemberID="viewController">
+                <viewController id="dC1-Fy-qze" customClass="CoverViewController" customModule="sevenDays" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hnw-oW-zua">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,14 +34,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRK-eo-6eO">
+                                <rect key="frame" x="184" y="668" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qwy-ft-PlB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="yXD-c6-aY5"/>
                     <connections>
-                        <segue destination="Mqu-6S-bbD" kind="show" id="Seb-lf-h7k"/>
-                        <segue destination="26O-3G-BxK" kind="show" id="ros-bA-JU9"/>
+                        <segue destination="Mqu-6S-bbD" kind="show" identifier="goToMainGameSegue" id="Seb-lf-h7k"/>
+                        <segue destination="26O-3G-BxK" kind="show" identifier="goToHomeSegue" id="ros-bA-JU9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o8Z-wG-wMo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -66,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="-2633" y="1538"/>
         </scene>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="2GB-KV-Hva">
             <objects>
-                <viewController id="26O-3G-BxK" sceneMemberID="viewController">
+                <viewController id="26O-3G-BxK" customClass="MainViewController" customModule="sevenDays" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KdM-8Q-6Gb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -176,10 +181,10 @@
             </objects>
             <point key="canvasLocation" x="-762" y="1538"/>
         </scene>
-        <!--View Controller-->
+        <!--Main History Achieve View Controller-->
         <scene sceneID="Hq6-nm-ObO">
             <objects>
-                <viewController id="ddX-u8-Yoa" sceneMemberID="viewController">
+                <viewController id="ddX-u8-Yoa" customClass="MainHistoryAchieveViewController" customModule="sevenDays" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y9h-Jg-ooa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -285,10 +290,10 @@
             </objects>
             <point key="canvasLocation" x="-1062" y="2244"/>
         </scene>
-        <!--View Controller-->
+        <!--Main Setting View Controller-->
         <scene sceneID="ICE-en-HN1">
             <objects>
-                <viewController id="tJ0-eJ-ynx" sceneMemberID="viewController">
+                <viewController id="tJ0-eJ-ynx" customClass="MainSettingViewController" customModule="sevenDays" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z7b-jL-mMc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -342,7 +347,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yT9-Ef-QBk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="954" y="2244"/>
+            <point key="canvasLocation" x="333" y="2244"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tav-RQ-8sp">
@@ -542,10 +547,10 @@
             </objects>
             <point key="canvasLocation" x="1813" y="2181"/>
         </scene>
-        <!--View Controller-->
+        <!--Main Timeline View Controller-->
         <scene sceneID="Gr7-dA-Eym">
             <objects>
-                <viewController id="u2j-8U-AaL" sceneMemberID="viewController">
+                <viewController id="u2j-8U-AaL" customClass="MainTimelineViewController" customModule="sevenDays" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PBt-h2-GGJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -606,7 +611,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QuP-O4-1k3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-42" y="2244"/>
+            <point key="canvasLocation" x="-367" y="2244"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="nVT-tf-w2O">
@@ -774,7 +779,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ZzK-3A-M6b"/>
-        <segue reference="30c-yw-IUd"/>
+        <segue reference="Seb-lf-h7k"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="book.closed.fill" catalog="system" width="115" height="128"/>
