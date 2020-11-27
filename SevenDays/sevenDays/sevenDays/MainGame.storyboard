@@ -9,15 +9,15 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main Game View Controller-->
         <scene sceneID="J8K-2t-5MH">
             <objects>
-                <viewController id="ltO-Gy-0Ry" customClass="ViewController" customModule="sevenDays" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ltO-Gy-0Ry" customClass="mainGameViewController" customModule="sevenDays" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sKz-hY-OqG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAk-kv-bEp">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAk-kv-bEp" userLabel="TopBar">
                                 <rect key="frame" x="0.0" y="44" width="414" height="71.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N일차" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O9Z-Xb-oMR">
@@ -35,8 +35,11 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="jVM-JU-TTw"/>
                                         </constraints>
                                         <state key="normal">
-                                            <imageReference key="image" image="circled-pause.png" symbolScale="large"/>
+                                            <imageReference key="image" image="circled-pause" symbolScale="large"/>
                                         </state>
+                                        <connections>
+                                            <action selector="pause:" destination="ltO-Gy-0Ry" eventType="touchUpInside" id="GDt-40-kAP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -51,7 +54,7 @@
                                     <constraint firstAttribute="bottom" secondItem="LlG-nW-6gZ" secondAttribute="bottom" constant="13.75" id="zzn-PV-OaS"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xe8-0R-VjX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xe8-0R-VjX">
                                 <rect key="frame" x="0.0" y="115.5" width="414" height="648.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -226,12 +229,19 @@
                                                 <state key="normal">
                                                     <imageReference key="image" image="chevron.forward.circle" catalog="system" symbolScale="large"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="resume:" destination="ltO-Gy-0Ry" eventType="touchUpInside" id="baB-dh-NP8"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ION-sF-XqN">
                                                 <rect key="frame" x="124.5" y="0.0" width="29.5" height="45"/>
                                                 <state key="normal">
                                                     <imageReference key="image" image="homekit" catalog="system" symbolScale="large"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goHome:" destination="ltO-Gy-0Ry" eventType="touchUpInside" id="apv-Qw-wGq"/>
+                                                    <action selector="resume:" destination="ltO-Gy-0Ry" eventType="touchUpInside" id="IkM-dt-guv"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -267,6 +277,12 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="NGP-7e-8Oa"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="homeButton" destination="ION-sF-XqN" id="Owg-Yt-MaQ"/>
+                        <outlet property="mainGameTableView" destination="Xe8-0R-VjX" id="YVG-aq-iPa"/>
+                        <outlet property="pauseBar" destination="Zlj-Ch-3Zd" id="3be-o6-Pp4"/>
+                        <outlet property="resumeButton" destination="rdI-uG-UeB" id="C4o-a3-fqK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMr-ne-m3P" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="Xfd-sd-wtN">
@@ -797,7 +813,7 @@
         <image name="chevron.forward.circle" catalog="system" width="128" height="121"/>
         <image name="chevron.left.circle" catalog="system" width="128" height="121"/>
         <image name="circle" catalog="system" width="128" height="121"/>
-        <image name="circled-pause.png" width="452" height="452"/>
+        <image name="circled-pause" width="452" height="452"/>
         <image name="clock" catalog="system" width="128" height="121"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
