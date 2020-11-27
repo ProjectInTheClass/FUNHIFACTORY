@@ -14,11 +14,14 @@ class MainViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    let mainGameStoryBoard = UIStoryboard(name: "MainGame", bundle: nil)
 
     
     @IBAction func goToGameView(_ sender: UIButton) {
-        performSegue(withIdentifier: "goToGameViewSegue", sender: nil)
+        let mainGameStoryBoard = UIStoryboard(name: "MainGame", bundle: nil)
+        let second = mainGameStoryBoard.instantiateViewController(withIdentifier: "mainGame")
+        second.modalPresentationStyle = .fullScreen
+        present(second, animated: true, completion: nil)
+        //performSegue(withIdentifier: "goToGameViewSegue", sender: nil)
         
     }
     
@@ -30,10 +33,9 @@ class MainViewController: UIViewController {
         performSegue(withIdentifier: "goToTimelineViewSegue", sender: nil)
     }
     
-    @IBAction func goToSettingView(_ sender: Any) {
+    /*@IBAction func goToSettingView(_ sender: Any) {
         performSegue(withIdentifier: "goToSettingViewSegue", sender: nil)
-        
-    }
+    }*/
     /*
     // MARK: - Navigation
 
