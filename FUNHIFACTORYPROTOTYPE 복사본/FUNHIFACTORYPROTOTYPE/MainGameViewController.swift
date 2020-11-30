@@ -609,7 +609,7 @@ func showChapterCover() {
             { [self] (timer) in
                 
                     //$는 텍스트의 타이핑 속도를 느려지게 하는 부분에서 사용할 수 있다. 먼저 $가 아닌 것들을 조건으로 놓는다.
-                    if characterArray[characterIndex] != "$" //&& isRunning == true
+                    if characterArray[characterIndex] != "$" //&& isRunning == truexz
                     {
                         while characterArray[characterIndex] == " "
                         {

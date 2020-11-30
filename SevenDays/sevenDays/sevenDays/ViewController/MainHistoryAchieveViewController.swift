@@ -7,7 +7,19 @@
 
 import UIKit
 
-class MainHistoryAchieveViewController: UIViewController {
+class MainHistoryAchieveViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
