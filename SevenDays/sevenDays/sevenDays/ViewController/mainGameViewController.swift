@@ -14,7 +14,6 @@ class mainGameViewController: UIViewController {
     @IBOutlet var resumeButton: UIButton!
     @IBOutlet var homeButton: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

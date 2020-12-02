@@ -7,4 +7,4 @@
 
 import Foundation
 
-let dummyData = Data(stories: [day0, day1], histories: [.lastMemories, .runawayGirl, .thePatronsConcerns, .theTestBegins], achivements: [.charonsInterrogation, .firstComradeArgo, .likeAWelllAgedWhiskey, .whereIBelong], FullGameCharactersInfo: GameCharacter)
+let dummyData = Data(stories: [day0, day1], histories: [.lastMemories, .runawayGirl, .thePatronsConcerns, .theTestBegins], achivements: [.charonsInterrogation, .firstComradeArgo, .likeAWelllAgedWhiskey, .whereIBelong], FullGameCharactersInfo: ["kirell":GameCharacter(name: "키렐", profileImage: "kirellProfile", backgroundImage: "kirellBackGround", infomation: [], mission: "", likability: 0)])
