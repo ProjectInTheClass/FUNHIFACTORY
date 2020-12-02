@@ -7,19 +7,7 @@
 
 import UIKit
 
-class mainGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        1
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
-    }
-    
+class mainGameViewController: UIViewController {
     
     @IBOutlet var mainGameTableView: UITableView!
     @IBOutlet var pauseBar: UIView!
@@ -29,8 +17,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mainGameTableView.dataSource = self
-        self.mainGameTableView.delegate = self
     }
 
     @IBAction func pause(_ sender: Any) {
