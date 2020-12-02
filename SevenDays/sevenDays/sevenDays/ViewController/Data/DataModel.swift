@@ -47,13 +47,13 @@ enum History {
     func historyInfo() -> HistoryStructure {
     switch self {
     case .theTestBegins:
-        return HistoryStructure(name: "시련의 시작", image: "", text: "사자의 나침반이 가리키는 방향으로 가십시오.")
+        return HistoryStructure(name: "시련의 시작", image: "historyImage1", text: "사자의 나침반이 가리키는 방향으로 가십시오.")
     case .lastMemories:
-        return HistoryStructure(name: "마지막 기억", image: "", text: "이것은 죽기 전 마지막 장면인가?")
+        return HistoryStructure(name: "마지막 기억", image: "historyImage2", text: "이것은 죽기 전 마지막 장면인가?")
     case .runawayGirl:
-        return HistoryStructure(name: "가출", image: "", text: "그 쓰레기는 술을 마실 때마다 나를 때리고 그걸 말리러 온 엄마를 때렸다.")
+        return HistoryStructure(name: "가출", image: "historyImage3", text: "그 쓰레기는 술을 마실 때마다 나를 때리고 그걸 말리러 온 엄마를 때렸다.")
     case .thePatronsConcerns:
-        return HistoryStructure(name: "후견인의 걱정", image: "", text: "그 사람은 쓸데없는 사람까지 처리했다며 나를 꾸짖었다.")
+        return HistoryStructure(name: "후견인의 걱정", image: "historyImage4", text: "그 사람은 쓸데없는 사람까지 처리했다며 나를 꾸짖었다.")
     default:
         break
         
@@ -80,9 +80,9 @@ enum Achievement {
     func achievementInfo() -> AchievementStructure {
     switch self {
     case .charonsInterrogation:
-        return AchievementStructure(name: "카론의 심문", image: "", text: "생과 사의 경계에 있는 최후의 꿈에 오신 것을 환영합니다.")
+        return AchievementStructure(name: "카론의 심문", image: "achievementImage1", text: "생과 사의 경계에 있는 최후의 꿈에 오신 것을 환영합니다.")
     case .firstComradeArgo:
-        return AchievementStructure(name: "첫 동료 아르고", image: "", text: "흠.... 키렐, 그 말은 제가 동료가 되는 게 당신에게 무조건 유리하다는 뜻인가요?")
+        return AchievementStructure(name: "첫 동료 아르고", image: "achievementImage2", text: "흠.... 키렐, 그 말은 제가 동료가 되는 게 당신에게 무조건 유리하다는 뜻인가요?")
     case .likeAWelllAgedWhiskey:
         return AchievementStructure(name: "중년의 품격", image: "", text: "...이럴 땐 제 과제가 참 어렵습니다.")
     case .whereIBelong:
@@ -98,35 +98,55 @@ enum Achievement {
 
 // 키렐 포함 인물들 정보를 담기 위한 스트럭처
 // 프라퍼티 설명:  인물 이름, 대표 이미지, 키렐이 관찰기록한 듯한 내용의 해당 인물 정보들(인물상세페이지에 있음), 시련 미션, 호감도
-struct GameCharacter {
+class GameCharacter {
     let name: String
     let profileImage: String
     let backgroundImage: String
     let infomation: [String]
-    let Mission : String
+    let mission : String
     var likability: Int = 0
     
+    init(name: String, profileImage: String, backgroundImage: String, infomation: [String], mission : String, likability: Int) {
+        self.name = name
+        self.profileImage = profileImage
+        self.backgroundImage = backgroundImage
+        self.infomation = infomation
+        self.mission = mission
+        self.likability = 0
+    }
+     
 }
 //----------얘는 유저스트럭처에 포함됨-----------
 
 //유저가 파악한 현재 인물들 정보를 반영해 넣을 스트럭처
-struct GameCharacters {                                                                                                 //현재 유저가 발견한 캐릭터만 확인되는 형태라면, 이름이 직관적이지 않다.
-    let kirell: GameCharacter
-    let hilde: GameCharacter
-    let argo: GameCharacter
-    let philio: GameCharacter
-    let balaam: GameCharacter
-}
+
+//---------- 캐릭터 인스턴스 인스턴스. 여기서 다 참조해서 쓰는 거임. 이넘 안의 캐릭터 정보도 여기에서 가져다 썼음.(GameCharacter는 스트럭처->클래스로 타입 수정함)
+var currentCharactersInfo: [String:GameCharacter]
+    
+    = [
+        "kirell":GameCharacter(name: "키렐", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "argo":GameCharacter(name: "아르고", profileImage: "", backgroundImage: "", infomation: [], mission: "친한 동료를 죽여라", likability: 0),
+        "kirell":GameCharacter(name: "???", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "kirell":GameCharacter(name: "울프", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "kirell":GameCharacter(name: "발람", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "kirell":GameCharacter(name: "카론", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "kirell":GameCharacter(name: "힐데", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "kirell":GameCharacter(name: "필리오", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),]
+
+let noDataCharacter = GameCharacter(name: "캐릭터가 없습니다", profileImage: "", backgroundImage: "", infomation: [], mission: "", likability: 0)
+
+
 //------------------------------------유저------------------------------------
 
 //  프라퍼티 설명: 설정, 티켓(게임화폐), 유저가 달성한 히스토리, 유저가 달성한 업적, 타임라인(?), 유저가 파악한 캐릭터들 정보
+// 게임 캐릭터 : 딕셔너리 형태로 바꿈. [인물영어이름:게임캐릭터 인스턴스] 구조임.
 struct User {
     var setting: Setting
     var tickets: Int
     var currentHistories: [History]
     var currentAchievements: [Achievement]
     //var timellne: nil
-    var gameChracters: GameCharacters
+    var currentGameCharacter: [String:GameCharacter] = currentCharactersInfo
 }
 
 //------------------------------------스토리------------------------------------
@@ -190,13 +210,13 @@ struct DayEpisode {
 // 총 스토리 본문, 모든 히스토리, 모든 업적, 전체 인물 정보
 struct Data {
     let stories: [DayEpisode]
-    let histories: [[Int:History]]
-    let achivements: [[Int:Achievement]]
-    let gameCharacters: GameCharacters
+    let histories: [History]
+    let achivements: [Achievement]
+    let FullGameCharactersInfo: [String:GameCharacter]
 }
 
 
-
+// 게임 캐릭터 클래스로 바꾼 것. 이 info() 안에 있는 게 현재 캐릭터 정보 원본 인스턴스. 여기서도 참조해서 쓰면 돼요.
 enum GameCharactersEnum {
     case kirell
     case argo
@@ -204,21 +224,62 @@ enum GameCharactersEnum {
     case wolf
     case ballam
     case karon
+    case hilde
+    case philio
     
     func info() -> GameCharacter {
+        
         switch self {
         case .kirell:
-            return GameCharacter(name: "키렐", profileImage: "", backgroundImage: "", infomation: [], Mission: "나침반")
+            if let kirell = currentCharactersInfo["kirell"] {
+                return kirell
+            } else {
+             return noDataCharacter
+            }
+            
         case .argo:
-            return GameCharacter(name: "아르고",profileImage: "", backgroundImage: "", infomation: [], Mission: "가까운 사람")
+            if let argo = currentCharactersInfo["argo"] {
+                return argo
+            } else {
+                return noDataCharacter
+               }
         case .unknown:
-            return GameCharacter(name: "???", profileImage: "", backgroundImage: "", infomation: [], Mission: "")
+            if let unknown = currentCharactersInfo["unknown"] {
+                return unknown
+            } else {
+                return noDataCharacter
+               }
         case .wolf:
-            return GameCharacter(name: "상처 입은 남자", profileImage: "", backgroundImage: "", infomation: [], Mission: "")
+            if let wolf = currentCharactersInfo["wolf"] {
+                return wolf
+            } else {
+                return noDataCharacter
+               }
         case .ballam:
-            return GameCharacter(name: "발람", profileImage: "", backgroundImage: "", infomation: [], Mission: "")
+            if let ballam = currentCharactersInfo["ballam"] {
+                return ballam
+            } else {
+                return noDataCharacter
+               }
         case .karon:
-            return GameCharacter(name: "카론", profileImage: "", backgroundImage: "", infomation: [], Mission: "")
+            if let karon = currentCharactersInfo["karon"] {
+                return karon
+            } else {
+                return noDataCharacter
+               }
+        case .hilde:
+            if let hilde = currentCharactersInfo["argo"] {
+                return hilde
+            } else {
+                return GameCharacter(name: "캐릭터가 없습니다", profileImage: "", backgroundImage: "", infomation: [], mission: "", likability: 0)
+               }
+        case .philio:
+            if let philio = currentCharactersInfo["argo"] {
+                return philio
+            } else {
+                return GameCharacter(name: "캐릭터가 없습니다", profileImage: "", backgroundImage: "", infomation: [], mission: "", likability: 0)
+               }
         }
-    }
+    
+}
 }
