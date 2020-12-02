@@ -12,7 +12,7 @@ class CoverViewController: UIViewController {
     
      @IBOutlet weak var imageView: UIImageView!
    
-     @IBOutlet weak var label: UIImageView!
+     @IBOutlet weak var arrow: UIImageView!
      
      
      let images = ["coverImage1", "coverImage2", "coverImage3", "coverImage4"]
@@ -61,11 +61,11 @@ class CoverViewController: UIViewController {
     func rotateButton() {
         if !buttonIsOn {
             UIImageView.animate(withDuration: 0.8, delay: 0.5, options: [.repeat], animations: {[self]  in
-                label.transform = CGAffineTransform(rotationAngle: .pi)
+                arrow.transform = CGAffineTransform(rotationAngle: .pi)
 
             }, completion: nil)
         } else {
-            label.layer.removeAnimation(forKey: "")
+            arrow.layer.removeAnimation(forKey: "")
         }
       
         
@@ -74,11 +74,11 @@ class CoverViewController: UIViewController {
     func light() {
         if !buttonIsOn {
             UIImageView.animate(withDuration: 0.4, delay: 0.5, options: [.repeat, .autoreverse], animations: {[self]  in
-                label.alpha = 0.3
+                arrow.alpha = 0.3
 
             }, completion: nil)
         } else {
-            label.layer.removeAllAnimations()
+            arrow.layer.removeAllAnimations()
         }
     }
 }
