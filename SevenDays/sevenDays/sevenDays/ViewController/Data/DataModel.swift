@@ -103,7 +103,7 @@ struct GameCharacter {
     let profileImage: String
     let backgroundImage: String
     let infomation: [String]
-    let Mission : String
+    let mission : String
     var likability: Int = 0
     
 }
@@ -116,6 +116,8 @@ struct GameCharacters {                                                         
     let argo: GameCharacter
     let philio: GameCharacter
     let balaam: GameCharacter
+    
+    //배열 or dic
 }
 //------------------------------------유저------------------------------------
 
@@ -150,6 +152,8 @@ struct Chat {
     let type: ChatType
     let who: GameCharactersEnum
     let characterFace: Bool
+    //touchable 여부가 들어가는 것이 좋을 듯 bool
+        //textPopUp도 마찬가지
 }
 
 
@@ -188,11 +192,14 @@ struct DayEpisode {
 
 // 더미데이터 담을 스트럭처
 // 총 스토리 본문, 모든 히스토리, 모든 업적, 전체 인물 정보
+//foundation의 data와 겹침
 struct Data {
     let stories: [DayEpisode]
     let histories: [[Int:History]]
     let achivements: [[Int:Achievement]]
     let gameCharacters: GameCharacters
+    
+    //데이터를 가져올 때는 여기에 함수를 만드는 방법이 있다ㅏ.ㅏ
 }
 
 
@@ -208,17 +215,17 @@ enum GameCharactersEnum {
     func info() -> GameCharacter {
         switch self {
         case .kirell:
-            return GameCharacter(name: "키렐", profileImage: "", backgroundImage: "", infomation: [], Mission: "나침반")
+            return GameCharacter(name: "키렐", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반")
         case .argo:
-            return GameCharacter(name: "아르고",profileImage: "", backgroundImage: "", infomation: [], Mission: "가까운 사람")
+            return GameCharacter(name: "아르고",profileImage: "", backgroundImage: "", infomation: [], mission: "가까운 사람")
         case .unknown:
-            return GameCharacter(name: "???", profileImage: "", backgroundImage: "", infomation: [], Mission: "")
+            return GameCharacter(name: "???", profileImage: "", backgroundImage: "", infomation: [], mission: "")
         case .wolf:
-            return GameCharacter(name: "상처 입은 남자", profileImage: "", backgroundImage: "", infomation: [], Mission: "")
+            return GameCharacter(name: "상처 입은 남자", profileImage: "", backgroundImage: "", infomation: [], mission: "")
         case .ballam:
-            return GameCharacter(name: "발람", profileImage: "", backgroundImage: "", infomation: [], Mission: "")
+            return GameCharacter(name: "발람", profileImage: "", backgroundImage: "", infomation: [], mission: "")
         case .karon:
-            return GameCharacter(name: "카론", profileImage: "", backgroundImage: "", infomation: [], Mission: "")
+            return GameCharacter(name: "카론", profileImage: "", backgroundImage: "", infomation: [], mission: "")
         }
     }
 }
