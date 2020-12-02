@@ -1,51 +1,52 @@
 //
-//  CoverViewController.swift
-//  sevenDays
+//  ViewController.swift
+//  animationPractice
 //
 //  Created by 최서연 on 2020/11/27.
 //
 
 import UIKit
 
-class CoverViewController: UIViewController {
+class ViewController: UIViewController {
 
-    
-     @IBOutlet weak var imageView: UIImageView!
    
-     @IBOutlet weak var label: UIImageView!
-     
-     
-     let images = ["coverImage1", "coverImage2", "coverImage3", "coverImage4"]
-     var index = 0
-     var buttonIsOn = false {
-         didSet {
+    @IBOutlet weak var imageView: UIImageView!
+  
+    @IBOutlet weak var label: UIImageView!
+    
+    
+    let images = ["coverImage1", "coverImage2", "coverImage3", "coverImage4"]
+    var index = 0
+    var buttonIsOn = false {
+        didSet {
             rain()
             rotateButton()
-            light()
-         }
-     }
-     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        rain()
-       rotateButton()
-        light()
-
-        // Do any additional setup after loading the view.
+//            if buttonIsOn {
+//                rotateButton()
+//            } else {
+//                button.layer.removeAllAnimations()
+//            }
+        }
     }
     
     
-    @IBAction func goToNextView(_ sender: Any) {
+        
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    
+}
+    
+    @IBAction func buttonTouched(_ sender: Any) {
         buttonIsOn = !buttonIsOn
-        performSegue(withIdentifier: "goToHomeSegue", sender: nil)
+        
     }
     
     func rain() {
         Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true)
             { [self](timer) in
             
-            if !buttonIsOn {
+            if buttonIsOn {
                 imageView.image = UIImage(named: images[index])
                 if index > 2 {
                     index = 0
@@ -59,7 +60,7 @@ class CoverViewController: UIViewController {
     }
     
     func rotateButton() {
-        if !buttonIsOn {
+        if buttonIsOn {
             UIImageView.animate(withDuration: 0.8, delay: 0.5, options: [.repeat], animations: {[self]  in
                 label.transform = CGAffineTransform(rotationAngle: .pi)
 
@@ -72,9 +73,9 @@ class CoverViewController: UIViewController {
     }
     
     func light() {
-        if !buttonIsOn {
-            UIImageView.animate(withDuration: 0.4, delay: 0.5, options: [.repeat, .autoreverse], animations: {[self]  in
-                label.alpha = 0.3
+        if buttonIsOn {
+            UIImageView.animate(withDuration: 0.8, delay: 0.5, options: [.repeat, .autoreverse], animations: {[self]  in
+                imageView.alpha = 0
 
             }, completion: nil)
         } else {

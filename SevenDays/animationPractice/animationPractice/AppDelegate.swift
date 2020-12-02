@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  sevenDays
+//  animationPractice
 //
-//  Created by 최서연 on 2020/11/25.
+//  Created by 최서연 on 2020/11/27.
 //
 
 import UIKit
@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        //sleep(3)
         return true
     }
 

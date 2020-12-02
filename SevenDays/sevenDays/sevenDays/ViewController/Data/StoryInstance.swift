@@ -147,16 +147,16 @@ let day0 = DayEpisode(history: .theTestBegins, storyBlocks: [
                         Chat(text: "현실의 당신은 정이 많은 사람이라 할 수 있겠군요.", image: nil, type: .onlyText, who: .karon, characterFace: false),
                         Chat(text: "당신의 죽음에 슬퍼할 사람이 많을 거 같습니다.", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                        choices: [
-                        Choice(text: <#T##String#>, likability: [], nextTextIndex: <#T##Int#>),
-                        Choice(text: <#T##String#>, likability: [], nextTextIndex: <#T##Int#>)], achievement: nil),
+                        Choice(text: "비어있음", likability: [], nextTextIndex: 666),
+                        Choice(text: "비어있음", likability: [], nextTextIndex: 666)], achievement: nil),
     BlockOfDayEpisode(chats: //첫번째 질문, 문답 2, 22
                        [Chat(text: "", image: "book", type: .untouchableImage, who: .karon, characterFace: false),
                         Chat(text: "어디보자. 방금의 문답으로도", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "현실에 대한 미련이 남아있는\n사람이라 할 수 있겠군요.", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "미련만큼 부활에 대한 의지를 보여주실 거라고 믿습니다.", image: nil, type: .onlyText, who: .karon, characterFace: true)],
                        choices: [
-                        Choice(text: <#T##String#>, likability: [], nextTextIndex: <#T##Int#>),
-                        Choice(text: <#T##String#>, likability: [], nextTextIndex: <#T##Int#>)], achievement: nil),
+                        Choice(text: "비어있음", likability: [], nextTextIndex: 666),
+                        Choice(text: "비어있음", likability: [], nextTextIndex: 666)], achievement: nil),
     BlockOfDayEpisode(chats:
                        [Chat(text: "그렇긴 한데,", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "억지로라도 울어야 된다는 말로 들리는군요.", image: nil, type: .onlyText, who: .karon, characterFace: false)],
