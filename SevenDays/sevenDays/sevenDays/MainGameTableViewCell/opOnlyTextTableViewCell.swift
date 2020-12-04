@@ -9,6 +9,10 @@ import UIKit
 
 class opOnlyTextTableViewCell: UITableViewCell {
 
+    @IBOutlet var opponentName: UILabel!
+    @IBOutlet var opponentImage: UIImageView!
+    @IBOutlet var opponentChat: UITextView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,5 +23,12 @@ class opOnlyTextTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func opProfileUpdate(imageName:String){
+        opponentImage.image = UIImage(named: imageName)
+    }
+    func opChatUpdate(name:String,chat:String){
+        opponentName.text = name
+        opponentChat.text = chat
+    }
 }

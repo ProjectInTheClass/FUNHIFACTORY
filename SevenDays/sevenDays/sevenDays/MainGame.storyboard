@@ -58,7 +58,7 @@
                                 <rect key="frame" x="0.0" y="115.5" width="414" height="648.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="71" id="kzV-du-DWb" userLabel="opOnlyText" customClass="onlyTextTableViewCell" customModule="sevenDays" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="opOnlyText" rowHeight="71" id="kzV-du-DWb" userLabel="opOnlyText" customClass="opOnlyTextTableViewCell" customModule="sevenDays" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kzV-du-DWb" id="AFO-AJ-MZy">
@@ -98,8 +98,13 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="b1B-JX-QTZ" secondAttribute="trailing" constant="81" id="ztL-4c-LgC"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="opponentChat" destination="b1B-JX-QTZ" id="vHh-sH-PRg"/>
+                                            <outlet property="opponentImage" destination="9ty-X2-LH9" id="dl5-oz-Lrz"/>
+                                            <outlet property="opponentName" destination="Jht-3c-zdY" id="oHn-s1-x5a"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="71" id="6ud-Qn-v9T" userLabel="myOnlyText" customClass="onlyTextTableViewCell" customModule="sevenDays" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myOnlyText" rowHeight="71" id="6ud-Qn-v9T" userLabel="myOnlyText" customClass="myOnlyTextTableViewCell" customModule="sevenDays" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="99" width="414" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6ud-Qn-v9T" id="9kn-37-Lm5">
@@ -136,6 +141,11 @@
                                                 <constraint firstAttribute="trailing" secondItem="079-Qv-QHt" secondAttribute="trailing" constant="15" id="aZl-s3-BDw"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="myChatTextView" destination="2fA-fb-am0" id="961-Za-j3G"/>
+                                            <outlet property="myName" destination="QUY-39-blt" id="U2R-hz-jBh"/>
+                                            <outlet property="myProfile" destination="079-Qv-QHt" id="EP6-Iy-08L"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="274" id="Q2l-Xx-T9y" userLabel="myTouchableImageCell">
                                         <rect key="frame" x="0.0" y="170" width="414" height="274"/>
