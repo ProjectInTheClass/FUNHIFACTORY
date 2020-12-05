@@ -10,55 +10,55 @@ import Foundation
 let currentChatArray : [String] = []
 
 let day0 = DayEpisode(history: .theTestBegins, storyBlocks: [
-    BlockOfDayEpisode(id: "001", chats:
+    "001":BlockOfDayEpisode(chats:
                     [Chat(text: "으으, 추워. 여긴 어디지?", image: nil, type: .textPopup, who: .kirell, characterFace: false),
                     Chat(text: nil, image: "karonRoom", type: .untouchableImage, who: .karon, characterFace: true),
                     Chat(text: "살벌한 꿈이군요.", image: nil, type: .onlyText, who: .karon, characterFace: true),
                     Chat(text: "하필이면 취조실이라니.", image: nil, type: .onlyText, who: .karon, characterFace: false)], choices: [Choice(text: "누구냐!?", likability: [], nextTextId: "001"), Choice(text: "누군진 몰라도 지금 상황을 설명해주겠어?", likability: [], nextTextId: "001")], achievement: nil),
-    BlockOfDayEpisode(id: "002", chats:
+    "002":BlockOfDayEpisode(chats:
                         [Chat(text: "저는 죽음의 안내자 카론.", image: nil, type: .onlyText, who: .karon, characterFace: true),
                          Chat(text: "생과 사의 경계에 있는 최후의 꿈에 오신 것을", image: nil, type: .onlyText, who: .karon, characterFace: false),
                          Chat(text: "환영합니다.", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                       choices: [
                         Choice(text: "대체 뭔 소리야?", likability: [], nextTextId: "002"),
                         Choice(text: "죽음의 안내자? 지금 날 놀리는 건가?", likability: [], nextTextId: "002")], achievement: nil),
-    BlockOfDayEpisode(id: "003", chats:
+    "003":BlockOfDayEpisode(chats:
                         [Chat(text: "당신은 죽었습니다.", image: nil, type: .onlyText, who: .karon, characterFace: true)],
                       choices: [
                         Choice(text: "그래서 어쩌라고?", likability: [], nextTextId: "003"),
                         Choice(text: "죽은 사람이 어떻게 말을 할 수 있나?", likability: [], nextTextId: "003")], achievement: nil),
-    BlockOfDayEpisode(id: "004", chats:
+    "004":BlockOfDayEpisode(chats:
                         [Chat(text: "당장은 이해가 안 되실 겁니다.", image: nil, type: .onlyText, who: .karon, characterFace: true),
                          Chat(text: "망각의 강을 막 빠져나오셨으니까요.", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                         choices: [
                          Choice(text: "아… 네… 그러세요….", likability: [], nextTextId: "004"),
                          Choice(text: "뭐야, 무슨 영화나 소설 설정도 아니고.", likability: [], nextTextId: "004")], achievement: nil),
-    BlockOfDayEpisode(id: "005", chats:
+    "005":BlockOfDayEpisode(chats:
                         [Chat(text: "의심을 풀기 위해, 하나 묻겠습니다.", image: nil, type: .onlyText, who: .karon, characterFace: true),
                          Chat(text: "당신의 이름. 기억할 수 있습니까?", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                         choices: [
                          Choice(text: "나참. 어린애 장난도 아니고 유치하게", likability: [], nextTextId: "005"),
                          Choice(text: "그 정도야 뭐.", likability: [], nextTextId: "005")], achievement: nil),
-    BlockOfDayEpisode(id: "006", chats:
+    "006":BlockOfDayEpisode(chats:
                         [Chat(text: "...그런데 내 이름이 뭐였지?", image: nil, type: .onlyText, who: .kirell, characterFace: true),
                          Chat(text: "오기 전에 뭘 했죠? 사소한 거라도 말해보시죠.", image: nil, type: .onlyText, who: .karon, characterFace: true)],
                         choices: [
                             Choice(text: "아무것도... 모르겠어.", likability: [], nextTextId: "006"),
                          Choice(text: "어... 어라. 너! 내 머릿속에 뭘 한거지?", likability: [], nextTextId: "006")], achievement: nil),
-    BlockOfDayEpisode(id: "007", chats:
+    "007":BlockOfDayEpisode(chats:
                         [Chat(text: "설명해 드리죠.", image: nil, type: .onlyText, who: .karon, characterFace: true),
                          Chat(text: "당신의 이름은 키렐. \n망각의 강을 막 건넌", image: nil, type: .onlyText, who: .karon, characterFace: false),
                          Chat(text: "망자입니다.", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                         choices: [
                          Choice(text: "사신. 망각의 강. 그리고 내 이름…\n알겠고. 본론이 뭐야?", likability: [], nextTextId: "007"),
                          Choice(text: "젠장. 대체 어떻게 된거야?", likability: [], nextTextId: "007")], achievement: nil),
-    BlockOfDayEpisode(id: "008", chats:
+    "008":BlockOfDayEpisode(chats:
                         [Chat(text: "당신은 현재 ‘죽음에 이르기 직전’에 있습니다. ", image: nil, type: .onlyText, who: .karon, characterFace: true),
                          Chat(text: "그런 당신에게 부활의 기회를 주려고 합니다.", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                         choices: [
                          Choice(text: "점점 더 어처구니가 없군. 알았으니 계속 설명해봐.", likability: [], nextTextId: "008"),
                          Choice(text: "다시 태어날 수 있는 건가?", likability: [], nextTextId: "008")], achievement: nil),
-    BlockOfDayEpisode(id: "009", chats:
+    "009":BlockOfDayEpisode(chats:
                         [Chat(text: "부활 가능성이 있는 분을 안내하는 것이 제", image: nil, type: .onlyText, who: .karon, characterFace: true),
                          Chat(text: "역할입니다.", image: nil, type: .onlyText, who: .karon, characterFace: false),
                          Chat(text: "하지만 그냥은 안 됩니다. ", image: nil, type: .onlyText, who: .karon, characterFace: false),
@@ -66,31 +66,31 @@ let day0 = DayEpisode(history: .theTestBegins, storyBlocks: [
                         choices: [
                          Choice(text: "역시 공짜는 없군.", likability: [], nextTextId: "009"),
                          Choice(text: "왜 그런게 필요하지?", likability: [], nextTextId: "009")], achievement: nil),
-    BlockOfDayEpisode(id: "010", chats:
+    "010":BlockOfDayEpisode(chats:
                         [Chat(text: "부활하기 위해서는 자격이 필요합니다.", image: nil, type: .onlyText, who: .karon, characterFace: true),
                          Chat(text: "그 자격을 확인하기 위한 시련인 것입니다.", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                         choices: [
                          Choice(text: "운전면허 시험 같은 건가?", likability: [], nextTextId: "010"),
                          Choice(text: "동화 속 주인공이 된 기분이군.", likability: [], nextTextId: "010")], achievement: nil),
-    BlockOfDayEpisode(id: "011", chats:
+    "011":BlockOfDayEpisode(chats:
                         [Chat(text: "후후후, 재미있는 비유군요.", image: nil, type: .onlyText, who: .karon, characterFace: true)],
                         choices: [
                          Choice(text: "이런 말 하기는 그런데, 내가 왜 부활해야 하지?", likability: [], nextTextId: "011"),
                          Choice(text: "날 부활시키면 당신에게 무슨 이득이야?", likability: [], nextTextId: "012")], achievement: nil),
-    BlockOfDayEpisode(id: "012", chats:
+    "012":BlockOfDayEpisode(chats:
                        [Chat(text: "하지만 그건 제가 답할 의문이 아닙니다.", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "당신이 찾아야 할 답입니다.", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                        choices: [
                         Choice(text: "", likability: [], nextTextId: "013"),
                         Choice(text: "", likability: [], nextTextId: "013")], achievement: nil),
-    BlockOfDayEpisode(id: "013", chats:
+    "013":BlockOfDayEpisode(chats:
                        [Chat(text: "다른 이유는 없습니다.", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "이것이 제 사명이기 때문입니다.", image: nil, type: .onlyText, who: .karon, characterFace: false),
                         Chat(text: "그보다 당신이 부활해야 할 이유를 찾는 것이 낫지 않을까요?", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                        choices: [
                         Choice(text: "", likability: [], nextTextId: "013"),
                         Choice(text: "", likability: [], nextTextId: "013")], achievement: nil),
-    BlockOfDayEpisode(id: "014", chats:
+    "014":BlockOfDayEpisode(chats:
                        [Chat(text: "당신은 기억이 없기 때문에 부활을 해야 할 이유도,", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "동기도 없을 겁니다.", image: nil, type: .onlyText, who: .karon, characterFace: false),
                         Chat(text: "살아야 할 이유를 찾지 못하고 저승을 떠도는", image: nil, type: .onlyText, who: .karon, characterFace: false),
@@ -101,49 +101,49 @@ let day0 = DayEpisode(history: .theTestBegins, storyBlocks: [
                        choices: [
                         Choice(text: "장난해? 방금까지 기억이 없다고 했잖아.", likability: [], nextTextId: "014"),
                         Choice(text: "이미 망각의 강을 건넜는데?", likability: [], nextTextId: "014")], achievement: nil),
-    BlockOfDayEpisode(id: "015", chats:
+    "015":BlockOfDayEpisode(chats:
                        [Chat(text: "기억은 없어도 됩니다.", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "시련에 임하는 자신을 알리는 것이죠.", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                        choices: [
                         Choice(text: "머리 아픈 얘기가 나올 거 같은데.", likability: [], nextTextId: "015"),
                         Choice(text: "나 자신을 알라 이건가.", likability: [], nextTextId: "015")], achievement: nil),
-    BlockOfDayEpisode(id: "016", chats:
+    "016":BlockOfDayEpisode(chats:
                        [Chat(text: "이제부터 질문을 할 테니.", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "마음 내키는 대로 대답하십시오.", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                        choices: [
                         Choice(text: "틀리면?", likability: [], nextTextId: "016"),
                         Choice(text: "신중하게 답해야 하는 건가?", likability: [], nextTextId: "016")], achievement: nil),
-    BlockOfDayEpisode(id: "017", chats:
+    "017":BlockOfDayEpisode(chats:
                        [Chat(text: "정답은 없습니다.", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "하지만 답변을 하면서 자신에 대해 알게 될 겁니다.", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                        choices: [
                         Choice(text: "스무고개 같은 느낌인데.", likability: [], nextTextId: "017"),
                         Choice(text: "답변을 하면서 내 성격을 자연스럽게 드러낸다는 건가.", likability: [], nextTextId: "017")], achievement: nil),
-    BlockOfDayEpisode(id: "018", chats:
+    "018":BlockOfDayEpisode(chats:
                         [Chat(text: "그렇다면 지금부터는 답변을 신중하게 해야겠군", image: nil, type: .textPopup, who: .kirell, characterFace: true),
                         Chat(text: "우선 첫 번째 주제의 질문입니다.", image: nil, type: .onlyText, who: .karon, characterFace: false),
                         Chat(text: "키렐, 지금 당장 알고 싶은 정보가 있습니까?", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                        choices: [
                         Choice(text: "음, 가족들에 대해 알고 싶어.", likability: [], nextTextId: "018"),
                         Choice(text: "죽은 이유를 알고 싶어.", likability: [], nextTextId: "027")], achievement: nil),
-    BlockOfDayEpisode(id: "019", chats:
+    "019":BlockOfDayEpisode(chats:
                        [Chat(text: "대부분 죽기 전 가족을 떠올리시죠.", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "당신의 가족이 어떻게 있기를 바랍니까?", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                        choices: [
                         Choice(text: "슬퍼하고 있었으면 해.", likability: [], nextTextId: "019"),
                         Choice(text: "당연히 행복했으면 해.", likability: [], nextTextId: "024")], achievement: nil),
-    BlockOfDayEpisode(id: "020", chats:
+    "020":BlockOfDayEpisode(chats:
                        [Chat(text: "호오, 슬퍼하기를 바란다고요?", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "어째서입니까?", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                        choices: [
                         Choice(text: "그만큼 나를 진심으로 사랑했다는 뜻이니까.", likability: [], nextTextId: "020"),
                         Choice(text: "가족이 죽었는데 당연히 슬퍼해야지.", likability: [], nextTextId: "023")], achievement: nil),
-    BlockOfDayEpisode(id: "021", chats:
+    "021":BlockOfDayEpisode(chats:
                        [Chat(text: "호오... 가족의 사랑을 확인하고 싶은 겁니까?", image: nil, type: .onlyText, who: .karon, characterFace: true)],
                        choices: [
                         Choice(text: "다음", likability: [], nextTextId: "022"),
                         Choice(text: "다음", likability: [], nextTextId: "022")], achievement: nil),
-    BlockOfDayEpisode(id: "022", chats: //첫번째 질문, 문답 1, 21
+    "022":BlockOfDayEpisode(chats: //첫번째 질문, 문답 1, 21
                        [Chat(text: "", image: "book", type: .untouchableImage, who: .karon, characterFace: false),
                         Chat(text: "어디보자. 방금의 문답으로도", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "현실의 당신은 정이 많은 사람이라 할 수 있겠군요.", image: nil, type: .onlyText, who: .karon, characterFace: false),
@@ -151,7 +151,7 @@ let day0 = DayEpisode(history: .theTestBegins, storyBlocks: [
                        choices: [
                         Choice(text: "비어있음", likability: [], nextTextId: "666"),
                         Choice(text: "비어있음", likability: [], nextTextId: "666")], achievement: nil),
-    BlockOfDayEpisode(id: "023", chats: //첫번째 질문, 문답 2, 22
+    "023":BlockOfDayEpisode(chats: //첫번째 질문, 문답 2, 22
                        [Chat(text: "", image: "book", type: .untouchableImage, who: .karon, characterFace: false),
                         Chat(text: "어디보자. 방금의 문답으로도", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "현실에 대한 미련이 남아있는\n사람이라 할 수 있겠군요.", image: nil, type: .onlyText, who: .karon, characterFace: true),
@@ -159,67 +159,67 @@ let day0 = DayEpisode(history: .theTestBegins, storyBlocks: [
                        choices: [
                         Choice(text: "비어있음", likability: [], nextTextId: "666"),
                         Choice(text: "비어있음", likability: [], nextTextId: "666")], achievement: nil),
-    BlockOfDayEpisode(id: "024", chats:
+    "024":BlockOfDayEpisode(chats:
                        [Chat(text: "그렇긴 한데,", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "억지로라도 울어야 된다는 말로 들리는군요.", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                        choices: [
                         Choice(text: "", likability: [], nextTextId: "022"),
                         Choice(text: "", likability: [], nextTextId: "022")], achievement: nil),
-    BlockOfDayEpisode(id: "025", chats:
+    "025":BlockOfDayEpisode(chats:
                        [Chat(text: "하지만 가족들이 당신 없이 행복할 수 있을까요?", image: nil, type: .onlyText, who: .karon, characterFace: true)],
                        choices: [
                         Choice(text: "힘들라나...", likability: [], nextTextId: "025"),
                         Choice(text: "반드시 행복해야지.", likability: [], nextTextId: "026")], achievement: nil),
-    BlockOfDayEpisode(id: "026", chats:
+    "026":BlockOfDayEpisode(chats:
                        [Chat(text: "죽어서도 걱정입니까?", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "성실한 가장 같군요.", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                        choices: [
                         Choice(text: "", likability: [], nextTextId: "021"),
                         Choice(text: "", likability: [], nextTextId: "021")], achievement: nil),
-    BlockOfDayEpisode(id: "027", chats:
+    "027":BlockOfDayEpisode(chats:
                        [Chat(text: "호오, 가슴이 따뜻해지는 \n답변이군요.", image: nil, type: .onlyText, who: .karon, characterFace: true)],
                        choices: [
                         Choice(text: "", likability: [], nextTextId: "021"),
                         Choice(text: "", likability: [], nextTextId: "021")], achievement: nil),
-    BlockOfDayEpisode(id: "028", chats: //27
+    "028":BlockOfDayEpisode(chats: //27
                        [Chat(text: "당연히 의문이 들겠죠.", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "당신 나이의 여성이 자연사할\n가능성은 거의 없으니까요.", image: nil, type: .onlyText, who: .karon, characterFace: false),
                         Chat(text: "그렇다면 누군가에 의해 죽었거나 사고일 텐데. 당신은 어느 쪽이라 생각하십니까?", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                        choices: [
                         Choice(text: "누군가에 의해 살해당했겠네.", likability: [], nextTextId: "028"),
                         Choice(text: "사고를 당한 게 아닐까?", likability: [], nextTextId: "031")], achievement: nil),
-    BlockOfDayEpisode(id: "029", chats:
+    "029":BlockOfDayEpisode(chats:
                        [Chat(text: "호오, 그렇게 생각하십니까?", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "만약 살해범이 누군지 안다면 어떻게 하시겠습니까?", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                        choices: [
                         Choice(text: "그 이름을 저주할 거야.", likability: [], nextTextId: "029"),
                         Choice(text: "더 이상 죄를 짓지 말라고 기도하고 싶어.", likability: [], nextTextId: "030")], achievement: nil),
-    BlockOfDayEpisode(id: "030", chats:
+    "030":BlockOfDayEpisode(chats:
                        [Chat(text: "그 한 마디에 당신의 부활 의지가 엿 보이는군요.", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "그리고 멋진 표정이었습니다.", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                        choices: [
                         Choice(text: "", likability: [], nextTextId: "022"),
                         Choice(text: "", likability: [], nextTextId: "022")], achievement: nil),
-    BlockOfDayEpisode(id: "031", chats:
+    "031":BlockOfDayEpisode(chats:
                        [Chat(text: "설마, 용서를 하겠다는 겁니까?", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "이렇게 착한 분일 줄이야.", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                        choices: [
                         Choice(text: "", likability: [], nextTextId: "021"),
                         Choice(text: "", likability: [], nextTextId: "021")], achievement: nil),
-    BlockOfDayEpisode(id: "032", chats:
+    "032":BlockOfDayEpisode(chats:
                        [Chat(text: "사고도 괜히 당하는 것이\n아닙니다.", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "왜 하필 당신에게 그런 사고가\n벌어졌을까요?", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                        choices: [
                         Choice(text: "어쩌면...., 누군가가 사고로 위장한 것일 수도 있겠군.", likability: [], nextTextId: "032"),
                         Choice(text: "부주의했거나 운이 없었겠지.", likability: [], nextTextId: "033")], achievement: nil),
-    BlockOfDayEpisode(id: "033", chats:
+    "033":BlockOfDayEpisode(chats:
                        [Chat(text: "재미있는 예측을 하시는군요.", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "만약 그렇다면 주변에 적이나\n위험이 많다는 것인데.", image: nil, type: .onlyText, who: .karon, characterFace: false),
                         Chat(text: "허허, 이거 부활 후가\n걱정되는군요.", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                        choices: [
                         Choice(text: "", likability: [], nextTextId: "022"),
                         Choice(text: "", likability: [], nextTextId: "022")], achievement: nil),
-    BlockOfDayEpisode(id: "034", chats:
+    "034":BlockOfDayEpisode(chats:
                        [Chat(text: "그 한 마디에 당신의 부활 의지가 엿 보이는군요.", image: nil, type: .onlyText, who: .karon, characterFace: true),
                         Chat(text: "그리고 멋진 표정이었습니다.", image: nil, type: .onlyText, who: .karon, characterFace: false)],
                        choices: [
@@ -240,7 +240,7 @@ let day0 = DayEpisode(history: .theTestBegins, storyBlocks: [
 
 
 let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
-    BlockOfDayEpisode(id: "101", chats: [
+        "101":BlockOfDayEpisode(chats: [
         Chat(text: "으음, 카론이 있던 취조실이 아니잖아.", image: nil, type: .textPopup, who: .kirell, characterFace: true),
         Chat(text: "설마..", image: nil, type: .textPopup, who: .kirell, characterFace: true),
     ], choices: [
@@ -248,7 +248,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "7일 중 첫 날이 시작된 건가?", likability: [], nextTextId: "101")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "102", chats: [
+        "102":BlockOfDayEpisode(chats: [
         Chat(text: nil, image: "", type: .untouchableImage, who: .kirell, characterFace: true),
         Chat(text: "사자의 나침반은 누군가 죽어야 작동이 된다고 했어.", image: nil, type: .textPopup, who: .kirell, characterFace: true),
         Chat(text: "일단은 사람을 찾아야 되겠군.", image: nil, type: .textPopup, who: .kirell, characterFace: true),
@@ -259,7 +259,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "희생양으로 삼아야 할까?", likability: [], nextTextId: "102")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "103", chats: [
+        "103":BlockOfDayEpisode(chats: [
         Chat(text: "아직은 모르겠군.", image: nil, type: .textPopup, who: .kirell, characterFace: true),
         Chat(text: "일단은 만나보고 판단하자.", image: nil, type: .textPopup, who: .kirell, characterFace: true),
         Chat(text: nil, image: "", type: .touchableImage, who: .kirell, characterFace: false),
@@ -273,7 +273,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "으슥한 거리에서 발소리까지 죽이다니. 장난이 지나치네요.", likability: [], nextTextId: "104")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "104", chats: [
+        "104":BlockOfDayEpisode(chats: [
         Chat(text: "다른 의도는 없었습니다.", image: nil, type: .onlyText, who: .argo, characterFace: false),
         Chat(text: "저도 모르게 그렇게 행동한 거 같습니다.", image: nil, type: .onlyText, who: .argo, characterFace: false),
         Chat(text: "기억은 안 나지만 생전의 습관인가 봅니다.", image: nil, type: .onlyText, who: .argo, characterFace: false)
@@ -282,7 +282,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "당신도 이름 외의 기억을 잃었군요. 저는 키렐입니다.", likability: [], nextTextId: "106")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "105", chats: [
+        "105":BlockOfDayEpisode(chats: [
         Chat(text: "놀라게 할 생각은 없었습니다.", image: nil, type: .onlyText, who: .argo, characterFace: false),
         Chat(text: "저도 모르게 그렇게 행동한 거 같습니다.", image: nil, type: .onlyText, who: .argo, characterFace: false),
         Chat(text: "기억은 안 나지만 생전의 습관인가 봅니다.", image: nil, type: .onlyText, who: .argo, characterFace: false)
@@ -291,7 +291,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "당신도 이름 외의 기억을 잃었군요. 저는 키렐입니다.", likability: [], nextTextId: "106")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "106", chats: [
+        "106":BlockOfDayEpisode(chats: [
         Chat(text: "죄송합니다. 앞으로 주의하겠습니다. ", image: nil, type: .onlyText, who: .argo, characterFace: true),
         Chat(text: "그나저나 키렐, 당신도 시련 중인 망자 같은데,", image: nil, type: .onlyText, who: .argo, characterFace: false),
         Chat(text: "이왕이면 함께하지 않겠습니까?", image: nil, type: .onlyText, who: .argo, characterFace: false),
@@ -303,7 +303,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "그렇지 않아도 함께 할 사람이 필요했습니다.", likability: [], nextTextId: "107")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "107", chats: [
+        "107":BlockOfDayEpisode(chats: [
         Chat(text: "이해해주셔서 다행입니다.", image: nil, type: .onlyText, who: .argo, characterFace: true),
         Chat(text: "그나저나 키렐, 당신도 시련 중인 망자 같은데,", image: nil, type: .onlyText, who: .argo, characterFace: false),
         Chat(text: "이왕이면 함께하지 않겠습니까?", image: nil, type: .onlyText, who: .argo, characterFace: false),
@@ -315,7 +315,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "그렇지 않아도 함께 할 사람이 필요했습니다.", likability: [], nextTextId: "107")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "108", chats: [
+        "108":BlockOfDayEpisode(chats: [
         Chat(text: "흠…….", image: nil, type: .onlyText, who: .argo, characterFace: true),
         Chat(text: "키렐, 그 말은 제가 동료가 되는 게 ", image: nil, type: .onlyText, who: .argo, characterFace: false),
         Chat(text: "당신에게 무조건 유리하다는 뜻인가요?", image: nil, type: .onlyText, who: .argo, characterFace: false),
@@ -327,7 +327,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "아니요, 너무 반가워서 그만….", likability: [], nextTextId: "109")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "109", chats: [
+        "109":BlockOfDayEpisode(chats: [
         Chat(text: "그렇군요.", image: nil, type: .onlyText, who: .argo, characterFace: true),
         Chat(text: "솔직히 말하죠.", image: nil, type: .onlyText, who: .argo, characterFace: false),
         Chat(text: nil, image: "", type: .untouchableImage, who: .argo, characterFace: false),
@@ -337,7 +337,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "드디어 본색을 드러내는 건가요?", likability: [], nextTextId: "111")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "110", chats: [
+        "110":BlockOfDayEpisode(chats: [
         Chat(text: "으음, 사람을 반가워할 당신이", image: nil, type: .onlyText, who: .argo, characterFace: true),
         Chat(text: "저를 처음 볼 땐 무척 놀라더군요.", image: nil, type: .onlyText, who: .argo, characterFace: false),
         Chat(text: "으윽, 이 사람 엄청 날카로워.", image: nil, type: .textPopup, who: .kirell, characterFace: false),
@@ -348,8 +348,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "협박할 셈인가요?", likability: [], nextTextId: "110"),
         Choice(text: "드디어 본색을 드러내는 건가요?", likability: [], nextTextId: "111")
         ], achievement: nil),
-    
-    BlockOfDayEpisode(id: "111", chats: [
+        "111":BlockOfDayEpisode(chats: [
         Chat(text: "협박할 용도로 꺼낸 것이 아닙니다.", image: nil, type: .onlyText, who: .argo, characterFace: true),
         Chat(text: "보다 진실된 얘기를 듣고 싶어", image: nil, type: .onlyText, who: .argo, characterFace: false),
         Chat(text: "저부터 대등한 정보를 하나 꺼낸 것입니다.", image: nil, type: .onlyText, who: .argo, characterFace: false),
@@ -361,7 +360,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "나침반이 가리키는 방향에 도착하는 겁니다.", likability: [], nextTextId: "114")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "112", chats: [
+        "112":BlockOfDayEpisode(chats: [
         
         Chat(text: "확실하게 말해주시죠.", image: nil, type: .onlyText, who: .argo, characterFace: true),
         Chat(text: "목표 지점이 어디죠?", image: nil, type: .onlyText, who: .argo, characterFace: false)
@@ -371,7 +370,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "나침반이 가리키는 방향입니다. ", likability: [], nextTextId: "114")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "113", chats: [
+                        "113":BlockOfDayEpisode(chats: [
         Chat(text: "거짓말하지 마시죠.", image: nil, type: .onlyText, who: .argo, characterFace: true),
         Chat(text: "당신도 사신에게 힌트를 듣고 장비를 받았을 텐데요.", image: nil, type: .onlyText, who: .argo, characterFace: false),
         Chat(text: "키렐, 당신의 장비가 뭔지 보여주시겠습니까?", image: nil, type: .onlyText, who: .argo, characterFace: false),
@@ -385,7 +384,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "거기까지는, 말할 수 없습니다.", likability: [], nextTextId: "116")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "114", chats: [
+                        "114":BlockOfDayEpisode(chats: [
         Chat(text: nil, image: "", type: .untouchableImage, who: .kirell, characterFace: true),
         Chat(text: "이 나침반입니까?", image: nil, type: .onlyText, who: .argo, characterFace: true),
         Chat(text: "하지만 바늘이 빙빙 돌고 있지 않습니까?", image: nil, type: .onlyText, who: .argo, characterFace: false),
@@ -397,7 +396,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         ], achievement: nil),
     
     
-    BlockOfDayEpisode(id: "115", chats: [
+        "115":BlockOfDayEpisode(chats: [
         Chat(text: "거짓말,", image: nil, type: .onlyText, who: .argo, characterFace: true),
         Chat(text: "바늘이 언제 멈출니 모르는데", image: nil, type: .onlyText, who: .argo, characterFace: false),
         Chat(text: "당신은 그 나침반을 보고 있지 않았습니다.", image: nil, type: .onlyText, who: .argo, characterFace: false),
@@ -412,7 +411,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         ], achievement: nil),
     
     
-    BlockOfDayEpisode(id: "116", chats: [
+        "116":BlockOfDayEpisode(chats: [
         Chat(text: "흠.", image: nil, type: .onlyText, who: .argo, characterFace: false),
         Chat(text: "본의 아니게 추궁을 해버렸군요.", image: nil, type: .onlyText, who: .argo, characterFace: false),
         Chat(text: "어쨌든 그 이상은 말하기 힘든 거 같군요.", image: nil, type: .onlyText, who: .argo, characterFace: false)
@@ -422,7 +421,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         ], achievement: nil),
     
     
-    BlockOfDayEpisode(id: "117", chats: [
+        "117":BlockOfDayEpisode(chats: [
         Chat(text: "죄송합니다, 본의 아니게 기분을 상하게 했군요.", image: nil, type: .onlyText, who: .argo, characterFace: true),
         Chat(text: "당신과 마찬가지로 저에게도 비밀이 있습니다.", image: nil, type: .onlyText, who: .argo, characterFace: false),
         Chat(text: "함께 협력할 생각이라면 서로 비밀을 가진 채로 타협합시다.", image: nil, type: .onlyText, who: .argo, characterFace: false),
@@ -440,7 +439,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "도움을 요청하잖아요! 빨리 가요!", likability: [], nextTextId: "120")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "118", chats: [
+        "118":BlockOfDayEpisode(chats: [
         Chat(text: "이해합니다.", image: nil, type: .onlyText, who: .argo, characterFace: true),
         Chat(text: "당신과 마찬가지로 저에게도 비밀이 있습니다.", image: nil, type: .onlyText, who: .argo, characterFace: false),
         Chat(text: "함께 협력할 생각이라면 서로 비밀을 가진 채로 타협합시다.", image: nil, type: .onlyText, who: .argo, characterFace: false),
@@ -458,7 +457,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "도움을 요청하잖아요! 빨리 가요!", likability: [], nextTextId: "120")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "119", chats: [
+        "119":BlockOfDayEpisode(chats: [
         Chat(text: "잠시 후", image: nil, type: .sectionHeader, who: .unknown, characterFace: false),
         Chat(text: nil, image: nil, type: .touchableImage, who: .kirell, characterFace: false),
         Chat(text: "…크윽, 자…잠깐만.", image: nil, type: .onlyText, who: .wolf, characterFace: false),
@@ -487,7 +486,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "(몰래 접근해 돌멩이로 뒤통수를 내리치자.)", likability: [], nextTextId: "103")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "120", chats: [
+       "120":BlockOfDayEpisode(chats: [
         Chat(text: "그리고 거기 숨어 있는 아가씨 이름은 뭐지?", image: nil, type: .onlyText, who: .ballam, characterFace: false)
     ], choices: [
         Choice(text: "너 따위에게 알려주고 싶지 않은데.", likability: [], nextTextId: "122"),
@@ -495,7 +494,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         ], achievement: nil),
     
     
-    BlockOfDayEpisode(id: "121", chats: [
+        "121":BlockOfDayEpisode(chats: [
         Chat(text: "알았어. 그럼 그냥 아름다운 아가씨라고 불러줄게.", image: nil, type: .onlyText, who: .ballam, characterFace: true),
         Chat(text: "키렐.", image: nil, type: .onlyText, who: .kirell, characterFace: true),
         Chat(text: "하하하, 부끄럼쟁이네.", image: nil, type: .onlyText, who: .ballam, characterFace: true),
@@ -508,7 +507,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "그 말을 어떻게 믿으라는 거지?", likability: [], nextTextId: "125")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "122", chats: [
+        "122":BlockOfDayEpisode(chats: [
         Chat(text: "과분한 칭찬이야. 고마워~", image: nil, type: .onlyText, who: .ballam, characterFace: true),
         Chat(text: "그나저나 둘 다 너무 긴장한 거 아니야?", image: nil, type: .onlyText, who: .ballam, characterFace: false),
         Chat(text: "난 과제를 완료하고 싶은 거야.", image: nil, type: .onlyText, who: .ballam, characterFace: false),
@@ -519,7 +518,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "그 말을 어떻게 믿으라는 거지?", likability: [], nextTextId: "125")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "123", chats: [
+        "123":BlockOfDayEpisode(chats: [
         Chat(text: "이야, 예리하네.", image: nil, type: .onlyText, who: .ballam, characterFace: true),
         Chat(text: "키렐이라고 했나? 너 마음에 든다.", image: nil, type: .onlyText, who: .ballam, characterFace: false),
         Chat(text: "여하튼, 거기 아저씨는 아르고라고 했지?", image: nil, type: .onlyText, who: .ballam, characterFace: false),
@@ -533,7 +532,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "조용히 물러날 수 없냐?", likability: [], nextTextId: "127")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "124", chats: [
+        "124":BlockOfDayEpisode(chats: [
         Chat(text: "이런 이런, 내 첫인상이 너무 인상적이었나 보네.", image: nil, type: .onlyText, who: .ballam, characterFace: true),
         Chat(text: "그럼 그냥 믿지 마.", image: nil, type: .onlyText, who: .ballam, characterFace: false),
         Chat(text: "여하튼, 거기 아저씨는 아르고라고 했지?", image: nil, type: .onlyText, who: .ballam, characterFace: false),
@@ -547,7 +546,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "조용히 물러날 수 없냐?", likability: [], nextTextId: "127")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "125", chats: [
+       "125":BlockOfDayEpisode(chats: [
         Chat(text: "좋은 자세야. 하지만 나도 바보는 아니야.", image: nil, type: .onlyText, who: .ballam, characterFace: true),
         Chat(text: "너희 둘 다 시체와 총 앞에서도 태연한 인간들이라고.", image: nil, type: .onlyText, who: .ballam, characterFace: false),
         Chat(text: "이대로 싸우면 서로 무사하지 못할 게 뻔하지.", image: nil, type: .onlyText, who: .ballam, characterFace: false),
@@ -557,7 +556,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "그럼, 빨리 가버려.", likability: [], nextTextId: "128")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "126", chats: [
+                        "126":BlockOfDayEpisode(chats: [
         Chat(text: "아쉽게도 그래야겠네.", image: nil, type: .onlyText, who: .ballam, characterFace: true),
         Chat(text: "너희 둘 다 시체와 총 앞에서도 태연한 인간들이라고.", image: nil, type: .onlyText, who: .ballam, characterFace: false),
         Chat(text: "이대로 싸우면 서로 무사하지 못할 게 뻔하지.", image: nil, type: .onlyText, who: .ballam, characterFace: false),
@@ -567,7 +566,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "그럼, 빨리 가버려.", likability: [], nextTextId: "128")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "127", chats: [
+                        "127":BlockOfDayEpisode(chats: [
         Chat(text: "그나저나 앞으로 기대되는 상대들이네.", image: nil, type: .onlyText, who: .ballam, characterFace: true),
         Chat(text: "다음에 또 보자고.", image: nil, type: .onlyText, who: .ballam, characterFace: false),
         Chat(text: "아마, 반드시 다시 보게 되겠네.", image: nil, type: .onlyText, who: .ballam, characterFace: false),
@@ -579,14 +578,14 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "진짜로 우리가 위험하다고 생각한 걸까요?", likability: [], nextTextId: "129")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "128", chats: [
+                        "128":BlockOfDayEpisode(chats: [
         Chat(text: "어쩌면 저처럼 특별한 사정이 있는 총을 가져서 그럴 수도 있죠.", image: nil, type: .onlyText, who: .argo, characterFace: true)
     ], choices: [
         Choice(text: "아르고 당신처럼?", likability: [], nextTextId: "130"),
         Choice(text: "특별한 사정이라고요?", likability: [], nextTextId: "131")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "129", chats: [
+                        "129":BlockOfDayEpisode(chats: [
         Chat(text: "음, 제 실언을 날카롭게 잘 찌르는군요.", image: nil, type: .onlyText, who: .argo, characterFace: true),
         Chat(text: "정곡을 찔렸다면서 오히려 웃잖아?", image: nil, type: .textPopup, who: .kirell, characterFace: false),
         Chat(text: "특이한 성격이네.", image: nil, type: .textPopup, who: .kirell, characterFace: false),
@@ -605,7 +604,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "발람을 막으려면 당신의 도움이 필요하겠네요.", likability: [], nextTextId: "133")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "130", chats: [
+                        "130":BlockOfDayEpisode(chats: [
         Chat(text: "특별한 조건이 맞아야 작동되는 총일 겁니다.", image: nil, type: .onlyText, who: .argo, characterFace: true),
         Chat(text: "아마도 그의 과제와 연관이 있는 거겠죠.", image: nil, type: .onlyText, who: .argo, characterFace: false),
         Chat(text: "그렇군. 사자의 나침반과 마찬가지로….", image: nil, type: .textPopup, who: .kirell, characterFace: true),
@@ -621,7 +620,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Choice(text: "발람을 막으려면 당신의 도움이 필요하겠네요.", likability: [], nextTextId: "133")
         ], achievement: nil),
     
-    BlockOfDayEpisode(id: "131", chats: [
+                        "131":BlockOfDayEpisode(chats: [
         Chat(text: "네, 당연히 함께하겠습니다.", image: nil, type: .onlyText, who: .argo, characterFace: true),
         Chat(text: "아무래도 당신의 도움이 필요할 거 같습니다.", image: nil, type: .onlyText, who: .argo, characterFace: false),
         Chat(text: "………….", image: nil, type: .onlyText, who: .kirell, characterFace: true),
@@ -634,7 +633,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
         Chat(text: "Day 1 End", image: nil, type: .sectionHeader, who: .unknown, characterFace: false)
     ], choices: [], achievement: nil),
     
-    BlockOfDayEpisode(id: "132", chats: [
+                        "132":BlockOfDayEpisode(chats: [
         Chat(text: "기꺼이 도와드리죠.", image: nil, type: .onlyText, who: .argo, characterFace: true),
         Chat(text: "저 또한 당신을 필요로 합니다.", image: nil, type: .onlyText, who: .argo, characterFace: false),
         Chat(text: "………….", image: nil, type: .onlyText, who: .kirell, characterFace: true),
