@@ -124,13 +124,13 @@ class GameCharacter {
 var currentCharactersInfo: [String:GameCharacter]
     
     = [
-        "kirell":GameCharacter(name: "키렐", profileImage: "pepe", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "argo":GameCharacter(name: "아르고", profileImage: "", backgroundImage: "", infomation: [], mission: "친한 동료를 죽여라", likability: 0),
+        "kirell":GameCharacter(name: "키렐", profileImage: "kirell", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "argo":GameCharacter(name: "아르고", profileImage: "argo", backgroundImage: "", infomation: [], mission: "친한 동료를 죽여라", likability: 0),
         "???":GameCharacter(name: "???", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
         "wolf":GameCharacter(name: "울프", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "ballam":GameCharacter(name: "발람", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "karon":GameCharacter(name: "카론", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "hilde":GameCharacter(name: "힐데", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "ballam":GameCharacter(name: "발람", profileImage: "ballam", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "karon":GameCharacter(name: "카론", profileImage: "karon", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "hilde":GameCharacter(name: "힐데", profileImage: "hilde", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
         "philio":GameCharacter(name: "필리오", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),]
 
 let noDataCharacter = GameCharacter(name: "캐릭터가 없습니다", profileImage: "", backgroundImage: "", infomation: [], mission: "", likability: 0)

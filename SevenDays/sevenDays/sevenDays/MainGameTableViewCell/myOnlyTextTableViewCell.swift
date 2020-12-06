@@ -24,6 +24,7 @@ class myOnlyTextTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func myProfileUpdate(imageName:String){
+        guard imageName != "" else {return}
         myProfile.image=UIImage(named: imageName)
     }
     func myChatUpdate(name:String,chat:String){

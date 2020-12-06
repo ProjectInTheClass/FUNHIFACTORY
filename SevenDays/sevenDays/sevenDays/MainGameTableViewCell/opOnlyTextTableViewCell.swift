@@ -31,6 +31,5 @@ class opOnlyTextTableViewCell: UITableViewCell {
     func opChatUpdate(name:String,chat:String){
         opponentName.text = name
         opponentChat.text = chat
-        print("\(name): \(chat)")
     }
 }
