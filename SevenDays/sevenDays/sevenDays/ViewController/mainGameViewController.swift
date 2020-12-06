@@ -13,23 +13,29 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var resumeButton: UIButton!
     @IBOutlet var homeButton: UIButton!
     
+    var indexNumber = 0
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        currentChatArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opOnlyText", for: indexPath) as! opOnlyTextTableViewCell
-        //cell.opChatUpdate(name: <#T##String#>, chat: <#T##String#>)
-        //cell.opProfileUpdate(imageName: <#T##String#>)
+        let chatText = currentChatArray[indexNumber].text
+        cell.opChatUpdate(name: currentChatArray[indexNumber].who.info().name, chat: chatText)
+        cell.opProfileUpdate(imageName: currentChatArray[indexNumber].who.info().profileImage)
         return cell
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mainGameTableView.delegate = self
+        self.mainGameTableView.dataSource = self
+        chatUpdate()
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -47,7 +53,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func chatUpdate(){
-        day0.storyBlocks
+        currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber])
+        mainGameTableView.reloadData()
     }
 }
 

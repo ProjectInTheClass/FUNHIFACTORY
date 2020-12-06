@@ -25,10 +25,12 @@ class opOnlyTextTableViewCell: UITableViewCell {
     }
     
     func opProfileUpdate(imageName:String){
+        guard imageName != "" else {return}
         opponentImage.image = UIImage(named: imageName)
     }
     func opChatUpdate(name:String,chat:String){
         opponentName.text = name
         opponentChat.text = chat
+        print("\(name): \(chat)")
     }
 }

@@ -124,14 +124,14 @@ class GameCharacter {
 var currentCharactersInfo: [String:GameCharacter]
     
     = [
-        "kirell":GameCharacter(name: "키렐", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "kirell":GameCharacter(name: "키렐", profileImage: "pepe", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
         "argo":GameCharacter(name: "아르고", profileImage: "", backgroundImage: "", infomation: [], mission: "친한 동료를 죽여라", likability: 0),
-        "kirell":GameCharacter(name: "???", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "kirell":GameCharacter(name: "울프", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "kirell":GameCharacter(name: "발람", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "kirell":GameCharacter(name: "카론", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "kirell":GameCharacter(name: "힐데", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "kirell":GameCharacter(name: "필리오", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),]
+        "???":GameCharacter(name: "???", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "wolf":GameCharacter(name: "울프", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "ballam":GameCharacter(name: "발람", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "karon":GameCharacter(name: "카론", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "hilde":GameCharacter(name: "힐데", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "philio":GameCharacter(name: "필리오", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),]
 
 let noDataCharacter = GameCharacter(name: "캐릭터가 없습니다", profileImage: "", backgroundImage: "", infomation: [], mission: "", likability: 0)
 
@@ -147,11 +147,11 @@ struct User {
     var currentAchievements: [Achievement]
     //var timellne: nil
     var currentGameCharacter: [String:GameCharacter] = currentCharactersInfo
-    var dayIndex:Int
+    var dayIndex:String
     var currentChatId:String
 }
 func currentDay() -> DayEpisode{
-    return dummyData.stories[player.dayIndex]
+    return dummyData.stories[player.dayIndex]!
 }
 func currentBlockOfDay() -> BlockOfDayEpisode{
     return currentDay().storyBlocks[player.currentChatId]!
@@ -179,8 +179,8 @@ enum ChatType {
 // 텍스트 블럭 스트럭처
 //  프라퍼티 설명: 글, 이미지, 타입, 해당 인물
 struct Chat {
-    let text: String?
-    let image: String?
+    let text: String
+    let image: String
     let type: ChatType
     let who: GameCharactersEnum
     let characterFace: Bool
@@ -223,7 +223,7 @@ struct DayEpisode {
 // 더미데이터 담을 스트럭처
 // 총 스토리 본문, 모든 히스토리, 모든 업적, 전체 인물 정보
 struct Data {
-    let stories: [DayEpisode]
+    let stories: [String:DayEpisode]
     let histories: [History]
     let achivements: [Achievement]
     let FullGameCharactersInfo: [String:GameCharacter]
