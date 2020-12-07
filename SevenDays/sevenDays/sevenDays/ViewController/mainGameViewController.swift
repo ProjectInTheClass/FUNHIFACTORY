@@ -125,6 +125,7 @@ extension mainGameViewController : choiceCellDelegate{
         indexNumber = 0     //indexNumber 초기화
         mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         print("First button tapped")
+        chatUpdate()
     }
     func secondChoice() {
         player.currentChatId = currentBlockOfDay().choices[1].nextTextId
@@ -132,5 +133,6 @@ extension mainGameViewController : choiceCellDelegate{
         indexNumber = 0
         mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         print("Second button Tapped")
+        chatUpdate()
     }
 }
