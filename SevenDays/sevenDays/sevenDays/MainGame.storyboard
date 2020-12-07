@@ -58,15 +58,15 @@
                                 <rect key="frame" x="0.0" y="115.5" width="414" height="648.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="123" id="Lkb-pa-s9I" userLabel="ChoiceCell" customClass="choiceTableViewCell" customModule="sevenDays" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="choiceTableViewCell" rowHeight="123" id="Lkb-pa-s9I" userLabel="ChoiceCell" customClass="choiceTableViewCell" customModule="sevenDays" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="123"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lkb-pa-s9I" id="bVF-9R-nkg">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="123"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lby-hO-Cae">
-                                                    <rect key="frame" x="196" y="12.5" width="196" height="29"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lby-hO-Cae">
+                                                    <rect key="frame" x="196" y="12" width="196" height="29.5"/>
                                                     <color key="backgroundColor" red="0.53201586010000002" green="0.34235892220000003" blue="0.31946652219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="Mrr-Ro-WYD"/>
@@ -82,6 +82,9 @@
                                                             </fragment>
                                                         </attributedString>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="firstButtonTapped:" destination="Lkb-pa-s9I" eventType="touchUpInside" id="Bkr-oG-arU"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="또는" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1H7-If-t5B">
                                                     <rect key="frame" x="373.5" y="51.5" width="29.5" height="20.5"/>
@@ -93,7 +96,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6GC-wd-Tbm">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6GC-wd-Tbm">
                                                     <rect key="frame" x="196" y="82" width="196" height="29"/>
                                                     <color key="backgroundColor" red="0.53201586010000002" green="0.34235892220000003" blue="0.31946652219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
@@ -110,12 +113,17 @@
                                                             </fragment>
                                                         </attributedString>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="secondButtonTapped:" destination="Lkb-pa-s9I" eventType="touchUpInside" id="XWw-Di-kEq"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="6GC-wd-Tbm" firstAttribute="top" secondItem="1H7-If-t5B" secondAttribute="bottom" constant="10" id="9Q6-Nb-32t"/>
+                                                <constraint firstItem="lby-hO-Cae" firstAttribute="top" secondItem="bVF-9R-nkg" secondAttribute="topMargin" constant="1" id="Ssk-c4-7PC"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="6GC-wd-Tbm" secondAttribute="trailing" constant="2" id="g3t-Md-pZB"/>
                                                 <constraint firstItem="1H7-If-t5B" firstAttribute="centerY" secondItem="bVF-9R-nkg" secondAttribute="centerY" id="hbl-vF-EfP"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="6GC-wd-Tbm" secondAttribute="bottom" constant="1" id="iLs-zk-JPd"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="lby-hO-Cae" secondAttribute="trailing" constant="2" id="jh7-WX-tjk"/>
                                                 <constraint firstAttribute="trailing" secondItem="1H7-If-t5B" secondAttribute="trailing" constant="11" id="qOV-69-rvd"/>
                                                 <constraint firstItem="1H7-If-t5B" firstAttribute="top" secondItem="lby-hO-Cae" secondAttribute="bottom" constant="10" id="zvg-b6-gRu"/>
