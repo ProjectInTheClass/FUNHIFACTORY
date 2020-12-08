@@ -118,6 +118,7 @@ class GameCharacter {
 //---------- 캐릭터 인스턴스 인스턴스. 여기서 다 참조해서 쓰는 거임. 이넘 안의 캐릭터 정보도 여기에서 가져다 썼음.(GameCharacter는 스트럭처->클래스로 타입 수정함)
 var currentCharactersInfo: [String:GameCharacter]
     
+
     = ["kirell":GameCharacter(name: "키렐", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
         "argo":GameCharacter(name: "아르고", profileImage: "", backgroundImage: "", infomation: [], mission: "친한 동료를 죽여라", likability: 0),
         "unknown":GameCharacter(name: "???", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
@@ -141,6 +142,20 @@ struct User {
     var currentAchievements: [Achievement]
     //var timellne: nil
     var currentGameCharacter: [String:GameCharacter] = currentCharactersInfo
+    var dayIndex:String
+    var currentChatId:String
+}
+func currentDay() -> DayEpisode{
+    return dummyData.stories[player.dayIndex]!
+}
+func currentBlockOfDay() -> BlockOfDayEpisode{
+    return currentDay().storyBlocks[player.currentChatId]!
+}
+func currentChatAmount() -> Int{
+    return currentBlockOfDay().chats.count
+}
+func currentChat() -> Chat{
+    return currentBlockOfDay().chats[currentChatAmount()]
 }
 
 //------------------------------------스토리------------------------------------
@@ -159,8 +174,8 @@ enum ChatType {
 // 텍스트 블럭 스트럭처
 //  프라퍼티 설명: 글, 이미지, 타입, 해당 인물
 struct Chat {
-    let text: String?
-    let image: String?
+    let text: String
+    let image: String
     let type: ChatType
     let who: GameCharactersEnum
     let characterFace: Bool
@@ -179,7 +194,7 @@ struct ChoiceLikeability {
 struct Choice {
     let text: String
     let likability: [ChoiceLikeability]
-    let nextTextIndex: Int
+    let nextTextId: String
 }
 
 //n일차를 쪼갠 조각의 단위 : 일반 대화들 ~ 키렐 선택지가 마지막.
@@ -197,13 +212,13 @@ struct BlockOfDayEpisode {
 // 프라퍼티 설명: 히스토리(그 날 꿈), 본문 블록(위 스트럭처 단위)들
 struct DayEpisode {
     let history: History
-    let storyBlocks: [BlockOfDayEpisode]
+    let storyBlocks: [String:BlockOfDayEpisode]
 }
 
 // 더미데이터 담을 스트럭처
 // 총 스토리 본문, 모든 히스토리, 모든 업적, 전체 인물 정보
 struct Data {
-    let stories: [DayEpisode]
+    let stories: [String:DayEpisode]
     let histories: [History]
     let achivements: [Achievement]
     let FullGameCharactersInfo: [String:GameCharacter]

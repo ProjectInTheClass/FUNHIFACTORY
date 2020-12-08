@@ -7,6 +7,12 @@
 
 import Foundation
 
-let dummyData = Data(stories: [day0, day1], histories: [.lastMemories, .runawayGirl, .thePatronsConcerns, .theTestBegins], achivements: [.charonsInterrogation, .firstComradeArgo, .likeAWelllAgedWhiskey, .whereIBelong], FullGameCharactersInfo: currentCharactersInfo)
 
-let currentUserData = User(setting: Setting(langueage: .Korean, bgmVolume: 0.0, effectVolume: 0.0, textSpeed: 1.0), tickets: 0, currentHistories: [.lastMemories,.runawayGirl], currentAchievements:[.charonsInterrogation,.firstComradeArgo], currentGameCharacter: [:])
+var player = User(setting: playerSetting, tickets: 0, currentHistories: [], currentAchievements: [], currentGameCharacter: currentCharactersInfo, dayIndex: "day0", currentChatId: "001")
+var playerSetting = Setting(langueage: .Korean, bgmVolume: 0.0, effectVolume: 0.0, textSpeed: 0.1)
+
+let dummyData = Data(stories: ["day0":day0,"day1":day1],
+                     histories: [.lastMemories, .runawayGirl, .thePatronsConcerns, .theTestBegins],
+                     achivements: [.charonsInterrogation, .firstComradeArgo, .likeAWelllAgedWhiskey, .whereIBelong],
+                     FullGameCharactersInfo: currentCharactersInfo) // currentCharatersInfo는 임시로 넣어놓은 것. 나중에 모든 캐릭터 정보 넣어야함.
+
