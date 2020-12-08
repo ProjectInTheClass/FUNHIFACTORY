@@ -30,7 +30,7 @@ struct Setting {
 //------------------------------------히스토리: 업적 비슷한 개념------------------------------------
 // 히스토리: 키렐이 매일 꾸는 꿈 내용.
 // 프라퍼티 설명:  히스토리 이름, 해당 이미지, 글
-struct HistoryStructure {
+struct HistoryAndAchievementStructure {
     let name: String
     let image: String
     let text: String
@@ -44,16 +44,16 @@ enum History {
     case runawayGirl
     case thePatronsConcerns
     
-    func historyInfo() -> HistoryStructure {
+    func historyInfo() -> HistoryAndAchievementStructure {
     switch self {
     case .theTestBegins:
-        return HistoryStructure(name: "시련의 시작", image: "historyImage1", text: "사자의 나침반이 가리키는 방향으로 가십시오.")
+        return HistoryAndAchievementStructure(name: "시련의 시작", image: "historyImage1", text: "사자의 나침반이 가리키는 방향으로 가십시오.")
     case .lastMemories:
-        return HistoryStructure(name: "마지막 기억", image: "historyImage2", text: "이것은 죽기 전 마지막 장면인가?")
+        return HistoryAndAchievementStructure(name: "마지막 기억", image: "historyImage2", text: "이것은 죽기 전 마지막 장면인가?")
     case .runawayGirl:
-        return HistoryStructure(name: "가출", image: "historyImage3", text: "그 쓰레기는 술을 마실 때마다 나를 때리고 그걸 말리러 온 엄마를 때렸다.")
+        return HistoryAndAchievementStructure(name: "가출", image: "historyImage3", text: "그 쓰레기는 술을 마실 때마다 나를 때리고 그걸 말리러 온 엄마를 때렸다.")
     case .thePatronsConcerns:
-        return HistoryStructure(name: "후견인의 걱정", image: "historyImage4", text: "그 사람은 쓸데없는 사람까지 처리했다며 나를 꾸짖었다.")
+        return HistoryAndAchievementStructure(name: "후견인의 걱정", image: "historyImage4", text: "그 사람은 쓸데없는 사람까지 처리했다며 나를 꾸짖었다.")
     default:
         break
         
@@ -63,13 +63,8 @@ enum History {
 
 //------------------------------------업적------------------------------------
 //업적 : 게임 도전 과제 - 특정 대사를 들으면 달성됨. 해당 날(n일차) 마지막 대사 나오고 도전과제 달성되었다는 상단 팝업이 화면에 뜸
-// 히스토리랑 마찬가지로 한정된 갯수기 때문에 동일 코드 구조 줌
-// 프라퍼티 설명: 업적 이름, 해당 이미지, 글
-struct AchievementStructure {
-    let name: String
-    let image: String
-    let text: String
-}
+// 히스토리랑 마찬가지로 한정된 갯수기 때문에 동일 스트럭처 사용함
+// 프라퍼티 설명: 위와 동일
 
 enum Achievement {
     case charonsInterrogation
@@ -77,16 +72,16 @@ enum Achievement {
     case likeAWelllAgedWhiskey
     case whereIBelong
     
-    func achievementInfo() -> AchievementStructure {
+    func achievementInfo() -> HistoryAndAchievementStructure {
     switch self {
     case .charonsInterrogation:
-        return AchievementStructure(name: "카론의 심문", image: "achievementImage1", text: "생과 사의 경계에 있는 최후의 꿈에 오신 것을 환영합니다.")
+        return HistoryAndAchievementStructure(name: "카론의 심문", image: "achievementImage1", text: "생과 사의 경계에 있는 최후의 꿈에 오신 것을 환영합니다.")
     case .firstComradeArgo:
-        return AchievementStructure(name: "첫 동료 아르고", image: "achievementImage2", text: "흠.... 키렐, 그 말은 제가 동료가 되는 게 당신에게 무조건 유리하다는 뜻인가요?")
+        return HistoryAndAchievementStructure(name: "첫 동료 아르고", image: "achievementImage2", text: "흠.... 키렐, 그 말은 제가 동료가 되는 게 당신에게 무조건 유리하다는 뜻인가요?")
     case .likeAWelllAgedWhiskey:
-        return AchievementStructure(name: "중년의 품격", image: "", text: "...이럴 땐 제 과제가 참 어렵습니다.")
+        return HistoryAndAchievementStructure(name: "중년의 품격", image: "", text: "...이럴 땐 제 과제가 참 어렵습니다.")
     case .whereIBelong:
-        return AchievementStructure(name: "내가 있을 장소", image: "", text: "이곳 생활이 재미있어질 것 같네요.")
+        return HistoryAndAchievementStructure(name: "내가 있을 장소", image: "", text: "이곳 생활이 재미있어질 것 같네요.")
     default:
         break
         
@@ -123,15 +118,14 @@ class GameCharacter {
 //---------- 캐릭터 인스턴스 인스턴스. 여기서 다 참조해서 쓰는 거임. 이넘 안의 캐릭터 정보도 여기에서 가져다 썼음.(GameCharacter는 스트럭처->클래스로 타입 수정함)
 var currentCharactersInfo: [String:GameCharacter]
     
-    = [
-        "kirell":GameCharacter(name: "키렐", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+    = ["kirell":GameCharacter(name: "키렐", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
         "argo":GameCharacter(name: "아르고", profileImage: "", backgroundImage: "", infomation: [], mission: "친한 동료를 죽여라", likability: 0),
-        "kirell":GameCharacter(name: "???", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "kirell":GameCharacter(name: "울프", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "kirell":GameCharacter(name: "발람", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "kirell":GameCharacter(name: "카론", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "kirell":GameCharacter(name: "힐데", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "kirell":GameCharacter(name: "필리오", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),]
+        "unknown":GameCharacter(name: "???", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "wolf":GameCharacter(name: "울프", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "ballam":GameCharacter(name: "발람", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "karon":GameCharacter(name: "카론", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "hilde":GameCharacter(name: "힐데", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "philio":GameCharacter(name: "필리오", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),]
 
 let noDataCharacter = GameCharacter(name: "캐릭터가 없습니다", profileImage: "", backgroundImage: "", infomation: [], mission: "", likability: 0)
 

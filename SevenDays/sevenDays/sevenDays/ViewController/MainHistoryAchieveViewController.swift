@@ -13,6 +13,7 @@ class MainHistoryAchieveViewControllerCell: UITableViewCell {
     @IBOutlet weak var secondImage: UIImageView!
     @IBOutlet weak var firstTitle: UILabel!
     @IBOutlet weak var secondTitle: UILabel!
+    @IBOutlet weak var testButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,22 +30,49 @@ class MainHistoryAchieveViewControllerCell: UITableViewCell {
 
 class MainHistoryAchieveViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var topBarTitle: UILabel!
+    var receivedHistory: [History]?
+    var receivedAchievement: [Achievement]?
+    var isHistory: Bool = true
+    
     @IBOutlet weak var tableView: UITableView!
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dummyData.histories.count/2
+        if isHistory {
+            return currentUserData.currentHistories.count/2
+        } else {
+            return currentUserData.currentAchievements.count/2
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath) as! MainHistoryAchieveViewControllerCell
-        cell.firstImage.image = UIImage(named: dummyData.histories[indexPath.row*2].historyInfo().image)
-        cell.secondImage.image = UIImage(named: dummyData.histories[indexPath.row*2+1].historyInfo().image)
-        cell.firstTitle.text = dummyData.histories[indexPath.row*2].historyInfo().name
-        cell.secondTitle.text = dummyData.histories[indexPath.row*2+1].historyInfo().name
-
         
+        if isHistory {
+            topBarTitle.text = "히스토리"
+            if let history = receivedHistory  {
+                cell.firstImage.image = UIImage(named: history[indexPath.row*2].historyInfo().image)
+                cell.secondImage.image = UIImage(named: history[indexPath.row*2+1].historyInfo().image)
+                cell.firstTitle.text = history[indexPath.row*2].historyInfo().name
+                cell.secondTitle.text = history[indexPath.row*2+1].historyInfo().name
+                
+            }
+            
+        } else {
+            topBarTitle.text = "업적"
+            if let achievement = receivedAchievement  {
+                cell.firstImage.image = UIImage(named: achievement[indexPath.row*2].achievementInfo().image)
+                cell.secondImage.image = UIImage(named: achievement[indexPath.row*2+1].achievementInfo().image)
+                cell.firstTitle.text = achievement[indexPath.row*2].achievementInfo().name
+                cell.secondTitle.text = achievement[indexPath.row*2+1].achievementInfo().name
+    }
+       
+
+                    
+                    
+        }
         
         
         return cell
@@ -66,6 +94,9 @@ class MainHistoryAchieveViewController: UIViewController,UITableViewDelegate, UI
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func buttonAction(_ sender: Any) {
+    print("됨")
+    }
     /*
     // MARK: - Navigation
 

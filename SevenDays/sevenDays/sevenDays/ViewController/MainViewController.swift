@@ -9,6 +9,18 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    
+    @IBOutlet weak var chapterTitleLabel: UILabel!
+    @IBOutlet weak var chapterDetailTextLabel: UILabel!
+    
+    
+    
+    
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,14 +37,34 @@ class MainViewController: UIViewController {
         
     }
     
-    @IBAction func goToHistoryAchievementView(_ sender: Any) {
-        performSegue(withIdentifier: "goToHistoryAchievementViewSegue", sender: nil)
+    @IBAction func goToHistoryView(_ sender: Any) {
+        let dataToSend: [History]
+        dataToSend = currentUserData.currentHistories
+        performSegue(withIdentifier: "goToHistoryViewSegue", sender: dataToSend)
+    }
+    @IBAction func goToAchievementView(_ sender: Any) {
+        let dataToSendA: [Achievement]
+        dataToSendA = currentUserData.currentAchievements
+        performSegue(withIdentifier: "goToHistoryViewSegue", sender: dataToSendA)
     }
     
     @IBAction func goToTimelineView(_ sender: Any) {
         performSegue(withIdentifier: "goToTimelineViewSegue", sender: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       if segue.identifier == "goToHistoryViewSegue" {
+            let destination = segue.destination as! MainHistoryAchieveViewController
+            if let history = sender as? [History] {
+                destination.receivedHistory = history
+                destination.isHistory = true
+            }
+            if let achievement = sender as? [Achievement] {
+                destination.receivedAchievement = achievement
+                destination.isHistory = false
+            }
+       }
+    }
     /*@IBAction func goToSettingView(_ sender: Any) {
         performSegue(withIdentifier: "goToSettingViewSegue", sender: nil)
     }*/
@@ -46,4 +78,6 @@ class MainViewController: UIViewController {
     }
     */
 
+
 }
+

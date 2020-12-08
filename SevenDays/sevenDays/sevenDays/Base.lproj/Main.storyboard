@@ -8,6 +8,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NANUMBARUNGOTHIC.TTF">
+            <string>NanumBarunGothic</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--MainGame-->
         <scene sceneID="DtA-lz-1eE">
@@ -134,7 +139,7 @@
                                             <imageReference key="image" image="book.closed.fill" catalog="system" symbolScale="large"/>
                                         </state>
                                         <connections>
-                                            <action selector="goToHistoryAchievementView:" destination="26O-3G-BxK" eventType="touchUpInside" id="nHl-aT-UHx"/>
+                                            <action selector="goToHistoryView:" destination="26O-3G-BxK" eventType="touchUpInside" id="56r-N4-bPa"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0J-Ou-wF9">
@@ -145,7 +150,7 @@
                                             <imageReference key="image" image="rosette" catalog="system" symbolScale="large"/>
                                         </state>
                                         <connections>
-                                            <action selector="goToHistoryAchievementView:" destination="26O-3G-BxK" eventType="touchUpInside" id="8Vm-xJ-8BB"/>
+                                            <action selector="goToAchievementView:" destination="26O-3G-BxK" eventType="touchUpInside" id="6Yy-8U-1u2"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5N-CC-nDi">
@@ -195,10 +200,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="E2s-Dr-pgZ"/>
                     <connections>
+                        <outlet property="chapterDetailTextLabel" destination="DFv-Yo-1XT" id="7qd-SQ-DcO"/>
+                        <outlet property="chapterTitleLabel" destination="uqh-oY-fQN" id="xRb-rK-BBO"/>
                         <segue destination="Mqu-6S-bbD" kind="show" identifier="goToGameViewSegue" id="30c-yw-IUd"/>
                         <segue destination="ddX-u8-Yoa" kind="show" identifier="goToHistoryViewSegue" id="L0f-x6-Toc"/>
                         <segue destination="u2j-8U-AaL" kind="show" identifier="goToTimelineViewSegue" id="Ml8-Pc-Ah2"/>
-                        <segue destination="ddX-u8-Yoa" kind="show" id="G7o-iT-h9Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9VW-eJ-8Jc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -296,12 +302,22 @@
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CjD-Db-SGb">
+                                                    <rect key="frame" x="88" y="165" width="30" height="30"/>
+                                                    <color key="backgroundColor" red="0.3898275793" green="0.69375419620000001" blue="0.47441527249999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="test"/>
+                                                    <connections>
+                                                        <action selector="buttonAction:" destination="ddX-u8-Yoa" eventType="touchUpInside" id="YbZ-ny-pUN"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="cEn-SG-QC3" secondAttribute="trailing" constant="46" id="6Qd-EF-pIV"/>
+                                                <constraint firstItem="CjD-Db-SGb" firstAttribute="leading" secondItem="POw-QS-jM6" secondAttribute="leading" constant="88" id="893-nM-wxv"/>
                                                 <constraint firstAttribute="bottom" secondItem="cEn-SG-QC3" secondAttribute="bottom" constant="24.5" id="9gZ-qs-Rkb"/>
                                                 <constraint firstItem="cEn-SG-QC3" firstAttribute="top" secondItem="POw-QS-jM6" secondAttribute="top" constant="14" id="Iiz-sI-181"/>
                                                 <constraint firstItem="cEn-SG-QC3" firstAttribute="leading" secondItem="POw-QS-jM6" secondAttribute="leading" constant="46" id="mnI-0h-sDh"/>
+                                                <constraint firstAttribute="bottom" secondItem="CjD-Db-SGb" secondAttribute="bottom" id="yuq-0J-O0S"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -309,6 +325,7 @@
                                             <outlet property="firstTitle" destination="7Yr-cq-nne" id="lK1-Mr-wnn"/>
                                             <outlet property="secondImage" destination="Ke4-pT-mgs" id="tHe-LH-fji"/>
                                             <outlet property="secondTitle" destination="R9o-TC-mVY" id="IJt-La-PbI"/>
+                                            <outlet property="testButton" destination="CjD-Db-SGb" id="pr0-tv-aAy"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -326,6 +343,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="PMX-6E-4jU" id="uq0-jd-LHI"/>
+                        <outlet property="topBarTitle" destination="raS-pi-AT1" id="Fnq-c6-XKh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qoQ-IN-OOH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -394,10 +412,10 @@
             </objects>
             <point key="canvasLocation" x="-139" y="2244"/>
         </scene>
-        <!--View Controller-->
+        <!--Setting Container View Controller-->
         <scene sceneID="tav-RQ-8sp">
             <objects>
-                <viewController storyboardIdentifier="setting" id="aG7-hr-8HX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setting" id="aG7-hr-8HX" customClass="SettingContainerViewController" customModule="sevenDays" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pVo-cG-zMY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="794"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -420,6 +438,9 @@
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ilt-AL-4kc">
                                                         <rect key="frame" x="-2" y="0.0" width="368" height="31"/>
                                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="bgmSliderChanged:" destination="aG7-hr-8HX" eventType="valueChanged" id="v1V-ye-ZH4"/>
+                                                        </connections>
                                                     </slider>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="250" translatesAutoresizingMaskIntoConstraints="NO" id="yw5-jv-WTd">
                                                         <rect key="frame" x="0.0" y="30" width="364" height="20.5"/>
@@ -460,6 +481,9 @@
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="aI8-XN-j0t">
                                                         <rect key="frame" x="-2" y="0.0" width="368" height="31"/>
                                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="effectSliderChanged:" destination="aG7-hr-8HX" eventType="valueChanged" id="CPd-cg-TZk"/>
+                                                        </connections>
                                                     </slider>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="250" translatesAutoresizingMaskIntoConstraints="NO" id="ira-VA-03F">
                                                         <rect key="frame" x="0.0" y="30" width="364" height="20.5"/>
@@ -500,6 +524,9 @@
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="55U-pf-goj">
                                                         <rect key="frame" x="-2" y="0.0" width="368" height="31"/>
                                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="textSpeedSliderChanged:" destination="aG7-hr-8HX" eventType="valueChanged" id="gUN-0c-fVf"/>
+                                                        </connections>
                                                     </slider>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="250" translatesAutoresizingMaskIntoConstraints="NO" id="aam-IO-KHm">
                                                         <rect key="frame" x="0.0" y="30" width="364" height="20.5"/>
@@ -639,13 +666,20 @@
                                     <segue destination="OVr-6f-5dF" kind="embed" id="W7D-rV-9Cl"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rlI-Y0-h1l">
-                                <rect key="frame" x="40" y="220" width="335" height="456"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="RaG-pk-2r0" kind="embed" id="bsn-fO-rpJ"/>
-                                </connections>
-                            </containerView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i0m-aG-AJa">
+                                <rect key="frame" x="20" y="200" width="375" height="496"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rlI-Y0-h1l">
+                                        <rect key="frame" x="20" y="20" width="335" height="456"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <segue destination="RaG-pk-2r0" kind="embed" id="bsn-fO-rpJ"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jWz-8j-Iks"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -656,15 +690,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="r1R-5u-i0s"/>
+                    <connections>
+                        <outlet property="timelinePopupView" destination="i0m-aG-AJa" id="1Mc-YF-Zce"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QuP-O4-1k3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-787" y="2244"/>
+            <point key="canvasLocation" x="-788.40579710144937" y="2243.9732142857142"/>
         </scene>
-        <!--View Controller-->
+        <!--Timeline Container View Controller-->
         <scene sceneID="nVT-tf-w2O">
             <objects>
-                <viewController storyboardIdentifier="timeline" id="OVr-6f-5dF" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="timeline" id="OVr-6f-5dF" customClass="TimelineContainerViewController" customModule="sevenDays" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yAW-ly-y7L">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="794"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -731,10 +768,10 @@
             </objects>
             <point key="canvasLocation" x="-790" y="2936"/>
         </scene>
-        <!--View Controller-->
+        <!--Main Timeline Popup View Controller-->
         <scene sceneID="P0L-ct-9a8">
             <objects>
-                <viewController storyboardIdentifier="timelinePopup" id="RaG-pk-2r0" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="timelinePopup" id="RaG-pk-2r0" customClass="MainTimelinePopupViewController" customModule="sevenDays" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jXb-fb-6uN">
                         <rect key="frame" x="0.0" y="0.0" width="335" height="456"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -826,7 +863,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="G7o-iT-h9Q"/>
         <segue reference="30c-yw-IUd"/>
     </inferredMetricsTieBreakers>
     <resources>
