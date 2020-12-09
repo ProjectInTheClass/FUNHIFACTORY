@@ -41,9 +41,9 @@ class MainHistoryAchieveViewController: UIViewController,UITableViewDelegate, UI
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isHistory {
-            return currentUserData.currentHistories.count/2
+            return player.currentHistories.count/2
         } else {
-            return currentUserData.currentAchievements.count/2
+            return player.currentAchievements.count/2
         }
     }
     

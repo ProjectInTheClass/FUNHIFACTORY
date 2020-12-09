@@ -39,12 +39,12 @@ class MainViewController: UIViewController {
     
     @IBAction func goToHistoryView(_ sender: Any) {
         let dataToSend: [History]
-        dataToSend = currentUserData.currentHistories
+        dataToSend = player.currentHistories
         performSegue(withIdentifier: "goToHistoryViewSegue", sender: dataToSend)
     }
     @IBAction func goToAchievementView(_ sender: Any) {
         let dataToSendA: [Achievement]
-        dataToSendA = currentUserData.currentAchievements
+        dataToSendA = player.currentAchievements
         performSegue(withIdentifier: "goToHistoryViewSegue", sender: dataToSendA)
     }
     
