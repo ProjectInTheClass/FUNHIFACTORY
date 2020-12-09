@@ -13,7 +13,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var resumeButton: UIButton!
     @IBOutlet var homeButton: UIButton!
     
-    var indexNumber = 0
+   
     
     func numberOfSections(in tableView: UITableView) -> Int {
         1
@@ -27,8 +27,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         
         var cellToReturn = UITableViewCell()
         let chatText = currentChatArray[indexPath.row].text
-        //블록의 모든 채팅이 나와서, 선택지가 나와야 할 때
-        if indexNumber == currentDay().storyBlocks[player.currentChatId]!.chats.count {
+        //블록의 마지막 챗에 도달했을 때, 선택지 셀을 출력하는 조건문.
+        if  isItLastPage() == true {
             print("초이스 시작")
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "choiceTableViewCell", for: indexPath) as! choiceTableViewCell
             cell.cellDelegate = self
@@ -98,22 +98,22 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     func chatUpdate()
     {
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: {timer in
-            if self.indexNumber < currentDay().storyBlocks[player.currentChatId]!.chats.count{
-                currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[self.indexNumber])
+            if isItLastPage() == false{
+                currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber])
                print("사이 1") 
                 self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
                 //self.indexNumber += 1
             }
-            if self.indexNumber == currentDay().storyBlocks[player.currentChatId]!.chats.count{
+            if isItLastPage() == true{
                     timer.invalidate()
                 currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[0])
                 self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
                 //self.indexNumber += 1
-                print("스토리 \(self.indexNumber)/\(currentChatAmount())")
+                print("스토리 \(indexNumber)/\(currentChatAmount())")
                     return
                 }
-            print("스토리 \(self.indexNumber)/\(currentChatAmount())")
-            self.indexNumber += 1
+            print("스토리 \(indexNumber)/\(currentChatAmount())")
+            indexNumber += 1
         })
     }
 }
@@ -123,7 +123,7 @@ extension mainGameViewController : choiceCellDelegate{
         player.currentChatId = currentBlockOfDay().choices[0].nextTextId
         currentChatArray.removeLast()
         mainGameTableView.deleteRows(at: [IndexPath(row: currentChatArray.count, section: 0)], with: .none)
-        currentChatArray.append(Chat(text: currentBlockOfDay().choices[0].text, image: "", type: .onlyText, who: .kirell, characterFace: true))     //선택지 창이 뜨게 하기 위한 더미 Chat 파일. 직접 보이진 않음.(채우기 용)
+        currentChatArray.append(Chat(text: currentBlockOfDay().choices[0].text, image: "", type: .onlyText, who: .kirell, characterFace: true, isItLastPage: false))     //선택지 창이 뜨게 하기 위한 더미 Chat 파일. 직접 보이진 않음.(채우기 용)
         indexNumber = 0     //indexNumber 초기화
         mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         print("First button tapped")
@@ -133,7 +133,7 @@ extension mainGameViewController : choiceCellDelegate{
         player.currentChatId = currentBlockOfDay().choices[1].nextTextId
         currentChatArray.removeLast()
         mainGameTableView.deleteRows(at: [IndexPath(row: currentChatArray.count, section: 0)], with: .none)
-        currentChatArray.append(Chat(text: currentBlockOfDay().choices[1].text, image: "", type: .onlyText, who: .kirell, characterFace: true))
+        currentChatArray.append(Chat(text: currentBlockOfDay().choices[1].text, image: "", type: .onlyText, who: .kirell, characterFace: true, isItLastPage: false))
         indexNumber = 0
         mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         print("Second button Tapped")

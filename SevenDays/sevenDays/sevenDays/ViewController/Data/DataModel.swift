@@ -154,8 +154,11 @@ func currentBlockOfDay() -> BlockOfDayEpisode{
 func currentChatAmount() -> Int{
     return currentBlockOfDay().chats.count
 }
-func currentChat() -> Chat{
+func lastChat() -> Chat{
     return currentBlockOfDay().chats[currentChatAmount()]
+}
+func isItLastPage() -> Bool{
+    return currentBlockOfDay().chats[indexNumber].isItLastPage 
 }
 
 //------------------------------------스토리------------------------------------
@@ -179,6 +182,7 @@ struct Chat {
     let type: ChatType
     let who: GameCharactersEnum
     let characterFace: Bool
+    let isItLastPage : Bool
 }
 
 
@@ -207,6 +211,7 @@ struct BlockOfDayEpisode {
     // choices: [[다음페이지 결정짓는 key값 : 선택지 텍스트]]
     let choices: [Choice]
     let achievement: Achievement?
+    let choiceSkip : Bool
 }
 //n일차
 // 프라퍼티 설명: 히스토리(그 날 꿈), 본문 블록(위 스트럭처 단위)들
