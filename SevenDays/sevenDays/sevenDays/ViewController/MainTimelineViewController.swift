@@ -47,4 +47,11 @@ var timelineViewCon: MainTimelinePopupViewController!
 
 }
 
+class MainTimelinePopupViewController: UIViewController {
+    
+    func changeHidden() {
+        self.view.isHidden = true
+    }
+}
+    
 
