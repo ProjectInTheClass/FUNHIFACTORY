@@ -22,13 +22,18 @@ class opOnlyTextTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    func opProfileUpdate(imageName:String){
+
+    func opTextCellUpdate(name:String, chat:String, imageName:String, characterFace : Bool){
         guard imageName != "" else {return}
         opponentImage.image = UIImage(named: imageName)
-    }
-    func opChatUpdate(name:String,chat:String){
-        opponentName.text = name
+        
+        if characterFace == false{
+            opponentImage.isHidden = true
+            opponentName.text = ""
+        } else{
+            opponentImage.isHidden = false
+            opponentName.text = name
+        }
         opponentChat.text = chat
     }
 }

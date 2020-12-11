@@ -12,10 +12,12 @@ var currentChatArray : [Chat] = []
 
 let day0 = DayEpisode(history: .theTestBegins, storyBlocks: [
     "001":BlockOfDayEpisode(chats:
-                                [Chat(text: "으으, 추워. 여긴 어디지?", image: "", type: .textPopup, who: .kirell, characterFace: false, isItLastPage: false),
+                                [Chat(text: "00:00", image: "", type: .sectionHeader, who: .kirell, characterFace: false, isItLastPage: false),
+                                Chat(text: "으으, 추워. 여긴 어디지?", image: "", type: .textPopup, who: .kirell, characterFace: false, isItLastPage: false),
                      Chat(text: "", image: "karonRoom", type: .untouchableImage, who: .kirell, characterFace: true, isItLastPage: false),
                      Chat(text: "살벌한 꿈이군요.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
-                    Chat(text: "하필이면 취조실이라니.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [Choice(text: "누구냐!?", likability: [], nextTextId: "002"), Choice(text: "누군진 몰라도 지금 상황을 설명해주겠어?", likability: [], nextTextId: "002")], achievement: nil, choiceSkip: false),
+                    Chat(text: "하필이면 취조실이라니.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)],
+                            choices: [Choice(text: "누구냐!?", likability: [], nextTextId: "002"), Choice(text: "누군진 몰라도 지금 상황을 설명해주겠어?", likability: [], nextTextId: "002")], achievement: nil, choiceSkip: false),
     "002":BlockOfDayEpisode(chats:
                                 [Chat(text: "저는 죽음의 안내자 카론.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
                          Chat(text: "생과 사의 경계에 있는 최후의 꿈에 오신 것을", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
