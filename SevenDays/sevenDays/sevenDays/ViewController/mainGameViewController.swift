@@ -159,6 +159,11 @@ extension mainGameViewController : choiceCellDelegate{
         indexNumber = 0
         chatUpdate()
     }
-    
 }
+    extension mainGameViewController :popUpImage{
+        func popUp(){
+            
+        }
+    }
+
 
