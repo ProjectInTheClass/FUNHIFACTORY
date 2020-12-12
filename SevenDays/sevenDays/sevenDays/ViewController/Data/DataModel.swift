@@ -47,7 +47,7 @@ enum History {
     func historyInfo() -> HistoryAndAchievementStructure {
     switch self {
     case .theTestBegins:
-        return HistoryAndAchievementStructure(name: "시련의 시작", image: "historyImage1", text: "사자의 나침반이 가리키는 방향으로 가십시오.")
+        return HistoryAndAchievementStructure(name: "시련의 시작", image: "historyImage1", text: "사자의 나침반이 가리키는 방향으로 가십시오.") //나침반의 바늘이 돌고 있지만\n주변에 죽은 자가 있을 때\n가야 할 방향을 가리킬 것입니다. 
     case .lastMemories:
         return HistoryAndAchievementStructure(name: "마지막 기억", image: "historyImage2", text: "이것은 죽기 전 마지막 장면인가?")
     case .runawayGirl:
@@ -154,8 +154,8 @@ func currentBlockOfDay() -> BlockOfDayEpisode{
 func currentChatAmount() -> Int{
     return currentBlockOfDay().chats.count
 }
-func lastChat() -> Chat{
-    return currentBlockOfDay().chats[currentChatAmount()]
+func currentChatType() -> ChatType{
+    return currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type
 }
 
 //------------------------------------스토리------------------------------------

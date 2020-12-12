@@ -15,6 +15,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var homeButton: UIButton!
     @IBOutlet var imagePopUpView: UIView!
     @IBOutlet var popUpImage: UIImageView!
+    @IBOutlet var textPopUpView: UIView!
+    @IBOutlet var textPopUpProfile: UIImageView!
+    @IBOutlet var textPopUpText: UILabel!
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         1
@@ -101,9 +105,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         self.mainGameTableView.delegate = self
         self.mainGameTableView.dataSource = self
-        
-        
-        
     }
     override func viewDidAppear(_ animated: Bool) {
         chatUpdate()
@@ -111,37 +112,47 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidDisappear(_ animated: Bool) {
         timer.invalidate()
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
     
+    //상단 퍼즈버튼 눌렀을 때
     @IBAction func pause(_ sender: Any) {
         pauseBar.isHidden = false
     }
+    //상단 퍼즈버튼 누른 후, 홈 버튼
     @IBAction func goHome(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    //상단 퍼즈버튼 누른 후, 재생 버튼
     @IBAction func resume(_ sender: Any) {
         pauseBar.isHidden = true
     }
+    //이미지 팝업 후 닫기 버튼
     @IBAction func imagePopUpClose(_ sender: Any) {
         imagePopUpView.isHidden = true
         wholeView.sendSubviewToBack(imagePopUpView)
     }
+    
+    //채팅 자동으로 올라오게 하는 함수
     var timer:Timer!
-    //채팅 자동으로 올라오게 하기
     func chatUpdate()
     {
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: {timer in
-            if indexNumber < currentChatAmount(){
+            self.textPopUpView.isHidden = true
+            if indexNumber < currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type != .textPopup{
                 currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber])
                 self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
+            } else if indexNumber < currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type == .textPopup {
+                currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber])
+                self.textPopUpView.isHidden = false
+                self.wholeView.bringSubviewToFront(self.textPopUpView)
+                self.textPopUpdate()
+                currentChatArray.removeLast()
+                timer.invalidate()
+                self.chatUpdate()
             }
             if indexNumber == currentChatAmount(){
                 timer.invalidate()
                 currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[0])
                 self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
-                print("스토리 \(indexNumber)/\(currentChatAmount())")
                     return
             }
             print("스토리 \(indexNumber)/\(currentChatAmount())")
@@ -149,18 +160,26 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         })
     }
     
+    //가장 밑으로 스크롤해주는 함수
     func scrollToBottom(){
         DispatchQueue.main.async {
             let indexPath = IndexPath(row: currentChatArray.count-1, section: 0)
             self.mainGameTableView.scrollToRow(at: indexPath, at: .bottom, animated: false) //true로 바꾸면 좀 더 천천히 내려가긴 하는데, 못 따라오는 경우도 있다.
         }
     }
+    
+    //이미지를 터치하면 팝업 띄우는 함수
     @objc func imageScaleUp(_ sender: UITapGestureRecognizer){
         imagePopUpView.isHidden = false
         wholeView.bringSubviewToFront(imagePopUpView)
         popUpImage.image = UIImage(named: currentChatArray[sender.view!.tag].image)
     }
+    func textPopUpdate(){
+        textPopUpProfile.image = UIImage(named:currentChatArray[currentChatArray.count-1].who.info().profileImage)
+        textPopUpText.text = currentChatArray[currentChatArray.count-1].text
+    }
 }
+
 //선택지 Action 로직
 extension mainGameViewController : choiceCellDelegate{
     func firstChoice(){
