@@ -8,10 +8,13 @@
 import UIKit
 
 class mainGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet var wholeView: UIView!
     @IBOutlet var mainGameTableView: UITableView!
     @IBOutlet var pauseBar: UIView!
     @IBOutlet var resumeButton: UIButton!
     @IBOutlet var homeButton: UIButton!
+    @IBOutlet var imagePopUpView: UIView!
+    @IBOutlet var popUpImage: UIImageView!
     
     func numberOfSections(in tableView: UITableView) -> Int {
         1
@@ -71,11 +74,24 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                
         }
         //터치할 수 있는 이미지를 자신이 보냈을 때
-        else if currentChatArray[indexPath.row].type == .touchableImage && currentChatArray[indexPath.row].who.info().name == "키렐"{
-            let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTouchableImage", for: indexPath) as! myTouchableImageTableViewCell
-            cell.update(profile: currentChatArray[indexPath.row].who.info().profileImage, name: currentChatArray[indexPath.row].who.info().name, main: currentChatArray[indexPath.row].image)
-            cellToReturn = cell
-        }
+        else if currentChatArray[indexPath.row].type == .touchableImage {
+            if currentChatArray[indexPath.row].who.info().name == "키렐"{
+                let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTouchableImage", for: indexPath) as! myTouchableImageTableViewCell
+                cell.update(profile: currentChatArray[indexPath.row].who.info().profileImage, name: currentChatArray[indexPath.row].who.info().name, main: currentChatArray[indexPath.row].image)
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageScaleUp))
+                cell.mainImage.tag = indexPath.row
+                cell.mainImage.addGestureRecognizer(tapGesture)
+                cellToReturn = cell
+            }
+            else {
+                let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTouchableImage", for: indexPath) as! opTouchableImageTableViewCell
+                cell.update(profile: currentChatArray[indexPath.row].who.info().profileImage, name: currentChatArray[indexPath.row].who.info().name, main: currentChatArray[indexPath.row].image)
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageScaleUp))
+                cell.mainImage.tag = indexPath.row
+                cell.mainImage.addGestureRecognizer(tapGesture)
+                cellToReturn = cell
+            }
+        } 
         scrollToBottom()
         print(currentChatArray.last)
         return cellToReturn
@@ -108,6 +124,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func resume(_ sender: Any) {
         pauseBar.isHidden = true
     }
+    @IBAction func imagePopUpClose(_ sender: Any) {
+        imagePopUpView.isHidden = true
+        wholeView.sendSubviewToBack(imagePopUpView)
+    }
     var timer:Timer!
     //채팅 자동으로 올라오게 하기
     func chatUpdate()
@@ -121,7 +141,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 timer.invalidate()
                 currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[0])
                 self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
-                //self.indexNumber += 1
                 print("스토리 \(indexNumber)/\(currentChatAmount())")
                     return
             }
@@ -129,11 +148,17 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             indexNumber += 1
         })
     }
+    
     func scrollToBottom(){
         DispatchQueue.main.async {
             let indexPath = IndexPath(row: currentChatArray.count-1, section: 0)
             self.mainGameTableView.scrollToRow(at: indexPath, at: .bottom, animated: false) //true로 바꾸면 좀 더 천천히 내려가긴 하는데, 못 따라오는 경우도 있다.
         }
+    }
+    @objc func imageScaleUp(_ sender: UITapGestureRecognizer){
+        imagePopUpView.isHidden = false
+        wholeView.bringSubviewToFront(imagePopUpView)
+        popUpImage.image = UIImage(named: currentChatArray[sender.view!.tag].image)
     }
 }
 //선택지 Action 로직
@@ -160,10 +185,4 @@ extension mainGameViewController : choiceCellDelegate{
         chatUpdate()
     }
 }
-    extension mainGameViewController :popUpImage{
-        func popUp(){
-            
-        }
-    }
-
 

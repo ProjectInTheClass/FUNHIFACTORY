@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qtp-FE-nwu" userLabel="ImagePopUpView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qtp-FE-nwu" userLabel="ImagePopUpView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bft-D5-9ay">
@@ -41,6 +41,9 @@
                                         <state key="normal" image="xmark" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                         </state>
+                                        <connections>
+                                            <action selector="imagePopUpClose:" destination="ltO-Gy-0Ry" eventType="touchUpInside" id="Lt4-v8-Tp8"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.63907840551919493" colorSpace="custom" customColorSpace="displayP3"/>
@@ -52,7 +55,7 @@
                                     <constraint firstItem="tC9-vn-h4b" firstAttribute="top" secondItem="qtp-FE-nwu" secondAttribute="top" constant="25" id="t6s-O6-aBF"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bH-d2-GFf" userLabel="ChapterCover">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bH-d2-GFf" userLabel="ChapterCover">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="챕터" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovG-we-rGb">
@@ -142,7 +145,7 @@
                                 <rect key="frame" x="0.0" y="115.5" width="414" height="697.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="opUntouchAbleImage" rowHeight="182" id="Nrn-ZA-ZmR" customClass="opUntouchableImageTableViewCell" customModule="sevenDays" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="opUntouchAbleImage" rowHeight="182" id="Nrn-ZA-ZmR" customClass="opUntouchableImageTableViewCell" customModule="sevenDays" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="182"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nrn-ZA-ZmR" id="bkJ-Ae-EtP">
@@ -184,7 +187,7 @@
                                             <outlet property="profileImage" destination="Akg-bO-FQg" id="HT6-ue-z2g"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myUnTouchableImage" rowHeight="182" id="TDj-cg-GLT" customClass="myUntouchableImageTableViewCell" customModule="sevenDays" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="myUnTouchableImage" rowHeight="182" id="TDj-cg-GLT" customClass="myUntouchableImageTableViewCell" customModule="sevenDays" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="210" width="414" height="182"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TDj-cg-GLT" id="EgD-9d-R66">
@@ -228,7 +231,7 @@
                                             <outlet property="untouchImage" destination="eeR-RP-ZrG" id="cwn-7d-C2d"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="choiceTableViewCell" rowHeight="123" id="Lkb-pa-s9I" userLabel="ChoiceCell" customClass="choiceTableViewCell" customModule="sevenDays" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="choiceTableViewCell" rowHeight="123" id="Lkb-pa-s9I" userLabel="ChoiceCell" customClass="choiceTableViewCell" customModule="sevenDays" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="392" width="414" height="123"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lkb-pa-s9I" id="bVF-9R-nkg">
@@ -281,7 +284,7 @@
                                             <outlet property="secondChoiceButton" destination="s1F-of-7ve" id="Vwm-fw-I9f"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="opOnlyText" rowHeight="71" id="kzV-du-DWb" userLabel="opOnlyText" customClass="opOnlyTextTableViewCell" customModule="sevenDays" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="opOnlyText" rowHeight="71" id="kzV-du-DWb" userLabel="opOnlyText" customClass="opOnlyTextTableViewCell" customModule="sevenDays" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="515" width="414" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kzV-du-DWb" id="AFO-AJ-MZy">
@@ -296,11 +299,12 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jht-3c-zdY">
-                                                    <rect key="frame" x="86" y="11" width="24.5" height="17"/>
+                                                    <rect key="frame" x="86" y="11" width="24.5" height="16.5"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="이름">
                                                             <attributes>
-                                                                <font key="NSFont" metaFont="menu" size="14"/>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="14" name="NanumGothicBold"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
@@ -316,7 +320,7 @@
                                                         <fragment content="상대가 말하는 텍스트의 예시">
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                <font key="NSFont" metaFont="system" size="14"/>
+                                                                <font key="NSFont" size="14" name="NanumBarunGothic"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
@@ -342,7 +346,7 @@
                                             <outlet property="opponentName" destination="Jht-3c-zdY" id="oHn-s1-x5a"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myOnlyText" rowHeight="71" id="6ud-Qn-v9T" userLabel="myOnlyText" customClass="myOnlyTextTableViewCell" customModule="sevenDays" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="myOnlyText" rowHeight="71" id="6ud-Qn-v9T" userLabel="myOnlyText" customClass="myOnlyTextTableViewCell" customModule="sevenDays" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="586" width="414" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6ud-Qn-v9T" id="9kn-37-Lm5">
@@ -366,7 +370,7 @@
                                                         <fragment content="상대가 말하는 텍스트의 예시">
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                <font key="NSFont" metaFont="system" size="14"/>
+                                                                <font key="NSFont" size="14" name="NanumGothic"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -374,11 +378,12 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUY-39-blt">
-                                                    <rect key="frame" x="308.5" y="11" width="24.5" height="17"/>
+                                                    <rect key="frame" x="308.5" y="11" width="24.5" height="16.5"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="이름">
                                                             <attributes>
-                                                                <font key="NSFont" metaFont="menu" size="14"/>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="14" name="NanumBarunGothic"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
@@ -403,7 +408,7 @@
                                             <outlet property="myProfile" destination="079-Qv-QHt" id="EP6-Iy-08L"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myTouchableImage" id="Q2l-Xx-T9y" userLabel="myTouchableImageCell" customClass="myTouchableImageTableViewCell" customModule="sevenDays" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="myTouchableImage" id="Q2l-Xx-T9y" userLabel="myTouchableImageCell" customClass="myTouchableImageTableViewCell" customModule="sevenDays" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="657" width="414" height="270"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q2l-Xx-T9y" id="lJo-y2-Oce">
@@ -447,7 +452,7 @@
                                             <outlet property="profileImage" destination="dJt-c3-O4V" id="51X-83-AeQ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="268" id="hAR-zO-1Ht" userLabel="opTouchableImageCell" customClass="하지만">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="opTouchableImage" rowHeight="268" id="hAR-zO-1Ht" userLabel="opTouchableImageCell" customClass="opTouchableImageTableViewCell" customModule="sevenDays" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="927" width="414" height="268"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hAR-zO-1Ht" id="VKc-3X-dSO">
@@ -486,8 +491,13 @@
                                                 <constraint firstItem="yQi-ms-TM3" firstAttribute="leading" secondItem="QBV-Hu-eeH" secondAttribute="trailing" constant="17" id="voT-fA-M29"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="mainImage" destination="yQi-ms-TM3" id="elk-vn-mey"/>
+                                            <outlet property="nameLabel" destination="2If-Pl-onm" id="Ntg-IS-00L"/>
+                                            <outlet property="profileImage" destination="QBV-Hu-eeH" id="wwc-4F-7bu"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sectionHeaderCell" id="tvD-ra-Jgm" userLabel="sectionHeader" customClass="sectionHeaderTableViewCell" customModule="sevenDays" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="sectionHeaderCell" id="tvD-ra-Jgm" userLabel="sectionHeader" customClass="sectionHeaderTableViewCell" customModule="sevenDays" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1195" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tvD-ra-Jgm" id="zdT-lz-ziz">
@@ -584,12 +594,6 @@
                             <constraint firstItem="qtp-FE-nwu" firstAttribute="top" secondItem="hh4-8P-ukc" secondAttribute="top" id="vxD-Rn-B6Q"/>
                             <constraint firstItem="FAk-kv-bEp" firstAttribute="trailing" secondItem="hh4-8P-ukc" secondAttribute="trailing" id="zNj-K0-aHe"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="qtp-FE-nwu"/>
-                                <exclude reference="7bH-d2-GFf"/>
-                            </mask>
-                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="message.fill" catalog="system" id="Eu7-xB-qhp"/>
                     <toolbarItems/>
@@ -597,9 +601,12 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="homeButton" destination="ION-sF-XqN" id="Owg-Yt-MaQ"/>
+                        <outlet property="imagePopUpView" destination="qtp-FE-nwu" id="eKO-ur-4GL"/>
                         <outlet property="mainGameTableView" destination="Xe8-0R-VjX" id="YVG-aq-iPa"/>
                         <outlet property="pauseBar" destination="Zlj-Ch-3Zd" id="3be-o6-Pp4"/>
+                        <outlet property="popUpImage" destination="bft-D5-9ay" id="iGG-Mp-RrU"/>
                         <outlet property="resumeButton" destination="rdI-uG-UeB" id="C4o-a3-fqK"/>
+                        <outlet property="wholeView" destination="sKz-hY-OqG" id="F9q-Xy-sPy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMr-ne-m3P" sceneMemberID="firstResponder"/>

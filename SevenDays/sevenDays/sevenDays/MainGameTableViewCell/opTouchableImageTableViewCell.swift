@@ -1,12 +1,13 @@
 //
-//  myTouchableImageTableViewCell.swift
+//  opTouchableImageTableViewCell.swift
 //  sevenDays
 //
-//  Created by 손영웅 on 2020/12/11.
+//  Created by 손영웅 on 2020/12/12.
 //
+
 import UIKit
 
-class myTouchableImageTableViewCell: UITableViewCell {
+class opTouchableImageTableViewCell: UITableViewCell {
 
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var nameLabel: UILabel!
@@ -15,10 +16,6 @@ class myTouchableImageTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         mainImage.isUserInteractionEnabled = true
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
     }
     func update(profile:String, name:String, main:String){
         profileImage.image = UIImage(named: profile)
