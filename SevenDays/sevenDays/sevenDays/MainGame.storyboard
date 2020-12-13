@@ -100,7 +100,7 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bH-d2-GFf" userLabel="ChapterCover">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="챕터" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovG-we-rGb">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="챕터" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovG-we-rGb">
                                         <rect key="frame" x="135" y="74" width="145" height="68"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="145" id="5GN-RG-g6m"/>
@@ -110,23 +110,21 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="챕터 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8R-zt-VNe">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="챕터 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8R-zt-VNe">
                                         <rect key="frame" x="175" y="147" width="64" height="20.5"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7gR-Sf-6Ze">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7gR-Sf-6Ze">
                                         <rect key="frame" x="0.0" y="167.5" width="414" height="399"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="399" id="Krw-kA-skT"/>
+                                            <constraint firstAttribute="width" constant="414" id="Ybl-E8-QTS"/>
+                                        </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZz-Pk-jL8">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="탭해서 계속" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gl8-p7-UDD">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="탭해서 계속" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gl8-p7-UDD">
                                         <rect key="frame" x="168" y="664.5" width="78" height="20.5"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -134,11 +132,15 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="AZz-Pk-jL8" secondAttribute="bottom" constant="83" id="3qJ-kG-Z0i"/>
-                                    <constraint firstItem="AZz-Pk-jL8" firstAttribute="top" secondItem="7bH-d2-GFf" secondAttribute="top" id="UlE-Z2-1el"/>
-                                    <constraint firstItem="AZz-Pk-jL8" firstAttribute="top" secondItem="7bH-d2-GFf" secondAttribute="top" id="e7q-8K-RCj"/>
-                                    <constraint firstAttribute="trailing" secondItem="AZz-Pk-jL8" secondAttribute="trailing" id="hUl-Nj-YVv"/>
-                                    <constraint firstItem="AZz-Pk-jL8" firstAttribute="leading" secondItem="7bH-d2-GFf" secondAttribute="leading" id="qoh-BQ-Rxx"/>
+                                    <constraint firstAttribute="bottom" secondItem="gl8-p7-UDD" secondAttribute="bottom" constant="167" id="6Wz-fM-DMP"/>
+                                    <constraint firstAttribute="trailing" secondItem="ovG-we-rGb" secondAttribute="trailing" constant="134" id="KZ5-MX-SDm"/>
+                                    <constraint firstItem="7gR-Sf-6Ze" firstAttribute="leading" secondItem="7bH-d2-GFf" secondAttribute="leading" id="QZ3-B8-IWA"/>
+                                    <constraint firstItem="ovG-we-rGb" firstAttribute="top" secondItem="7bH-d2-GFf" secondAttribute="top" constant="74" id="TaH-Jv-5JW"/>
+                                    <constraint firstItem="y8R-zt-VNe" firstAttribute="top" secondItem="ovG-we-rGb" secondAttribute="bottom" constant="5" id="X4t-ht-ZiT"/>
+                                    <constraint firstItem="7gR-Sf-6Ze" firstAttribute="top" secondItem="y8R-zt-VNe" secondAttribute="bottom" id="YtM-TU-Tzy"/>
+                                    <constraint firstAttribute="trailing" secondItem="7gR-Sf-6Ze" secondAttribute="trailing" id="a1X-1V-y1M"/>
+                                    <constraint firstItem="gl8-p7-UDD" firstAttribute="top" secondItem="7gR-Sf-6Ze" secondAttribute="bottom" constant="98" id="mYp-Qm-wWV"/>
+                                    <constraint firstItem="ovG-we-rGb" firstAttribute="leading" secondItem="7bH-d2-GFf" secondAttribute="leading" constant="135" id="uk8-Jc-TuW"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAk-kv-bEp" userLabel="TopBar">
@@ -636,6 +638,10 @@
                     <navigationItem key="navigationItem" id="NGP-7e-8Oa"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="chapterCover" destination="7bH-d2-GFf" id="hjO-hH-G6i"/>
+                        <outlet property="chapterCoverImage" destination="7gR-Sf-6Ze" id="Dn1-hU-9tr"/>
+                        <outlet property="chapterCoverName" destination="y8R-zt-VNe" id="CEf-0I-KhS"/>
+                        <outlet property="chapterCoverTitle" destination="ovG-we-rGb" id="whs-l1-eOX"/>
                         <outlet property="homeButton" destination="ION-sF-XqN" id="Owg-Yt-MaQ"/>
                         <outlet property="imagePopUpView" destination="qtp-FE-nwu" id="eKO-ur-4GL"/>
                         <outlet property="mainGameTableView" destination="Xe8-0R-VjX" id="YVG-aq-iPa"/>

@@ -18,6 +18,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var textPopUpView: UIView!
     @IBOutlet var textPopUpProfile: UIImageView!
     @IBOutlet var textPopUpText: UILabel!
+    @IBOutlet var chapterCoverTitle: UILabel!
+    @IBOutlet var chapterCoverName: UILabel!
+    @IBOutlet var chapterCoverImage: UIImageView!
+    @IBOutlet var chapterCover: UIView!
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -109,6 +113,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(chatUpdateObjc))
         textPopUpView.addGestureRecognizer(tapGesture)
         textPopUpView.isUserInteractionEnabled = true
+        let coverTapGesture = UITapGestureRecognizer(target: self, action: #selector(chapterCoverTapped))
+        chapterCover.addGestureRecognizer(coverTapGesture)
+        chapterCover.isUserInteractionEnabled = true
+        
     }
     @objc func chatUpdateObjc(){
         chatUpdate()
@@ -141,9 +149,24 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         wholeView.sendSubviewToBack(imagePopUpView)
     }
     func chapterUpdate(){
-        let chapterNumber = 0
+            //챕터 넘기기
+            player.dayIndex += 1
+            player.dayId = "day+\(player.dayIndex)"
+            player.currentChatId = dummyData.stories[player.dayId]!.startEpisode
+            currentChatArray.removeAll()
+            mainGameTableView.reloadData()
+            //챕터 커버 업데이트
+            chapterCover.isHidden = false
+            wholeView.bringSubviewToFront(chapterCover)
+            chapterCoverTitle.text = "\(dummyData.stories[player.dayId]?.chapter.chapterNumber) 일 차"
+            chapterCoverName.text = dummyData.stories[player.dayId]?.chapter.chapterName
+            chapterCoverImage.image = UIImage(named: (dummyData.stories[player.dayId]?.chapter.chapterImage)!)
     }
-    
+    @objc func chapterCoverTapped(){
+        chapterCover.isHidden = true
+        wholeView.sendSubviewToBack(chapterCover)
+        chatUpdateTimer()
+    }
     
     
     var choiceCell = false
@@ -167,6 +190,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             self.textPopUpdate()
             currentChatArray.removeLast()
             self.chatUpdateTimer()
+        }
+        if currentDay().storyBlocks[player.currentChatId]!.choices[0].nextTextId == "End"{
+            chapterUpdate()
         }
         if indexNumber == currentChatAmount(){
             timer.invalidate()
@@ -196,12 +222,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         textPopUpProfile.image = UIImage(named:currentChatArray[currentChatArray.count-1].who.info().profileImage)
         textPopUpText.text = currentChatArray[currentChatArray.count-1].text
     }
-    /*func tapping(){
-        let tap = UITapGestureRecognizer(target: self, action: #selector(skipChat))
-        mainGameTableView.addGestureRecognizer(tap)
-        mainGameTableView.isUserInteractionEnabled = true
-        tap.delegate = self
-    }*/
 }
 
 //선택지 Action 로직

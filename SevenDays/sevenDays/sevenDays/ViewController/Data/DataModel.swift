@@ -142,11 +142,12 @@ struct User {
     var currentAchievements: [Achievement]
     //var timellne: nil
     var currentGameCharacter: [String:GameCharacter] = currentCharactersInfo
-    var dayIndex:String
+    var dayIndex:Int
+    var dayId:String
     var currentChatId:String
 }
 func currentDay() -> DayEpisode{
-    return dummyData.stories[player.dayIndex]!
+    return dummyData.stories[player.dayId]!
 }
 func currentBlockOfDay() -> BlockOfDayEpisode{
     return currentDay().storyBlocks[player.currentChatId]!
@@ -213,6 +214,7 @@ struct BlockOfDayEpisode {
 //n일차
 // 프라퍼티 설명: 히스토리(그 날 꿈), 본문 블록(위 스트럭처 단위)들
 struct DayEpisode {
+    let startEpisode : String
     let chapter: Chapter
     let history: History
     let storyBlocks: [String:BlockOfDayEpisode]
@@ -230,6 +232,7 @@ struct Chapter {
     let chapterNumber : Int
     let chapterName : String
     let chapterInfo : String
+    let chapterImage : String
 }
 
 // 게임 캐릭터 클래스로 바꾼 것. 이 info() 안에 있는 게 현재 캐릭터 정보 원본 인스턴스. 여기서도 참조해서 쓰면 돼요.
