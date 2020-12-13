@@ -213,6 +213,7 @@ struct BlockOfDayEpisode {
 //n일차
 // 프라퍼티 설명: 히스토리(그 날 꿈), 본문 블록(위 스트럭처 단위)들
 struct DayEpisode {
+    let chapter: Chapter
     let history: History
     let storyBlocks: [String:BlockOfDayEpisode]
 }
@@ -225,7 +226,11 @@ struct Data {
     let achivements: [Achievement]
     let FullGameCharactersInfo: [String:GameCharacter]
 }
-
+struct Chapter {
+    let chapterNumber : Int
+    let chapterName : String
+    let chapterInfo : String
+}
 
 // 게임 캐릭터 클래스로 바꾼 것. 이 info() 안에 있는 게 현재 캐릭터 정보 원본 인스턴스. 여기서도 참조해서 쓰면 돼요.
 enum GameCharactersEnum {

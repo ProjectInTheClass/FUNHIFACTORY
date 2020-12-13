@@ -10,7 +10,7 @@ import Foundation
 var indexNumber = 0
 var currentChatArray : [Chat] = []
 
-let day0 = DayEpisode(history: .theTestBegins, storyBlocks: [
+let day0 = DayEpisode(chapter: Chapter(chapterNumber: 0, chapterName: "사자의 심문", chapterInfo: "당신의 선택 하나하나가 이후의 운명을 바꿔나갈 것이다."), history: .theTestBegins, storyBlocks: [
     "001":BlockOfDayEpisode(chats:
                                 [Chat(text: "00:00", image: "", type: .sectionHeader, who: .kirell, characterFace: false, isItLastPage: false),
                                 Chat(text: "으으, 추워. 여긴 어디지?", image: "", type: .textPopup, who: .kirell, characterFace: false, isItLastPage: false),
@@ -242,7 +242,7 @@ let day0 = DayEpisode(history: .theTestBegins, storyBlocks: [
 */
 
 
-let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
+let day1 = DayEpisode(chapter: Chapter(chapterNumber: 1, chapterName: "첫 동료", chapterInfo: ""), history: .lastMemories , storyBlocks: [
         "101":BlockOfDayEpisode(chats: [
             Chat(text: "으음, 카론이 있던 취조실이 아니잖아.", image: "", type: .textPopup, who: .kirell, characterFace: true, isItLastPage: false),
             Chat(text: "설마..", image: "", type: .textPopup, who: .kirell, characterFace: true, isItLastPage: false),

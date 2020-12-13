@@ -7,7 +7,7 @@
 
 import UIKit
 
-class mainGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class mainGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     @IBOutlet var wholeView: UIView!
     @IBOutlet var mainGameTableView: UITableView!
     @IBOutlet var pauseBar: UIView!
@@ -34,6 +34,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         let chatText = currentChatArray[indexPath.row].text
         //블록의 마지막 챗에 도달했을 때, 선택지 셀을 출력하는 조건문.
         if  indexNumber == currentChatAmount() {
+            choiceCell = true
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "choiceTableViewCell", for: indexPath) as! choiceTableViewCell
             cell.cellDelegate = self
             print("선택지 1 : \(currentBlockOfDay().choices[0].text)")
@@ -41,8 +42,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             //cell.choiceUpdate(first: currentBlockOfDay().choices[0], second: currentBlockOfDay().choices[1])
             cellToReturn = cell
         }
-        //키렐의 텍스트 채팅이 나올 때 (현재는 팝업텍스트까지 일시적으로 포함 중. 팝업 텍스트 방법을 알게 되면 수정할 예정
-        else if (currentChatArray[indexPath.row].type == .onlyText||currentChatArray[indexPath.row].type == .textPopup) && currentChatArray[indexPath.row].who.info().name == "키렐"{
+        //키렐의 텍스트 채팅이 나올 때
+        else if currentChatArray[indexPath.row].type == .onlyText && currentChatArray[indexPath.row].who.info().name == "키렐"{
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myOnlyText", for: indexPath) as! myOnlyTextTableViewCell
             cell.myChatUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText)
             cell.myProfileUpdate(imageName: currentChatArray[indexPath.row].who.info().profileImage)
@@ -105,6 +106,12 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         self.mainGameTableView.delegate = self
         self.mainGameTableView.dataSource = self
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(chatUpdateObjc))
+        textPopUpView.addGestureRecognizer(tapGesture)
+        textPopUpView.isUserInteractionEnabled = true
+    }
+    @objc func chatUpdateObjc(){
+        chatUpdate()
     }
     override func viewDidAppear(_ animated: Bool) {
         chatUpdate()
@@ -112,7 +119,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidDisappear(_ animated: Bool) {
         timer.invalidate()
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard choiceCell == false else {return}
+        chatUpdate()
+    }
     //상단 퍼즈버튼 눌렀을 때
     @IBAction func pause(_ sender: Any) {
         pauseBar.isHidden = false
@@ -130,34 +140,42 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         imagePopUpView.isHidden = true
         wholeView.sendSubviewToBack(imagePopUpView)
     }
+    func chapterUpdate(){
+        let chapterNumber = 0
+    }
     
+    
+    
+    var choiceCell = false
     //채팅 자동으로 올라오게 하는 함수
     var timer:Timer!
-    func chatUpdate()
+    func chatUpdateTimer()
     {
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: {timer in
-            self.textPopUpView.isHidden = true
-            if indexNumber < currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type != .textPopup{
-                currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber])
-                self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
-            } else if indexNumber < currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type == .textPopup {
-                currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber])
-                self.textPopUpView.isHidden = false
-                self.wholeView.bringSubviewToFront(self.textPopUpView)
-                self.textPopUpdate()
-                currentChatArray.removeLast()
-                timer.invalidate()
-                self.chatUpdate()
-            }
-            if indexNumber == currentChatAmount(){
-                timer.invalidate()
-                currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[0])
-                self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
-                    return
-            }
-            print("스토리 \(indexNumber)/\(currentChatAmount())")
-            indexNumber += 1
+        timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: {timer in
+            self.chatUpdate()
         })
+    }
+    func chatUpdate(){
+        self.textPopUpView.isHidden = true
+        if indexNumber < currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type != .textPopup{
+            currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber])
+            self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
+        } else if indexNumber < currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type == .textPopup {
+            currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber])
+            self.textPopUpView.isHidden = false
+            self.wholeView.bringSubviewToFront(self.textPopUpView)
+            self.textPopUpdate()
+            currentChatArray.removeLast()
+            self.chatUpdateTimer()
+        }
+        if indexNumber == currentChatAmount(){
+            timer.invalidate()
+            currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[0])
+            self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
+            return
+        }
+        print("스토리 \(indexNumber)/\(currentChatAmount())")
+        indexNumber += 1
     }
     
     //가장 밑으로 스크롤해주는 함수
@@ -178,6 +196,12 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         textPopUpProfile.image = UIImage(named:currentChatArray[currentChatArray.count-1].who.info().profileImage)
         textPopUpText.text = currentChatArray[currentChatArray.count-1].text
     }
+    /*func tapping(){
+        let tap = UITapGestureRecognizer(target: self, action: #selector(skipChat))
+        mainGameTableView.addGestureRecognizer(tap)
+        mainGameTableView.isUserInteractionEnabled = true
+        tap.delegate = self
+    }*/
 }
 
 //선택지 Action 로직
@@ -191,7 +215,8 @@ extension mainGameViewController : choiceCellDelegate{
         mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         print("First button tapped")
         indexNumber = 0
-        chatUpdate()
+        choiceCell = false
+        chatUpdateTimer()
     }
     func secondChoice() {
         player.currentChatId = currentBlockOfDay().choices[1].nextTextId
@@ -201,7 +226,8 @@ extension mainGameViewController : choiceCellDelegate{
         mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         print("Second button Tapped")
         indexNumber = 0
-        chatUpdate()
+        choiceCell = false
+        chatUpdateTimer()
     }
 }
 
