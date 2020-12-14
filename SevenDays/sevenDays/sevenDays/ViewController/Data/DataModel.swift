@@ -79,9 +79,9 @@ enum Achievement {
     case .firstComradeArgo:
         return HistoryAndAchievementStructure(name: "첫 동료 아르고", image: "achievementImage2", text: "흠.... 키렐, 그 말은 제가 동료가 되는 게 당신에게 무조건 유리하다는 뜻인가요?")
     case .likeAWelllAgedWhiskey:
-        return HistoryAndAchievementStructure(name: "중년의 품격", image: "", text: "...이럴 땐 제 과제가 참 어렵습니다.")
+        return HistoryAndAchievementStructure(name: "중년의 품격", image: "karonroom", text: "...이럴 땐 제 과제가 참 어렵습니다.")
     case .whereIBelong:
-        return HistoryAndAchievementStructure(name: "내가 있을 장소", image: "", text: "이곳 생활이 재미있어질 것 같네요.")
+        return HistoryAndAchievementStructure(name: "내가 있을 장소", image: "karonBook", text: "이곳 생활이 재미있어질 것 같네요.")
     default:
         break
         
@@ -93,13 +93,19 @@ enum Achievement {
 
 // 키렐 포함 인물들 정보를 담기 위한 스트럭처
 // 프라퍼티 설명:  인물 이름, 대표 이미지, 키렐이 관찰기록한 듯한 내용의 해당 인물 정보들(인물상세페이지에 있음), 시련 미션, 호감도
-class GameCharacter {
+class GameCharacter: CustomStringConvertible {
+    var description: String {
+        return "name: \(name), profileImage: \(profileImage), backgroundImage: \(backgroundImage), infomation: \(infomation), mission: \(mission), likability: \(likability), "
+    }
+    
+   
+    
     let name: String
     let profileImage: String
     let backgroundImage: String
     let infomation: [String]
     let mission : String
-    var likability: Int = 0
+    var likability: Int
     
     init(name: String, profileImage: String, backgroundImage: String, infomation: [String], mission : String, likability: Int) {
         self.name = name
@@ -107,8 +113,9 @@ class GameCharacter {
         self.backgroundImage = backgroundImage
         self.infomation = infomation
         self.mission = mission
-        self.likability = 0
+        self.likability = likability
     }
+   
      
 }
 //----------얘는 유저스트럭처에 포함됨-----------
@@ -116,16 +123,18 @@ class GameCharacter {
 //유저가 파악한 현재 인물들 정보를 반영해 넣을 스트럭처
 
 //---------- 캐릭터 인스턴스 인스턴스. 여기서 다 참조해서 쓰는 거임. 이넘 안의 캐릭터 정보도 여기에서 가져다 썼음.(GameCharacter는 스트럭처->클래스로 타입 수정함)
+
+// 현재 게임 진행 상황에서 플레이어가 파악한 타 캐릭터들 현황
 var currentCharactersInfo: [String:GameCharacter]
     
 
-    = ["kirell":GameCharacter(name: "키렐", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "argo":GameCharacter(name: "아르고", profileImage: "", backgroundImage: "", infomation: [], mission: "친한 동료를 죽여라", likability: 0),
-        "unknown":GameCharacter(name: "???", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+    = ["kirell":GameCharacter(name: "키렐", profileImage: "kirell", backgroundImage: "kirell", infomation: [], mission: "나침반을 따라가라.", likability: 56),
+        "argo":GameCharacter(name: "아르고", profileImage: "argo", backgroundImage: "argo", infomation: ["아르고는 남자다.", "아르고는 자연곱슬이다.","아르고는 고양이상이다."], mission: "친한 동료를 죽여라", likability: 99),
+        "unknown":GameCharacter(name: "???", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 13),
         "wolf":GameCharacter(name: "울프", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "ballam":GameCharacter(name: "발람", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "karon":GameCharacter(name: "카론", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "hilde":GameCharacter(name: "힐데", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "ballam":GameCharacter(name: "발람", profileImage: "ballam", backgroundImage: "ballam", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "karon":GameCharacter(name: "카론", profileImage: "karon", backgroundImage: "karon", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "hilde":GameCharacter(name: "힐데", profileImage: "hilde", backgroundImage: "hilde", infomation: [], mission: "나침반을 따라가라.", likability: 0),
         "philio":GameCharacter(name: "필리오", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),]
 
 let noDataCharacter = GameCharacter(name: "캐릭터가 없습니다", profileImage: "", backgroundImage: "", infomation: [], mission: "", likability: 0)
