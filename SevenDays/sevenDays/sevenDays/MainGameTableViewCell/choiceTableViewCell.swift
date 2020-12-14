@@ -17,9 +17,12 @@ class choiceTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("선택지창 on")
         firstChoiceButton.setTitle(currentBlockOfDay().choices[0].text, for: .normal)
         secondChoiceButton.setTitle(currentBlockOfDay().choices[1].text, for: .normal)
+    }
+    func choiceUpdate(first:Choice, second:Choice){
+        firstChoiceButton.setTitle(first.text, for: .normal)
+        secondChoiceButton.setTitle(second.text, for: .normal)
     }
     
     var cellDelegate:choiceCellDelegate?

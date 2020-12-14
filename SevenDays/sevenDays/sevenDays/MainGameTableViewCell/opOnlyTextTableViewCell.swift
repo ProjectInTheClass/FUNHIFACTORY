@@ -13,25 +13,22 @@ class opOnlyTextTableViewCell: UITableViewCell {
     @IBOutlet var opponentImage: UIImageView!
     @IBOutlet var opponentChat: UITextView!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
+        // Initialization code
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-    }
 
-    func opTextCellUpdate(name:String, chat:String, imageName:String, characterFace : Bool){
+        // Configure the view for the selected state
+    }
+    
+    func opProfileUpdate(imageName:String){
         guard imageName != "" else {return}
         opponentImage.image = UIImage(named: imageName)
-        
-        if characterFace == false{
-            opponentImage.isHidden = true
-            opponentName.text = ""
-        } else{
-            opponentImage.isHidden = false
-            opponentName.text = name
-        }
+    }
+    func opChatUpdate(name:String,chat:String){
+        opponentName.text = name
         opponentChat.text = chat
     }
 }

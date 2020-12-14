@@ -47,7 +47,7 @@ enum History {
     func historyInfo() -> HistoryAndAchievementStructure {
     switch self {
     case .theTestBegins:
-        return HistoryAndAchievementStructure(name: "시련의 시작", image: "historyImage1", text: "사자의 나침반이 가리키는 방향으로 가십시오.") //나침반의 바늘이 돌고 있지만\n주변에 죽은 자가 있을 때\n가야 할 방향을 가리킬 것입니다. 
+        return HistoryAndAchievementStructure(name: "시련의 시작", image: "historyImage1", text: "사자의 나침반이 가리키는 방향으로 가십시오.")
     case .lastMemories:
         return HistoryAndAchievementStructure(name: "마지막 기억", image: "historyImage2", text: "이것은 죽기 전 마지막 장면인가?")
     case .runawayGirl:
@@ -126,6 +126,8 @@ class GameCharacter: CustomStringConvertible {
 
 // 현재 게임 진행 상황에서 플레이어가 파악한 타 캐릭터들 현황
 var currentCharactersInfo: [String:GameCharacter]
+    
+
     = ["kirell":GameCharacter(name: "키렐", profileImage: "kirell", backgroundImage: "kirell", infomation: [], mission: "나침반을 따라가라.", likability: 56),
         "argo":GameCharacter(name: "아르고", profileImage: "argo", backgroundImage: "argo", infomation: ["아르고는 남자다.", "아르고는 자연곱슬이다.","아르고는 고양이상이다."], mission: "친한 동료를 죽여라", likability: 99),
         "unknown":GameCharacter(name: "???", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 13),
@@ -134,7 +136,6 @@ var currentCharactersInfo: [String:GameCharacter]
         "karon":GameCharacter(name: "카론", profileImage: "karon", backgroundImage: "karon", infomation: [], mission: "나침반을 따라가라.", likability: 0),
         "hilde":GameCharacter(name: "힐데", profileImage: "hilde", backgroundImage: "hilde", infomation: [], mission: "나침반을 따라가라.", likability: 0),
         "philio":GameCharacter(name: "필리오", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),]
-
 
 let noDataCharacter = GameCharacter(name: "캐릭터가 없습니다", profileImage: "", backgroundImage: "", infomation: [], mission: "", likability: 0)
 
@@ -150,12 +151,11 @@ struct User {
     var currentAchievements: [Achievement]
     //var timellne: nil
     var currentGameCharacter: [String:GameCharacter] = currentCharactersInfo
-    var dayIndex:Int
-    var dayId:String
+    var dayIndex:String
     var currentChatId:String
 }
 func currentDay() -> DayEpisode{
-    return dummyData.stories[player.dayId]!
+    return dummyData.stories[player.dayIndex]!
 }
 func currentBlockOfDay() -> BlockOfDayEpisode{
     return currentDay().storyBlocks[player.currentChatId]!
@@ -163,8 +163,11 @@ func currentBlockOfDay() -> BlockOfDayEpisode{
 func currentChatAmount() -> Int{
     return currentBlockOfDay().chats.count
 }
-func currentChatType() -> ChatType{
-    return currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type
+func lastChat() -> Chat{
+    return currentBlockOfDay().chats[currentChatAmount()]
+}
+func isItLastPage() -> Bool{
+    return currentBlockOfDay().chats[indexNumber].isItLastPage 
 }
 
 //------------------------------------스토리------------------------------------
@@ -222,8 +225,6 @@ struct BlockOfDayEpisode {
 //n일차
 // 프라퍼티 설명: 히스토리(그 날 꿈), 본문 블록(위 스트럭처 단위)들
 struct DayEpisode {
-    let startEpisode : String
-    let chapter: Chapter
     let history: History
     let storyBlocks: [String:BlockOfDayEpisode]
 }
@@ -236,12 +237,7 @@ struct Data {
     let achivements: [Achievement]
     let FullGameCharactersInfo: [String:GameCharacter]
 }
-struct Chapter {
-    let chapterNumber : Int
-    let chapterName : String
-    let chapterInfo : String
-    let chapterImage : String
-}
+
 
 // 게임 캐릭터 클래스로 바꾼 것. 이 info() 안에 있는 게 현재 캐릭터 정보 원본 인스턴스. 여기서도 참조해서 쓰면 돼요.
 enum GameCharactersEnum {
