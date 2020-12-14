@@ -10,12 +10,14 @@ import Foundation
 var indexNumber = 0
 var currentChatArray : [Chat] = []
 
-let day0 = DayEpisode(history: .theTestBegins, storyBlocks: [
+let day0 = DayEpisode(startEpisode: "001", chapter: Chapter(chapterNumber: 0, chapterName: "사자의 심문", chapterInfo: "당신의 선택 하나하나가 이후의 운명을 바꿔나갈 것이다.", chapterImage: "chapterCover0"), history: .theTestBegins, storyBlocks: [
     "001":BlockOfDayEpisode(chats:
-                                [Chat(text: "으으, 추워. 여긴 어디지?", image: "", type: .textPopup, who: .kirell, characterFace: false, isItLastPage: false),
-                     Chat(text: "", image: "karonRoom", type: .untouchableImage, who: .kirell, characterFace: true, isItLastPage: false),
+                                [Chat(text: "00:00", image: "", type: .sectionHeader, who: .kirell, characterFace: false, isItLastPage: false),
+                                Chat(text: "으으, 추워. 여긴 어디지?", image: "", type: .textPopup, who: .kirell, characterFace: false, isItLastPage: false),
+                     Chat(text: "", image: "karonRoom", type: .touchableImage, who: .kirell, characterFace: true, isItLastPage: false),
                      Chat(text: "살벌한 꿈이군요.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
-                    Chat(text: "하필이면 취조실이라니.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [Choice(text: "누구냐!?", likability: [], nextTextId: "002"), Choice(text: "누군진 몰라도 지금 상황을 설명해주겠어?", likability: [], nextTextId: "002")], achievement: nil, choiceSkip: false),
+                    Chat(text: "하필이면 취조실이라니.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)],
+                            choices: [Choice(text: "누구냐!?", likability: [], nextTextId: "002"), Choice(text: "누군진 몰라도 지금 상황을 설명해주겠어?", likability: [], nextTextId: "002")], achievement: nil, choiceSkip: false),
     "002":BlockOfDayEpisode(chats:
                                 [Chat(text: "저는 죽음의 안내자 카론.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
                          Chat(text: "생과 사의 경계에 있는 최후의 꿈에 오신 것을", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
@@ -240,7 +242,7 @@ let day0 = DayEpisode(history: .theTestBegins, storyBlocks: [
 */
 
 
-let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
+let day1 = DayEpisode(startEpisode: "101", chapter: Chapter(chapterNumber: 1, chapterName: "첫 동료", chapterInfo: "", chapterImage: "chapter1Cover"), history: .lastMemories , storyBlocks: [
         "101":BlockOfDayEpisode(chats: [
             Chat(text: "으음, 카론이 있던 취조실이 아니잖아.", image: "", type: .textPopup, who: .kirell, characterFace: true, isItLastPage: false),
             Chat(text: "설마..", image: "", type: .textPopup, who: .kirell, characterFace: true, isItLastPage: false),
@@ -632,7 +634,7 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
                             Chat(text: "가시죠, 키렐.", image: "", type: .onlyText, who: .argo, characterFace: true, isItLastPage: false),
                             Chat(text: "그래도 지금은 함께 하는 수밖에 없어.", image: "", type: .textPopup, who: .kirell, characterFace: true, isItLastPage: false),
                             Chat(text: "Day 1 End", image: "", type: .sectionHeader, who: .unknown, characterFace: false, isItLastPage: false)
-                        ], choices: [], achievement: nil, choiceSkip: false),
+                        ], choices: [Choice(text: "", likability: [], nextTextId: "End")], achievement: nil, choiceSkip: false),
     
                         "132":BlockOfDayEpisode(chats: [
                             Chat(text: "기꺼이 도와드리죠.", image: "", type: .onlyText, who: .argo, characterFace: true, isItLastPage: false),
@@ -645,4 +647,4 @@ let day1 = DayEpisode(history: .lastMemories , storyBlocks: [
                             Chat(text: "가시죠, 키렐.", image: "", type: .onlyText, who: .argo, characterFace: true, isItLastPage: false),
                             Chat(text: "그래도 지금은 함께 하는 수밖에 없어.", image: "", type: .textPopup, who: .kirell, characterFace: true, isItLastPage: false),
                             Chat(text: "Day 1 End", image: "", type: .sectionHeader, who: .unknown, characterFace: false, isItLastPage: false)
-                        ], choices: [], achievement: nil, choiceSkip: false)])
+                        ], choices: [Choice(text: "", likability: [], nextTextId: "End")], achievement: nil, choiceSkip: false)])

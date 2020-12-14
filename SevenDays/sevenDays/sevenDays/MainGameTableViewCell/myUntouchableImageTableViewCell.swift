@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class myUntouchableImageTableViewCell: UITableViewCell {
 
     @IBOutlet var profileImage: UIImageView!
@@ -15,7 +16,8 @@ class myUntouchableImageTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        
     }
     func imageUpdate(name:String,pfImage:String,mainImage:String){
         nameText.text = name
