@@ -17,14 +17,3 @@ class TimelineContainerViewController: UIViewController {
     
 }
 
-class MainTimelinePopupViewController: UIViewController {
-    
-    
-    override func viewDidLoad() {
-        self.view.isHidden = true
-    }
-    func changeHidden() {
-        self.view.isHidden = false
-    }
-    
-}

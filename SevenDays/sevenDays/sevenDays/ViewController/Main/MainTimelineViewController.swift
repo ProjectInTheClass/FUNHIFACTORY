@@ -49,9 +49,14 @@ var timelineViewCon: MainTimelinePopupViewController!
 
 class MainTimelinePopupViewController: UIViewController {
     
+    override func viewDidLoad() {
+        self.view.isHidden = true
+    }
+    
     func changeHidden() {
         self.view.isHidden = true
     }
+    
 }
     
 
