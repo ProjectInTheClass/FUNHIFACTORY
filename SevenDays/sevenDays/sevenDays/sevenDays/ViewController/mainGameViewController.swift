@@ -37,7 +37,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         var cellToReturn = UITableViewCell()
         let chatText = currentChatArray[indexPath.row].text
         //블록의 마지막 챗에 도달했을 때, 선택지 셀을 출력하는 조건문.
-        if  indexNumber == currentChatAmount() {
+        if  indexNumber == currentChatAmount() && currentChatArray[indexPath.row].isItLastPage == false {
             choiceCell = true
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "choiceTableViewCell", for: indexPath) as! choiceTableViewCell
             cell.cellDelegate = self
@@ -180,12 +180,14 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         })
     }
     func chatUpdate(){
-        print("chatUpdate 실행")
+        print("------------chatUpdate 시작합니다------------")
         self.textPopUpView.isHidden = true
         if indexNumber < currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type != .textPopup{
+            print("채팅이 업데이트되었습니다.")
             currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber])
             self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         } else if indexNumber < currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type == .textPopup {
+            print("텍스트 팝업이 실행되었습니다.")
             currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber])
             self.textPopUpView.isHidden = false
             self.wholeView.bringSubviewToFront(self.textPopUpView)
@@ -203,6 +205,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             return
         }
         print("스토리 \(indexNumber+1)/\(currentChatAmount())")
+        print(currentChatArray)
         indexNumber += 1
     }
     
