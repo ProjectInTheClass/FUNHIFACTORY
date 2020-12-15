@@ -31,20 +31,24 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         currentChatArray.count
     }
-    
+    var dd = 0
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        dd += 1
+        print("//\(dd)번째 TableView 업데이트//")
         
         var cellToReturn = UITableViewCell()
         let chatText = currentChatArray[indexPath.row].text
         //블록의 마지막 챗에 도달했을 때, 선택지 셀을 출력하는 조건문.
-        if  indexNumber == currentChatAmount() && currentChatArray[indexPath.row].isItLastPage == false {
+        if  indexNumber == currentChatAmount() && currentChatArray[indexPath.row].isItLastPage == false{
             choiceCell = true
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "choiceTableViewCell", for: indexPath) as! choiceTableViewCell
             cell.cellDelegate = self
             print("선택지 1 : \(currentBlockOfDay().choices[0].text)")
             print("선택지 2 : \(currentBlockOfDay().choices[1].text)")
-            cell.update()
+            cell.firstChoiceButton.setTitle(currentBlockOfDay().choices[0].text, for: .normal)
+            cell.secondChoiceButton.setTitle(currentBlockOfDay().choices[1].text, for: .normal)
             cellToReturn = cell
+            print(currentChatArray)
         }
         //키렐의 텍스트 채팅이 나올 때
         else if currentChatArray[indexPath.row].type == .onlyText && currentChatArray[indexPath.row].who.info().name == "키렐"{
@@ -101,13 +105,13 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 cellToReturn = cell
             }
         }
-        //scrollToBottom()
-        print("현재 챗 아이디 : \(player.currentChatId)")
+        //print("현재 챗 아이디 : \(player.currentChatId)")
         return cellToReturn
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mainGameTableView.refreshControl = nil
         self.mainGameTableView.delegate = self
         self.mainGameTableView.dataSource = self
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(chatUpdateObjc))
@@ -177,6 +181,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         print("chatUpdateTimer 실행")
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {timer in
             self.chatUpdate()
+            print(timer)
         })
     }
     func chatUpdate(){
@@ -197,16 +202,25 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         if currentDay().storyBlocks[player.currentChatId]!.choices[0].nextTextId == "End"{
             chapterUpdate()
         }
-        if indexNumber == currentChatAmount(){
+        if indexNumber == currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.choiceSkip == false{
             timer.invalidate()
             print("invalidate")
             currentChatArray.append(Chat(text: "**선택지가 나올 자리**", image: "", type: .onlyText, who: .kirell, characterFace: false, isItLastPage: false))
             self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
+            print("선택지 대용 엘리먼트 추가")
+            scrollToBottom()
+            return
+        } else if indexNumber == currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.choiceSkip == true{
+            player.currentChatId = currentBlockOfDay().choices[0].nextTextId
+            indexNumber = 0
+            chatUpdate()
+            scrollToBottom()
             return
         }
         print("스토리 \(indexNumber+1)/\(currentChatAmount())")
-        print(currentChatArray)
+        
         indexNumber += 1
+        scrollToBottom()
     }
     
     //가장 밑으로 스크롤해주는 함수
