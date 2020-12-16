@@ -11,6 +11,7 @@ class MainTimelineViewController: UIViewController {
 
  
     @IBOutlet weak var timelinePopupView: UIView!
+  
     var timelineViewCon: MainTimelinePopupViewController!
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,7 +36,18 @@ class MainTimelineViewController: UIViewController {
     }
 }
 
+
+
+
+
+
+
 class MainTimelinePopupViewController: UIViewController {
+    
+    
+    @IBOutlet weak var seeHistoryButton: UIButton!
+    @IBOutlet var startFromCheckpointButtons: [UIButton]!
+    @IBOutlet weak var popupView: UIView!
     
     var mainTimelineViewCon: MainTimelineViewController!
     var mainGameTimelineViewCon: MainGameTimelineViewController!
@@ -65,13 +77,34 @@ class MainTimelinePopupViewController: UIViewController {
             MainGameTimelineViewController {
             mainGameTimelineViewCon.timelinePopupView.isHidden = true
         }
-        
     }
     
+    func seeHistoryButtonDesign() {
+        seeHistoryButton.layer.backgroundColor = CGColor(red: 51/255, green: 59/255, blue: 59/255, alpha: 2)
+        seeHistoryButton.layer.cornerRadius = 6
+        seeHistoryButton.setTitle("첫 만남 - 아르고", for:.normal)
+    }
+    
+    func startFromCheckpointButtonDesign() {
+        for button in startFromCheckpointButtons {
+            button.layer
+        }
+    }
+  
 }
+
+
+
+
+
+
+
 
 class TimelineContainerViewController: UIViewController {
 
+    @IBOutlet var dayEpisodeButtons: [UIButton]!
+ 
+    
     var mainTimelineViewCon: MainTimelineViewController!
     var mainGameTimelineViewCon: MainGameTimelineViewController!
     
@@ -83,6 +116,9 @@ class TimelineContainerViewController: UIViewController {
 
        
     }
+    override func viewWillAppear(_ animated: Bool) {
+        clearDayEpisodeButtonsDesign(buttons: dayEpisodeButtons)
+    }
     @IBAction func openPopupViewC(_ sender: Any) {
         if let mainTimelineViewCon = self.parent as? MainTimelineViewController {
             mainTimelineViewCon.timelinePopupView.isHidden = false
@@ -91,6 +127,18 @@ class TimelineContainerViewController: UIViewController {
             mainGameTimelineViewCon.timelinePopupView.isHidden = false
         }
     }
+    
+    func clearDayEpisodeButtonsDesign(buttons: [UIButton]!) {
+        for button in buttons {
+            button.layer.borderColor = CGColor(red: 76/255, green: 146/255, blue: 164/255, alpha: 1)
+            button.layer.backgroundColor = CGColor(red: 63/255, green: 122/255, blue: 137/255, alpha: 1)
+            button.layer.cornerRadius = 7
+            button.layer.borderWidth = 3
+            
+        }
+    }
+    
+   
 }
 
 

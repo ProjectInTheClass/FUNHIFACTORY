@@ -56,6 +56,8 @@ class MainHistoryAchieveViewController: UIViewController,UITableViewDelegate, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath) as! MainHistoryAchieveViewControllerCell
         
+        cell.backgroundColor = .clear
+        
         if isHistory {
             topBarTitle.text = "히스토리"
             if let history = receivedHistory  {
@@ -86,6 +88,9 @@ class MainHistoryAchieveViewController: UIViewController,UITableViewDelegate, UI
         self.tableView.delegate = self
         self.tableView.dataSource = self
         super.viewDidLoad()
+        
+        self.tableView.backgroundColor = .clear
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

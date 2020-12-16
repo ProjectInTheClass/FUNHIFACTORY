@@ -99,7 +99,7 @@ class GameCharacter {
     let backgroundImage: String
     let infomation: [String]
     let mission : String
-    var likability: Int = 0
+    var likability: Int
     
     init(name: String, profileImage: String, backgroundImage: String, infomation: [String], mission : String, likability: Int) {
         self.name = name
@@ -107,7 +107,7 @@ class GameCharacter {
         self.backgroundImage = backgroundImage
         self.infomation = infomation
         self.mission = mission
-        self.likability = 0
+        self.likability = likability
     }
      
 }
@@ -119,14 +119,14 @@ class GameCharacter {
 var currentCharactersInfo: [String:GameCharacter]
     
 
-    = ["kirell":GameCharacter(name: "키렐", profileImage: "kirell", backgroundImage: "kirell", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+    = ["kirell":GameCharacter(name: "키렐", profileImage: "kirell", backgroundImage: "kirell", infomation: [], mission: "나침반을 따라가라.", likability: 66),
         "argo":GameCharacter(name: "아르고", profileImage: "argo", backgroundImage: "argo", infomation: ["아르고는 남자다.", "아르고는 자연곱슬이다.","아르고는 고양이상이다."], mission: "친한 동료를 죽여라", likability: 0),
         "unknown":GameCharacter(name: "???", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
         "wolf":GameCharacter(name: "울프", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 87),
-        "ballam":GameCharacter(name: "발람", profileImage: "ballam", backgroundImage: "ballam", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "ballam":GameCharacter(name: "발람", profileImage: "ballam", backgroundImage: "ballam", infomation: [], mission: "나침반을 따라가라.", likability: 77),
         "karon":GameCharacter(name: "카론", profileImage: "karon", backgroundImage: "karon", infomation: [], mission: "나침반을 따라가라.", likability: 0),
         "hilde":GameCharacter(name: "힐데", profileImage: "hilde", backgroundImage: "hilde", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "philio":GameCharacter(name: "필리오", profileImage: "philio", backgroundImage: "philio", infomation: [], mission: "나침반을 따라가라.", likability: 0),]
+        "philio":GameCharacter(name: "필리오", profileImage: "philio", backgroundImage: "philio", infomation: [], mission: "나침반을 따라가라.", likability: 88),]
 
 let noDataCharacter = GameCharacter(name: "캐릭터가 없습니다", profileImage: "", backgroundImage: "", infomation: [], mission: "", likability: 0)
 

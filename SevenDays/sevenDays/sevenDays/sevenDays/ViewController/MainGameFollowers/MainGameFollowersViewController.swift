@@ -9,12 +9,29 @@ import UIKit
 
 
 
+class FollowersTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var followerImage: UIImageView!
+    @IBOutlet weak var followerName: UILabel!
+    @IBOutlet weak var likabilityGrayBox: UIView!
+    @IBOutlet weak var likabilityConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var likabilityRedBox: UIView!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+}
 
 class MainGameFollowersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //딕셔너리 자료를 어레이로 타입변환해서 담을 곳.
-    
-    
     var charactersInfoArray: [GameCharacter]{
         get {
             
@@ -22,11 +39,9 @@ class MainGameFollowersViewController: UIViewController, UITableViewDelegate, UI
             for (key, value) in player.currentGameCharacter {
                 a.append(GameCharacter(name: value.name, profileImage: value.profileImage, backgroundImage: value.backgroundImage, infomation: value.infomation, mission: value.mission, likability: value.likability))
             }
-            print(a)
+            print("a: \(a)")
             return a
         }
-        
-        
     }
     
     
@@ -53,7 +68,9 @@ class MainGameFollowersViewController: UIViewController, UITableViewDelegate, UI
         cell.likabilityConstraint.constant = CGFloat(charactersInfoArray[indexPath.row].likability*Int(cell.likabilityGrayBox.frame.size.width)/100)
             print(cell.likabilityGrayBox.frame.size.width)
         
-        print(charactersInfoArray[indexPath.row].likability)
+        
+        print("현재 호감도\(charactersInfoArray[indexPath.row].likability)")
+        
 
         return cell
     }
