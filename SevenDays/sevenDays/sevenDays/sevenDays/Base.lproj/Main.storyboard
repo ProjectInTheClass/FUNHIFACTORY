@@ -802,16 +802,16 @@
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0m-aG-AJa">
-                                <rect key="frame" x="0.0" y="109" width="414" height="787"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rlI-Y0-h1l">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="787"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                         <connections>
                                             <segue destination="RaG-pk-2r0" kind="embed" id="bsn-fO-rpJ"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="rlI-Y0-h1l" secondAttribute="trailing" id="1G4-Ll-a3w"/>
                                     <constraint firstAttribute="bottom" secondItem="rlI-Y0-h1l" secondAttribute="bottom" id="3El-4w-ac1"/>
@@ -828,8 +828,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="i0m-aG-AJa" firstAttribute="leading" secondItem="jWz-8j-Iks" secondAttribute="leading" id="0eV-60-oJ2"/>
+                            <constraint firstItem="i0m-aG-AJa" firstAttribute="top" secondItem="PBt-h2-GGJ" secondAttribute="top" id="4kd-o8-rz0"/>
                             <constraint firstAttribute="bottom" secondItem="i0m-aG-AJa" secondAttribute="bottom" id="D8p-X2-8qj"/>
-                            <constraint firstItem="i0m-aG-AJa" firstAttribute="top" secondItem="6g1-TL-WSr" secondAttribute="bottom" id="Gnl-XB-sjj"/>
                             <constraint firstItem="6g1-TL-WSr" firstAttribute="top" secondItem="PBt-h2-GGJ" secondAttribute="top" id="Omv-E1-7hA"/>
                             <constraint firstItem="6g1-TL-WSr" firstAttribute="leading" secondItem="jWz-8j-Iks" secondAttribute="leading" id="PBL-hC-ARQ"/>
                             <constraint firstAttribute="bottom" secondItem="3J1-X6-wYa" secondAttribute="bottom" id="XqN-ki-rte"/>
@@ -945,11 +945,11 @@
             <objects>
                 <viewController storyboardIdentifier="timelinePopup" id="RaG-pk-2r0" customClass="MainTimelinePopupViewController" customModule="sevenDays" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jXb-fb-6uN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJY-3u-6O8">
-                                <rect key="frame" x="55" y="192" width="304" height="403"/>
+                                <rect key="frame" x="55" y="246.5" width="304" height="403"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="T4j-jp-9q4">
                                         <rect key="frame" x="23" y="94" width="258" height="253"/>
@@ -1021,7 +1021,7 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOZ-KV-Jmm">
                                                                 <rect key="frame" x="0.0" y="0.0" width="258" height="39"/>
-                                                                <color key="backgroundColor" red="0.19051272189626403" green="0.25141268493317043" blue="0.26595742944727607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="backgroundColor" red="0.19189798829999999" green="0.25095894930000001" blue="0.2672243118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="39" id="1uL-2U-G4G"/>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="39" id="LF7-Rp-v0r"/>
@@ -1099,7 +1099,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fNl-xK-Fed"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.8308549700162462" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.82047264729071101" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="WJY-3u-6O8" firstAttribute="leading" secondItem="fNl-xK-Fed" secondAttribute="leading" constant="55" id="1mw-zW-HY3"/>
                             <constraint firstItem="fNl-xK-Fed" firstAttribute="trailing" secondItem="WJY-3u-6O8" secondAttribute="trailing" constant="55" id="PTI-C0-h1Y"/>
@@ -1107,7 +1107,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="popupView" destination="tbQ-Ia-NbX" id="Lxz-Pq-pfo"/>
+                        <outlet property="popupView" destination="WJY-3u-6O8" id="9Mu-Uu-nDK"/>
                         <outlet property="seeHistoryButton" destination="aeZ-wm-djK" id="AJY-kw-dMn"/>
                         <outletCollection property="startFromCheckpointButtons" destination="kOZ-KV-Jmm" collectionClass="NSMutableArray" id="76G-2A-k5M"/>
                         <outletCollection property="startFromCheckpointButtons" destination="7fI-WM-0HJ" collectionClass="NSMutableArray" id="T6K-gE-d54"/>

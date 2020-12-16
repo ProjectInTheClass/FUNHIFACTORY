@@ -27,7 +27,7 @@ class MainTimelineViewController: UIViewController {
                     timelineViewCon = i
             }
         }
-        timelinePopupView.isHidden = false
+        timelinePopupView.isHidden = true
     }
     
     
@@ -56,9 +56,16 @@ class MainTimelinePopupViewController: UIViewController {
         self.view.isHidden = false
         
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         print("팝업뷰의 패런트뷰:\(String(describing: self.parent))")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        seeHistoryButtonDesign()
+        startFromCheckpointButtonDesign()
+        popupView.layer.borderColor = CGColor(red: 213/255, green: 200/255, blue: 167/255, alpha: 1)
+        popupView.layer.borderWidth = 2
     }
     
     func changeHidden(hidden: Bool) {
@@ -87,7 +94,11 @@ class MainTimelinePopupViewController: UIViewController {
     
     func startFromCheckpointButtonDesign() {
         for button in startFromCheckpointButtons {
-            button.layer
+            button.layer.backgroundColor = CGColor(red: 49/255, green: 64/255, blue: 68/255, alpha: 2)
+            button.layer.cornerRadius = 6
+            button.setTitle("체크포인트 텍스트가 들어갑니다.", for:.normal)
+            button.layer.borderColor = CGColor(red: 51/255, green: 59/255, blue: 59/255, alpha: 2)
+                button.layer.borderWidth = 2
         }
     }
   
@@ -128,6 +139,7 @@ class TimelineContainerViewController: UIViewController {
         }
     }
     
+    
     func clearDayEpisodeButtonsDesign(buttons: [UIButton]!) {
         for button in buttons {
             button.layer.borderColor = CGColor(red: 76/255, green: 146/255, blue: 164/255, alpha: 1)
@@ -137,6 +149,7 @@ class TimelineContainerViewController: UIViewController {
             
         }
     }
+    
     
    
 }
