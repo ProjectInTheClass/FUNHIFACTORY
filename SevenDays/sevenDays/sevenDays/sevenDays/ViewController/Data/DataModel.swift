@@ -170,6 +170,7 @@ enum ChatType {
     case textPopup
     case animationPopup
     case sectionHeader
+    case fullImage
 }
 
 // 텍스트 블럭 스트럭처

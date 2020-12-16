@@ -35,9 +35,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         dd += 1
         print("//\(dd)번째 TableView 업데이트//")
-        
-        var cellToReturn = UITableViewCell()
         let chatText = currentChatArray[indexPath.row].text
+        
         //블록의 마지막 챗에 도달했을 때, 선택지 셀을 출력하는 조건문.
         if  indexNumber == currentChatAmount() && currentChatArray[indexPath.row].isItLastPage == false{
             choiceCell = true
@@ -47,66 +46,66 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             print("선택지 2 : \(currentBlockOfDay().choices[1].text)")
             cell.firstChoiceButton.setTitle(currentBlockOfDay().choices[0].text, for: .normal)
             cell.secondChoiceButton.setTitle(currentBlockOfDay().choices[1].text, for: .normal)
-            cellToReturn = cell
             print(currentChatArray)
+            return cell
         }
-        //키렐의 텍스트 채팅이 나올 때
-        else if currentChatArray[indexPath.row].type == .onlyText && currentChatArray[indexPath.row].who.info().name == "키렐"{
-            let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myOnlyText", for: indexPath) as! myOnlyTextTableViewCell
-            cell.myChatUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText)
-            cell.myProfileUpdate(imageName: currentChatArray[indexPath.row].who.info().profileImage)
-            cellToReturn = cell
-        }
-        //상대가 텍스트 채팅으로 말을 할 때
-        else if currentChatArray[indexPath.row].type == .onlyText{
-            let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opOnlyText", for: indexPath) as! opOnlyTextTableViewCell
-            cell.opTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, imageName: currentChatArray[indexPath.row].who.info().profileImage, characterFace: currentChatArray[indexPath.row].characterFace)
-            cellToReturn = cell
-        }
+        //텍스트 채팅이 나올 때
+            //자신이 보냈을 때
+                if currentChatArray[indexPath.row].type == .onlyText && currentChatArray[indexPath.row].who.info().name == "키렐"{
+                    let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myOnlyText", for: indexPath) as! myOnlyTextTableViewCell
+                    cell.myChatUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText)
+                    cell.myProfileUpdate(imageName: currentChatArray[indexPath.row].who.info().profileImage)
+                    return cell
+                }
+            //상대가 보냈을 때
+                else if currentChatArray[indexPath.row].type == .onlyText{
+                    let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opOnlyText", for: indexPath) as! opOnlyTextTableViewCell
+                    cell.opTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, imageName: currentChatArray[indexPath.row].who.info().profileImage, characterFace: currentChatArray[indexPath.row].characterFace)
+                    return cell
+                }
+       
         //행동 표시글 셀
         else if currentChatArray[indexPath.row].type == .sectionHeader{
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "sectionHeaderCell", for: indexPath) as! sectionHeaderTableViewCell
             cell.headerLabel.text = currentChatArray[indexPath.row].text
-            cellToReturn = cell
+            return cell
         }
         //터치할 수 없는 이미지
-        else if currentChatArray[indexPath.row].type == .untouchableImage {
             //자신이 보냈을 때.
-            if currentChatArray[indexPath.row].who.info().name == "키렐" {
+            if currentChatArray[indexPath.row].type == .untouchableImage && currentChatArray[indexPath.row].who.info().name == "키렐" {
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myUnTouchableImage", for: indexPath) as! myUntouchableImageTableViewCell
                 
                 cell.imageUpdate(name: currentChatArray[indexPath.row].who.info().name,pfImage: currentChatArray[indexPath.row].who.info().profileImage,mainImage: currentChatArray[indexPath.row].image)
-                cellToReturn = cell
-            }
+                return cell
+                }
             //상대가 보냈을 때
-            else {
+            else if currentChatArray[indexPath.row].type == .untouchableImage{
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opUntouchAbleImage", for: indexPath) as! opUntouchableImageTableViewCell
                 cell.update(name: currentChatArray[indexPath.row].who.info().name, profile: currentChatArray[indexPath.row].who.info().profileImage, main: currentChatArray[indexPath.row].image)
-                cellToReturn = cell
+                return cell
             }
-               
-        }
         //터치할 수 있는 이미지를 자신이 보냈을 때
-        else if currentChatArray[indexPath.row].type == .touchableImage {
-            if currentChatArray[indexPath.row].who.info().name == "키렐"{
+        else if currentChatArray[indexPath.row].type == .touchableImage && currentChatArray[indexPath.row].who.info().name == "키렐" {
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTouchableImage", for: indexPath) as! myTouchableImageTableViewCell
                 cell.update(profile: currentChatArray[indexPath.row].who.info().profileImage, name: currentChatArray[indexPath.row].who.info().name, main: currentChatArray[indexPath.row].image)
                 let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageScaleUp))
                 cell.mainImage.tag = indexPath.row
                 cell.mainImage.addGestureRecognizer(tapGesture)
-                cellToReturn = cell
+                return cell
             }
-            else {
+        else if currentChatArray[indexPath.row].type == .touchableImage {
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTouchableImage", for: indexPath) as! opTouchableImageTableViewCell
                 cell.update(profile: currentChatArray[indexPath.row].who.info().profileImage, name: currentChatArray[indexPath.row].who.info().name, main: currentChatArray[indexPath.row].image)
                 let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageScaleUp))
                 cell.mainImage.tag = indexPath.row
                 cell.mainImage.addGestureRecognizer(tapGesture)
-                cellToReturn = cell
-            }
+                return cell
         }
-        //print("현재 챗 아이디 : \(player.currentChatId)")
-        return cellToReturn
+        else {
+            let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opOnlyText", for: indexPath) as! opOnlyTextTableViewCell
+            cell.opTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, imageName: currentChatArray[indexPath.row].who.info().profileImage, characterFace: currentChatArray[indexPath.row].characterFace)
+            return cell
+        }
     }
     
     override func viewDidLoad() {
@@ -198,6 +197,13 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             self.wholeView.bringSubviewToFront(self.textPopUpView)
             self.textPopUpdate()
             currentChatArray.removeLast()
+        } else if indexNumber < currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type == .fullImage{
+            print("풀 이미지 팝업이 실행되었습니다.")
+            currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber])
+            self.textPopUpView.isHidden = false
+            self.wholeView.bringSubviewToFront(self.textPopUpView)
+            self.fullImageUpdate()
+            currentChatArray.removeLast()
         }
         if currentDay().storyBlocks[player.currentChatId]!.choices[0].nextTextId == "End"{
             chapterUpdate()
@@ -240,6 +246,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     func textPopUpdate(){
         textPopUpProfile.image = UIImage(named:currentChatArray[currentChatArray.count-1].who.info().profileImage)
         textPopUpText.text = currentChatArray[currentChatArray.count-1].text
+    }
+    func fullImageUpdate(){
+        
     }
 }
 
