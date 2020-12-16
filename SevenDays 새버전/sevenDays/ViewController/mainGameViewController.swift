@@ -33,8 +33,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     var dd = 0
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        dd += 1
-        print("//\(dd)번째 TableView 업데이트//")
+
         let chatText = currentChatArray[indexPath.row].text
         
         //블록의 마지막 챗에 도달했을 때, 선택지 셀을 출력하는 조건문.
@@ -215,19 +214,19 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             currentChatArray.append(Chat(text: "**선택지가 나올 자리**", image: "", type: .choice, who: .kirell, characterFace: false, isItLastPage: false))
             self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
             print("선택지 대용 엘리먼트 추가")
-            scrollToBottom()
+            //scrollToBottom()
             return
         } else if indexNumber == currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.choiceSkip == true{
             player.currentChatId = currentBlockOfDay().choices[0].nextTextId
             indexNumber = 0
             chatUpdate()
-            scrollToBottom()
+            //scrollToBottom()
             return
         }
         print("스토리 \(indexNumber+1)/\(currentChatAmount())")
         
         indexNumber += 1
-        scrollToBottom()
+        //scrollToBottom()
     }
     
     //가장 밑으로 스크롤해주는 함수

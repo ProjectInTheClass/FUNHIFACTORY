@@ -34,7 +34,7 @@ let day0 = DayEpisode(startEpisode: "001", chapter: Chapter(chapterNumber: 0, ch
                                 [Chat(text: "당장은 이해가 안 되실 겁니다.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
                          Chat(text: "망각의 강을 막 빠져나오셨으니까요.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)],
                         choices: [
-                         Choice(text: "아…?h 네… 그러세요….", likability: [], nextTextId: "005"),
+                         Choice(text: "아…? 네… 그러세요….", likability: [], nextTextId: "005"),
                             Choice(text: "뭐야, 무슨 영화나 소설 설정도 아니고.", likability: [], nextTextId: "005")], achievement: nil, choiceSkip: false),
     "005":BlockOfDayEpisode(chats:
                                 [Chat(text: "의심을 풀기 위해, 하나 묻겠습니다.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
@@ -147,22 +147,22 @@ let day0 = DayEpisode(startEpisode: "001", chapter: Chapter(chapterNumber: 0, ch
                         Choice(text: "다음", likability: [], nextTextId: "023"),
                         Choice(text: "다음", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: true),
     "022":BlockOfDayEpisode(chats: //첫번째 질문, 문답 1, 21
-                                [Chat(text: "", image: "book", type: .untouchableImage, who: .karon, characterFace: false, isItLastPage: false),
+                                [Chat(text: "", image: "karonBook", type: .untouchableImage, who: .karon, characterFace: false, isItLastPage: false),
                                  Chat(text: "어디보자. 방금의 문답으로도", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
                         Chat(text: "현실의 당신은 정이 많은 사람이라 할 수 있겠군요.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
                         Chat(text: "당신의 죽음에 슬퍼할 사람이 많을 거 같습니다.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)],
                        choices: [
-                        Choice(text: "비어있음", likability: [], nextTextId: "666"),
-                        Choice(text: "비어있음", likability: [], nextTextId: "666")], achievement: nil, choiceSkip: true),
+                        Choice(text: "비어있음", likability: [], nextTextId: "035"),
+                        Choice(text: "비어있음", likability: [], nextTextId: "035")], achievement: nil, choiceSkip: true),
     "023":BlockOfDayEpisode(chats: //첫번째 질문, 문답 2, 22
-                                [Chat(text: "", image: "book", type: .untouchableImage, who: .karon, characterFace: false, isItLastPage: false),
+                                [Chat(text: "", image: "karonBook", type: .untouchableImage, who: .karon, characterFace: false, isItLastPage: false),
                                  Chat(text: "어디보자. 방금의 문답으로도", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
                         Chat(text: "현실에 대한 미련이 남아있는\n사람이라 할 수 있겠군요.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
                         Chat(text: "미련만큼 부활에 대한 의지를 보여주실 거라고 믿습니다.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
                         Chat(text: "[카론은 책에다 무언가를 기록했다.]", image: "", type: .sectionHeader, who: .karon, characterFace: false, isItLastPage: true)],
                        choices: [
-                        Choice(text: "비어있음", likability: [], nextTextId: "666"),
-                        Choice(text: "비어있음", likability: [], nextTextId: "666")], achievement: nil, choiceSkip: false),
+                        Choice(text: "비어있음", likability: [], nextTextId: "035"),
+                        Choice(text: "비어있음", likability: [], nextTextId: "035")], achievement: nil, choiceSkip: true),
     "024":BlockOfDayEpisode(chats:
                                 [Chat(text: "그렇긴 한데,", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
                                  Chat(text: "억지로라도 울어야 된다는 말로 들리는군요.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)],
