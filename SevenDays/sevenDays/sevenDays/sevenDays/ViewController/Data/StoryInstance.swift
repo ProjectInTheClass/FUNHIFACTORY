@@ -158,7 +158,8 @@ let day0 = DayEpisode(startEpisode: "001", chapter: Chapter(chapterNumber: 0, ch
                                 [Chat(text: "", image: "book", type: .untouchableImage, who: .karon, characterFace: false, isItLastPage: false),
                                  Chat(text: "어디보자. 방금의 문답으로도", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
                         Chat(text: "현실에 대한 미련이 남아있는\n사람이라 할 수 있겠군요.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
-                        Chat(text: "미련만큼 부활에 대한 의지를 보여주실 거라고 믿습니다.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: true)],
+                        Chat(text: "미련만큼 부활에 대한 의지를 보여주실 거라고 믿습니다.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                        Chat(text: "[카론은 책에다 무언가를 기록했다.]", image: "", type: .sectionHeader, who: .karon, characterFace: false, isItLastPage: true)],
                        choices: [
                         Choice(text: "비어있음", likability: [], nextTextId: "666"),
                         Choice(text: "비어있음", likability: [], nextTextId: "666")], achievement: nil, choiceSkip: false),
@@ -223,23 +224,198 @@ let day0 = DayEpisode(startEpisode: "001", chapter: Chapter(chapterNumber: 0, ch
                         Choice(text: "", likability: [], nextTextId: "023"),
                         Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: true),
     "034":BlockOfDayEpisode(chats:
-                                [Chat(text: "그 한 마디에 당신의 부활 의지가 엿 보이는군요.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
-                                 Chat(text: "그리고 멋진 표정이었습니다.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)],
+                                [Chat(text: "그렇다면 이 자리에 있는 것이", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                                 Chat(text: "매우 안타까운 일일 수도\n있겠군요.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)],
                        choices: [
-                        Choice(text: "그렇다면 이 자리에 있는 것이", likability: [], nextTextId: "023"),
-                        Choice(text: "매우 안타까운 일일 수도\n있겠군요.", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: false)
+                        Choice(text: "", likability: [], nextTextId: "023"),
+                        Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: true),
+    "035":BlockOfDayEpisode(chats: [Chat(text: "자, 두번째 주제의 질문입니다.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "당신 앞에 작은 동물이 있습니다.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "그것이 무엇이라고 생각됩니까?", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "개라고 생각해.", likability: [], nextTextId: "036"),
+                               Choice(text: "고양이.", likability: [], nextTextId: "045")], achievement: nil, choiceSkip: false),
+    "036":BlockOfDayEpisode(chats: [Chat(text: "", image: "dog", type: .untouchableImage, who: .kirell, characterFace: true, isItLastPage: false),
+                             Chat(text: "개가 어째서 당신 앞에 있을까요?", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false)], choices: [
+                               Choice(text: "나를 공격하기 위해서 아닐까?", likability: [], nextTextId: "037"),
+                               Choice(text: "나를 마중 나왔겠지.", likability: [], nextTextId: "042")], achievement: nil, choiceSkip: false),
+    "037":BlockOfDayEpisode(chats: [Chat(text: "물거나 짖는다는 말이군요.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "왜 당신을 공격하려 들까요?", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "남의 집을 침입했으니까.", likability: [], nextTextId: "038"),
+                               Choice(text: "왠지 개들은 나를 싫어하더라고.", likability: [], nextTextId: "041")], achievement: nil, choiceSkip: false),
+    "038":BlockOfDayEpisode(chats: [Chat(text: "재미있는 답변이군요.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "살아 있을 때의 직업이 궁금해집니다.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true),
+                             ], choices: [
+                               Choice(text: "좋아.", likability: [], nextTextId: "040"),
+                               Choice(text: "싫어.", likability: [], nextTextId: "040")], achievement: nil, choiceSkip: false),
+    "039":BlockOfDayEpisode(chats: [Chat(text: "흐음, 그렇습니까?", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "좋은 참고가 되었습니다.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "karonBook", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "잠시 정리 좀 하겠습니다.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "흐음, 감성적인 면이 엿보이는군요.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "그만큼 다른 사람의 아픔과 행복에", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "공감할 수 있는 분이라", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "생각됩니다.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "023"),
+                               Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: true),
+    "040":BlockOfDayEpisode(chats: [Chat(text: "흐음, 그렇습니까?", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                                    Chat(text: "좋은 참고가 되었습니다.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                                    Chat(text: "", image: "karonBook", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                                    Chat(text: "잠시 정리 좀 하겠습니다.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                                    Chat(text: "역시나 비교적 감정을 잘 조절하는군요.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                                    Chat(text: "그 침착함으로 사사로운 감정에 이끌리지 않고", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                                    Chat(text: "선택을 하실 수 있는 분이라 생각됩니다.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "023"),
+                               Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: true),
+    "041":BlockOfDayEpisode(chats: [Chat(text: "개에 대한 트라우마라도 있나 보군요.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "아니면.......", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "개들의 성격이나 습성이 싫을 수도 있겠군요.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "052"),
+                               Choice(text: "", likability: [], nextTextId: "052")], achievement: nil, choiceSkip: false),
+    "042":BlockOfDayEpisode(chats: [Chat(text: "기특한 개군요.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "이 개에게 어떻게 하시겠습니까?", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "쓰다듬어 줘야지.", likability: [], nextTextId: "043"),
+                               Choice(text: "개 무시.", likability: [], nextTextId: "044")], achievement: nil, choiceSkip: false),
+    "043":BlockOfDayEpisode(chats: [Chat(text: "개가 기분 좋아하는 모습이 눈에 선하군요.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "앞으로도 기쁘게 마중 나올 것 같습니다.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "052"),
+                               Choice(text: "", likability: [], nextTextId: "052")], achievement: nil, choiceSkip: true),
+    "044":BlockOfDayEpisode(chats: [Chat(text: "후후, 재미있는 답변이군요.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "어쨌든 당신이 무시에도 불구하고\n그 개는 열심히 ", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "꼬리를 흔들겠죠.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "052"),
+                               Choice(text: "", likability: [], nextTextId: "052")], achievement: nil, choiceSkip: true),
+    "045":BlockOfDayEpisode(chats: [Chat(text: "", image: "cat", type: .untouchableImage, who: .kirell, characterFace: true, isItLastPage: false),
+                             Chat(text: "그 귀엽고 도도한 생물이", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "왜 당신 앞에 있을까요?", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "내가 쫓아온 걸지도...", likability: [], nextTextId: "046"),
+                               Choice(text: "지나가던 길이겠지.", likability: [], nextTextId: "048")], achievement: nil, choiceSkip: false),
+    "046":BlockOfDayEpisode(chats: [
+                            Chat(text: "따로 쫓아갈 이유라도 있습니까?", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "달리 이유가 있나? 귀엽잖아.", likability: [], nextTextId: "052"),
+                               Choice(text: "못 된 도둑고양이라서.", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: false),
+    "047":BlockOfDayEpisode(chats: [Chat(text: "허허, 너무도 당연한 사실을/n물어봤군요.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "053"),
+                               Choice(text: "", likability: [], nextTextId: "053")], achievement: nil, choiceSkip: false),
+    "048":BlockOfDayEpisode(chats: [
+                             Chat(text: "왜 굳이 당신 앞을 지나가고 있을까요?", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "고양이가 누굴 신경 쓰겠어? 그냥 제 갈 길 가는 중이겠지.", likability: [], nextTextId: "049"),
+                               Choice(text: "나에게 뭔가 어필하려는 거 아닐까.", likability: [], nextTextId: "050")], achievement: nil, choiceSkip: false),
+    "049":BlockOfDayEpisode(chats: [Chat(text: "귀족같이 도도한 고양이군요.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "걷는 자태까지 궁금해지는데요.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "053"),
+                               Choice(text: "", likability: [], nextTextId: "053")], achievement: nil, choiceSkip: false),
+    "050":BlockOfDayEpisode(chats: [Chat(text: "그러니까. 애교를 부린다는 말씀?", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "꼬리 끝을 살랑살랑 흔들고 있을 거 같군요. 허허.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "053"),
+                               Choice(text: "", likability: [], nextTextId: "053")], achievement: nil, choiceSkip: false),
+    "051":BlockOfDayEpisode(chats: [Chat(text: "그런 습성도 나름의 매력이긴 합니다만", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "그 점을 안 좋게 보는 사람도 분명 있겠죠.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "053"),
+                               Choice(text: "", likability: [], nextTextId: "053")], achievement: nil, choiceSkip: false),
+    "052":BlockOfDayEpisode(chats: [Chat(text: "그나저나 키렐.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                                    Chat(text: "당신은 개를 좋아합니까?", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "좋아.", likability: [], nextTextId: "039"),
+                               Choice(text: "싫어.", likability: [], nextTextId: "040")], achievement: nil, choiceSkip: false),
+    "053":BlockOfDayEpisode(chats: [Chat(text: "그나저나 키렐.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "당신은 고양이를 좋아합니까?", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                                Choice(text: "좋아.", likability: [], nextTextId: "039"),
+                                Choice(text: "싫어.", likability: [], nextTextId: "040")], achievement: nil, choiceSkip: false),
+    "054":BlockOfDayEpisode(chats: [Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "023"),
+                               Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: false),
+    "055":BlockOfDayEpisode(chats: [Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "023"),
+                               Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: false),
+    "056":BlockOfDayEpisode(chats: [Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "023"),
+                               Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: false),
+    "057":BlockOfDayEpisode(chats: [Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "023"),
+                               Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: false),
+    "058":BlockOfDayEpisode(chats: [Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "023"),
+                               Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: false),
+    "059":BlockOfDayEpisode(chats: [Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "023"),
+                               Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: false),
+    "060":BlockOfDayEpisode(chats: [Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "023"),
+                               Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: false),
+    "061":BlockOfDayEpisode(chats: [Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "023"),
+                               Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: false),
+    "062":BlockOfDayEpisode(chats: [Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "023"),
+                               Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: false),
+    "063":BlockOfDayEpisode(chats: [Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "023"),
+                               Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: false),
+    "064":BlockOfDayEpisode(chats: [Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "023"),
+                               Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: false),
+    "065":BlockOfDayEpisode(chats: [Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "023"),
+                               Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: false),
+    "066":BlockOfDayEpisode(chats: [Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "023"),
+                               Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: false),
+    "067":BlockOfDayEpisode(chats: [Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "023"),
+                               Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: false),
+    "068":BlockOfDayEpisode(chats: [Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "023"),
+                               Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: false),
+    "069":BlockOfDayEpisode(chats: [Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "023"),
+                               Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: false),
+    "070":BlockOfDayEpisode(chats: [Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+                               Choice(text: "", likability: [], nextTextId: "023"),
+                               Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: false)
 ])
 
-
-/* 예시
- BlockOfDayEpisode(chats:
-                    [Chat(text: <#T##String?#>, image: "", type: .onlyText, who: .karon, characterFace: true),
-                     Chat(text: <#T##String?#>, image: "", type: .onlyText, who: .karon, characterFace: false),
-                     Chat(text: <#T##String?#>, image: "", type: .onlyText, who: .karon, characterFace: false)],
-                    choices: [
-                     Choice(text: <#T##String#>, likability: [], nextTextId: "<#T##Int#>),
-                     Choice(text: <#T##String#>, likability: [], nextTextId: "<#T##Int#>)], achievement: nil)
-*/
+/*
+ ,
+"000":BlockOfDayEpisode(chats: [Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
+Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
+Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)], choices: [
+ Choice(text: "", likability: [], nextTextId: "023"),
+ Choice(text: "", likability: [], nextTextId: "023")], achievement: nil, choiceSkip: false)
+ */
 
 
 let day1 = DayEpisode(startEpisode: "101", chapter: Chapter(chapterNumber: 1, chapterName: "첫 동료", chapterInfo: "", chapterImage: "chapter1Cover"), history: .lastMemories , storyBlocks: [
