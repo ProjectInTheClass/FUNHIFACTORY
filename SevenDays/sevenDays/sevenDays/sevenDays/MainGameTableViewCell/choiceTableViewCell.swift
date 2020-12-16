@@ -32,10 +32,4 @@ class choiceTableViewCell: UITableViewCell {
     @IBAction func secondButtonTapped(_ sender: Any) {
         cellDelegate?.secondChoice()
     }
-    func update(){
-        print("선택지창 on")
-        firstChoiceButton.setTitle(currentBlockOfDay().choices[0].text, for: .normal)
-        secondChoiceButton.setTitle(currentBlockOfDay().choices[1].text, for: .normal)
-    }
-    
 }
