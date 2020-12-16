@@ -122,7 +122,7 @@ var currentCharactersInfo: [String:GameCharacter]
     = ["kirell":GameCharacter(name: "키렐", profileImage: "kirell", backgroundImage: "kirell", infomation: [], mission: "나침반을 따라가라.", likability: 0),
         "argo":GameCharacter(name: "아르고", profileImage: "argo", backgroundImage: "argo", infomation: ["아르고는 남자다.", "아르고는 자연곱슬이다.","아르고는 고양이상이다."], mission: "친한 동료를 죽여라", likability: 0),
         "unknown":GameCharacter(name: "???", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "wolf":GameCharacter(name: "울프", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
+        "wolf":GameCharacter(name: "울프", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 87),
         "ballam":GameCharacter(name: "발람", profileImage: "ballam", backgroundImage: "ballam", infomation: [], mission: "나침반을 따라가라.", likability: 0),
         "karon":GameCharacter(name: "카론", profileImage: "karon", backgroundImage: "karon", infomation: [], mission: "나침반을 따라가라.", likability: 0),
         "hilde":GameCharacter(name: "힐데", profileImage: "hilde", backgroundImage: "hilde", infomation: [], mission: "나침반을 따라가라.", likability: 0),
@@ -135,7 +135,7 @@ let noDataCharacter = GameCharacter(name: "캐릭터가 없습니다", profileIm
 
 //  프라퍼티 설명: 설정, 티켓(게임화폐), 유저가 달성한 히스토리, 유저가 달성한 업적, 타임라인(?), 유저가 파악한 캐릭터들 정보
 // 게임 캐릭터 : 딕셔너리 형태로 바꿈. [인물영어이름:게임캐릭터 인스턴스] 구조임.
-struct User: Codable {
+struct User {
     var setting: Setting
     var tickets: Int
     var currentHistories: [History]

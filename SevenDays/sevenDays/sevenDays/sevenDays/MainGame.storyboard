@@ -17,7 +17,7 @@
         <!--Setting ViewController-->
         <scene sceneID="in9-H5-hUi">
             <objects>
-                <viewController id="WDm-6j-d0k" userLabel="Setting ViewController" sceneMemberID="viewController">
+                <viewController id="WDm-6j-d0k" userLabel="Setting ViewController" customClass="MainGameSettingViewController" customModule="sevenDays" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Jg-TO-Kqc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -89,6 +89,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.92453802588151734" green="0.86018313375189248" blue="0.60426234904953335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="9bx-bV-Dv7" kind="relationship" relationship="viewControllers" id="8hE-Id-FSV"/>
@@ -104,7 +106,7 @@
         <!--TimeLine ViewController-->
         <scene sceneID="hm4-xU-SAG">
             <objects>
-                <viewController id="V0c-z6-dZG" userLabel="TimeLine ViewController" sceneMemberID="viewController">
+                <viewController id="V0c-z6-dZG" userLabel="TimeLine ViewController" customClass="MainGameTimelineViewController" customModule="sevenDays" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P41-dP-hV8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -132,7 +134,7 @@
                                     <segue destination="BNo-BW-RoS" kind="embed" id="Irk-zh-jbZ"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sOM-IP-iAn">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sOM-IP-iAn">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.50453302690000001" colorSpace="custom" customColorSpace="sRGB"/>
@@ -156,10 +158,18 @@
                             <constraint firstItem="vKm-39-4gO" firstAttribute="trailing" secondItem="BfD-4l-Q0U" secondAttribute="trailing" id="nQt-LK-lwg"/>
                             <constraint firstItem="vKm-39-4gO" firstAttribute="leading" secondItem="BfD-4l-Q0U" secondAttribute="leading" id="psI-eI-sAw"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="sOM-IP-iAn"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="clock" catalog="system" id="jVR-q3-g8m"/>
                     <navigationItem key="navigationItem" id="ZSx-ND-41m"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="timelinePopupView" destination="Vsp-Kb-7BY" id="KUc-AU-EPq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dUN-Hj-shm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -626,7 +636,7 @@
                                                         <fragment content="상대가 말하는 텍스트의 예시">
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                <font key="NSFont" size="14" name="NanumBarunGothic"/>
+                                                                <font key="NSFont" metaFont="system" size="14"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
@@ -680,12 +690,12 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5E-tt-mLh">
-                                                    <rect key="frame" x="308.5" y="11" width="24.5" height="16.5"/>
+                                                    <rect key="frame" x="308.5" y="11" width="24.5" height="17"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="이름">
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                <font key="NSFont" size="14" name="NanumBarunGothic"/>
+                                                                <font key="NSFont" metaFont="system" size="14"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>

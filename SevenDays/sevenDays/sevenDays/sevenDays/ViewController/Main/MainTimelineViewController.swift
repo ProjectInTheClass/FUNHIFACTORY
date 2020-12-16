@@ -37,7 +37,8 @@ class MainTimelineViewController: UIViewController {
 
 class MainTimelinePopupViewController: UIViewController {
     
-    var timelineViewCon: MainTimelineViewController!
+    var mainTimelineViewCon: MainTimelineViewController!
+    var mainGameTimelineViewCon: MainGameTimelineViewController!
     
     override func viewDidLoad() {
         self.view.isHidden = false
@@ -45,7 +46,7 @@ class MainTimelinePopupViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("팝업뷰의 패런트뷰:\(self.parent)")
+        print("팝업뷰의 패런트뷰:\(String(describing: self.parent))")
     }
     
     func changeHidden(hidden: Bool) {
@@ -56,11 +57,14 @@ class MainTimelinePopupViewController: UIViewController {
         }
     }
     @IBAction func exitButton(_ sender: Any) {
-        if let timelineViewCon = self.parent as?
+        if let mainTimelineViewCon = self.parent as?
             MainTimelineViewController {
-            timelineViewCon.timelinePopupView.isHidden = true
+            mainTimelineViewCon.timelinePopupView.isHidden = true
         }
-        
+        if let mainGameTimelineViewCon = self.parent as?
+            MainGameTimelineViewController {
+            mainGameTimelineViewCon.timelinePopupView.isHidden = true
+        }
         
     }
     
@@ -68,10 +72,11 @@ class MainTimelinePopupViewController: UIViewController {
 
 class TimelineContainerViewController: UIViewController {
 
-    var timelineViewCon: MainTimelineViewController!
+    var mainTimelineViewCon: MainTimelineViewController!
+    var mainGameTimelineViewCon: MainGameTimelineViewController!
     
     override func viewDidAppear(_ animated: Bool) {
-        print("타임라인 컨테이너뷰의 패런트뷰:\(self.parent)")
+        print("타임라인 컨테이너뷰의 패런트뷰:\(String(describing: self.parent))")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,8 +84,11 @@ class TimelineContainerViewController: UIViewController {
        
     }
     @IBAction func openPopupViewC(_ sender: Any) {
-        if let timelineViewCon = self.parent as? MainTimelineViewController {
-            timelineViewCon.timelinePopupView.isHidden = false
+        if let mainTimelineViewCon = self.parent as? MainTimelineViewController {
+            mainTimelineViewCon.timelinePopupView.isHidden = false
+        }
+        if let mainGameTimelineViewCon = self.parent as? MainGameTimelineViewController {
+            mainGameTimelineViewCon.timelinePopupView.isHidden = false
         }
     }
 }

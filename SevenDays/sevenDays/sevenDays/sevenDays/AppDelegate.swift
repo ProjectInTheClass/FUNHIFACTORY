@@ -10,30 +10,30 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-// saving Data : 데이터 로컬에 저장하기
-    func saveToFile() {
-        let documentsDirectory =
-          FileManager.default.urls(for: .documentDirectory,
-          in: .userDomainMask).first!
-        let archiveURL =
-          documentsDirectory.appendingPathComponent("notes_test").appendingPathExtension("plist")
-        let propertyListEncoder = PropertyListEncoder()
-        let encodedNotes = try? propertyListEncoder.encode(player)
-        try? encodedNotes?.write(to: archiveURL,options: .noFileProtection)
-    }
-// saving Data : 데이터 로컬에서 불러오기
-    func loadFromFile() {
-        let documentsDirectory =
-          FileManager.default.urls(for: .documentDirectory,
-          in: .userDomainMask).first!
-        let archiveURL =
-          documentsDirectory.appendingPathComponent("notes_test").appendingPathExtension("plist")
-        let propertyListDecoder = PropertyListDecoder()
-        if let retrievedNotesData = try? Data(contentsOf: archiveURL), let decodedNotes = try? propertyListDecoder.decode(User.self, from:retrievedNotesData) {
-            print(decodedNotes)
-            player = decodedNotes
-        }
-    }
+//// saving Data : 데이터 로컬에 저장하기
+//    func saveToFile() {
+//        let documentsDirectory =
+//          FileManager.default.urls(for: .documentDirectory,
+//          in: .userDomainMask).first!
+//        let archiveURL =
+//          documentsDirectory.appendingPathComponent("notes_test").appendingPathExtension("plist")
+//        let propertyListEncoder = PropertyListEncoder()
+//        let encodedNotes = try? propertyListEncoder.encode(player)
+//        try? encodedNotes?.write(to: archiveURL,options: .noFileProtection)
+//    }
+//// saving Data : 데이터 로컬에서 불러오기
+//    func loadFromFile() {
+//        let documentsDirectory =
+//          FileManager.default.urls(for: .documentDirectory,
+//          in: .userDomainMask).first!
+//        let archiveURL =
+//          documentsDirectory.appendingPathComponent("notes_test").appendingPathExtension("plist")
+//        let propertyListDecoder = PropertyListDecoder()
+//        if let retrievedNotesData = try? Data(contentsOf: archiveURL), let decodedNotes = try? propertyListDecoder.decode(User.self, from:retrievedNotesData) {
+//            print(decodedNotes)
+//            player = decodedNotes
+//        }
+//    }
 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
