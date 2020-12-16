@@ -79,9 +79,9 @@ enum Achievement {
     case .firstComradeArgo:
         return HistoryAndAchievementStructure(name: "첫 동료 아르고", image: "achievementImage2", text: "흠.... 키렐, 그 말은 제가 동료가 되는 게 당신에게 무조건 유리하다는 뜻인가요?")
     case .likeAWelllAgedWhiskey:
-        return HistoryAndAchievementStructure(name: "중년의 품격", image: "", text: "...이럴 땐 제 과제가 참 어렵습니다.")
+        return HistoryAndAchievementStructure(name: "중년의 품격", image: "karonBook", text: "...이럴 땐 제 과제가 참 어렵습니다.")
     case .whereIBelong:
-        return HistoryAndAchievementStructure(name: "내가 있을 장소", image: "", text: "이곳 생활이 재미있어질 것 같네요.")
+        return HistoryAndAchievementStructure(name: "내가 있을 장소", image: "karonRoom", text: "이곳 생활이 재미있어질 것 같네요.")
     default:
         break
         
@@ -135,7 +135,7 @@ let noDataCharacter = GameCharacter(name: "캐릭터가 없습니다", profileIm
 
 //  프라퍼티 설명: 설정, 티켓(게임화폐), 유저가 달성한 히스토리, 유저가 달성한 업적, 타임라인(?), 유저가 파악한 캐릭터들 정보
 // 게임 캐릭터 : 딕셔너리 형태로 바꿈. [인물영어이름:게임캐릭터 인스턴스] 구조임.
-struct User {
+struct User: Codable {
     var setting: Setting
     var tickets: Int
     var currentHistories: [History]
@@ -222,7 +222,7 @@ struct DayEpisode {
 
 // 더미데이터 담을 스트럭처
 // 총 스토리 본문, 모든 히스토리, 모든 업적, 전체 인물 정보
-struct Data {
+struct GameData{
     let stories: [String:DayEpisode]
     let histories: [History]
     let achivements: [Achievement]

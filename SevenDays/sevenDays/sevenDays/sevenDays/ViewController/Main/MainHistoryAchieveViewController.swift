@@ -104,22 +104,22 @@ class MainHistoryAchieveViewController: UIViewController,UITableViewDelegate, UI
     
     @IBAction func firstCellButtonAction(_ sender: Any) {
         
-        popupViewOn(priviousScale: 0.9, afterScale: 1.1)
+        popupViewOn(priviousScale: 0.9, afterScale: 1.0)
     }
     
     @IBAction func secondCellButtonAction(_ sender: Any) {
-        popupViewOn(priviousScale: 0.9, afterScale: 1.1)
+        popupViewOn(priviousScale: 0.9, afterScale: 1.0)
     }
     
     
     @IBAction func fromImageToTextPopupAction(_ sender: Any) {
-        animatePopupOut(desiredView: imagePopupView, priviousScale: 1.1, afterScale: 1.3, ishidden: false)
+        animatePopupOut(desiredView: imagePopupView, priviousScale: 1.0, afterScale: 1.2, ishidden: false)
         popupBlackViewOn(true)
         animatePopupIn(desiredView: textPopupView, priviousScale: 0.9, afterScale: 1.0)
     }
     
     @IBAction func fromTextToImagePopupAction(_ sender: Any) {
-        animatePopupIn(desiredView: imagePopupView, priviousScale: 1.3, afterScale: 1.1)
+        animatePopupIn(desiredView: imagePopupView, priviousScale: 1.2, afterScale: 1.0)
         popupBlackViewOn(false)
         animatePopupOut(desiredView: textPopupView, priviousScale: 1.0, afterScale: 1.2, ishidden: true)
         

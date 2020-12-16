@@ -11,52 +11,78 @@ class MainTimelineViewController: UIViewController {
 
  
     @IBOutlet weak var timelinePopupView: UIView!
-var timelineViewCon: MainTimelinePopupViewController!
+    var timelineViewCon: MainTimelinePopupViewController!
     
     override func viewDidAppear(_ animated: Bool) {
        
-        timelineViewCon.changeHidden()
+        timelineViewCon.changeHidden(hidden: false)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.children
+        print("타임라인 뷰의 childView:\(self.children)")
         for i in self.children {
             if let i = i as? MainTimelinePopupViewController {
                     timelineViewCon = i
             }
         }
-//
-        // Do any additional setup after loading the view.
+        timelinePopupView.isHidden = false
     }
     
     
     @IBAction func backToMainView(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 class MainTimelinePopupViewController: UIViewController {
     
+    var timelineViewCon: MainTimelineViewController!
+    
     override func viewDidLoad() {
-        self.view.isHidden = true
+        self.view.isHidden = false
+        
     }
     
-    func changeHidden() {
-        self.view.isHidden = true
+    override func viewDidAppear(_ animated: Bool) {
+        print("팝업뷰의 패런트뷰:\(self.parent)")
+    }
+    
+    func changeHidden(hidden: Bool) {
+        if hidden {
+            self.view.isHidden = true
+        } else {
+            self.view.isHidden = false
+        }
+    }
+    @IBAction func exitButton(_ sender: Any) {
+        if let timelineViewCon = self.parent as?
+            MainTimelineViewController {
+            timelineViewCon.timelinePopupView.isHidden = true
+        }
+        
+        
     }
     
 }
+
+class TimelineContainerViewController: UIViewController {
+
+    var timelineViewCon: MainTimelineViewController!
     
+    override func viewDidAppear(_ animated: Bool) {
+        print("타임라인 컨테이너뷰의 패런트뷰:\(self.parent)")
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+       
+    }
+    @IBAction func openPopupViewC(_ sender: Any) {
+        if let timelineViewCon = self.parent as? MainTimelineViewController {
+            timelineViewCon.timelinePopupView.isHidden = false
+        }
+    }
+}
+
 

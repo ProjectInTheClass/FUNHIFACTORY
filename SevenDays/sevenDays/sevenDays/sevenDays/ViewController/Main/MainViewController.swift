@@ -13,18 +13,15 @@ class MainViewController: UIViewController {
     @IBOutlet weak var chapterTitleLabel: UILabel!
     @IBOutlet weak var chapterDetailTextLabel: UILabel!
     
-    
-    
-    
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        chapterTitleLabel.text = "\(currentDay().chapter.chapterNumber)일: \(currentDay().chapter.chapterName)"
+        chapterDetailTextLabel.text = currentDay().chapter.chapterInfo
     }
 
     
