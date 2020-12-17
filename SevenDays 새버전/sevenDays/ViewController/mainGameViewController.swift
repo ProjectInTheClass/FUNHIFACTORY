@@ -33,13 +33,12 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     var dd = 0
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        dd += 1
-        print("//\(dd)번째 TableView 업데이트//")
+
         let chatText = currentChatArray[indexPath.row].text
         
         //블록의 마지막 챗에 도달했을 때, 선택지 셀을 출력하는 조건문.
-        if  indexNumber == currentChatAmount() && currentChatArray[indexPath.row].isItLastPage == false{
-            choiceCell = true
+        if  currentChatArray[indexPath.row].type == .choice
+        {
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "choiceTableViewCell", for: indexPath) as! choiceTableViewCell
             cell.cellDelegate = self
             print("선택지 1 : \(currentBlockOfDay().choices[0].text)")
@@ -47,6 +46,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             cell.firstChoiceButton.setTitle(currentBlockOfDay().choices[0].text, for: .normal)
             cell.secondChoiceButton.setTitle(currentBlockOfDay().choices[1].text, for: .normal)
             print(currentChatArray)
+            choiceCell = true
             return cell
         }
         //텍스트 채팅이 나올 때
@@ -64,21 +64,21 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                     return cell
                 }
        
-        //행동 표시글 셀
-        else if currentChatArray[indexPath.row].type == .sectionHeader{
-            let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "sectionHeaderCell", for: indexPath) as! sectionHeaderTableViewCell
-            cell.headerLabel.text = currentChatArray[indexPath.row].text
-            return cell
-        }
-        //터치할 수 없는 이미지
-            //자신이 보냈을 때.
+            //행동 표시글 셀
+            else if currentChatArray[indexPath.row].type == .sectionHeader{
+                let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "sectionHeaderCell", for: indexPath) as! sectionHeaderTableViewCell
+                cell.headerLabel.text = currentChatArray[indexPath.row].text
+                return cell
+            }
+            //터치할 수 없는 이미지
+                //자신이 보냈을 때.
             if currentChatArray[indexPath.row].type == .untouchableImage && currentChatArray[indexPath.row].who.info().name == "키렐" {
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myUnTouchableImage", for: indexPath) as! myUntouchableImageTableViewCell
                 
                 cell.imageUpdate(name: currentChatArray[indexPath.row].who.info().name,pfImage: currentChatArray[indexPath.row].who.info().profileImage,mainImage: currentChatArray[indexPath.row].image)
                 return cell
                 }
-            //상대가 보냈을 때
+                //상대가 보냈을 때
             else if currentChatArray[indexPath.row].type == .untouchableImage{
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opUntouchAbleImage", for: indexPath) as! opUntouchableImageTableViewCell
                 cell.update(name: currentChatArray[indexPath.row].who.info().name, profile: currentChatArray[indexPath.row].who.info().profileImage, main: currentChatArray[indexPath.row].image)
@@ -211,22 +211,22 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         if indexNumber == currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.choiceSkip == false{
             timer.invalidate()
             print("invalidate")
-            currentChatArray.append(Chat(text: "**선택지가 나올 자리**", image: "", type: .onlyText, who: .kirell, characterFace: false, isItLastPage: false))
+            currentChatArray.append(Chat(text: "**선택지가 나올 자리**", image: "", type: .choice, who: .kirell, characterFace: false, isItLastPage: false))
             self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
             print("선택지 대용 엘리먼트 추가")
-            scrollToBottom()
+            //scrollToBottom()
             return
         } else if indexNumber == currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.choiceSkip == true{
             player.currentChatId = currentBlockOfDay().choices[0].nextTextId
             indexNumber = 0
             chatUpdate()
-            scrollToBottom()
+            //scrollToBottom()
             return
         }
         print("스토리 \(indexNumber+1)/\(currentChatAmount())")
         
         indexNumber += 1
-        scrollToBottom()
+        //scrollToBottom()
     }
     
     //가장 밑으로 스크롤해주는 함수

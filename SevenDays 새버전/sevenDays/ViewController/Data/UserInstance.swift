@@ -8,7 +8,7 @@
 import Foundation
 
 
-var player = User(setting: playerSetting, tickets: 0, currentHistories: [.lastMemories, .runawayGirl, .thePatronsConcerns, .theTestBegins], currentAchievements: [.charonsInterrogation, .firstComradeArgo, .likeAWelllAgedWhiskey, .whereIBelong], currentGameCharacter: currentCharactersInfo, dayIndex: 0, dayId: "day0", currentChatId: "001")
+var player = User(setting: playerSetting, tickets: 0, currentHistories: [.lastMemories, .runawayGirl, .thePatronsConcerns, .theTestBegins], currentAchievements: [.charonsInterrogation, .firstComradeArgo, .likeAWelllAgedWhiskey, .whereIBelong], currentGameCharacter: currentCharactersInfo, dayIndex: 0, dayId: "day0", currentChatId: "018")
 var playerSetting = Setting(langueage: .Korean, bgmVolume: 0.0, effectVolume: 0.0, textSpeed: 0.1)
 
 let dummyData = GameData(stories: ["day0":day0,"day1":day1],
