@@ -44,7 +44,7 @@ enum History {
     case runawayGirl
     case thePatronsConcerns
     
-    func historyInfo() -> HistoryAndAchievementStructure {
+    func info() -> HistoryAndAchievementStructure {
     switch self {
     case .theTestBegins:
         return HistoryAndAchievementStructure(name: "시련의 시작", image: "historyImage1", text: "사자의 나침반이 가리키는 방향으로 가십시오.") //나침반의 바늘이 돌고 있지만\n주변에 죽은 자가 있을 때\n가야 할 방향을 가리킬 것입니다.
@@ -72,7 +72,7 @@ enum Achievement {
     case likeAWelllAgedWhiskey
     case whereIBelong
     
-    func achievementInfo() -> HistoryAndAchievementStructure {
+    func info() -> HistoryAndAchievementStructure {
     switch self {
     case .charonsInterrogation:
         return HistoryAndAchievementStructure(name: "카론의 심문", image: "achievementImage1", text: "생과 사의 경계에 있는 최후의 꿈에 오신 것을 환영합니다.")
