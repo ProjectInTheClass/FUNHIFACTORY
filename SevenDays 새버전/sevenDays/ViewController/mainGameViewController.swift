@@ -22,6 +22,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var chapterCoverName: UILabel!
     @IBOutlet var chapterCoverImage: UIImageView!
     @IBOutlet var chapterCover: UIView!
+    @IBOutlet var fullImageCover: UIView!
+    @IBOutlet var fullImage: UIImageView!
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -113,19 +115,24 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.mainGameTableView.refreshControl = nil
         self.mainGameTableView.delegate = self
         self.mainGameTableView.dataSource = self
+        //텍스트 팝업뷰에 tapGesture 추가하기
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(chatUpdateObjc))
         textPopUpView.addGestureRecognizer(tapGesture)
         textPopUpView.isUserInteractionEnabled = true
+        //챕터 커버에 tapGesture 추가하기
         let coverTapGesture = UITapGestureRecognizer(target: self, action: #selector(chapterCoverTapped))
         chapterCover.addGestureRecognizer(coverTapGesture)
         chapterCover.isUserInteractionEnabled = true
-        
+        //풀 이미지 커버에 tapGesture 추가하기
+        let fullImageTapGesture = UITapGestureRecognizer(target: self, action: #selector(fullImageCoverTapped))
+        fullImageCover.addGestureRecognizer(fullImageTapGesture)
+        fullImageCover.isUserInteractionEnabled = true
     }
     @objc func chatUpdateObjc(){
         chatUpdate()
     }
     override func viewDidAppear(_ animated: Bool) {
-        chatUpdateTimer()
+        chatUpdate()
     }
     override func viewDidDisappear(_ animated: Bool) {
         timer.invalidate()
@@ -154,16 +161,18 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     func chapterUpdate(){
             //챕터 넘기기
             player.dayIndex += 1
-            player.dayId = "day+\(player.dayIndex)"
+            player.dayId = "day"+"\(player.dayIndex)"
+            print(player)
             player.currentChatId = dummyData.stories[player.dayId]!.startEpisode
             currentChatArray.removeAll()
             mainGameTableView.reloadData()
             //챕터 커버 업데이트
             chapterCover.isHidden = false
             wholeView.bringSubviewToFront(chapterCover)
-            chapterCoverTitle.text = "\(dummyData.stories[player.dayId]?.chapter.chapterNumber) 일 차"
+            chapterCoverTitle.text = "\(player.dayIndex) 일 차"
             chapterCoverName.text = dummyData.stories[player.dayId]?.chapter.chapterName
             chapterCoverImage.image = UIImage(named: (dummyData.stories[player.dayId]?.chapter.chapterImage)!)
+            indexNumber = 0
     }
     @objc func chapterCoverTapped(){
         chapterCover.isHidden = true
@@ -178,7 +187,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     func chatUpdateTimer()
     {
         print("chatUpdateTimer 실행")
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {timer in
+        timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: {timer in
             self.chatUpdate()
             print(timer)
         })
@@ -193,6 +202,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         } else if indexNumber < currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type == .textPopup {
             print("텍스트 팝업이 실행되었습니다.")
             currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber])
+            print(currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber])
             self.textPopUpView.isHidden = false
             self.wholeView.bringSubviewToFront(self.textPopUpView)
             self.textPopUpdate()
@@ -200,37 +210,41 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         } else if indexNumber < currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type == .fullImage{
             print("풀 이미지 팝업이 실행되었습니다.")
             currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber])
-            self.textPopUpView.isHidden = false
-            self.wholeView.bringSubviewToFront(self.textPopUpView)
+            self.fullImageCover.isHidden = false
+            self.wholeView.bringSubviewToFront(self.fullImageCover)
             self.fullImageUpdate()
             currentChatArray.removeLast()
         }
-        if currentDay().storyBlocks[player.currentChatId]!.choices[0].nextTextId == "End"{
+        if indexNumber == currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.choices[0].nextTextId == "End"{
             chapterUpdate()
+            guard timer != nil else {return}
+            timer.invalidate()
         }
         if indexNumber == currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.choiceSkip == false{
             timer.invalidate()
             print("invalidate")
+            guard currentChatArray.last?.type != .choice else {return}
             currentChatArray.append(Chat(text: "**선택지가 나올 자리**", image: "", type: .choice, who: .kirell, characterFace: false, isItLastPage: false))
             self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
             print("선택지 대용 엘리먼트 추가")
-            //scrollToBottom()
+            scrollToBottom()
             return
         } else if indexNumber == currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.choiceSkip == true{
             player.currentChatId = currentBlockOfDay().choices[0].nextTextId
             indexNumber = 0
             chatUpdate()
-            //scrollToBottom()
+            scrollToBottom()
             return
         }
         print("스토리 \(indexNumber+1)/\(currentChatAmount())")
         
         indexNumber += 1
-        //scrollToBottom()
+        scrollToBottom()
     }
     
     //가장 밑으로 스크롤해주는 함수
     func scrollToBottom(){
+        guard currentChatArray.count != 0 else {return}
         DispatchQueue.main.async {
             let indexPath = IndexPath(row: currentChatArray.count-1, section: 0)
             self.mainGameTableView.scrollToRow(at: indexPath, at: .bottom, animated: false) //true로 바꾸면 좀 더 천천히 내려가긴 하는데, 못 따라오는 경우도 있다.
@@ -248,7 +262,12 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         textPopUpText.text = currentChatArray[currentChatArray.count-1].text
     }
     func fullImageUpdate(){
-        
+        fullImage.image = UIImage(named: currentChatArray[currentChatArray.count-1].image)
+    }
+    @objc func fullImageCoverTapped(){
+        chatUpdate()
+        fullImageCover.isHidden = true
+        wholeView.sendSubviewToBack(fullImageCover)
     }
 }
 
