@@ -18,6 +18,7 @@ class ARViewController: UIViewController, ARSessionDelegate {
     @IBOutlet weak var arButtonLable: UIButton!
     
     let configuration = ARWorldTrackingConfiguration()
+    
     override func viewDidLoad() {
     
         super.viewDidLoad()

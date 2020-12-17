@@ -47,7 +47,7 @@ class CoverViewController: UIViewController {
             
             if !buttonIsOn {
                 imageView.image = UIImage(named: images[index])
-                if index > 2 {
+                if index > images.count-2 {
                     index = 0
                 } else {
                     index += 1
