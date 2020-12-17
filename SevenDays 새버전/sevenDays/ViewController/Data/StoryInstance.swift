@@ -503,7 +503,7 @@ let day0 = DayEpisode(startEpisode: "001", chapter: Chapter(chapterNumber: 0, ch
                              Chat(text: "자, 부활 과제에 대해 얘기할 차례군요.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
                              Chat(text: "우선 이것을 받으십시오.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
                              Chat(text: "[사자의 나침반을 습득했다.]", image: "", type: .sectionHeader, who: .karon, characterFace: false, isItLastPage: false),
-                             Chat(text: "", image: "deadManCompass", type: .untouchableImage, who: .kirell, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "compass", type: .untouchableImage, who: .kirell, characterFace: false, isItLastPage: false),
                              Chat(text: "당신의 과제는", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
                              Chat(text: "이 나침반이 향하는 장소들에 가는 겁니다.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
                              Chat(text: "기한은 7일입니다.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false)], choices: [
@@ -550,7 +550,8 @@ let day0 = DayEpisode(startEpisode: "001", chapter: Chapter(chapterNumber: 0, ch
                              Chat(text: "이제 제가 드릴 충고는 하나밖에 없군요.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
                              Chat(text: "행운을 빕니다.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
                              Chat(text: "뭐야, 갑자기 세상이 뒤틀리고 있어!?", image: "", type: .textPopup, who: .kirell, characterFace: true, isItLastPage: false),
-                             Chat(text: "엇!? 누가 날 잡아.... 아아아아!!!", image: "", type: .textPopup, who: .kirell, characterFace: false, isItLastPage: true)], choices: [
+                             Chat(text: "엇!? 누가 날 잡아.... 아아아아!!!", image: "", type: .textPopup, who: .kirell, characterFace: false, isItLastPage: false),
+                             Chat(text: "", image: "", type: .fullImage, who: .kirell, characterFace: false, isItLastPage: true)], choices: [
                                Choice(text: "", likability: [], nextTextId: "End"),
                                Choice(text: "", likability: [], nextTextId: "End")], achievement: nil, choiceSkip: false)
 ])
@@ -566,7 +567,7 @@ Chat(text: "", image: "", type: .onlyText, who: .karon, characterFace: false, is
 
 
 let day1 = DayEpisode(startEpisode: "101", chapter: Chapter(chapterNumber: 1, chapterName: "첫 동료", chapterInfo: "", chapterImage: "chapter1Cover"), history: .lastMemories , storyBlocks: [
-        "101":BlockOfDayEpisode(chats: [
+        "101":BlockOfDayEpisode(chats: [Chat(text: "[첫날 이른 아침]", image: "", type: .sectionHeader, who: .kirell, characterFace: true, isItLastPage: false),
             Chat(text: "으음, 카론이 있던 취조실이 아니잖아.", image: "", type: .textPopup, who: .kirell, characterFace: true, isItLastPage: false),
             Chat(text: "설마..", image: "", type: .textPopup, who: .kirell, characterFace: true, isItLastPage: false),
     ], choices: [
