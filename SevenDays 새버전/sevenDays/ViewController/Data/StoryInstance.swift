@@ -545,7 +545,7 @@ let day0 = DayEpisode(startEpisode: "001", chapter: Chapter(chapterNumber: 0, ch
                              Chat(text: "각자에게 주어진 과제만 완료하면\n됩니다.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
                              Chat(text: "다만, 다른 분들은 다른 과제를 가지고 있다는\n점만은 주의하셔야 될 겁니다.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
                              Chat(text: "나와는 다른 과제를 가지고 시련에 참가하는 사람들이 있고", image: "", type: .textPopup, who: .kirell, characterFace: false, isItLastPage: false),
-                             Chat(text: "이 나침반은 그 사람들이 죽어야 작동한다 이거지. 게다가 기한은 7일이라....>", image: "", type: .textPopup, who: .kirell, characterFace: true, isItLastPage: false),
+                             Chat(text: "이 나침반은 그 사람들이 죽어야 작동한다 이거지. 게다가 기한은 7일이라....", image: "", type: .textPopup, who: .kirell, characterFace: true, isItLastPage: false),
                              Chat(text: "준비가 되셨습니까?", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
                              Chat(text: "이제 제가 드릴 충고는 하나밖에 없군요.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: false),
                              Chat(text: "행운을 빕니다.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
@@ -575,7 +575,7 @@ let day1 = DayEpisode(startEpisode: "101", chapter: Chapter(chapterNumber: 1, ch
     ], achievement: nil, choiceSkip: false),
     
         "102":BlockOfDayEpisode(chats: [
-            Chat(text: "", image: "", type: .untouchableImage, who: .kirell, characterFace: true, isItLastPage: false),
+            Chat(text: "", image: "compass", type: .untouchableImage, who: .kirell, characterFace: true, isItLastPage: false),
             Chat(text: "사자의 나침반은 누군가 죽어야 작동이 된다고 했어.", image: "", type: .textPopup, who: .kirell, characterFace: true, isItLastPage: false),
             Chat(text: "일단은 사람을 찾아야 되겠군.", image: "", type: .textPopup, who: .kirell, characterFace: true, isItLastPage: false),
             Chat(text: "하지만.", image: "", type: .textPopup, who: .kirell, characterFace: true, isItLastPage: false),
