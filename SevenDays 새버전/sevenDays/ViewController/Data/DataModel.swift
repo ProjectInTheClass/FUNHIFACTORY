@@ -93,7 +93,11 @@ enum Achievement {
 
 // 키렐 포함 인물들 정보를 담기 위한 스트럭처
 // 프라퍼티 설명:  인물 이름, 대표 이미지, 키렐이 관찰기록한 듯한 내용의 해당 인물 정보들(인물상세페이지에 있음), 시련 미션, 호감도
-class GameCharacter {
+class GameCharacter: CustomStringConvertible {
+    var description: String {
+        return "(name: \(name), profileImage: \(profileImage),backgroundImage: \(backgroundImage),infomation: \(infomation),infomation: \(mission),likability: \(likability))\n"
+    }
+    
     let name: String
     let profileImage: String
     let backgroundImage: String
@@ -119,14 +123,14 @@ class GameCharacter {
 var currentCharactersInfo: [String:GameCharacter]
     
 
-    = ["kirell":GameCharacter(name: "키렐", profileImage: "kirell", backgroundImage: "kirell", infomation: [], mission: "나침반을 따라가라.", likability: 66),
+    = ["kirell":GameCharacter(name: "키렐", profileImage: "kirell", backgroundImage: "kirell", infomation: ["사후의 세계에 떨어지면서 이름 외에 생전의 모든 기억을 잃었다."], mission: "나침반을 따라가라.", likability: 66),
         "argo":GameCharacter(name: "아르고", profileImage: "argo", backgroundImage: "argo", infomation: ["아르고는 남자다.", "아르고는 자연곱슬이다.","아르고는 고양이상이다."], mission: "친한 동료를 죽여라", likability: 0),
-        "unknown":GameCharacter(name: "???", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "wolf":GameCharacter(name: "울프", profileImage: "", backgroundImage: "", infomation: [], mission: "나침반을 따라가라.", likability: 87),
-        "ballam":GameCharacter(name: "발람", profileImage: "ballam", backgroundImage: "ballam", infomation: [], mission: "나침반을 따라가라.", likability: 77),
-        "karon":GameCharacter(name: "카론", profileImage: "karon", backgroundImage: "karon", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "hilde":GameCharacter(name: "힐데", profileImage: "hilde", backgroundImage: "hilde", infomation: [], mission: "나침반을 따라가라.", likability: 0),
-        "philio":GameCharacter(name: "필리오", profileImage: "philio", backgroundImage: "philio", infomation: [], mission: "나침반을 따라가라.", likability: 88),]
+        "unknown":GameCharacter(name: "???", profileImage: "unknown", backgroundImage: "unknown", infomation: ["정보가 없습니다."], mission: "나침반을 따라가라.", likability: 0),
+        "wolf":GameCharacter(name: "울프", profileImage: "unknown", backgroundImage: "unknown", infomation: ["정보가 없습니다."], mission: "나침반을 따라가라.", likability: 87),
+        "ballam":GameCharacter(name: "발람", profileImage: "ballam", backgroundImage: "ballam", infomation: ["그의 과제는 누군가를 죽이는 것이 분명하다. 과제를 완료할 때까지 사람을 죽일 생각인 것 같다."], mission: "나침반을 따라가라.", likability: 77),
+        "karon":GameCharacter(name: "카론", profileImage: "karon", backgroundImage: "karon", infomation: ["죽은 사람을 인도하는 역할을 가진 듯하다."], mission: "나침반을 따라가라.", likability: 0),
+        "hilde":GameCharacter(name: "힐데", profileImage: "hilde", backgroundImage: "hilde", infomation: ["밝은 성격에 감정도 풍부해 함께 있으면 편안하다. 다만 겁이 많아서 걱정이다."], mission: "나침반을 따라가라.", likability: 0),
+        "philio":GameCharacter(name: "필리오", profileImage: "philio", backgroundImage: "philio", infomation: ["기회 잃은 망자들은 필리오를 공격하지 않는다. 심지어 그의 주변에 다가오지도 않는다."], mission: "나침반을 따라가라.", likability: 88),]
 
 let noDataCharacter = GameCharacter(name: "캐릭터가 없습니다", profileImage: "", backgroundImage: "", infomation: [], mission: "", likability: 0)
 

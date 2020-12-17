@@ -15,8 +15,10 @@ class FollowersTableViewCell: UITableViewCell {
     @IBOutlet weak var followerName: UILabel!
     @IBOutlet weak var likabilityGrayBox: UIView!
     @IBOutlet weak var likabilityConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var likabilityRedBox: UIView!
+    @IBOutlet weak var followerBox: UIView!
+    @IBOutlet weak var likabilityView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,22 +29,22 @@ class FollowersTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func designFollowersTableViewCell() {
+        followerBox.layer.borderColor = CGColor(red: 200/255, green: 199/255, blue: 181/255, alpha: 1)
+        followerBox.layer.borderWidth = 1.5
+        likabilityGrayBox.layer.cornerRadius = likabilityGrayBox.frame.height/2
+        likabilityRedBox.layer.cornerRadius = likabilityGrayBox.frame.height/2
+    }
 }
 
 class MainGameFollowersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var topBar: UIView!
     //딕셔너리 자료를 어레이로 타입변환해서 담을 곳.
-    var charactersInfoArray: [GameCharacter]{
-        get {
-            
-            var a = [GameCharacter]()
-            for (key, value) in player.currentGameCharacter {
-                a.append(GameCharacter(name: value.name, profileImage: value.profileImage, backgroundImage: value.backgroundImage, infomation: value.infomation, mission: value.mission, likability: value.likability))
-            }
-            print("a: \(a)")
-            return a
-        }
-    }
+    var gameCharactersInfoArray = [GameCharacter]()
+    
+    
     
     
     
@@ -60,16 +62,21 @@ class MainGameFollowersViewController: UIViewController, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "followersTableViewCell", for: indexPath) as! FollowersTableViewCell
-       
-        
-        cell.followerName.text = charactersInfoArray[indexPath.row].name
-        cell.followerImage.image = UIImage(named: charactersInfoArray[indexPath.row].profileImage)
+        cell.backgroundColor = .clear
+        cell.likabilityView.backgroundColor = .clear
+        cell.followerName.text = gameCharactersInfoArray[indexPath.row].name
+        cell.followerImage.image = UIImage(named: gameCharactersInfoArray[indexPath.row].profileImage)
         cell.followerImage.layer.cornerRadius = cell.followerImage.frame.height/2
-        cell.likabilityConstraint.constant = CGFloat(charactersInfoArray[indexPath.row].likability*Int(cell.likabilityGrayBox.frame.size.width)/100)
+        cell.likabilityConstraint.constant = CGFloat(gameCharactersInfoArray[indexPath.row].likability*Int(cell.likabilityGrayBox.frame.size.width)/100)
             print(cell.likabilityGrayBox.frame.size.width)
         
+        cell.designFollowersTableViewCell()
         
-        print("현재 호감도\(charactersInfoArray[indexPath.row].likability)")
+        if gameCharactersInfoArray[indexPath.row].name == "키렐" {
+            cell.likabilityView.isHidden = true
+        }
+        
+        print("현재 호감도\(gameCharactersInfoArray[indexPath.row].likability)")
         
 
         return cell
@@ -79,7 +86,7 @@ class MainGameFollowersViewController: UIViewController, UITableViewDelegate, UI
         return 148
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let dataToSend = charactersInfoArray[indexPath.row]
+        let dataToSend = gameCharactersInfoArray[indexPath.row]
         performSegue(withIdentifier: "goToFollowerDetailViewSegue", sender: dataToSend)
     }
     
@@ -96,7 +103,9 @@ class MainGameFollowersViewController: UIViewController, UITableViewDelegate, UI
         super.viewDidLoad()
         self.followersTableView.delegate = self
         self.followersTableView.dataSource = self
-        // Do any additional setup after loading the view.
+        followersTableView.backgroundColor = .clear
+        updateGameCharacterInfoArray(array: currentCharactersInfo)
+       
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -104,7 +113,35 @@ class MainGameFollowersViewController: UIViewController, UITableViewDelegate, UI
         self.followersTableView.delegate = self
         self.followersTableView.dataSource = self
     }
+    
+    func updateGameCharacterInfoArray(array: [String:GameCharacter]) {
+        //딕셔너리에서 게임캐릭터만 빼오기
+        var a = [GameCharacter]()
+        for (_, value) in array {
+            a.append(GameCharacter(name: value.name, profileImage: value.profileImage, backgroundImage: value.backgroundImage, infomation: value.infomation, mission: value.mission, likability: value.likability))
+        }
+        
+        //order 순으로 정렬하기
+        let arrayCount = array.count
+        let order = ["키렐", "발람", "힐데", "아르고", "필리오", "카론", "???", "울프"]
+        var index = 0
+        var newArray = [GameCharacter]()
+        while newArray.count != arrayCount {
+            for gameCharacter in a {
+                if gameCharacter.name == order[index] {
+                    newArray.append(gameCharacter)
+                    index += 1
+                }
+                if newArray.count == arrayCount {
+                    break
+                }
+            }
+        }
+        gameCharactersInfoArray = newArray
+        print("최종\(gameCharactersInfoArray)")
+    }
 
+    
     /*
     // MARK: - Navigation
 
