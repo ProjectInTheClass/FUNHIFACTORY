@@ -6,18 +6,24 @@
 //
 
 import UIKit
+import AVFoundation
 
 class MainTimelineViewController: UIViewController {
 
  
     @IBOutlet weak var timelinePopupView: UIView!
-  
+   
     var timelineViewCon: MainTimelinePopupViewController!
     
+    
+    
+    
+    
+    
     override func viewDidAppear(_ animated: Bool) {
-       
         timelineViewCon.changeHidden(hidden: false)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,17 +34,18 @@ class MainTimelineViewController: UIViewController {
             }
         }
         timelinePopupView.isHidden = true
+        
+        
+        
+        
     }
     
     
     @IBAction func backToMainView(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-}
-
-
-
-
+    
+    }
 
 
 
@@ -59,6 +66,7 @@ class MainTimelinePopupViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         print("팝업뷰의 패런트뷰:\(String(describing: self.parent))")
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

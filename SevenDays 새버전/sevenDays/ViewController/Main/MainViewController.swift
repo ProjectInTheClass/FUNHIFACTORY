@@ -6,12 +6,13 @@
 //
 
 import UIKit
-
+import AVFoundation
 class MainViewController: UIViewController {
 
     
     @IBOutlet weak var chapterTitleLabel: UILabel!
     @IBOutlet weak var chapterDetailTextLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +25,15 @@ class MainViewController: UIViewController {
         chapterDetailTextLabel.text = currentDay().chapter.chapterInfo
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        audioConfigure()
+    }
     
+    override func viewWillDisappear(_ animated: Bool) {
+       
+    }
     @IBAction func goToGameView(_ sender: UIButton) {
+        audioPlayer?.pause()
         let mainGameStoryBoard = UIStoryboard(name: "MainGame", bundle: nil)
         let second = mainGameStoryBoard.instantiateViewController(withIdentifier: "mainGame")
         second.modalPresentationStyle = .fullScreen
@@ -62,19 +70,34 @@ class MainViewController: UIViewController {
             }
        }
     }
-    /*@IBAction func goToSettingView(_ sender: Any) {
-        performSegue(withIdentifier: "goToSettingViewSegue", sender: nil)
-    }*/
-    /*
-    // MARK: - Navigation
+   
+    func audioConfigure() {
+        let bgmName = "song3"
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let urlString = Bundle.main.path(forResource: bgmName, ofType: "mp3")
+
+        do {
+            try AVAudioSession.sharedInstance().setMode(.default)
+            try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
+
+            guard let urlString = urlString else {
+                print("urlstring is nil")
+                return
+            }
+
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(string: urlString)!)
+
+            guard let audioPlayer = audioPlayer else {
+                print("player is nil")
+                return
+            }
+            audioPlayer.volume = 0.25
+            audioPlayer.play()
+        }
+        catch {
+            print("error occurred")
+        }
     }
-    */
-
 
 }
 

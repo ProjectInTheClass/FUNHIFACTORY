@@ -69,11 +69,12 @@ class MainGameFollowersViewController: UIViewController, UITableViewDelegate, UI
         cell.followerImage.layer.cornerRadius = cell.followerImage.frame.height/2
         cell.likabilityConstraint.constant = CGFloat(gameCharactersInfoArray[indexPath.row].likability*Int(cell.likabilityGrayBox.frame.size.width)/100)
             print(cell.likabilityGrayBox.frame.size.width)
-        
+        cell.selectionStyle = .none
         cell.designFollowersTableViewCell()
         
-        if gameCharactersInfoArray[indexPath.row].name == "키렐" {
+        if gameCharactersInfoArray[indexPath.row].name == "키렐" || gameCharactersInfoArray[indexPath.row].name == "카론" {
             cell.likabilityView.isHidden = true
+            
         }
         
         print("현재 호감도\(gameCharactersInfoArray[indexPath.row].likability)")

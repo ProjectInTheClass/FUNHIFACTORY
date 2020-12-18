@@ -76,10 +76,11 @@ class MainGameFollowerDetailViewController: UIViewController,UITableViewDelegate
         cell.designCell()
         
         if let recieved = recievedGameCharacter {
-            if recieved.name == "키렐" {
+            if recieved.name == "키렐" || recieved.name == "카론" {
                 likabilityView.isHidden = true
             }
         }
+        
         
         return cell
     }
