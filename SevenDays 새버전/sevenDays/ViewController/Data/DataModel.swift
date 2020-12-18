@@ -34,6 +34,7 @@ struct HistoryAndAchievementStructure {
     let name: String
     let image: String
     let text: String
+    let fullText : String
 }
 
 // 개수가 한정적이므로 enum으로 처리. 아래 case들은 게임 내 1~4일차 꿈들 임시로 만들어 본 것
@@ -47,13 +48,13 @@ enum History {
     func info() -> HistoryAndAchievementStructure {
     switch self {
     case .theTestBegins:
-        return HistoryAndAchievementStructure(name: "시련의 시작", image: "historyImage1", text: "사자의 나침반이 가리키는 방향으로 가십시오.") //나침반의 바늘이 돌고 있지만\n주변에 죽은 자가 있을 때\n가야 할 방향을 가리킬 것입니다.
+        return HistoryAndAchievementStructure(name: "시련의 시작", image: "historyImage1", text: "사자의 나침반이 가리키는 방향으로 가십시오.", fullText: "나침반의 바늘이 돌고 있지만\n주변에 죽은 자가 있을 때\n가야 할 방향을 가리킬 것입니다.")
     case .lastMemories:
-        return HistoryAndAchievementStructure(name: "마지막 기억", image: "historyImage2", text: "이것은 죽기 전 마지막 장면인가?")
+        return HistoryAndAchievementStructure(name: "마지막 기억", image: "historyImage2", text: "이것은 죽기 전 마지막 장면인가?", fullText: "서로에게 총을 쏜 기억이 났다.\n이 때 나도 상대도 치명상을 입었다.\n그 상대는...\n하필 다른 사람도 아닌 그 사람이 날 쏜 것일까?\n원망 보다는 의문이 떠올랐다.\n그 상태로 정신을 잃었다.")
     case .runawayGirl:
-        return HistoryAndAchievementStructure(name: "가출", image: "historyImage3", text: "그 쓰레기는 술을 마실 때마다 나를 때리고 그걸 말리러 온 엄마를 때렸다.")
+        return HistoryAndAchievementStructure(name: "가출", image: "historyImage3", text: "그 쓰레기는 술을 마실 때마다 나를 때리고 그걸 말리러 온 엄마를 때렸다.", fullText: "")
     case .thePatronsConcerns:
-        return HistoryAndAchievementStructure(name: "후견인의 걱정", image: "historyImage4", text: "그 사람은 쓸데없는 사람까지 처리했다며 나를 꾸짖었다.")
+        return HistoryAndAchievementStructure(name: "후견인의 걱정", image: "historyImage4", text: "그 사람은 쓸데없는 사람까지 처리했다며 나를 꾸짖었다.", fullText: "")
     default:
         break
         
@@ -75,13 +76,13 @@ enum Achievement {
     func info() -> HistoryAndAchievementStructure {
     switch self {
     case .charonsInterrogation:
-        return HistoryAndAchievementStructure(name: "카론의 심문", image: "achievementImage1", text: "생과 사의 경계에 있는 최후의 꿈에 오신 것을 환영합니다.")
+        return HistoryAndAchievementStructure(name: "카론의 심문", image: "achievementImage1", text: "생과 사의 경계에 있는 최후의 꿈에 오신 것을 환영합니다.", fullText: "")
     case .firstComradeArgo:
-        return HistoryAndAchievementStructure(name: "첫 동료 아르고", image: "achievementImage2", text: "흠.... 키렐, 그 말은 제가 동료가 되는 게 당신에게 무조건 유리하다는 뜻인가요?")
+        return HistoryAndAchievementStructure(name: "첫 동료 아르고", image: "achievementImage2", text: "흠.... 키렐, 그 말은 제가 동료가 되는 게 당신에게 무조건 유리하다는 뜻인가요?", fullText: "")
     case .likeAWelllAgedWhiskey:
-        return HistoryAndAchievementStructure(name: "중년의 품격", image: "karonBook", text: "...이럴 땐 제 과제가 참 어렵습니다.")
+        return HistoryAndAchievementStructure(name: "중년의 품격", image: "karonBook", text: "...이럴 땐 제 과제가 참 어렵습니다.", fullText: "")
     case .whereIBelong:
-        return HistoryAndAchievementStructure(name: "내가 있을 장소", image: "karonRoom", text: "이곳 생활이 재미있어질 것 같네요.")
+        return HistoryAndAchievementStructure(name: "내가 있을 장소", image: "karonRoom", text: "이곳 생활이 재미있어질 것 같네요.", fullText: "")
     default:
         break
         

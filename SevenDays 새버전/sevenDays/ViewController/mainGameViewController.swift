@@ -8,6 +8,7 @@
 import UIKit
 
 class mainGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
+    @IBOutlet var dayNumberLabel: UILabel!
     @IBOutlet var wholeView: UIView!
     @IBOutlet var mainGameTableView: UITableView!
     @IBOutlet var pauseBar: UIView!
@@ -112,6 +113,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dayNumberLabel.text = "\(player.dayIndex)일차"
         self.mainGameTableView.refreshControl = nil
         self.mainGameTableView.delegate = self
         self.mainGameTableView.dataSource = self
@@ -132,7 +134,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         chatUpdate()
     }
     override func viewDidAppear(_ animated: Bool) {
-        chatUpdate()
+        if timer == nil {
+            chatUpdateTimer()
+        }
     }
     override func viewDidDisappear(_ animated: Bool) {
         guard timer != nil else {return}
@@ -172,6 +176,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             chapterCover.isHidden = false
             wholeView.bringSubviewToFront(chapterCover)
             chapterCoverTitle.text = "\(player.dayIndex) 일 차"
+            dayNumberLabel.text = "\(player.dayIndex)일차"
             chapterCoverName.text = dummyData.stories[player.dayId]?.chapter.chapterName
             chapterCoverImage.image = UIImage(named: (dummyData.stories[player.dayId]?.chapter.chapterImage)!)
             indexNumber = 0
@@ -269,7 +274,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         textPopUpText.text = currentChatArray[currentChatArray.count-1].text
     }
     func fullImageUpdate(){
+        guard timer != nil else {return}
         fullImage.image = UIImage(named: currentChatArray[currentChatArray.count-1].image)
+        
+        timer.invalidate()
     }
     @objc func fullImageCoverTapped(){
         chatUpdate()
