@@ -551,7 +551,7 @@ let day0 = DayEpisode(startEpisode: "001", chapter: Chapter(chapterNumber: 0, ch
                              Chat(text: "행운을 빕니다.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: false),
                              Chat(text: "뭐야, 갑자기 세상이 뒤틀리고 있어!?", image: "", type: .textPopup, who: .kirell, characterFace: true, isItLastPage: false),
                              Chat(text: "엇!? 누가 날 잡아.... 아아아아!!!", image: "", type: .textPopup, who: .kirell, characterFace: false, isItLastPage: false),
-                             Chat(text: "", image: "", type: .fullImage, who: .kirell, characterFace: false, isItLastPage: true)], choices: [
+                             Chat(text: "", image: "portal", type: .fullImage, who: .kirell, characterFace: false, isItLastPage: true)], choices: [
                                Choice(text: "", likability: [], nextTextId: "End"),
                                Choice(text: "", likability: [], nextTextId: "End")], achievement: nil, choiceSkip: false)
 ])

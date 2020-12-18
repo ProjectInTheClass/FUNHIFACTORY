@@ -91,7 +91,7 @@ class MainViewController: UIViewController {
                 print("player is nil")
                 return
             }
-            audioPlayer.volume = 0.25
+            audioPlayer.volume = player.setting.bgmVolume
             audioPlayer.play()
         }
         catch {

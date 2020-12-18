@@ -20,6 +20,12 @@ class SettingContainerViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if let audioPlayer = audioPlayer {
+            bgmSlider.value = audioPlayer.volume
+        }
+        
+    }
     @IBAction func goToCreditARViewAction(_ sender: Any) {
         if let mainSettingViewCon = self.parent as? MainSettingViewController {
             mainSettingViewCon.performSegue(withIdentifier: "goToARViewSegue", sender: nil)
@@ -28,7 +34,8 @@ class SettingContainerViewController: UIViewController {
     
     @IBAction func bgmVolume(_ sender: Any) {
         if let audioPlayer = audioPlayer {
-            audioPlayer.volume = bgmSlider.value/2
+            player.setting.bgmVolume = bgmSlider.value
+            audioPlayer.volume = player.setting.bgmVolume
         }
     }
 }

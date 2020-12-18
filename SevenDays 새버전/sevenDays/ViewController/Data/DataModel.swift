@@ -21,8 +21,8 @@ enum Language {
 // 프라퍼티 설명:  언어 설정, 배경음, 효과음, 넘김 속도
 struct Setting {
     var langueage: Language
-    var bgmVolume: Double
-    var effectVolume: Double
+    var bgmVolume: Float
+    var effectVolume: Float
     var textSpeed: Double
     
 }

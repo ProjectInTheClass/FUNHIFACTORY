@@ -135,6 +135,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         chatUpdate()
     }
     override func viewDidDisappear(_ animated: Bool) {
+        guard timer != nil else {return}
         timer.invalidate()
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -157,6 +158,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func imagePopUpClose(_ sender: Any) {
         imagePopUpView.isHidden = true
         wholeView.sendSubviewToBack(imagePopUpView)
+        chatUpdateTimer()
     }
     func chapterUpdate(){
             //챕터 넘기기
@@ -208,7 +210,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             self.wholeView.bringSubviewToFront(self.textPopUpView)
             self.textPopUpdate()
             currentChatArray.removeLast()
-        } else if indexNumber < currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type == .fullImage{
+        }
+        if indexNumber < currentChatAmount()  && currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type == .fullImage{
             print("풀 이미지 팝업이 실행되었습니다.")
             currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber])
             self.fullImageCover.isHidden = false
@@ -254,6 +257,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     //이미지를 터치하면 팝업 띄우는 함수
     @objc func imageScaleUp(_ sender: UITapGestureRecognizer){
+        if timer != nil{
+            timer.invalidate()
+        }
         imagePopUpView.isHidden = false
         wholeView.bringSubviewToFront(imagePopUpView)
         popUpImage.image = UIImage(named: currentChatArray[sender.view!.tag].image)
