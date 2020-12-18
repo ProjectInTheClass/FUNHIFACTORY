@@ -187,10 +187,11 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     func chatUpdateTimer()
     {
         print("chatUpdateTimer 실행")
-        timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: {timer in
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {timer in
             self.chatUpdate()
             print(timer)
         })
+        
     }
     func chatUpdate(){
         print("------------chatUpdate 시작합니다------------")
