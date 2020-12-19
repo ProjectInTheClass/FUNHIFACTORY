@@ -11,7 +11,7 @@ import Foundation
 //------------------------------------설정------------------------------------
 
 //설정 - 언어
-enum Language {
+enum Language: String, Codable  {
     case Korean
     case English
     case Japanese
@@ -19,7 +19,7 @@ enum Language {
     
 }
 // 프라퍼티 설명:  언어 설정, 배경음, 효과음, 넘김 속도
-struct Setting {
+struct Setting: Codable {
     var langueage: Language
     var bgmVolume: Float
     var effectVolume: Float
@@ -30,7 +30,7 @@ struct Setting {
 //------------------------------------히스토리: 업적 비슷한 개념------------------------------------
 // 히스토리: 키렐이 매일 꾸는 꿈 내용.
 // 프라퍼티 설명:  히스토리 이름, 해당 이미지, 글
-struct HistoryAndAchievementStructure {
+struct HistoryAndAchievementStructure: Codable {
     let name: String
     let image: String
     let text: String
@@ -39,7 +39,7 @@ struct HistoryAndAchievementStructure {
 
 // 개수가 한정적이므로 enum으로 처리. 아래 case들은 게임 내 1~4일차 꿈들 임시로 만들어 본 것
 // switch 함수로 바로 각 항목 데이터 넘기는 걸 구상함
-enum History {
+enum History: String, Codable {
     case theTestBegins
     case lastMemories
     case runawayGirl
@@ -67,7 +67,7 @@ enum History {
 // 히스토리랑 마찬가지로 한정된 갯수기 때문에 동일 스트럭처 사용함
 // 프라퍼티 설명: 위와 동일
 
-enum Achievement {
+enum Achievement: String, Codable {
     case charonsInterrogation
     case firstComradeArgo
     case likeAWelllAgedWhiskey
@@ -94,7 +94,7 @@ enum Achievement {
 
 // 키렐 포함 인물들 정보를 담기 위한 스트럭처
 // 프라퍼티 설명:  인물 이름, 대표 이미지, 키렐이 관찰기록한 듯한 내용의 해당 인물 정보들(인물상세페이지에 있음), 시련 미션, 호감도
-class GameCharacter: CustomStringConvertible {
+class GameCharacter: CustomStringConvertible, Codable {
     var description: String {
         return "(name: \(name), profileImage: \(profileImage),backgroundImage: \(backgroundImage),infomation: \(infomation),infomation: \(mission),likability: \(likability))\n"
     }
@@ -140,13 +140,13 @@ let noDataCharacter = GameCharacter(name: "캐릭터가 없습니다", profileIm
 
 //  프라퍼티 설명: 설정, 티켓(게임화폐), 유저가 달성한 히스토리, 유저가 달성한 업적, 타임라인(?), 유저가 파악한 캐릭터들 정보
 // 게임 캐릭터 : 딕셔너리 형태로 바꿈. [인물영어이름:게임캐릭터 인스턴스] 구조임.
-struct User {
+struct User: Codable {
     var setting: Setting
     var tickets: Int
     var currentHistories: [History]
     var currentAchievements: [Achievement]
     //var timellne: nil
-    var currentGameCharacter: [String:GameCharacter] = currentCharactersInfo
+    var currentGameCharacter: [String:GameCharacter]
     var dayIndex:Int
     var dayId:String
     var currentChatId:String
@@ -308,4 +308,28 @@ enum GameCharactersEnum {
         }
     
 }
+}
+
+func saveToFile() {
+    let documentsDirectory =
+      FileManager.default.urls(for: .documentDirectory,
+      in: .userDomainMask).first!
+    let archiveURL =
+      documentsDirectory.appendingPathComponent("notes_test").appendingPathExtension("plist")
+    let propertyListEncoder = PropertyListEncoder()
+    let encodedNotes = try? propertyListEncoder.encode(player)
+    try? encodedNotes?.write(to: archiveURL,options: .noFileProtection)
+}
+// saving Data : 데이터 로컬에서 불러오기
+func loadFromFile() {
+    let documentsDirectory =
+      FileManager.default.urls(for: .documentDirectory,
+      in: .userDomainMask).first!
+    let archiveURL =
+      documentsDirectory.appendingPathComponent("notes_test").appendingPathExtension("plist")
+    let propertyListDecoder = PropertyListDecoder()
+    if let retrievedNotesData = try? Data(contentsOf: archiveURL), let decodedNotes = try? propertyListDecoder.decode(User.self, from:retrievedNotesData) {
+        print(decodedNotes)
+        player = decodedNotes
+    }
 }

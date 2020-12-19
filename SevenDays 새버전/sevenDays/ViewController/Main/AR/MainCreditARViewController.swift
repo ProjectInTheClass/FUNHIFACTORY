@@ -30,7 +30,7 @@ class MainCreditARViewController: UIViewController,  ARSessionDelegate  {
     }
     
     @IBAction func arButtonAction(_ sender: Any) {
-   //     arView.session.pause()
+      // arView.session.pause()
         self.navigationController?.popViewController(animated: true)
     }
  

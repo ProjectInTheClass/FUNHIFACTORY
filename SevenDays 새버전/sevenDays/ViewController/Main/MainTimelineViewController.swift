@@ -7,17 +7,13 @@
 
 import UIKit
 import AVFoundation
-
+//뷰컨
 class MainTimelineViewController: UIViewController {
 
  
     @IBOutlet weak var timelinePopupView: UIView!
    
     var timelineViewCon: MainTimelinePopupViewController!
-    
-    
-    
-    
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,7 +44,7 @@ class MainTimelineViewController: UIViewController {
     }
 
 
-
+//팝업 컨테이너뷰
 class MainTimelinePopupViewController: UIViewController {
     
     
@@ -118,7 +114,7 @@ class MainTimelinePopupViewController: UIViewController {
 
 
 
-
+// 배경 컨테이너뷰
 class TimelineContainerViewController: UIViewController {
 
     @IBOutlet var dayEpisodeButtons: [UIButton]!

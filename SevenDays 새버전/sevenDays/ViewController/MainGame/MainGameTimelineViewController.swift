@@ -15,7 +15,7 @@ class MainGameTimelineViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
        
-        timelineViewCon.changeHidden(hidden: false)
+        timelineViewCon.changeHidden(hidden: true)
     }
     
     override func viewDidLoad() {

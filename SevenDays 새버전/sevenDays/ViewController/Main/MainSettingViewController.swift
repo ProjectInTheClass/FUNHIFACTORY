@@ -38,6 +38,9 @@ class SettingContainerViewController: UIViewController {
             audioPlayer.volume = player.setting.bgmVolume
         }
     }
+    @IBAction func textSpeedSliderAction(_ sender: Any) {
+        player.setting.textSpeed = Double(textSpeedSlider.value*2)
+    }
 }
 class MainSettingViewController: UIViewController {
 

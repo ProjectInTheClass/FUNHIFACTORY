@@ -12,7 +12,7 @@ import AVFoundation
 var audioPlayer: AVAudioPlayer?
 
 var player = User(setting: playerSetting, tickets: 0, currentHistories: [.lastMemories, .runawayGirl, .thePatronsConcerns, .theTestBegins], currentAchievements: [.charonsInterrogation, .firstComradeArgo, .likeAWelllAgedWhiskey, .whereIBelong], currentGameCharacter: currentCharactersInfo, dayIndex: 0, dayId: "day0", currentChatId: "096")
-var playerSetting = Setting(langueage: .Korean, bgmVolume: 0.5, effectVolume: 0.0, textSpeed: 0.1)
+var playerSetting = Setting(langueage: .Korean, bgmVolume: 0.5, effectVolume: 0.0, textSpeed: 1.0)
 
 let dummyData = GameData(stories: ["day0":day0,"day1":day1],
                      histories: [.lastMemories, .runawayGirl, .thePatronsConcerns, .theTestBegins],
