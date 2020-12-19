@@ -17,7 +17,7 @@ class MainTimelineViewController: UIViewController {
     
     
     override func viewDidAppear(_ animated: Bool) {
-        timelineViewCon.changeHidden(hidden: false)
+        
     }
     
     
