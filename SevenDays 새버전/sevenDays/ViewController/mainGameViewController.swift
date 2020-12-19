@@ -134,9 +134,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         chatUpdate()
     }
     override func viewDidAppear(_ animated: Bool) {
-        if timer == nil {
-            chatUpdateTimer()
-        }
+        chatUpdateTimer()
     }
     override func viewDidDisappear(_ animated: Bool) {
         guard timer != nil else {return}
