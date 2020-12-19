@@ -188,11 +188,11 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     var choiceCell = false
     //채팅 자동으로 올라오게 하는 함수
-    var timer:Timer!
+    
     func chatUpdateTimer()
     {
         print("chatUpdateTimer 실행")
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {timer in
+        timer = Timer.scheduledTimer(withTimeInterval: player.setting.textSpeed, repeats: true, block: {timer in
             self.chatUpdate()
             print(timer)
         })

@@ -39,7 +39,8 @@ class SettingContainerViewController: UIViewController {
         }
     }
     @IBAction func textSpeedSliderAction(_ sender: Any) {
-        player.setting.textSpeed = Double(0.25/textSpeedSlider.value+0.5)
+        // 마지막 0.5 :
+        player.setting.textSpeed = Double(2.0-textSpeedSlider.value+0.5)
     }
 }
 class MainSettingViewController: UIViewController {
