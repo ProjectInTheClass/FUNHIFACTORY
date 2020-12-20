@@ -53,6 +53,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             cell.secondChoiceButton.setTitle(currentBlockOfDay().choices[1].text, for: .normal)
             print(currentChatArray)
             choiceCell = true
+            cell.contentView.backgroundColor = UIColor.clear
             return cell
         }
         //텍스트 채팅이 나올 때
@@ -67,6 +68,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 else if currentChatArray[indexPath.row].type == .onlyText{
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opOnlyText", for: indexPath) as! opOnlyTextTableViewCell
                     cell.opTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, imageName: currentChatArray[indexPath.row].who.info().profileImage, characterFace: currentChatArray[indexPath.row].characterFace)
+                    cell.contentView.backgroundColor = .clear
+                    cell.contentView.isOpaque = false
                     return cell
                 }
        
@@ -116,6 +119,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mainGameTableView.backgroundView = UIImageView(image: UIImage(named: "mainChatBackGround"))
         dayNumberLabel.text = "\(player.dayIndex)일차"
         self.mainGameTableView.refreshControl = nil
         self.mainGameTableView.delegate = self

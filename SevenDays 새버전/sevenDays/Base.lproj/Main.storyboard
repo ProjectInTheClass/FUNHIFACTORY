@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X81-3S-QOr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X81-3S-QOr">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NanumGothic.ttf">
+            <string>NanumGothic</string>
+        </array>
+        <array key="NanumGothicBold.ttf">
+            <string>NanumGothicBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--MainGame-->
         <scene sceneID="DtA-lz-1eE">
@@ -95,28 +103,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainChatBackGround" translatesAutoresizingMaskIntoConstraints="NO" id="fTo-DD-m06">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="902"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3o8-vM-aSO">
-                                <rect key="frame" x="0.0" y="243" width="371" height="3"/>
+                                <rect key="frame" x="0.0" y="169.5" width="371" height="3"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="3" id="LYl-h7-dM0"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="챕터의 설명이 들어갈 자리입니다." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFv-Yo-1XT">
-                                <rect key="frame" x="13" y="253" width="261" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="챕터의 설명이 들어갈 자리입니다." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFv-Yo-1XT">
+                                <rect key="frame" x="13" y="187.5" width="257.5" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="NyG-Uf-lOy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="18"/>
                                 <color key="textColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="챕터 제목이 들어갈 자리" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqh-oY-fQN">
-                                <rect key="frame" x="13" y="195" width="333.5" height="43"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
+                                <rect key="frame" x="13" y="114" width="358.5" height="40.5"/>
+                                <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="35"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdu-vu-JZP">
-                                <rect key="frame" x="324" y="366" width="50" height="39"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <rect key="frame" x="323" y="292.5" width="51" height="39"/>
+                                <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="23"/>
                                 <state key="normal" title="Start">
                                     <color key="titleColor" systemColor="systemOrangeColor"/>
                                 </state>
@@ -180,17 +194,21 @@
                         <viewLayoutGuide key="safeArea" id="RGc-b7-hXq"/>
                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="uqh-oY-fQN" firstAttribute="top" secondItem="RGc-b7-hXq" secondAttribute="top" constant="151" id="IHa-is-0re"/>
+                            <constraint firstItem="RGc-b7-hXq" firstAttribute="bottom" secondItem="fTo-DD-m06" secondAttribute="bottom" constant="-40" id="EBG-EG-raM"/>
+                            <constraint firstItem="fTo-DD-m06" firstAttribute="top" secondItem="KdM-8Q-6Gb" secondAttribute="topMargin" constant="-44" id="FXQ-mY-q76"/>
+                            <constraint firstItem="uqh-oY-fQN" firstAttribute="top" secondItem="RGc-b7-hXq" secondAttribute="top" constant="70" id="IHa-is-0re"/>
                             <constraint firstItem="DFv-Yo-1XT" firstAttribute="leading" secondItem="RGc-b7-hXq" secondAttribute="leading" constant="13" id="JTr-Df-izM"/>
-                            <constraint firstItem="DFv-Yo-1XT" firstAttribute="top" secondItem="3o8-vM-aSO" secondAttribute="bottom" constant="8" id="Jxi-p5-u40"/>
+                            <constraint firstItem="DFv-Yo-1XT" firstAttribute="top" secondItem="3o8-vM-aSO" secondAttribute="bottom" constant="15" id="Jxi-p5-u40"/>
                             <constraint firstItem="0Ki-gj-0Du" firstAttribute="leading" secondItem="RGc-b7-hXq" secondAttribute="leading" constant="49" id="NK2-w4-FLP"/>
                             <constraint firstItem="RGc-b7-hXq" firstAttribute="trailing" secondItem="0Ki-gj-0Du" secondAttribute="trailing" constant="49" id="SnL-iB-dkN"/>
                             <constraint firstItem="uqh-oY-fQN" firstAttribute="leading" secondItem="RGc-b7-hXq" secondAttribute="leading" constant="13" id="Spz-o7-d9p"/>
+                            <constraint firstItem="fTo-DD-m06" firstAttribute="leading" secondItem="RGc-b7-hXq" secondAttribute="leading" id="XdE-ys-TZb"/>
                             <constraint firstAttribute="trailing" secondItem="3o8-vM-aSO" secondAttribute="trailing" constant="43" id="a8X-wT-M2G"/>
                             <constraint firstItem="hdu-vu-JZP" firstAttribute="top" secondItem="3o8-vM-aSO" secondAttribute="bottom" constant="120" id="aCj-Aw-rPa"/>
-                            <constraint firstItem="3o8-vM-aSO" firstAttribute="top" secondItem="uqh-oY-fQN" secondAttribute="bottom" constant="5" id="aFj-WH-mBC"/>
+                            <constraint firstItem="3o8-vM-aSO" firstAttribute="top" secondItem="uqh-oY-fQN" secondAttribute="bottom" constant="15" id="aFj-WH-mBC"/>
                             <constraint firstItem="RGc-b7-hXq" firstAttribute="trailing" secondItem="hdu-vu-JZP" secondAttribute="trailing" constant="40" id="qHN-3k-IPH"/>
                             <constraint firstItem="RGc-b7-hXq" firstAttribute="bottom" secondItem="0Ki-gj-0Du" secondAttribute="bottom" constant="38" id="qJb-xa-n32"/>
+                            <constraint firstItem="RGc-b7-hXq" firstAttribute="trailing" secondItem="fTo-DD-m06" secondAttribute="trailing" id="xa8-Uc-UGY"/>
                             <constraint firstItem="3o8-vM-aSO" firstAttribute="leading" secondItem="KdM-8Q-6Gb" secondAttribute="leading" id="ytk-wm-Ck1"/>
                         </constraints>
                     </view>
@@ -205,7 +223,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9VW-eJ-8Jc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-762" y="1538"/>
+            <point key="canvasLocation" x="-762.31884057971024" y="1537.5"/>
         </scene>
         <!--Main History Achieve View Controller-->
         <scene sceneID="Hq6-nm-ObO">
@@ -1216,6 +1234,7 @@
         <image name="coverImage1" width="414" height="896"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="historyImage1" width="464" height="463"/>
+        <image name="mainChatBackGround" width="1080" height="1711"/>
         <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="rosette" catalog="system" width="106" height="128"/>
         <image name="universe" width="2400" height="1639"/>
