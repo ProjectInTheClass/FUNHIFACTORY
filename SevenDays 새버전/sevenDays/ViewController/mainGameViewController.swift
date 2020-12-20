@@ -25,6 +25,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var chapterCover: UIView!
     @IBOutlet var fullImageCover: UIView!
     @IBOutlet var fullImage: UIImageView!
+    @IBOutlet var historyPopUp: UIView!
+    @IBOutlet var historyTitle: UILabel!
+    @IBOutlet var historyInfo: UILabel!
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -129,6 +132,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         let fullImageTapGesture = UITapGestureRecognizer(target: self, action: #selector(fullImageCoverTapped))
         fullImageCover.addGestureRecognizer(fullImageTapGesture)
         fullImageCover.isUserInteractionEnabled = true
+        //히스토리 커버에 tapGesture 추가하기
+        let historyTapGesture = UITapGestureRecognizer(target: self, action: #selector(historyPopUpTapped))
+        historyPopUp.addGestureRecognizer(historyTapGesture)
+        historyPopUp.isUserInteractionEnabled = true
     }
     @objc func chatUpdateObjc(){
         chatUpdate()
@@ -158,12 +165,14 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     //이미지 팝업 후 닫기 버튼
     @IBAction func imagePopUpClose(_ sender: Any) {
+        self.tabBarController?.tabBar.isHidden = false
         imagePopUpView.isHidden = true
         wholeView.sendSubviewToBack(imagePopUpView)
         chatUpdateTimer()
     }
     func chapterUpdate(){
             //챕터 넘기기
+            self.tabBarController?.tabBar.isHidden = true
             player.dayIndex += 1
             player.dayId = "day"+"\(player.dayIndex)"
             print(player)
@@ -180,6 +189,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             indexNumber = 0
     }
     @objc func chapterCoverTapped(){
+        self.tabBarController?.tabBar.isHidden = false
         chapterCover.isHidden = true
         wholeView.sendSubviewToBack(chapterCover)
         chatUpdateTimer()
@@ -272,15 +282,28 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         textPopUpText.text = currentChatArray[currentChatArray.count-1].text
     }
     func fullImageUpdate(){
+        self.tabBarController?.tabBar.isHidden = true
         guard timer != nil else {return}
         fullImage.image = UIImage(named: currentChatArray[currentChatArray.count-1].image)
         
         timer.invalidate()
     }
     @objc func fullImageCoverTapped(){
-        chatUpdate()
+        historyPopUpUpdate()
         fullImageCover.isHidden = true
         wholeView.sendSubviewToBack(fullImageCover)
+    }
+    func historyPopUpUpdate(){
+        historyPopUp.isHidden = false
+        wholeView.bringSubviewToFront(historyPopUp)
+        historyTitle.text = dummyData.stories[player.dayId]!.history.info().name
+        historyInfo.text = "\(dummyData.stories[player.dayId]!.history.info().text)\n\(dummyData.stories[player.dayId]!.history.info().fullText)"
+    }
+    @objc func historyPopUpTapped(){
+        self.tabBarController?.tabBar.isHidden = false
+        historyPopUp.isHidden = true
+        wholeView.sendSubviewToBack(historyPopUp)
+        chatUpdate()
     }
 }
 
