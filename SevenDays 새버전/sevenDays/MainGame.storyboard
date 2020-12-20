@@ -9,9 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="NanumGothic.ttf">
-            <string>NanumGothic</string>
-        </array>
         <array key="NanumGothicBold.ttf">
             <string>NanumGothicBold</string>
         </array>
@@ -452,7 +449,7 @@
                                             <constraint firstAttribute="width" constant="44" id="lGi-6b-cWA"/>
                                         </constraints>
                                         <state key="normal">
-                                            <imageReference key="image" image="pauseButton.png" symbolScale="large"/>
+                                            <imageReference key="image" image="pauseButton" symbolScale="large"/>
                                         </state>
                                         <connections>
                                             <action selector="pause:" destination="9bx-bV-Dv7" eventType="touchUpInside" id="6bG-Jd-wzS"/>
@@ -484,8 +481,139 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" red="0.14897602800000001" green="0.14913004639999999" blue="0.1411754787" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
+                                    <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="opOnlyText" rowHeight="82" id="pDm-is-toD" userLabel="opOnlyText" customClass="opOnlyTextTableViewCell" customModule="sevenDays" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="82"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pDm-is-toD" id="39X-V9-JVe">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="82"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cSJ-f0-2TY">
+                                                    <rect key="frame" x="20" y="11" width="49" height="49"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="49" id="1Ze-Qf-Jkz"/>
+                                                        <constraint firstAttribute="width" constant="49" id="r7X-Xi-0k2"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5V-Pi-m8r">
+                                                    <rect key="frame" x="81" y="11" width="26.5" height="16.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16.5" id="RSf-6c-vBb"/>
+                                                    </constraints>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="이름">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" size="14" name="NanumGothicBold"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCK-D2-yZQ">
+                                                    <rect key="frame" x="81" y="32.5" width="180" height="32.5"/>
+                                                    <color key="backgroundColor" red="0.33331289889999999" green="0.33338645099999997" blue="0.32941144700000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="상대가 말하는 텍스트의 예시">
+                                                            <attributes>
+                                                                <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" size="14" name="NanumGothic"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="3" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cSJ-f0-2TY" firstAttribute="top" secondItem="39X-V9-JVe" secondAttribute="top" constant="11" id="2IX-2o-lJv"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="cCK-D2-yZQ" secondAttribute="bottom" constant="6" id="65b-Ew-jZe"/>
+                                                <constraint firstItem="cCK-D2-yZQ" firstAttribute="top" secondItem="s5V-Pi-m8r" secondAttribute="bottom" constant="5" id="A38-S1-cgf"/>
+                                                <constraint firstItem="cSJ-f0-2TY" firstAttribute="leading" secondItem="39X-V9-JVe" secondAttribute="leading" constant="20" id="CMA-3Y-y7Y"/>
+                                                <constraint firstItem="s5V-Pi-m8r" firstAttribute="leading" secondItem="39X-V9-JVe" secondAttribute="leadingMargin" constant="61" id="csQ-FX-8gN"/>
+                                                <constraint firstItem="s5V-Pi-m8r" firstAttribute="top" secondItem="39X-V9-JVe" secondAttribute="topMargin" id="jkR-M0-bsT"/>
+                                                <constraint firstItem="cCK-D2-yZQ" firstAttribute="leading" secondItem="39X-V9-JVe" secondAttribute="leadingMargin" constant="61" id="tfi-HL-wm3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="opponentChat" destination="cCK-D2-yZQ" id="C20-yM-l0f"/>
+                                            <outlet property="opponentImage" destination="cSJ-f0-2TY" id="JJ4-hW-qnf"/>
+                                            <outlet property="opponentName" destination="s5V-Pi-m8r" id="bCd-ZX-MLy"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="myOnlyText" rowHeight="82" id="GPD-sd-qzt" userLabel="myOnlyText" customClass="myOnlyTextTableViewCell" customModule="sevenDays" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="110" width="414" height="82"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GPD-sd-qzt" id="fxH-25-XIc">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="82"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lxf-J8-FE4">
+                                                    <rect key="frame" x="350" y="11" width="49" height="49"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="49" id="4DO-22-JUJ"/>
+                                                        <constraint firstAttribute="height" constant="49" id="fFc-zh-v89"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qkr-38-AIu">
+                                                    <rect key="frame" x="153" y="32.5" width="180" height="32.5"/>
+                                                    <color key="backgroundColor" red="0.25554940100000001" green="0.32117041950000003" blue="0.34510216119999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="자신이 말하는 텍스트의 예시">
+                                                            <attributes>
+                                                                <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" size="14" name="NanumGothic"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5E-tt-mLh">
+                                                    <rect key="frame" x="306.5" y="11" width="26.5" height="16.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16.5" id="bv3-2a-i95"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Lxf-J8-FE4" secondAttribute="trailing" constant="15" id="2FG-h8-T2D"/>
+                                                <constraint firstItem="k5E-tt-mLh" firstAttribute="top" secondItem="fxH-25-XIc" secondAttribute="top" constant="11" id="3nq-vZ-qTJ"/>
+                                                <constraint firstItem="Lxf-J8-FE4" firstAttribute="top" secondItem="fxH-25-XIc" secondAttribute="top" constant="11" id="4x8-oa-ard"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Qkr-38-AIu" secondAttribute="trailing" constant="61" id="8lj-KY-V3a"/>
+                                                <constraint firstItem="Qkr-38-AIu" firstAttribute="top" secondItem="k5E-tt-mLh" secondAttribute="bottom" constant="5" id="OTx-6w-nDS"/>
+                                                <constraint firstItem="Lxf-J8-FE4" firstAttribute="leading" secondItem="k5E-tt-mLh" secondAttribute="trailing" constant="17" id="biI-CH-8ew"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Qkr-38-AIu" secondAttribute="bottom" constant="6" id="gtV-c9-iEa"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="myChatTextView" destination="Qkr-38-AIu" id="1JO-Cz-HXH"/>
+                                            <outlet property="myName" destination="k5E-tt-mLh" id="5eW-SC-ltb"/>
+                                            <outlet property="myProfile" destination="Lxf-J8-FE4" id="5Qj-kV-dZw"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="opUntouchAbleImage" rowHeight="182" id="ids-EG-Ci9" customClass="opUntouchableImageTableViewCell" customModule="sevenDays" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="182"/>
+                                        <rect key="frame" x="0.0" y="192" width="414" height="182"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ids-EG-Ci9" id="qzF-IW-hhq">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="182"/>
@@ -501,7 +629,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAk-8J-A0v">
                                                     <rect key="frame" x="86" y="11" width="26.5" height="17"/>
                                                     <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="14"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KFL-3l-ibH">
@@ -522,6 +650,7 @@
                                                 <constraint firstItem="KFL-3l-ibH" firstAttribute="leading" secondItem="L1z-rl-uW3" secondAttribute="trailing" constant="17" id="w35-9q-ARe"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="mainImage" destination="KFL-3l-ibH" id="O5r-Ue-6Y2"/>
                                             <outlet property="nameLabel" destination="sAk-8J-A0v" id="rp3-Aw-CxE"/>
@@ -529,7 +658,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="myUnTouchableImage" rowHeight="182" id="tEn-aW-c3t" customClass="myUntouchableImageTableViewCell" customModule="sevenDays" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="210" width="414" height="182"/>
+                                        <rect key="frame" x="0.0" y="374" width="414" height="182"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tEn-aW-c3t" id="A1F-QZ-Q8k">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="182"/>
@@ -547,7 +676,9 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="이름">
                                                             <attributes>
+                                                                <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <font key="NSFont" size="14" name="NanumGothicBold"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
@@ -571,6 +702,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="Io1-Xy-bmx" secondAttribute="bottom" constant="7" id="nac-vk-OcA"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="nameText" destination="ZFN-eu-2Bh" id="kRc-a6-LWQ"/>
                                             <outlet property="profileImage" destination="9dZ-cc-LWW" id="f1a-nu-UiJ"/>
@@ -578,7 +710,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="choiceTableViewCell" rowHeight="123" id="nkm-xW-EFt" userLabel="ChoiceCell" customClass="choiceTableViewCell" customModule="sevenDays" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="392" width="414" height="123"/>
+                                        <rect key="frame" x="0.0" y="556" width="414" height="123"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nkm-xW-EFt" id="om3-5m-zHg">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="123"/>
@@ -591,31 +723,43 @@
                                                         <constraint firstAttribute="width" constant="33" id="TIp-Ud-QcF"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
+                                                    <color key="textColor" red="0.65885144470000001" green="0.66273492570000003" blue="0.66274565460000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="highlightedColor" red="0.65885144470000001" green="0.66273492570000003" blue="0.66274565460000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtc-UN-Kah">
                                                     <rect key="frame" x="192" y="11" width="173" height="30"/>
+                                                    <color key="backgroundColor" red="0.54421901699999997" green="0.3728863597" blue="0.35685700180000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="vrQ-gI-Znx"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="NanumGothicBold" family="Nanum Gothic" pointSize="15"/>
                                                     <state key="normal" title="Button">
-                                                        <color key="titleColor" red="0.1371693313" green="0.1414417624" blue="0.1215659752" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="firstButtonTapped:" destination="nkm-xW-EFt" eventType="touchUpInside" id="gK9-B6-4CD"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rT5-tE-WX3">
                                                     <rect key="frame" x="192" y="82" width="173" height="30"/>
+                                                    <color key="backgroundColor" red="0.54421901699999997" green="0.3728863597" blue="0.35685700180000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="CDX-xp-7Bq"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="NanumGothicBold" family="Nanum Gothic" pointSize="15"/>
                                                     <state key="normal" title="Button">
-                                                        <color key="titleColor" red="0.1371693313" green="0.1414417624" blue="0.1215659752" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="secondButtonTapped:" destination="nkm-xW-EFt" eventType="touchUpInside" id="1Z5-aj-VB3"/>
                                                     </connections>
@@ -631,118 +775,14 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="rT5-tE-WX3" secondAttribute="trailing" constant="29" id="njD-xY-syc"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="firstChoiceButton" destination="gtc-UN-Kah" id="7ch-yZ-pqF"/>
                                             <outlet property="secondChoiceButton" destination="rT5-tE-WX3" id="xj6-tw-QIi"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="opOnlyText" rowHeight="71" id="pDm-is-toD" userLabel="opOnlyText" customClass="opOnlyTextTableViewCell" customModule="sevenDays" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="515" width="414" height="71"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pDm-is-toD" id="39X-V9-JVe">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="71"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cSJ-f0-2TY">
-                                                    <rect key="frame" x="20" y="11" width="49" height="49"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="49" id="1Ze-Qf-Jkz"/>
-                                                        <constraint firstAttribute="width" constant="49" id="r7X-Xi-0k2"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="0"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5V-Pi-m8r">
-                                                    <rect key="frame" x="81" y="11" width="26.5" height="16"/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="이름">
-                                                            <attributes>
-                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                <font key="NSFont" size="14" name="NanumGothicBold"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상대가 말하는 텍스트의 예시" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSS-I3-cUE">
-                                                    <rect key="frame" x="81" y="27" width="252" height="33"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="33" id="9lF-Cg-oAx"/>
-                                                        <constraint firstAttribute="width" constant="252" id="cbg-aF-4Hk"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="cSJ-f0-2TY" firstAttribute="top" secondItem="39X-V9-JVe" secondAttribute="top" constant="11" id="2IX-2o-lJv"/>
-                                                <constraint firstItem="eSS-I3-cUE" firstAttribute="top" secondItem="s5V-Pi-m8r" secondAttribute="bottom" id="BmT-bI-ZWE"/>
-                                                <constraint firstItem="cSJ-f0-2TY" firstAttribute="leading" secondItem="39X-V9-JVe" secondAttribute="leading" constant="20" id="CMA-3Y-y7Y"/>
-                                                <constraint firstItem="eSS-I3-cUE" firstAttribute="bottom" secondItem="39X-V9-JVe" secondAttribute="bottomMargin" id="Fc5-Ks-fUV"/>
-                                                <constraint firstItem="s5V-Pi-m8r" firstAttribute="leading" secondItem="39X-V9-JVe" secondAttribute="leadingMargin" constant="61" id="csQ-FX-8gN"/>
-                                                <constraint firstItem="eSS-I3-cUE" firstAttribute="top" secondItem="39X-V9-JVe" secondAttribute="topMargin" constant="16" id="gsh-Fi-pWS"/>
-                                                <constraint firstItem="s5V-Pi-m8r" firstAttribute="top" secondItem="39X-V9-JVe" secondAttribute="topMargin" id="jkR-M0-bsT"/>
-                                                <constraint firstItem="eSS-I3-cUE" firstAttribute="leading" secondItem="39X-V9-JVe" secondAttribute="leadingMargin" constant="61" id="qdj-bi-fzF"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="opponentChat" destination="eSS-I3-cUE" id="E9m-Mi-7Rh"/>
-                                            <outlet property="opponentImage" destination="cSJ-f0-2TY" id="JJ4-hW-qnf"/>
-                                            <outlet property="opponentName" destination="s5V-Pi-m8r" id="bCd-ZX-MLy"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="myOnlyText" rowHeight="71" id="GPD-sd-qzt" userLabel="myOnlyText" customClass="myOnlyTextTableViewCell" customModule="sevenDays" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="586" width="414" height="71"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GPD-sd-qzt" id="fxH-25-XIc">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="71"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lxf-J8-FE4">
-                                                    <rect key="frame" x="350" y="11" width="49" height="49"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="49" id="4DO-22-JUJ"/>
-                                                        <constraint firstAttribute="height" constant="49" id="fFc-zh-v89"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="자신이 말하는 텍스트의 예시" textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qkr-38-AIu">
-                                                    <rect key="frame" x="83" y="27" width="250" height="33"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="250" id="S0T-eT-Wof"/>
-                                                    </constraints>
-                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                    <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5E-tt-mLh">
-                                                    <rect key="frame" x="306.5" y="11" width="26.5" height="16.5"/>
-                                                    <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="14"/>
-                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Qkr-38-AIu" firstAttribute="bottom" secondItem="fxH-25-XIc" secondAttribute="bottomMargin" id="0lL-fz-bxy"/>
-                                                <constraint firstAttribute="trailing" secondItem="Lxf-J8-FE4" secondAttribute="trailing" constant="15" id="2FG-h8-T2D"/>
-                                                <constraint firstItem="k5E-tt-mLh" firstAttribute="top" secondItem="fxH-25-XIc" secondAttribute="top" constant="11" id="3nq-vZ-qTJ"/>
-                                                <constraint firstItem="Lxf-J8-FE4" firstAttribute="top" secondItem="fxH-25-XIc" secondAttribute="top" constant="11" id="4x8-oa-ard"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Qkr-38-AIu" secondAttribute="trailing" constant="61" id="8lj-KY-V3a"/>
-                                                <constraint firstItem="Qkr-38-AIu" firstAttribute="top" secondItem="fxH-25-XIc" secondAttribute="topMargin" constant="16" id="Tny-yc-p3h"/>
-                                                <constraint firstItem="Lxf-J8-FE4" firstAttribute="leading" secondItem="k5E-tt-mLh" secondAttribute="trailing" constant="17" id="biI-CH-8ew"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="myChatTextView" destination="Qkr-38-AIu" id="1JO-Cz-HXH"/>
-                                            <outlet property="myName" destination="k5E-tt-mLh" id="5eW-SC-ltb"/>
-                                            <outlet property="myProfile" destination="Lxf-J8-FE4" id="5Qj-kV-dZw"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="myTouchableImage" rowHeight="268" id="E5x-T3-xUf" userLabel="myTouchableImageCell" customClass="myTouchableImageTableViewCell" customModule="sevenDays" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="657" width="414" height="268"/>
+                                        <rect key="frame" x="0.0" y="679" width="414" height="268"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E5x-T3-xUf" id="wpY-2N-eUs">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="268"/>
@@ -758,7 +798,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWd-GC-RLN">
                                                     <rect key="frame" x="306.5" y="11" width="26.5" height="15"/>
                                                     <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="14"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PSS-bn-Nu3">
@@ -779,6 +819,7 @@
                                                 <constraint firstItem="ZWd-GC-RLN" firstAttribute="top" secondItem="wpY-2N-eUs" secondAttribute="topMargin" id="pNH-QC-6Ty"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="mainImage" destination="PSS-bn-Nu3" id="5Mz-zo-RD3"/>
                                             <outlet property="nameLabel" destination="ZWd-GC-RLN" id="gf6-4X-9Ws"/>
@@ -786,7 +827,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="opTouchableImage" rowHeight="268" id="gva-cx-gxO" userLabel="opTouchableImageCell" customClass="opTouchableImageTableViewCell" customModule="sevenDays" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="925" width="414" height="268"/>
+                                        <rect key="frame" x="0.0" y="947" width="414" height="268"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gva-cx-gxO" id="IAe-02-H0l">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="268"/>
@@ -802,7 +843,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bab-8n-dnr">
                                                     <rect key="frame" x="86" y="11" width="26.5" height="15"/>
                                                     <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="14"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ThE-LK-h5H">
@@ -823,6 +864,7 @@
                                                 <constraint firstItem="Bab-8n-dnr" firstAttribute="top" secondItem="IAe-02-H0l" secondAttribute="topMargin" id="shQ-Id-oq1"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="mainImage" destination="ThE-LK-h5H" id="008-WO-RCc"/>
                                             <outlet property="nameLabel" destination="Bab-8n-dnr" id="d3g-dM-wbf"/>
@@ -830,7 +872,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="sectionHeaderCell" id="BKv-VJ-tKN" userLabel="sectionHeader" customClass="sectionHeaderTableViewCell" customModule="sevenDays" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1193" width="414" height="43"/>
+                                        <rect key="frame" x="0.0" y="1215" width="414" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BKv-VJ-tKN" id="ofp-x3-WuN">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -976,7 +1018,7 @@
         <image name="historyPopUpBackGround" width="1080" height="2220"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
         <image name="message.fill" catalog="system" width="128" height="113"/>
-        <image name="pauseButton.png" width="159" height="159"/>
+        <image name="pauseButton" width="117" height="114"/>
         <image name="topBar" width="2716" height="430"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
