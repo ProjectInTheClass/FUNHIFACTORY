@@ -200,6 +200,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     func chatUpdate(){
         print("------------chatUpdate 시작합니다------------")
+        print("현재 속도: \(player.setting.textSpeed)")
         self.textPopUpView.isHidden = true
         if indexNumber < currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type != .textPopup{
             print("채팅이 업데이트되었습니다.")
