@@ -25,6 +25,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var chapterCover: UIView!
     @IBOutlet var fullImageCover: UIView!
     @IBOutlet var fullImage: UIImageView!
+    @IBOutlet var historyPopUp: UIView!
+    @IBOutlet var historyTitle: UILabel!
+    @IBOutlet var historyInfo: UILabel!
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -50,6 +53,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             cell.secondChoiceButton.setTitle(currentBlockOfDay().choices[1].text, for: .normal)
             print(currentChatArray)
             choiceCell = true
+            cell.contentView.backgroundColor = UIColor.clear
             return cell
         }
         //텍스트 채팅이 나올 때
@@ -64,6 +68,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 else if currentChatArray[indexPath.row].type == .onlyText{
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opOnlyText", for: indexPath) as! opOnlyTextTableViewCell
                     cell.opTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, imageName: currentChatArray[indexPath.row].who.info().profileImage, characterFace: currentChatArray[indexPath.row].characterFace)
+                    cell.contentView.backgroundColor = .clear
+                    cell.contentView.isOpaque = false
                     return cell
                 }
        
@@ -113,6 +119,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mainGameTableView.backgroundView = UIImageView(image: UIImage(named: "mainChatBackGround"))
         dayNumberLabel.text = "\(player.dayIndex)일차"
         self.mainGameTableView.refreshControl = nil
         self.mainGameTableView.delegate = self
@@ -129,6 +136,14 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         let fullImageTapGesture = UITapGestureRecognizer(target: self, action: #selector(fullImageCoverTapped))
         fullImageCover.addGestureRecognizer(fullImageTapGesture)
         fullImageCover.isUserInteractionEnabled = true
+        //히스토리 커버에 tapGesture 추가하기
+        let historyTapGesture = UITapGestureRecognizer(target: self, action: #selector(historyPopUpTapped))
+        historyPopUp.addGestureRecognizer(historyTapGesture)
+        historyPopUp.isUserInteractionEnabled = true
+        //테이블뷰에 버튼 추가하기
+        let tableViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(chatUpdateObjc))
+        mainGameTableView.addGestureRecognizer(tableViewTapGesture)
+        mainGameTableView.isUserInteractionEnabled = true
     }
     @objc func chatUpdateObjc(){
         chatUpdate()
@@ -158,12 +173,14 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     //이미지 팝업 후 닫기 버튼
     @IBAction func imagePopUpClose(_ sender: Any) {
+        self.tabBarController?.tabBar.isHidden = false
         imagePopUpView.isHidden = true
         wholeView.sendSubviewToBack(imagePopUpView)
         chatUpdateTimer()
     }
     func chapterUpdate(){
             //챕터 넘기기
+            self.tabBarController?.tabBar.isHidden = true
             player.dayIndex += 1
             player.dayId = "day"+"\(player.dayIndex)"
             print(player)
@@ -180,6 +197,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             indexNumber = 0
     }
     @objc func chapterCoverTapped(){
+        self.tabBarController?.tabBar.isHidden = false
         chapterCover.isHidden = true
         wholeView.sendSubviewToBack(chapterCover)
         chatUpdateTimer()
@@ -273,15 +291,40 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         textPopUpText.text = currentChatArray[currentChatArray.count-1].text
     }
     func fullImageUpdate(){
+        self.tabBarController?.tabBar.isHidden = true
         guard timer != nil else {return}
         fullImage.image = UIImage(named: currentChatArray[currentChatArray.count-1].image)
         
         timer.invalidate()
     }
     @objc func fullImageCoverTapped(){
-        chatUpdate()
+        historyPopUpUpdate()
         fullImageCover.isHidden = true
         wholeView.sendSubviewToBack(fullImageCover)
+    }
+    func historyPopUpUpdate(){
+        historyPopUp.isHidden = false
+        wholeView.bringSubviewToFront(historyPopUp)
+        historyTitle.text = dummyData.stories[player.dayId]!.history.info().name
+        historyInfo.text = "\(dummyData.stories[player.dayId]!.history.info().text)\n\(dummyData.stories[player.dayId]!.history.info().fullText)"
+    }
+    @objc func historyPopUpTapped(){
+        self.tabBarController?.tabBar.isHidden = false
+        historyPopUp.isHidden = true
+        wholeView.sendSubviewToBack(historyPopUp)
+        chatUpdate()
+    }
+    //호감도 조정하는 함수
+    func checkLikeability(choiceNumber : Int){
+        print("실행여부 확인")
+        print(dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices[choiceNumber].likability.isEmpty)
+        guard dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices[choiceNumber].likability.isEmpty == false else {return}
+        let story = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices[choiceNumber].likability
+        for a in story {
+            let target = a.who.info()
+            target.likability = target.likability + a.number
+            print("\(target.name)한테 \(a.number)만큼 호감도 변경")
+        }
     }
 }
 
@@ -290,9 +333,11 @@ extension mainGameViewController : choiceCellDelegate{
     func firstChoice(){
         currentChatArray.removeLast()
         currentChatArray.append(Chat(text: currentBlockOfDay().choices[0].text, image: "", type: .onlyText, who: .kirell,characterFace: true, isItLastPage: false))
+        checkLikeability(choiceNumber : 0)
         player.currentChatId = currentBlockOfDay().choices[0].nextTextId
         mainGameTableView.reloadRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         print("First button tapped")
+        
         
         indexNumber = 0
         choiceCell = false
@@ -302,6 +347,7 @@ extension mainGameViewController : choiceCellDelegate{
     func secondChoice() {
         currentChatArray.removeLast()
         currentChatArray.append(Chat(text: currentBlockOfDay().choices[1].text, image: "", type: .onlyText, who: .kirell, characterFace: true, isItLastPage: false))
+        checkLikeability(choiceNumber : 1)
         player.currentChatId = currentBlockOfDay().choices[1].nextTextId
         mainGameTableView.reloadRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         print("Second button Tapped")

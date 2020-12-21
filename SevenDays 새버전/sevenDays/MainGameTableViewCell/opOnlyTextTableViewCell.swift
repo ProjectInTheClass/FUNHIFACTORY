@@ -11,7 +11,7 @@ class opOnlyTextTableViewCell: UITableViewCell {
 
     @IBOutlet var opponentName: UILabel!
     @IBOutlet var opponentImage: UIImageView!
-    @IBOutlet var opponentChat: UILabel!
+    @IBOutlet var opponentChat: UITextView!
     
     
     override func awakeFromNib() {
