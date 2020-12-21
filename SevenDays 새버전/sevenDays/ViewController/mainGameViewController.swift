@@ -313,6 +313,18 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         wholeView.sendSubviewToBack(historyPopUp)
         chatUpdate()
     }
+    //호감도 조정하는 함수
+    func checkLikeability(choiceNumber : Int){
+        print("실행여부 확인")
+        print(dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices[choiceNumber].likability.isEmpty)
+        guard dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices[choiceNumber].likability.isEmpty == false else {return}
+        let story = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices[choiceNumber].likability
+        for a in story {
+            let target = a.who.info()
+            target.likability = target.likability + a.number
+            print("\(target.name)한테 \(a.number)만큼 호감도 변경")
+        }
+    }
 }
 
 //선택지 Action 로직
@@ -320,9 +332,11 @@ extension mainGameViewController : choiceCellDelegate{
     func firstChoice(){
         currentChatArray.removeLast()
         currentChatArray.append(Chat(text: currentBlockOfDay().choices[0].text, image: "", type: .onlyText, who: .kirell,characterFace: true, isItLastPage: false))
+        checkLikeability(choiceNumber : 0)
         player.currentChatId = currentBlockOfDay().choices[0].nextTextId
         mainGameTableView.reloadRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         print("First button tapped")
+        
         
         indexNumber = 0
         choiceCell = false
@@ -332,6 +346,7 @@ extension mainGameViewController : choiceCellDelegate{
     func secondChoice() {
         currentChatArray.removeLast()
         currentChatArray.append(Chat(text: currentBlockOfDay().choices[1].text, image: "", type: .onlyText, who: .kirell, characterFace: true, isItLastPage: false))
+        checkLikeability(choiceNumber : 1)
         player.currentChatId = currentBlockOfDay().choices[1].nextTextId
         mainGameTableView.reloadRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         print("Second button Tapped")

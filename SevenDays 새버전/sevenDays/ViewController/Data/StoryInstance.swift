@@ -24,7 +24,7 @@ let day0 = DayEpisode(startEpisode: "001", chapter: Chapter(chapterNumber: 0, ch
                          Chat(text: "환영합니다.", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)],
                       choices: [
                         Choice(text: "대체 뭔 소리야?", likability: [], nextTextId: "003"),
-                        Choice(text: "죽음의 안내자? 지금 날 놀리는 건가?", likability: [], nextTextId: "003")], achievement: nil, choiceSkip: false),
+                        Choice(text: "죽음의 안내자? 지금 날 놀리는 건가?", likability: [ChoiceLikeability(who: .ballam, number: -30)], nextTextId: "003")], achievement: nil, choiceSkip: false),
     "003":BlockOfDayEpisode(chats:
                                 [Chat(text: "당신은 죽었습니다.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: true)],
                       choices: [
