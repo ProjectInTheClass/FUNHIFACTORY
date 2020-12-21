@@ -140,6 +140,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         let historyTapGesture = UITapGestureRecognizer(target: self, action: #selector(historyPopUpTapped))
         historyPopUp.addGestureRecognizer(historyTapGesture)
         historyPopUp.isUserInteractionEnabled = true
+        //테이블뷰에 버튼 추가하기
+        let tableViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(chatUpdateObjc))
+        mainGameTableView.addGestureRecognizer(tableViewTapGesture)
+        mainGameTableView.isUserInteractionEnabled = true
     }
     @objc func chatUpdateObjc(){
         chatUpdate()
