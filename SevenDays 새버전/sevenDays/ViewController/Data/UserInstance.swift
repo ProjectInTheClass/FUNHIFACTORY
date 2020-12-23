@@ -15,7 +15,7 @@ var maximumTextSpeed = 0.85
 // 3번(메인게임) 뷰에서 사용하는 타이머
 var timer:Timer!
 
-var player = User(setting: playerSetting, tickets: 0, currentHistories: [.lastMemories, .runawayGirl, .thePatronsConcerns, .theTestBegins], currentAchievements: [.charonsInterrogation, .firstComradeArgo, .likeAWelllAgedWhiskey, .whereIBelong], currentGameCharacter: currentCharactersInfo, dayIndex: 0, dayId: "day0", currentChatId: "001")
+var player = User(setting: playerSetting, tickets: 0, currentHistories: [.lastMemories, .runawayGirl, .thePatronsConcerns, .theTestBegins], currentAchievements: [.charonsInterrogation, .firstComradeArgo, .likeAWelllAgedWhiskey, .whereIBelong], currentGameCharacter: currentCharactersInfo, dayIndex: 0, dayId: "day0", currentChatId: "096")
 var playerSetting = Setting(langueage: .Korean, bgmVolume: 0.5, effectVolume: 0.0, textSpeed: 10.0)
 
 let dummyData = GameData(stories: ["day0":test1,"day1":day1],
