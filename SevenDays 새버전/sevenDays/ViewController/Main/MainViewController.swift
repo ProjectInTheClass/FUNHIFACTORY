@@ -34,6 +34,10 @@ class MainViewController: UIViewController {
     }
     @IBAction func goToGameView(_ sender: UIButton) {
         audioPlayer?.pause()
+        player.dayId = "day0"
+        player.currentChatId = "001"
+        player.dayIndex = 0
+        
         let mainGameStoryBoard = UIStoryboard(name: "MainGame", bundle: nil)
         let second = mainGameStoryBoard.instantiateViewController(withIdentifier: "mainGame")
         second.modalPresentationStyle = .fullScreen

@@ -28,8 +28,15 @@ class SettingContainerViewController: UIViewController {
     }
     
     @IBAction func goToCreditARViewAction(_ sender: Any) {
+        
         if let mainSettingViewCon = self.parent as? MainSettingViewController {
             mainSettingViewCon.performSegue(withIdentifier: "goToARViewSegue", sender: nil)
+        }
+    }
+
+    @IBAction func goToPalaceARVIew(_ sender: Any) {
+        if let mainSettingViewCon = self.parent as? MainSettingViewController {
+            mainSettingViewCon.performSegue(withIdentifier: "palaceSegue", sender: nil)
         }
     }
     
@@ -39,12 +46,12 @@ class SettingContainerViewController: UIViewController {
             audioPlayer.volume = player.setting.bgmVolume
         }
     }
-    /*
+    
     //텍스트스피드값 변경은 userInstance파일 상단의 변수에서 하기
     @IBAction func textSpeedSliderAction(_ sender: Any) {
         player.setting.textSpeed = setTextSpeed(minimum: minimumTextSpeed, maximum: maximumTextSpeed)
     }
-     */
+    
     
     //n초에 1개의 chat이 나온다 했을 때의 n값을 넣어야 함.
     //(ex)최소 속도는 3초에 1개의 chat이 나오는 정도이다-> minimum: 3

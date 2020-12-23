@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X81-3S-QOr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X81-3S-QOr">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -104,14 +104,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="902"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3o8-vM-aSO">
-                                <rect key="frame" x="0.0" y="169.5" width="371" height="3"/>
+                                <rect key="frame" x="0.0" y="170" width="371" height="3"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="3" id="LYl-h7-dM0"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFv-Yo-1XT">
-                                <rect key="frame" x="13" y="187.5" width="352" height="20"/>
+                                <rect key="frame" x="13" y="188" width="352" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="352" id="oxo-P0-hiB"/>
                                 </constraints>
@@ -127,13 +127,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="챕터 제목이 들어갈 자리" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqh-oY-fQN">
-                                <rect key="frame" x="13" y="114" width="358.5" height="40.5"/>
+                                <rect key="frame" x="13" y="114" width="332" height="41"/>
                                 <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="35"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdu-vu-JZP">
-                                <rect key="frame" x="323" y="292.5" width="51" height="39"/>
+                                <rect key="frame" x="324" y="293" width="50" height="39"/>
                                 <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="23"/>
                                 <state key="normal" title="Start">
                                     <color key="titleColor" systemColor="systemOrangeColor"/>
@@ -544,6 +544,7 @@
                     <navigationItem key="navigationItem" id="uiP-oC-Iuy"/>
                     <connections>
                         <segue destination="bFW-Pd-InJ" kind="show" identifier="goToARViewSegue" id="sQT-cr-T7E"/>
+                        <segue destination="3MR-uf-U55" kind="show" identifier="palaceSegue" id="3Fb-VB-T8M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yT9-Ef-QBk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -727,7 +728,10 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="게임 데이터 로드"/>
+                                                <state key="normal" title="AR로 궁 설명 듣기"/>
+                                                <connections>
+                                                    <action selector="goToPalaceARVIew:" destination="aG7-hr-8HX" eventType="touchUpInside" id="M0e-Bw-RRr"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -763,6 +767,72 @@
             </objects>
             <point key="canvasLocation" x="-51" y="2935"/>
         </scene>
+        <!--Main PalaceAR View Controller-->
+        <scene sceneID="88l-cq-z7l">
+            <objects>
+                <viewController id="3MR-uf-U55" customClass="MainPalaceARViewController" customModule="sevenDays" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S8w-dZ-5uT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wQu-mL-Rzv">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="109"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZrM-BL-c7m">
+                                        <rect key="frame" x="16" y="59" width="152" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vB6-8N-RYW">
+                                                <rect key="frame" x="0.0" y="0.0" width="25" height="30"/>
+                                                <color key="tintColor" red="0.73828843060000005" green="0.67287336900000005" blue="0.41227440310000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="chevron.left.circle" catalog="system" symbolScale="large"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="backAction:" destination="3MR-uf-U55" eventType="touchUpInside" id="fAG-eZ-r06"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="궁 설명 보기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsy-PC-28O">
+                                                <rect key="frame" x="33" y="0.0" width="119" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                                <color key="textColor" red="0.73828843060000005" green="0.67287336900000005" blue="0.41227440310000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.12532508370000001" green="0.15686663989999999" blue="0.1568343043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ZrM-BL-c7m" firstAttribute="top" secondItem="wQu-mL-Rzv" secondAttribute="top" constant="59" id="SV4-89-7jU"/>
+                                    <constraint firstAttribute="height" constant="109" id="eKE-Vy-SrN"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="109" id="kOa-lo-rAc"/>
+                                    <constraint firstItem="ZrM-BL-c7m" firstAttribute="leading" secondItem="wQu-mL-Rzv" secondAttribute="leading" constant="16" id="zvc-et-4Rh"/>
+                                </constraints>
+                            </view>
+                            <arView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CO3-kn-Zgl">
+                                <rect key="frame" x="0.0" y="109" width="414" height="787"/>
+                            </arView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HCR-F7-bRn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="CO3-kn-Zgl" firstAttribute="leading" secondItem="HCR-F7-bRn" secondAttribute="leading" id="9gU-CI-2vT"/>
+                            <constraint firstAttribute="bottom" secondItem="CO3-kn-Zgl" secondAttribute="bottom" id="AKh-DX-omf"/>
+                            <constraint firstItem="wQu-mL-Rzv" firstAttribute="trailing" secondItem="HCR-F7-bRn" secondAttribute="trailing" id="Cyy-fl-Me2"/>
+                            <constraint firstItem="wQu-mL-Rzv" firstAttribute="top" secondItem="S8w-dZ-5uT" secondAttribute="top" id="W20-zV-Wfd"/>
+                            <constraint firstItem="wQu-mL-Rzv" firstAttribute="leading" secondItem="HCR-F7-bRn" secondAttribute="leading" id="WPA-6X-YlT"/>
+                            <constraint firstItem="CO3-kn-Zgl" firstAttribute="top" secondItem="wQu-mL-Rzv" secondAttribute="bottom" id="Z5z-tD-QxF"/>
+                            <constraint firstItem="HCR-F7-bRn" firstAttribute="trailing" secondItem="CO3-kn-Zgl" secondAttribute="trailing" id="hCX-tV-GnC"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="pEl-39-E2p"/>
+                    <connections>
+                        <outlet property="arView" destination="CO3-kn-Zgl" id="Q9Q-WE-GrW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gKa-4S-hz3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="728" y="2725"/>
+        </scene>
         <!--Main CreditAR View Controller-->
         <scene sceneID="B6Y-Dh-5TN">
             <objects>
@@ -784,8 +854,7 @@
                                                     <imageReference key="image" image="chevron.left.circle" catalog="system" symbolScale="large"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="arButtonAction:" destination="bFW-Pd-InJ" eventType="touchUpInside" id="rMg-94-4li"/>
-                                                    <action selector="backToMainView:" destination="tJ0-eJ-ynx" eventType="touchUpInside" id="U25-sD-KfL"/>
+                                                    <action selector="arButtonAction:" destination="bFW-Pd-InJ" eventType="touchUpInside" id="r5P-jX-u6f"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="크레딧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AG8-0d-Mx7">
@@ -848,12 +917,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="BnA-9n-2yI"/>
                     <connections>
-                        <outlet property="arView" destination="bc8-65-cnx" id="M0w-pr-CRo"/>
+                        <outlet property="arView" destination="bc8-65-cnx" id="mbu-iV-gbE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcm-39-saS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="742.02898550724649" y="2243.9732142857142"/>
+            <point key="canvasLocation" x="728" y="1996"/>
         </scene>
         <!--Main Timeline View Controller-->
         <scene sceneID="Gr7-dA-Eym">

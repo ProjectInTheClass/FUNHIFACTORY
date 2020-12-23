@@ -7,7 +7,16 @@
 
 import UIKit
 
+protocol myTableDelegate {
+    func popupViewOnObjcHistory()
+}
+
 class MainHistoryAchieveViewControllerCell: UITableViewCell {
+    
+    var delegate: myTableDelegate?
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(MainHistoryAchieveViewControllerCell.tapEdit(_:)))
+            
+    
     
     @IBOutlet weak var firstImage: UIImageView!
     @IBOutlet weak var secondImage: UIImageView!
@@ -19,8 +28,14 @@ class MainHistoryAchieveViewControllerCell: UITableViewCell {
         super.awakeFromNib()
             firstImage.isUserInteractionEnabled = true
             secondImage.isUserInteractionEnabled = true
+        
+        
     }
 
+    @objc func tapEdit(_ sender: UITapGestureRecognizer) {
+        delegate?.popupViewOnObjcHistory()
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -29,7 +44,10 @@ class MainHistoryAchieveViewControllerCell: UITableViewCell {
 
 //-----------------------------------------------------------------------------------------------------------
 
-class MainHistoryAchieveViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+class MainHistoryAchieveViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, myTableDelegate {
+    func popupViewOnObjcHistory() {
+    }
+    
     
     @IBOutlet weak var topBarTitle: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -44,6 +62,7 @@ class MainHistoryAchieveViewController: UIViewController,UITableViewDelegate, UI
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        
         return 1
     }
     
@@ -57,7 +76,7 @@ class MainHistoryAchieveViewController: UIViewController,UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath) as! MainHistoryAchieveViewControllerCell
-        
+        cell.delegate = self
         cell.backgroundColor = .clear
         
         if isHistory {
@@ -108,7 +127,17 @@ class MainHistoryAchieveViewController: UIViewController,UITableViewDelegate, UI
     
     
     
-    
+    func tapEdit(recognizer: UITapGestureRecognizer)  {
+        if recognizer.state == UIGestureRecognizer.State.ended {
+            let tapLocation = recognizer.location(in: self.tableView)
+            if let tapIndexPath = self.tableView.indexPathForRow(at: tapLocation) {
+                if let tappedCell = self.tableView.cellForRow(at: tapIndexPath) as? MainHistoryAchieveViewControllerCell {
+                    //do what you want to cell here
+
+                }
+            }
+        }
+    }
     
     
     override func viewDidLoad() {
