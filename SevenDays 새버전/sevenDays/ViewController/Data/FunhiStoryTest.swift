@@ -77,7 +77,8 @@ let test1 = DayEpisode(startEpisode: "001", chapter: Chapter(chapterNumber: 0, c
                                  Chat(text: "그 소식을 들은 정원군 마음이 어땠을까? ", image: "", type: .onlyText, who: .karon, characterFace: false, isItLastPage: true)],
                              choices: [Choice(text: "많이... 힘들었을 것 같아요.", likability: [], nextTextId: "011"), Choice(text: "아들을 엄청 그리워하지 않았을까요?", likability: [], nextTextId: "011")], achievement: nil, choiceSkip: false),
     "011":BlockOfDayEpisode(chats:
-                                [Chat(text: "그래. 알겠다.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: true)],
+                                [Chat(text: "네 말이 맞아.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: true),
+                                 Chat(text: "자식을 잃은 슬픔과 그리움에 못 이겨 결국 능창군 뒤를 잇게 된다.", image: "", type: .onlyText, who: .karon, characterFace: true, isItLastPage: true)],
                             choices: [
                                 Choice(text: "", likability: [], nextTextId: "End"),
                                 Choice(text: "", likability: [], nextTextId: "End")], achievement: nil, choiceSkip: false)
