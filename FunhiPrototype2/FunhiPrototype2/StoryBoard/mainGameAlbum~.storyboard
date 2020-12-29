@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,21 +13,14 @@
         <array key="Cafe24Ohsquare.ttf">
             <string>Cafe24Ohsquare</string>
         </array>
+        <array key="NotoSansCJKkr-Black.otf">
+            <string>NotoSansCJKkr-Black</string>
+        </array>
         <array key="Spoqa Han Sans Neo Bold.otf">
             <string>SpoqaHanSansNeo-Bold</string>
         </array>
     </customFonts>
     <scenes>
-        <!--MainGameAR-->
-        <scene sceneID="WiF-wh-yID">
-            <objects>
-                <viewControllerPlaceholder storyboardName="MainGameAR" id="NYb-GR-gaT" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="nax-5T-1SO"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rj1-JO-gQ7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3929" y="-985"/>
-        </scene>
         <!--Main Game View Controller-->
         <scene sceneID="VNi-lB-Xde">
             <objects>
@@ -291,7 +285,6 @@
                     <connections>
                         <outlet property="godChat" destination="dST-uA-44i" id="lwx-ZL-63R"/>
                         <outlet property="mainGameTableView" destination="1X2-dM-NgP" id="Q04-Oq-ZND"/>
-                        <segue destination="NYb-GR-gaT" kind="show" id="tkT-wW-Rbo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nKe-H5-t52" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -315,7 +308,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RSC-TQ-AlL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2812" y="662"/>
+            <point key="canvasLocation" x="2832" y="1176"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="bMj-DD-6pz">
@@ -603,7 +596,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="3736" y="662"/>
+            <point key="canvasLocation" x="3757" y="1176"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="qvP-gp-XL0">
@@ -1129,7 +1122,7 @@
                     <connections>
                         <segue destination="0pw-zA-d5Q" kind="relationship" relationship="viewControllers" id="sSh-6P-0Jx"/>
                         <segue destination="fIu-oy-oyp" kind="relationship" relationship="viewControllers" id="0CM-5U-mfK"/>
-                        <segue destination="IJQ-AX-mDc" kind="relationship" relationship="viewControllers" id="gfP-Cr-5Tk"/>
+                        <segue destination="Y87-Xl-AmI" kind="relationship" relationship="viewControllers" id="gfP-Cr-5Tk"/>
                         <segue destination="PSz-oh-0jG" kind="relationship" relationship="viewControllers" id="Cxn-3e-z0a"/>
                     </connections>
                 </tabBarController>
@@ -1495,7 +1488,172 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="4554" y="662"/>
+            <point key="canvasLocation" x="4574" y="1176"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="csO-sh-KhA">
+            <objects>
+                <viewController id="Y87-Xl-AmI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5NZ-B4-tfE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c6O-gE-Tsp" userLabel="TopBar">
+                                <rect key="frame" x="0.0" y="44" width="414" height="61"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DaD-vE-8N8" userLabel="mapButton">
+                                        <rect key="frame" x="17" y="12" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="9UM-uv-H06"/>
+                                            <constraint firstAttribute="height" constant="36" id="OXs-vU-FyX"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="road" symbolScale="large"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJN-o2-whd" userLabel="settingButton">
+                                        <rect key="frame" x="361" y="12" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="K40-Bf-0ds"/>
+                                            <constraint firstAttribute="width" constant="36" id="ybI-wK-4tW"/>
+                                        </constraints>
+                                        <state key="normal" image="setting"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앨범" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgF-01-FJL">
+                                        <rect key="frame" x="182" y="13.5" width="50.5" height="34"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Black" family="Noto Sans CJK KR" pointSize="29"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.12156862745098039" green="0.20000000000000001" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="DaD-vE-8N8" firstAttribute="top" secondItem="c6O-gE-Tsp" secondAttribute="top" constant="12" id="OWh-vS-V4l"/>
+                                    <constraint firstItem="UJN-o2-whd" firstAttribute="top" secondItem="c6O-gE-Tsp" secondAttribute="top" constant="12" id="UJf-A1-pp7"/>
+                                    <constraint firstAttribute="trailing" secondItem="UJN-o2-whd" secondAttribute="trailing" constant="17" id="fuf-J1-aN7"/>
+                                    <constraint firstItem="cgF-01-FJL" firstAttribute="centerX" secondItem="c6O-gE-Tsp" secondAttribute="centerX" id="hDX-Bz-F7o"/>
+                                    <constraint firstAttribute="height" constant="61" id="o3I-yN-xlg"/>
+                                    <constraint firstItem="cgF-01-FJL" firstAttribute="centerY" secondItem="c6O-gE-Tsp" secondAttribute="centerY" id="qqN-1m-NTz"/>
+                                    <constraint firstItem="DaD-vE-8N8" firstAttribute="leading" secondItem="c6O-gE-Tsp" secondAttribute="leading" constant="17" id="y5n-52-pW7"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FFj-rU-m9C">
+                                <rect key="frame" x="87" y="635" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="인물" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olY-a4-bMr">
+                                <rect key="frame" x="47" y="565" width="43" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Cafe24Ohsquare" family="Cafe24 Ohsquare" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="0ty-K2-ULP">
+                                <rect key="frame" x="34" y="127" width="346" height="26.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Dbp-0V-4VF">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="26.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기본" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89g-NI-LPi">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="20"/>
+                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ddy-Dy-btn">
+                                                <rect key="frame" x="0.0" y="25" width="50" height="1.5"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1.3" id="rlS-Ar-4Wj"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="jG6-GR-xsV">
+                                        <rect key="frame" x="98.5" y="0.0" width="50" height="26.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기본" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOF-xT-O1I">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="20"/>
+                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HI7-CC-LEh">
+                                                <rect key="frame" x="0.0" y="25" width="50" height="1.5"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1.3" id="7Ee-aB-1xN"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="meM-eu-To3">
+                                        <rect key="frame" x="197.5" y="0.0" width="50" height="26.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기본" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Bk-Xt-vv3">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="20"/>
+                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UeO-TC-Rfj">
+                                                <rect key="frame" x="0.0" y="25" width="50" height="1.5"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1.3" id="peq-ok-gbc"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="5XA-Xt-hnf">
+                                        <rect key="frame" x="296" y="0.0" width="50" height="26.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기본" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPm-NB-efR">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="20"/>
+                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHs-WX-VNC">
+                                                <rect key="frame" x="0.0" y="25" width="50" height="1.5"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1.3" id="sAa-lX-ohw"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTi-9u-1Ms" userLabel="TopBarBox">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <color key="backgroundColor" red="0.1215686275" green="0.20000000000000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="I5V-9k-1Ig"/>
+                        <color key="backgroundColor" red="1" green="0.98823529409999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="0ty-K2-ULP" firstAttribute="leading" secondItem="I5V-9k-1Ig" secondAttribute="leading" constant="34" id="Mcu-fB-0H5"/>
+                            <constraint firstItem="I5V-9k-1Ig" firstAttribute="trailing" secondItem="c6O-gE-Tsp" secondAttribute="trailing" id="NXg-he-LMA"/>
+                            <constraint firstItem="0ty-K2-ULP" firstAttribute="top" secondItem="c6O-gE-Tsp" secondAttribute="bottom" constant="22" id="SEi-Gs-obj"/>
+                            <constraint firstItem="c6O-gE-Tsp" firstAttribute="top" secondItem="I5V-9k-1Ig" secondAttribute="top" id="VZt-ee-VMg"/>
+                            <constraint firstItem="PTi-9u-1Ms" firstAttribute="top" secondItem="5NZ-B4-tfE" secondAttribute="top" id="VpT-OT-Yt7"/>
+                            <constraint firstItem="I5V-9k-1Ig" firstAttribute="trailing" secondItem="0ty-K2-ULP" secondAttribute="trailing" constant="34" id="i0d-Qj-XG6"/>
+                            <constraint firstItem="c6O-gE-Tsp" firstAttribute="top" secondItem="PTi-9u-1Ms" secondAttribute="bottom" id="pgJ-Pl-E41"/>
+                            <constraint firstItem="c6O-gE-Tsp" firstAttribute="leading" secondItem="5NZ-B4-tfE" secondAttribute="leading" id="pjI-Pt-1M5"/>
+                            <constraint firstAttribute="trailing" secondItem="PTi-9u-1Ms" secondAttribute="trailing" id="qqE-60-Hxq"/>
+                            <constraint firstItem="PTi-9u-1Ms" firstAttribute="leading" secondItem="5NZ-B4-tfE" secondAttribute="leading" id="ta3-aU-vxE"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" selectedImage="rectangle.grid.2x2.fill" catalog="system" id="2zY-1a-xlr">
+                        <imageReference key="image" image="rectangle.grid.2x2" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mdp-pk-d5C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2867" y="394"/>
         </scene>
         <!--mainGameNote-->
         <scene sceneID="tfz-dX-el7">
@@ -1505,17 +1663,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bHT-Ug-mjR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2662" y="-43"/>
-        </scene>
-        <!--mainGameAlbum-->
-        <scene sceneID="hqw-hG-7dn">
-            <objects>
-                <viewControllerPlaceholder storyboardName="mainGameAlbum" id="IJQ-AX-mDc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="jRI-jQ-54v"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gfp-Sq-IMk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2663" y="169"/>
+            <point key="canvasLocation" x="2657" y="-1"/>
         </scene>
     </scenes>
     <resources>
@@ -1525,6 +1673,8 @@
         <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="point.fill.topleft.down.curvedto.point.fill.bottomright.up" catalog="system" width="121" height="128"/>
         <image name="point.topleft.down.curvedto.point.bottomright.up" catalog="system" width="121" height="128"/>
+        <image name="rectangle.grid.2x2" catalog="system" width="128" height="99"/>
+        <image name="rectangle.grid.2x2.fill" catalog="system" width="128" height="99"/>
         <image name="road" width="240" height="240"/>
         <image name="road" width="240" height="240"/>
         <image name="setting" width="512" height="512"/>
