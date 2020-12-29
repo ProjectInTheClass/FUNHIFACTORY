@@ -124,10 +124,7 @@ struct User {
 // 프라퍼티 설명:  그냥 글, 터치하면 확대되는 큰 이미지, 터치 안 되는 작은 이미지, 팝업(키렐 혼잣말), 팝업(짤막한 움짤), 섹션 해더같은 애
 enum ChatType {
     case onlyText
-    case touchableImage
     case untouchableImage
-    case textPopup
-    case animationPopup
     case sectionHeader
 }
 
