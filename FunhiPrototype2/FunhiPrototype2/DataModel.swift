@@ -166,16 +166,20 @@ struct BlockOfDayEpisode {
     let achievement: Achievement?
 }
 //n일차
-// 프라퍼티 설명: 히스토리(그 날 꿈), 본문 블록(위 스트럭처 단위)들
-struct DayEpisode {
-    let history: History
+// 프라퍼티 설명: 에피소드 이름(ex)인조반정), 에피소드 연도(1xxx년), 에피소드 설명(인조반정에서 무슨 일이 일어날 예정이다 과연 주인공은 이를 막을 수 있을까? 어쩌구저쩌구), 에피소드 이미지(전각 이미지)스토리블럭(대사 인스턴스)
+struct Episode {
+    let episodeName: String
+    let episodeYear: Int
+    let episodeDesciption: String
+    let episodePlaceImage: String
+    let isCleared: Bool
     let storyBlocks: [BlockOfDayEpisode]
 }
 
 // 더미데이터 담을 스트럭처
 // 총 스토리 본문, 모든 히스토리, 모든 업적, 전체 인물 정보
 struct Data {
-    let stories: [DayEpisode]
+    let stories: [Episode]
     let histories: [[Int:History]]
     let achivements: [[Int:Achievement]]
     let gameCharacters: GameCharacters
