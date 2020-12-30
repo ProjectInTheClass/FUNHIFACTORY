@@ -18,36 +18,12 @@ struct Setting {
 
 //------------------------------------히스토리: 업적 비슷한 개념------------------------------------
 // 히스토리: 키렐이 매일 꾸는 꿈 내용.
-// 프라퍼티 설명:  히스토리 이름, 해당 이미지, 글
-struct HistoryStructure {
-    let name: String
-    let image: String
-    let text: String
-}
 
-// 개수가 한정적이므로 enum으로 처리. 아래 case들은 게임 내 1~4일차 꿈들 임시로 만들어 본 것
-// switch 함수로 바로 각 항목 데이터 넘기는 걸 구상함
-enum History {
-    case theTestBegins
-    case lastMemories
-    case runawayGirl
-    case thePatronsConcerns
+struct History {
     
-    func historyInfo() -> HistoryStructure {
-    switch self {
-    case .theTestBegins:
-        return HistoryStructure(name: "시련의 시작", image: "", text: "사자의 나침반이 가리키는 방향으로 가십시오.")
-    case .lastMemories:
-        return HistoryStructure(name: "마지막 기억", image: "", text: "이것은 죽기 전 마지막 장면인가?")
-    case .runawayGirl:
-        return HistoryStructure(name: "가출", image: "", text: "그 쓰레기는 술을 마실 때마다 나를 때리고 그걸 말리러 온 엄마를 때렸다.")
-    case .thePatronsConcerns:
-        return HistoryStructure(name: "후견인의 걱정", image: "", text: "그 사람은 쓸데없는 사람까지 처리했다며 나를 꾸짖었다.")
-    default:
-        break
-        
-        }
-    }
+    let title: String
+    let shortDescription: String
+    let longDescription: String
 }
 
 //------------------------------------업적------------------------------------
@@ -169,12 +145,24 @@ struct BlockOfDayEpisode {
 //n일차
 // 프라퍼티 설명: 에피소드 이름(ex)인조반정), 에피소드 연도(1xxx년), 에피소드 설명(인조반정에서 무슨 일이 일어날 예정이다 과연 주인공은 이를 막을 수 있을까? 어쩌구저쩌구), 에피소드 이미지(전각 이미지)스토리블럭(대사 인스턴스)
 struct Episode {
+    //(예시 : 임진왜란)
     let episodeName: String
+    //(예시 : 1592)
     let episodeYear: Int
+    //(예시 : 선조 25년, 광해군 11년)
+    let episodeKingYear: String
+    //  //(예시 : "어쩌구"\n "저쩌구"\n 창덕궁이 임진왜란으로 인해 화재의 위험에 처하다.)
     let episodeDesciption: String
+    //(예시 : assets.xcassets에 넣은 이미지 이름)
     let episodePlaceImage: String
+    //(예시 : 해당 에피 클리어 여부)
     let isCleared: Bool
+    //(예시 : 대사)
     let storyBlocks: [String:BlockOfDayEpisode]
+    
+    let currentCharacterNote: [GameCharacter]
+    
+    let currentHistoryNote: [History]
 }
 
 // 더미데이터 담을 스트럭처

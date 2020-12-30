@@ -29,14 +29,14 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 147
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToMaingameSegue" {
-           let destination =  segue.destination as! mainGameViewController
-            if let dataToSend = sender as? Episode {
-              //  destination.여기서넘겨줄챕터데이터를니가메인게임뷰컨에저장하기위해만들어진변수 = dataToSend
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "goToMaingameSegue" {
+//           
+//            if let dataToSend = sender as? String {
+//              destination.recieved = dataToSend
+//            }
+//        }
+//    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let dataToSend: Episode
         dataToSend = testChapters[indexPath.row]
@@ -71,14 +71,14 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
     
     @IBAction func selectedPopupStartButton(_ sender: Any) {
         let dataToSend = ""//나중에 필요한 정보 넣을 것
-        performSegue(withIdentifier: "goToMaingameSegue", sender: dataToSend)
+        performSegue(withIdentifier: "goToMaingameSegue", sender: nil)
     }
     @IBAction func selectedPopupExitButton(_ sender: Any) {
         selectedPopup.removeFromSuperview()
     }
     
     func updatePopup(indexPath: IndexPath) {
-        selectedPopupYearLabel.text = testChapters[indexPath.row].episodeYear
+        selectedPopupYearLabel.text = "\(testChapters[indexPath.row].episodeYear)년"
     }
     func designPopup() {
         selectedPopup.layer.cornerRadius = 10

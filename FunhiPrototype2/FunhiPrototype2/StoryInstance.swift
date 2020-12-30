@@ -7,7 +7,7 @@
 import Foundation
 
 var currentChatArray : [Chat] = []
-let test = Episode(episodeName: "테스트 에피소드", episodeYear: 1623, episodeDesciption: "테스트 에피소드입니다.", episodePlaceImage: "", isCleared: false, storyBlocks: [
+let test = Episode(episodeName: "테스트 에피소드", episodeYear: 1623, episodeKingYear: "테스트 연도", episodeDesciption: "테스트 에피소드입니다.", episodePlaceImage: "", isCleared: false, storyBlocks: [
     "001":BlockOfDayEpisode(chats:
                                 [Chat(text: "사건을 시작하기 전에 먼저 이 사건에 대해 알려주겠다.", image: "", type: .onlyText, who: .ballam, characterFace: true)],
                             choices: [
@@ -85,15 +85,15 @@ let test = Episode(episodeName: "테스트 에피소드", episodeYear: 1623, epi
                                 Choice(text: "", likability: [], nextTextIndex: "End")], achievement: nil, choiceSkip: false)
 
 
-])
+], currentCharacterNote: [], currentHistoryNote: [])
 
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제예정
 let testChapters: Array<Episode> = [
-    Episode(episodeName: "임진왜란", episodeYear: 1592, episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "placeImage_1x", isCleared: false, storyBlocks: ["1":BlockOfDayEpisode(chats: [], choices: [], achievement: nil, choiceSkip: false)]),
-    Episode(episodeName: "인조반정", episodeYear: 1623, episodeDesciption: "광해군이 반정으로 인해 폐위되다", episodePlaceImage: "placeImage_1x",isCleared: false,storyBlocks: ["1":BlockOfDayEpisode(chats: [], choices: [], achievement: nil, choiceSkip: false)]),
-    Episode(episodeName: "3.1 운동", episodeYear: 1919, episodeDesciption: "대한독립 만세",episodePlaceImage: "placeImage_1x", isCleared: false,storyBlocks: ["1":BlockOfDayEpisode(chats: [], choices: [], achievement: nil, choiceSkip: false)]),
-    Episode(episodeName: "내 생일", episodeYear: 2003, episodeDesciption: "7월 28일임",episodePlaceImage: "placeImage_1x",isCleared: false, storyBlocks: ["1":BlockOfDayEpisode(chats: [], choices: [], achievement: nil, choiceSkip: false)])
-
+    Episode(episodeName: "임진왜란", episodeYear: 1592, episodeKingYear: "선조 25년", episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "placeImage_1x", isCleared: true, storyBlocks: ["1":BlockOfDayEpisode(chats: [], choices: [], achievement: nil, choiceSkip: false)], currentCharacterNote: [], currentHistoryNote: []),
+    Episode(episodeName: "인조반정", episodeYear: 1623, episodeKingYear: "지조 25년", episodeDesciption: "광해군이 반정으로 인해 폐위되다", episodePlaceImage: "placeImage_1x",isCleared: false,storyBlocks: ["1":BlockOfDayEpisode(chats: [], choices: [], achievement: nil, choiceSkip: false)], currentCharacterNote: [], currentHistoryNote: []),
+    Episode(episodeName: "3.1 운동", episodeYear: 1919, episodeKingYear: "짱조 25년", episodeDesciption: "대한독립 만세",episodePlaceImage: "placeImage_1x", isCleared: false,storyBlocks: ["1":BlockOfDayEpisode(chats: [], choices: [], achievement: nil, choiceSkip: false)], currentCharacterNote: [], currentHistoryNote: []),
+    Episode(episodeName: "내 생일", episodeYear: 2003, episodeKingYear: "맛조 25년", episodeDesciption: "7월 28일임",episodePlaceImage: "placeImage_1x",isCleared: false, storyBlocks: ["1":BlockOfDayEpisode(chats: [], choices: [], achievement: nil, choiceSkip: false)], currentCharacterNote: [], currentHistoryNote: [])
+   
 ]
 
 
