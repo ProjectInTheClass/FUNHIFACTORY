@@ -131,8 +131,8 @@ enum ChatType {
 // 텍스트 블럭 스트럭처
 //  프라퍼티 설명: 글, 이미지, 타입, 해당 인물
 struct Chat {
-    let text: String?
-    let image: String?
+    let text: String
+    let image: String
     let type: ChatType
     let who: GameCharactersEnum
     let characterFace : Bool
@@ -151,7 +151,7 @@ struct ChoiceLikeability {
 struct Choice {
     let text: String
     let likability: [ChoiceLikeability]
-    let nextTextIndex: Int
+    let nextTextIndex: String
 }
 
 //n일차를 쪼갠 조각의 단위 : 일반 대화들 ~ 키렐 선택지가 마지막.
@@ -164,6 +164,7 @@ struct BlockOfDayEpisode {
     // choices: [[다음페이지 결정짓는 key값 : 선택지 텍스트]]
     let choices: [Choice]
     let achievement: Achievement?
+    let choiceSkip : Bool
 }
 //n일차
 // 프라퍼티 설명: 에피소드 이름(ex)인조반정), 에피소드 연도(1xxx년), 에피소드 설명(인조반정에서 무슨 일이 일어날 예정이다 과연 주인공은 이를 막을 수 있을까? 어쩌구저쩌구), 에피소드 이미지(전각 이미지)스토리블럭(대사 인스턴스)
@@ -173,7 +174,7 @@ struct Episode {
     let episodeDesciption: String
     let episodePlaceImage: String
     let isCleared: Bool
-    let storyBlocks: [BlockOfDayEpisode]
+    let storyBlocks: [String:BlockOfDayEpisode]
 }
 
 // 더미데이터 담을 스트럭처
