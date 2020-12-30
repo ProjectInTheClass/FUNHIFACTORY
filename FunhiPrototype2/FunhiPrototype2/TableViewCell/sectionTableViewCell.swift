@@ -9,6 +9,7 @@ import UIKit
 
 class sectionTableViewCell: UITableViewCell {
 
+    @IBOutlet var sectionText: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -8,16 +8,16 @@
 import UIKit
 
 class opTextTableViewCell: UITableViewCell {
-
+    @IBOutlet var profileImage: UIImageView!
+    @IBOutlet var profileNickname: UILabel!
+    @IBOutlet var chatText: UITextView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func opTextCellUpdate(name:String,chat:String,profile:String){
+        
     }
 
 }

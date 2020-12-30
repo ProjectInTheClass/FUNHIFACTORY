@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jQu-gE-c4Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jQu-gE-c4Z">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -127,7 +127,7 @@
                                 <rect key="frame" x="0.0" y="105" width="414" height="708"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="114" id="Nov-1r-Adf">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="opTextCell" rowHeight="114" id="Nov-1r-Adf" customClass="opTextTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="114"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nov-1r-Adf" id="b24-r2-tta">
@@ -173,8 +173,13 @@
                                                 <constraint firstItem="vep-Zh-itH" firstAttribute="top" secondItem="b24-r2-tta" secondAttribute="top" constant="17" id="kJY-sk-uHE"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="chatText" destination="8Tt-Ft-rBe" id="Xym-ZZ-qEC"/>
+                                            <outlet property="profileImage" destination="9nd-mS-qwa" id="BvX-ch-kxZ"/>
+                                            <outlet property="profileNickname" destination="vep-Zh-itH" id="k0d-E4-v0D"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="114" id="kt2-Sg-BDC">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myTextCell" rowHeight="114" id="kt2-Sg-BDC" customClass="myTextTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="142" width="414" height="114"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kt2-Sg-BDC" id="6Hh-cW-zfM">
@@ -220,8 +225,13 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="lRY-7g-041" secondAttribute="trailing" constant="85" id="pSK-qx-O2f"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="chatText" destination="lRY-7g-041" id="jC5-ef-idr"/>
+                                            <outlet property="profileImage" destination="ypp-tm-AJ0" id="AgO-aL-x3d"/>
+                                            <outlet property="profileNickname" destination="Tyh-sK-xPZ" id="bTF-wm-jl3"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="41" id="Jfh-0f-HBh">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sectionCell" rowHeight="41" id="Jfh-0f-HBh" customClass="sectionTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="256" width="414" height="41"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jfh-0f-HBh" id="yQW-Pn-ft0">
@@ -244,8 +254,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.37647058823529411" green="0.76078431372549016" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="sectionText" destination="oX6-rE-Tks" id="Yef-fq-UTv"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="254" id="Hw8-Vw-pVe">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="254" id="Hw8-Vw-pVe" customClass="ImageTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="297" width="414" height="254"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hw8-Vw-pVe" id="szc-Qo-WDf">
@@ -267,6 +280,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="W4K-Vq-5Zx" secondAttribute="trailing" constant="12" id="oIj-vg-Q2i"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="touchableImage" destination="W4K-Vq-5Zx" id="3ck-mr-K0X"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1525,7 +1541,6 @@
         <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="point.fill.topleft.down.curvedto.point.fill.bottomright.up" catalog="system" width="121" height="128"/>
         <image name="point.topleft.down.curvedto.point.bottomright.up" catalog="system" width="121" height="128"/>
-        <image name="road" width="240" height="240"/>
         <image name="road" width="240" height="240"/>
         <image name="setting" width="512" height="512"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
