@@ -91,7 +91,23 @@ struct User {
     var currentHistories: [History]
     var currentAchievements: [Achievement]
     //var timellne: nil
-    var currentCharacterInfo: GameCharacters
+    var currentCharacterInfo: [String:GameCharacter]
+    var dayIndex:Int
+    var dayId:String
+    var currentChatId:String
+}
+
+func currentDay() -> Episode{
+    return dummyData.stories[player.dayId]!
+}
+func currentBlockOfDay() -> BlockOfDayEpisode{
+    return currentDay().storyBlocks[player.currentChatId]!
+}
+func currentChatAmount() -> Int{
+    return currentBlockOfDay().chats.count
+}
+func currentChatType() -> ChatType{
+    return currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type
 }
 
 //------------------------------------스토리------------------------------------
@@ -102,6 +118,7 @@ enum ChatType {
     case onlyText
     case untouchableImage
     case sectionHeader
+    case choice
 }
 
 // 텍스트 블럭 스트럭처
@@ -196,3 +213,14 @@ enum GameCharactersEnum {
         }
     }
 }
+var currentCharactersInfo: [String:GameCharacter]
+    
+
+    = ["kirell":GameCharacter(name: "키렐", profileImage: "kirell", backGroundImage: "kirell", infomation: ["사후의 세계에 떨어지면서 이름 외에 생전의 모든 기억을 잃었다."], Mission: "나침반을 따라가라.", likability: 66),
+       "argo":GameCharacter(name: "아르고", profileImage: "argo", backGroundImage: "argo", infomation: ["아르고는 남자다.", "아르고는 자연곱슬이다.","아르고는 고양이상이다."], Mission: "친한 동료를 죽여라", likability: 0),
+        "unknown":GameCharacter(name: "???", profileImage: "unknown", backGroundImage: "unknown", infomation: ["정보가 없습니다."], Mission: "나침반을 따라가라.", likability: 0),
+        "wolf":GameCharacter(name: "울프", profileImage: "unknown", backGroundImage: "unknown", infomation: ["정보가 없습니다."], Mission: "나침반을 따라가라.", likability: 87),
+        "ballam":GameCharacter(name: "발람", profileImage: "ballam", backGroundImage: "ballam", infomation: ["그의 과제는 누군가를 죽이는 것이 분명하다. 과제를 완료할 때까지 사람을 죽일 생각인 것 같다."], Mission: "나침반을 따라가라.", likability: 77),
+        "karon":GameCharacter(name: "카론", profileImage: "karon", backGroundImage: "karon", infomation: ["죽은 사람을 인도하는 역할을 가진 듯하다."], Mission: "나침반을 따라가라.", likability: 0),
+        "hilde":GameCharacter(name: "힐데", profileImage: "hilde", backGroundImage: "hilde", infomation: ["밝은 성격에 감정도 풍부해 함께 있으면 편안하다. 다만 겁이 많아서 걱정이다."], Mission: "나침반을 따라가라.", likability: 0),
+        "philio":GameCharacter(name: "필리오", profileImage: "philio", backGroundImage: "philio", infomation: ["기회 잃은 망자들은 필리오를 공격하지 않는다. 심지어 그의 주변에 다가오지도 않는다."], Mission: "나침반을 따라가라.", likability: 88),]

@@ -5,7 +5,7 @@
 //  Created by 최서연 on 2020/12/29.
 //
 import Foundation
-
+var indexNumber = 0 
 var currentChatArray : [Chat] = []
 let test = Episode(episodeName: "테스트 에피소드", episodeYear: 1623, episodeKingYear: "테스트 연도", episodeDesciption: "테스트 에피소드입니다.", episodePlaceImage: "", isCleared: false, storyBlocks: [
     "001":BlockOfDayEpisode(chats:
