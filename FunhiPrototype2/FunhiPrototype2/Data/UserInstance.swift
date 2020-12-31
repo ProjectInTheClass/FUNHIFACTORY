@@ -11,8 +11,6 @@ var player = User(setting: playerSetting, tickets: 0, currentHistories: [], curr
 
 var playerSetting = Setting(bgmVolume: 0.5, effectVolume: 0.0, textSpeed: 10.0)
 
-let dummyData = Data(stories: ["day0":test],
-                     histories: [.lastMemories, .runawayGirl, .thePatronsConcerns, .theTestBegins],
-                     achivements: [.charonsInterrogation, .firstComradeArgo, .likeAWelllAgedWhiskey, .whereIBelong],
-                     FullGameCharactersInfo: currentCharactersInfo)
+let dummyData = Data(stories: ["day0":test], histories: [1:History(title: "", shortDescription: "", longDescription: "")], achivements: [1:.charonsInterrogation], gameCharacters: currentCharactersInfo)
+
 var timer:Timer!

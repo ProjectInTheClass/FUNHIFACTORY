@@ -185,10 +185,10 @@ struct Episode {
 // 더미데이터 담을 스트럭처
 // 총 스토리 본문, 모든 히스토리, 모든 업적, 전체 인물 정보
 struct Data {
-    let stories: [Episode]
-    let histories: [[Int:History]]
-    let achivements: [[Int:Achievement]]
-    let gameCharacters: GameCharacters
+    let stories: [String:Episode]
+    let histories: [Int:History]
+    let achivements: [Int:Achievement]
+    let gameCharacters: [String:GameCharacter]
 }
 
 enum GameCharactersEnum {
