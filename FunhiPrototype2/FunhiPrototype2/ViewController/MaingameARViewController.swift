@@ -20,11 +20,11 @@ class MaingameARViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        /*
         let rockAnchor = try! OpenLeaves.load장면()
         let leafAnchor = try! OpenRock.load장면()
         
-        arView.scene.anchors.append(rockAnchor)
+        arView.scene.anchors.append(rockAnchor)*/
     }
     func designButton() {
         finishARButton.layer.cornerRadius = 3

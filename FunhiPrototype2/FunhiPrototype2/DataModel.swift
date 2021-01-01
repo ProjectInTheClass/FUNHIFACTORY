@@ -107,11 +107,25 @@ struct GameCharacters {                                                         
 //  프라퍼티 설명: 설정, 티켓(게임화폐), 유저가 달성한 히스토리, 유저가 달성한 업적, 타임라인(?), 유저가 파악한 캐릭터들 정보
 struct User {
     var setting: Setting
-    var tickets: Int
-    var currentHistories: [NoteHistory]
-    var currentAchievements: [Achievement]
+    var currentEpisodes: [Episode]
     //var timellne: nil
-    var currentCharacterInfo: GameCharacters
+    var currentCharacterInfo: [String:GameCharacter]
+    var dayIndex:Int
+    var dayId:String
+    var currentChatId:String
+}
+
+func currentDay() -> Episode{
+    return dummyData.stories[player.dayId]!
+}
+func currentBlockOfDay() -> BlockOfDayEpisode{
+    return currentDay().storyBlocks[player.currentChatId]!
+}
+func currentChatAmount() -> Int{
+    return currentBlockOfDay().chats.count
+}
+func currentChatType() -> ChatType{
+    return currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type
 }
 
 //------------------------------------스토리------------------------------------
@@ -122,6 +136,7 @@ enum ChatType {
     case onlyText
     case untouchableImage
     case sectionHeader
+    case choice
 }
 
 // 텍스트 블럭 스트럭처
@@ -179,20 +194,19 @@ struct Episode {
     let isCleared: Bool
     //(예시 : 대사)
     let storyBlocks: [String:BlockOfDayEpisode]
-    
+    // 해당 사건의 수첩에 적힐 캐릭터들
     let currentCharacterNote: [GameCharacter]
-    
+    // 해당 사건의 수첩에 적힐 사건들
     let currentHistoryNote: [NoteHistory]
 }
 
 // 더미데이터 담을 스트럭처
 // 총 스토리 본문, 모든 히스토리, 모든 업적, 전체 인물 정보
-struct Data {
+struct GameData {
     let stories: [Episode]
-    let histories: [[Int:NoteHistory]]
-    let achivements: [[Int:Achievement]]
-    let gameCharacters: GameCharacters
+    let histories: [Int:NoteHistory]
+    let achivements: [Int:Achievement]
+    let gameCharacters: [String:GameCharacter]
 }
 
-var danhee: GameCharacter = GameCharacter(name: "단희", profileImage: "", backGroundImage: "", infomation: [Infomation(isLocked: true, text: "단희 정보 1"),Infomation(isLocked: true, text: "단희 정보 2")], likability: 0)
-var hwiryeong: GameCharacter = GameCharacter(name: "휘령", profileImage: "", backGroundImage: "", infomation: [Infomation(isLocked: true, text: "휘령 정보 1"),Infomation(isLocked: true, text: "휘령 정보 2")], likability: 0)
+//일단 만들어놓은 인물들 샘플 정보 변수입니다.

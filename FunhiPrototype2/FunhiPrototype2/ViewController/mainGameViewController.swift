@@ -7,7 +7,7 @@
 
 import UIKit
 
-class mainGameViewController: UIViewController {
+class mainGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //Outlet
     
     var recieved: String?
@@ -61,5 +61,58 @@ class mainGameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mainGameTableView.delegate = self
+        self.mainGameTableView.dataSource = self
+    }
+    
+    func chatUpdateTimer()
+    {
+        print("chatUpdateTimer 실행")
+        timer = Timer.scheduledTimer(withTimeInterval: player.setting.textSpeed, repeats: true, block: {timer in
+            self.chatUpdate()
+            print(timer)
+        })
+        
+    }
+    func chatUpdate(){
+        print("------------chatUpdate 시작합니다------------")
+        print("현재 속도: \(player.setting.textSpeed)")
+        if indexNumber < currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type == .onlyText{
+            print("채팅이 업데이트되었습니다.")
+            currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber])
+            self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
+        if indexNumber == currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.choices[0].nextTextIndex == "End"{
+            guard timer != nil else {return}
+            timer.invalidate()
+        }
+        if indexNumber == currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.choiceSkip == false{
+            timer.invalidate()
+            print("invalidate")
+            guard currentChatArray.last?.type != .choice else {return}
+            currentChatArray.append(Chat(text: "**선택지가 나올 자리**", image: "", type: .choice, who: .kirell, characterFace: false))
+            self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
+            print("선택지 대용 엘리먼트 추가")
+            scrollToBottom()
+            return
+        } else if indexNumber == currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.choiceSkip == true{
+            player.currentChatId = currentBlockOfDay().choices[0].nextTextIndex
+            indexNumber = 0
+            chatUpdate()
+            scrollToBottom()
+            return
+        }
+        print("스토리 \(indexNumber+1)/\(currentChatAmount())")
+        
+        indexNumber += 1
+        scrollToBottom()
+    }
+}
+    //가장 밑으로 스크롤해주는 함수
+    func scrollToBottom(){
+        guard currentChatArray.count != 0 else {return}
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(row: currentChatArray.count-1, section: 0)
+            self.mainGameTableView.scrollToRow(at: indexPath, at: .bottom, animated: false) //true로 바꾸면 좀 더 천천히 내려가긴 하는데, 못 따라오는 경우도 있다.
+        }
     }
 }
