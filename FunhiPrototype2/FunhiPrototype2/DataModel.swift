@@ -19,11 +19,15 @@ struct Setting {
 //------------------------------------히스토리: 업적 비슷한 개념------------------------------------
 // 히스토리: 키렐이 매일 꾸는 꿈 내용.
 
-struct History {
-    
+
+
+struct NoteHistory {
+    //구별 위한 ID
+    let id: String
     let title: String
     let shortDescription: String
     let longDescription: String
+    var isLocked: Bool
 }
 
 //------------------------------------업적------------------------------------
@@ -60,16 +64,32 @@ enum Achievement {
 }
 
 //------------------------------------게임 캐릭터 : 키렐 포함 모든 인물들------------------------------------
-
+class Infomation {
+    var isLocked: Bool
+    var text: String
+    
+    init(isLocked: Bool, text: String) {
+        self.isLocked = isLocked
+        self.text = text
+    }
+}
 // 키렐 포함 인물들 정보를 담기 위한 스트럭처
 // 프라퍼티 설명:  인물 이름, 대표 이미지, 키렐이 관찰기록한 듯한 내용의 해당 인물 정보들(인물상세페이지에 있음), 시련 미션, 호감도
-struct GameCharacter {
+class GameCharacter {
     let name: String
     let profileImage: String
     let backGroundImage : String
-    let infomation: [String]
-    let Mission : String
-    var likability: Int = 0
+    var infomation: [Infomation]
+    var likability: Int
+    var isLocked: Bool
+    
+    init(name: String, profileImage: String ,backGroundImage: String ,infomation: [Infomation], likability:Int ) {
+        self.name = name
+        self.profileImage = profileImage
+        self.backGroundImage = backGroundImage
+        self.infomation = infomation
+        self.likability = likability
+    }
     
 }
 //----------얘는 유저스트럭처에 포함됨-----------
@@ -88,7 +108,7 @@ struct GameCharacters {                                                         
 struct User {
     var setting: Setting
     var tickets: Int
-    var currentHistories: [History]
+    var currentHistories: [NoteHistory]
     var currentAchievements: [Achievement]
     //var timellne: nil
     var currentCharacterInfo: GameCharacters
@@ -110,7 +130,7 @@ struct Chat {
     let text: String
     let image: String
     let type: ChatType
-    let who: GameCharactersEnum
+    let who: GameCharacter
     let characterFace : Bool
 }
 
@@ -162,37 +182,17 @@ struct Episode {
     
     let currentCharacterNote: [GameCharacter]
     
-    let currentHistoryNote: [History]
+    let currentHistoryNote: [NoteHistory]
 }
 
 // 더미데이터 담을 스트럭처
 // 총 스토리 본문, 모든 히스토리, 모든 업적, 전체 인물 정보
 struct Data {
     let stories: [Episode]
-    let histories: [[Int:History]]
+    let histories: [[Int:NoteHistory]]
     let achivements: [[Int:Achievement]]
     let gameCharacters: GameCharacters
 }
 
-enum GameCharactersEnum {
-    case kirell
-    case argo
-    case unknown
-    case wolf
-    case ballam
-    
-    func info() -> GameCharacter {
-        switch self {
-        case .kirell:
-            return GameCharacter(name: "키렐", profileImage: "", backGroundImage: "", infomation: [], Mission: "나침반")
-        case .argo:
-            return GameCharacter(name: "아르고", profileImage: "", backGroundImage: "",  infomation: [], Mission: "가까운 사람")
-        case .unknown:
-            return GameCharacter(name: "???", profileImage: "", backGroundImage: "",  infomation: [], Mission: "")
-        case .wolf:
-            return GameCharacter(name: "상처 입은 남자", profileImage: "", backGroundImage: "",  infomation: [], Mission: "")
-        case .ballam:
-            return GameCharacter(name: "발람", profileImage: "", backGroundImage: "",  infomation: [], Mission: "")
-        }
-    }
-}
+var danhee: GameCharacter = GameCharacter(name: "단희", profileImage: "", backGroundImage: "", infomation: [Infomation(isLocked: true, text: "단희 정보 1"),Infomation(isLocked: true, text: "단희 정보 2")], likability: 0)
+var hwiryeong: GameCharacter = GameCharacter(name: "휘령", profileImage: "", backGroundImage: "", infomation: [Infomation(isLocked: true, text: "휘령 정보 1"),Infomation(isLocked: true, text: "휘령 정보 2")], likability: 0)
