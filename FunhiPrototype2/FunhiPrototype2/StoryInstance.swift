@@ -87,15 +87,25 @@ let test = Episode(episodeName: "테스트 에피소드", episodeYear: 1623, epi
 
 ], currentCharacterNote: [], currentHistoryNote: [])
 
-//selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제예정
 
-let prologueChapter: Episode = Episode(episodeName: "프롤로그", episodeYear: 2020, episodeKingYear: "현재 2020년", episodeDesciption: "프롤로그임", episodePlaceImage: "프롤로그 자세한 설명임", isCleared: false, storyBlocks: [:], currentCharacterNote: [], currentHistoryNote: [NoteHistory(id: "001", title: "첫 만남", shortDescription: "처음으로 휘령과 만났다.", longDescription: "처음으로 휘령과 만났다. 그 사람은 자기가 창덕궁의 신이라며 내개 부탁을 하나 해왔다.", isLocked: false),NoteHistory(id: "002", title: "시간여행", shortDescription: "휘령이 나를 과거로 보냈다.", longDescription: "휘령의 부탁을 수락했다. 그러자 휘령이 요래조래 해서 나를 과거로 보냈다. 점점 어지러워지면서 정신을 일헝ㅆ다.", isLocked: true)])
-let testChapters: Array<Episode> = [
-    Episode(episodeName: "임진왜란", episodeYear: 1592, episodeKingYear: "선조 25년", episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "placeImage_1x", isCleared: true, storyBlocks: ["1":BlockOfDayEpisode(chats: [], choices: [], achievement: nil, choiceSkip: false)], currentCharacterNote: [], currentHistoryNote: []),
-    Episode(episodeName: "인조반정", episodeYear: 1623, episodeKingYear: "지조 25년", episodeDesciption: "광해군이 반정으로 인해 폐위되다", episodePlaceImage: "placeImage_1x",isCleared: false,storyBlocks: ["1":BlockOfDayEpisode(chats: [], choices: [], achievement: nil, choiceSkip: false)], currentCharacterNote: [], currentHistoryNote: []),
-    Episode(episodeName: "3.1 운동", episodeYear: 1919, episodeKingYear: "짱조 25년", episodeDesciption: "대한독립 만세",episodePlaceImage: "placeImage_1x", isCleared: false,storyBlocks: ["1":BlockOfDayEpisode(chats: [], choices: [], achievement: nil, choiceSkip: false)], currentCharacterNote: [], currentHistoryNote: []),
-    Episode(episodeName: "내 생일", episodeYear: 2003, episodeKingYear: "맛조 25년", episodeDesciption: "7월 28일임",episodePlaceImage: "placeImage_1x",isCleared: false, storyBlocks: ["1":BlockOfDayEpisode(chats: [], choices: [], achievement: nil, choiceSkip: false)], currentCharacterNote: [], currentHistoryNote: [NoteHistory(id: "001", title: "첫번째 역사", shortDescription: "첫 번째 역사 설명임", longDescription: "첫번째 역사 상세한 설명임", isLocked: true)])
-   
+var danhee: GameCharacter = GameCharacter(name: "단희", profileImage: "", backGroundImage: "", infomation: [Infomation(isLocked: true, text: "단희 정보 1"),Infomation(isLocked: true, text: "단희 정보 2")], likability: 0)
+var hwiryeong: GameCharacter = GameCharacter(name: "휘령", profileImage: "", backGroundImage: "", infomation: [Infomation(isLocked: true, text: "휘령 정보 1"),Infomation(isLocked: true, text: "휘령 정보 2")], likability: 0)
+
+//얘 사용 용도 더미데이터에 보관하는 용 말고 또 무언가 있다면 주석으로 적어줘요
+var currentCharactersInfo: [String:GameCharacter] = [
+    "kirell":GameCharacter(name: "키렐", profileImage: "kirell", backGroundImage: "kirell", infomation: [Infomation(isLocked: true, text: "ㅋㄹ 정보 1"),Infomation(isLocked: true, text: "정보 2")], likability: 66),
+    "ballam":GameCharacter(name: "발람", profileImage: "ballam", backGroundImage: "ballam", infomation: [Infomation(isLocked: true, text: "발람 정보 1"),Infomation(isLocked: true, text: " 정보 2")], likability: 77),
+    "danhee":GameCharacter(name: "단희", profileImage: "", backGroundImage: "", infomation: [Infomation(isLocked: true, text: "단희 정보 1"),Infomation(isLocked: true, text: "단희 정보 2")], likability: 0),
+    "hwiryeong":GameCharacter(name: "휘령", profileImage: "", backGroundImage: "", infomation: [Infomation(isLocked: true, text: "휘령 정보 1"),Infomation(isLocked: true, text: "휘령 정보 2")], likability: 0)
 ]
 
+//selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
+
+let prologueChapter: Episode = Episode(episodeName: "프롤로그", episodeYear: 2020, episodeKingYear: "현재 2020년", episodeDesciption: "프롤로그임", episodePlaceImage: "프롤로그 자세한 설명임", isCleared: false, storyBlocks: [:], currentCharacterNote: [GameCharacter(name: "휘령0", profileImage: "", backGroundImage: "", infomation: [Infomation(isLocked: true, text: "휘령 정보 1"),Infomation(isLocked: true, text: "휘령 정보 2")], likability: 0)], currentHistoryNote: [NoteHistory(id: "001", title: "첫 만남", shortDescription: "처음으로 휘령과 만났다.", longDescription: "처음으로 휘령과 만났다. 그 사람은 자기가 창덕궁의 신이라며 내개 부탁을 하나 해왔다.", isLocked: false),NoteHistory(id: "002", title: "시간여행", shortDescription: "휘령이 나를 과거로 보냈다.", longDescription: "휘령의 부탁을 수락했다. 그러자 휘령이 요래조래 해서 나를 과거로 보냈다. 점점 어지러워지면서 정신을 일헝ㅆ다.", isLocked: true)])
+
+//selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
+let testChapter1 = Episode(episodeName: "임진왜란", episodeYear: 1592, episodeKingYear: "선조 25년", episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "placeImage_1x", isCleared: true, storyBlocks: ["1":BlockOfDayEpisode(chats: [], choices: [], achievement: nil, choiceSkip: false)], currentCharacterNote: [GameCharacter(name: "휘령1", profileImage: "", backGroundImage: "", infomation: [Infomation(isLocked: true, text: "휘령 정보 1"),Infomation(isLocked: true, text: "휘령 정보 2")], likability: 0)], currentHistoryNote: [])
+let testChapter2 = Episode(episodeName: "인조반정", episodeYear: 1623, episodeKingYear: "지조 25년", episodeDesciption: "광해군이 반정으로 인해 폐위되다", episodePlaceImage: "placeImage_1x",isCleared: false,storyBlocks: ["1":BlockOfDayEpisode(chats: [], choices: [], achievement: nil, choiceSkip: false)], currentCharacterNote: [GameCharacter(name: "휘령2", profileImage: "", backGroundImage: "", infomation: [Infomation(isLocked: true, text: "휘령 정보 1"),Infomation(isLocked: true, text: "휘령 정보 2")], likability: 0)], currentHistoryNote: [])
+let testChapter3 = Episode(episodeName: "3.1 운동", episodeYear: 1919, episodeKingYear: "짱조 25년", episodeDesciption: "대한독립 만세",episodePlaceImage: "placeImage_1x", isCleared: false,storyBlocks: ["1":BlockOfDayEpisode(chats: [], choices: [], achievement: nil, choiceSkip: false)], currentCharacterNote: [GameCharacter(name: "휘령3", profileImage: "", backGroundImage: "", infomation: [Infomation(isLocked: true, text: "휘령 정보 1"),Infomation(isLocked: true, text: "휘령 정보 2")], likability: 0)], currentHistoryNote: [])
+let testChapter4 = Episode(episodeName: "내 생일", episodeYear: 2003, episodeKingYear: "맛조 25년", episodeDesciption: "7월 28일임",episodePlaceImage: "placeImage_1x",isCleared: false, storyBlocks: ["1":BlockOfDayEpisode(chats: [], choices: [], achievement: nil, choiceSkip: false)], currentCharacterNote: [GameCharacter(name: "휘령4", profileImage: "", backGroundImage: "", infomation: [Infomation(isLocked: true, text: "휘령 정보 1"),Infomation(isLocked: true, text: "휘령 정보 2")], likability: 0)], currentHistoryNote: [NoteHistory(id: "001", title: "첫번째 역사", shortDescription: "첫 번째 역사 설명임", longDescription: "첫번째 역사 상세한 설명임", isLocked: true)])
 
