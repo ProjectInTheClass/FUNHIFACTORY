@@ -9,7 +9,7 @@ import UIKit
 
 class ImageTableViewCell: UITableViewCell {
 
-    @IBOutlet var untouchableImage: UIImageView!
+    @IBOutlet var unTouchableImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
