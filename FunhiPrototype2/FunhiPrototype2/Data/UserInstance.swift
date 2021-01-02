@@ -7,11 +7,11 @@
 
 import Foundation
 
-var player = User(setting: playerSetting, currentEpisodes: [prologueChapter,testChapter1,testChapter2,testChapter3,testChapter4], currentCharacterInfo: currentCharactersInfo, dayIndex: 0, dayId: "day0", currentChatId: "096")
+var player = User(setting: playerSetting, tickets: 0, currentHistories: [], currentAchievements: [], currentCharacterInfo: currentCharactersInfo, dayIndex: 0, dayId: "day0", currentChatId: "001")
 
-var playerSetting = Setting(bgmVolume: 0.5, effectVolume: 0.0, textSpeed: 10.0)
+var playerSetting = Setting(bgmVolume: 0.5, effectVolume: 0.0, textSpeed: 1.0)
 
-let dummyData = GameData(stories: [test], histories: [:], achivements: [:], gameCharacters: currentCharactersInfo)
+let dummyData = Data(stories: ["day0":test], histories: [1:History(title: "", shortDescription: "", longDescription: "")], achivements: [1:.charonsInterrogation], gameCharacters: currentCharactersInfo)
 
 
 var timer:Timer!
