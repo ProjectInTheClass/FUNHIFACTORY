@@ -69,7 +69,7 @@ class Infomation {
     var text: String
     
     init(isLocked: Bool, text: String) {
-        self.isLocked = isLockedhistories
+        self.isLocked = isLocked
         self.text = text
     }
 }
@@ -89,6 +89,7 @@ class GameCharacter {
         self.backGroundImage = backGroundImage
         self.infomation = infomation
         self.likability = likability
+        self.isLocked = true
     }
     
 }

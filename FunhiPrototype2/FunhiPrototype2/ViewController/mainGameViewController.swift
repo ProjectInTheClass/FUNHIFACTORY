@@ -14,6 +14,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet var mainGameTableView: UITableView!
     @IBOutlet var godChat: UIView!
+    @IBOutlet var choiceBar: UIView!
+    @IBOutlet var firstChoiceButton: UIButton!
+    @IBOutlet var secondChoiceButton: UIButton!
+    @IBOutlet var thirdChoiceButton: UIButton!
     
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -25,10 +29,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let chatText = currentChatArray[indexPath.row].text
-
+        print("cellForRowAt")
         //텍스트 채팅이 나올 때
             //자신이 보냈을 때
-                if currentChatArray[indexPath.row].type == .onlyText && currentChatArray[indexPath.row].who.name == "키렐"{
+                if currentChatArray[indexPath.row].type == .onlyText && currentChatArray[indexPath.row].who.name == "단희"{
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
                     cell.myTextCellUpdate(name: currentChatArray[indexPath.row].who.name, chat: chatText, profile: currentChatArray[indexPath.row].who.profileImage)
                     return cell
@@ -64,7 +68,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.mainGameTableView.delegate = self
         self.mainGameTableView.dataSource = self
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        chatUpdateTimer()
+    }
     func chatUpdateTimer()
     {
         print("chatUpdateTimer 실행")
@@ -80,7 +86,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         if indexNumber < currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type == .onlyText{
             print("채팅이 업데이트되었습니다.")
             currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber])
-            self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
+            self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)}
         if indexNumber == currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.choices[0].nextTextIndex == "End"{
             guard timer != nil else {return}
             timer.invalidate()
@@ -89,10 +95,11 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             timer.invalidate()
             print("invalidate")
             guard currentChatArray.last?.type != .choice else {return}
-            currentChatArray.append(Chat(text: "**선택지가 나올 자리**", image: "", type: .choice, who: danhee, characterFace: false))
+            choiceUpdate()
+            /*currentChatArray.append(Chat(text: "**선택지가 나올 자리**", image: "", type: .choice, who: danhee, characterFace: false))
             self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
             print("선택지 대용 엘리먼트 추가")
-            scrollToBottom()
+            scrollToBottom()*/
             return
         } else if indexNumber == currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.choiceSkip == true{
             player.currentChatId = currentBlockOfDay().choices[0].nextTextIndex
@@ -106,7 +113,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         indexNumber += 1
         scrollToBottom()
     }
-}
     //가장 밑으로 스크롤해주는 함수
     func scrollToBottom(){
         guard currentChatArray.count != 0 else {return}
@@ -115,4 +121,36 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             self.mainGameTableView.scrollToRow(at: indexPath, at: .bottom, animated: false) //true로 바꾸면 좀 더 천천히 내려가긴 하는데, 못 따라오는 경우도 있다.
         }
     }
+    func choiceUpdate(){
+        choiceBar.isHidden = false
+        firstChoiceButton.setTitle(currentDay().storyBlocks[player.currentChatId]!.choices[0].text, for: .normal)
+        secondChoiceButton.setTitle(currentDay().storyBlocks[player.currentChatId]!.choices[1].text, for: .normal)
+        //thirdChoiceButton.setTitle(currentDay().storyBlocks[player.currentChatId]!.choices[2].text, for: .normal)
+    }
+    @IBAction func firstChoice(_ sender: Any) {
+        currentChatArray.append(Chat(text: currentBlockOfDay().choices[0].text, image: "", type: .onlyText, who: danhee, characterFace: true))
+        player.currentChatId = currentBlockOfDay().choices[0].nextTextIndex
+        mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
+        indexNumber = 0
+        choiceBar.isHidden = true
+        chatUpdateTimer()
+    }
+    @IBAction func secondChoice(_ sender: Any) {
+        currentChatArray.append(Chat(text: currentBlockOfDay().choices[1].text, image: "", type: .onlyText, who: danhee, characterFace: true))
+        player.currentChatId = currentBlockOfDay().choices[1].nextTextIndex
+        mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
+        indexNumber = 0
+        choiceBar.isHidden = true
+        chatUpdateTimer()
+    }
+    @IBAction func thirdChoice(_ sender: Any) {
+        currentChatArray.append(Chat(text: currentBlockOfDay().choices[2].text, image: "", type: .onlyText, who: danhee, characterFace: true))
+        player.currentChatId = currentBlockOfDay().choices[2].nextTextIndex
+        mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
+        indexNumber = 0
+        choiceBar.isHidden = true
+        chatUpdateTimer()
+    }
 }
+    
+
