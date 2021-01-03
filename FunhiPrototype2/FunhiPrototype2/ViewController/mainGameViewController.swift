@@ -34,7 +34,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         //텍스트 채팅이 나올 때
             //자신이 보냈을 때
 
-                if currentChatArray[indexPath.row].type == .onlyText && currentChatArray[indexPath.row].who.name == "단희"{
+                if currentChatArray[indexPath.row].type == .onlyText && currentChatArray[indexPath.row].who.name == "이단희"{
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
                     cell.myTextCellUpdate(name: currentChatArray[indexPath.row].who.name, chat: chatText, profile: currentChatArray[indexPath.row].who.profileImage)
                     return cell
@@ -171,5 +171,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         map.removeFromSuperview()
     }
 }
+
     
 
