@@ -9,12 +9,12 @@ import UIKit
 
 class ImageTableViewCell: UITableViewCell {
 
-    @IBOutlet var touchableImage: UIImageView!
+    @IBOutlet var unTouchableImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    func imageUpdate(name:String,pfImage:String,mainImage:String){
-        
-    }
+    func imageUpdate(mainImage:String){
+           unTouchableImage.image = UIImage(named: mainImage)
+       }
 }

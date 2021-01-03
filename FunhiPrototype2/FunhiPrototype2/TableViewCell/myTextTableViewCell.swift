@@ -18,6 +18,8 @@ class myTextTableViewCell: UITableViewCell {
     }
 
     func myTextCellUpdate(name:String,chat:String,profile:String){
-        
+        profileImage.image = UIImage(named: profile)
+        profileNickname.text = name
+        chatText.text = chat
     }
 }

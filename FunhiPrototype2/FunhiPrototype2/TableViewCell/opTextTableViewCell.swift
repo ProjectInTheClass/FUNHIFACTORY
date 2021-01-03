@@ -17,7 +17,9 @@ class opTextTableViewCell: UITableViewCell {
         // Initialization code
     }
     func opTextCellUpdate(name:String,chat:String,profile:String){
-        
+        profileNickname.text = name
+               chatText.text = chat
+               profileImage.image = UIImage(named: profile)
     }
 
 }

@@ -88,10 +88,12 @@ let test = Episode(episodeName: "테스트 에피소드", episodeYear: 1623, epi
 ], currentCharacterNote: [], currentHistoryNote: [])
 
 
-var danhee: GameCharacter = GameCharacter(name: "이단희", profileImage: "", backGroundImage: "", description: "인물 설명", infomation: [Infomation(isLocked: true, text: "단희 정보 1"),Infomation(isLocked: true, text: "단희 정보 2")], likability: 0, isLocked: false)
-var hwiryeong: GameCharacter = GameCharacter(name: "휘령", profileImage: "", backGroundImage: "", description: "인물 설명", infomation: [Infomation(isLocked: true, text: "휘령 정보 1"),Infomation(isLocked: true, text: "휘령 정보 2")], likability: 0, isLocked: false)
 
-//얘 사용 용도 더미데이터에 보관하는 용 말고 또 무언가 있다면 주석으로 적어줘요
+var danhee: GameCharacter = GameCharacter(name: "이단희", profileImage: "", backGroundImage: "", description: "인물 설명", infomation: [Infomation(isLocked: true, text: "단희 정보 1"),Infomation(isLocked: true, text: "단희 정보 2")], likability: 0, isLocked: false)
+var hwiryeong: GameCharacter = GameCharacter(name: "휘령", profileImage: "cat", backGroundImage: "", description: "인물 설명", infomation: [Infomation(isLocked: true, text: "휘령 정보 1"),Infomation(isLocked: true, text: "휘령 정보 2")], likability: 0, isLocked: false)
+
+
+//얘 사용 용도 더미데이터에 보관하는 용 말고 또 무언가 있다면 주석으로 적어줘요 (맞음. 전체적인 데이터들을 넣어놓는 자리가 필요하다 생각했는데 다른 데가 있으면 놔둬도 됨.)
 var currentCharactersInfo: [String:GameCharacter] = [
     "kirell":GameCharacter(name: "키렐", profileImage: "kirell", backGroundImage: "kirell", description: "인물 설명", infomation: [Infomation(isLocked: true, text: "ㅋㄹ 정보 1"),Infomation(isLocked: true, text: "정보 2")], likability: 66, isLocked: false),
     "ballam":GameCharacter(name: "발람", profileImage: "ballam", backGroundImage: "ballam", description: "인물 설명", infomation: [Infomation(isLocked: true, text: "발람 정보 1"),Infomation(isLocked: true, text: " 정보 2")], likability: 77, isLocked: false),

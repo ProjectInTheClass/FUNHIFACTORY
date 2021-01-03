@@ -81,6 +81,7 @@ class GameCharacter {
         self.infomation = infomation
         self.likability = likability
         self.isLocked = isLocked
+
     }
     
 }
@@ -109,7 +110,7 @@ struct User {
 }
 
 func currentDay() -> Episode{
-    return dummyData.stories[player.dayIndex]
+    return dummyData.stories[player.dayId]!
 }
 func currentBlockOfDay() -> BlockOfDayEpisode{
     return currentDay().storyBlocks[player.currentChatId]!
@@ -196,7 +197,7 @@ struct Episode {
 // 더미데이터 담을 스트럭처
 // 총 스토리 본문, 모든 히스토리, 모든 업적, 전체 인물 정보
 struct GameData {
-    let stories: [Episode]
+    let stories: [String:Episode]
     let histories: [Int:NoteHistory]
     let achivements: [Int:Achievement]
     let gameCharacters: [String:GameCharacter]
