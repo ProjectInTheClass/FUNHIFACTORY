@@ -34,33 +34,21 @@ struct NoteHistory {
 //업적 : 게임 도전 과제 - 특정 대사를 들으면 달성됨. 해당 날(n일차) 마지막 대사 나오고 도전과제 달성되었다는 상단 팝업이 화면에 뜸
 // 히스토리랑 마찬가지로 한정된 갯수기 때문에 동일 코드 구조 줌
 // 프라퍼티 설명: 업적 이름, 해당 이미지, 글
-struct AchievementStructure {
+struct Achievement {
     let name: String
     let image: String
-    let text: String
+    let id: AchievementID
+    var isLocked: Bool
 }
 
-enum Achievement {
+enum AchievementID {
     case charonsInterrogation
     case firstComradeArgo
     case likeAWelllAgedWhiskey
     case whereIBelong
     
-    func achievementInfo() -> AchievementStructure {
-    switch self {
-    case .charonsInterrogation:
-        return AchievementStructure(name: "카론의 심문", image: "", text: "생과 사의 경계에 있는 최후의 꿈에 오신 것을 환영합니다.")
-    case .firstComradeArgo:
-        return AchievementStructure(name: "첫 동료 아르고", image: "", text: "흠.... 키렐, 그 말은 제가 동료가 되는 게 당신에게 무조건 유리하다는 뜻인가요?")
-    case .likeAWelllAgedWhiskey:
-        return AchievementStructure(name: "중년의 품격", image: "", text: "...이럴 땐 제 과제가 참 어렵습니다.")
-    case .whereIBelong:
-        return AchievementStructure(name: "내가 있을 장소", image: "", text: "이곳 생활이 재미있어질 것 같네요.")
-    default:
-        break
+ 
         
-        }
-    }
 }
 
 //------------------------------------게임 캐릭터 : 키렐 포함 모든 인물들------------------------------------
@@ -79,16 +67,20 @@ class GameCharacter {
     let name: String
     let profileImage: String
     let backGroundImage : String
+    //노트 인물 페이지 셀에 들어갈 주인공 설명
+    let description: String
     var infomation: [Infomation]
     var likability: Int
     var isLocked: Bool
     
-    init(name: String, profileImage: String ,backGroundImage: String ,infomation: [Infomation], likability:Int ) {
+    init(name: String, profileImage: String ,backGroundImage: String, description: String, infomation: [Infomation], likability:Int, isLocked: Bool ) {
         self.name = name
         self.profileImage = profileImage
         self.backGroundImage = backGroundImage
+        self.description = description
         self.infomation = infomation
         self.likability = likability
+        self.isLocked = isLocked
     }
     
 }
@@ -110,13 +102,14 @@ struct User {
     var currentEpisodes: [Episode]
     //var timellne: nil
     var currentCharacterInfo: [String:GameCharacter]
+    var currentAchievementInfo: [Achievement]
     var dayIndex:Int
     var dayId:String
     var currentChatId:String
 }
 
 func currentDay() -> Episode{
-    return dummyData.stories[player.dayId]!
+    return dummyData.stories[player.dayIndex]
 }
 func currentBlockOfDay() -> BlockOfDayEpisode{
     return currentDay().storyBlocks[player.currentChatId]!

@@ -13,16 +13,16 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testChapters.count
+        return player.currentEpisodes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "selectStageTableViewCell", for: indexPath) as! SelectStageTableViewCell
-        cell.episodePlace.text = testChapters[indexPath.row].episodeName
-        cell.episodeYear.text = "\(testChapters[indexPath.row].episodeYear)년"
-        cell.episodePlaceImage.image = UIImage(named: testChapters[indexPath.row].episodePlaceImage)
+        cell.episodePlace.text = player.currentEpisodes[indexPath.row].episodeName
+        cell.episodeYear.text = "\(player.currentEpisodes[indexPath.row].episodeYear)년"
+        cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[indexPath.row].episodePlaceImage)
         // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
-        cell.checkBox.image = UIImage(named:"\(testChapters[indexPath.row].isCleared)Clear")
+        cell.checkBox.image = UIImage(named:"\(player.currentEpisodes[indexPath.row].isCleared)Clear")
         return cell
     }
     
@@ -39,7 +39,7 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
 //    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let dataToSend: Episode
-        dataToSend = testChapters[indexPath.row]
+        dataToSend = player.currentEpisodes[indexPath.row]
         self.view.addSubview(selectedPopup)
         
     }
@@ -78,7 +78,7 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     func updatePopup(indexPath: IndexPath) {
-        selectedPopupYearLabel.text = "\(testChapters[indexPath.row].episodeYear)년"
+        selectedPopupYearLabel.text = "\(player.currentEpisodes[indexPath.row].episodeYear)년"
     }
     func designPopup() {
         selectedPopup.layer.cornerRadius = 10

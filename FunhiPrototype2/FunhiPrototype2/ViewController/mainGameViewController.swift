@@ -28,15 +28,15 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
 
         //텍스트 채팅이 나올 때
             //자신이 보냈을 때
-                if currentChatArray[indexPath.row].type == .onlyText && currentChatArray[indexPath.row].who.info().name == "키렐"{
+                if currentChatArray[indexPath.row].type == .onlyText && currentChatArray[indexPath.row].who.name == "키렐"{
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
-                    cell.myTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: currentChatArray[indexPath.row].who.info().profileImage)
+                    cell.myTextCellUpdate(name: currentChatArray[indexPath.row].who.name, chat: chatText, profile: currentChatArray[indexPath.row].who.profileImage)
                     return cell
                 }
             //상대가 보냈을 때
                 else if currentChatArray[indexPath.row].type == .onlyText{
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
-                    cell.opTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: currentChatArray[indexPath.row].who.info().profileImage)
+                    cell.opTextCellUpdate(name: currentChatArray[indexPath.row].who.name, chat: chatText, profile: currentChatArray[indexPath.row].who.profileImage)
                     return cell
                 }
             //터치할 수 없는 이미지
@@ -44,7 +44,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             else if currentChatArray[indexPath.row].type == .untouchableImage {
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! ImageTableViewCell
 
-                cell.imageUpdate(name: currentChatArray[indexPath.row].who.info().name,pfImage: currentChatArray[indexPath.row].who.info().profileImage,mainImage: currentChatArray[indexPath.row].image)
+                cell.imageUpdate(name: currentChatArray[indexPath.row].who.name,pfImage: currentChatArray[indexPath.row].who.profileImage,mainImage: currentChatArray[indexPath.row].image)
                 return cell
                 }
             //행동 표시글 셀
@@ -54,7 +54,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 return cell
             } else {
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
-                cell.myTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: currentChatArray[indexPath.row].who.info().profileImage)
+                cell.myTextCellUpdate(name: currentChatArray[indexPath.row].who.name, chat: chatText, profile: currentChatArray[indexPath.row].who.profileImage)
                 return cell
             }
     }
@@ -89,7 +89,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             timer.invalidate()
             print("invalidate")
             guard currentChatArray.last?.type != .choice else {return}
-            currentChatArray.append(Chat(text: "**선택지가 나올 자리**", image: "", type: .choice, who: .kirell, characterFace: false))
+            currentChatArray.append(Chat(text: "**선택지가 나올 자리**", image: "", type: .choice, who: danhee, characterFace: false))
             self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
             print("선택지 대용 엘리먼트 추가")
             scrollToBottom()
