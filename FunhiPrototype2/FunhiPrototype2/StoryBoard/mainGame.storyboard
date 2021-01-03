@@ -451,6 +451,9 @@
                                         <constraint firstItem="cjP-CG-qDd" firstAttribute="centerX" secondItem="MSC-cU-Fk8" secondAttribute="centerX" id="zNl-Uw-Yf5"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="16"/>
+                                        </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                             <integer key="value" value="2"/>
                                         </userDefinedRuntimeAttribute>
@@ -458,12 +461,17 @@
                                 </view>
                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1rr-2r-SRW">
                                     <rect key="frame" x="0.0" y="59" width="374" height="662"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="16"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <segue destination="rmD-cQ-D3Y" kind="embed" id="4b0-LV-8Jx"/>
                                     </connections>
                                 </containerView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="MSC-cU-Fk8" firstAttribute="leading" secondItem="hyf-sb-0lg" secondAttribute="leading" id="6cB-ul-cgb"/>
                                 <constraint firstAttribute="width" constant="374" id="Jc1-kg-GYn"/>
@@ -478,6 +486,9 @@
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                     <integer key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="2"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
@@ -800,87 +811,6 @@
                 </view>
             </objects>
             <point key="canvasLocation" x="3736" y="662"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="qvP-gp-XL0">
-            <objects>
-                <viewController id="Hmv-iw-79n" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="PCP-wI-rQT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PvO-kK-o2d">
-                                <rect key="frame" x="20" y="74" width="374" height="721"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ccr-HO-pYx">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="59"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="is2-xa-hLe">
-                                                <rect key="frame" x="166" y="15" width="42" height="29"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9cS-uA-ege">
-                                                <rect key="frame" x="328" y="15" width="28" height="28"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="28" id="Rrm-Xk-r7d"/>
-                                                    <constraint firstAttribute="width" constant="28" id="oQF-BJ-tvS"/>
-                                                </constraints>
-                                                <state key="normal">
-                                                    <imageReference key="image" image="xmark" catalog="system" symbolScale="large" renderingMode="original"/>
-                                                </state>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstItem="is2-xa-hLe" firstAttribute="centerX" secondItem="Ccr-HO-pYx" secondAttribute="centerX" id="3qm-6b-rQI"/>
-                                            <constraint firstItem="is2-xa-hLe" firstAttribute="centerY" secondItem="Ccr-HO-pYx" secondAttribute="centerY" id="8j1-Pe-zTL"/>
-                                            <constraint firstItem="9cS-uA-ege" firstAttribute="top" secondItem="Ccr-HO-pYx" secondAttribute="top" constant="15" id="UxL-K9-rBG"/>
-                                            <constraint firstAttribute="trailing" secondItem="9cS-uA-ege" secondAttribute="trailing" constant="18" id="jNF-Ul-nM2"/>
-                                            <constraint firstAttribute="height" constant="59" id="lNV-wA-UzE"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                <integer key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6T5-O4-UWU">
-                                        <rect key="frame" x="0.0" y="59" width="372" height="662"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="6T5-O4-UWU" secondAttribute="bottom" id="IMl-uL-hjh"/>
-                                    <constraint firstItem="Ccr-HO-pYx" firstAttribute="leading" secondItem="PvO-kK-o2d" secondAttribute="leading" id="JMj-KZ-8Bd"/>
-                                    <constraint firstItem="6T5-O4-UWU" firstAttribute="leading" secondItem="PvO-kK-o2d" secondAttribute="leading" id="QY5-AD-6nh"/>
-                                    <constraint firstAttribute="height" constant="721" id="RdU-fx-xIL"/>
-                                    <constraint firstAttribute="width" constant="374" id="SME-GN-4yw"/>
-                                    <constraint firstItem="6T5-O4-UWU" firstAttribute="top" secondItem="Ccr-HO-pYx" secondAttribute="bottom" id="fip-Dy-BSR"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ccr-HO-pYx" secondAttribute="trailing" id="kIg-rt-hcF"/>
-                                    <constraint firstAttribute="trailing" secondItem="6T5-O4-UWU" secondAttribute="trailing" constant="2" id="kYU-eX-IHd"/>
-                                    <constraint firstItem="Ccr-HO-pYx" firstAttribute="top" secondItem="PvO-kK-o2d" secondAttribute="top" id="uTX-jB-SDi"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="16"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="5PI-hh-Pf5"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="PvO-kK-o2d" firstAttribute="leading" secondItem="5PI-hh-Pf5" secondAttribute="leading" constant="20" id="IBJ-8k-i2f"/>
-                            <constraint firstAttribute="trailing" secondItem="PvO-kK-o2d" secondAttribute="trailing" constant="20" id="YYv-lX-Mvk"/>
-                            <constraint firstItem="PvO-kK-o2d" firstAttribute="top" secondItem="5PI-hh-Pf5" secondAttribute="top" constant="30" id="oIa-MY-cbP"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="p0T-jS-MXb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4450.7246376811599" y="-513.61607142857144"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="zMK-4P-pvq">
@@ -1743,7 +1673,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WAN-0R-gvm"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="c8Y-5F-8r1" firstAttribute="top" secondItem="WAN-0R-gvm" secondAttribute="top" id="V9h-4S-IyT"/>
                             <constraint firstItem="c8Y-5F-8r1" firstAttribute="leading" secondItem="WAN-0R-gvm" secondAttribute="leading" id="YFa-jM-wlW"/>
@@ -1754,7 +1684,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q2J-zQ-2U3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4693" y="-1068"/>
+            <point key="canvasLocation" x="4665" y="-1178"/>
         </scene>
     </scenes>
     <resources>
