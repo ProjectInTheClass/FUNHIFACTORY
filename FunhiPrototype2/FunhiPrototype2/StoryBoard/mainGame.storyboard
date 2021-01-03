@@ -45,6 +45,9 @@
                                             <constraint firstAttribute="width" constant="36" id="TsW-kD-sjA"/>
                                         </constraints>
                                         <state key="normal" image="map"/>
+                                        <connections>
+                                            <action selector="mapTapped:" destination="58V-k4-uXR" eventType="touchUpInside" id="UCM-4o-Vzv"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWN-b4-dw4" userLabel="settingButton">
                                         <rect key="frame" x="361" y="12" width="36" height="36"/>
@@ -53,6 +56,9 @@
                                             <constraint firstAttribute="width" constant="36" id="l4h-KV-hbR"/>
                                         </constraints>
                                         <state key="normal" image="setting"/>
+                                        <connections>
+                                            <action selector="settingTapped:" destination="58V-k4-uXR" eventType="touchUpInside" id="6n8-BO-z1N"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -800,10 +806,10 @@
             </objects>
             <point key="canvasLocation" x="4451" y="-513"/>
         </scene>
-        <!--View Controller-->
+        <!--Setting View Controller-->
         <scene sceneID="zMK-4P-pvq">
             <objects>
-                <viewController id="huL-hd-yMs" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setting" id="huL-hd-yMs" customClass="SettingViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rIa-W4-Jiq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -820,6 +826,9 @@
                                         <state key="normal">
                                             <imageReference key="image" image="arrowtriangle.backward" catalog="system" symbolScale="large" renderingMode="original"/>
                                         </state>
+                                        <connections>
+                                            <action selector="backButton:" destination="huL-hd-yMs" eventType="touchUpInside" id="RZw-rD-n4N"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWy-a5-Chm">
                                         <rect key="frame" x="182" y="12" width="50.5" height="35"/>
@@ -1096,6 +1105,9 @@
                                         <state key="normal">
                                             <imageReference key="image" image="arrowtriangle.backward" catalog="system" symbolScale="large" renderingMode="original"/>
                                         </state>
+                                        <connections>
+                                            <action selector="backButton:" destination="hkb-WH-hwI" eventType="touchUpInside" id="BZn-6H-Fe4"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="크레딧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQY-fo-kQV">
                                         <rect key="frame" x="169.5" y="12" width="75.5" height="35"/>
@@ -1222,6 +1234,7 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9o5-8g-CrN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="hkb-WH-hwI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5838" y="-513"/>
         </scene>

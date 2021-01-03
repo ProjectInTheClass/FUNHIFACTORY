@@ -151,6 +151,14 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         choiceBar.isHidden = true
         chatUpdateTimer()
     }
+    @IBAction func settingTapped(_ sender: Any) {
+        timer.invalidate()
+        let setting = storyboard?.instantiateViewController(identifier: "setting")
+        setting?.modalPresentationStyle = .fullScreen
+        present(setting!, animated: true, completion: nil)
+    }
+    @IBAction func mapTapped(_ sender: Any) {
+    }
 }
     
 
