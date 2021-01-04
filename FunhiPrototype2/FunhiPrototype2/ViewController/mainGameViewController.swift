@@ -19,6 +19,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var secondChoiceButton: UIButton!
     @IBOutlet var thirdChoiceButton: UIButton!
     @IBOutlet var map: UIView!
+    @IBOutlet var topBar: UIView!
     
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -69,6 +70,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         self.mainGameTableView.delegate = self
         self.mainGameTableView.dataSource = self
+        topBarShadow(wholeView: self.view!, buttonView: topBar, tableview:mainGameTableView)
     }
     override func viewDidAppear(_ animated: Bool) {
         chatUpdateTimer()
@@ -171,6 +173,3 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         map.removeFromSuperview()
     }
 }
-
-    
-
