@@ -7,7 +7,7 @@
 
 import Foundation
 
-var player = User(setting: playerSetting, currentEpisodes: [prologueChapter,testChapter1,testChapter2,testChapter3,testChapter4], currentCharacterInfo: currentCharactersInfo, currentAchievementInfo: [], dayIndex: 0, dayId: "day0", currentChatId: "001")
+var player = User(setting: playerSetting, currentEpisodes: [prologueChapter,testChapter1,testChapter2,testChapter3,testChapter4], currentCharacterInfo: currentCharactersInfo, currentAchievementInfo: [Achievement(name: "업적1", image: "cat", id: .charonsInterrogation , isLocked: false), Achievement(name: "업적2", image: "cat", id: .charonsInterrogation , isLocked: true), Achievement(name: "업적1", image: "cat", id: .charonsInterrogation , isLocked: true), Achievement(name: "업적3", image: "cat", id: .charonsInterrogation , isLocked: true), Achievement(name: "업적4", image: "cat", id: .charonsInterrogation , isLocked: true), Achievement(name: "업적1", image: "cat", id: .charonsInterrogation , isLocked: true), Achievement(name: "업적5", image: "cat", id: .charonsInterrogation , isLocked: true), ], dayIndex: 0, dayId: "day0", currentChatId: "001")
 
 
 var playerSetting = Setting(bgmVolume: 0.5, effectVolume: 0.0, textSpeed: 1.0)

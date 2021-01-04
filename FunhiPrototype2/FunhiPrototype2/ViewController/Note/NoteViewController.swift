@@ -6,6 +6,30 @@
 //
 
 import UIKit
+
+
+class NoteSmallGameCharacterTableViewCell: UITableViewCell {
+    @IBOutlet weak var cellBackgroundView: UIView!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        designCell()
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    func designCell() {
+        cellBackgroundView.layer.cornerRadius = 7
+        cellBackgroundView.layer.borderWidth = 3
+        cellBackgroundView.layer.borderColor = UIColor(red: 0.416, green: 0.278, blue: 0.18, alpha: 1).cgColor
+        profileImageView.layer.cornerRadius = profileImageView.frame.width/2
+    }
+}
 //------------------------------------------------------------------------------------------------
 class NoteGameCharacterTableViewCell: UITableViewCell {
 
@@ -30,6 +54,7 @@ class NoteGameCharacterTableViewCell: UITableViewCell {
         cellBackgroundView.layer.cornerRadius = 7
         cellBackgroundView.layer.borderWidth = 3
         cellBackgroundView.layer.borderColor = UIColor(red: 0.416, green: 0.278, blue: 0.18, alpha: 1).cgColor
+        profileImage.layer.cornerRadius = profileImage.frame.width/2
     }
 }
 //------------------------------------------------------------------------------------------------
@@ -61,7 +86,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     
     enum NoteTitle {
         case gameCharacters
-        case histories
+        case cases
     }
     enum NotePageNumber {
         case first
@@ -74,6 +99,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     
     //현재 수첩 페이지의 몇 번째 쪽인지(탭바) 구별해주는 변수의 Int 타입
     var currentNotePageInt: Int = 0
+    var cellHeight: Int = 300
     //현재 수첩이 인물 페이지인지, 사건 페이지인지 구별해주는 변수
     var currentNoteTitle: NoteTitle = .gameCharacters {
         didSet {
@@ -106,8 +132,8 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         if currentNoteTitle == .gameCharacters {
             rowInSectionsCount = player.currentEpisodes[currentNotePageInt].currentCharacterNote.count
         }
-        if currentNoteTitle == .histories {
-            rowInSectionsCount = player.currentEpisodes[currentNotePageInt].currentCaseNote .count
+        if currentNoteTitle == .cases {
+            rowInSectionsCount = player.currentEpisodes[currentNotePageInt].currentCharacterNote.count
         }
         return rowInSectionsCount
     }
@@ -116,33 +142,67 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         
         if currentNoteTitle == .gameCharacters {
             let currentEpisode = player.currentEpisodes[currentNotePageInt]
-            let cell = tableView.dequeueReusableCell(withIdentifier: "gameCharacterCell", for: indexPath) as! NoteGameCharacterTableViewCell
-            
-            cell.nameLabel.text = currentEpisode.currentCharacterNote[indexPath.row].name
-            cell.descriptionLabel.text = currentEpisode.currentCharacterNote[indexPath.row].description
-            cell.profileImage.image = UIImage(contentsOfFile: currentEpisode.currentCharacterNote[indexPath.row].profileImage)
-            cell.achievementLabel.text = currentEpisode.currentCharacterNote[indexPath.row].name
-            
-            if cell.nameLabel.text != "이단희" {
-                cell.achievementLabel.text = ""
+            if currentEpisode.currentCharacterNote[indexPath.row].name == "휘령0" {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "gameCharacterCell", for: indexPath) as! NoteGameCharacterTableViewCell
+                
+                cell.nameLabel.text = currentEpisode.currentCharacterNote[indexPath.row].name
+                cell.descriptionLabel.text = currentEpisode.currentCharacterNote[indexPath.row].description
+                cell.profileImage.image = UIImage(named: currentEpisode.currentCharacterNote[indexPath.row].profileImage)
+                cell.achievementLabel.text = currentEpisode.currentCharacterNote[indexPath.row].name
+                cellHeight = 267
+                if cell.nameLabel.text != "휘령0" {
+                   cell.achievementLabel.text = ""
+                }
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "smallGameCharacterCell", for: indexPath) as! NoteSmallGameCharacterTableViewCell
+                cell.nameLabel.text = currentEpisode.currentCharacterNote[indexPath.row].name
+                cell.descriptionLabel.text = currentEpisode.currentCharacterNote[indexPath.row].description
+                cell.profileImageView.image = UIImage(named: currentEpisode.currentCharacterNote[indexPath.row].profileImage)
+                cellHeight = 146
+                return cell
             }
-            return cell
         } else {
+           
             let currentEpisodes = player.currentEpisodes
             let cell = tableView.dequeueReusableCell(withIdentifier: "caseCell", for: indexPath) as! NoteCaseTableViewCell
-        
-            cell.caseNameLabel.text = currentEpisodes[currentNotePageInt].currentCaseNote[indexPath.row].title
+        let currentPage = currentEpisodes[currentNotePageInt]
+            cell.caseNameLabel.text = currentPage.currentCaseNote[indexPath.row].title
             cell.caseDescriptionLabel.text = currentEpisodes[currentNotePageInt].currentCaseNote[indexPath.row].shortDescription
+            cellHeight = 121
             return cell
         }
         
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
         if currentNoteTitle == .gameCharacters {
-            return 267
-        } else {
-            return 121
+            if player.currentEpisodes[currentNotePageInt].currentCharacterNote[indexPath.row].name == "휘령0" {
+                let dataToSend = player.currentEpisodes[currentNotePageInt].currentCharacterNote[indexPath.row]
+                performSegue(withIdentifier: "goToUserNoteView", sender: dataToSend)
+            } else {
+                performSegue(withIdentifier: "goToOtherGameCharacterView", sender: nil)
+            }
+            
+            
         }
+        if currentNoteTitle == .cases {
+            caseNameLabel.text = player.currentEpisodes[currentNotePageInt].currentCaseNote[indexPath.row].title
+            caseLongDescriptionLabel.text = player.currentEpisodes[currentNotePageInt].currentCaseNote[indexPath.row].longDescription
+            openCasePopup()
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToUserNoteView" {
+             let destination = segue.destination as! NoteUserViewController
+             if let gameCharacter = sender as? GameCharacter {
+                 destination.recievedGameCharacter = gameCharacter
+             }
+        }
+
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(cellHeight)
     }
 //------여기부터 이외 아웃렛, 액션-------------
     @IBOutlet weak var topBar: UIView!
@@ -189,13 +249,37 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var page3ButtonLine: UIView!
     @IBOutlet weak var page4ButtonLine: UIView!
     @IBOutlet weak var page5ButtonLine: UIView!
+    //--------------사건 팝업----------------
+    @IBOutlet var casePopupView: UIView!
+    @IBOutlet weak var casePopopBackgroundView: UIView!
+    @IBOutlet weak var casePopopBackgroundViewTopBar: UIView!
+    @IBOutlet weak var caseNameLabel: UILabel!
+    @IBOutlet weak var caseLongDescriptionLabel: UILabel!
+    @IBAction func exitCasePopupAction(_ sender: Any) {
+        closeCasePopup()
+    }
+    func openCasePopup() {
+        print("슈퍼뷰 : \(self.view.frame.width)*\(self.view.frame.height)")
+        casePopupView.bounds = UIScreen.main.bounds
+        
+        casePopupView.center = self.view.center
+
+        self.view.addSubview(casePopupView)
+        self.view.bringSubviewToFront(casePopupView)
+        
+    }
+    func closeCasePopup() {
+        casePopupView.removeFromSuperview()
+    }
+
+    
     
     @IBAction func openGameCharactersNoteAction(_ sender: Any) {
         currentNoteTitle = .gameCharacters
         changePageDesign()
     }
     @IBAction func openCasesNoteAction(_ sender: Any) {
-        currentNoteTitle = .histories
+        currentNoteTitle = .cases
         currentNotePageInt = 1
         changePageDesign()
     }
@@ -290,19 +374,20 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         self.currentNoteTitle = .gameCharacters
     }
     
-    func designObjects() {
+        func designObjects() {
        
-      
+        
+      //--------------상단바--------------
         topBar.layer.shadowColor = UIColor(red: 0, green: 0.11, blue: 0.208, alpha: 1).cgColor
         topBar.layer.shadowOpacity = 1
         topBar.layer.shadowRadius = 26
         topBar.layer.shadowOffset = CGSize(width: 0, height: 12)
-        
+        //--------------수첩 --------------
         noteBackgroundView.layer.backgroundColor = UIColor(red: 0.749, green: 0.631, blue: 0.455, alpha: 1).cgColor
         noteBackgroundView.layer.cornerRadius = 5
         noteBackgroundView.layer.borderWidth = 2
         noteBackgroundView.layer.borderColor = UIColor(red: 0.254, green: 0.205, blue: 0.13, alpha: 1).cgColor
-        
+        //--------------수첩 인물/사건 북마크-----
         gameCharactersBookmarkView.layer.backgroundColor = UIColor(red: 0.749, green: 0.631, blue: 0.455, alpha: 1).cgColor
         gameCharactersBookmarkView.layer.cornerRadius = 5
         gameCharactersBookmarkView.layer.borderWidth = 2
@@ -312,7 +397,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         casesBookmarkView.layer.cornerRadius = 5
         casesBookmarkView.layer.borderWidth = 2
         casesBookmarkView.layer.borderColor = UIColor(red: 0.254, green: 0.205, blue: 0.13, alpha: 1).cgColor
-       
+        //--------수첩 페이지 버튼, 하단 줄----------
         page1Button.setTitleColor(UIColor(red: 0.312, green: 0.208, blue: 0.134, alpha: 1), for: .normal)
         page2Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
         page3Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
@@ -323,7 +408,12 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         page3ButtonLine.backgroundColor = .clear
         page4ButtonLine.backgroundColor = .clear
         page5ButtonLine.backgroundColor = .clear
+        //사건/인물 페이지 바뀔 때를 대응하는 함슈
         changePageDesign()
+        //--------사건 팝업------------------
+        casePopopBackgroundView.layer.cornerRadius = 5
+        casePopopBackgroundView.layer.borderWidth = 2
+        casePopopBackgroundView.layer.borderColor = UIColor(red: 0.254, green: 0.205, blue: 0.13, alpha: 1).cgColor
     }
     /*
     // MARK: - Navigation

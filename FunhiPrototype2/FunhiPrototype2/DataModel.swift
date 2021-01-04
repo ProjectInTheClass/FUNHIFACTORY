@@ -104,6 +104,17 @@ struct User {
     //var timellne: nil
     var currentCharacterInfo: [String:GameCharacter]
     var currentAchievementInfo: [Achievement]
+    var clearedAchievementInfo: Int {
+        get {
+            var cleardCount = Int()
+            for achievement in self.currentAchievementInfo {
+                if !achievement.isLocked {
+                    cleardCount += 1
+                }
+            }
+            return cleardCount
+        }
+    }
     var dayIndex:Int
     var dayId:String
     var currentChatId:String
