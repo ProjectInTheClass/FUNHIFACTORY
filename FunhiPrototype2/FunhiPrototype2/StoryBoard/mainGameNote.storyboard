@@ -707,12 +707,13 @@
                                                 <color key="backgroundColor" red="0.74901960779999999" green="0.63137254899999995" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <outlet property="achievementLabel" destination="6Sw-ux-6qi" id="ThY-wB-MZ0"/>
+                                                    <outlet property="cellBackgroundView" destination="qHI-iL-wxK" id="t9E-YR-tmJ"/>
                                                     <outlet property="descriptionLabel" destination="Fd9-6J-VnK" id="zTG-Nm-Xvz"/>
                                                     <outlet property="nameLabel" destination="Nbi-ly-7iH" id="oXQ-kl-95C"/>
                                                     <outlet property="profileImage" destination="Qq5-44-dft" id="eJj-88-GgG"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="121" id="esj-11-0K1" customClass="NoteHistoryTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="caseCell" rowHeight="121" id="esj-11-0K1" customClass="NoteCaseTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="295" width="356" height="121"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="esj-11-0K1" id="EKI-yR-swd">
@@ -807,6 +808,7 @@
                                                 <connections>
                                                     <outlet property="caseDescriptionLabel" destination="eql-CD-5Tv" id="Bcy-k1-PW9"/>
                                                     <outlet property="caseNameLabel" destination="ZoO-0L-TIC" id="Xi4-fv-K2J"/>
+                                                    <outlet property="cellBackgroundView" destination="WOU-2w-1M0" id="m51-Oa-6yd"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -824,24 +826,24 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JHP-wh-Scj">
-                                <rect key="frame" x="21" y="157.5" width="79" height="10"/>
+                                <rect key="frame" x="21" y="157.5" width="79" height="2"/>
                                 <color key="backgroundColor" red="0.74901960779999999" green="0.63137254899999995" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="79" id="A1D-1F-H0X"/>
-                                    <constraint firstAttribute="height" constant="10" id="cKX-kG-ZZU"/>
+                                    <constraint firstAttribute="height" constant="2" id="cKX-kG-ZZU"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQD-HF-ygs">
+                                <rect key="frame" x="114" y="157.5" width="79" height="2"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="P6D-Bh-cVx"/>
+                                    <constraint firstAttribute="width" constant="79" id="ZdB-a3-X8b"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TQl-yM-SF7" userLabel="TopBarBox">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <color key="backgroundColor" red="0.12156862745098039" green="0.20000000000000001" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQD-HF-ygs">
-                                <rect key="frame" x="114" y="157.5" width="79" height="10"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="10" id="P6D-Bh-cVx"/>
-                                    <constraint firstAttribute="width" constant="79" id="ZdB-a3-X8b"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="27M-Rf-jA5"/>
@@ -870,12 +872,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="hOh-gk-xn7"/>
                     <connections>
+                        <outlet property="casesBookmarkLineView" destination="HQD-HF-ygs" id="f0j-pi-HO6"/>
+                        <outlet property="casesBookmarkView" destination="pbv-vX-W2l" id="bKd-vp-ZXM"/>
+                        <outlet property="gameCharactersBookmarkLineView" destination="JHP-wh-Scj" id="Ize-aq-9ay"/>
+                        <outlet property="gameCharactersBookmarkView" destination="H6p-TD-Y2L" id="b7l-JR-kFo"/>
                         <outlet property="noteBackgroundView" destination="uAP-J4-yap" id="ZnJ-LY-YBI"/>
-                        <outlet property="noteCharactersBookmarkView" destination="H6p-TD-Y2L" id="NVb-L8-F2I"/>
-                        <outlet property="noteEpisodesBookmarkView" destination="pbv-vX-W2l" id="RnG-yU-Vb9"/>
                         <outlet property="noteTableView" destination="sO5-nK-n4B" id="gQT-vB-Noh"/>
                         <outlet property="page1Button" destination="RAK-61-sUu" id="YcD-PT-etZ"/>
                         <outlet property="page1ButtonLine" destination="UBS-Wf-3Lz" id="xtm-gG-q9b"/>
+                        <outlet property="page1ButtonStackView" destination="7xL-e4-Eff" id="VmR-RS-vTl"/>
                         <outlet property="page2Button" destination="djd-Dz-Xag" id="BOd-Kb-SGd"/>
                         <outlet property="page2ButtonLine" destination="KDb-Sj-C7g" id="I8y-Dc-oxf"/>
                         <outlet property="page3Button" destination="JHK-WI-kBi" id="oWn-PI-GfX"/>
