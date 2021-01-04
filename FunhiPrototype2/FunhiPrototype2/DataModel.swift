@@ -21,7 +21,7 @@ struct Setting {
 
 
 
-struct NoteHistory {
+struct NoteCase {
     //구별 위한 ID
     let id: String
     let title: String
@@ -191,14 +191,14 @@ struct Episode {
     // 해당 사건의 수첩에 적힐 캐릭터들
     let currentCharacterNote: [GameCharacter]
     // 해당 사건의 수첩에 적힐 사건들
-    let currentHistoryNote: [NoteHistory]
+    let currentCaseNote: [NoteCase]
 }
 
 // 더미데이터 담을 스트럭처
 // 총 스토리 본문, 모든 히스토리, 모든 업적, 전체 인물 정보
 struct GameData {
     let stories: [String:Episode]
-    let histories: [Int:NoteHistory]
+    let histories: [Int:NoteCase]
     let achivements: [Int:Achievement]
     let gameCharacters: [String:GameCharacter]
 }
