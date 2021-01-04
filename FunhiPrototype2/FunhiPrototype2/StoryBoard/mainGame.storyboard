@@ -67,7 +67,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.12301286309999999" green="0.1987074912" blue="0.27059721949999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="hWN-b4-dw4" secondAttribute="trailing" constant="17" id="7sj-xM-y21"/>
                                     <constraint firstAttribute="width" constant="414" id="M73-NK-ilo"/>
@@ -159,7 +159,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="상대가 말하는 텍스트입니다." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Tt-Ft-rBe">
-                                                    <rect key="frame" x="93" y="49.5" width="209.5" height="45"/>
+                                                    <rect key="frame" x="93" y="49.5" width="201" height="45"/>
                                                     <color key="backgroundColor" red="0.94111365079999998" green="0.92940670250000001" blue="0.92941218609999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="266" id="eXW-kl-eq5"/>
@@ -227,7 +227,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="상대가 말하는 텍스트입니다." textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRY-7g-041">
-                                                    <rect key="frame" x="111.5" y="46.5" width="209.5" height="45"/>
+                                                    <rect key="frame" x="120" y="46.5" width="201" height="45"/>
                                                     <color key="backgroundColor" red="0.56289994720000003" green="0.71570724249999995" blue="0.83138889069999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="266" id="GJU-4J-GOy"/>
@@ -442,13 +442,16 @@
                                 <constraints>
                                     <constraint firstItem="Hj5-XG-3xt" firstAttribute="leading" secondItem="yGJ-yh-i0j" secondAttribute="leading" constant="12" id="2uJ-sP-ef5"/>
                                     <constraint firstAttribute="width" constant="414" id="AqE-wj-QCQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="I0W-ax-Vrk" secondAttribute="trailing" id="Jwv-zE-gOk"/>
                                     <constraint firstItem="bc3-xc-fYC" firstAttribute="top" secondItem="yGJ-yh-i0j" secondAttribute="top" id="KEw-Vo-ltx"/>
                                     <constraint firstAttribute="height" constant="158" id="OKS-a3-hm7"/>
                                     <constraint firstAttribute="bottom" secondItem="I0W-ax-Vrk" secondAttribute="bottom" id="Puj-66-FdE"/>
                                     <constraint firstAttribute="trailing" secondItem="I0W-ax-Vrk" secondAttribute="trailing" id="SbS-JA-eIK"/>
                                     <constraint firstItem="bc3-xc-fYC" firstAttribute="centerX" secondItem="yGJ-yh-i0j" secondAttribute="centerX" id="bca-ci-1CY"/>
                                     <constraint firstAttribute="trailing" secondItem="Hj5-XG-3xt" secondAttribute="trailing" constant="12" id="gdE-lh-tyw"/>
+                                    <constraint firstAttribute="bottom" secondItem="I0W-ax-Vrk" secondAttribute="bottom" id="k6X-fz-VI2"/>
                                     <constraint firstItem="I0W-ax-Vrk" firstAttribute="leading" secondItem="yGJ-yh-i0j" secondAttribute="leading" id="rUZ-3I-r2K"/>
+                                    <constraint firstItem="I0W-ax-Vrk" firstAttribute="leading" secondItem="yGJ-yh-i0j" secondAttribute="leading" id="vgZ-it-tRA"/>
                                     <constraint firstAttribute="bottom" secondItem="Hj5-XG-3xt" secondAttribute="bottom" constant="16" id="xep-Lg-QEa"/>
                                 </constraints>
                             </view>
@@ -480,12 +483,14 @@
                     <navigationItem key="navigationItem" id="4kw-no-1Wq"/>
                     <connections>
                         <outlet property="choiceBar" destination="yGJ-yh-i0j" id="yG0-1B-Ge8"/>
+                        <outlet property="choiceHeight" destination="OKS-a3-hm7" id="lLz-4x-yJF"/>
                         <outlet property="firstChoiceButton" destination="oaU-hu-WsL" id="8Rp-Cc-EeC"/>
                         <outlet property="godChat" destination="dST-uA-44i" id="lwx-ZL-63R"/>
                         <outlet property="mainGameTableView" destination="1X2-dM-NgP" id="Q04-Oq-ZND"/>
                         <outlet property="map" destination="IzH-CN-CzB" id="sdb-Zd-L4b"/>
                         <outlet property="secondChoiceButton" destination="2wt-tf-F85" id="6F3-Eg-DBd"/>
                         <outlet property="thirdChoiceButton" destination="Jtf-rJ-0Sh" id="fcN-0H-ctT"/>
+                        <outlet property="topBar" destination="hr2-FU-J54" id="vd7-Qb-21X"/>
                         <segue destination="NYb-GR-gaT" kind="show" id="tkT-wW-Rbo"/>
                     </connections>
                 </viewController>
@@ -1657,7 +1662,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="60"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="신" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezg-Q9-Afg">
-                                                    <rect key="frame" x="177.5" y="16" width="21" height="28"/>
+                                                    <rect key="frame" x="177" y="16" width="22" height="28"/>
                                                     <fontDescription key="fontDescription" name="Cafe24Ohsquare" family="Cafe24 Ohsquare" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
