@@ -13,6 +13,9 @@ class NoteSmallGameCharacterTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var likabilityBackgroundView: UIView!
+    @IBOutlet weak var likabilityProgressView: UIView!
+    @IBOutlet weak var likabilityProgressWidth: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
         designCell()
@@ -28,8 +31,17 @@ class NoteSmallGameCharacterTableViewCell: UITableViewCell {
         cellBackgroundView.layer.borderWidth = 3
         cellBackgroundView.layer.borderColor = UIColor(red: 0.416, green: 0.278, blue: 0.18, alpha: 1).cgColor
         profileImageView.layer.cornerRadius = profileImageView.frame.width/2
+        
+        likabilityBackgroundView.backgroundColor = .white
+        likabilityBackgroundView.layer.cornerRadius = likabilityBackgroundView.frame.height/2
+        likabilityBackgroundView.layer.borderWidth = 0.7
+        likabilityBackgroundView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        likabilityProgressView.layer.backgroundColor = UIColor(red: 0.812, green: 0.311, blue: 0.311, alpha: 1).cgColor
+        likabilityProgressView.layer.cornerRadius = likabilityBackgroundView.frame.height/2
+        likabilityProgressView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
     }
 }
+
 //------------------------------------------------------------------------------------------------
 class NoteGameCharacterTableViewCell: UITableViewCell {
 
@@ -142,7 +154,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         
         if currentNoteTitle == .gameCharacters {
             let currentEpisode = player.currentEpisodes[currentNotePageInt]
-            if currentEpisode.currentCharacterNote[indexPath.row].name == "휘령0" {
+            if currentEpisode.currentCharacterNote[indexPath.row].name == "이단희" || currentEpisode.currentCharacterNote[indexPath.row].name == "휘령" {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "gameCharacterCell", for: indexPath) as! NoteGameCharacterTableViewCell
                 
                 cell.nameLabel.text = currentEpisode.currentCharacterNote[indexPath.row].name
@@ -150,7 +162,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 cell.profileImage.image = UIImage(named: currentEpisode.currentCharacterNote[indexPath.row].profileImage)
                 cell.achievementLabel.text = currentEpisode.currentCharacterNote[indexPath.row].name
                 cellHeight = 267
-                if cell.nameLabel.text != "휘령0" {
+                if cell.nameLabel.text != "휘령" {
                    cell.achievementLabel.text = ""
                 }
                 return cell
@@ -159,6 +171,8 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 cell.nameLabel.text = currentEpisode.currentCharacterNote[indexPath.row].name
                 cell.descriptionLabel.text = currentEpisode.currentCharacterNote[indexPath.row].description
                 cell.profileImageView.image = UIImage(named: currentEpisode.currentCharacterNote[indexPath.row].profileImage)
+                cell.likabilityProgressWidth.constant = cell.likabilityBackgroundView.frame.width*CGFloat(player.currentEpisodes[currentNotePageInt].currentCharacterNote[indexPath.row].likability)/100
+                        
                 cellHeight = 146
                 return cell
             }
@@ -177,12 +191,15 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
         if currentNoteTitle == .gameCharacters {
-            if player.currentEpisodes[currentNotePageInt].currentCharacterNote[indexPath.row].name == "휘령0" {
-                let dataToSend = player.currentEpisodes[currentNotePageInt].currentCharacterNote[indexPath.row]
+            let dataToSend = player.currentEpisodes[currentNotePageInt].currentCharacterNote[indexPath.row]
+            if player.currentEpisodes[currentNotePageInt].currentCharacterNote[indexPath.row].name == "이단희" {
                 performSegue(withIdentifier: "goToUserNoteView", sender: dataToSend)
+            } else if player.currentEpisodes[currentNotePageInt].currentCharacterNote[indexPath.row].name == "휘령" {
+                performSegue(withIdentifier: "goToHwiryeongNoteView", sender: dataToSend)
             } else {
-                performSegue(withIdentifier: "goToOtherGameCharacterView", sender: nil)
+                performSegue(withIdentifier: "goToOtherGameCharacterView", sender: dataToSend)
             }
+            
             
             
         }
@@ -199,7 +216,19 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                  destination.recievedGameCharacter = gameCharacter
              }
         }
-
+        if segue.identifier == "goToOtherGameCharacterView" {
+             let destination = segue.destination as! NoteGameCharacterViewController
+             if let gameCharacter = sender as? GameCharacter {
+                 destination.recievedGameCharacter = gameCharacter
+             }
+        }
+        if segue.identifier == "goToHwiryeongNoteView" {
+             let destination = segue.destination as! NoteHeeryeongViewController
+             if let gameCharacter = sender as? GameCharacter {
+                 destination.recievedGameCharacter = gameCharacter
+             }
+        }
+        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(cellHeight)
@@ -411,9 +440,12 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         //사건/인물 페이지 바뀔 때를 대응하는 함슈
         changePageDesign()
         //--------사건 팝업------------------
-        casePopopBackgroundView.layer.cornerRadius = 5
+        casePopopBackgroundView.layer.cornerRadius = 7
         casePopopBackgroundView.layer.borderWidth = 2
         casePopopBackgroundView.layer.borderColor = UIColor(red: 0.254, green: 0.205, blue: 0.13, alpha: 1).cgColor
+            
+            casePopopBackgroundViewTopBar.layer.cornerRadius = 7
+            casePopopBackgroundViewTopBar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
     /*
     // MARK: - Navigation

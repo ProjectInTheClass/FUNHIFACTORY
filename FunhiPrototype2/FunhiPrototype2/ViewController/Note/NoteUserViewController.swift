@@ -9,17 +9,25 @@ import UIKit
 
 class NoteCollectionViewReusableCell: UICollectionViewCell {
     @IBOutlet weak var gameCharacteBackgroundImageView: UIImageView!
-    @IBOutlet weak var gameCharacteProfileImageView: UIImageView!
+    @IBOutlet weak var gameCharacterProfileImageView: UIImageView!
     @IBOutlet weak var gameCharacterDescriptionLabel: UILabel!
     @IBOutlet weak var achievementLabel: UILabel!
     
-    override class func awakeFromNib() {
-        
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        designCell()
+    }
+   
+    func designCell() {
+        gameCharacterProfileImageView.layer.cornerRadius = gameCharacterProfileImageView.frame.width/2
+        gameCharacterProfileImageView.layer.borderWidth = 3
+        gameCharacterProfileImageView.layer.backgroundColor = UIColor(red: 0.22, green: 0.325, blue: 0.404, alpha: 1).cgColor
     }
 }
 class NoteCollectionViewLeftCell: UICollectionViewCell {
     @IBOutlet weak var achievementImageView: UIImageView!
     @IBOutlet weak var achievementTitleLabel: UILabel!
+   
     
     override class func awakeFromNib() {
         
@@ -75,7 +83,7 @@ class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollec
             }
             if let recievedGameCharacter = recievedGameCharacter {
                 cell.gameCharacteBackgroundImageView.image = UIImage(named: recievedGameCharacter.backGroundImage)
-                cell.gameCharacteProfileImageView.image = UIImage(named: recievedGameCharacter.profileImage)
+                cell.gameCharacterProfileImageView.image = UIImage(named: recievedGameCharacter.profileImage)
                 cell.gameCharacterDescriptionLabel.text = recievedGameCharacter.description
                 cell.achievementLabel.text = "\(player.clearedAchievementInfo)/\(player.currentAchievementInfo.count)"
             }
@@ -102,6 +110,9 @@ class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollec
         self.navigationController?.popViewController(animated: true)
     }
     
+    func designObjectis() {
+        
+    }
     /*
     // MARK: - Navigation
 
