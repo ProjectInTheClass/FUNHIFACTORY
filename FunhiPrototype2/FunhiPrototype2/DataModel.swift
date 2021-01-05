@@ -20,20 +20,43 @@ struct Setting {
 // 히스토리: 키렐이 매일 꾸는 꿈 내용.
 
 
+//수첩 사건
 
-struct NoteCase {
+enum NoteCaseID {
+    case case101
+    case case201
+    case case301
+    case case401
+}
+class NoteCase {
     //구별 위한 ID
-    let id: String
+    let id: NoteCaseID
     let title: String
     let shortDescription: String
     let longDescription: String
     var isLocked: Bool
+    
+    init(id: NoteCaseID, title: String, shortDescription: String, longDescription: String, isLocked: Bool) {
+        self.id = id
+        self.title = title
+        self.shortDescription = shortDescription
+        self.longDescription = longDescription
+        self.isLocked = isLocked
+    }
 }
 
 //------------------------------------업적------------------------------------
-//업적 : 게임 도전 과제 - 특정 대사를 들으면 달성됨. 해당 날(n일차) 마지막 대사 나오고 도전과제 달성되었다는 상단 팝업이 화면에 뜸
-// 히스토리랑 마찬가지로 한정된 갯수기 때문에 동일 코드 구조 줌
+
+//주인공 업적
 // 프라퍼티 설명: 업적 이름, 해당 이미지, 글
+
+enum AchievementID {
+    case achievement1
+    case achievement2
+    case achievement3
+    case achievement4
+}
+
 struct Achievement {
     let name: String
     let image: String
@@ -41,29 +64,42 @@ struct Achievement {
     var isLocked: Bool
 }
 
-enum AchievementID {
-    case charonsInterrogation
-    case firstComradeArgo
-    case likeAWelllAgedWhiskey
-    case whereIBelong
-    
- 
-        
-}
+
 
 //------------------------------------게임 캐릭터 : 키렐 포함 모든 인물들------------------------------------
+//수첩 인물 정보
+enum InfomationID {
+    case hwiryeong1
+    case hwiryeong2
+    case hwiryeong3
+    case hwiryeong4
+    case hwiryeong5
+}
 class Infomation {
+    var infomationID: InfomationID
     var isLocked: Bool
     var text: String
     
-    init(isLocked: Bool, text: String) {
+    init(infomationID: InfomationID, isLocked: Bool, text: String) {
+        self.infomationID = infomationID
         self.isLocked = isLocked
         self.text = text
     }
 }
 // 키렐 포함 인물들 정보를 담기 위한 스트럭처
 // 프라퍼티 설명:  인물 이름, 대표 이미지, 키렐이 관찰기록한 듯한 내용의 해당 인물 정보들(인물상세페이지에 있음), 시련 미션, 호감도
+//인물
+
+enum GameCharacterID {
+    case danhee
+    case hwiryeong
+    case hwiryeong1
+    case hwiryeong2
+    case hwiryeong3
+    case hwiryeong4
+}
 class GameCharacter {
+    let gameCharacterID: GameCharacterID
     let name: String
     let profileImage: String
     let backGroundImage : String
@@ -73,7 +109,8 @@ class GameCharacter {
     var likability: Int
     var isLocked: Bool
     
-    init(name: String, profileImage: String ,backGroundImage: String, description: String, infomation: [Infomation], likability:Int, isLocked: Bool ) {
+    init(gameCharacterID: GameCharacterID, name: String, profileImage: String ,backGroundImage: String, description: String, infomation: [Infomation], likability:Int, isLocked: Bool ) {
+        self.gameCharacterID = gameCharacterID
         self.name = name
         self.profileImage = profileImage
         self.backGroundImage = backGroundImage
@@ -152,6 +189,10 @@ struct Chat {
     let type: ChatType
     let who: GameCharacter
     let characterFace : Bool
+    let achievementToUnlock: AchievementID?
+    let infomationToUnlock: InfomationID?
+    let gameCharacterToUnlock: GameCharacterID?
+    let caseToUnlock: NoteCaseID?
 }
 
 
@@ -200,9 +241,9 @@ struct Episode {
     //(예시 : 대사)
     let storyBlocks: [String:BlockOfDayEpisode]
     // 해당 사건의 수첩에 적힐 캐릭터들
-    let currentCharacterNote: [GameCharacter]
+    var currentCharacterNote: [GameCharacter]
     // 해당 사건의 수첩에 적힐 사건들
-    let currentCaseNote: [NoteCase]
+    var currentCaseNote: [NoteCase]
 }
 
 // 더미데이터 담을 스트럭처
@@ -214,4 +255,63 @@ struct GameData {
     let gameCharacters: [String:GameCharacter]
 }
 
+//mainGame에서 currentChat 정보 읽어서 알맞는 주인공 업적 해금하기
+func checkAchievementInChat() {
+    let currentChatAchievement = currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].achievementToUnlock
+    if currentChatAchievement != nil {
+        for achievement in player.currentAchievementInfo.enumerated() {
+            if achievement.element.id == currentChatAchievement {
+                player.currentAchievementInfo[achievement.offset].isLocked = false
+                print("업적 '\(player.currentAchievementInfo[achievement.offset].name)' 달성됨")
+                
+            }
+        }
+    }
+}
+
+//mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 등장인물 해금하기
+func checkGameCharacterInChat() {
+    let currentChatGameCharacter = currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].gameCharacterToUnlock
+    if currentChatGameCharacter != nil {
+        for gameCharacter in currentDay().currentCharacterNote.enumerated() {
+            if gameCharacter.element.gameCharacterID == currentChatGameCharacter {
+                currentDay().currentCharacterNote[gameCharacter.offset].isLocked = false
+                print("캐릭터 '\(testChapter1.currentCharacterNote[0].isLocked)' 해금됨")
+                
+            }
+        }
+    }
+}
+
+//mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 사건 해금하기
+func checkCaseInChat() {
+    let currentChatCase = currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].caseToUnlock
+    if currentChatCase != nil {
+        for caseNote in currentDay().currentCaseNote.enumerated() {
+            if caseNote.element.id == currentChatCase {
+                currentDay().currentCharacterNote[caseNote.offset].isLocked = false
+                print("사건 노트 '\(testChapter1.currentCaseNote[0].isLocked)' 해금됨")
+                
+            }
+        }
+    }
+}
+
+//mainGame에서 currentChat 정보 읽어서 알맞는 등장인물의 infomation 해금하기
+func checkgameCharacterInfomationInChat() {
+    let currentChatInfomation = currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].infomationToUnlock
+    if currentChatInfomation != nil {
+        for gameCharacter in currentDay().currentCharacterNote.enumerated() {
+            for infomation in gameCharacter.element.infomation.enumerated() {
+                if infomation.element.infomationID == currentChatInfomation {
+                    currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked = false
+                    print("사건 노트 '\(currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked)' 해금됨")
+                }
+            }
+        }
+    }
+}
+
+
 //일단 만들어놓은 인물들 샘플 정보 변수입니다.
+
