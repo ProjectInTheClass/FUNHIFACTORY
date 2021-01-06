@@ -15,6 +15,7 @@ class NoteSmallGameCharacterTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var likabilityBackgroundView: UIView!
     @IBOutlet weak var likabilityProgressView: UIView!
+    @IBOutlet weak var lockedView: UIView!
     @IBOutlet weak var likabilityProgressWidth: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +28,7 @@ class NoteSmallGameCharacterTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func designCell() {
+        lockedView.layer.cornerRadius = 7
         cellBackgroundView.layer.cornerRadius = 7
         cellBackgroundView.layer.borderWidth = 3
         cellBackgroundView.layer.borderColor = UIColor(red: 0.416, green: 0.278, blue: 0.18, alpha: 1).cgColor
@@ -51,6 +53,7 @@ class NoteGameCharacterTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var achievementLabel: UILabel!
+    @IBOutlet weak var lockedView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -63,6 +66,7 @@ class NoteGameCharacterTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func designCell() {
+        lockedView.layer.cornerRadius = 7
         cellBackgroundView.layer.cornerRadius = 7
         cellBackgroundView.layer.borderWidth = 3
         cellBackgroundView.layer.borderColor = UIColor(red: 0.416, green: 0.278, blue: 0.18, alpha: 1).cgColor
@@ -75,6 +79,7 @@ class NoteCaseTableViewCell: UITableViewCell {
     @IBOutlet weak var caseNameLabel: UILabel!
     @IBOutlet weak var caseDescriptionLabel: UILabel!
     @IBOutlet weak var cellBackgroundView: UIView!
+    @IBOutlet weak var lockedView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -151,23 +156,35 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        //인물 창일 때
         if currentNoteTitle == .gameCharacters {
             let currentEpisode = player.currentEpisodes[currentNotePageInt]
+            
+            //큰 인물 셀
             if currentEpisode.currentCharacterNote[indexPath.row].name == "이단희" || currentEpisode.currentCharacterNote[indexPath.row].name == "휘령" {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "gameCharacterCell", for: indexPath) as! NoteGameCharacterTableViewCell
-                
+                cell.selectionStyle = .none
                 cell.nameLabel.text = currentEpisode.currentCharacterNote[indexPath.row].name
                 cell.descriptionLabel.text = currentEpisode.currentCharacterNote[indexPath.row].description
                 cell.profileImage.image = UIImage(named: currentEpisode.currentCharacterNote[indexPath.row].profileImage)
                 cell.achievementLabel.text = currentEpisode.currentCharacterNote[indexPath.row].name
+                print(currentEpisode.currentCharacterNote[indexPath.row].isLocked )
+                if currentEpisode.currentCharacterNote[indexPath.row].isLocked {
+                    cell.lockedView.isHidden = false
+                } else {
+                    cell.lockedView.isHidden = true
+                    
+                }
                 cellHeight = 267
                 if cell.nameLabel.text != "휘령" {
                    cell.achievementLabel.text = ""
                 }
                 return cell
+            // 작은 인물 셀
             } else {
+                
                 let cell = tableView.dequeueReusableCell(withIdentifier: "smallGameCharacterCell", for: indexPath) as! NoteSmallGameCharacterTableViewCell
+                cell.selectionStyle = .none
                 cell.nameLabel.text = currentEpisode.currentCharacterNote[indexPath.row].name
                 cell.descriptionLabel.text = currentEpisode.currentCharacterNote[indexPath.row].description
                 cell.profileImageView.image = UIImage(named: currentEpisode.currentCharacterNote[indexPath.row].profileImage)
@@ -176,11 +193,13 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 cellHeight = 146
                 return cell
             }
+        //사건 창일 때
         } else {
            
             let currentEpisodes = player.currentEpisodes
             let cell = tableView.dequeueReusableCell(withIdentifier: "caseCell", for: indexPath) as! NoteCaseTableViewCell
-        let currentPage = currentEpisodes[currentNotePageInt]
+            cell.selectionStyle = .none
+            let currentPage = currentEpisodes[currentNotePageInt]
             cell.caseNameLabel.text = currentPage.currentCaseNote[indexPath.row].title
             cell.caseDescriptionLabel.text = currentEpisodes[currentNotePageInt].currentCaseNote[indexPath.row].shortDescription
             cellHeight = 121
@@ -189,13 +208,17 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+        //플레이어 해금된 상태야 셀 눌림.
+        guard !player.currentEpisodes[currentNotePageInt].currentCharacterNote[indexPath.row].isLocked else { return }
         if currentNoteTitle == .gameCharacters {
             let dataToSend = player.currentEpisodes[currentNotePageInt].currentCharacterNote[indexPath.row]
+            //이단희 셀일 때
             if player.currentEpisodes[currentNotePageInt].currentCharacterNote[indexPath.row].name == "이단희" {
                 performSegue(withIdentifier: "goToUserNoteView", sender: dataToSend)
+            //휘령 셀일 때
             } else if player.currentEpisodes[currentNotePageInt].currentCharacterNote[indexPath.row].name == "휘령" {
                 performSegue(withIdentifier: "goToHwiryeongNoteView", sender: dataToSend)
+            // 그 외 인물 셀일 때
             } else {
                 performSegue(withIdentifier: "goToOtherGameCharacterView", sender: dataToSend)
             }
@@ -206,7 +229,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         if currentNoteTitle == .cases {
             caseNameLabel.text = player.currentEpisodes[currentNotePageInt].currentCaseNote[indexPath.row].title
             caseLongDescriptionLabel.text = player.currentEpisodes[currentNotePageInt].currentCaseNote[indexPath.row].longDescription
-            openCasePopup()
+            popupViewOn(priviousScale: 0.6, afterScale: 1.0)
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -285,22 +308,10 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var caseNameLabel: UILabel!
     @IBOutlet weak var caseLongDescriptionLabel: UILabel!
     @IBAction func exitCasePopupAction(_ sender: Any) {
-        closeCasePopup()
+        popupViewOff(priviousScale: 1.0, afterScale: 0.3)
     }
-    func openCasePopup() {
-        print("슈퍼뷰 : \(self.view.frame.width)*\(self.view.frame.height)")
-        casePopupView.bounds = UIScreen.main.bounds
-        
-        casePopupView.center = self.view.center
-
-        self.view.addSubview(casePopupView)
-        self.view.bringSubviewToFront(casePopupView)
-        
-    }
-    func closeCasePopup() {
-        casePopupView.removeFromSuperview()
-    }
-
+   
+  
     
     
     @IBAction func openGameCharactersNoteAction(_ sender: Any) {
@@ -401,52 +412,11 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     }
     override func viewWillAppear(_ animated: Bool) {
         self.currentNoteTitle = .gameCharacters
+        changePageDesign()
+        noteTableView.reloadData()
     }
     
-        func designObjects() {
        
-        
-      //--------------상단바--------------
-        topBar.layer.shadowColor = UIColor(red: 0, green: 0.11, blue: 0.208, alpha: 1).cgColor
-        topBar.layer.shadowOpacity = 1
-        topBar.layer.shadowRadius = 26
-        topBar.layer.shadowOffset = CGSize(width: 0, height: 12)
-        //--------------수첩 --------------
-        noteBackgroundView.layer.backgroundColor = UIColor(red: 0.749, green: 0.631, blue: 0.455, alpha: 1).cgColor
-        noteBackgroundView.layer.cornerRadius = 5
-        noteBackgroundView.layer.borderWidth = 2
-        noteBackgroundView.layer.borderColor = UIColor(red: 0.254, green: 0.205, blue: 0.13, alpha: 1).cgColor
-        //--------------수첩 인물/사건 북마크-----
-        gameCharactersBookmarkView.layer.backgroundColor = UIColor(red: 0.749, green: 0.631, blue: 0.455, alpha: 1).cgColor
-        gameCharactersBookmarkView.layer.cornerRadius = 5
-        gameCharactersBookmarkView.layer.borderWidth = 2
-        gameCharactersBookmarkView.layer.borderColor = UIColor(red: 0.254, green: 0.205, blue: 0.13, alpha: 1).cgColor
-        
-        casesBookmarkView.layer.backgroundColor = UIColor(red: 0.492, green: 0.406, blue: 0.279, alpha: 1).cgColor
-        casesBookmarkView.layer.cornerRadius = 5
-        casesBookmarkView.layer.borderWidth = 2
-        casesBookmarkView.layer.borderColor = UIColor(red: 0.254, green: 0.205, blue: 0.13, alpha: 1).cgColor
-        //--------수첩 페이지 버튼, 하단 줄----------
-        page1Button.setTitleColor(UIColor(red: 0.312, green: 0.208, blue: 0.134, alpha: 1), for: .normal)
-        page2Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-        page3Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-        page4Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-        page5Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-        page1ButtonLine.backgroundColor = .black
-        page2ButtonLine.backgroundColor = .clear
-        page3ButtonLine.backgroundColor = .clear
-        page4ButtonLine.backgroundColor = .clear
-        page5ButtonLine.backgroundColor = .clear
-        //사건/인물 페이지 바뀔 때를 대응하는 함슈
-        changePageDesign()
-        //--------사건 팝업------------------
-        casePopopBackgroundView.layer.cornerRadius = 7
-        casePopopBackgroundView.layer.borderWidth = 2
-        casePopopBackgroundView.layer.borderColor = UIColor(red: 0.254, green: 0.205, blue: 0.13, alpha: 1).cgColor
-            
-            casePopopBackgroundViewTopBar.layer.cornerRadius = 7
-            casePopopBackgroundViewTopBar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-    }
     /*
     // MARK: - Navigation
 
@@ -457,4 +427,89 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     }
     */
 
+
+    
+}
+extension NoteViewController {
+    
+    func designObjects() {
+   
+  //--------------상단바--------------
+    topBar.layer.shadowColor = UIColor(red: 0, green: 0.11, blue: 0.208, alpha: 1).cgColor
+    topBar.layer.shadowOpacity = 1
+    topBar.layer.shadowRadius = 26
+    topBar.layer.shadowOffset = CGSize(width: 0, height: 12)
+    //--------------수첩 --------------
+    noteBackgroundView.layer.backgroundColor = UIColor(red: 0.749, green: 0.631, blue: 0.455, alpha: 1).cgColor
+    noteBackgroundView.layer.cornerRadius = 5
+    noteBackgroundView.layer.borderWidth = 2
+    noteBackgroundView.layer.borderColor = UIColor(red: 0.254, green: 0.205, blue: 0.13, alpha: 1).cgColor
+    //--------------수첩 인물/사건 북마크-----
+    gameCharactersBookmarkView.layer.backgroundColor = UIColor(red: 0.749, green: 0.631, blue: 0.455, alpha: 1).cgColor
+    gameCharactersBookmarkView.layer.cornerRadius = 5
+    gameCharactersBookmarkView.layer.borderWidth = 2
+    gameCharactersBookmarkView.layer.borderColor = UIColor(red: 0.254, green: 0.205, blue: 0.13, alpha: 1).cgColor
+    
+    casesBookmarkView.layer.backgroundColor = UIColor(red: 0.492, green: 0.406, blue: 0.279, alpha: 1).cgColor
+    casesBookmarkView.layer.cornerRadius = 5
+    casesBookmarkView.layer.borderWidth = 2
+    casesBookmarkView.layer.borderColor = UIColor(red: 0.254, green: 0.205, blue: 0.13, alpha: 1).cgColor
+    //--------수첩 페이지 버튼, 하단 줄----------
+    page1Button.setTitleColor(UIColor(red: 0.312, green: 0.208, blue: 0.134, alpha: 1), for: .normal)
+    page2Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
+    page3Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
+    page4Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
+    page5Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
+    page1ButtonLine.backgroundColor = .black
+    page2ButtonLine.backgroundColor = .clear
+    page3ButtonLine.backgroundColor = .clear
+    page4ButtonLine.backgroundColor = .clear
+    page5ButtonLine.backgroundColor = .clear
+    //사건/인물 페이지 바뀔 때를 대응하는 함슈
+    changePageDesign()
+    //--------사건 팝업------------------
+    casePopopBackgroundView.layer.cornerRadius = 7
+    casePopopBackgroundView.layer.borderWidth = 2
+    casePopopBackgroundView.layer.borderColor = UIColor(red: 0.254, green: 0.205, blue: 0.13, alpha: 1).cgColor
+        
+        casePopopBackgroundViewTopBar.layer.cornerRadius = 7
+        casePopopBackgroundViewTopBar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+}
+    
+    func popupViewOn(priviousScale: CGFloat, afterScale: CGFloat) {
+        let backgroundView = self.view!
+        //뷰 두 개(이미지, 글씨) 서브뷰로 추가
+        self.view.addSubview(casePopupView)
+        self.view.bringSubviewToFront(casePopupView)
+        
+        //이미지뷰만 히든 풀고, 뷰들 정렬함. 텍스트뷰는 서서히 나타나는 애니메이션을 위해 알파 0으로 설정해둠.
+        casePopupView.center = backgroundView.center
+        casePopupView.isHidden = false
+        casePopupView.alpha = 0
+      
+        casePopupView.transform = CGAffineTransform(scaleX: priviousScale, y: priviousScale)
+       
+        //애니메이션
+        UIView.animate(withDuration: 0.1) {
+            self.casePopupView.transform = CGAffineTransform(scaleX: afterScale, y: afterScale)
+            self.casePopupView.alpha = 1
+        }
+    }
+    func popupViewOff(priviousScale: CGFloat, afterScale: CGFloat) {
+        let backgroundView = self.view!
+        //뷰 두 개(이미지, 글씨) 서브뷰로 추가
+       
+        
+     
+        casePopupView.transform = CGAffineTransform(scaleX: priviousScale, y: priviousScale)
+       
+        //애니메이션
+        UIView.animate(withDuration: 0.1) {
+            self.casePopupView.transform = CGAffineTransform(scaleX: afterScale, y: afterScale)
+            self.casePopupView.alpha = 0
+        } completion: { (Bool) in
+            self.casePopupView.removeFromSuperview()
+        }
+        
+    }
 }

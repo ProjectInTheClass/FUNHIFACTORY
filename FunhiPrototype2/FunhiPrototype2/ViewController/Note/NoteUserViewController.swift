@@ -12,6 +12,7 @@ class NoteCollectionViewReusableCell: UICollectionViewCell {
     @IBOutlet weak var gameCharacterProfileImageView: UIImageView!
     @IBOutlet weak var gameCharacterDescriptionLabel: UILabel!
     @IBOutlet weak var achievementLabel: UILabel!
+   
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,6 +20,7 @@ class NoteCollectionViewReusableCell: UICollectionViewCell {
     }
    
     func designCell() {
+        
         gameCharacterProfileImageView.layer.cornerRadius = gameCharacterProfileImageView.frame.width/2
         gameCharacterProfileImageView.layer.borderWidth = 3
         gameCharacterProfileImageView.layer.backgroundColor = UIColor(red: 0.22, green: 0.325, blue: 0.404, alpha: 1).cgColor
@@ -26,23 +28,35 @@ class NoteCollectionViewReusableCell: UICollectionViewCell {
 }
 class NoteCollectionViewLeftCell: UICollectionViewCell {
     @IBOutlet weak var achievementImageView: UIImageView!
+    @IBOutlet weak var lockedView: UIView!
     @IBOutlet weak var achievementTitleLabel: UILabel!
    
     
-    override class func awakeFromNib() {
-        
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
     func designCell() {
-        
+        lockedView.layer.cornerRadius = 7
+        achievementImageView.layer.cornerRadius = 7
+        achievementImageView.layer.borderWidth = 3
+        achievementImageView.layer.borderColor = UIColor(red: 0.255, green: 0.204, blue: 0.129, alpha: 1).cgColor
     }
 }
 class NoteCollectionViewRightCell: UICollectionViewCell {
   
     @IBOutlet weak var achievementImageView: UIImageView!
+    @IBOutlet weak var lockedView: UIView!
     @IBOutlet weak var achievementTitleLabel: UILabel!
     
-    override class func awakeFromNib() {
-        
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        designCell()
+    }
+    func designCell() {
+        lockedView.layer.cornerRadius = 7
+        achievementImageView.layer.cornerRadius = 7
+        achievementImageView.layer.borderWidth = 3
+        achievementImageView.layer.borderColor = UIColor(red: 0.255, green: 0.204, blue: 0.129, alpha: 1).cgColor
     }
 }
 class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout  {
