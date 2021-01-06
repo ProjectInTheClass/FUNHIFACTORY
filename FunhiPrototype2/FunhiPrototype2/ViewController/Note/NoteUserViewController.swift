@@ -68,15 +68,26 @@ class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollec
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         if Int(indexPath.row) % 2 == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "achievementLeftCell", for: indexPath) as! NoteCollectionViewLeftCell
             cell.achievementImageView.image = UIImage(named: player.currentAchievementInfo[indexPath.row].image)
             cell.achievementTitleLabel.text = player.currentAchievementInfo[indexPath.row].name
+            if player.currentAchievementInfo[indexPath.row].isLocked {
+                cell.lockedView.isHidden = false
+            } else {
+                cell.lockedView.isHidden = true
+            }
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "achievementRightCell", for: indexPath) as! NoteCollectionViewRightCell
             cell.achievementImageView.image = UIImage(named: player.currentAchievementInfo[indexPath.row].image)
             cell.achievementTitleLabel.text = player.currentAchievementInfo[indexPath.row].name
+            if player.currentAchievementInfo[indexPath.row].isLocked {
+                cell.lockedView.isHidden = false
+            } else {
+                cell.lockedView.isHidden = true
+            }
             return cell
         }
            
@@ -99,7 +110,7 @@ class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollec
                 cell.gameCharacteBackgroundImageView.image = UIImage(named: recievedGameCharacter.backGroundImage)
                 cell.gameCharacterProfileImageView.image = UIImage(named: recievedGameCharacter.profileImage)
                 cell.gameCharacterDescriptionLabel.text = recievedGameCharacter.description
-                cell.achievementLabel.text = "\(player.clearedAchievementInfo)/\(player.currentAchievementInfo.count)"
+                cell.achievementLabel.text = "\(player.clearedAchievementCount)/\(player.currentAchievementInfo.count)"
             }
             
             return cell

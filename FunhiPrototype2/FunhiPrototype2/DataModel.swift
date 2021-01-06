@@ -162,7 +162,7 @@ struct User {
     //var timellne: nil
     var currentCharacterInfo: [String:GameCharacter]
     var currentAchievementInfo: [Achievement]
-    var clearedAchievementInfo: Int {
+    var clearedAchievementCount: Int {
         get {
             var cleardCount = Int()
             for achievement in self.currentAchievementInfo {
@@ -277,14 +277,19 @@ struct GameData {
 }
 
 //mainGame에서 currentChat 정보 읽어서 알맞는 주인공 업적 해금하기
-func checkAchievementInChat(popupView: UIView, backgroundView: UIView) {
+func checkAchievementInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel) {
+    let infoID = "achievement"
     let currentChatAchievement = currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].achievementToUnlock
     if currentChatAchievement != nil {
         for achievement in player.currentAchievementInfo.enumerated() {
             if achievement.element.id == currentChatAchievement {
                 player.currentAchievementInfo[achievement.offset].isLocked = false
                 print("업적 '\(player.currentAchievementInfo[achievement.offset].name)' 달성됨")
+                
                 backgroundView.addSubview(popupView)
+                notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: player.currentAchievementInfo[achievement.offset].name , infoID: infoID)
+                popupView.bringSubviewToFront(backgroundView)
+                
             }
         }
     }
@@ -292,14 +297,16 @@ func checkAchievementInChat(popupView: UIView, backgroundView: UIView) {
 
 //mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 등장인물 해금하기
 func checkGameCharacterInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel) {
+    let infoID = "gameCharacter"
     let currentChatGameCharacter = currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].gameCharacterToUnlock
     if let currentChatGameCharacter = currentChatGameCharacter {
         for gameCharacter in currentDay().currentCharacterNote.enumerated() {
             if gameCharacter.element.name == currentChatGameCharacter.info().name {
                 currentDay().currentCharacterNote[gameCharacter.offset].isLocked = false
-                print("캐릭터 '\(testChapter1.currentCharacterNote[0].isLocked)' 해금됨")
+                
+                print("캐릭터 '\(currentDay().currentCharacterNote[gameCharacter.offset].isLocked)' 해금됨")
                 backgroundView.addSubview(popupView)
-                notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, currentGameCharacter: currentDay().currentCharacterNote[gameCharacter.offset])
+                notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCharacterNote[gameCharacter.offset].name, infoID: infoID)
                 popupView.bringSubviewToFront(backgroundView)
             }
         }
@@ -307,29 +314,36 @@ func checkGameCharacterInChat(popupView: UIView, backgroundView: UIView, titleLa
 }
 
 //mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 사건 금하기
-func checkCaseInChat(popupView: UIView, backgroundView: UIView) {
+func checkCaseInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel) {
+    let infoID = "case"
     let currentChatCase = currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].caseToUnlock
     if currentChatCase != nil {
         for caseNote in currentDay().currentCaseNote.enumerated() {
             if caseNote.element.id == currentChatCase {
-                currentDay().currentCharacterNote[caseNote.offset].isLocked = false
+                testChapter1.currentCaseNote[0].isLocked = false
                 
                 print("사건 노트 '\(testChapter1.currentCaseNote[0].isLocked)' 해금됨")
                 backgroundView.addSubview(popupView)
+                notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCaseNote[caseNote.offset].title, infoID: infoID)
+                popupView.bringSubviewToFront(backgroundView)
             }
         }
     }
 }
 
 //mainGame에서 currentChat 정보 읽어서 알맞는 등장인물의 infomation 해금하기
-func checkgameCharacterInfomationInChat(popupView: UIView, backgroundView: UIView) {
+func checkgameCharacterInfomationInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel) {
+    let infoID = "characterInfomation"
     let currentChatInfomation = currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].infomationToUnlock
     if currentChatInfomation != nil {
         for gameCharacter in currentDay().currentCharacterNote.enumerated() {
             for infomation in gameCharacter.element.infomation.enumerated() {
                 if infomation.element.infomationID == currentChatInfomation {
                     currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked = false
-                    print("사건 노트 '\(currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked)' 해금됨")
+                    print("'\(testChapter1.currentCharacterNote[0].isLocked)' 정보 해금됨")
+                    backgroundView.addSubview(popupView)
+                    notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCharacterNote[gameCharacter.offset].name, infoID: infoID)
+                    popupView.bringSubviewToFront(backgroundView)
                 }
             }
         }
@@ -337,7 +351,7 @@ func checkgameCharacterInfomationInChat(popupView: UIView, backgroundView: UIVie
 }
 
 
-func notePopupViewDesign(notePopupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel, currentGameCharacter: GameCharacter) {
+func notePopupViewDesign(notePopupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel, descriptionText: String, infoID: String) {
     
     notePopupView.translatesAutoresizingMaskIntoConstraints = false
     notePopupView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 118).isActive = true
@@ -345,8 +359,26 @@ func notePopupViewDesign(notePopupView: UIView, backgroundView: UIView, titleLab
         let widthConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 231)
         let heightConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 53)
     backgroundView.addConstraints([horizontalConstraint, widthConstraint, heightConstraint])
-    titleLabel.text = "수첩 - 역사"
-    descriptionLabel.text = "\(currentGameCharacter.name) 정보 획득"
+    
+    if infoID == "achievement" {
+        titleLabel.text = "업적"
+        descriptionLabel.text = "\(descriptionText) 획득"
+    }
+    if infoID == "gameCharacter" {
+        titleLabel.text = "수첩 - 인물"
+        descriptionLabel.text = "\(descriptionText) 정보 획득"
+    }
+    if infoID == "case" {
+        titleLabel.text = "수첩 - 역사"
+        descriptionLabel.text = "\(descriptionText) 정보 획득"
+    }
+    if infoID == "characterInfomation" {
+        titleLabel.text = "수첩 - 인물"
+        descriptionLabel.text = "\(descriptionText) 획득"
+    }
+    
+    
+    
 }
 //일단 만들어놓은 인물들 샘플 정보 변수입니다.
 

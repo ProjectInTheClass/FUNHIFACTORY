@@ -81,6 +81,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
        //topBarShadow(wholeView: self.view!, buttonView: topBar, tableview:mainGameTableView)
         choiceBar.frame.size = CGSize(width: 414, height: 0)
         choiceHeight.constant = 0
+        popupViewDesign(popupView: notePopupView)
     }
     override func viewDidAppear(_ animated: Bool) {
         chatUpdateTimer()
@@ -125,7 +126,11 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             return
         }
         print("스토리 \(indexNumber+1)/\(currentChatAmount())")
+        // 아래 네 개 각각 지금 챗에 새 업적/새 인물/새 역사 사건/새 인물 정보 있나 확인한 뒤 있는 경우 팝업창 띄우기/노트 정보 수정하는 코드입니다
+        checkAchievementInChat(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel)
         checkGameCharacterInChat(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel)
+        checkCaseInChat(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel)
+        checkgameCharacterInfomationInChat(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel)
         indexNumber += 1
         scrollToBottom()
     }
@@ -137,6 +142,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             self.mainGameTableView.scrollToRow(at: indexPath, at: .bottom, animated: false) //true로 바꾸면 좀 더 천천히 내려가긴 하는데, 못 따라오는 경우도 있다.
         }
     }
+    
     func choiceUpdate(){
         choiceHeight.constant = 158
         choiceBar.setNeedsUpdateConstraints()

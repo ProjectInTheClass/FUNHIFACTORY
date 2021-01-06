@@ -91,58 +91,54 @@ class HeeryeongLastinfomationCell: UITableViewCell {
 //-------------------뷰컨-------------
 class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
-    
+    var openedInfomation = [Infomation]()
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let recievedGameCharacter = recievedGameCharacter {
-            return recievedGameCharacter.infomation.count
-        } else {
-            return 0
-            print("recievedGameCharacter nil임")
-        }
+        guard let recievedGameCharacter = recievedGameCharacter else { return 0 }
+            openedInfomation.removeAll()
+            for infomation in recievedGameCharacter.infomation {
+                if !infomation.isLocked {
+                    openedInfomation.append(infomation)
+                }
+            }
+            return openedInfomation.count
+       
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var returnCell = UITableViewCell()
 
-        if let recievedGameCharacter = recievedGameCharacter {
-            let infomations = recievedGameCharacter.infomation
+        guard let recievedGameCharacter = recievedGameCharacter else { return UITableViewCell() }
+            
             // 인포메이션 1개일 때 singleCell 모양 반환
-            if infomations.count == 1 {
+            if openedInfomation.count == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "heeryeongSinglenfomationCell", for: indexPath) as! HeeryeongSingleinfomationCell
-                cell.informationLabel.text = infomations[indexPath.row].text
+                cell.informationLabel.text = openedInfomation[indexPath.row].text
                 returnCell = cell
             }
             // 인포메이션 1개 이상일 때 알맞는 모양 반환
-            if infomations.count > 1 {
+            if openedInfomation.count > 1 {
                 // 인포메이션 목록의 처음 부분이면 firstCell 모양임
                 if indexPath.row == 0 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "heeryeongFirstInfomationCell", for: indexPath) as! HeeryeongFirstinfomationCell
-                    cell.informationLabel.text = infomations[indexPath.row].text
+                    cell.informationLabel.text = openedInfomation[indexPath.row].text
                     returnCell = cell
                 }
                 
                 // 인포메이션 목록의 중간 부분이면 middleCell 모양임
-                if indexPath.row > 0 && indexPath.row < infomations.count-1 {
+                if indexPath.row > 0 && indexPath.row < openedInfomation.count-1 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "heeryeongMiddleInfomationCell", for: indexPath) as! HeeryeongMiddleinfomationCell
-                    cell.informationLabel.text = infomations[indexPath.row].text
+                    cell.informationLabel.text = openedInfomation[indexPath.row].text
                     returnCell = cell
                 }
                 
                 // 인포메이션 목록의 마지막 부분이면 lastCell 모양임
-                if indexPath.row == infomations.count-1 {
+                if indexPath.row == openedInfomation.count-1 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "heeryeongLastInfomationCell", for: indexPath) as! HeeryeongLastinfomationCell
-                    cell.informationLabel.text = infomations[indexPath.row].text
+                    cell.informationLabel.text = openedInfomation[indexPath.row].text
                     returnCell = cell
                 }
             }
 
-
-
-
-        } else {
-            return UITableViewCell()
-            print("recievedGameCharacter nil임")
-        }
         return returnCell
     }
     //----------------일반 아웃렛, 메소드------------------------------
@@ -165,6 +161,7 @@ class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITable
         designObjects()
         self.hwiryeongInfomationTableView.delegate = self
         self.hwiryeongInfomationTableView.dataSource = self
+    
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -172,7 +169,7 @@ class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITable
             hwiryeongProfileImageView.image = UIImage(named: recievedGameCharacter.profileImage)
             hwiryeongBackgroundImageView.image = UIImage(named: recievedGameCharacter.backGroundImage)
             hwiryeongDescriptionLabel.text = recievedGameCharacter.description
-
+            hwiryeongInfomationTableView.reloadData()
            
             
         }

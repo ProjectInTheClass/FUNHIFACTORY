@@ -7,7 +7,7 @@
 
 import Foundation
 
-var player = User(setting: playerSetting, currentEpisodes: [test,testChapter1,testChapter2,testChapter3,testChapter4], currentCharacterInfo: currentCharactersInfo, currentAchievementInfo: [Achievement(name: "업적1", image: "cat", id: .achievement1 , isLocked: false), Achievement(name: "업적2", image: "cat", id: .achievement2 , isLocked: true), Achievement(name: "업적3", image: "cat", id: .achievement4 , isLocked: true) ], dayIndex: 0, dayId: "day0", currentChatId: "001")
+var player = User(setting: playerSetting, currentEpisodes: [test,testChapter1,testChapter2,testChapter3,testChapter4], currentCharacterInfo: currentCharactersInfo, currentAchievementInfo: [Achievement(name: "업적1", image: "leedanheeBackground", id: .achievement1 , isLocked: true), Achievement(name: "업적2", image: "EP1LeedanheeBackground", id: .achievement2 , isLocked: true), Achievement(name: "업적3", image: "EP1LeedanheeBackground", id: .achievement3 , isLocked: true), Achievement(name: "업적4", image: "leedanheeBackground", id: .achievement4 , isLocked: true) ], dayIndex: 0, dayId: "day0", currentChatId: "001")
 
 
 var playerSetting = Setting(bgmVolume: 0.5, effectVolume: 0.0, textSpeed: 1.0)

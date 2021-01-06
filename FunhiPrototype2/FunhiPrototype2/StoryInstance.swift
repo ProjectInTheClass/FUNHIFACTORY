@@ -9,13 +9,13 @@ var indexNumber = 0
 var currentChatArray : [Chat] = []
 let test = Episode(episodeName: "임진왜란", episodeYear: 1592, episodeKingYear: "선조 25년", episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "placeImage_1x", isCleared: true, storyBlocks: [
     "001":BlockOfDayEpisode(chats:
-                                [Chat(text: "사건을 시작하기 저어언에 먼저 이 사건에 대해 알려주겠다.", image: "", type: .onlyText, who: hwiryeong, characterFace: true, achievementToUnlock: .achievement1, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil)],
+                                [Chat(text: "사건을 시작하기 저어언에 먼저 이 사건에 대해 알려주겠다.", image: "", type: .onlyText, who: hwiryeong, characterFace: true, achievementToUnlock: .achievement1, infomationToUnlock: .hwiryeong1 , gameCharacterToUnlock: .hwiryeong, caseToUnlock: nil)],
                             choices: [
                                     Choice(text: "알겠어요.", likability: [], nextTextIndex: "002"),
                                     Choice(text: "이번은 어떤 내용인가요?", likability: [], nextTextIndex: "002")], achievement: nil, choiceSkip: false),
     "002":BlockOfDayEpisode(chats:
-                                [Chat(text: "네가 학교에서 수업을 잘 들었다면 이미 알 거라고 생각한다.", image: "", type: .onlyText, who: hwiryeong, characterFace: true, achievementToUnlock: .achievement2, infomationToUnlock: nil, gameCharacterToUnlock: .danhee, caseToUnlock: nil),
-                                Chat(text: "이번 사건은 인조반정이야.", image: "", type: .onlyText, who: hwiryeong, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil)],
+                                [Chat(text: "네가 학교에서 수업을 잘 들었다면 이미 알 거라고 생각한다.", image: "", type: .onlyText, who: hwiryeong, characterFace: true, achievementToUnlock: .achievement2, infomationToUnlock: .hwiryeong2, gameCharacterToUnlock: .danhee, caseToUnlock: .case101),
+                                 Chat(text: "이번 사건은 인조반정이야.", image: "", type: .onlyText, who: hwiryeong, characterFace: true, achievementToUnlock: .achievement3, infomationToUnlock: .hwiryeong4, gameCharacterToUnlock: nil, caseToUnlock: nil)],
                             choices: [
                                     Choice(text: "어... 많이 들어봤는데 잘 모르겠어요.", likability: [], nextTextIndex: "004"),
                                     Choice(text: "광해군이 폐위된 사건이죠?", likability: [], nextTextIndex: "003")], achievement: nil, choiceSkip: false),
@@ -82,7 +82,7 @@ let test = Episode(episodeName: "임진왜란", episodeYear: 1592, episodeKingYe
                                  Chat(text: "자식을 잃은 슬픔과 그리움에 못 이겨 결국 능창군 뒤를 잇게 된다.", image: "", type: .onlyText, who: hwiryeong, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil)],
                             choices: [
                                 Choice(text: "", likability: [], nextTextIndex: "End"),
-                                Choice(text: "", likability: [], nextTextIndex: "End")], achievement: nil, choiceSkip: false)],currentCharacterNote: [GameCharacter(name: "이단희", profileImage: "heeryeongBackgroundImage", backGroundImage: "heeryeongBackgroundImage", description: "인물 설명", infomation: [], likability: 0, isLocked: true), GameCharacter(name: "휘령", profileImage: "heeryeongBackgroundImage", backGroundImage: "heeryeongBackgroundImage", description: "인물 설명", infomation: [], likability: 0, isLocked: true)], currentCaseNote: [NoteCase(id: .case101, title: "사건 1-1", shortDescription: "사건 1-1이 일어남.", longDescription: "사건 1-1이 일어나아아아아아아아아아아아아아아아아아아아아아아아아아아아암. ", isLocked: true)])
+                                Choice(text: "", likability: [], nextTextIndex: "End")], achievement: nil, choiceSkip: false)],currentCharacterNote: [GameCharacter(name: "이단희", profileImage: "heeryeongBackgroundImage", backGroundImage: "heeryeongBackgroundImage", description: "인물 설명", infomation: [], likability: 0, isLocked: false), GameCharacter(name: "휘령", profileImage: "heeryeongBackgroundImage", backGroundImage: "heeryeongBackgroundImage", description: "인물 설명", infomation: [Infomation(infomationID: .hwiryeong1, isLocked: true, text: "휘령은 신이다."), Infomation(infomationID: .hwiryeong2, isLocked: true, text: "휘령은 금발이다."), Infomation(infomationID: .hwiryeong3, isLocked: true, text: "휘령은 남자이다."), Infomation(infomationID: .hwiryeong4, isLocked: true, text: "휘령은 예쁘다. 휘령은 예쁘다. 휘령은 예쁘다. 휘령은 예쁘다. 휘령은 예쁘다. 휘령은 예쁘다. 휘령은 예쁘다. 휘령은 예쁘다. 휘령은 예쁘다. 휘령은 예쁘다. 휘령은 예쁘다. 휘령은 예쁘다. 휘령은 예쁘다."), Infomation(infomationID: .hwiryeong5, isLocked: true, text: "휘령은 휘령이다.")], likability: 0, isLocked: true)], currentCaseNote: [NoteCase(id: .case101, title: "사건 1-1", shortDescription: "사건 1-1이 일어남.", longDescription: "사건 1-1이 일어나아아아아아아아아아아아아아아아아아아아아아아아아아아아암. ", isLocked: true)])
 
 
 

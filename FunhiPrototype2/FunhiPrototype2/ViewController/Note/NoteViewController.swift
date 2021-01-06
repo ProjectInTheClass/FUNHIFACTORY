@@ -157,8 +157,9 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //인물 창일 때
+        let currentEpisode = player.currentEpisodes[currentNotePageInt]
         if currentNoteTitle == .gameCharacters {
-            let currentEpisode = player.currentEpisodes[currentNotePageInt]
+            
             
             //큰 인물 셀
             if currentEpisode.currentCharacterNote[indexPath.row].name == "이단희" || currentEpisode.currentCharacterNote[indexPath.row].name == "휘령" {
@@ -189,19 +190,30 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 cell.descriptionLabel.text = currentEpisode.currentCharacterNote[indexPath.row].description
                 cell.profileImageView.image = UIImage(named: currentEpisode.currentCharacterNote[indexPath.row].profileImage)
                 cell.likabilityProgressWidth.constant = cell.likabilityBackgroundView.frame.width*CGFloat(player.currentEpisodes[currentNotePageInt].currentCharacterNote[indexPath.row].likability)/100
-                        
+                if currentEpisode.currentCharacterNote[indexPath.row].isLocked {
+                    cell.lockedView.isHidden = false
+                } else {
+                    cell.lockedView.isHidden = true
+                    
+                }
                 cellHeight = 146
                 return cell
             }
         //사건 창일 때
         } else {
            
-            let currentEpisodes = player.currentEpisodes
+            let currentCase = player.currentEpisodes[currentNotePageInt].currentCaseNote[indexPath.row]
             let cell = tableView.dequeueReusableCell(withIdentifier: "caseCell", for: indexPath) as! NoteCaseTableViewCell
+            
             cell.selectionStyle = .none
-            let currentPage = currentEpisodes[currentNotePageInt]
-            cell.caseNameLabel.text = currentPage.currentCaseNote[indexPath.row].title
-            cell.caseDescriptionLabel.text = currentEpisodes[currentNotePageInt].currentCaseNote[indexPath.row].shortDescription
+            cell.caseNameLabel.text = currentCase.title
+            cell.caseDescriptionLabel.text = currentCase.shortDescription
+            if currentCase.isLocked {
+                cell.lockedView.isHidden = false
+            } else {
+                cell.lockedView.isHidden = true
+                
+            }
             cellHeight = 121
             return cell
         }
