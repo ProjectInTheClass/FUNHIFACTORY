@@ -82,30 +82,27 @@ let test = Episode(episodeName: "임진왜란", episodeYear: 1592, episodeKingYe
                                  Chat(text: "자식을 잃은 슬픔과 그리움에 못 이겨 결국 능창군 뒤를 잇게 된다.", image: "", type: .onlyText, who: hwiryeong, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil)],
                             choices: [
                                 Choice(text: "", likability: [], nextTextIndex: "End"),
-                                Choice(text: "", likability: [], nextTextIndex: "End")], achievement: nil, choiceSkip: false)
-],
-
-currentCharacterNote: [GameCharacter(gameCharacterID: .danhee, name: "이단희", profileImage: "heeryeongBackgroundImage", backGroundImage: "", description: "인물 설명", infomation: [Infomation(infomationID: .hwiryeong1, isLocked: true, text: "휘령 정보 1"),Infomation(infomationID: .hwiryeong2, isLocked: true, text: "휘령 정보 2"),Infomation(infomationID: .hwiryeong3, isLocked: true, text: "휘령 정보 3"),Infomation(infomationID: .hwiryeong4, isLocked: true, text: "휘령 정보 4"),Infomation(infomationID: .hwiryeong5, isLocked: true, text: "휘령 정보 5 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화")], likability: 0, isLocked: true)]
-
-, currentCaseNote: [NoteCase(id: .case101, title: "사건 1-1", shortDescription: "사건 1-1이 일어남.", longDescription: "사건 1-1이 일어나아아아아아아아아아아아아아아아아아아아아아아아아아아아암. ", isLocked: true)])
+                                Choice(text: "", likability: [], nextTextIndex: "End")], achievement: nil, choiceSkip: false)],currentCharacterNote: [GameCharacter(name: "휘령1", profileImage: "heeryeongBackgroundImage", backGroundImage: "", description: "인물 설명", infomation: [Infomation(infomationID: .hwiryeong1, isLocked: true, text: "휘령 정보 1"),Infomation(infomationID: .hwiryeong2, isLocked: true, text: "휘령 정보 2"),Infomation(infomationID: .hwiryeong3, isLocked: true, text: "휘령 정보 3"),Infomation(infomationID: .hwiryeong4, isLocked: true, text: "휘령 정보 4"),Infomation(infomationID: .hwiryeong5, isLocked: true, text: "휘령 정보 5 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화")], likability: 0, isLocked: true)], currentCaseNote: [NoteCase(id: .case101, title: "사건 1-1", shortDescription: "사건 1-1이 일어남.", longDescription: "사건 1-1이 일어나아아아아아아아아아아아아아아아아아아아아아아아아아아아암. ", isLocked: true)])
 
 
 
-var danhee: GameCharacter = GameCharacter(gameCharacterID: .danhee, name: "이단희", profileImage: "", backGroundImage: "", description: "인물 설명", infomation: [], likability: 0, isLocked: false)
-var hwiryeong: GameCharacter = GameCharacter(gameCharacterID: .hwiryeong, name: "휘령", profileImage: "cat", backGroundImage: "", description: "인물 설명", infomation: [], likability: 0, isLocked: false)
+var danhee: GameCharacter = GameCharacter(name: "이단희", profileImage: "", backGroundImage: "", description: "인물 설명", infomation: [], likability: 0, isLocked: false)
+var hwiryeong: GameCharacter = GameCharacter(name: "휘령", profileImage: "cat", backGroundImage: "", description: "인물 설명", infomation: [], likability: 0, isLocked: false)
 
 
 //얘 사용 용도 더미데이터에 보관하는 용 말고 또 무언가 있다면 주석으로 적어줘요 (맞음. 전체적인 데이터들을 넣어놓는 자리가 필요하다 생각했는데 다른 데가 있으면 놔둬도 됨.)
 var currentCharactersInfo: [String:GameCharacter] = [
-    "kirell":GameCharacter(gameCharacterID: .danhee, name: "키렐", profileImage: "kirell", backGroundImage: "kirell", description: "인물 설명", infomation: [], likability: 66, isLocked: false),
-    "ballam":GameCharacter(gameCharacterID: .danhee, name: "발람", profileImage: "ballam", backGroundImage: "ballam", description: "인물 설명", infomation: [], likability: 77, isLocked: false),
-    "danhee":GameCharacter(gameCharacterID: .danhee, name: "단희", profileImage: "", backGroundImage: "", description: "인물 설명", infomation: [], likability: 0, isLocked: false),
-    "hwiryeong":GameCharacter(gameCharacterID: .danhee, name: "휘령", profileImage: "", backGroundImage: "", description: "인물 설명", infomation: [], likability: 0, isLocked: false)
+    "kirell":GameCharacter(name: "키렐", profileImage: "kirell", backGroundImage: "kirell", description: "인물 설명", infomation: [], likability: 66, isLocked: false),
+    "ballam":GameCharacter(name: "발람", profileImage: "ballam", backGroundImage: "ballam", description: "인물 설명", infomation: [], likability: 77, isLocked: false),
+    "danhee":GameCharacter(name: "단희", profileImage: "", backGroundImage: "", description: "인물 설명", infomation: [], likability: 0, isLocked: false),
+    "hwiryeong":GameCharacter(name: "휘령", profileImage: "", backGroundImage: "", description: "인물 설명", infomation: [], likability: 0, isLocked: false)
 ]
 
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
 
-let prologueChapter: Episode = Episode(episodeName: "프롤로그", episodeYear: 2020, episodeKingYear: "현재 2020년", episodeDesciption: "프롤로그임", episodePlaceImage: "프롤로그 자세한 설명임", isCleared: false, storyBlocks: [:], currentCharacterNote: [GameCharacter(gameCharacterID: .danhee, name: "이단희", profileImage: "heeryeongBackgroundImage", backGroundImage: "heeryeongBackgroundImage", description: "인물 설명", infomation: [], likability: 0, isLocked: true), GameCharacter(gameCharacterID: .hwiryeong, name: "휘령", profileImage: "heeryeongBackgroundImage", backGroundImage: "heeryeongBackgroundImage", description: "인물 설명", infomation: [], likability: 0, isLocked: false)], currentCaseNote: [])
+
+let prologueChapter: Episode = Episode(episodeName: "프롤로그", episodeYear: 2020, episodeKingYear: "현재 2020년", episodeDesciption: "프롤로그임", episodePlaceImage: "프롤로그 자세한 설명임", isCleared: false, storyBlocks: [:], currentCharacterNote: [GameCharacter(name: "이단희", profileImage: "heeryeongBackgroundImage", backGroundImage: "heeryeongBackgroundImage", description: "인물 설명", infomation: [], likability: 0, isLocked: false), GameCharacter(name: "휘령", profileImage: "heeryeongBackgroundImage", backGroundImage: "heeryeongBackgroundImage", description: "인물 설명", infomation: [], likability: 0, isLocked: false)], currentCaseNote: [])
+
 
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
 let testChapter1 = Episode(episodeName: "임진왜란", episodeYear: 1592, episodeKingYear: "선조 25년", episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "placeImage_1x", isCleared: true, storyBlocks: [
@@ -184,7 +181,15 @@ let testChapter1 = Episode(episodeName: "임진왜란", episodeYear: 1592, episo
                             choices: [
                                 Choice(text: "", likability: [], nextTextIndex: "End"),
                                 Choice(text: "", likability: [], nextTextIndex: "End")], achievement: nil, choiceSkip: false)
-], currentCharacterNote: [GameCharacter(gameCharacterID: .hwiryeong1, name: "휘령1", profileImage: "heeryeongBackgroundImage", backGroundImage: "", description: "인물 설명", infomation: [Infomation(infomationID: .hwiryeong1, isLocked: true, text: "휘령 정보 1"),Infomation(infomationID: .hwiryeong2, isLocked: true, text: "휘령 정보 2"),Infomation(infomationID: .hwiryeong3, isLocked: true, text: "휘령 정보 3"),Infomation(infomationID: .hwiryeong4, isLocked: true, text: "휘령 정보 4"),Infomation(infomationID: .hwiryeong5, isLocked: true, text: "휘령 정보 5 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화")], likability: 0, isLocked: true)], currentCaseNote: [NoteCase(id: .case101, title: "사건 1-1", shortDescription: "사건 1-1이 일어남.", longDescription: "사건 1-1이 일어나아아아아아아아아아아아아아아아아아아아아아아아아아아아암. ", isLocked: true)])
+],
+currentCharacterNote: [GameCharacter(name: "휘령1",
+                                     profileImage: "heeryeongBackgroundImage",
+                                     backGroundImage: "",
+                                     description: "인물 설명",
+                                     infomation: [Infomation(infomationID: .hwiryeong1, isLocked: true, text: "휘령 정보 1"),Infomation(infomationID: .hwiryeong2, isLocked: true, text: "휘령 정보 2"),Infomation(infomationID: .hwiryeong3, isLocked: true, text: "휘령 정보 3"),Infomation(infomationID: .hwiryeong4, isLocked: true, text: "휘령 정보 4"),Infomation(infomationID: .hwiryeong5, isLocked: true, text: "휘령 정보 5 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화")],
+                                     likability: 0,
+                                     isLocked: true)],
+currentCaseNote: [NoteCase(id: .case101, title: "사건 1-1", shortDescription: "사건 1-1이 일어남.", longDescription: "사건 1-1이 일어나아아아아아아아아아아아아아아아아아아아아아아아아아아아암. ", isLocked: true)])
 
 let testChapter2 = Episode(episodeName: "인조반정", episodeYear: 1623, episodeKingYear: "지조 25년", episodeDesciption: "광해군이 반정으로 인해 폐위되다", episodePlaceImage: "placeImage_1x",isCleared: false,storyBlocks: ["1":BlockOfDayEpisode(chats: [], choices: [], achievement: nil, choiceSkip: false)], currentCharacterNote: [], currentCaseNote: [])
 

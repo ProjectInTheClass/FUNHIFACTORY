@@ -97,9 +97,29 @@ enum GameCharacterID {
     case hwiryeong2
     case hwiryeong3
     case hwiryeong4
+    
+    func info() -> GameCharacter{
+        switch self {
+        case .danhee:
+            return prologueChapter.currentCharacterNote[1]
+        case .hwiryeong:
+            return prologueChapter.currentCharacterNote[2]
+        case .hwiryeong1:
+            return prologueChapter.currentCharacterNote[2]
+        case .hwiryeong2:
+            return prologueChapter.currentCharacterNote[2]
+        case .hwiryeong3:
+            return prologueChapter.currentCharacterNote[2]
+        case .hwiryeong4:
+            return prologueChapter.currentCharacterNote[2]
+        default:
+            break
+        }
+    }
 }
+
+
 class GameCharacter {
-    let gameCharacterID: GameCharacterID
     let name: String
     let profileImage: String
     let backGroundImage : String
@@ -109,8 +129,7 @@ class GameCharacter {
     var likability: Int
     var isLocked: Bool
     
-    init(gameCharacterID: GameCharacterID, name: String, profileImage: String ,backGroundImage: String, description: String, infomation: [Infomation], likability:Int, isLocked: Bool ) {
-        self.gameCharacterID = gameCharacterID
+    init(name: String, profileImage: String ,backGroundImage: String, description: String, infomation: [Infomation], likability:Int, isLocked: Bool ) {
         self.name = name
         self.profileImage = profileImage
         self.backGroundImage = backGroundImage
@@ -194,7 +213,6 @@ struct Chat {
     let gameCharacterToUnlock: GameCharacterID?
     let caseToUnlock: NoteCaseID?
 }
-
 
 //선택지 누르면 변경될 호감도
 // 프라퍼티 설명:  해당 인물, 변경될 호감도 수치
