@@ -82,7 +82,7 @@ let test = Episode(episodeName: "임진왜란", episodeYear: 1592, episodeKingYe
                                  Chat(text: "자식을 잃은 슬픔과 그리움에 못 이겨 결국 능창군 뒤를 잇게 된다.", image: "", type: .onlyText, who: hwiryeong, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil)],
                             choices: [
                                 Choice(text: "", likability: [], nextTextIndex: "End"),
-                                Choice(text: "", likability: [], nextTextIndex: "End")], achievement: nil, choiceSkip: false)],currentCharacterNote: [GameCharacter(name: "휘령1", profileImage: "heeryeongBackgroundImage", backGroundImage: "", description: "인물 설명", infomation: [Infomation(infomationID: .hwiryeong1, isLocked: true, text: "휘령 정보 1"),Infomation(infomationID: .hwiryeong2, isLocked: true, text: "휘령 정보 2"),Infomation(infomationID: .hwiryeong3, isLocked: true, text: "휘령 정보 3"),Infomation(infomationID: .hwiryeong4, isLocked: true, text: "휘령 정보 4"),Infomation(infomationID: .hwiryeong5, isLocked: true, text: "휘령 정보 5 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화")], likability: 0, isLocked: true)], currentCaseNote: [NoteCase(id: .case101, title: "사건 1-1", shortDescription: "사건 1-1이 일어남.", longDescription: "사건 1-1이 일어나아아아아아아아아아아아아아아아아아아아아아아아아아아아암. ", isLocked: true)])
+                                Choice(text: "", likability: [], nextTextIndex: "End")], achievement: nil, choiceSkip: false)],currentCharacterNote: [GameCharacter(name: "이단희", profileImage: "heeryeongBackgroundImage", backGroundImage: "heeryeongBackgroundImage", description: "인물 설명", infomation: [], likability: 0, isLocked: true), GameCharacter(name: "휘령", profileImage: "heeryeongBackgroundImage", backGroundImage: "heeryeongBackgroundImage", description: "인물 설명", infomation: [], likability: 0, isLocked: true)], currentCaseNote: [NoteCase(id: .case101, title: "사건 1-1", shortDescription: "사건 1-1이 일어남.", longDescription: "사건 1-1이 일어나아아아아아아아아아아아아아아아아아아아아아아아아아아아암. ", isLocked: true)])
 
 
 
@@ -182,7 +182,7 @@ let testChapter1 = Episode(episodeName: "임진왜란", episodeYear: 1592, episo
                                 Choice(text: "", likability: [], nextTextIndex: "End"),
                                 Choice(text: "", likability: [], nextTextIndex: "End")], achievement: nil, choiceSkip: false)
 ],
-currentCharacterNote: [GameCharacter(name: "휘령1",
+currentCharacterNote: [GameCharacter(name: "단희",
                                      profileImage: "heeryeongBackgroundImage",
                                      backGroundImage: "",
                                      description: "인물 설명",

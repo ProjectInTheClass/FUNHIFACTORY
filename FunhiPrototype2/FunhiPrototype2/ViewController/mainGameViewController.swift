@@ -78,7 +78,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         self.mainGameTableView.delegate = self
         self.mainGameTableView.dataSource = self
-        topBarShadow(wholeView: self.view!, buttonView: topBar, tableview:mainGameTableView)
+       //topBarShadow(wholeView: self.view!, buttonView: topBar, tableview:mainGameTableView)
         choiceBar.frame.size = CGSize(width: 414, height: 0)
         choiceHeight.constant = 0
     }
@@ -125,7 +125,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             return
         }
         print("스토리 \(indexNumber+1)/\(currentChatAmount())")
-        
+        checkGameCharacterInChat(popupView: notePopupView, backgroundView: self.view)
         indexNumber += 1
         scrollToBottom()
     }
@@ -195,17 +195,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func closeMap(_ sender: Any) {
         map.removeFromSuperview()
     }
-    
-    func notePopupViewDesign() {
-        notePopupView.translatesAutoresizingMaskIntoConstraints = false
-        guard let notePopupView = notePopupView else { return }
-        notePopupView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 118).isActive = true
-            let horizontalConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-            let widthConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 231)
-            let heightConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 53)
-        self.view.addConstraints([horizontalConstraint, widthConstraint, heightConstraint])
-        
-    }
+  
     
 }
 
