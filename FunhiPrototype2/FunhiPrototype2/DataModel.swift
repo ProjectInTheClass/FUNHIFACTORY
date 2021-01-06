@@ -104,6 +104,14 @@ enum GameCharacterID {
             return prologueChapter.currentCharacterNote[1]
         case .hwiryeong:
             return prologueChapter.currentCharacterNote[2]
+        case .hwiryeong1:
+            return prologueChapter.currentCharacterNote[2]
+        case .hwiryeong2:
+            return prologueChapter.currentCharacterNote[2]
+        case .hwiryeong3:
+            return prologueChapter.currentCharacterNote[2]
+        case .hwiryeong4:
+            return prologueChapter.currentCharacterNote[2]
         default:
             break
         }
