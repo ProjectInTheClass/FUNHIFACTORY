@@ -22,13 +22,13 @@ struct Setting {
 
 //수첩 사건
 
-enum NoteCaseID {
+enum NoteCaseID :String,Codable{
     case case101
     case case201
     case case301
     case case401
 }
-class NoteCase {
+class NoteCase :Codable{
     //구별 위한 ID
     let id: NoteCaseID
     let title: String
@@ -50,14 +50,14 @@ class NoteCase {
 //주인공 업적
 // 프라퍼티 설명: 업적 이름, 해당 이미지, 글
 
-enum AchievementID {
+enum AchievementID :String,Codable{
     case achievement1
     case achievement2
     case achievement3
     case achievement4
 }
 
-struct Achievement {
+struct Achievement :Codable{
     let name: String
     let image: String
     let id: AchievementID
@@ -68,14 +68,14 @@ struct Achievement {
 
 //------------------------------------게임 캐릭터 : 키렐 포함 모든 인물들------------------------------------
 //수첩 인물 정보
-enum InfomationID {
+enum InfomationID :String,Codable{
     case hwiryeong1
     case hwiryeong2
     case hwiryeong3
     case hwiryeong4
     case hwiryeong5
 }
-class Infomation {
+class Infomation :Codable{
     var infomationID: InfomationID
     var isLocked: Bool
     var text: String
@@ -90,7 +90,7 @@ class Infomation {
 // 프라퍼티 설명:  인물 이름, 대표 이미지, 키렐이 관찰기록한 듯한 내용의 해당 인물 정보들(인물상세페이지에 있음), 시련 미션, 호감도
 //인물
 
-enum GameCharacterID {
+enum GameCharacterID :String,Codable{
     case danhee
     case hwiryeong
     case hwiryeong1
@@ -119,7 +119,7 @@ enum GameCharacterID {
 }
 
 
-class GameCharacter {
+class GameCharacter :Codable{
     let name: String
     let profileImage: String
     let backGroundImage : String
@@ -144,7 +144,7 @@ class GameCharacter {
 //----------얘는 유저스트럭처에 포함됨-----------
 
 //유저가 파악한 현재 인물들 정보를 반영해 넣을 스트럭처
-struct GameCharacters {                                                                                                 //현재 유저가 발견한 캐릭터만 확인되는 형태라면, 이름이 직관적이지 않다.
+struct GameCharacters{                                                                                                 //현재 유저가 발견한 캐릭터만 확인되는 형태라면, 이름이 직관적이지 않다.
     let kirell: GameCharacter
     let hilde: GameCharacter
     let argo: GameCharacter
@@ -193,7 +193,7 @@ func currentChatType() -> ChatType{
 
 // 대화할 때 나오는 텍스트 블럭 "종류"
 // 프라퍼티 설명:  그냥 글, 터치하면 확대되는 큰 이미지, 터치 안 되는 작은 이미지, 팝업(키렐 혼잣말), 팝업(짤막한 움짤), 섹션 해더같은 애
-enum ChatType {
+enum ChatType :String, Codable{
     case onlyText
     case untouchableImage
     case sectionHeader
@@ -202,7 +202,7 @@ enum ChatType {
 
 // 텍스트 블럭 스트럭처
 //  프라퍼티 설명: 글, 이미지, 타입, 해당 인물
-struct Chat {
+struct Chat :Codable{
     let text: String
     let image: String
     let type: ChatType
@@ -216,14 +216,14 @@ struct Chat {
 
 //선택지 누르면 변경될 호감도
 // 프라퍼티 설명:  해당 인물, 변경될 호감도 수치
-struct ChoiceLikeability {
+struct ChoiceLikeability :Codable{
     let who: GameCharacter
     let number: Int
 }
 
 //선택지
 // 프라퍼티 설명: 선택지 텍스트, 변경될 호감도
-struct Choice {
+struct Choice :Codable{
     let text: String
     let likability: [ChoiceLikeability]
     let nextTextIndex: String
@@ -232,7 +232,7 @@ struct Choice {
 //n일차를 쪼갠 조각의 단위 : 일반 대화들 ~ 키렐 선택지가 마지막.
 // 에피소드를 어떤 단위대로 쪼개야 할지 고민했음. 이거 게임 구조가 이랬음.[ 캐릭터들 대사가 자동으로 나옴 -> 키렐 선택지 나옴 -> 자동으로 나오던 대사는 멈춤 -> 키렐 선택지 결정하면 그 다음 대사들이 결정되고 또 자동으로 나옴] -> 그러니까 키렐 대사 선택지가 나오면 게임 진행이 멈춤. 그리고 이 선택을 기점으로 다음 내용이 결정되고, 진행이 되는 거임. 그러려면 키렐 대사 선택지는 하나하나 쪼개야 하나하나 쪼개야 했음. 그래서 본문을 이렇게 나눔.[키렐 대사 선택 직후 시작되는 인물들 대사부터 선택지 나오기 직전까지의 대화 내용 + 키렐 선택지]. 이 단위가 여러 개 이어지면 [대사-> 선택지-> 대사-> 선택지...]인 거고 이러면 괜찮지 않을까 싶었음.
 // 프라퍼티 설명: 순차적으로 나오는 텍스트 블록, 선택지, 이거 깨면 달성되는 업적
-struct BlockOfDayEpisode {
+struct BlockOfDayEpisode :Codable{
     let chats: [Chat]
     
     //다음 페이지(?)블럭(?)을 선택하는 로직을 좀 더 간결하게 할 수 있을지 고민하다 딕셔너리 어떨까 생각함. 원래는 다음 페이지를 nextIndexPage값으로 했다면, 이번에는 key값을 이용해보는 거? 만약 key 값이 각가 1, 2를 가진 선택지가 있따면, 현재 페이지 번호에 선택지 key 값인 1, 2를 더한 수를 가진 페이지가 다음 페이지가 됨. 예를 들어서 3번 페이지에서 1번 선택지를 고르면 1+1= 2번 페이지로 가게 되고, 2번을 고르면 1+2 = 3번 페이지로 가게 됨.
@@ -257,7 +257,7 @@ struct Episode {
     //(예시 : 해당 에피 클리어 여부)
     let isCleared: Bool
     //(예시 : 대사)
-    let storyBlocks: [String:BlockOfDayEpisode]
+    var storyBlocks: [String:BlockOfDayEpisode]
     // 해당 사건의 수첩에 적힐 캐릭터들
     var currentCharacterNote: [GameCharacter]
     // 해당 사건의 수첩에 적힐 사건들
@@ -333,3 +333,14 @@ func checkgameCharacterInfomationInChat() {
 
 //일단 만들어놓은 인물들 샘플 정보 변수입니다.
 
+//json 파싱 전용 파일
+struct BlockOfDayEpisodeForJson :Codable{
+    let id : String
+    let chats: [Chat]
+    
+    //다음 페이지(?)블럭(?)을 선택하는 로직을 좀 더 간결하게 할 수 있을지 고민하다 딕셔너리 어떨까 생각함. 원래는 다음 페이지를 nextIndexPage값으로 했다면, 이번에는 key값을 이용해보는 거? 만약 key 값이 각가 1, 2를 가진 선택지가 있따면, 현재 페이지 번호에 선택지 key 값인 1, 2를 더한 수를 가진 페이지가 다음 페이지가 됨. 예를 들어서 3번 페이지에서 1번 선택지를 고르면 1+1= 2번 페이지로 가게 되고, 2번을 고르면 1+2 = 3번 페이지로 가게 됨.
+    // choices: [[다음페이지 결정짓는 key값 : 선택지 텍스트]]
+    let choices: [Choice]
+    let achievement: Achievement?
+    let choiceSkip : Bool
+}
