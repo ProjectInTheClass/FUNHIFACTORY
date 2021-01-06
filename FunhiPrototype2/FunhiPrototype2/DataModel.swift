@@ -18,8 +18,7 @@ struct Setting {
     
 }
 
-//------------------------------------히스토리: 업적 비슷한 개념------------------------------------
-// 히스토리: 키렐이 매일 꾸는 꿈 내용.
+//------------------------------------수첩 사건------------------------------------
 
 
 //수첩 사건
@@ -47,10 +46,10 @@ class NoteCase :Codable{
     }
 }
 
-//------------------------------------업적------------------------------------
+//------------------------------------주인공 업적------------------------------------
 
 //주인공 업적
-// 프라퍼티 설명: 업적 이름, 해당 이미지, 글
+
 
 enum AchievementID :String,Codable{
     case achievement1
@@ -58,7 +57,7 @@ enum AchievementID :String,Codable{
     case achievement3
     case achievement4
 }
-
+// 프라퍼티 설명: 업적 이름, 업적 이미지, id(업적 획득 로직에서 사용), 업적 잠금 여부
 struct Achievement :Codable{
     let name: String
     let image: String
@@ -66,9 +65,38 @@ struct Achievement :Codable{
     var isLocked: Bool
 }
 
+//------------------------------------앨범 이미지------------------------------------
 
-
-//------------------------------------게임 캐릭터 : 키렐 포함 모든 인물들------------------------------------
+enum AlbumImageID :String,Codable{
+    case prologueCase1
+    case achievement1Locked
+    
+    func info() -> AlbumImage{
+        switch self {
+        case .prologueCase1:
+            return test.currentAlbumImages[0]
+        case .achievement1Locked:
+            return test.currentAlbumImages[1]
+        }
+    }
+}
+class AlbumImage :Codable{
+    //구별 위한 ID
+    let id: AlbumImageID
+    let image: String
+    let title: String
+    let description: String
+    var isLocked: Bool
+    
+    init(id: AlbumImageID, image: String, title: String, description: String, isLocked: Bool) {
+        self.id = id
+        self.image = image
+        self.title = title
+        self.description = description
+        self.isLocked = isLocked
+    }
+}
+//------------------------------------등장인물 정보------------------------------------
 //수첩 인물 정보
 enum InfomationID :String,Codable{
     case hwiryeong1
@@ -77,6 +105,8 @@ enum InfomationID :String,Codable{
     case hwiryeong4
     case hwiryeong5
 }
+
+// id(정보 획득 로직에서 사용), 업적 잠금 여부, 정보 텍스트
 class Infomation :Codable{
     var infomationID: InfomationID
     var isLocked: Bool
@@ -88,6 +118,7 @@ class Infomation :Codable{
         self.text = text
     }
 }
+//------------------------------등장인물-----------------------
 // 키렐 포함 인물들 정보를 담기 위한 스트럭처
 // 프라퍼티 설명:  인물 이름, 대표 이미지, 키렐이 관찰기록한 듯한 내용의 해당 인물 정보들(인물상세페이지에 있음), 시련 미션, 호감도
 //인물
@@ -103,24 +134,25 @@ enum GameCharacterID :String,Codable{
     func info() -> GameCharacter{
         switch self {
         case .danhee:
-            return prologueChapter.currentCharacterNote[1]
+            return prologueChapter.currentCharacterNote[0]
         case .hwiryeong:
             return prologueChapter.currentCharacterNote[1]
         case .hwiryeong1:
-            return prologueChapter.currentCharacterNote[2]
+            return prologueChapter.currentCharacterNote[1]
         case .hwiryeong2:
-            return prologueChapter.currentCharacterNote[2]
+            return prologueChapter.currentCharacterNote[1]
         case .hwiryeong3:
-            return prologueChapter.currentCharacterNote[2]
+            return prologueChapter.currentCharacterNote[1]
         case .hwiryeong4:
-            return prologueChapter.currentCharacterNote[2]
+            return prologueChapter.currentCharacterNote[1]
         default:
             break
         }
     }
 }
 
-
+// gameCharacter는 참조 기능 필요해서 class임
+// 프라퍼티 설명: 등장인물 이름, 프로필 이미지, 배경 이미지, 등장인물 설명, 등장인물 정보 목록, 호감도, 잠금 여부
 class GameCharacter :Codable{
     let name: String
     let profileImage: String
@@ -143,25 +175,18 @@ class GameCharacter :Codable{
     }
     
 }
-//----------얘는 유저스트럭처에 포함됨-----------
 
-//유저가 파악한 현재 인물들 정보를 반영해 넣을 스트럭처
-struct GameCharacters{                                                                                                 //현재 유저가 발견한 캐릭터만 확인되는 형태라면, 이름이 직관적이지 않다.
-    let kirell: GameCharacter
-    let hilde: GameCharacter
-    let argo: GameCharacter
-    let philio: GameCharacter
-    let balaam: GameCharacter
-}
 //------------------------------------유저------------------------------------
 
-//  프라퍼티 설명: 설정, 티켓(게임화폐), 유저가 달성한 히스토리, 유저가 달성한 업적, 타임라인(?), 유저가 파악한 캐릭터들 정보
+//  프라퍼티 설명: 게임 설정 정보, 플레이한 에피소드 내용, ???, 유저 업적, 획득된 업적 개수, 앨범 이미지, ??, ??, 현재 게임 대화 진행현황 id
 struct User {
     var setting: Setting
     var currentEpisodes: [Episode]
     //var timellne: nil
+    // 얘 역할 주석으로 설명 부탁합니다 궁금함
     var currentCharacterInfo: [String:GameCharacter]
     var currentAchievementInfo: [Achievement]
+    //획득한 업적 개수 계산해주는 프로퍼티. 주인공 노트 화면에서 사용합니다
     var clearedAchievementCount: Int {
         get {
             var cleardCount = Int()
@@ -173,6 +198,8 @@ struct User {
             return cleardCount
         }
     }
+   
+    //이 아래 두 개 역할이 어떻게 되고 어떤 차이점이 있는지 주석으로 설명 부탁합니다 궁금22
     var dayIndex:Int
     var dayId:String
     var currentChatId:String
@@ -215,6 +242,7 @@ struct Chat :Codable{
     let infomationToUnlock: InfomationID?
     let gameCharacterToUnlock: GameCharacterID?
     let caseToUnlock: NoteCaseID?
+    let albumImageToUnlock: AlbumImageID?
 }
 
 //선택지 누르면 변경될 호감도
@@ -265,6 +293,8 @@ struct Episode {
     var currentCharacterNote: [GameCharacter]
     // 해당 사건의 수첩에 적힐 사건들
     var currentCaseNote: [NoteCase]
+    // 해당 사건의 앨범 창에 추가될 이미지
+    var currentAlbumImages: [AlbumImage]
 }
 
 // 더미데이터 담을 스트럭처
@@ -350,6 +380,23 @@ func checkgameCharacterInfomationInChat(popupView: UIView, backgroundView: UIVie
     }
 }
 
+//mainGame에서 currentChat 정보 읽어서 알맞은 앨범 이미지 해금하기
+func checkAlbumImageInChat() {
+    
+    let currentChatAlbumImage = currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].albumImageToUnlock
+    
+    if currentChatAlbumImage != nil {
+   
+    for albumImage in currentDay().currentAlbumImages.enumerated() {
+        if albumImage.element.id == currentChatAlbumImage {
+            currentDay().currentAlbumImages[albumImage.offset].isLocked = false
+            print("'\(currentDay().currentAlbumImages[albumImage.offset].isLocked)' 앨범 이미지 해금됨")
+          
+            
+        }
+    }
+    }
+}
 
 func notePopupViewDesign(notePopupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel, descriptionText: String, infoID: String) {
     
@@ -376,8 +423,6 @@ func notePopupViewDesign(notePopupView: UIView, backgroundView: UIView, titleLab
         titleLabel.text = "수첩 - 인물"
         descriptionLabel.text = "\(descriptionText) 획득"
     }
-    
-    
     
 }
 //일단 만들어놓은 인물들 샘플 정보 변수입니다.

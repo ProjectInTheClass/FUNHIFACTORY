@@ -98,6 +98,7 @@ class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollec
         return CGSize(width: collectionViewCellWidth, height: collectionViewCellWidth)
     }
 
+    //가장 윗 셀 그리는 함수
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         switch kind {

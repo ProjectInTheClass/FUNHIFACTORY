@@ -141,6 +141,12 @@ class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITable
 
         return returnCell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let collectionViewCellWidth = collectionView.frame.width/2
+       
+        return CGSize(width: 205, height: collectionViewCellWidth)
+    }
     //----------------일반 아웃렛, 메소드------------------------------
     var recievedGameCharacter: GameCharacter?
     
