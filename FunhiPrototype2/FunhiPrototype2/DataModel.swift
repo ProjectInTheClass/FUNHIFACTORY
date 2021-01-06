@@ -292,7 +292,7 @@ func checkGameCharacterInChat() {
     let currentChatGameCharacter = currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].gameCharacterToUnlock
     if currentChatGameCharacter != nil {
         for gameCharacter in currentDay().currentCharacterNote.enumerated() {
-            if gameCharacter.element.gameCharacterID == currentChatGameCharacter {
+            if gameCharacter.element.name == currentChatGameCharacter {
                 currentDay().currentCharacterNote[gameCharacter.offset].isLocked = false
                 print("캐릭터 '\(testChapter1.currentCharacterNote[0].isLocked)' 해금됨")
                 
