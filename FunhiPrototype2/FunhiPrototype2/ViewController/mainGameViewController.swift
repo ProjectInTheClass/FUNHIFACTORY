@@ -125,7 +125,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             return
         }
         print("스토리 \(indexNumber+1)/\(currentChatAmount())")
-        checkGameCharacterInChat(popupView: notePopupView, backgroundView: self.view)
+        checkGameCharacterInChat(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel)
         indexNumber += 1
         scrollToBottom()
     }
