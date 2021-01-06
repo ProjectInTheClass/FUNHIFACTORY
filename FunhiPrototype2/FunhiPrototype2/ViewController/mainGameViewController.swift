@@ -21,6 +21,13 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var thirdChoiceButton: UIButton!
     @IBOutlet var map: UIView!
     @IBOutlet var topBar: UIView!
+    @IBOutlet var notePopupView: UIView!
+    @IBOutlet weak var notePopupViewTitle: UILabel!
+    @IBOutlet weak var notePopupViewDescriptionLabel: UILabel!
+    @IBAction func notePopupViewXButton(_ sender: Any) {
+        notePopupView.removeFromSuperview()
+    }
+    
     var animator : UIViewPropertyAnimator?
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -147,7 +154,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         choiceBar.isHidden = true
     }
     @IBAction func firstChoice(_ sender: Any) {
-        currentChatArray.append(Chat(text: currentBlockOfDay().choices[0].text, image: "", type: .onlyText, who: danhee, characterFace: true))
+        currentChatArray.append(Chat(text: currentBlockOfDay().choices[0].text, image: "", type: .onlyText, who: danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil))
         player.currentChatId = currentBlockOfDay().choices[0].nextTextIndex
         mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         indexNumber = 0
@@ -156,7 +163,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         chatUpdateTimer()
     }
     @IBAction func secondChoice(_ sender: Any) {
-        currentChatArray.append(Chat(text: currentBlockOfDay().choices[1].text, image: "", type: .onlyText, who: danhee, characterFace: true))
+        currentChatArray.append(Chat(text: currentBlockOfDay().choices[1].text, image: "", type: .onlyText, who: danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil))
         player.currentChatId = currentBlockOfDay().choices[1].nextTextIndex
         mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         indexNumber = 0
@@ -165,7 +172,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         chatUpdateTimer()
     }
     @IBAction func thirdChoice(_ sender: Any) {
-        currentChatArray.append(Chat(text: currentBlockOfDay().choices[2].text, image: "", type: .onlyText, who: danhee, characterFace: true))
+        currentChatArray.append(Chat(text: currentBlockOfDay().choices[2].text, image: "", type: .onlyText, who: danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil))
         player.currentChatId = currentBlockOfDay().choices[2].nextTextIndex
         mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         indexNumber = 0
@@ -188,4 +195,18 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func closeMap(_ sender: Any) {
         map.removeFromSuperview()
     }
+    
+    func notePopupViewDesign() {
+        notePopupView.translatesAutoresizingMaskIntoConstraints = false
+        guard let notePopupView = notePopupView else { return }
+        notePopupView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 118).isActive = true
+            let horizontalConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
+            let widthConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 231)
+            let heightConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 53)
+        self.view.addConstraints([horizontalConstraint, widthConstraint, heightConstraint])
+        
+    }
+    
 }
+
+
