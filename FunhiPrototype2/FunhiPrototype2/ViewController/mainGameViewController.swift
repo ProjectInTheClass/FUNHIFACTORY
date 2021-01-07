@@ -84,7 +84,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
        //topBarShadow(wholeView: self.view!, buttonView: topBar, tableview:mainGameTableView)
         choiceBar.frame.size = CGSize(width: 414, height: 0)
         choiceHeight.constant = 0
-        popupViewDesign(popupView: notePopupView)
         /*
          loadJson(fromURLString: urlString) { (result) in
               switch result {
