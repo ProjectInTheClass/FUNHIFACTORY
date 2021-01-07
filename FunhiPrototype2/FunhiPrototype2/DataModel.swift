@@ -130,6 +130,9 @@ enum GameCharacterID :String,Codable{
     case hwiryeong2
     case hwiryeong3
     case hwiryeong4
+    case tourguide
+    case teacher
+    case unknown
     
     func info() -> GameCharacter{
         switch self {
@@ -144,6 +147,12 @@ enum GameCharacterID :String,Codable{
         case .hwiryeong3:
             return prologueChapter.currentCharacterNote[1]
         case .hwiryeong4:
+            return prologueChapter.currentCharacterNote[1]
+        case .tourguide:
+            return prologueChapter.currentCharacterNote[1]
+        case .teacher:
+            return prologueChapter.currentCharacterNote[1]
+        case .unknown:
             return prologueChapter.currentCharacterNote[1]
         default:
             break
@@ -236,7 +245,7 @@ struct Chat :Codable{
     let text: String
     let image: String
     let type: ChatType
-    let who: GameCharacter
+    let who: GameCharacterID
     let characterFace : Bool
     let achievementToUnlock: AchievementID?
     let infomationToUnlock: InfomationID?

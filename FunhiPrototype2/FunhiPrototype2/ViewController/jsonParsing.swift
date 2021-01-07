@@ -11,27 +11,31 @@ import UIKit
 let jsonEncoder = JSONEncoder()
 let jsonDecoder = JSONDecoder()
 
+let urlString = "https://raw.githubusercontent.com/ChoiSeoyeon61/FUNHI_Toy_seoul2033/mugwort/storyInstance.json"
+
 func parse(jsonData : Data){
     do{
         //let jsonString = try String(data: asset.data, encoding: .utf8)
         let ex = try jsonDecoder.decode([BlockOfDayEpisodeForJson].self, from: jsonData)
+        dataToDictionary(storyData: ex, storyStorage: prologueChapter.storyBlocks)
     } catch{
         print(error)
     }
 }
 
-func dataToDictionary(storyData : [BlockOfDayEpisodeForJson], storyStorage : [String:BlockOfDayEpisode]) -> [String:BlockOfDayEpisode]{
-    var mutatedStoryStorage = storyStorage
+func dataToDictionary(storyData : [BlockOfDayEpisodeForJson], storyStorage : [String:BlockOfDayEpisode]){
+    
     for ex in storyData{
-        let id = ex.id
+        let storyId = ex.id
         let chats = ex.chats
         let choices = ex.choices
         let achievement = ex.achievement
         let choiceSkip = ex.choiceSkip
         let story = BlockOfDayEpisode(chats: chats, choices: choices, achievement: achievement, choiceSkip: choiceSkip)
-        mutatedStoryStorage[id] = story
+        prologueChapter.storyBlocks[storyId] = story
+        print("진행")
     }
-    return mutatedStoryStorage
+    
 }
 func loadJson(fromURLString urlString: String,
                       completion: @escaping (Result<Data, Error>) -> Void) {
@@ -63,3 +67,14 @@ func readLocalFile(forName name: String) -> Data? {
    
    return nil
 }
+
+/*
+ loadJson(fromURLString: urlString) { (result) in
+      switch result {
+      case .success(let data):
+          self.parse(jsonData: data)
+      case .failure(let error):
+          print(error)
+      }
+  }
+ */
