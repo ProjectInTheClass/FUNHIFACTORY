@@ -43,15 +43,15 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         //텍스트 채팅이 나올 때
             //자신이 보냈을 때
 
-                if currentChatArray[indexPath.row].type == .onlyText && currentChatArray[indexPath.row].who.name == "이단희"{
+        if currentChatArray[indexPath.row].type == .onlyText && currentChatArray[indexPath.row].who.info().name == "이단희"{
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
-                    cell.myTextCellUpdate(name: currentChatArray[indexPath.row].who.name, chat: chatText, profile: currentChatArray[indexPath.row].who.profileImage)
+            cell.myTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: currentChatArray[indexPath.row].who.info().profileImage)
                     return cell
                 }
             //상대가 보냈을 때
                 else if currentChatArray[indexPath.row].type == .onlyText {
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
-                    cell.opTextCellUpdate(name: currentChatArray[indexPath.row].who.name, chat: chatText, profile: currentChatArray[indexPath.row].who.profileImage)
+                    cell.opTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: currentChatArray[indexPath.row].who.info().profileImage)
                     return cell
                 }
             //터치할 수 없는 이미지
@@ -69,7 +69,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 return cell
             } else {
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
-                cell.myTextCellUpdate(name: currentChatArray[indexPath.row].who.name, chat: chatText, profile: currentChatArray[indexPath.row].who.profileImage)
+                cell.myTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: currentChatArray[indexPath.row].who.info().profileImage)
                 return cell
             }
     }
@@ -82,7 +82,22 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         choiceBar.frame.size = CGSize(width: 414, height: 0)
         choiceHeight.constant = 0
         popupViewDesign(popupView: notePopupView)
+        /*
+         loadJson(fromURLString: urlString) { (result) in
+              switch result {
+              case .success(let data):
+                  parse(jsonData: data)
+                 print(prologueChapter.storyBlocks)
+              case .failure(let error):
+                  print(error)
+              }
+          }
+         */
+        guard let ex = readLocalFile(forName: "storyInstance") else {return}
+        parse(jsonData: ex)
     }
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         chatUpdateTimer()
     }
@@ -98,15 +113,15 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     func chatUpdate(){
         print("------------chatUpdate 시작합니다------------")
         print("현재 속도: \(player.setting.textSpeed)")
-        if indexNumber < currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type == .onlyText{
+        if indexNumber < currentChatAmount() && currentBlockOfDay().chats[indexNumber].type == .onlyText{
             print("채팅이 업데이트되었습니다.")
-            currentChatArray.append(currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber])
+            currentChatArray.append(currentBlockOfDay().chats[indexNumber])
             self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)}
-        if indexNumber == currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.choices[0].nextTextIndex == "End"{
+        if indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex == "End"{
             guard timer != nil else {return}
             timer.invalidate()
         }
-        if indexNumber == currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.choiceSkip == false{
+        if indexNumber == currentChatAmount() && currentBlockOfDay().choiceSkip == false{
             timer.invalidate()
             print("invalidate")
             guard currentChatArray.last?.type != .choice else {return}
@@ -118,7 +133,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             print("선택지 대용 엘리먼트 추가")
             scrollToBottom()*/
             return
-        } else if indexNumber == currentChatAmount() && currentDay().storyBlocks[player.currentChatId]!.choiceSkip == true{
+        } else if indexNumber == currentChatAmount() && currentBlockOfDay().choiceSkip == true{
             player.currentChatId = currentBlockOfDay().choices[0].nextTextIndex
             indexNumber = 0
             chatUpdate()
@@ -150,9 +165,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         choiceBar.isHidden = false
         animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0.0, options: [], animations: {self.choiceBar.layoutIfNeeded()}, completion: nil)
         choiceBar.isHidden = false
-        firstChoiceButton.setTitle(currentDay().storyBlocks[player.currentChatId]!.choices[0].text, for: .normal)
-        secondChoiceButton.setTitle(currentDay().storyBlocks[player.currentChatId]!.choices[1].text, for: .normal)
-        //thirdChoiceButton.setTitle(currentDay().storyBlocks[player.currentChatId]!.choices[2].text, for: .normal)
+        firstChoiceButton.setTitle(currentBlockOfDay().choices[0].text, for: .normal)
+        secondChoiceButton.setTitle(currentBlockOfDay().choices[1].text, for: .normal)
+        //thirdChoiceButton.setTitle(currentBlockOfDay().choices[2].text, for: .normal)
     }
     func closeChoiceBar(){
         choiceHeight.constant = 0
@@ -161,7 +176,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         choiceBar.isHidden = true
     }
     @IBAction func firstChoice(_ sender: Any) {
-        currentChatArray.append(Chat(text: currentBlockOfDay().choices[0].text, image: "", type: .onlyText, who: danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil))
+        currentChatArray.append(Chat(text: currentBlockOfDay().choices[0].text, image: "", type: .onlyText, who: .danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil))
         player.currentChatId = currentBlockOfDay().choices[0].nextTextIndex
         mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         indexNumber = 0
@@ -170,7 +185,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         chatUpdateTimer()
     }
     @IBAction func secondChoice(_ sender: Any) {
-        currentChatArray.append(Chat(text: currentBlockOfDay().choices[1].text, image: "", type: .onlyText, who: danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil))
+        currentChatArray.append(Chat(text: currentBlockOfDay().choices[1].text, image: "", type: .onlyText, who: .danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil))
         player.currentChatId = currentBlockOfDay().choices[1].nextTextIndex
         mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         indexNumber = 0
@@ -179,7 +194,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         chatUpdateTimer()
     }
     @IBAction func thirdChoice(_ sender: Any) {
-        currentChatArray.append(Chat(text: currentBlockOfDay().choices[2].text, image: "", type: .onlyText, who: danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil))
+        currentChatArray.append(Chat(text: currentBlockOfDay().choices[2].text, image: "", type: .onlyText, who: .danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil))
         player.currentChatId = currentBlockOfDay().choices[2].nextTextIndex
         mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         indexNumber = 0
