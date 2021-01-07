@@ -10,7 +10,7 @@ import UIKit
 class mainGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //Outlet
     
-    var recieved: String?
+    var isStartOfEpisode: Bool = false
     
     @IBOutlet var choiceHeight: NSLayoutConstraint!
     @IBOutlet var mainGameTableView: UITableView!
@@ -24,6 +24,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var notePopupView: UIView!
     @IBOutlet weak var notePopupViewTitle: UILabel!
     @IBOutlet weak var notePopupViewDescriptionLabel: UILabel!
+    @IBOutlet var blackView: UIView!
     @IBAction func notePopupViewXButton(_ sender: Any) {
         notePopupView.removeFromSuperview()
     }
@@ -100,6 +101,21 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidAppear(_ animated: Bool) {
         chatUpdateTimer()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        if isStartOfEpisode {
+            isStartOfEpisode = false
+            blackView.bounds = self.view.bounds
+            blackView.center = self.view.center
+            self.view.addSubview(blackView)
+            blackView.alpha = 1
+            UIView.animate(withDuration: 1.0) {
+                self.blackView.alpha = 0
+            } completion: { (Bool) in
+                self.blackView.removeFromSuperview()
+            }
+
+        }
     }
     func chatUpdateTimer()
     {

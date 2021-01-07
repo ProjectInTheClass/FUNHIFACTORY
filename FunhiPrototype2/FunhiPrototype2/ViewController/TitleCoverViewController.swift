@@ -15,6 +15,9 @@ class TitleCoverViewController: UIViewController {
         designButton()
         // Do any additional setup after loading the view.
     }
+    @IBAction func startAction(_ sender: Any) {
+        performSegue(withIdentifier: "goToSelectSelectSegue", sender: nil)
+    }
     
     func designButton() {
         startButton.layer.cornerRadius = 3
@@ -28,14 +31,6 @@ class TitleCoverViewController: UIViewController {
         startButton.layer.shadowOffset = CGSize(width: 7, height: 7)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+ 
 
 }
