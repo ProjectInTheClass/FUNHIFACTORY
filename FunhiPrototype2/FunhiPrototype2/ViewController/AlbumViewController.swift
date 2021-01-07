@@ -41,15 +41,15 @@ class AlbumViewController: UIViewController,UICollectionViewDelegate,UICollectio
   
   //--------------콜렉션 뷰----------------
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return player.currentEpisodes[currentNotePageInt+1].currentAlbumImages.count
+        return player.currentEpisodes[currentNotePageInt].currentAlbumImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if Int(indexPath.row) % 2 == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "leftAlbumCollectionViewCell", for: indexPath) as! LeftAlbumCollectionViewCell
-            cell.albumImageView.image = UIImage(named: currentDay().currentAlbumImages[indexPath.row].image)
-            cell.albumTitleLabel.text = currentDay().currentAlbumImages[indexPath.row].title
-            if currentDay().currentAlbumImages[indexPath.row].isLocked {
+            cell.albumImageView.image = UIImage(named: player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].image)
+            cell.albumTitleLabel.text = player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].title
+            if player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].isLocked {
                 cell.lockedView.isHidden = false
             } else {
                 cell.lockedView.isHidden = true
@@ -57,9 +57,9 @@ class AlbumViewController: UIViewController,UICollectionViewDelegate,UICollectio
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rightAlbumCollectionViewCell", for: indexPath) as! RightAlbumCollectionViewCell
-            cell.albumImageView.image = UIImage(named: currentDay().currentAlbumImages[indexPath.row].image)
-            cell.albumTitleLabel.text = currentDay().currentAlbumImages[indexPath.row].title
-            if currentDay().currentAlbumImages[indexPath.row].isLocked {
+            cell.albumImageView.image = UIImage(named: player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].image)
+            cell.albumTitleLabel.text = player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].title
+            if player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].isLocked {
                 cell.lockedView.isHidden = false
             } else {
                 cell.lockedView.isHidden = true
@@ -68,7 +68,7 @@ class AlbumViewController: UIViewController,UICollectionViewDelegate,UICollectio
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard !currentDay().currentAlbumImages[indexPath.row].isLocked else { return }
+        guard !player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].isLocked else { return }
         popupViewOn(popupView: albumPopupView, titleLabel: albumPoopupTitleLabel, descriptionLabel: albumPopupDescriptionLabel, imageView: albumPopupImageView, priviousScale: 0.5, afterScale: 1.0, indexPath: indexPath)
         
     }

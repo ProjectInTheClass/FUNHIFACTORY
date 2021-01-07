@@ -29,18 +29,14 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 147
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "goToMaingameSegue" {
-//           
-//            if let dataToSend = sender as? String {
-//              destination.recieved = dataToSend
-//            }
-//        }
-//    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let dataToSend: Episode
         dataToSend = player.currentEpisodes[indexPath.row]
-        self.view.addSubview(selectedPopup)
+        
+        
+        openStagePopup(indexPath: indexPath)
+        
         
     }
    
@@ -70,8 +66,11 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBOutlet weak var selectedPopupStartButtonOutlet: UIButton!
     
     @IBAction func selectedPopupStartButton(_ sender: Any) {
+        
+        player.dayId = selectedEP.episodeID
         //나중에 필요한 정보 넣을 것
         performSegue(withIdentifier: "goToChapterCoverSegue", sender: nil)
+        
     }
     @IBAction func selectedPopupExitButton(_ sender: Any) {
         selectedPopup.removeFromSuperview()
@@ -90,6 +89,21 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         selectedPopupStartButtonOutlet.layer.borderColor = UIColor(red: 0.106, green: 0.157, blue: 0.22, alpha: 1).cgColor
         selectedPopupTopbar.layer.cornerRadius = 10
         selectedPopupTopbar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+    }
+    var selectedEP = Episode(episodeID: "", episodeName: "", episodeYear: 0, episodeKingYear: "", episodeDesciption: "", episodePlaceImage: "", isCleared: true, chatHistory: [], storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [])
+    func openStagePopup(indexPath: IndexPath) {
+        selectedEP = player.currentEpisodes[indexPath.row]
+        print(selectedEP)
+        selectedPopupYearLabel.text = "\(player.currentEpisodes[indexPath.row].episodeYear)년"
+        selectedPopupPlaceImage.image = UIImage(named: player.currentEpisodes[indexPath.row].episodePlaceImage)
+        selectedPopupDescriptionLabel.text = player.currentEpisodes[indexPath.row].episodeDesciption
+        selectedPopupStartButtonOutlet.setTitle("여기서 시작하기", for: .normal)
+        selectedPopupStartButtonOutlet.isEnabled = true
+        if player.currentEpisodes[indexPath.row].storyBlocks.count == 0 {
+            selectedPopupStartButtonOutlet.isEnabled = false
+            selectedPopupStartButtonOutlet.setTitle("준비 중입니다.", for: .normal)
+        }
+        self.view.addSubview(selectedPopup)
     }
 }
 

@@ -20,16 +20,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--mainGameNote-->
-        <scene sceneID="6DL-pg-Ugv">
-            <objects>
-                <viewControllerPlaceholder storyboardName="mainGameNote" id="mRc-dO-8Fd" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="v1b-K8-YEn"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ONQ-2p-cES" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-151" y="-391"/>
-        </scene>
         <!--Title Cover View Controller-->
         <scene sceneID="xOp-Fo-9Fz">
             <objects>
@@ -77,8 +67,8 @@ PROTOTYPE2
                     <navigationItem key="navigationItem" id="LhN-MK-Amx"/>
                     <connections>
                         <outlet property="startButton" destination="S4R-AN-iqx" id="r3Y-X9-OrS"/>
-                        <segue destination="mRc-dO-8Fd" kind="show" identifier="gogo" id="M9L-Xq-76B"/>
                         <segue destination="LDT-1T-9Vm" kind="show" identifier="goToSelectSelectSegue" id="mpB-tq-3CW"/>
+                        <segue destination="gV8-vF-X4D" kind="show" identifier="fromCoverToMaingameSegue" id="jZx-07-KWg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6g3-of-CNn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -190,7 +180,7 @@ PROTOTYPE2
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ylg-FS-lb9">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ylg-FS-lb9">
                                 <rect key="frame" x="40" y="178" width="334" height="638"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -351,7 +341,7 @@ PROTOTYPE2
                         <outlet property="selectedPopupStartButtonOutlet" destination="Lsc-oD-OCd" id="mPt-lo-UsX"/>
                         <outlet property="selectedPopupTopbar" destination="bhu-F1-JkX" id="qb9-3C-XRc"/>
                         <outlet property="selectedPopupYearLabel" destination="uaP-Qf-5NW" id="u4z-iT-5bQ"/>
-                        <segue destination="wpo-Yq-ikf" kind="show" identifier="goToChapterCoverSegue" id="cgE-z7-gJC"/>
+                        <segue destination="wpo-Yq-ikf" kind="show" identifier="goToChapterCoverSegue" animates="NO" id="cgE-z7-gJC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qEX-4g-USo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -594,12 +584,17 @@ PROTOTYPE2
         <!--UIViewController-58V-k4-uXR-->
         <scene sceneID="1Up-GY-vkJ">
             <objects>
-                <viewControllerPlaceholder storyboardName="mainGame" referencedIdentifier="UIViewController-58V-k4-uXR" id="gV8-vF-X4D" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="mainGame" referencedIdentifier="UIViewController-58V-k4-uXR" id="gV8-vF-X4D" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="b8Z-7Q-E0D"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ye3-9f-pMK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3673.913043478261" y="-649.55357142857144"/>
+            <point key="canvasLocation" x="-396" y="-544"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="jZx-07-KWg"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="palace" width="774" height="394"/>
         <image name="x" width="22" height="22"/>

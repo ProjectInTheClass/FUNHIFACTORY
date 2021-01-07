@@ -7,7 +7,7 @@
 import Foundation
 var indexNumber = 0 
 var currentChatArray : [Chat] = []
-let test = Episode(episodeName: "임진왜란", episodeYear: 1592, episodeKingYear: "선조 25년", episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "placeImage_1x", isCleared: true, storyBlocks: [
+let test = Episode(episodeID: "test", episodeName: "임진왜란", episodeYear: 1592, episodeKingYear: "선조 25년", episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "placeImage_1x", isCleared: true, chatHistory: [], storyBlocks: [
     "001":BlockOfDayEpisode(chats:
                                 [Chat(text: "사건을 시작하기 저어언에 먼저 이 사건에 대해 알려주겠다.", image: "", type: .onlyText, who: .hwiryeong, characterFace: true, achievementToUnlock: .achievement1, infomationToUnlock: .hwiryeong1 , gameCharacterToUnlock: .hwiryeong, caseToUnlock: nil, albumImageToUnlock: nil)],
                             choices: [
@@ -98,11 +98,11 @@ var currentCharactersInfo: [String:GameCharacter] = [
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
 
 
-var prologueChapter: Episode = Episode(episodeName: "프롤로그", episodeYear: 2020, episodeKingYear: "현재 2020년", episodeDesciption: "프롤로그임", episodePlaceImage: "프롤로그 자세한 설명임", isCleared: false, storyBlocks: [:], currentCharacterNote: [GameCharacter(name: "이단희", profileImage: "heeryeongBackgroundImage", backGroundImage: "heeryeongBackgroundImage", description: "인물 설명", infomation: [], likability: 0, isLocked: false), GameCharacter(name: "휘령", profileImage: "heeryeongBackgroundImage", backGroundImage: "heeryeongBackgroundImage", description: "인물 설명", infomation: [], likability: 0, isLocked: false)], currentCaseNote: [], currentAlbumImages: [])
+var prologueChapter: Episode = Episode(episodeID: "prologue", episodeName: "프롤로그", episodeYear: 2020, episodeKingYear: "현재 2020년", episodeDesciption: "프롤로그임", episodePlaceImage: "프롤로그 자세한 설명임", isCleared: false, chatHistory: [], storyBlocks: [:], currentCharacterNote: [GameCharacter(name: "이단희", profileImage: "heeryeongBackgroundImage", backGroundImage: "heeryeongBackgroundImage", description: "인물 설명", infomation: [], likability: 0, isLocked: false), GameCharacter(name: "휘령", profileImage: "heeryeongBackgroundImage", backGroundImage: "heeryeongBackgroundImage", description: "인물 설명", infomation: [], likability: 0, isLocked: false),GameCharacter(name: "투어 가이드", profileImage: "", backGroundImage: "", description: "", infomation: [], likability: 0, isLocked: true), GameCharacter(name: "선생님", profileImage: "", backGroundImage: "", description: "", infomation: [], likability: 0, isLocked: true),GameCharacter(name: "??", profileImage: "", backGroundImage: "", description: "", infomation: [], likability: 0, isLocked: true)], currentCaseNote: [], currentAlbumImages: [])
 
 
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
-let testChapter1 = Episode(episodeName: "임진왜란", episodeYear: 1592, episodeKingYear: "선조 25년", episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "placeImage_1x", isCleared: true, storyBlocks: [
+let testChapter1 = Episode(episodeID: "1592", episodeName: "임진왜란", episodeYear: 1592, episodeKingYear: "선조 25년", episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "placeImage_1x", isCleared: true, chatHistory: [], storyBlocks: [
     "001":BlockOfDayEpisode(chats:
                                 [Chat(text: "사건을 시작하기 저어언에 먼저 이 사건에 대해 알려주겠다.", image: "", type: .onlyText, who: .hwiryeong, characterFace: true, achievementToUnlock: .achievement1, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil)],
                             choices: [
@@ -179,18 +179,13 @@ let testChapter1 = Episode(episodeName: "임진왜란", episodeYear: 1592, episo
                                 Choice(text: "", likability: [], nextTextIndex: "End"),
                                 Choice(text: "", likability: [], nextTextIndex: "End")], achievement: nil, choiceSkip: false)
 ],
-currentCharacterNote: [GameCharacter(name: "단희",
-                                     profileImage: "heeryeongBackgroundImage",
-                                     backGroundImage: "",
-                                     description: "인물 설명",
-                                     infomation: [Infomation(infomationID: .hwiryeong1, isLocked: true, text: "휘령 정보 1"),Infomation(infomationID: .hwiryeong2, isLocked: true, text: "휘령 정보 2"),Infomation(infomationID: .hwiryeong3, isLocked: true, text: "휘령 정보 3"),Infomation(infomationID: .hwiryeong4, isLocked: true, text: "휘령 정보 4"),Infomation(infomationID: .hwiryeong5, isLocked: true, text: "휘령 정보 5 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화")],
-                                     likability: 0,
-                                     isLocked: true)],
+currentCharacterNote: [
+    GameCharacter(name: "단희",profileImage: "heeryeongBackgroundImage",backGroundImage: "",description: "인물 설명",infomation: [Infomation(infomationID: .hwiryeong1, isLocked: true, text: "휘령 정보 1"),Infomation(infomationID: .hwiryeong2, isLocked: true, text: "휘령 정보 2"),Infomation(infomationID: .hwiryeong3, isLocked: true, text: "휘령 정보 3"),Infomation(infomationID: .hwiryeong4, isLocked: true, text: "휘령 정보 4"),Infomation(infomationID: .hwiryeong5, isLocked: true, text: "휘령 정보 5 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화")], likability: 0,isLocked: true)],
 currentCaseNote: [NoteCase(id: .case101, title: "사건 1-1", shortDescription: "사건 1-1이 일어남.", longDescription: "사건 1-1이 일어나아아아아아아아아아아아아아아아아아아아아아아아아아아아암. ", isLocked: true)], currentAlbumImages: [AlbumImage(id: .prologueCase1, image: "prologueCase1", title: "단희 창덕궁 감", description: "단희가 창덕궁에 갔다. 눈 앞에는 돈화문으로 보이는 대문이 있다.", isLocked: true), AlbumImage(id: .achievement1Locked, image: "achievement1Locked", title: "병사가 된 단희", description: "창덕궁을 구하기 위해 과거로 이동한 단희는 남자가 되어있었다.", isLocked: false)])
 
-let testChapter2 = Episode(episodeName: "인조반정", episodeYear: 1623, episodeKingYear: "지조 25년", episodeDesciption: "광해군이 반정으로 인해 폐위되다", episodePlaceImage: "placeImage_1x",isCleared: false,storyBlocks: ["1":BlockOfDayEpisode(chats: [], choices: [], achievement: nil, choiceSkip: false)], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [])
+let testChapter2 = Episode(episodeID: "1623", episodeName: "인조반정", episodeYear: 1623, episodeKingYear: "지조 25년", episodeDesciption: "광해군이 반정으로 인해 폐위되다", episodePlaceImage: "placeImage_1x", isCleared: false, chatHistory: [],storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [])
 
-let testChapter3 = Episode(episodeName: "3.1 운동", episodeYear: 1919, episodeKingYear: "짱조 25년", episodeDesciption: "대한독립 만세",episodePlaceImage: "placeImage_1x", isCleared: false,storyBlocks: ["1":BlockOfDayEpisode(chats: [], choices: [], achievement: nil, choiceSkip: false)], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [])
+let testChapter3 = Episode(episodeID: "1919", episodeName: "3.1 운동", episodeYear: 1919, episodeKingYear: "짱조 25년", episodeDesciption: "대한독립 만세",episodePlaceImage: "placeImage_1x", isCleared: false, chatHistory: [],storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [])
 
-let testChapter4 = Episode(episodeName: "내 생일", episodeYear: 2003, episodeKingYear: "맛조 25년", episodeDesciption: "7월 28일임",episodePlaceImage: "placeImage_1x",isCleared: false, storyBlocks: ["1":BlockOfDayEpisode(chats: [], choices: [], achievement: nil, choiceSkip: false)], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [])
+let testChapter4 = Episode(episodeID: "2003", episodeName: "내 생일", episodeYear: 2003, episodeKingYear: "맛조 25년", episodeDesciption: "7월 28일임",episodePlaceImage: "placeImage_1x", isCleared: false, chatHistory: [], storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [])
 

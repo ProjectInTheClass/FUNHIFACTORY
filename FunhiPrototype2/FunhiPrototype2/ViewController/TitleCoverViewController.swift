@@ -16,10 +16,24 @@ class TitleCoverViewController: UIViewController {
         // Do any additional setup after loading the view.
         guard let ex = readLocalFile(forName: "storyInstance") else {return}
         parse(jsonData: ex)
+        
+       
+        
     }
     @IBAction func startAction(_ sender: Any) {
-        performSegue(withIdentifier: "goToSelectSelectSegue", sender: nil)
+        //에피 끝난 상태면
+        if currentChatArray.count == 0 {
+            performSegue(withIdentifier: "goToSelectSelectSegue", sender: nil)
+        //에피 진행중이면
+        } else {
+            performSegue(withIdentifier: "fromCoverToMaingameSegue", sender: nil)
+            
+        }
+       
+    
+        
     }
+    
     
     func designButton() {
         startButton.layer.cornerRadius = 3

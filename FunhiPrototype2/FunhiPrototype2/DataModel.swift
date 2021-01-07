@@ -20,7 +20,25 @@ struct Setting {
 
 //------------------------------------수첩 사건------------------------------------
 
-
+// player.currentEpisodes에서 현재 플레이중인 episode 골라내는 인덱스. 현재 에피소드 이름으로 식별함.
+var currentEpIndex: Int {
+    get {
+        if currentDay().episodeName == "프롤로그" {
+            return 0
+        } else if currentDay().episodeName == "임진왜란" {
+            return 1
+        } else if currentDay().episodeName == "인조반정" {
+            return 2
+        } else if currentDay().episodeName == "3.1 운동" {
+            return 3
+        } else if currentDay().episodeName == "내 생일" {
+            return 4
+        } else {
+            print("currentEpIndex 없음. 수정 필요")
+            return 0
+        }
+    }
+}
 //수첩 사건
 
 enum NoteCaseID :String,Codable{
@@ -149,11 +167,11 @@ enum GameCharacterID :String,Codable{
         case .hwiryeong4:
             return prologueChapter.currentCharacterNote[1]
         case .tourguide:
-            return prologueChapter.currentCharacterNote[1]
+            return prologueChapter.currentCharacterNote[2]
         case .teacher:
-            return prologueChapter.currentCharacterNote[1]
+            return prologueChapter.currentCharacterNote[3]
         case .unknown:
-            return prologueChapter.currentCharacterNote[1]
+            return prologueChapter.currentCharacterNote[4]
         default:
             break
         }
@@ -284,6 +302,7 @@ struct BlockOfDayEpisode :Codable{
 //n일차
 // 프라퍼티 설명: 에피소드 이름(ex)인조반정), 에피소드 연도(1xxx년), 에피소드 설명(인조반정에서 무슨 일이 일어날 예정이다 과연 주인공은 이를 막을 수 있을까? 어쩌구저쩌구), 에피소드 이미지(전각 이미지)스토리블럭(대사 인스턴스)
 struct Episode {
+    let episodeID: String
     //(예시 : 임진왜란)
     let episodeName: String
     //(예시 : 1592)
@@ -295,7 +314,9 @@ struct Episode {
     //(예시 : assets.xcassets에 넣은 이미지 이름)
     let episodePlaceImage: String
     //(예시 : 해당 에피 클리어 여부)
-    let isCleared: Bool
+    var isCleared: Bool
+    // 에피소드 완료시, 해당 에피소드 대화 내용이 저장되는 곳. 추후 타임라인에서 '이전 기록 보기'기능 할 때 사용될 예정임.
+    var chatHistory: [Chat]
     //(예시 : 대사)
     var storyBlocks: [String:BlockOfDayEpisode]
     // 해당 사건의 수첩에 적힐 캐릭터들
@@ -304,14 +325,30 @@ struct Episode {
     var currentCaseNote: [NoteCase]
     // 해당 사건의 앨범 창에 추가될 이미지
     var currentAlbumImages: [AlbumImage]
+    
+//    init(episodeID: String,episodeName: String,episodeYear: Int,episodeKingYear: String,episodeDesciption: String,episodePlaceImage: String,isCleared: Bool,chatHistory: [Chat],storyBlocks: [String:BlockOfDayEpisode],currentCharacterNote: [GameCharacter],currentCaseNote: [NoteCase],currentAlbumImages: [AlbumImage]) {
+//        self.episodeID = episodeID
+//        self.episodeName = episodeName
+//        self.episodeYear = episodeYear
+//        self.episodeKingYear = episodeKingYear
+//        self.episodeDesciption = episodeDesciption
+//        self.episodePlaceImage = episodePlaceImage
+//        self.isCleared = isCleared
+//        self.chatHistory = chatHistory
+//        self.storyBlocks = storyBlocks
+//        self.currentCharacterNote = currentCharacterNote
+//        self.currentCaseNote = currentCaseNote
+//        self.currentAlbumImages = currentAlbumImages
+//    
+//    }
 }
 
 // 더미데이터 담을 스트럭처
 // 총 스토리 본문, 모든 히스토리, 모든 업적, 전체 인물 정보
 struct GameData {
     let stories: [String:Episode]
-    let histories: [Int:NoteCase]
-    let achivements: [Int:Achievement]
+    let histories: [String:NoteCase]
+    let achivements: [String:Achievement]
     let gameCharacters: [String:GameCharacter]
 }
 
