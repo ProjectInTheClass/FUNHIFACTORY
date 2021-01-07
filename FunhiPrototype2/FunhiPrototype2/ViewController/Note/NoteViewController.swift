@@ -502,7 +502,7 @@ extension NoteViewController {
         casePopupView.transform = CGAffineTransform(scaleX: priviousScale, y: priviousScale)
        
         //애니메이션
-        UIView.animate(withDuration: 0.1) {
+        UIView.animate(withDuration: 0.2) {
             self.casePopupView.transform = CGAffineTransform(scaleX: afterScale, y: afterScale)
             self.casePopupView.alpha = 1
         }
@@ -516,7 +516,7 @@ extension NoteViewController {
         casePopupView.transform = CGAffineTransform(scaleX: priviousScale, y: priviousScale)
        
         //애니메이션
-        UIView.animate(withDuration: 0.1) {
+        UIView.animate(withDuration: 0.2) {
             self.casePopupView.transform = CGAffineTransform(scaleX: afterScale, y: afterScale)
             self.casePopupView.alpha = 0
         } completion: { (Bool) in

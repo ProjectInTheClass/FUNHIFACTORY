@@ -20,6 +20,16 @@
         </array>
     </customFonts>
     <scenes>
+        <!--mainGameNote-->
+        <scene sceneID="vOA-An-5Az">
+            <objects>
+                <viewControllerPlaceholder storyboardName="mainGameNote" id="Xcc-Nx-KtO" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="WSf-p6-gDQ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YS2-pk-IG5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-151" y="-391"/>
+        </scene>
         <!--Title Cover View Controller-->
         <scene sceneID="iUR-uk-PnU">
             <objects>
@@ -41,7 +51,7 @@
                                     <color key="titleShadowColor" systemColor="opaqueSeparatorColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="JB3-O2-NVP" kind="show" id="cb7-a2-6c6"/>
+                                    <action selector="startAction:" destination="MV8-Tk-VJx" eventType="touchUpInside" id="VW9-ry-RTE"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Iq-HS-uab">
@@ -67,11 +77,13 @@ PROTOTYPE2
                     <navigationItem key="navigationItem" id="UYa-Mh-jBC"/>
                     <connections>
                         <outlet property="startButton" destination="7ev-L8-ImI" id="4Mp-qK-OaH"/>
+                        <segue destination="Xcc-Nx-KtO" kind="show" identifier="gogo" id="zbc-Uy-aYW"/>
+                        <segue destination="JB3-O2-NVP" kind="show" identifier="goToSelectSelectSegue" id="icR-Qq-YpD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6lr-wG-Khs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-691.304347826087" y="76.339285714285708"/>
+            <point key="canvasLocation" x="-686" y="76"/>
         </scene>
         <!--Select Stage View Controller-->
         <scene sceneID="e39-Wf-Jv8">
@@ -173,13 +185,13 @@ PROTOTYPE2
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어느 시대로 가겠는가?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drd-dY-Ch3">
-                                <rect key="frame" x="40" y="104" width="334" height="49"/>
+                                <rect key="frame" x="40" y="104" width="334" height="38.5"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Black" family="Noto Sans CJK KR" pointSize="33"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="toj-gk-rAU">
-                                <rect key="frame" x="40" y="178" width="334" height="638"/>
+                                <rect key="frame" x="40" y="167.5" width="334" height="638"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="638" id="dqV-gL-mBn"/>
@@ -339,7 +351,8 @@ PROTOTYPE2
                         <outlet property="selectedPopupStartButtonOutlet" destination="W8G-N0-3Ro" id="K0U-7A-ZyF"/>
                         <outlet property="selectedPopupTopbar" destination="LPG-9l-YZt" id="2dc-yz-Uop"/>
                         <outlet property="selectedPopupYearLabel" destination="ego-om-4JW" id="wCV-jD-EEb"/>
-                        <segue destination="1IT-hq-j9P" kind="show" identifier="goToMaingameSegue" id="SWB-Ak-YWX"/>
+                        <segue destination="1IT-hq-j9P" kind="show" identifier="goToMaingameSegue2" id="SWB-Ak-YWX"/>
+                        <segue destination="5Kg-PA-FvR" kind="show" identifier="goToChapterCoverSegue" id="gp8-Gs-shD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YLR-8s-58C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -402,7 +415,7 @@ PROTOTYPE2
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000년" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ego-om-4JW">
-                                            <rect key="frame" x="116" y="6.5" width="87.5" height="38.5"/>
+                                            <rect key="frame" x="119.5" y="10.5" width="80.5" height="30.5"/>
                                             <fontDescription key="fontDescription" name="NotoSansCJKkr-Black" family="Noto Sans CJK KR" pointSize="26"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -461,17 +474,17 @@ PROTOTYPE2
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Plh-7g-f76" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="958" y="-405"/>
+            <point key="canvasLocation" x="659" y="-391"/>
         </scene>
-        <!--View Controller-->
+        <!--Chapter Cover View Controller-->
         <scene sceneID="yIt-gS-nWg">
             <objects>
-                <viewController id="5Kg-PA-FvR" sceneMemberID="viewController">
+                <viewController id="5Kg-PA-FvR" customClass="ChapterCoverViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yyb-yF-L7m">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HWr-9v-WnH">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HWr-9v-WnH">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x8X-FS-rBb">
@@ -481,11 +494,11 @@ PROTOTYPE2
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="탭하여 계속" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Jh-RO-hh4">
                                 <rect key="frame" x="172.5" y="780" width="69" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K8a-xW-1d1">
-                                <rect key="frame" x="57" y="328" width="300" height="364"/>
+                                <rect key="frame" x="57" y="327.5" width="300" height="364.5"/>
                                 <string key="text">“게임 내 대사"
 “대사”
 “대사”
@@ -496,32 +509,39 @@ PROTOTYPE2
 .
 .
 .</string>
-                                <color key="textColor" systemColor="labelColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="ksO-kU-OpQ">
-                                <rect key="frame" x="57" y="186" width="171.5" height="113"/>
+                                <rect key="frame" x="57" y="186" width="171.5" height="112.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000년" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcB-Cu-ubT">
-                                        <rect key="frame" x="0.0" y="0.0" width="66.5" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="62" height="23.5"/>
                                         <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="20"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사건 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xaq-4m-1bJ">
-                                        <rect key="frame" x="0.0" y="51" width="171.5" height="62"/>
+                                        <rect key="frame" x="0.0" y="50.5" width="171.5" height="62"/>
                                         <fontDescription key="fontDescription" name="NotoSansOriya-Bold" family="Noto Sans Oriya" pointSize="44"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RtP-RF-kx3">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <connections>
+                                    <action selector="closeCoverButtonAction:" destination="5Kg-PA-FvR" eventType="touchUpInside" id="2zf-p9-OAI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="m38-AX-qoc"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="K8a-xW-1d1" firstAttribute="top" secondItem="ksO-kU-OpQ" secondAttribute="bottom" constant="29" id="6Z2-1R-4bB"/>
+                            <constraint firstItem="RtP-RF-kx3" firstAttribute="top" secondItem="yyb-yF-L7m" secondAttribute="top" id="8j5-2a-Loi"/>
                             <constraint firstItem="m38-AX-qoc" firstAttribute="trailing" secondItem="K8a-xW-1d1" secondAttribute="trailing" constant="57" id="BYv-b2-myd"/>
                             <constraint firstAttribute="bottom" secondItem="x8X-FS-rBb" secondAttribute="bottom" id="ER0-BN-qIu"/>
                             <constraint firstItem="x8X-FS-rBb" firstAttribute="trailing" secondItem="m38-AX-qoc" secondAttribute="trailing" id="EzY-Bq-yOT"/>
@@ -531,18 +551,38 @@ PROTOTYPE2
                             <constraint firstItem="HWr-9v-WnH" firstAttribute="trailing" secondItem="m38-AX-qoc" secondAttribute="trailing" id="Otd-XX-e9W"/>
                             <constraint firstItem="m38-AX-qoc" firstAttribute="bottom" secondItem="5Jh-RO-hh4" secondAttribute="bottom" constant="64" id="RT1-r2-asE"/>
                             <constraint firstItem="ksO-kU-OpQ" firstAttribute="top" secondItem="yyb-yF-L7m" secondAttribute="top" constant="186" id="VqK-U5-FHw"/>
+                            <constraint firstItem="RtP-RF-kx3" firstAttribute="trailing" secondItem="m38-AX-qoc" secondAttribute="trailing" id="bYn-kD-9fc"/>
                             <constraint firstItem="x8X-FS-rBb" firstAttribute="leading" secondItem="m38-AX-qoc" secondAttribute="leading" id="cj3-Or-MdH"/>
+                            <constraint firstAttribute="bottom" secondItem="RtP-RF-kx3" secondAttribute="bottom" id="cni-8i-B88"/>
                             <constraint firstItem="HWr-9v-WnH" firstAttribute="top" secondItem="yyb-yF-L7m" secondAttribute="top" id="dsf-22-TnC"/>
                             <constraint firstItem="x8X-FS-rBb" firstAttribute="top" secondItem="yyb-yF-L7m" secondAttribute="top" id="hvi-sJ-PuC"/>
+                            <constraint firstItem="RtP-RF-kx3" firstAttribute="leading" secondItem="m38-AX-qoc" secondAttribute="leading" id="ig2-2K-55s"/>
                             <constraint firstItem="ksO-kU-OpQ" firstAttribute="leading" secondItem="m38-AX-qoc" secondAttribute="leading" constant="57" id="oLT-a3-bXn"/>
                             <constraint firstItem="HWr-9v-WnH" firstAttribute="leading" secondItem="m38-AX-qoc" secondAttribute="leading" id="pl4-Ko-SQg"/>
                             <constraint firstItem="5Jh-RO-hh4" firstAttribute="top" secondItem="K8a-xW-1d1" secondAttribute="bottom" constant="88" id="vFr-FV-g2G"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="w4T-60-Pvt"/>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="HWr-9v-WnH" id="CaD-Z9-9cb"/>
+                        <outlet property="blackView" destination="g02-RE-QNV" id="bjW-BM-Mso"/>
+                        <outlet property="chapterNameLabel" destination="Xaq-4m-1bJ" id="Xeu-KX-gXs"/>
+                        <outlet property="closeCoverButton" destination="RtP-RF-kx3" id="8Ws-mQ-p0l"/>
+                        <outlet property="descriptionTextView" destination="K8a-xW-1d1" id="NnQ-cN-CF5"/>
+                        <outlet property="tapAndContinueLabel" destination="5Jh-RO-hh4" id="gAn-oX-jCE"/>
+                        <outlet property="yearLabel" destination="NcB-Cu-ubT" id="MXH-mY-oce"/>
+                        <segue destination="1IT-hq-j9P" kind="show" identifier="goToMainGameSegue" animates="NO" id="wYR-P5-n8E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fwy-fj-gk1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="g02-RE-QNV">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="606"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <viewLayoutGuide key="safeArea" id="giT-ZG-7hW"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
             </objects>
-            <point key="canvasLocation" x="873.91304347826099" y="87.723214285714278"/>
+            <point key="canvasLocation" x="1044.9275362318842" y="75.669642857142847"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sks-5r-eeI">
@@ -563,13 +603,13 @@ PROTOTYPE2
             <point key="canvasLocation" x="-1601.449275362319" y="76.339285714285708"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="wYR-P5-n8E"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="palace" width="774" height="394"/>
         <image name="x" width="22" height="22"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

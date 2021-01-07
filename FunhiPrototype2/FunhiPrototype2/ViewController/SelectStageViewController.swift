@@ -70,8 +70,8 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBOutlet weak var selectedPopupStartButtonOutlet: UIButton!
     
     @IBAction func selectedPopupStartButton(_ sender: Any) {
-        let dataToSend = ""//나중에 필요한 정보 넣을 것
-        performSegue(withIdentifier: "goToMaingameSegue", sender: nil)
+        //나중에 필요한 정보 넣을 것
+        performSegue(withIdentifier: "goToChapterCoverSegue", sender: nil)
     }
     @IBAction func selectedPopupExitButton(_ sender: Any) {
         selectedPopup.removeFromSuperview()
