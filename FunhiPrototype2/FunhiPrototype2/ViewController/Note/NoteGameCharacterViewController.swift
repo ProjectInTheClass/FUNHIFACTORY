@@ -91,58 +91,55 @@ class GameCharacterLastinfomationCell: UITableViewCell {
 //-------------------뷰컨-------------
 class NoteGameCharacterViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
+    var openedInfomation = [Infomation]()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let recievedGameCharacter = recievedGameCharacter {
-            return recievedGameCharacter.infomation.count
-        } else {
-            return 0
-            print("recievedGameCharacter nil임")
-        }
+        guard let recievedGameCharacter = recievedGameCharacter else { return 0 }
+        
+            for infomation in recievedGameCharacter.infomation {
+                if !infomation.isLocked {
+                    openedInfomation.append(infomation)
+                }
+            }
+            return openedInfomation.count
+       
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var returnCell = UITableViewCell()
 
-        if let recievedGameCharacter = recievedGameCharacter {
+        guard let recievedGameCharacter = recievedGameCharacter else { return UITableViewCell() }
+        
             let infomations = recievedGameCharacter.infomation
             // 인포메이션 1개일 때 singleCell 모양 반환
-            if infomations.count == 1 {
+            if openedInfomation.count == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "gameCharacterSinglenfomationCell", for: indexPath) as! GameCharacterSingleinfomationCell
-                cell.informationLabel.text = infomations[indexPath.row].text
+                cell.informationLabel.text = openedInfomation[indexPath.row].text
                 returnCell = cell
             }
             // 인포메이션 1개 이상일 때 알맞는 모양 반환
-            if infomations.count > 1 {
+            if openedInfomation.count > 1 {
                 // 인포메이션 목록의 처음 부분이면 firstCell 모양임
                 if indexPath.row == 0 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "gameCharacterFirstInfomationCell", for: indexPath) as! GameCharacterFirstinfomationCell
-                    cell.informationLabel.text = infomations[indexPath.row].text
+                    cell.informationLabel.text = openedInfomation[indexPath.row].text
                     returnCell = cell
                 }
                 
                 // 인포메이션 목록의 중간 부분이면 middleCell 모양임
                 if indexPath.row > 0 && indexPath.row < infomations.count-1 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "gameCharacterMiddleInfomationCell", for: indexPath) as! GameCharacterMiddleinfomationCell
-                    cell.informationLabel.text = infomations[indexPath.row].text
+                    cell.informationLabel.text = openedInfomation[indexPath.row].text
                     returnCell = cell
                 }
                 
                 // 인포메이션 목록의 마지막 부분이면 lastCell 모양임
-                if indexPath.row == infomations.count-1 {
+                if indexPath.row == openedInfomation.count-1 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "gameCharacterLastInfomationCell", for: indexPath) as! GameCharacterLastinfomationCell
-                    cell.informationLabel.text = infomations[indexPath.row].text
+                    cell.informationLabel.text = openedInfomation[indexPath.row].text
                     returnCell = cell
                 }
             }
-
-
-
-
-        } else {
-            return UITableViewCell()
-            print("recievedGameCharacter nil임")
-        }
         return returnCell
     }
     //----------------일반 아웃렛, 메소드------------------------------

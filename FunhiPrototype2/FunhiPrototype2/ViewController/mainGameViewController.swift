@@ -78,9 +78,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         self.mainGameTableView.delegate = self
         self.mainGameTableView.dataSource = self
-        topBarShadow(wholeView: self.view!, buttonView: topBar, tableview:mainGameTableView)
+       //topBarShadow(wholeView: self.view!, buttonView: topBar, tableview:mainGameTableView)
         choiceBar.frame.size = CGSize(width: 414, height: 0)
         choiceHeight.constant = 0
+        popupViewDesign(popupView: notePopupView)
     }
     override func viewDidAppear(_ animated: Bool) {
         chatUpdateTimer()
@@ -125,7 +126,12 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             return
         }
         print("스토리 \(indexNumber+1)/\(currentChatAmount())")
-        
+        // 아래 네 개 각각 지금 챗에 새 업적/새 인물/새 역사 사건/새 인물 정보 있나 확인한 뒤 있는 경우 팝업창 띄우기/노트 정보 수정하는 코드입니다
+        checkAchievementInChat(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel)
+        checkGameCharacterInChat(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel)
+        checkCaseInChat(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel)
+        checkgameCharacterInfomationInChat(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel)
+        checkAlbumImageInChat()
         indexNumber += 1
         scrollToBottom()
     }
@@ -137,6 +143,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             self.mainGameTableView.scrollToRow(at: indexPath, at: .bottom, animated: false) //true로 바꾸면 좀 더 천천히 내려가긴 하는데, 못 따라오는 경우도 있다.
         }
     }
+    
     func choiceUpdate(){
         choiceHeight.constant = 158
         choiceBar.setNeedsUpdateConstraints()
@@ -154,7 +161,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         choiceBar.isHidden = true
     }
     @IBAction func firstChoice(_ sender: Any) {
-        currentChatArray.append(Chat(text: currentBlockOfDay().choices[0].text, image: "", type: .onlyText, who: danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil))
+        currentChatArray.append(Chat(text: currentBlockOfDay().choices[0].text, image: "", type: .onlyText, who: danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil))
         player.currentChatId = currentBlockOfDay().choices[0].nextTextIndex
         mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         indexNumber = 0
@@ -163,7 +170,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         chatUpdateTimer()
     }
     @IBAction func secondChoice(_ sender: Any) {
-        currentChatArray.append(Chat(text: currentBlockOfDay().choices[1].text, image: "", type: .onlyText, who: danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil))
+        currentChatArray.append(Chat(text: currentBlockOfDay().choices[1].text, image: "", type: .onlyText, who: danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil))
         player.currentChatId = currentBlockOfDay().choices[1].nextTextIndex
         mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         indexNumber = 0
@@ -172,7 +179,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         chatUpdateTimer()
     }
     @IBAction func thirdChoice(_ sender: Any) {
-        currentChatArray.append(Chat(text: currentBlockOfDay().choices[2].text, image: "", type: .onlyText, who: danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil))
+        currentChatArray.append(Chat(text: currentBlockOfDay().choices[2].text, image: "", type: .onlyText, who: danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil))
         player.currentChatId = currentBlockOfDay().choices[2].nextTextIndex
         mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         indexNumber = 0
@@ -195,17 +202,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func closeMap(_ sender: Any) {
         map.removeFromSuperview()
     }
-    
-    func notePopupViewDesign() {
-        notePopupView.translatesAutoresizingMaskIntoConstraints = false
-        guard let notePopupView = notePopupView else { return }
-        notePopupView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 118).isActive = true
-            let horizontalConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-            let widthConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 231)
-            let heightConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 53)
-        self.view.addConstraints([horizontalConstraint, widthConstraint, heightConstraint])
-        
-    }
+  
     
 }
 

@@ -51,3 +51,13 @@ func topBarShadow(wholeView : UIView, buttonView:UIView, tableview:UIView){
     view.bottomAnchor.constraint(equalTo: tableview.topAnchor, constant: 0).isActive = true
     wholeView.bringSubviewToFront(buttonView)
 }
+
+func popupViewDesign(popupView: UIView) {
+    popupView.layer.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+
+    popupView.layer.cornerRadius = 4
+
+    popupView.layer.borderWidth = 1.3
+
+    popupView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+}

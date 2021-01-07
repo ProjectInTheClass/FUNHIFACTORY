@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+
 //------------------------------------설정------------------------------------
 
 // 프라퍼티 설명:  언어 설정, 배경음, 효과음, 넘김 속도
@@ -16,19 +18,18 @@ struct Setting {
     
 }
 
-//------------------------------------히스토리: 업적 비슷한 개념------------------------------------
-// 히스토리: 키렐이 매일 꾸는 꿈 내용.
+//------------------------------------수첩 사건------------------------------------
 
 
 //수첩 사건
 
-enum NoteCaseID {
+enum NoteCaseID :String,Codable{
     case case101
     case case201
     case case301
     case case401
 }
-class NoteCase {
+class NoteCase :Codable{
     //구별 위한 ID
     let id: NoteCaseID
     let title: String
@@ -45,37 +46,68 @@ class NoteCase {
     }
 }
 
-//------------------------------------업적------------------------------------
+//------------------------------------주인공 업적------------------------------------
 
 //주인공 업적
-// 프라퍼티 설명: 업적 이름, 해당 이미지, 글
 
-enum AchievementID {
+
+enum AchievementID :String,Codable{
     case achievement1
     case achievement2
     case achievement3
     case achievement4
 }
-
-struct Achievement {
+// 프라퍼티 설명: 업적 이름, 업적 이미지, id(업적 획득 로직에서 사용), 업적 잠금 여부
+struct Achievement :Codable{
     let name: String
     let image: String
     let id: AchievementID
     var isLocked: Bool
 }
 
+//------------------------------------앨범 이미지------------------------------------
 
-
-//------------------------------------게임 캐릭터 : 키렐 포함 모든 인물들------------------------------------
+enum AlbumImageID :String,Codable{
+    case prologueCase1
+    case achievement1Locked
+    
+    func info() -> AlbumImage{
+        switch self {
+        case .prologueCase1:
+            return test.currentAlbumImages[0]
+        case .achievement1Locked:
+            return test.currentAlbumImages[1]
+        }
+    }
+}
+class AlbumImage :Codable{
+    //구별 위한 ID
+    let id: AlbumImageID
+    let image: String
+    let title: String
+    let description: String
+    var isLocked: Bool
+    
+    init(id: AlbumImageID, image: String, title: String, description: String, isLocked: Bool) {
+        self.id = id
+        self.image = image
+        self.title = title
+        self.description = description
+        self.isLocked = isLocked
+    }
+}
+//------------------------------------등장인물 정보------------------------------------
 //수첩 인물 정보
-enum InfomationID {
+enum InfomationID :String,Codable{
     case hwiryeong1
     case hwiryeong2
     case hwiryeong3
     case hwiryeong4
     case hwiryeong5
 }
-class Infomation {
+
+// id(정보 획득 로직에서 사용), 업적 잠금 여부, 정보 텍스트
+class Infomation :Codable{
     var infomationID: InfomationID
     var isLocked: Bool
     var text: String
@@ -86,11 +118,12 @@ class Infomation {
         self.text = text
     }
 }
+//------------------------------등장인물-----------------------
 // 키렐 포함 인물들 정보를 담기 위한 스트럭처
 // 프라퍼티 설명:  인물 이름, 대표 이미지, 키렐이 관찰기록한 듯한 내용의 해당 인물 정보들(인물상세페이지에 있음), 시련 미션, 호감도
 //인물
 
-enum GameCharacterID {
+enum GameCharacterID :String,Codable{
     case danhee
     case hwiryeong
     case hwiryeong1
@@ -101,25 +134,26 @@ enum GameCharacterID {
     func info() -> GameCharacter{
         switch self {
         case .danhee:
-            return prologueChapter.currentCharacterNote[1]
+            return prologueChapter.currentCharacterNote[0]
         case .hwiryeong:
-            return prologueChapter.currentCharacterNote[2]
+            return prologueChapter.currentCharacterNote[1]
         case .hwiryeong1:
-            return prologueChapter.currentCharacterNote[2]
+            return prologueChapter.currentCharacterNote[1]
         case .hwiryeong2:
-            return prologueChapter.currentCharacterNote[2]
+            return prologueChapter.currentCharacterNote[1]
         case .hwiryeong3:
-            return prologueChapter.currentCharacterNote[2]
+            return prologueChapter.currentCharacterNote[1]
         case .hwiryeong4:
-            return prologueChapter.currentCharacterNote[2]
+            return prologueChapter.currentCharacterNote[1]
         default:
             break
         }
     }
 }
 
-
-class GameCharacter {
+// gameCharacter는 참조 기능 필요해서 class임
+// 프라퍼티 설명: 등장인물 이름, 프로필 이미지, 배경 이미지, 등장인물 설명, 등장인물 정보 목록, 호감도, 잠금 여부
+class GameCharacter :Codable{
     let name: String
     let profileImage: String
     let backGroundImage : String
@@ -141,26 +175,19 @@ class GameCharacter {
     }
     
 }
-//----------얘는 유저스트럭처에 포함됨-----------
 
-//유저가 파악한 현재 인물들 정보를 반영해 넣을 스트럭처
-struct GameCharacters {                                                                                                 //현재 유저가 발견한 캐릭터만 확인되는 형태라면, 이름이 직관적이지 않다.
-    let kirell: GameCharacter
-    let hilde: GameCharacter
-    let argo: GameCharacter
-    let philio: GameCharacter
-    let balaam: GameCharacter
-}
 //------------------------------------유저------------------------------------
 
-//  프라퍼티 설명: 설정, 티켓(게임화폐), 유저가 달성한 히스토리, 유저가 달성한 업적, 타임라인(?), 유저가 파악한 캐릭터들 정보
+//  프라퍼티 설명: 게임 설정 정보, 플레이한 에피소드 내용, ???, 유저 업적, 획득된 업적 개수, 앨범 이미지, ??, ??, 현재 게임 대화 진행현황 id
 struct User {
     var setting: Setting
     var currentEpisodes: [Episode]
     //var timellne: nil
+    // 얘 역할 주석으로 설명 부탁합니다 궁금함
     var currentCharacterInfo: [String:GameCharacter]
     var currentAchievementInfo: [Achievement]
-    var clearedAchievementInfo: Int {
+    //획득한 업적 개수 계산해주는 프로퍼티. 주인공 노트 화면에서 사용합니다
+    var clearedAchievementCount: Int {
         get {
             var cleardCount = Int()
             for achievement in self.currentAchievementInfo {
@@ -171,6 +198,8 @@ struct User {
             return cleardCount
         }
     }
+   
+    //이 아래 두 개 역할이 어떻게 되고 어떤 차이점이 있는지 주석으로 설명 부탁합니다 궁금22
     var dayIndex:Int
     var dayId:String
     var currentChatId:String
@@ -193,16 +222,17 @@ func currentChatType() -> ChatType{
 
 // 대화할 때 나오는 텍스트 블럭 "종류"
 // 프라퍼티 설명:  그냥 글, 터치하면 확대되는 큰 이미지, 터치 안 되는 작은 이미지, 팝업(키렐 혼잣말), 팝업(짤막한 움짤), 섹션 해더같은 애
-enum ChatType {
+enum ChatType :String, Codable{
     case onlyText
     case untouchableImage
     case sectionHeader
     case choice
+    case monologue
 }
 
 // 텍스트 블럭 스트럭처
 //  프라퍼티 설명: 글, 이미지, 타입, 해당 인물
-struct Chat {
+struct Chat :Codable{
     let text: String
     let image: String
     let type: ChatType
@@ -212,18 +242,19 @@ struct Chat {
     let infomationToUnlock: InfomationID?
     let gameCharacterToUnlock: GameCharacterID?
     let caseToUnlock: NoteCaseID?
+    let albumImageToUnlock: AlbumImageID?
 }
 
 //선택지 누르면 변경될 호감도
 // 프라퍼티 설명:  해당 인물, 변경될 호감도 수치
-struct ChoiceLikeability {
+struct ChoiceLikeability :Codable{
     let who: GameCharacter
     let number: Int
 }
 
 //선택지
 // 프라퍼티 설명: 선택지 텍스트, 변경될 호감도
-struct Choice {
+struct Choice :Codable{
     let text: String
     let likability: [ChoiceLikeability]
     let nextTextIndex: String
@@ -232,7 +263,7 @@ struct Choice {
 //n일차를 쪼갠 조각의 단위 : 일반 대화들 ~ 키렐 선택지가 마지막.
 // 에피소드를 어떤 단위대로 쪼개야 할지 고민했음. 이거 게임 구조가 이랬음.[ 캐릭터들 대사가 자동으로 나옴 -> 키렐 선택지 나옴 -> 자동으로 나오던 대사는 멈춤 -> 키렐 선택지 결정하면 그 다음 대사들이 결정되고 또 자동으로 나옴] -> 그러니까 키렐 대사 선택지가 나오면 게임 진행이 멈춤. 그리고 이 선택을 기점으로 다음 내용이 결정되고, 진행이 되는 거임. 그러려면 키렐 대사 선택지는 하나하나 쪼개야 하나하나 쪼개야 했음. 그래서 본문을 이렇게 나눔.[키렐 대사 선택 직후 시작되는 인물들 대사부터 선택지 나오기 직전까지의 대화 내용 + 키렐 선택지]. 이 단위가 여러 개 이어지면 [대사-> 선택지-> 대사-> 선택지...]인 거고 이러면 괜찮지 않을까 싶었음.
 // 프라퍼티 설명: 순차적으로 나오는 텍스트 블록, 선택지, 이거 깨면 달성되는 업적
-struct BlockOfDayEpisode {
+struct BlockOfDayEpisode :Codable{
     let chats: [Chat]
     
     //다음 페이지(?)블럭(?)을 선택하는 로직을 좀 더 간결하게 할 수 있을지 고민하다 딕셔너리 어떨까 생각함. 원래는 다음 페이지를 nextIndexPage값으로 했다면, 이번에는 key값을 이용해보는 거? 만약 key 값이 각가 1, 2를 가진 선택지가 있따면, 현재 페이지 번호에 선택지 key 값인 1, 2를 더한 수를 가진 페이지가 다음 페이지가 됨. 예를 들어서 3번 페이지에서 1번 선택지를 고르면 1+1= 2번 페이지로 가게 되고, 2번을 고르면 1+2 = 3번 페이지로 가게 됨.
@@ -257,11 +288,13 @@ struct Episode {
     //(예시 : 해당 에피 클리어 여부)
     let isCleared: Bool
     //(예시 : 대사)
-    let storyBlocks: [String:BlockOfDayEpisode]
+    var storyBlocks: [String:BlockOfDayEpisode]
     // 해당 사건의 수첩에 적힐 캐릭터들
     var currentCharacterNote: [GameCharacter]
     // 해당 사건의 수첩에 적힐 사건들
     var currentCaseNote: [NoteCase]
+    // 해당 사건의 앨범 창에 추가될 이미지
+    var currentAlbumImages: [AlbumImage]
 }
 
 // 더미데이터 담을 스트럭처
@@ -274,7 +307,8 @@ struct GameData {
 }
 
 //mainGame에서 currentChat 정보 읽어서 알맞는 주인공 업적 해금하기
-func checkAchievementInChat() {
+func checkAchievementInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel) {
+    let infoID = "achievement"
     let currentChatAchievement = currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].achievementToUnlock
     if currentChatAchievement != nil {
         for achievement in player.currentAchievementInfo.enumerated() {
@@ -282,54 +316,125 @@ func checkAchievementInChat() {
                 player.currentAchievementInfo[achievement.offset].isLocked = false
                 print("업적 '\(player.currentAchievementInfo[achievement.offset].name)' 달성됨")
                 
+                backgroundView.addSubview(popupView)
+                notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: player.currentAchievementInfo[achievement.offset].name , infoID: infoID)
+                popupView.bringSubviewToFront(backgroundView)
+                
             }
         }
     }
 }
 
 //mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 등장인물 해금하기
-func checkGameCharacterInChat() {
+func checkGameCharacterInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel) {
+    let infoID = "gameCharacter"
     let currentChatGameCharacter = currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].gameCharacterToUnlock
-    if currentChatGameCharacter != nil {
+    if let currentChatGameCharacter = currentChatGameCharacter {
         for gameCharacter in currentDay().currentCharacterNote.enumerated() {
-            if gameCharacter.element.gameCharacterID == currentChatGameCharacter {
+            if gameCharacter.element.name == currentChatGameCharacter.info().name {
                 currentDay().currentCharacterNote[gameCharacter.offset].isLocked = false
-                print("캐릭터 '\(testChapter1.currentCharacterNote[0].isLocked)' 해금됨")
                 
+                print("캐릭터 '\(currentDay().currentCharacterNote[gameCharacter.offset].isLocked)' 해금됨")
+                backgroundView.addSubview(popupView)
+                notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCharacterNote[gameCharacter.offset].name, infoID: infoID)
+                popupView.bringSubviewToFront(backgroundView)
             }
         }
     }
 }
 
-//mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 사건 해금하기
-func checkCaseInChat() {
+//mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 사건 금하기
+func checkCaseInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel) {
+    let infoID = "case"
     let currentChatCase = currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].caseToUnlock
     if currentChatCase != nil {
         for caseNote in currentDay().currentCaseNote.enumerated() {
             if caseNote.element.id == currentChatCase {
-                currentDay().currentCharacterNote[caseNote.offset].isLocked = false
-                print("사건 노트 '\(testChapter1.currentCaseNote[0].isLocked)' 해금됨")
+                testChapter1.currentCaseNote[0].isLocked = false
                 
+                print("사건 노트 '\(testChapter1.currentCaseNote[0].isLocked)' 해금됨")
+                backgroundView.addSubview(popupView)
+                notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCaseNote[caseNote.offset].title, infoID: infoID)
+                popupView.bringSubviewToFront(backgroundView)
             }
         }
     }
 }
 
 //mainGame에서 currentChat 정보 읽어서 알맞는 등장인물의 infomation 해금하기
-func checkgameCharacterInfomationInChat() {
+func checkgameCharacterInfomationInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel) {
+    let infoID = "characterInfomation"
     let currentChatInfomation = currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].infomationToUnlock
     if currentChatInfomation != nil {
         for gameCharacter in currentDay().currentCharacterNote.enumerated() {
             for infomation in gameCharacter.element.infomation.enumerated() {
                 if infomation.element.infomationID == currentChatInfomation {
                     currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked = false
-                    print("사건 노트 '\(currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked)' 해금됨")
+                    print("'\(testChapter1.currentCharacterNote[0].isLocked)' 정보 해금됨")
+                    backgroundView.addSubview(popupView)
+                    notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCharacterNote[gameCharacter.offset].name, infoID: infoID)
+                    popupView.bringSubviewToFront(backgroundView)
                 }
             }
         }
     }
 }
 
+//mainGame에서 currentChat 정보 읽어서 알맞은 앨범 이미지 해금하기
+func checkAlbumImageInChat() {
+    
+    let currentChatAlbumImage = currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].albumImageToUnlock
+    
+    if currentChatAlbumImage != nil {
+   
+    for albumImage in currentDay().currentAlbumImages.enumerated() {
+        if albumImage.element.id == currentChatAlbumImage {
+            currentDay().currentAlbumImages[albumImage.offset].isLocked = false
+            print("'\(currentDay().currentAlbumImages[albumImage.offset].isLocked)' 앨범 이미지 해금됨")
+          
+            
+        }
+    }
+    }
+}
 
+func notePopupViewDesign(notePopupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel, descriptionText: String, infoID: String) {
+    
+    notePopupView.translatesAutoresizingMaskIntoConstraints = false
+    notePopupView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 118).isActive = true
+        let horizontalConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: backgroundView, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
+        let widthConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 231)
+        let heightConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 53)
+    backgroundView.addConstraints([horizontalConstraint, widthConstraint, heightConstraint])
+    
+    if infoID == "achievement" {
+        titleLabel.text = "업적"
+        descriptionLabel.text = "\(descriptionText) 획득"
+    }
+    if infoID == "gameCharacter" {
+        titleLabel.text = "수첩 - 인물"
+        descriptionLabel.text = "\(descriptionText) 정보 획득"
+    }
+    if infoID == "case" {
+        titleLabel.text = "수첩 - 역사"
+        descriptionLabel.text = "\(descriptionText) 정보 획득"
+    }
+    if infoID == "characterInfomation" {
+        titleLabel.text = "수첩 - 인물"
+        descriptionLabel.text = "\(descriptionText) 획득"
+    }
+    
+}
 //일단 만들어놓은 인물들 샘플 정보 변수입니다.
 
+//json 파싱 전용 파일
+struct BlockOfDayEpisodeForJson :Codable{
+    let id : String
+    let chats: [Chat]
+    
+    //다음 페이지(?)블럭(?)을 선택하는 로직을 좀 더 간결하게 할 수 있을지 고민하다 딕셔너리 어떨까 생각함. 원래는 다음 페이지를 nextIndexPage값으로 했다면, 이번에는 key값을 이용해보는 거? 만약 key 값이 각가 1, 2를 가진 선택지가 있따면, 현재 페이지 번호에 선택지 key 값인 1, 2를 더한 수를 가진 페이지가 다음 페이지가 됨. 예를 들어서 3번 페이지에서 1번 선택지를 고르면 1+1= 2번 페이지로 가게 되고, 2번을 고르면 1+2 = 3번 페이지로 가게 됨.
+    // choices: [[다음페이지 결정짓는 key값 : 선택지 텍스트]]
+    let choices: [Choice]
+    let achievement: Achievement?
+    let choiceSkip : Bool
+}
