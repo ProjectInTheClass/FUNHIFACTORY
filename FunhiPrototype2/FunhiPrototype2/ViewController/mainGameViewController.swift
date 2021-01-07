@@ -24,7 +24,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var notePopupView: UIView!
     @IBOutlet weak var notePopupViewTitle: UILabel!
     @IBOutlet weak var notePopupViewDescriptionLabel: UILabel!
+    @IBOutlet var pauseBar: UIView!
     @IBOutlet var blackView: UIView!
+    
     @IBAction func notePopupViewXButton(_ sender: Any) {
         notePopupView.removeFromSuperview()
     }
@@ -231,7 +233,13 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func closeMap(_ sender: Any) {
         map.removeFromSuperview()
     }
-  
+    @IBAction func pauseTapped(_ sender: Any) {
+        pauseBar.isHidden = false
+    }
+    @IBAction func resumeTapped(_ sender: Any) {
+        pauseBar.isHidden = true
+    }
+    
     
 }
 
