@@ -20,5 +20,7 @@ class sectionTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    func sectionUpdate(text : String){
+        sectionText.text = text
+    }
 }

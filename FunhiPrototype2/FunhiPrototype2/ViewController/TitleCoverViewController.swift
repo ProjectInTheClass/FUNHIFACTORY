@@ -14,6 +14,8 @@ class TitleCoverViewController: UIViewController {
         super.viewDidLoad()
         designButton()
         // Do any additional setup after loading the view.
+        guard let ex = readLocalFile(forName: "storyInstance") else {return}
+        parse(jsonData: ex)
     }
     @IBAction func startAction(_ sender: Any) {
         performSegue(withIdentifier: "goToSelectSelectSegue", sender: nil)

@@ -57,16 +57,16 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 }
             //터치할 수 없는 이미지
                 //자신이 보냈을 때.
-            else if currentChatArray[indexPath.row].type == .untouchableImage {
+            if currentChatArray[indexPath.row].type == .untouchableImage {
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! ImageTableViewCell
 
                 cell.imageUpdate(mainImage: currentChatArray[indexPath.row].image)
                 return cell
                 }
             //행동 표시글 셀
-            else if currentChatArray[indexPath.row].type == .sectionHeader{
+            if currentChatArray[indexPath.row].type == .sectionHeader{
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "sectionCell", for: indexPath) as! sectionTableViewCell
-                cell.sectionText.text = currentChatArray[indexPath.row].text
+                cell.sectionUpdate(text:chatText)
                 return cell
             } else {
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
@@ -94,8 +94,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
               }
           }
          */
-        guard let ex = readLocalFile(forName: "storyInstance") else {return}
-        parse(jsonData: ex)
     }
     
     
