@@ -303,26 +303,41 @@
                                             <outlet property="profileNickname" destination="Tyh-sK-xPZ" id="bTF-wm-jl3"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sectionCell" rowHeight="41" id="Jfh-0f-HBh" customClass="sectionTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="260" width="414" height="41"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sectionCell" rowHeight="64" id="Jfh-0f-HBh" customClass="sectionTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="260" width="414" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jfh-0f-HBh" id="yQW-Pn-ft0">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="캐릭터의 행동이 들어갈 자리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oX6-rE-Tks">
-                                                    <rect key="frame" x="123" y="11.5" width="168.5" height="18"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apw-hX-SQ4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="캐릭터의 행동이 들어갈 자리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oX6-rE-Tks">
+                                                            <rect key="frame" x="123" y="11.5" width="168.5" height="18"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="18" id="YgJ-7V-poo"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.75308370589999996" green="0.75306934120000002" blue="0.75307911630000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="18" id="YgJ-7V-poo"/>
+                                                        <constraint firstItem="oX6-rE-Tks" firstAttribute="centerY" secondItem="apw-hX-SQ4" secondAttribute="centerY" id="74W-BT-dfc"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="41" id="Abe-dF-eCw"/>
+                                                        <constraint firstItem="oX6-rE-Tks" firstAttribute="centerX" secondItem="apw-hX-SQ4" secondAttribute="centerX" id="mh2-mk-uS3"/>
+                                                        <constraint firstAttribute="width" constant="414" id="pAP-AU-xkS"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                </view>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="oX6-rE-Tks" firstAttribute="centerX" secondItem="yQW-Pn-ft0" secondAttribute="centerX" id="9ns-1C-B8q"/>
-                                                <constraint firstItem="oX6-rE-Tks" firstAttribute="centerY" secondItem="yQW-Pn-ft0" secondAttribute="centerY" id="bni-Xl-wDz"/>
+                                                <constraint firstItem="apw-hX-SQ4" firstAttribute="top" secondItem="yQW-Pn-ft0" secondAttribute="top" id="5jw-lt-7eH"/>
+                                                <constraint firstAttribute="bottom" secondItem="apw-hX-SQ4" secondAttribute="bottom" constant="23" id="95a-Tg-xg9"/>
+                                                <constraint firstItem="apw-hX-SQ4" firstAttribute="leading" secondItem="yQW-Pn-ft0" secondAttribute="leading" id="WeG-CR-oE2"/>
+                                                <constraint firstAttribute="trailing" secondItem="apw-hX-SQ4" secondAttribute="trailing" id="akl-uS-yQ1"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.72157359119999998" green="0.72155982259999996" blue="0.72156912090000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -331,7 +346,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="254" id="Hw8-Vw-pVe" customClass="ImageTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="301" width="414" height="254"/>
+                                        <rect key="frame" x="0.0" y="324" width="414" height="254"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hw8-Vw-pVe" id="szc-Qo-WDf">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="254"/>
@@ -354,7 +369,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="touchableImage" destination="W4K-Vq-5Zx" id="3ck-mr-K0X"/>
+                                            <outlet property="unTouchableImage" destination="W4K-Vq-5Zx" id="yrJ-wG-Gld"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

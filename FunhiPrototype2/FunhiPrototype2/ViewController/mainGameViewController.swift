@@ -47,30 +47,34 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             //자신이 보냈을 때
 
         if currentChatArray[indexPath.row].type == .onlyText && currentChatArray[indexPath.row].who.info().name == "이단희"{
+            print("자신 텍스트 출력")
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
             cell.myTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: currentChatArray[indexPath.row].who.info().profileImage)
                     return cell
                 }
             //상대가 보냈을 때
                 else if currentChatArray[indexPath.row].type == .onlyText {
+                    print("상대 텍스트 출력")
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
                     cell.opTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: currentChatArray[indexPath.row].who.info().profileImage)
                     return cell
                 }
             //터치할 수 없는 이미지
-                //자신이 보냈을 때.
-            if currentChatArray[indexPath.row].type == .untouchableImage {
+            else if currentChatArray[indexPath.row].type == .untouchableImage {
+                print("이미지 출력")
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! ImageTableViewCell
 
                 cell.imageUpdate(mainImage: currentChatArray[indexPath.row].image)
                 return cell
                 }
             //행동 표시글 셀
-            if currentChatArray[indexPath.row].type == .sectionHeader{
+            else if currentChatArray[indexPath.row].type == .sectionHeader{
+                print("섹션헤더 출력")
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "sectionCell", for: indexPath) as! sectionTableViewCell
                 cell.sectionUpdate(text:chatText)
                 return cell
             } else {
+                print("그 외")
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
                 cell.myTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: currentChatArray[indexPath.row].who.info().profileImage)
                 return cell
@@ -128,7 +132,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     func chatUpdate(){
         print("------------chatUpdate 시작합니다------------")
         print("현재 속도: \(player.setting.textSpeed)")
-        if indexNumber < currentChatAmount() && currentBlockOfDay().chats[indexNumber].type == .onlyText{
+        if indexNumber < currentChatAmount(){
             print("채팅이 업데이트되었습니다.")
             currentChatArray.append(currentBlockOfDay().chats[indexNumber])
             self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)}
