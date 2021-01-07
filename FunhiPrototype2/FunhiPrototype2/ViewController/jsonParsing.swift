@@ -33,7 +33,6 @@ func dataToDictionary(storyData : [BlockOfDayEpisodeForJson], storyStorage : [St
         let choiceSkip = ex.choiceSkip
         let story = BlockOfDayEpisode(chats: chats, choices: choices, achievement: achievement, choiceSkip: choiceSkip)
         prologueChapter.storyBlocks[storyId] = story
-        print("진행")
     }
     
 }

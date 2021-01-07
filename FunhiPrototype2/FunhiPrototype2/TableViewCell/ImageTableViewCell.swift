@@ -15,6 +15,7 @@ class ImageTableViewCell: UITableViewCell {
         // Initialization code
     }
     func imageUpdate(mainImage:String){
+        guard mainImage != "" else {return}
            unTouchableImage.image = UIImage(named: mainImage)
        }
 }
