@@ -25,6 +25,7 @@ class SelectStageTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
     func designButton() {
         leftBox.layer.cornerRadius = 8
         leftBox.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
