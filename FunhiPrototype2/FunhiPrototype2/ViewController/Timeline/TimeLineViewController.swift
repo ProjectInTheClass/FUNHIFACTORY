@@ -22,11 +22,10 @@ class TimelineTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func designButton() {
+        
         leftBox.layer.cornerRadius = 8
         leftBox.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
         cellBackground.layer.borderWidth = 2.5
@@ -41,14 +40,15 @@ class TimelineTableViewCell: UITableViewCell {
         cellBackground.layer.shadowRadius = 0
         cellBackground.layer.shadowOffset = CGSize(width: 7, height: 7)
         cellBackground.layer.position = cellBackground.center
-            
-        
-        
-           
     }
-
 }
 //---------------------------뷰컨--------------------------
+
+
+
+
+
+
 class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
 //---------------------------TableView---------------------------
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -64,71 +64,128 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         cell.episodeYear.text = "\(player.currentEpisodes[indexPath.row].episodeYear)년"
         cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[indexPath.row].episodePlaceImage)
         // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
-        cell.lockedView.isHidden = !player.currentEpisodes[indexPath.row].isCleared
+        cell.lockedView.isHidden = player.currentEpisodes[indexPath.row].isCleared
+
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 147
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard player.currentEpisodes[indexPath.row].isCleared else {
             return
         }
         openSelectedEpisodePopup(indexPath: indexPath)
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     //---------------------------일반---------------------------
+    @IBOutlet weak var timelineTableView: UITableView!
     var currentEpisode: Episode?
     
-    //---------------------------에피 선택 팝업---------------------------
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.timelineTableView.delegate = self
+        self.timelineTableView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        timelineTableView.reloadData()
+    }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        //이전 기록 보기
+//        if segue.identifier == "goToEpisodeHistorySegue" {
+//            let destination = segue.destination as! EpisodeHistoryViewController
+//            if let sender = sender as? [Chat] {
+//                destination.recieved = sender
+//            }
+//        }
+//    }
+    
+    
+    //--------------------에피 선택 시 팝업--------------------
     @IBOutlet var selectedEpisodePopup: UIView!
     @IBOutlet weak var selectedEpisodePopupBox: UIView!
     @IBOutlet weak var selectedEpisodeYearLabel: UILabel!
-    
     @IBOutlet weak var selectedEpisodePopupExitButton: UIImageView!
     @IBOutlet weak var selectedEpisodeDescriptionLabel: UILabel!
     @IBOutlet weak var selectedEpisodePlaceImageView: UIImageView!
-    @IBAction func selectedEpisodePopupStartButton(_ sender: Any) {
-    }
+    @IBOutlet weak var selectedEpisodePopupStartButton: UIButton!
+    
+    
+    
+    //에피 선택 후 팝업에서 시작하기 버튼 눌렀을 때
     @IBAction func selectedEpisodePopupStartButtonAction(_ sender: Any) {
-        
-    }
-    func openSelectedEpisodePopup(indexPath: IndexPath) {
-        currentEpisode = player.currentEpisodes[indexPath.row]
-        
-        guard let currentEpisode = currentEpisode else { return }
-        self.view.addSubview(selectedEpisodePopup)
-       
-        selectedEpisodeYearLabel.text = "\(currentEpisode.episodeYear)년"
-        selectedEpisodeDescriptionLabel.text = currentEpisode.episodeDesciption
-        selectedEpisodePlaceImageView.image = UIImage(named: currentEpisode.episodePlaceImage)
+        openGettingStartPopup()
     }
     
-    func designSelectedEpisodePopup(popupView: UIView) {
-        
+    //이전 기록 보기 버튼
+    @IBAction func openEpisodeHistoryAction(_ sender: Any) {
+        guard let currentEpisode = currentEpisode else { return }
+        let dataToSend = currentEpisode.chatHistory
+        performSegue(withIdentifier: "goToEpisodeHistorySegue", sender: nil)
     }
+    
+    
+    
+   
     //---------------------------여기서 시작하기 팝업---------------------------
     @IBOutlet var gettingStartPopup: UIView!
     @IBOutlet weak var warningLabel: UILabel!
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var exitButton: UIButton!
+    
+    //예 버튼 눌렀을 때
     @IBAction func continueButtonAction(_ sender: Any) {
         let dataToSend = currentEpisode
         performSegue(withIdentifier: "goToEpisodeHistorySegue", sender: dataToSend)
         }
+    
+    //아니오 버튼 눌렀을 때
     @IBAction func exitButtonAction(_ sender: Any) {
         gettingStartPopup.removeFromSuperview()
     }
     
+    
+    
+    
+    
+    
+    
+    
+  
+    //첫 번째 팝업 여는 함수
+    func openSelectedEpisodePopup(indexPath: IndexPath) {
+        currentEpisode = player.currentEpisodes[indexPath.row]
+        
+        guard let currentEpisode = currentEpisode else { return }
+        self.view.addSubview(selectedEpisodePopup)
+        selectedEpisodeYearLabel.text = "\(currentEpisode.episodeYear)년"
+        selectedEpisodeDescriptionLabel.text = currentEpisode.episodeDesciption
+        selectedEpisodePlaceImageView.image = UIImage(named: currentEpisode.episodePlaceImage)
+    }
+    
+    //첫 번째 팝업에서 두 번째 팝업 넘어가는 함수
     func openGettingStartPopup() {
         selectedEpisodePopup.removeFromSuperview()
         self.view.addSubview(gettingStartPopup)
         //이 문구는 베리가 넘겨주면 넣을 예정
-        warningLabel.text = ""
+        warningLabel.text = "현재 진행 중인 게임을 그만두고, 선택한 지점부터 사건을 재시작하여 이전 사건 기록이 사라집니다.\n\n계속하시겠습니까?(멘트수정예정)"
+    }
+    
+    //팝업 디자인하는 함수
+    func designSelectedEpisodePopup(popupView: UIView) {
+        
     }
 }

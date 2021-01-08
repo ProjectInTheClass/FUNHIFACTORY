@@ -202,7 +202,14 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     @IBAction func firstChoice(_ sender: Any) {
         currentChatArray.append(Chat(text: currentBlockOfDay().choices[0].text, image: "", type: .onlyText, who: .danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil))
+        //아래 함수 5개 : 업적 노트인물 노트인물정보 노트사건 앨범 해금 여부 검사
+        checkAlbumImageInChoice(choiceIndex: 0)
+        checkCaseInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 0)
+        checkAchievementInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 0)
+        checkGameCharacterInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 0)
+        checkgameCharacterInfomationInChoice(popupView: notePopupViewDescriptionLabel, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 0)
         player.currentChatId = currentBlockOfDay().choices[0].nextTextIndex
+        
         mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         indexNumber = 0
         closeChoiceBar()
@@ -211,6 +218,15 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     @IBAction func secondChoice(_ sender: Any) {
         currentChatArray.append(Chat(text: currentBlockOfDay().choices[1].text, image: "", type: .onlyText, who: .danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil))
+        
+        //아래 함수 5개 : 업적 노트인물 노트인물정보 노트사건 앨범 해금 여부 검사
+        checkAlbumImageInChoice(choiceIndex: 1)
+        checkCaseInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 1)
+        checkAchievementInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 1)
+        checkGameCharacterInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 1)
+        checkgameCharacterInfomationInChoice(popupView: notePopupViewDescriptionLabel, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 1)
+        
+        
         player.currentChatId = currentBlockOfDay().choices[1].nextTextIndex
         mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         indexNumber = 0
@@ -220,6 +236,14 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     @IBAction func thirdChoice(_ sender: Any) {
         currentChatArray.append(Chat(text: currentBlockOfDay().choices[2].text, image: "", type: .onlyText, who: .danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil))
+        //아래 함수 5개 : 업적 노트인물 노트인물정보 노트사건 앨범 해금 여부 검사
+        checkAlbumImageInChoice(choiceIndex: 2)
+        checkCaseInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 2)
+        checkAchievementInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 2)
+        checkGameCharacterInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 2)
+        checkgameCharacterInfomationInChoice(popupView: notePopupViewDescriptionLabel, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 2)
+      
+        
         player.currentChatId = currentBlockOfDay().choices[2].nextTextIndex
         mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         indexNumber = 0
