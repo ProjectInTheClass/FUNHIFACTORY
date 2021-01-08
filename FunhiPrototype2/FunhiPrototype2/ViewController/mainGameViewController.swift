@@ -248,3 +248,12 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
 }
 
 
+func popupViewDesign(popupView: UIView) {
+    popupView.layer.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+
+    popupView.layer.cornerRadius = 4
+
+    popupView.layer.borderWidth = 1.3
+
+    popupView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+}
