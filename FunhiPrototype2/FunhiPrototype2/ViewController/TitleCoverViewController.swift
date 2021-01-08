@@ -23,7 +23,7 @@ class TitleCoverViewController: UIViewController {
               switch result {
               case .success(let data):
                   parse(jsonData: data)
-                 print(prologueChapter.storyBlocks)
+                print("********json 불러오기 성공*********")
               case .failure(let error):
                   print(error)
               }

@@ -126,7 +126,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             print("채팅이 업데이트되었습니다.")
             currentChatArray.append(currentBlockOfDay().chats[indexNumber])
             self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)}
-        if indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex == "End"{
+        else if indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex == "End"{
             guard timer != nil else {return}
             timer.invalidate()
         }
