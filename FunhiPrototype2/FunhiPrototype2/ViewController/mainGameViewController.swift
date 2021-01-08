@@ -73,7 +73,13 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "sectionCell", for: indexPath) as! sectionTableViewCell
                 cell.sectionUpdate(text:chatText)
                 return cell
-            } else {
+            }else if currentChatArray[indexPath.row].type == .monologue{
+                print("속마음 채팅 출력")
+                let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "monologue", for: indexPath) as! monologueTableViewCell
+                cell.monologueText.text = chatText
+                return cell
+            }
+            else {
                 print("그 외")
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
                 cell.myTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: currentChatArray[indexPath.row].who.info().profileImage)
