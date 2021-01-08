@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="I6q-v2-UFv">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -252,6 +252,7 @@
                         <outlet property="timelineTableView" destination="R4j-3v-I3Y" id="h6Q-Pj-WCb"/>
                         <outlet property="warningLabel" destination="n4f-aM-uvr" id="2th-g3-G6Y"/>
                         <segue destination="XCC-4t-YVu" kind="show" identifier="textSegue" id="b7V-6g-4nd"/>
+                        <segue destination="FgR-3g-GHZ" kind="show" identifier="fromTimelineToMaingameSegue" id="52r-sh-2Z1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5WX-A7-p9I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -316,13 +317,6 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ko4-Kv-XXW">
-                                    <rect key="frame" x="80.5" y="289" width="215" height="110"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="ko4-Kv-XXW" secondAttribute="height" multiplier="215:110" id="Nwx-GM-LbF"/>
-                                        <constraint firstAttribute="height" constant="110" id="QMr-vi-i4l"/>
-                                    </constraints>
-                                </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVF-tc-HtD">
                                     <rect key="frame" x="23" y="411" width="330" height="41"/>
                                     <color key="backgroundColor" red="0.85490196080000003" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -345,6 +339,13 @@
                                         <action selector="selectedEpisodePopupStartButtonAction:" destination="I6q-v2-UFv" eventType="touchUpInside" id="sIW-Ur-PSl"/>
                                     </connections>
                                 </button>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ko4-Kv-XXW">
+                                    <rect key="frame" x="80.5" y="154" width="215" height="110"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="ko4-Kv-XXW" secondAttribute="height" multiplier="215:110" id="Nwx-GM-LbF"/>
+                                        <constraint firstAttribute="height" constant="110" id="QMr-vi-i4l"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" red="0.99989587069999997" green="0.98833400010000005" blue="0.95955950020000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -352,7 +353,7 @@
                                 <constraint firstItem="pJ5-ea-WlE" firstAttribute="leading" secondItem="mWD-7E-tE9" secondAttribute="leading" constant="22" id="9Vl-VN-HsO"/>
                                 <constraint firstItem="fEp-VY-Zop" firstAttribute="top" secondItem="3ue-JF-Ij6" secondAttribute="bottom" id="JTK-7h-ld0"/>
                                 <constraint firstAttribute="trailing" secondItem="3ue-JF-Ij6" secondAttribute="trailing" id="Pdx-7X-Gl7"/>
-                                <constraint firstItem="dVF-tc-HtD" firstAttribute="top" secondItem="ko4-Kv-XXW" secondAttribute="bottom" constant="12" id="SRT-ZD-SON"/>
+                                <constraint firstItem="ko4-Kv-XXW" firstAttribute="top" secondItem="pJ5-ea-WlE" secondAttribute="bottom" constant="45" id="Svh-Zq-1mZ"/>
                                 <constraint firstItem="3ue-JF-Ij6" firstAttribute="leading" secondItem="mWD-7E-tE9" secondAttribute="leading" id="Tcn-xZ-2Ks"/>
                                 <constraint firstItem="fEp-VY-Zop" firstAttribute="leading" secondItem="mWD-7E-tE9" secondAttribute="leading" id="YMj-pA-alM"/>
                                 <constraint firstItem="3ue-JF-Ij6" firstAttribute="top" secondItem="mWD-7E-tE9" secondAttribute="top" id="Zbk-lc-hdy"/>
@@ -469,6 +470,16 @@
             </objects>
             <point key="canvasLocation" x="4643.4782608695659" y="660.9375"/>
         </scene>
+        <!--mainGame-->
+        <scene sceneID="lfY-zV-SYj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="mainGame" id="FgR-3g-GHZ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="jId-c6-3vi"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8u6-Cg-cbh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5229" y="557"/>
+        </scene>
         <!--History View Controller-->
         <scene sceneID="sXu-Wk-qRs">
             <objects>
@@ -522,9 +533,7 @@
                                             <constraint firstAttribute="width" constant="29.219999999999999" id="Npd-tJ-4D7"/>
                                             <constraint firstAttribute="height" constant="28.300000000000001" id="R9M-99-W7s"/>
                                         </constraints>
-                                        <state key="normal">
-                                            <imageReference key="image" image="back" symbolScale="large"/>
-                                        </state>
+                                        <state key="normal" image="back"/>
                                         <connections>
                                             <action selector="backAction:" destination="XCC-4t-YVu" eventType="touchUpInside" id="rdW-W3-Oti"/>
                                         </connections>

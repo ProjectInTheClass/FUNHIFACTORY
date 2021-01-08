@@ -90,7 +90,7 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         selectedPopupTopbar.layer.cornerRadius = 10
         selectedPopupTopbar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
-    var selectedEP = Episode(episodeID: "", episodeName: "", episodeYear: 0, episodeKingYear: "", episodeDesciption: "", episodePlaceImage: "", isCleared: true, chatHistory: [], storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [])
+    var selectedEP = Episode(episodeID: "", episodeName: "", episodeYear: 0, episodeKingYear: "", episodeDesciption: "", episodePlaceImage: "", isCleared: true, chatHistory: [], storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineSavePoint: [])
     func openStagePopup(indexPath: IndexPath) {
         selectedEP = player.currentEpisodes[indexPath.row]
         print(selectedEP)

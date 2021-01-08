@@ -320,7 +320,7 @@ struct Episode {
     //(예시 : assets.xcassets에 넣은 이미지 이름)
     let episodePlaceImage: String
     //(예시 : 해당 에피 클리어 여부)
-    var isCleared: Bool
+    var isCleared: Bool = false
     // 에피소드 완료시, 해당 에피소드 대화 내용이 저장되는 곳. 추후 타임라인에서 '이전 기록 보기'기능 할 때 사용될 예정임.
     var chatHistory: [Chat]
     //(예시 : 대사)
@@ -332,21 +332,12 @@ struct Episode {
     // 해당 사건의 앨범 창에 추가될 이미지
     var currentAlbumImages: [AlbumImage]
     
-//    init(episodeID: String,episodeName: String,episodeYear: Int,episodeKingYear: String,episodeDesciption: String,episodePlaceImage: String,isCleared: Bool,chatHistory: [Chat],storyBlocks: [String:BlockOfDayEpisode],currentCharacterNote: [GameCharacter],currentCaseNote: [NoteCase],currentAlbumImages: [AlbumImage]) {
-//        self.episodeID = episodeID
-//        self.episodeName = episodeName
-//        self.episodeYear = episodeYear
-//        self.episodeKingYear = episodeKingYear
-//        self.episodeDesciption = episodeDesciption
-//        self.episodePlaceImage = episodePlaceImage
-//        self.isCleared = isCleared
-//        self.chatHistory = chatHistory
-//        self.storyBlocks = storyBlocks
-//        self.currentCharacterNote = currentCharacterNote
-//        self.currentCaseNote = currentCaseNote
-//        self.currentAlbumImages = currentAlbumImages
-//    
-//    }
+    let timelineSavePoint:[SavePoint]
+
+}
+struct SavePoint {
+    let name: String
+    let storyBlockIndex: String
 }
 
 // 더미데이터 담을 스트럭처

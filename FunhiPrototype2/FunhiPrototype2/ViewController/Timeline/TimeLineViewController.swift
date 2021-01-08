@@ -152,8 +152,14 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     
     //예 버튼 눌렀을 때
     @IBAction func continueButtonAction(_ sender: Any) {
-        let dataToSend = currentEpisode?.chatHistory
-        performSegue(withIdentifier: "goToEpisodeHistorySegue", sender: dataToSend)
+        guard let currentEpisode = currentEpisode else { return }
+        let dataToSend = currentEpisode
+        currentChatArray.removeAll()
+        indexNumber = 0   
+        player.dayId = currentEpisode.episodeID
+        // 세이브포인트 버튼 테블뷰로 바꾸고 인덱스값 수정하기
+        player.currentChatId = currentEpisode.timelineSavePoint[0].storyBlockIndex
+        performSegue(withIdentifier: "fromTimelineToMaingameSegue", sender: dataToSend)
         }
     
     //아니오 버튼 눌렀을 때
