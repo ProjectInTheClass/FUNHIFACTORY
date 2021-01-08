@@ -90,7 +90,10 @@ class AlbumViewController: UIViewController,UICollectionViewDelegate,UICollectio
     @IBOutlet weak var albumPoopupTitleLabel: UILabel!
     @IBOutlet weak var albumPopupImageView: UIImageView!
     @IBOutlet weak var albumPopupDescriptionLabel: UILabel!
-    @IBAction func exitButton(_ sender: Any) {
+    @IBAction func backAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    @IBAction func popupExitButton(_ sender: Any) {
         popupViewOff(popupView: albumPopupView, priviousScale: 1.0, afterScale: 0.2)
     }
     

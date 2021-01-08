@@ -278,6 +278,9 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var casesBookmarkView: UIView!
     @IBOutlet weak var casesBookmarkLineView: UIView!
     
+    @IBAction func backAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     func changePageDesign() {
         if currentNoteTitle == .gameCharacters {
             gameCharactersBookmarkView.backgroundColor = UIColor(displayP3Red: 0.749, green: 0.631, blue: 0.455, alpha: 1)

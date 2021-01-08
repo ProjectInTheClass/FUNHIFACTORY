@@ -77,6 +77,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         guard player.currentEpisodes[indexPath.row].isCleared else {
             return
         }
+        currentEpisode = player.currentEpisodes[indexPath.row]
         openSelectedEpisodePopup(indexPath: indexPath)
     }
     
@@ -103,18 +104,21 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         timelineTableView.reloadData()
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        //이전 기록 보기
-//        if segue.identifier == "goToEpisodeHistorySegue" {
-//            let destination = segue.destination as! EpisodeHistoryViewController
-//            if let sender = sender as? [Chat] {
-//                destination.recieved = sender
-//            }
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //이전 기록 보기
+        if segue.identifier == "textSegue" {
+            let destination = segue.destination as! EPHistoryViewController
+            if let sender = sender as? [Chat] {
+                destination.recieved = sender
+            }
+        }
+    }
     
+    @IBAction func backAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
-    //--------------------에피 선택 시 팝업--------------------
+    //--------------------첫 번째 팝업--------------------
     @IBOutlet var selectedEpisodePopup: UIView!
     @IBOutlet weak var selectedEpisodePopupBox: UIView!
     @IBOutlet weak var selectedEpisodeYearLabel: UILabel!
@@ -134,13 +138,13 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     @IBAction func openEpisodeHistoryAction(_ sender: Any) {
         guard let currentEpisode = currentEpisode else { return }
         let dataToSend = currentEpisode.chatHistory
-        performSegue(withIdentifier: "goToEpisodeHistorySegue", sender: nil)
+        performSegue(withIdentifier: "textSegue", sender: dataToSend)
     }
     
     
     
    
-    //---------------------------여기서 시작하기 팝업---------------------------
+    //-------------------두 번째 팝업----------------
     @IBOutlet var gettingStartPopup: UIView!
     @IBOutlet weak var warningLabel: UILabel!
     @IBOutlet weak var continueButton: UIButton!
@@ -148,7 +152,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     
     //예 버튼 눌렀을 때
     @IBAction func continueButtonAction(_ sender: Any) {
-        let dataToSend = currentEpisode
+        let dataToSend = currentEpisode?.chatHistory
         performSegue(withIdentifier: "goToEpisodeHistorySegue", sender: dataToSend)
         }
     
@@ -181,7 +185,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         selectedEpisodePopup.removeFromSuperview()
         self.view.addSubview(gettingStartPopup)
         //이 문구는 베리가 넘겨주면 넣을 예정
-        warningLabel.text = "현재 진행 중인 게임을 그만두고, 선택한 지점부터 사건을 재시작하여 이전 사건 기록이 사라집니다.\n\n계속하시겠습니까?(멘트수정예정)"
+        warningLabel.text = "현재 진행 중인 게임을 그만두고, 선택한 지점부터 사건을 재시작하여 이전 사건 기록이 사라집니다.\n\n계속하시겠습니까?"
     }
     
     //팝업 디자인하는 함수
