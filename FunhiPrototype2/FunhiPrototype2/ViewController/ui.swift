@@ -58,3 +58,7 @@ func maingameNotepopupViewDesign(popupView: UIView) {
     popupView.layer.borderWidth = 1.3
     popupView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
 }
+
+func monologueUI(cell : UIView){
+    cell.layer.borderColor = CGColor(red: 0.77, green: 0.77, blue: 0.77, alpha: 1.0)
+}
