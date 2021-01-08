@@ -88,7 +88,22 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
        //topBarShadow(wholeView: self.view!, buttonView: topBar, tableview:mainGameTableView)
         choiceBar.frame.size = CGSize(width: 414, height: 0)
         choiceHeight.constant = 0
-       
+
+        
+        //지우지 말아주세요 정체 모르는 코드 있으면 물어보기 꼭 먼저 하기 만약 에러 뜨면 ui.swift 추가되었나 확인하기. 계속 거기에 코드 보관하는 게 깔끔할 것 같아요
+        maingameNotepopupViewDesign(popupView: notePopupView)
+        /*
+         loadJson(fromURLString: urlString) { (result) in
+              switch result {
+              case .success(let data):
+                  parse(jsonData: data)
+                 print(prologueChapter.storyBlocks)
+              case .failure(let error):
+                  print(error)
+              }
+          }
+         */
+
     }
     
     
