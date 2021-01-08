@@ -14,11 +14,20 @@ class TitleCoverViewController: UIViewController {
         super.viewDidLoad()
         designButton()
         // Do any additional setup after loading the view.
-        guard let ex = readLocalFile(forName: "storyInstance") else {return}
-        parse(jsonData: ex)
+        /*
+         guard let ex = readLocalFile(forName: "storyInstance") else {return}
+         parse(jsonData: ex)
+         */
         
-       
-        
+         loadJson(fromURLString: urlString) { (result) in
+              switch result {
+              case .success(let data):
+                  parse(jsonData: data)
+                print("********json 불러오기 성공*********")
+              case .failure(let error):
+                  print(error)
+              }
+          }
     }
     @IBAction func startAction(_ sender: Any) {
         //에피 끝난 상태면
