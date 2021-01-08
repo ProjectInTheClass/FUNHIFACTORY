@@ -126,7 +126,9 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 page1ButtonStackView.isHidden = false
                 page1Button.setTitle("기본", for: .normal)
             } else {
+                currentNotePageInt = 1
                 page1ButtonStackView.isHidden = true
+                
             }
             page2Button.setTitle("\(currentEpisodes[1].episodeName)", for: .normal)
             page3Button.setTitle("\(currentEpisodes[2].episodeName)", for: .normal)
@@ -328,12 +330,15 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     
     @IBAction func openGameCharactersNoteAction(_ sender: Any) {
         currentNoteTitle = .gameCharacters
+        currentNotePageInt = 0
         changePageDesign()
+        noteTableView.reloadData()
     }
     @IBAction func openCasesNoteAction(_ sender: Any) {
         currentNoteTitle = .cases
         currentNotePageInt = 1
         changePageDesign()
+        noteTableView.reloadData()
     }
     @IBAction func page1ButtonAction(_ sender: Any) {
         currentNotePageInt = 0

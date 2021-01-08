@@ -151,6 +151,7 @@ class AlbumViewController: UIViewController,UICollectionViewDelegate,UICollectio
         super.viewDidLoad()
         self.albumCollectionView.delegate = self
         self.albumCollectionView.dataSource = self
+        self.albumCollectionView.isUserInteractionEnabled = true
         buttonBarDesign()
         
         // Do any additional setup after loading the view.
@@ -159,6 +160,7 @@ class AlbumViewController: UIViewController,UICollectionViewDelegate,UICollectio
         currentNotePageInt = 0
         albumCollectionView.reloadData()
         buttonBarDesign()
+      
     }
     
 
