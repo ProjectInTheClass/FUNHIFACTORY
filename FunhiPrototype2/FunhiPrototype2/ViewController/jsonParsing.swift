@@ -18,8 +18,23 @@ func parse(jsonData : Data){
         //let jsonString = try String(data: asset.data, encoding: .utf8)
         let ex = try jsonDecoder.decode([BlockOfDayEpisodeForJson].self, from: jsonData)
         dataToDictionary(storyData: ex, storyStorage: prologueChapter.storyBlocks)
-    } catch{
-        print(error)
+    } catch let DecodingError.dataCorrupted(context){
+        print("**데이터가 손상되었거나 유효하지 않다**")
+        print(context)
+    } catch let DecodingError.keyNotFound(key, context) {
+        print("**데이터에 알맞는 key가 존재하지 않는다**")
+        print("Key '\(key)' not found:", context.debugDescription)
+        print("codingPath:", context.codingPath)
+    } catch let DecodingError.valueNotFound(value, context) {
+        print("**예기치 않은 optional Value가 발견되었다.**")
+        print("Value '\(value)' not found:", context.debugDescription)
+        print("codingPath:", context.codingPath)
+    } catch let DecodingError.typeMismatch(type, context)  {
+        print("**value값에 예기치 않은 타입이 왔다**")
+        print("Type '\(type)' mismatch:", context.debugDescription)
+        print("codingPath:", context.codingPath)
+    } catch {
+        print("error: ", error)
     }
 }
 
