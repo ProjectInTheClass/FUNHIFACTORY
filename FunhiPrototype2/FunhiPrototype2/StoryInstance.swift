@@ -9,7 +9,7 @@ var indexNumber = 0
 var currentChatArray : [Chat] = []
 let test = Episode(episodeID: "test", episodeName: "임진왜란", episodeYear: 1592, episodeKingYear: "선조 25년", episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "placeImage_1x", isCleared: true, chatHistory: [], storyBlocks: [
     "001":BlockOfDayEpisode(chats:
-                                [Chat(text: "사건을 시작하기 저어언에 먼저 이 사건에 대해 알려주겠다.", image: "", type: .onlyText, who: .hwiryeong, characterFace: true, achievementToUnlock: .achievement1, infomationToUnlock: .hwiryeong1 , gameCharacterToUnlock: .hwiryeong, caseToUnlock: nil, albumImageToUnlock: nil)],
+                                [Chat(text: "사건을 시작하기 저어언에 먼저 이 사건에 대해 알려주겠다.", image: "", type: .onlyText, who: .hwiryeong, characterFace: true, achievementToUnlock: .donhwamun, infomationToUnlock: .hwiryeong1 , gameCharacterToUnlock: .hwiryeong, caseToUnlock: nil, albumImageToUnlock: nil)],
                             choices: [
                                     Choice(text: "알겠어요.", likability: [], nextTextIndex: "002"),
                                     Choice(text: "이번은 어떤 내용인가요?", likability: [], nextTextIndex: "002")], achievement: nil, choiceSkip: false),
@@ -104,7 +104,7 @@ var prologueChapter: Episode = Episode(episodeID: "prologue", episodeName: "프�
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
 let testChapter1 = Episode(episodeID: "1592", episodeName: "임진왜란", episodeYear: 1592, episodeKingYear: "선조 25년", episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "placeImage_1x", isCleared: true, chatHistory: [], storyBlocks: [
     "001":BlockOfDayEpisode(chats:
-                                [Chat(text: "사건을 시작하기 저어언에 먼저 이 사건에 대해 알려주겠다.", image: "", type: .onlyText, who: .hwiryeong, characterFace: true, achievementToUnlock: .achievement1, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil)],
+                                [Chat(text: "사건을 시작하기 저어언에 먼저 이 사건에 대해 알려주겠다.", image: "", type: .onlyText, who: .hwiryeong, characterFace: true, achievementToUnlock: .donhwamun, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil)],
                             choices: [
                                     Choice(text: "알겠어요.", likability: [], nextTextIndex: "002"),
                                     Choice(text: "이번은 어떤 내용인가요?", likability: [], nextTextIndex: "002")], achievement: nil, choiceSkip: false),
