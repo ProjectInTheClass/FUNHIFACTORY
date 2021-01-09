@@ -71,7 +71,7 @@ class NoteCase :Codable{
 
 enum AchievementID :String,Codable{
     case donhwamun
-    case achievement1
+    case geumcheongyo
     case achievement2
     case achievement3
     case achievement4
