@@ -16,9 +16,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var mainGameTableView: UITableView!
     @IBOutlet var godChat: UIView!
     @IBOutlet var choiceBar: UIView!
-    @IBOutlet var firstChoiceButton: UIButton!
-    @IBOutlet var secondChoiceButton: UIButton!
-    @IBOutlet var thirdChoiceButton: UIButton!
     @IBOutlet var map: UIView!
     @IBOutlet var topBar: UIView!
     @IBOutlet var notePopupView: UIView!
@@ -26,6 +23,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var notePopupViewDescriptionLabel: UILabel!
     @IBOutlet var pauseBar: UIView!
     @IBOutlet var blackView: UIView!
+    @IBOutlet var collectionBar: UIView!
     
     @IBAction func notePopupViewXButton(_ sender: Any) {
         notePopupView.removeFromSuperview()
@@ -94,7 +92,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
        //topBarShadow(wholeView: self.view!, buttonView: topBar, tableview:mainGameTableView)
         choiceBar.frame.size = CGSize(width: 414, height: 0)
         choiceHeight.constant = 0
-
+        choiceCollectionViewBorder(choiceView: collectionBar)
         
         //지우지 말아주세요 정체 모르는 코드 있으면 물어보기 꼭 먼저 하기 만약 에러 뜨면 ui.swift 추가되었나 확인하기. 계속 거기에 코드 보관하는 게 깔끔할 것 같아요
         maingameNotepopupViewDesign(popupView: notePopupView)
@@ -196,8 +194,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         choiceBar.isHidden = false
         animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0.0, options: [], animations: {self.choiceBar.layoutIfNeeded()}, completion: nil)
         choiceBar.isHidden = false
-        firstChoiceButton.setTitle(currentBlockOfDay().choices[0].text, for: .normal)
-        secondChoiceButton.setTitle(currentBlockOfDay().choices[1].text, for: .normal)
+        //firstChoiceButton.setTitle(currentBlockOfDay().choices[0].text, for: .normal)
+        //secondChoiceButton.setTitle(currentBlockOfDay().choices[1].text, for: .normal)
         //thirdChoiceButton.setTitle(currentBlockOfDay().choices[2].text, for: .normal)
     }
     func closeChoiceBar(){
@@ -291,4 +289,14 @@ func popupViewDesign(popupView: UIView) {
     popupView.layer.borderWidth = 1.3
 
     popupView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+}
+
+extension mainGameViewController : UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
+    }
 }
