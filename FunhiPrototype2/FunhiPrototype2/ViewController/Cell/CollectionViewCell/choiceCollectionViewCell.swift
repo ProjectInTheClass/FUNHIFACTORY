@@ -8,5 +8,9 @@
 import UIKit
 
 class choiceCollectionViewCell: UICollectionViewCell {
+    @IBOutlet var choiceLabel: UILabel!
     
+    func choiceUpdate(choiceText : String){
+        choiceLabel.text = choiceText
+    }
 }

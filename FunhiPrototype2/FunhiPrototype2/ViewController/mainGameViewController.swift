@@ -28,6 +28,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func notePopupViewXButton(_ sender: Any) {
         notePopupView.removeFromSuperview()
     }
+    //선택지 콜렉션뷰의 페이지 개수 확인 동그라미들
+    let pageControl = UIPageControl()
     
     var animator : UIViewPropertyAnimator?
 
@@ -189,7 +191,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func choiceUpdate(){
-        choiceHeight.constant = 158
+        choiceHeight.constant = 149
         choiceBar.setNeedsUpdateConstraints()
         choiceBar.isHidden = false
         animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0.0, options: [], animations: {self.choiceBar.layoutIfNeeded()}, completion: nil)
@@ -291,12 +293,3 @@ func popupViewDesign(popupView: UIView) {
     popupView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
 }
 
-extension mainGameViewController : UICollectionViewDelegate, UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
-    }
-}
