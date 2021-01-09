@@ -30,9 +30,19 @@ class TitleCoverViewController: UIViewController {
           }
     }
     @IBAction func startAction(_ sender: Any) {
-        //에피 끝난 상태면
+        
+       
         if currentChatArray.count == 0 {
+            //게임 처음 시작하는 거면
+            if !player.currentEpisodes[0].isCleared {
+            player.dayId = player.currentEpisodes[0].episodeID
+            indexNumber = 0
+                player.currentChatId = "001"
+            performSegue(withIdentifier: "fromCoverToChapterCover", sender: nil)
+            //새 에피 선택해야 하면
+            } else {
             performSegue(withIdentifier: "goToSelectSelectSegue", sender: nil)
+            }
         //에피 진행중이면
         } else {
             performSegue(withIdentifier: "fromCoverToMaingameSegue", sender: nil)

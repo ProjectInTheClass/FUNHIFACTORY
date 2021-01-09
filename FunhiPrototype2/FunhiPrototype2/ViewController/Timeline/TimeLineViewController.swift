@@ -7,6 +7,19 @@
 
 import UIKit
 //--------------------------테이블뷰 셀--------------------------
+class SavePointTableViewCell: UITableViewCell {
+    
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        
+    }
+}
+
 class TimelineTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cellBackground: UIView!
@@ -55,18 +68,41 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return player.currentEpisodes.count
+        if tableView == timelineTableView {
+            return player.currentEpisodes.count
+        }
+        // tableView == savePointTableView면
+        else {
+            guard let currentEpisode = selectedEpisode else {
+                return 0
+            }
+            return currentEpisode.timelineSavePoint.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "timelineTableViewCell", for: indexPath) as! TimelineTableViewCell
-        cell.episodePlace.text = player.currentEpisodes[indexPath.row].episodeName
-        cell.episodeYear.text = "\(player.currentEpisodes[indexPath.row].episodeYear)년"
-        cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[indexPath.row].episodePlaceImage)
-        // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
-        cell.lockedView.isHidden = player.currentEpisodes[indexPath.row].isCleared
+        var returnCell = UITableViewCell()
+        if tableView == timelineTableView {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "timelineTableViewCell", for: indexPath) as! TimelineTableViewCell
+            cell.episodePlace.text = player.currentEpisodes[indexPath.row].episodeName
+            cell.episodeYear.text = "\(player.currentEpisodes[indexPath.row].episodeYear)년"
+            cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[indexPath.row].episodePlaceImage)
+            // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
+            cell.lockedView.isHidden = player.currentEpisodes[indexPath.row].isCleared
+            returnCell = cell
+        }
+        // tableView == savePointTableView면
+        else {
+            guard let currentEpisode = selectedEpisode else {
+                return UITableViewCell()
+            }
+            let cell = tableView.dequeueReusableCell(withIdentifier: "savePointTableViewCell", for: indexPath) as! SavePointTableViewCell
+            cell.titleLabel.text = currentEpisode.timelineSavePoint[indexPath.row].name
+            returnCell = cell
+        }
 
-        return cell
+        return returnCell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -74,11 +110,24 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     }
    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard player.currentEpisodes[indexPath.row].isCleared else {
-            return
+        if tableView == timelineTableView {
+            guard player.currentEpisodes[indexPath.row].isCleared else {
+                return
+            }
+            selectedEpisode = player.currentEpisodes[indexPath.row]
+            openSelectedEpisodePopup(indexPath: indexPath)
         }
-        currentEpisode = player.currentEpisodes[indexPath.row]
-        openSelectedEpisodePopup(indexPath: indexPath)
+        // tableView == savePointTableView면
+        else {
+            
+            guard let selectedEpisode = selectedEpisode else {
+                return
+            }
+            selectedEpisodeStoryBlockIndex = selectedEpisode.timelineSavePoint[indexPath.row].storyBlockIndex
+            openGettingStartPopup()
+        }
+        
+        
     }
     
     
@@ -92,12 +141,16 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     
     //---------------------------일반---------------------------
     @IBOutlet weak var timelineTableView: UITableView!
-    var currentEpisode: Episode?
-    
+    @IBOutlet weak var savePointTableView: UITableView!
+    var selectedEpisode: Episode?
+    var selectedEpisodeStoryBlockIndex = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.timelineTableView.delegate = self
         self.timelineTableView.dataSource = self
+        self.savePointTableView.delegate = self
+        self.savePointTableView.dataSource = self
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -131,12 +184,12 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     
     //에피 선택 후 팝업에서 시작하기 버튼 눌렀을 때
     @IBAction func selectedEpisodePopupStartButtonAction(_ sender: Any) {
-        openGettingStartPopup()
+   
     }
     
     //이전 기록 보기 버튼
     @IBAction func openEpisodeHistoryAction(_ sender: Any) {
-        guard let currentEpisode = currentEpisode else { return }
+        guard let currentEpisode = selectedEpisode else { return }
         let dataToSend = currentEpisode.chatHistory
         performSegue(withIdentifier: "textSegue", sender: dataToSend)
     }
@@ -152,13 +205,13 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     
     //예 버튼 눌렀을 때
     @IBAction func continueButtonAction(_ sender: Any) {
-        guard let currentEpisode = currentEpisode else { return }
+        guard let currentEpisode = selectedEpisode else { return }
         let dataToSend = currentEpisode
         currentChatArray.removeAll()
         indexNumber = 0   
         player.dayId = currentEpisode.episodeID
         // 세이브포인트 버튼 테블뷰로 바꾸고 인덱스값 수정하기
-        player.currentChatId = currentEpisode.timelineSavePoint[0].storyBlockIndex
+        player.currentChatId = selectedEpisodeStoryBlockIndex
         performSegue(withIdentifier: "fromTimelineToMaingameSegue", sender: dataToSend)
         }
     
@@ -177,9 +230,9 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
   
     //첫 번째 팝업 여는 함수
     func openSelectedEpisodePopup(indexPath: IndexPath) {
-        currentEpisode = player.currentEpisodes[indexPath.row]
+        selectedEpisode = player.currentEpisodes[indexPath.row]
         
-        guard let currentEpisode = currentEpisode else { return }
+        guard let currentEpisode = selectedEpisode else { return }
         self.view.addSubview(selectedEpisodePopup)
         selectedEpisodeYearLabel.text = "\(currentEpisode.episodeYear)년"
         selectedEpisodeDescriptionLabel.text = currentEpisode.episodeDesciption
