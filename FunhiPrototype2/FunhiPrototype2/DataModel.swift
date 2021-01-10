@@ -270,7 +270,7 @@ struct Chat :Codable{
     let image: String
     let type: ChatType
     let who: GameCharacterID
-    let characterFace : Bool
+    let characterFace : characterFace
     let achievementToUnlock: AchievementID?
     let infomationToUnlock: InfomationID?
     let gameCharacterToUnlock: GameCharacterID?
@@ -357,6 +357,11 @@ struct GameData {
     let achivements: [String:Achievement]
     let gameCharacters: [String:GameCharacter]
 }
+
+enum characterFace: String, Codable{
+    case none,angry1,angry2,basic,cry1,cry2,happy1,happy2,happy3,sad,scared,straight,surprise1,surprise2,surprise3
+}
+
 //mainGame에서 currentChat 정보 읽어서 알맞는 주인공 업적 해금하기
 func checkAchievementInChoice(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel, choiceIndex: Int) {
     let infoID = "achievement"

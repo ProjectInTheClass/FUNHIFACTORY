@@ -15,7 +15,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var wholeView: UIView!
     @IBOutlet var choiceHeight: NSLayoutConstraint!
     @IBOutlet var mainGameTableView: UITableView!
-    @IBOutlet var godChat: UIView!
     @IBOutlet var choiceBar: UIView!
     @IBOutlet var map: UIView!
     @IBOutlet var topBar: UIView!
@@ -26,15 +25,18 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var blackView: UIView!
     @IBOutlet var collectionBar: UIView!
     @IBOutlet var pageControl: UIPageControl!
+    @IBOutlet var chatToGodView: UIView!
     @IBOutlet var choiceCollectionView: UICollectionView!
+    @IBOutlet var godChat: UIView!
+    @IBOutlet var godChatTableView: UITableView!
+    
     
     @IBAction func notePopupViewXButton(_ sender: Any) {
         notePopupView.removeFromSuperview()
     }
-    //선택지 콜렉션뷰의 페이지 개수 확인 동그라미
-    
     var animator : UIViewPropertyAnimator?
 
+    //스토리 테이블 뷰
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
@@ -47,7 +49,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         print("cellForRowAt")
         //텍스트 채팅이 나올 때
             //자신이 보냈을 때
-
+        
         if currentChatArray[indexPath.row].type == .onlyText && currentChatArray[indexPath.row].who.info().name == "이단희"{
             print("자신 텍스트 출력")
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
@@ -139,21 +141,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.choiceCollectionView.dataSource = self
         initializePageControl(collectionView : choiceCollectionView, choiceBar : choiceBar, numberOfPages: dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count)
         choiceCollectionViewBorder(choiceView: collectionBar)
+        chatToGodUIUpdate(hwiryeong: chatToGodView)
         
         //지우지 말아주세요 정체 모르는 코드 있으면 물어보기 꼭 먼저 하기 만약 에러 뜨면 ui.swift 추가되었나 확인하기. 계속 거기에 코드 보관하는 게 깔끔할 것 같아요
         maingameNotepopupViewDesign(popupView: notePopupView)
-        /*
-         loadJson(fromURLString: urlString) { (result) in
-              switch result {
-              case .success(let data):
-                  parse(jsonData: data)
-                 print(prologueChapter.storyBlocks)
-              case .failure(let error):
-                  print(error)
-              }
-          }
-         */
-
     }
     
     
@@ -178,56 +169,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
 
         }
     }
-    func chatUpdateTimer()
-    {
-        print("chatUpdateTimer 실행")
-        timer = Timer.scheduledTimer(withTimeInterval: player.setting.textSpeed, repeats: true, block: {timer in
-            self.chatUpdate()
-            print(timer)
-        })
-        
-    }
-    func chatUpdate(){
-        print("------------chatUpdate 시작합니다------------")
-        print("현재 속도: \(player.setting.textSpeed)")
-        if indexNumber < currentChatAmount(){
-            print("채팅이 업데이트되었습니다.")
-            currentChatArray.append(currentBlockOfDay().chats[indexNumber])
-            self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)}
-        else if indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex == "End"{
-            guard timer != nil else {return}
-            timer.invalidate()
-        }
-        if indexNumber == currentChatAmount() && currentBlockOfDay().choiceSkip == false{
-            timer.invalidate()
-            print("invalidate")
-            guard currentChatArray.last?.type != .choice else {return}
-
-            choiceUpdate()
-            /*currentChatArray.append(Chat(text: "**선택지가 나올 자리**", image: "", type: .choice, who: danhee, characterFace: false))
-
-            self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
-            print("선택지 대용 엘리먼트 추가")
-            scrollToBottom()*/
-            return
-        } else if indexNumber == currentChatAmount() && currentBlockOfDay().choiceSkip == true{
-            player.currentChatId = currentBlockOfDay().choices[0].nextTextIndex
-            indexNumber = 0
-            chatUpdate()
-            scrollToBottom()
-            return
-        }
-        print("스토리 \(indexNumber+1)/\(currentChatAmount())")
-        // 아래 네 개 각각 지금 챗에 새 업적/새 인물/새 역사 사건/새 인물 정보 있나 확인한 뒤 있는 경우 팝업창 띄우기/노트 정보 수정하는 코드입니다
-        // 그 아래는 앨범 이미지 확인하는 함수예요
-        checkAchievementInChat(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel)
-        checkGameCharacterInChat(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel)
-        checkCaseInChat(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel)
-        checkgameCharacterInfomationInChat(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel)
-        checkAlbumImageInChat()
-        indexNumber += 1
-        scrollToBottom()
-    }
     //가장 밑으로 스크롤해주는 함수
     func scrollToBottom(){
         guard currentChatArray.count != 0 else {return}
@@ -237,19 +178,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    func choiceUpdate(){
-        choiceHeight.constant = 149
-        choiceBar.setNeedsUpdateConstraints()
-        choiceBar.isHidden = false
-        choiceCollectionView.reloadData()
-        scrollToBottom()
-    }
-    func closeChoiceBar(){
-        choiceHeight.constant = 0
-        choiceBar.isHidden = true
-        choiceBar.setNeedsUpdateConstraints()
-        scrollToBottom()
-    }
+    
     @IBAction func settingTapped(_ sender: Any) {
         timer.invalidate()
         let setting = storyboard?.instantiateViewController(identifier: "setting")
@@ -270,6 +199,11 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     @IBAction func resumeTapped(_ sender: Any) {
         pauseBar.isHidden = true
+    }
+    @IBAction func chatWithGod(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "chatWithGod")
+        vc?.modalPresentationStyle = .fullScreen
+        present(vc!, animated: false, completion: nil)
     }
 }
 
