@@ -75,6 +75,7 @@ enum AchievementID :String,Codable{
     case injeongjeon
     case achievement3
     case achievement4
+
 }
 // 프라퍼티 설명: 업적 이름, 업적 이미지, id(업적 획득 로직에서 사용), 업적 잠금 여부
 struct Achievement :Codable{
@@ -123,6 +124,10 @@ enum InfomationID :String,Codable{
     case hwiryeong3
     case hwiryeong4
     case hwiryeong5
+    case teacher1
+    case teacher2
+    case teacher3
+    case teacher4
 }
 
 // id(정보 획득 로직에서 사용), 업적 잠금 여부, 정보 텍스트

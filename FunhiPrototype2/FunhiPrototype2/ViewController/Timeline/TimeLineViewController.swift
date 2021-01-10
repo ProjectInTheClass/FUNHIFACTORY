@@ -27,6 +27,42 @@ class SavePointTableViewCell: UITableViewCell {
     }
 }
 
+class PrologueTimelineTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var cellBackground: UIView!
+    @IBOutlet weak var episodeYear: UILabel!
+    @IBOutlet weak var episodePlace: UILabel!
+    @IBOutlet weak var episodePlaceImage: UIImageView!
+    @IBOutlet weak var lockedView: UIView!
+    @IBOutlet weak var leftBox: UIView!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        designButton()
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
+    
+    func designButton() {
+        
+        lockedView.layer.cornerRadius = 8
+        leftBox.layer.cornerRadius = 8
+        leftBox.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
+        cellBackground.layer.borderWidth = 2.5
+        cellBackground.layer.borderColor = CGColor(red: 0.106, green: 0.157, blue: 0.22, alpha: 1)
+        cellBackground.layer.cornerRadius = 8
+           
+        let shadowPath0 = UIBezierPath(roundedRect: cellBackground.bounds, cornerRadius: 8)
+          
+        cellBackground.layer.shadowPath = shadowPath0.cgPath
+        cellBackground.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        cellBackground.layer.shadowOpacity = 1
+        cellBackground.layer.shadowRadius = 0
+        cellBackground.layer.shadowOffset = CGSize(width: 7, height: 7)
+        cellBackground.layer.position = cellBackground.center
+    }
+}
 class TimelineTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cellBackground: UIView!
@@ -46,10 +82,11 @@ class TimelineTableViewCell: UITableViewCell {
     
     func designButton() {
         
+        lockedView.layer.cornerRadius = 8
         leftBox.layer.cornerRadius = 8
         leftBox.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
         cellBackground.layer.borderWidth = 2.5
-        cellBackground.layer.borderColor = CGColor(red: 0.106, green: 0.157, blue: 0.22, alpha: 1)
+        cellBackground.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
         cellBackground.layer.cornerRadius = 8
            
         let shadowPath0 = UIBezierPath(roundedRect: cellBackground.bounds, cornerRadius: 8)
@@ -83,6 +120,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
             guard let currentEpisode = selectedEpisode else {
                 return 0
             }
+            savePointTableViewHeight.constant = CGFloat(49*currentEpisode.timelineSavePoint.count)
             return currentEpisode.timelineSavePoint.count
         }
         
@@ -91,13 +129,23 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var returnCell = UITableViewCell()
         if tableView == timelineTableView {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "timelineTableViewCell", for: indexPath) as! TimelineTableViewCell
-            cell.episodePlace.text = player.currentEpisodes[indexPath.row].episodePlace
-            cell.episodeYear.text = "\(player.currentEpisodes[indexPath.row].episodeYear)년"
-            cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[indexPath.row].episodePlaceImage)
-            // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
-            cell.lockedView.isHidden = player.currentEpisodes[indexPath.row].isCleared
-            returnCell = cell
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "prologueTimelineTableViewCell", for: indexPath) as! PrologueTimelineTableViewCell
+                cell.episodePlace.text = player.currentEpisodes[indexPath.row].episodePlace
+                cell.episodeYear.text = "\(player.currentEpisodes[indexPath.row].episodeYear)년"
+                cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[indexPath.row].episodePlaceImage)
+                // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
+                cell.lockedView.isHidden = player.currentEpisodes[indexPath.row].isCleared
+                returnCell = cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "timelineTableViewCell", for: indexPath) as! TimelineTableViewCell
+                cell.episodePlace.text = player.currentEpisodes[indexPath.row].episodePlace
+                cell.episodeYear.text = "\(player.currentEpisodes[indexPath.row].episodeYear)년"
+                cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[indexPath.row].episodePlaceImage)
+                // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
+                cell.lockedView.isHidden = player.currentEpisodes[indexPath.row].isCleared
+                returnCell = cell
+            }
         }
         // tableView == savePointTableView면
         else {
@@ -113,7 +161,15 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 147
+        if tableView == timelineTableView {
+            if indexPath.row == 0 {
+                return 210
+            } else {
+                return 147
+            }
+        } else {
+            return 49
+        }
     }
    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -149,6 +205,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     //---------------------------일반---------------------------
     @IBOutlet weak var timelineTableView: UITableView!
     @IBOutlet weak var savePointTableView: UITableView!
+    @IBOutlet weak var savePointTableViewHeight: NSLayoutConstraint!
     var selectedEpisode: Episode?
     var selectedEpisodeStoryBlockIndex = String()
     override func viewDidLoad() {
