@@ -7,11 +7,12 @@
 
 import UIKit
 
-class mainGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class mainGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     //Outlet
     
     var isStartOfEpisode: Bool = false
     
+    @IBOutlet var wholeView: UIView!
     @IBOutlet var choiceHeight: NSLayoutConstraint!
     @IBOutlet var mainGameTableView: UITableView!
     @IBOutlet var godChat: UIView!
@@ -24,12 +25,13 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var pauseBar: UIView!
     @IBOutlet var blackView: UIView!
     @IBOutlet var collectionBar: UIView!
+    @IBOutlet var pageControl: UIPageControl!
+    @IBOutlet var choiceCollectionView: UICollectionView!
     
     @IBAction func notePopupViewXButton(_ sender: Any) {
         notePopupView.removeFromSuperview()
     }
-    //선택지 콜렉션뷰의 페이지 개수 확인 동그라미들
-    let pageControl = UIPageControl()
+    //선택지 콜렉션뷰의 페이지 개수 확인 동그라미
     
     var animator : UIViewPropertyAnimator?
 
@@ -86,14 +88,70 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 return cell
             }
     }
+    //선택지 collectionView
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "choiceCell", for: indexPath) as! choiceCollectionViewCell
+            cell.choiceUpdate(choiceText : dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices[indexPath.row].text)
+            return cell
+        }
+        func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+           guard let layout = choiceCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+           
+           let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
+           
+           let estimatedIndex = scrollView.contentOffset.x / cellWidthIncludingSpacing
+           let index: Int
+           if velocity.x > 0 {
+               index = Int(ceil(estimatedIndex))
+           } else if velocity.x < 0 {
+               index = Int(floor(estimatedIndex))
+           } else {
+               index = Int(round(estimatedIndex))
+           }
+           
+           targetContentOffset.pointee = CGPoint(x: CGFloat(index) * cellWidthIncludingSpacing, y: 0)
+        
+        pageControl.currentPage = Int(floor(scrollView.contentOffset.x / cellWidthIncludingSpacing))
+       }
+        func initializePageControl(collectionView : UICollectionView, choiceBar : UIView, numberOfPages: Int){
+            //
+            collectionView.isPagingEnabled = false
+            pageControl.numberOfPages = numberOfPages
+            pageControl.hidesForSinglePage = true
+            collectionView.showsVerticalScrollIndicator = false
+            collectionView.showsHorizontalScrollIndicator = false
+            //scrollViewDidEndDecelerating(collectionView)
+            collectionView.decelerationRate = UIScrollView.DecelerationRate.fast
+            pageControl.currentPageIndicatorTintColor = UIColor.black
+        }
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            currentChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: .onlyText, who: .danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil))
+            checkAlbumImageInChoice(choiceIndex: indexPath.row)
+            checkCaseInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
+            checkAchievementInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
+            checkGameCharacterInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
+            checkgameCharacterInfomationInChoice(popupView: notePopupViewDescriptionLabel, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
+          
+            
+            player.currentChatId = currentBlockOfDay().choices[indexPath.row].nextTextIndex
+            mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
+            indexNumber = 0
+            closeChoiceBar()
+            scrollToBottom()
+            chatUpdateTimer()
+        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mainGameTableView.delegate = self
         self.mainGameTableView.dataSource = self
-       //topBarShadow(wholeView: self.view!, buttonView: topBar, tableview:mainGameTableView)
-        choiceBar.frame.size = CGSize(width: 414, height: 0)
-        choiceHeight.constant = 0
+        self.choiceCollectionView.delegate = self
+        self.choiceCollectionView.dataSource = self
+        initializePageControl(collectionView : choiceCollectionView, choiceBar : choiceBar, numberOfPages: dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count)
         choiceCollectionViewBorder(choiceView: collectionBar)
         
         //지우지 말아주세요 정체 모르는 코드 있으면 물어보기 꼭 먼저 하기 만약 에러 뜨면 ui.swift 추가되었나 확인하기. 계속 거기에 코드 보관하는 게 깔끔할 것 같아요
@@ -115,6 +173,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidAppear(_ animated: Bool) {
         chatUpdateTimer()
+        choiceHeight.constant = 0
+        choiceBar.setNeedsUpdateConstraints()
+        choiceBar.isHidden = true
     }
     override func viewWillAppear(_ animated: Bool) {
         if isStartOfEpisode {
@@ -194,68 +255,13 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         choiceHeight.constant = 149
         choiceBar.setNeedsUpdateConstraints()
         choiceBar.isHidden = false
-        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0.0, options: [], animations: {self.choiceBar.layoutIfNeeded()}, completion: nil)
-        choiceBar.isHidden = false
-        //firstChoiceButton.setTitle(currentBlockOfDay().choices[0].text, for: .normal)
-        //secondChoiceButton.setTitle(currentBlockOfDay().choices[1].text, for: .normal)
-        //thirdChoiceButton.setTitle(currentBlockOfDay().choices[2].text, for: .normal)
+        choiceCollectionView.reloadData()
+        
     }
     func closeChoiceBar(){
         choiceHeight.constant = 0
-        choiceBar.setNeedsUpdateConstraints()
-        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0.0, options: [], animations: {self.choiceBar.layoutIfNeeded()}, completion: nil)
         choiceBar.isHidden = true
-    }
-    @IBAction func firstChoice(_ sender: Any) {
-        currentChatArray.append(Chat(text: currentBlockOfDay().choices[0].text, image: "", type: .onlyText, who: .danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil))
-        //아래 함수 5개 : 업적 노트인물 노트인물정보 노트사건 앨범 해금 여부 검사
-        checkAlbumImageInChoice(choiceIndex: 0)
-        checkCaseInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 0)
-        checkAchievementInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 0)
-        checkGameCharacterInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 0)
-        checkgameCharacterInfomationInChoice(popupView: notePopupViewDescriptionLabel, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 0)
-        player.currentChatId = currentBlockOfDay().choices[0].nextTextIndex
-        
-        mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
-        indexNumber = 0
-        closeChoiceBar()
-        scrollToBottom()
-        chatUpdateTimer()
-    }
-    @IBAction func secondChoice(_ sender: Any) {
-        currentChatArray.append(Chat(text: currentBlockOfDay().choices[1].text, image: "", type: .onlyText, who: .danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil))
-        
-        //아래 함수 5개 : 업적 노트인물 노트인물정보 노트사건 앨범 해금 여부 검사
-        checkAlbumImageInChoice(choiceIndex: 1)
-        checkCaseInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 1)
-        checkAchievementInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 1)
-        checkGameCharacterInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 1)
-        checkgameCharacterInfomationInChoice(popupView: notePopupViewDescriptionLabel, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 1)
-        
-        
-        player.currentChatId = currentBlockOfDay().choices[1].nextTextIndex
-        mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
-        indexNumber = 0
-        closeChoiceBar()
-        scrollToBottom()
-        chatUpdateTimer()
-    }
-    @IBAction func thirdChoice(_ sender: Any) {
-        currentChatArray.append(Chat(text: currentBlockOfDay().choices[2].text, image: "", type: .onlyText, who: .danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil))
-        //아래 함수 5개 : 업적 노트인물 노트인물정보 노트사건 앨범 해금 여부 검사
-        checkAlbumImageInChoice(choiceIndex: 2)
-        checkCaseInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 2)
-        checkAchievementInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 2)
-        checkGameCharacterInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 2)
-        checkgameCharacterInfomationInChoice(popupView: notePopupViewDescriptionLabel, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: 2)
-      
-        
-        player.currentChatId = currentBlockOfDay().choices[2].nextTextIndex
-        mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
-        indexNumber = 0
-        closeChoiceBar()
-        scrollToBottom()
-        chatUpdateTimer()
+        choiceBar.setNeedsUpdateConstraints()
     }
     @IBAction func settingTapped(_ sender: Any) {
         timer.invalidate()
@@ -278,13 +284,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func resumeTapped(_ sender: Any) {
         pauseBar.isHidden = true
     }
-    
-    
 }
 
 
 func popupViewDesign(popupView: UIView) {
-    popupView.layer.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
 
     popupView.layer.cornerRadius = 4
 
