@@ -10,9 +10,10 @@ import UIKit
 class TitleCoverViewController: UIViewController {
 
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var tapLabel: CustomLabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+      light()
         // Do any additional setup after loading the view.
         /*
          guard let ex = readLocalFile(forName: "storyInstance") else {return}
@@ -28,10 +29,10 @@ class TitleCoverViewController: UIViewController {
                   print(error)
               }
           }
+        print(player.currentEpisodes)
     }
     @IBAction func startAction(_ sender: Any) {
-        
-       
+        tapLabel.layer.removeAllAnimations()
         if currentChatArray.count == 0 {
             //게임 처음 시작하는 거면
             if !player.currentEpisodes[0].isCleared {
@@ -46,11 +47,7 @@ class TitleCoverViewController: UIViewController {
         //에피 진행중이면
         } else {
             performSegue(withIdentifier: "fromCoverToMaingameSegue", sender: nil)
-            
         }
-       
-    
-        
     }
     
     
@@ -66,6 +63,15 @@ class TitleCoverViewController: UIViewController {
         startButton.layer.shadowOffset = CGSize(width: 7, height: 7)
     }
 
+    func light() {
+            CustomLabel.animate(withDuration: 0.7, delay: 0.5, options: [.repeat, .autoreverse], animations: {[self]  in
+                tapLabel.alpha = 0.3
+
+            }, completion: nil)
+       
+        
+        
+    }
  
 
 }

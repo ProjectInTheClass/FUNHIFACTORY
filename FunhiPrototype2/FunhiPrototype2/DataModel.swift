@@ -94,9 +94,9 @@ enum AlbumImageID :String,Codable{
     func info() -> AlbumImage{
         switch self {
         case .prologueCase1:
-            return test.currentAlbumImages[0]
+            return testChapter1.currentAlbumImages[0]
         case .achievement1Locked:
-            return test.currentAlbumImages[1]
+            return testChapter1.currentAlbumImages[1]
         }
     }
 }
@@ -326,6 +326,8 @@ struct Episode {
     let episodeDesciption: String
     //(예시 : assets.xcassets에 넣은 이미지 이름)
     let episodePlaceImage: String
+    
+    let episodeCoverImage: String
     //(예시 : 해당 에피 클리어 여부)
     var isCleared: Bool = false
     // 에피소드 완료시, 해당 에피소드 대화 내용이 저장되는 곳. 추후 타임라인에서 '이전 기록 보기'기능 할 때 사용될 예정임.
@@ -597,4 +599,29 @@ open class CustomLabel : UILabel {
         }
 
     }
+    
 }
+
+extension UILabel {
+
+    func setLineSpacing(lineSpacing: CGFloat) {
+
+        guard let labelText = self.text else { return }
+
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = lineSpacing
+        
+
+        let attributedString:NSMutableAttributedString
+        if let labelattributedText = self.attributedText {
+            attributedString = NSMutableAttributedString(attributedString: labelattributedText)
+        } else {
+            attributedString = NSMutableAttributedString(string: labelText)
+        }
+
+        // (Swift 4.2 and above) Line spacing attribute
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        self.attributedText = attributedString
+    }
+}
+

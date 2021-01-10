@@ -174,6 +174,7 @@ class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITable
         if let recievedGameCharacter = recievedGameCharacter {
             hwiryeongProfileImageView.image = UIImage(named: recievedGameCharacter.profileImage)
             hwiryeongBackgroundImageView.image = UIImage(named: recievedGameCharacter.backGroundImage)
+            hwiryeongDescriptionLabel.setLineSpacing(lineSpacing: 5)
             hwiryeongDescriptionLabel.text = recievedGameCharacter.description
             hwiryeongInfomationTableView.reloadData()
            

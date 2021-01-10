@@ -22,7 +22,7 @@ class GameCharacterSingleinfomationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func designCell() {
-        smallCircle.layer.backgroundColor = UIColor(red: 0.933, green: 0.859, blue: 0.195, alpha: 1).cgColor
+       
         smallCircle.layer.borderWidth = 2
         smallCircle.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
         smallCircle.layer.cornerRadius = smallCircle.frame.width/2
@@ -42,7 +42,7 @@ class GameCharacterFirstinfomationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func designCell() {
-        smallCircle.layer.backgroundColor = UIColor(red: 0.933, green: 0.859, blue: 0.195, alpha: 1).cgColor
+    
         smallCircle.layer.borderWidth = 2
         smallCircle.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
         smallCircle.layer.cornerRadius = smallCircle.frame.width/2
@@ -62,7 +62,7 @@ class GameCharacterMiddleinfomationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func designCell() {
-        smallCircle.layer.backgroundColor = UIColor(red: 0.933, green: 0.859, blue: 0.195, alpha: 1).cgColor
+       
         smallCircle.layer.borderWidth = 2
         smallCircle.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
         smallCircle.layer.cornerRadius = smallCircle.frame.width/2
@@ -82,7 +82,7 @@ class GameCharacterLastinfomationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func designCell() {
-        smallCircle.layer.backgroundColor = UIColor(red: 0.933, green: 0.859, blue: 0.195, alpha: 1).cgColor
+      
         smallCircle.layer.borderWidth = 2
         smallCircle.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
         smallCircle.layer.cornerRadius = smallCircle.frame.width/2
@@ -156,26 +156,26 @@ class NoteGameCharacterViewController: UIViewController,UITableViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
            designObjects()
-//        self.infomationTableView.delegate = self
-//        self.infomationTableView.dataSource = self
+        self.infomationTableView.delegate = self
+        self.infomationTableView.dataSource = self
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-//        if let recievedGameCharacter = recievedGameCharacter {
-//            gameCharacterImageView.image = UIImage(named: recievedGameCharacter.profileImage)
-//            gameCharacterDescriptionLabel.text = recievedGameCharacter.description
-//
-////           
-////                likabilityProgressWidth.constant = likabilityBackgroundView.frame.width*CGFloat(recievedGameCharacter.likability)/100
-//            
-//        }
+        if let recievedGameCharacter = recievedGameCharacter {
+            gameCharacterImageView.image = UIImage(named: recievedGameCharacter.profileImage)
+            gameCharacterDescriptionLabel.text = recievedGameCharacter.description
+
+
+                likabilityProgressWidth.constant = likabilityBackgroundView.frame.width*CGFloat(recievedGameCharacter.likability)/100
+            
+        }
     }
     
     @IBAction func exitButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     func designObjects() {
-     
+        gameCharacterImageView.layer.cornerRadius = gameCharacterImageView.frame.width/2
         likabilityBackgroundView.backgroundColor = .white
         likabilityBackgroundView.layer.cornerRadius = likabilityBackgroundView.frame.height/2
         likabilityBackgroundView.layer.borderWidth = 1

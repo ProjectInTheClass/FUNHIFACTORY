@@ -240,7 +240,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 performSegue(withIdentifier: "goToHwiryeongNoteView", sender: dataToSend)
             // 그 외 인물 셀일 때
             } else {
-                performSegue(withIdentifier: "sibal", sender: nil)
+                performSegue(withIdentifier: "sibal", sender: dataToSend)
             }
             
             
