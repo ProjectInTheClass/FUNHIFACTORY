@@ -65,12 +65,18 @@ extension mainGameViewController{
         choiceBar.setNeedsUpdateConstraints()
         choiceBar.isHidden = false
         choiceCollectionView.reloadData()
+        mainGameTableView.heightAnchor.constraint(equalToConstant: 459).isActive = true
+        mainGameTableView.layoutIfNeeded()
+        mainGameTableView.contentOffset.y += 149
         scrollToBottom()
     }
     func closeChoiceBar(){
         choiceHeight.constant = 0
         choiceBar.isHidden = true
         choiceBar.setNeedsUpdateConstraints()
+        mainGameTableView.heightAnchor.constraint(equalToConstant: 608).isActive = true
+        mainGameTableView.layoutIfNeeded()
+        //mainGameTableView.contentOffset.y -= 149
         scrollToBottom()
     }
 }

@@ -177,7 +177,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             self.mainGameTableView.scrollToRow(at: indexPath, at: .bottom, animated: false) //true로 바꾸면 좀 더 천천히 내려가긴 하는데, 못 따라오는 경우도 있다.
         }
     }
-    
+  
     
     @IBAction func settingTapped(_ sender: Any) {
         timer.invalidate()
@@ -209,6 +209,21 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func closeGodChat(_ sender: Any) {
         godChat.removeFromSuperview()
     }
+    func just(){
+        if mainGameTableView.contentSize.height > 608{
+            let expandedOffSetY = CGFloat(52)
+            let collapsedBottomOffSet = CGFloat(608+18)
+            let expandedBottomOffset = min(CGFloat(320), mainGameTableView.contentSize.height) + expandedOffSetY
+            mainGameTableView.frame.origin.y = (collapsedBottomOffSet - expandedBottomOffset) + expandedOffSetY
+        }
+    }
+    func choiceAnimUp(){
+        UIView.animate(withDuration: 0.5, animations: {self.just()},
+                       completion: {_ in self.mainGameTableView.frame.origin.y = 105
+                        self.mainGameTableView.heightAnchor.constraint(equalToConstant: 608).isActive = true
+                        self.mainGameTableView.layoutIfNeeded()
+        })
+    }
 }
 
 
@@ -220,4 +235,5 @@ func popupViewDesign(popupView: UIView) {
 
     popupView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
 }
+
 
