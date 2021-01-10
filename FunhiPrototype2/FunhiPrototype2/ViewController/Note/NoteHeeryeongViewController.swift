@@ -22,7 +22,7 @@ class HeeryeongSingleinfomationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func designCell() {
-        smallCircle.layer.backgroundColor = UIColor(red: 0.933, green: 0.859, blue: 0.195, alpha: 1).cgColor
+        informationLabel.setLineSpacing(lineSpacing: 2.0)
         smallCircle.layer.borderWidth = 2
         smallCircle.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
         smallCircle.layer.cornerRadius = smallCircle.frame.width/2
@@ -42,7 +42,7 @@ class HeeryeongFirstinfomationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func designCell() {
-        smallCircle.layer.backgroundColor = UIColor(red: 0.933, green: 0.859, blue: 0.195, alpha: 1).cgColor
+        informationLabel.setLineSpacing(lineSpacing: 2.0)
         smallCircle.layer.borderWidth = 2
         smallCircle.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
         smallCircle.layer.cornerRadius = smallCircle.frame.width/2
@@ -62,7 +62,7 @@ class HeeryeongMiddleinfomationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func designCell() {
-        smallCircle.layer.backgroundColor = UIColor(red: 0.933, green: 0.859, blue: 0.195, alpha: 1).cgColor
+        informationLabel.setLineSpacing(lineSpacing: 2.0)
         smallCircle.layer.borderWidth = 2
         smallCircle.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
         smallCircle.layer.cornerRadius = smallCircle.frame.width/2
@@ -82,7 +82,7 @@ class HeeryeongLastinfomationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func designCell() {
-        smallCircle.layer.backgroundColor = UIColor(red: 0.933, green: 0.859, blue: 0.195, alpha: 1).cgColor
+        informationLabel.setLineSpacing(lineSpacing: 2.0)
         smallCircle.layer.borderWidth = 2
         smallCircle.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
         smallCircle.layer.cornerRadius = smallCircle.frame.width/2
@@ -142,11 +142,20 @@ class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITable
         return returnCell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let collectionViewCellWidth = collectionView.frame.width/2
-       
-        return CGSize(width: 205, height: collectionViewCellWidth)
+    @IBOutlet weak var headerView: UIView!
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        guard let headerView = hwiryeongInfomationTableView.tableHeaderView else {
+            return }
+        headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        
+//        if headerView.frame.size.height != headerView.layer.height {
+//            headerView.frame.size.height = height
+//            hwiryeongInfomationTableView.tableHeaderView = headerView
+//            hwiryeongInfomationTableView.layoutIfNeeded()
+//        }
     }
+    
     //----------------일반 아웃렛, 메소드------------------------------
     var recievedGameCharacter: GameCharacter?
     
@@ -159,14 +168,18 @@ class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITable
     
     
     @IBOutlet weak var hwiryeongDescriptionLabel: UILabel!
-   
+    
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         designObjects()
+       
+        
         self.hwiryeongInfomationTableView.delegate = self
         self.hwiryeongInfomationTableView.dataSource = self
+        
+     
     
         // Do any additional setup after loading the view.
     }
@@ -174,7 +187,7 @@ class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITable
         if let recievedGameCharacter = recievedGameCharacter {
             hwiryeongProfileImageView.image = UIImage(named: recievedGameCharacter.profileImage)
             hwiryeongBackgroundImageView.image = UIImage(named: recievedGameCharacter.backGroundImage)
-            hwiryeongDescriptionLabel.setLineSpacing(lineSpacing: 5)
+          
             hwiryeongDescriptionLabel.text = recievedGameCharacter.description
             hwiryeongInfomationTableView.reloadData()
            
@@ -186,7 +199,8 @@ class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITable
         self.navigationController?.popViewController(animated: true)
     }
     func designObjects() {
-     
+        hwiryeongProfileImageView.layer.cornerRadius = hwiryeongProfileImageView.frame.width/2
+        hwiryeongDescriptionLabel.setLineSpacing(lineSpacing: 5)
        
     }
 }

@@ -20,10 +20,9 @@ class NoteCollectionViewReusableCell: UICollectionViewCell {
     }
    
     func designCell() {
-        
+        gameCharacterDescriptionLabel.setLineSpacing(lineSpacing: 5.0)
         gameCharacterProfileImageView.layer.cornerRadius = gameCharacterProfileImageView.frame.width/2
-        gameCharacterProfileImageView.layer.borderWidth = 3
-        gameCharacterProfileImageView.layer.backgroundColor = UIColor(red: 0.22, green: 0.325, blue: 0.404, alpha: 1).cgColor
+        
     }
 }
 class NoteCollectionViewLeftCell: UICollectionViewCell {
