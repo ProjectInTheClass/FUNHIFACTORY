@@ -99,9 +99,7 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         selectStageTableView.delegate = self
         selectStageTableView.dataSource = self
         designPopup()
-        
-        selectedPopup.bounds = self.view.bounds
-        selectedPopup.center = self.view.center
+       
         
         // Do any additional setup after loading the view.
     }
@@ -127,16 +125,19 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         
     }
     @IBAction func selectedPopupExitButton(_ sender: Any) {
-        selectedPopup.removeFromSuperview()
+        selectedPopupBackground.removeFromSuperview()
     }
     
     func updatePopup(indexPath: IndexPath) {
         selectedPopupYearLabel.text = "\(player.currentEpisodes[indexPath.row].episodeYear)년"
     }
     func designPopup() {
+        
+        selectedPopupBackground.bounds = self.view.bounds
+        selectedPopupBackground.center = self.view.center
         selectedPopup.layer.cornerRadius = 10
         selectedPopup.layer.borderWidth = 4
-        selectedPopup.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        selectedPopup.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
         selectedPopupBackground.bounds = self.view.bounds
         selectedPopupBackground.center = self.view.center
         selectedPopupStartButtonOutlet.layer.cornerRadius = 3
@@ -145,7 +146,7 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         selectedPopupTopbar.layer.cornerRadius = 10
         selectedPopupTopbar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
-    var selectedEP = Episode(episodeID: "", episodePlace: "", episodeYear: 0, episodeKingYear: "", episodeDesciption: "", episodePlaceImage: "", isCleared: true, chatHistory: [], storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineSavePoint: [])
+    var selectedEP = Episode(episodeID: "", episodePlace: "", episodeYear: 0, episodeKingYear: "", episodeDesciption: "", episodePlaceImage: "", episodeCoverImage: "", isCleared: true, chatHistory: [], storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineSavePoint: [])
     func openStagePopup(indexPath: IndexPath) {
      
         selectedEP = player.currentEpisodes[indexPath.row]
@@ -164,7 +165,7 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
             selectedPopupStartButtonOutlet.isEnabled = false
             selectedPopupStartButtonOutlet.setTitle("준비 중입니다.", for: .normal)
         }
-        self.view.addSubview(selectedPopup)
+        self.view.addSubview(selectedPopupBackground)
     }
 }
 

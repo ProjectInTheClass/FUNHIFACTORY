@@ -42,14 +42,14 @@ class ChapterCoverViewController: UIViewController {
     @IBOutlet var blackView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        descriptionLabel.setLineSpacing(lineSpacing: 10.0)
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         animateCover()
     }
     func animateCover() {
-        backgroundImageView.image = UIImage(named: currentDay().episodePlaceImage)
+        backgroundImageView.image = UIImage(named: currentDay().episodeCoverImage)
         yearLabel.text = "\(currentDay().episodeYear)년"
         chapterNameLabel.text = currentDay().episodePlace
         descriptionLabel.text = currentDay().episodeDesciption
