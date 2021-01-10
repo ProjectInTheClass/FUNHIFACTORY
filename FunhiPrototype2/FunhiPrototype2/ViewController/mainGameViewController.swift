@@ -98,28 +98,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             cell.choiceUpdate(choiceText : dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices[indexPath.row].text)
             return cell
         }
-        func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-           guard let layout = choiceCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
-           
-           let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
-           
-           let estimatedIndex = scrollView.contentOffset.x / cellWidthIncludingSpacing
-           let index: Int
-           if velocity.x > 0 {
-               index = Int(ceil(estimatedIndex))
-           } else if velocity.x < 0 {
-               index = Int(floor(estimatedIndex))
-           } else {
-               index = Int(round(estimatedIndex))
-           }
-           
-           targetContentOffset.pointee = CGPoint(x: CGFloat(index) * cellWidthIncludingSpacing, y: 0)
-        
-        pageControl.currentPage = Int(floor(scrollView.contentOffset.x / cellWidthIncludingSpacing))
-       }
         func initializePageControl(collectionView : UICollectionView, choiceBar : UIView, numberOfPages: Int){
             //
-            collectionView.isPagingEnabled = false
+            collectionView.isPagingEnabled = true
             pageControl.numberOfPages = numberOfPages
             pageControl.hidesForSinglePage = true
             collectionView.showsVerticalScrollIndicator = false
@@ -128,6 +109,11 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             collectionView.decelerationRate = UIScrollView.DecelerationRate.fast
             pageControl.currentPageIndicatorTintColor = UIColor.black
         }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if fmod(scrollView.contentOffset.x, scrollView.frame.maxX) == 0 {
+            pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX) } }
+
+    
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             currentChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: .onlyText, who: .danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil))
             checkAlbumImageInChoice(choiceIndex: indexPath.row)
@@ -139,9 +125,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             
             player.currentChatId = currentBlockOfDay().choices[indexPath.row].nextTextIndex
             mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
+            scrollToBottom()
             indexNumber = 0
             closeChoiceBar()
-            scrollToBottom()
             chatUpdateTimer()
         }
     
@@ -256,12 +242,13 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         choiceBar.setNeedsUpdateConstraints()
         choiceBar.isHidden = false
         choiceCollectionView.reloadData()
-        
+        scrollToBottom()
     }
     func closeChoiceBar(){
         choiceHeight.constant = 0
         choiceBar.isHidden = true
         choiceBar.setNeedsUpdateConstraints()
+        scrollToBottom()
     }
     @IBAction func settingTapped(_ sender: Any) {
         timer.invalidate()
