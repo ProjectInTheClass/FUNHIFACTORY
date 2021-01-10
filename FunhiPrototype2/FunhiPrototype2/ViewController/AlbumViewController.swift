@@ -169,10 +169,10 @@ class AlbumViewController: UIViewController,UICollectionViewDelegate,UICollectio
 
     func buttonBarDesign() {
         
-        pageButton1.setTitle(player.currentEpisodes[1].episodeName, for: .normal)
-        pageButton2.setTitle(player.currentEpisodes[2].episodeName, for: .normal)
-        pageButton3.setTitle(player.currentEpisodes[3].episodeName, for: .normal)
-        pageButton4.setTitle(player.currentEpisodes[4].episodeName, for: .normal)
+        pageButton1.setTitle(player.currentEpisodes[1].episodePlace, for: .normal)
+        pageButton2.setTitle(player.currentEpisodes[2].episodePlace, for: .normal)
+        pageButton3.setTitle(player.currentEpisodes[3].episodePlace, for: .normal)
+        pageButton4.setTitle(player.currentEpisodes[4].episodePlace, for: .normal)
         pageButton1.setTitleColor(UIColor(red: 0.312, green: 0.208, blue: 0.134, alpha: 1), for: .normal)
         pageButton2.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
         pageButton3.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)

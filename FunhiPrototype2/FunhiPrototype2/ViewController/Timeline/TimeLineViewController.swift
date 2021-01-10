@@ -10,13 +10,20 @@ import UIKit
 class SavePointTableViewCell: UITableViewCell {
     
     
+    @IBOutlet weak var view: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        designCell()
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         
+    }
+    func designCell() {
+        view.layer.cornerRadius = 7
+        view.layer.borderWidth = 1.5
+        view.layer.borderColor = UIColor(red: 0.517, green: 0.517, blue: 0.517, alpha: 1).cgColor
     }
 }
 
@@ -85,7 +92,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         var returnCell = UITableViewCell()
         if tableView == timelineTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "timelineTableViewCell", for: indexPath) as! TimelineTableViewCell
-            cell.episodePlace.text = player.currentEpisodes[indexPath.row].episodeName
+            cell.episodePlace.text = player.currentEpisodes[indexPath.row].episodePlace
             cell.episodeYear.text = "\(player.currentEpisodes[indexPath.row].episodeYear)년"
             cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[indexPath.row].episodePlaceImage)
             // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
@@ -150,7 +157,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         self.timelineTableView.dataSource = self
         self.savePointTableView.delegate = self
         self.savePointTableView.dataSource = self
-
+        designObjects(firstPopupView: selectedEpisodePopupBox, secondPopupView: gettingStartPopupBox, secondPopupButton1: continueButton, secondPopupButton2: exitButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -174,18 +181,13 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     //--------------------첫 번째 팝업--------------------
     @IBOutlet var selectedEpisodePopup: UIView!
     @IBOutlet weak var selectedEpisodePopupBox: UIView!
+    @IBOutlet weak var selectedEpisodePopupTopBar: UIView!
     @IBOutlet weak var selectedEpisodeYearLabel: UILabel!
     @IBOutlet weak var selectedEpisodePopupExitButton: UIImageView!
     @IBOutlet weak var selectedEpisodeDescriptionLabel: UILabel!
     @IBOutlet weak var selectedEpisodePlaceImageView: UIImageView!
-    @IBOutlet weak var selectedEpisodePopupStartButton: UIButton!
-    
-    
-    
-    //에피 선택 후 팝업에서 시작하기 버튼 눌렀을 때
-    @IBAction func selectedEpisodePopupStartButtonAction(_ sender: Any) {
-   
-    }
+
+  
     
     //이전 기록 보기 버튼
     @IBAction func openEpisodeHistoryAction(_ sender: Any) {
@@ -199,6 +201,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
    
     //-------------------두 번째 팝업----------------
     @IBOutlet var gettingStartPopup: UIView!
+    @IBOutlet var gettingStartPopupBox: UIView!
     @IBOutlet weak var warningLabel: UILabel!
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var exitButton: UIButton!
@@ -248,7 +251,23 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     }
     
     //팝업 디자인하는 함수
-    func designSelectedEpisodePopup(popupView: UIView) {
+    func designObjects(firstPopupView: UIView, secondPopupView: UIView, secondPopupButton1: UIButton, secondPopupButton2: UIButton) {
+        firstPopupView.layer.cornerRadius = 10
+        firstPopupView.layer.borderWidth = 4
+        firstPopupView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
         
+       
+        
+        secondPopupView.layer.cornerRadius = 10
+        secondPopupView.layer.borderWidth = 4
+        secondPopupView.layer.borderColor = UIColor(red: 0.862, green: 0.862, blue: 0.862, alpha: 1).cgColor
+        
+        secondPopupButton1.layer.cornerRadius = 10
+        secondPopupButton1.layer.borderWidth = 1.5
+        secondPopupButton1.layer.borderColor = UIColor(red: 0.396, green: 0.396, blue: 0.396, alpha: 1).cgColor
+        
+        secondPopupButton2.layer.cornerRadius = 10
+        secondPopupButton2.layer.borderWidth = 1.5
+        secondPopupButton2.layer.borderColor = UIColor(red: 0.396, green: 0.396, blue: 0.396, alpha: 1).cgColor
     }
 }
