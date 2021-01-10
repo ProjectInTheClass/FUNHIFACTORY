@@ -53,14 +53,14 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         if currentChatArray[indexPath.row].type == .onlyText && currentChatArray[indexPath.row].who.info().name == "이단희"{
             print("자신 텍스트 출력")
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
-            cell.myTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: currentChatArray[indexPath.row].who.info().profileImage)
+            cell.myTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: currentChatArray[indexPath.row].characterFace)
                     return cell
                 }
             //상대가 보냈을 때
                 else if currentChatArray[indexPath.row].type == .onlyText {
                     print("상대 텍스트 출력")
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
-                    cell.opTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: currentChatArray[indexPath.row].who.info().profileImage)
+                    cell.opTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText,normalProfile: currentChatArray[indexPath.row].who.info().profileImage, mainProfile: currentChatArray[indexPath.row].characterFace)
                     return cell
                 }
             //터치할 수 없는 이미지
@@ -86,7 +86,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             else {
                 print("그 외")
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
-                cell.myTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: currentChatArray[indexPath.row].who.info().profileImage)
+                cell.myTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: currentChatArray[indexPath.row].characterFace)
                 return cell
             }
     }
@@ -117,7 +117,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
 
     
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            currentChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: .onlyText, who: .danhee, characterFace: true, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil))
+            currentChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: .onlyText, who: .danhee, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil))
             checkAlbumImageInChoice(choiceIndex: indexPath.row)
             checkCaseInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
             checkAchievementInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
@@ -201,9 +201,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         pauseBar.isHidden = true
     }
     @IBAction func chatWithGod(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "chatWithGod")
-        vc?.modalPresentationStyle = .fullScreen
-        present(vc!, animated: false, completion: nil)
+        godChat.isHidden = false
+        godChat.centerXAnchor.constraint(equalTo: wholeView.centerXAnchor).isActive = true
+        godChat.centerYAnchor.constraint(equalTo: wholeView.centerYAnchor).isActive = true
+        
     }
 }
 

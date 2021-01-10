@@ -30,14 +30,14 @@ class EpisodeHistoryViewController: UIViewController, UITableViewDelegate, UITab
         if chats[indexPath.row].type == .onlyText && chats[indexPath.row].who.info().name == "이단희"{
             print("자신 텍스트 출력")
                     let cell = episodeHistoryTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
-            cell.myTextCellUpdate(name: chats[indexPath.row].who.info().name, chat: chatText, profile: chats[indexPath.row].who.info().profileImage)
+            cell.myTextCellUpdate(name: chats[indexPath.row].who.info().name, chat: chatText, profile: chats[indexPath.row].characterFace)
                     return cell
                 }
             //상대가 보냈을 때
                 else if chats[indexPath.row].type == .onlyText {
                     print("상대 텍스트 출력")
                     let cell = episodeHistoryTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
-                    cell.opTextCellUpdate(name: chats[indexPath.row].who.info().name, chat: chatText, profile: chats[indexPath.row].who.info().profileImage)
+                    cell.opTextCellUpdate(name: chats[indexPath.row].who.info().name, chat: chatText, normalProfile: chats[indexPath.row].who.info().profileImage, mainProfile: chats[indexPath.row].characterFace)
                     return cell
                 }
             //터치할 수 없는 이미지
@@ -57,7 +57,7 @@ class EpisodeHistoryViewController: UIViewController, UITableViewDelegate, UITab
             } else {
                 print("그 외")
                 let cell = episodeHistoryTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
-                cell.myTextCellUpdate(name: chats[indexPath.row].who.info().name, chat: chatText, profile: chats[indexPath.row].who.info().profileImage)
+                cell.myTextCellUpdate(name: chats[indexPath.row].who.info().name, chat: chatText, profile: chats[indexPath.row].characterFace)
                 return cell
             }
     }
