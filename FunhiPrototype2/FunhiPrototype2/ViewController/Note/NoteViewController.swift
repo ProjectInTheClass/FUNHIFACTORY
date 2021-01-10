@@ -41,7 +41,7 @@ class NoteSmallGameCharacterTableViewCell: UITableViewCell {
         likabilityBackgroundView.layer.borderWidth = 0.7
         likabilityBackgroundView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
         
-        likabilityProgressView.layer.backgroundColor = UIColor(red: 0.812, green: 0.311, blue: 0.311, alpha: 1).cgColor
+        
         likabilityProgressView.layer.cornerRadius = likabilityBackgroundView.frame.height/2
         likabilityProgressView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
     }
@@ -69,6 +69,7 @@ class NoteGameCharacterTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func designCell() {
+        descriptionLabel.setLineSpacing(lineSpacing: 3.0)
         lockedView.layer.cornerRadius = 7
         cellBackgroundView.layer.cornerRadius = 7
         cellBackgroundView.layer.borderWidth = 3
@@ -175,7 +176,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 cell.nameLabel.text = currentEpisode.currentCharacterNote[indexPath.row].name
                 cell.descriptionLabel.text = currentEpisode.currentCharacterNote[indexPath.row].description
                 cell.profileImage.image = UIImage(named: currentEpisode.currentCharacterNote[indexPath.row].profileImage)
-                cell.achievementLabel.text = currentEpisode.currentCharacterNote[indexPath.row].name
+                cell.achievementLabel.text = "업적 \(player.clearedAchievementCount)/\(player.currentAchievementInfo.count)"
                 print(currentEpisode.currentCharacterNote[indexPath.row].isLocked )
                 if currentEpisode.currentCharacterNote[indexPath.row].isLocked {
                     cell.lockedView.isHidden = false
@@ -184,7 +185,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                     
                 }
                 cellHeight = 267
-                if cell.nameLabel.text != "휘령" {
+                if cell.nameLabel.text != "이단희" {
                    cell.achievementLabel.text = ""
                 }
                 return cell

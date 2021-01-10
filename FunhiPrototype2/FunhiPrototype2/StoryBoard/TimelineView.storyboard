@@ -402,7 +402,7 @@
                         <outlet property="selectedEpisodePlaceImageView" destination="ko4-Kv-XXW" id="L8E-ne-rpI"/>
                         <outlet property="selectedEpisodePopup" destination="JnP-uQ-FyI" id="ftD-Wv-pEH"/>
                         <outlet property="selectedEpisodePopupBox" destination="mWD-7E-tE9" id="3YU-ZP-trc"/>
-                        <outlet property="selectedEpisodePopupExitButton" destination="cIm-vQ-eKp" id="6fj-Ki-yej"/>
+                        <outlet property="selectedEpisodePopupExitButton" destination="6cx-L9-5Xh" id="evm-C2-3DD"/>
                         <outlet property="selectedEpisodePopupTopBar" destination="3ue-JF-Ij6" id="eDq-8Z-e6r"/>
                         <outlet property="selectedEpisodeYearLabel" destination="vva-GU-rZV" id="LLw-RL-Csy"/>
                         <outlet property="timelineTableView" destination="R4j-3v-I3Y" id="h6Q-Pj-WCb"/>
@@ -428,13 +428,17 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white x" translatesAutoresizingMaskIntoConstraints="NO" id="cIm-vQ-eKp">
-                                            <rect key="frame" x="288" y="19.5" width="22" height="22"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6cx-L9-5Xh">
+                                            <rect key="frame" x="294" y="20.5" width="20" height="20"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="22" id="Cap-ow-01e"/>
-                                                <constraint firstAttribute="height" constant="22" id="tok-5c-YDS"/>
+                                                <constraint firstAttribute="width" constant="20" id="OF1-xD-s0z"/>
+                                                <constraint firstAttribute="width" secondItem="6cx-L9-5Xh" secondAttribute="height" multiplier="1:1" id="QN5-Ni-E0y"/>
                                             </constraints>
-                                        </imageView>
+                                            <state key="normal" image="white x"/>
+                                            <connections>
+                                                <action selector="selectedEpisodePopupExitButtonAction:" destination="I6q-v2-UFv" eventType="touchUpInside" id="asA-mm-esr"/>
+                                            </connections>
+                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rFL-DO-ThW">
                                             <rect key="frame" x="21" y="14" width="33" height="33"/>
                                             <constraints>
@@ -451,8 +455,8 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.19215686274509802" green="0.19215686274509802" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstItem="cIm-vQ-eKp" firstAttribute="centerY" secondItem="3ue-JF-Ij6" secondAttribute="centerY" id="KHQ-pm-nwv"/>
-                                        <constraint firstAttribute="trailing" secondItem="cIm-vQ-eKp" secondAttribute="trailing" constant="20" id="NzC-EK-a7o"/>
+                                        <constraint firstItem="6cx-L9-5Xh" firstAttribute="centerY" secondItem="3ue-JF-Ij6" secondAttribute="centerY" id="9jf-vN-5e8"/>
+                                        <constraint firstAttribute="trailing" secondItem="6cx-L9-5Xh" secondAttribute="trailing" constant="16" id="ADj-8R-5ZK"/>
                                         <constraint firstAttribute="height" constant="61" id="fAC-jR-eem"/>
                                         <constraint firstItem="vva-GU-rZV" firstAttribute="leading" secondItem="rFL-DO-ThW" secondAttribute="trailing" constant="11" id="i8T-YJ-jsW"/>
                                         <constraint firstItem="rFL-DO-ThW" firstAttribute="leading" secondItem="3ue-JF-Ij6" secondAttribute="leading" constant="21" id="iSL-KR-Kg1"/>

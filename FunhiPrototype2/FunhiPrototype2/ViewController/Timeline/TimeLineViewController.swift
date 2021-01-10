@@ -240,7 +240,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     @IBOutlet weak var selectedEpisodePopupBox: UIView!
     @IBOutlet weak var selectedEpisodePopupTopBar: UIView!
     @IBOutlet weak var selectedEpisodeYearLabel: UILabel!
-    @IBOutlet weak var selectedEpisodePopupExitButton: UIImageView!
+    @IBOutlet weak var selectedEpisodePopupExitButton: UIButton!
     @IBOutlet weak var selectedEpisodeDescriptionLabel: UILabel!
     @IBOutlet weak var selectedEpisodePlaceImageView: UIImageView!
 
@@ -253,6 +253,9 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         performSegue(withIdentifier: "textSegue", sender: dataToSend)
     }
     
+    @IBAction func selectedEpisodePopupExitButtonAction(_ sender: Any) {
+        selectedEpisodePopup.removeFromSuperview()
+    }
     
     
    
