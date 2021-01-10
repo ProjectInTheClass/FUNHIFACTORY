@@ -34,6 +34,7 @@ class NoteCollectionViewLeftCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        designCell() 
     }
     func designCell() {
         lockedView.layer.cornerRadius = 7

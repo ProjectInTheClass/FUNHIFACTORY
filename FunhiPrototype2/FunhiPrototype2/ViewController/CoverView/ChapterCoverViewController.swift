@@ -12,7 +12,7 @@ class ChapterCoverViewController: UIViewController {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var chapterNameLabel: UILabel!
-    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     @IBOutlet weak var closeCoverButton: UIButton!
     @IBOutlet weak var tapAndContinueLabel: UILabel!
@@ -51,12 +51,12 @@ class ChapterCoverViewController: UIViewController {
     func animateCover() {
         backgroundImageView.image = UIImage(named: currentDay().episodePlaceImage)
         yearLabel.text = "\(currentDay().episodeYear)년"
-        chapterNameLabel.text = currentDay().episodeName
-        descriptionTextView.text = currentDay().episodeDesciption
+        chapterNameLabel.text = currentDay().episodePlace
+        descriptionLabel.text = currentDay().episodeDesciption
         closeCoverButton.isHidden = true
         yearLabel.alpha = 0
         chapterNameLabel.alpha = 0
-        descriptionTextView.alpha = 0
+        descriptionLabel.alpha = 0
         tapAndContinueLabel.alpha = 0
         UIView.animate(withDuration: 1.0, delay: 0.3) {
             self.yearLabel.alpha = 1
@@ -65,7 +65,7 @@ class ChapterCoverViewController: UIViewController {
                 self.chapterNameLabel.alpha = 1
             } completion: { (Bool) in
                 UIView.animate(withDuration: 1.0, delay: 0.3) {
-                    self.descriptionTextView.alpha = 1
+                    self.descriptionLabel.alpha = 1
                 } completion: { (Bool) in
                     UIView.animate(withDuration: 1.0) {
                         self.tapAndContinueLabel.alpha = 1

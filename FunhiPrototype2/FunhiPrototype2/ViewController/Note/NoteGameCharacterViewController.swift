@@ -155,20 +155,20 @@ class NoteGameCharacterViewController: UIViewController,UITableViewDelegate, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        designObjects()
-        self.infomationTableView.delegate = self
-        self.infomationTableView.dataSource = self
+           designObjects()
+//        self.infomationTableView.delegate = self
+//        self.infomationTableView.dataSource = self
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        if let recievedGameCharacter = recievedGameCharacter {
-            gameCharacterImageView.image = UIImage(named: recievedGameCharacter.profileImage)
-            gameCharacterDescriptionLabel.text = recievedGameCharacter.description
-
-           
-                likabilityProgressWidth.constant = likabilityBackgroundView.frame.width*CGFloat(recievedGameCharacter.likability)/100
-            
-        }
+//        if let recievedGameCharacter = recievedGameCharacter {
+//            gameCharacterImageView.image = UIImage(named: recievedGameCharacter.profileImage)
+//            gameCharacterDescriptionLabel.text = recievedGameCharacter.description
+//
+////           
+////                likabilityProgressWidth.constant = likabilityBackgroundView.frame.width*CGFloat(recievedGameCharacter.likability)/100
+//            
+//        }
     }
     
     @IBAction func exitButton(_ sender: Any) {

@@ -23,15 +23,15 @@ struct Setting {
 // player.currentEpisodes에서 현재 플레이중인 episode 골라내는 인덱스. 현재 에피소드 이름으로 식별함.
 var currentEpIndex: Int {
     get {
-        if currentDay().episodeName == "프롤로그" {
+        if currentDay().episodePlace == "프롤로그" {
             return 0
-        } else if currentDay().episodeName == "임진왜란" {
+        } else if currentDay().episodePlace == "임진왜란" {
             return 1
-        } else if currentDay().episodeName == "인조반정" {
+        } else if currentDay().episodePlace == "인조반정" {
             return 2
-        } else if currentDay().episodeName == "3.1 운동" {
+        } else if currentDay().episodePlace == "3.1 운동" {
             return 3
-        } else if currentDay().episodeName == "내 생일" {
+        } else if currentDay().episodePlace == "내 생일" {
             return 4
         } else {
             print("currentEpIndex 없음. 수정 필요")
@@ -75,6 +75,7 @@ enum AchievementID :String,Codable{
     case injeongjeon
     case achievement3
     case achievement4
+
 }
 // 프라퍼티 설명: 업적 이름, 업적 이미지, id(업적 획득 로직에서 사용), 업적 잠금 여부
 struct Achievement :Codable{
@@ -123,6 +124,10 @@ enum InfomationID :String,Codable{
     case hwiryeong3
     case hwiryeong4
     case hwiryeong5
+    case teacher1
+    case teacher2
+    case teacher3
+    case teacher4
 }
 
 // id(정보 획득 로직에서 사용), 업적 잠금 여부, 정보 텍스트
@@ -308,9 +313,11 @@ struct BlockOfDayEpisode :Codable{
 //n일차
 // 프라퍼티 설명: 에피소드 이름(ex)인조반정), 에피소드 연도(1xxx년), 에피소드 설명(인조반정에서 무슨 일이 일어날 예정이다 과연 주인공은 이를 막을 수 있을까? 어쩌구저쩌구), 에피소드 이미지(전각 이미지)스토리블럭(대사 인스턴스)
 struct Episode {
+    
     let episodeID: String
     //(예시 : 임진왜란)
-    let episodeName: String
+    let episodePlace: String
+    
     //(예시 : 1592)
     let episodeYear: Int
     //(예시 : 선조 25년, 광해군 11년)
@@ -571,4 +578,23 @@ struct BlockOfDayEpisodeForJson :Codable{
     let choices: [Choice]
     let achievement: Achievement?
     let choiceSkip : Bool
+}
+
+open class CustomLabel : UILabel {
+    @IBInspectable open var characterSpacing:CGFloat = 1 {
+        didSet {
+            let attributedString = NSMutableAttributedString(string: self.text!)
+            attributedString.addAttribute(NSAttributedString.Key.kern, value: self.characterSpacing, range: NSRange(location: 0, length: attributedString.length))
+            self.attributedText = attributedString
+        }
+
+    }
+    @IBInspectable open var lineSpacing:CGFloat = 1 {
+        didSet {
+            let attributedString = NSMutableAttributedString(string: self.text!)
+            attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: self.lineSpacing, range: NSRange(location: 0, length: attributedString.length))
+            self.attributedText = attributedString
+        }
+
+    }
 }
