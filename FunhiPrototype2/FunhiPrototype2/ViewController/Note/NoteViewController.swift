@@ -130,10 +130,10 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 page1ButtonStackView.isHidden = true
                 
             }
-            page2Button.setTitle("\(currentEpisodes[1].episodeName)", for: .normal)
-            page3Button.setTitle("\(currentEpisodes[2].episodeName)", for: .normal)
-            page4Button.setTitle("\(currentEpisodes[3].episodeName)", for: .normal)
-            page5Button.setTitle("\(currentEpisodes[4].episodeName)", for: .normal)
+            page2Button.setTitle("\(currentEpisodes[1].episodePlace)", for: .normal)
+            page3Button.setTitle("\(currentEpisodes[2].episodePlace)", for: .normal)
+            page4Button.setTitle("\(currentEpisodes[3].episodePlace)", for: .normal)
+            page5Button.setTitle("\(currentEpisodes[4].episodePlace)", for: .normal)
         }
     }
   
@@ -283,17 +283,17 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     }
     func changePageDesign() {
         if currentNoteTitle == .gameCharacters {
-            gameCharactersBookmarkView.backgroundColor = UIColor(displayP3Red: 0.749, green: 0.631, blue: 0.455, alpha: 1)
-            casesBookmarkView.backgroundColor = UIColor(displayP3Red: 0.492, green: 0.406, blue: 0.279, alpha: 1)
-            gameCharactersBookmarkLineView.backgroundColor = UIColor(displayP3Red: 0.749, green: 0.631, blue: 0.455, alpha: 1)
-            casesBookmarkLineView.backgroundColor = UIColor(displayP3Red: 0.254, green: 0.205, blue: 0.13, alpha: 1)
+            gameCharactersBookmarkView.backgroundColor = UIColor(red: 0.862, green: 0.862, blue: 0.862, alpha: 1)
+            casesBookmarkView.backgroundColor = UIColor(red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+            gameCharactersBookmarkLineView.backgroundColor = UIColor(red: 0.862, green: 0.862, blue: 0.862, alpha: 1)
+            casesBookmarkLineView.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 1)
             
             
         } else {
-            gameCharactersBookmarkView.backgroundColor = UIColor(displayP3Red: 0.492, green: 0.406, blue: 0.279, alpha: 1)
-            casesBookmarkView.backgroundColor = UIColor(displayP3Red: 0.749, green: 0.631, blue: 0.455, alpha: 1)
-            gameCharactersBookmarkLineView.backgroundColor = UIColor(displayP3Red: 0.254, green: 0.205, blue: 0.13, alpha: 1)
-            casesBookmarkLineView.backgroundColor = UIColor(displayP3Red: 0.749, green: 0.631, blue: 0.455, alpha: 1)
+            gameCharactersBookmarkView.backgroundColor = UIColor(red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+            casesBookmarkView.backgroundColor = UIColor(red: 0.862, green: 0.862, blue: 0.862, alpha: 1)
+            gameCharactersBookmarkLineView.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 1)
+            casesBookmarkLineView.backgroundColor = UIColor(red: 0.862, green: 0.862, blue: 0.862, alpha: 1)
             page1Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
             page2Button.setTitleColor(UIColor(red: 0.312, green: 0.208, blue: 0.134, alpha: 1), for: .normal)
             page3Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
@@ -345,11 +345,11 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     }
     @IBAction func page1ButtonAction(_ sender: Any) {
         currentNotePageInt = 0
-        page1Button.setTitleColor(UIColor(red: 0.312, green: 0.208, blue: 0.134, alpha: 1), for: .normal)
-        page2Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-        page3Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-        page4Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-        page5Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
+        page1Button.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        page2Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
+        page3Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
+        page4Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
+        page5Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
         page1ButtonLine.backgroundColor = .black
         page2ButtonLine.backgroundColor = .clear
         page3ButtonLine.backgroundColor = .clear
@@ -359,11 +359,11 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     }
     @IBAction func page2ButtonAction(_ sender: Any) {
         currentNotePageInt = 1
-        page1Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-        page2Button.setTitleColor(UIColor(red: 0.312, green: 0.208, blue: 0.134, alpha: 1), for: .normal)
-        page3Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-        page4Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-        page5Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
+        page1Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
+        page2Button.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        page3Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
+        page4Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
+        page5Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
         page1ButtonLine.backgroundColor = .clear
         page2ButtonLine.backgroundColor = .black
         page3ButtonLine.backgroundColor = .clear
@@ -373,11 +373,11 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     }
     @IBAction func page3ButtonAction(_ sender: Any) {
         currentNotePageInt = 2
-        page1Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-        page2Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-        page3Button.setTitleColor(UIColor(red: 0.312, green: 0.208, blue: 0.134, alpha: 1), for: .normal)
-        page4Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-        page5Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
+        page1Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
+        page2Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
+        page3Button.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        page4Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
+        page5Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
         page1ButtonLine.backgroundColor = .clear
         page2ButtonLine.backgroundColor = .clear
         page3ButtonLine.backgroundColor = .black
@@ -387,11 +387,11 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     }
     @IBAction func page4ButtonAction(_ sender: Any) {
         currentNotePageInt = 3
-        page1Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-        page2Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-        page3Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-        page4Button.setTitleColor(UIColor(red: 0.312, green: 0.208, blue: 0.134, alpha: 1), for: .normal)
-        page5Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
+        page1Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
+        page2Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
+        page3Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
+        page4Button.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        page5Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
         page1ButtonLine.backgroundColor = .clear
         page2ButtonLine.backgroundColor = .clear
         page3ButtonLine.backgroundColor = .clear
@@ -401,11 +401,11 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     }
     @IBAction func page5ButtonAction(_ sender: Any) {
         currentNotePageInt = 4
-        page1Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-        page2Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-        page3Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-        page4Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-        page5Button.setTitleColor(UIColor(red: 0.312, green: 0.208, blue: 0.134, alpha: 1), for: .normal)
+        page1Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
+        page2Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
+        page3Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
+        page4Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
+        page5Button.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         page1ButtonLine.backgroundColor = .clear
         page2ButtonLine.backgroundColor = .clear
         page3ButtonLine.backgroundColor = .clear
@@ -460,26 +460,26 @@ extension NoteViewController {
     topBar.layer.shadowRadius = 26
     topBar.layer.shadowOffset = CGSize(width: 0, height: 12)
     //--------------수첩 --------------
-    noteBackgroundView.layer.backgroundColor = UIColor(red: 0.749, green: 0.631, blue: 0.455, alpha: 1).cgColor
+        noteBackgroundView.layer.backgroundColor = UIColor(red: 0.862, green: 0.862, blue: 0.862, alpha: 1).cgColor
     noteBackgroundView.layer.cornerRadius = 5
     noteBackgroundView.layer.borderWidth = 2
-    noteBackgroundView.layer.borderColor = UIColor(red: 0.254, green: 0.205, blue: 0.13, alpha: 1).cgColor
+    noteBackgroundView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
     //--------------수첩 인물/사건 북마크-----
-    gameCharactersBookmarkView.layer.backgroundColor = UIColor(red: 0.749, green: 0.631, blue: 0.455, alpha: 1).cgColor
+    gameCharactersBookmarkView.layer.backgroundColor = UIColor(red: 0.862, green: 0.862, blue: 0.862, alpha: 1).cgColor
     gameCharactersBookmarkView.layer.cornerRadius = 5
     gameCharactersBookmarkView.layer.borderWidth = 2
-    gameCharactersBookmarkView.layer.borderColor = UIColor(red: 0.254, green: 0.205, blue: 0.13, alpha: 1).cgColor
+    gameCharactersBookmarkView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
     
     casesBookmarkView.layer.backgroundColor = UIColor(red: 0.492, green: 0.406, blue: 0.279, alpha: 1).cgColor
     casesBookmarkView.layer.cornerRadius = 5
     casesBookmarkView.layer.borderWidth = 2
-    casesBookmarkView.layer.borderColor = UIColor(red: 0.254, green: 0.205, blue: 0.13, alpha: 1).cgColor
+    casesBookmarkView.layer.borderColor = UIColor(red: 0.479, green: 0.479, blue: 0.479, alpha: 1).cgColor
     //--------수첩 페이지 버튼, 하단 줄----------
-    page1Button.setTitleColor(UIColor(red: 0.312, green: 0.208, blue: 0.134, alpha: 1), for: .normal)
-    page2Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-    page3Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-    page4Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
-    page5Button.setTitleColor(UIColor(red: 0.538, green: 0.437, blue: 0.437, alpha: 1), for: .normal)
+    page1Button.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+    page2Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
+    page3Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
+    page4Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
+    page5Button.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
     page1ButtonLine.backgroundColor = .black
     page2ButtonLine.backgroundColor = .clear
     page3ButtonLine.backgroundColor = .clear

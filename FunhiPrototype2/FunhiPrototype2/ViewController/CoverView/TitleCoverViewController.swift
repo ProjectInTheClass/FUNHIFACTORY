@@ -12,7 +12,7 @@ class TitleCoverViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        designButton()
+      
         // Do any additional setup after loading the view.
         /*
          guard let ex = readLocalFile(forName: "storyInstance") else {return}
