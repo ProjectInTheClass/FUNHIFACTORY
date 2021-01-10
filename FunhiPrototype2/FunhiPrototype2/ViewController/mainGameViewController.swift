@@ -201,10 +201,13 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         pauseBar.isHidden = true
     }
     @IBAction func chatWithGod(_ sender: Any) {
-        godChat.isHidden = false
+        self.view!.addSubview(godChat)
         godChat.centerXAnchor.constraint(equalTo: wholeView.centerXAnchor).isActive = true
         godChat.centerYAnchor.constraint(equalTo: wholeView.centerYAnchor).isActive = true
         
+    }
+    @IBAction func closeGodChat(_ sender: Any) {
+        godChat.removeFromSuperview()
     }
 }
 
