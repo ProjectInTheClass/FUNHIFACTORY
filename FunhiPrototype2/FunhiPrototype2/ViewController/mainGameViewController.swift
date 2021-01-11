@@ -201,9 +201,11 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     @IBAction func pauseTapped(_ sender: Any) {
         pauseBar.isHidden = false
+        timer.invalidate()
     }
     @IBAction func resumeTapped(_ sender: Any) {
         pauseBar.isHidden = true
+        chatUpdateTimer()
     }
     @IBAction func chatWithGod(_ sender: Any) {
         self.view!.addSubview(godChat)
