@@ -170,6 +170,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
 
         }
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        timer.invalidate()
+    }
     //가장 밑으로 스크롤해주는 함수
     func scrollToBottom(){
         guard currentChatArray.count != 0 else {return}
@@ -181,12 +184,12 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
   
     
     @IBAction func settingTapped(_ sender: Any) {
-        timer.invalidate()
         let setting = storyboard?.instantiateViewController(identifier: "setting")
         setting?.modalPresentationStyle = .fullScreen
         present(setting!, animated: true, completion: nil)
     }
     @IBAction func mapOpen(_ sender: Any) {
+            timer.invalidate()
             self.view.addSubview(map)
             //30, 20, 20, 67
             map.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 74).isActive = true
@@ -194,6 +197,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     @IBAction func closeMap(_ sender: Any) {
         map.removeFromSuperview()
+        chatUpdateTimer()
     }
     @IBAction func pauseTapped(_ sender: Any) {
         pauseBar.isHidden = false
