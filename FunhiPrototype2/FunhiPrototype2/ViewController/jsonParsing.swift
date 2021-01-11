@@ -58,10 +58,12 @@ func loadJson(fromURLString urlString: String,
     if let url = URL(string: urlString) {
         let urlSession = URLSession(configuration: .default).dataTask(with: url) { (data, response, error) in
             if let error = error {
+                print("url에서 json을 불러오는 데 실패했습니다")
                 completion(.failure(error))
             }
             
             if let data = data {
+                print("url에서 json을 불러오는 데 성공했습니다")
                 completion(.success(data))
             }
         }

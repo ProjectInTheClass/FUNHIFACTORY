@@ -43,14 +43,14 @@ func chatToGodUIUpdate(hwiryeong view : UIView){
     view.sendSubviewToBack(shadows)
 }
 func choiceCellUIUpdate(target : UIView){
-    var view = UILabel()
+    let view = UILabel()
 
     view.frame = CGRect(x: 0, y: 0, width: 344, height: 45)
 
     view.backgroundColor = .white
 
 
-    var shadows = UIView()
+    let shadows = UIView()
 
     shadows.frame = view.frame
 
@@ -80,7 +80,7 @@ func choiceCellUIUpdate(target : UIView){
     shadows.layer.addSublayer(layer0)
 
 
-    var shapes = UIView()
+    let shapes = UIView()
 
     shapes.frame = view.frame
 
@@ -103,7 +103,7 @@ func choiceCellUIUpdate(target : UIView){
     shapes.layer.cornerRadius = 8
 
 
-    var parent = target
+    let parent = target
 
     parent.addSubview(view)
 

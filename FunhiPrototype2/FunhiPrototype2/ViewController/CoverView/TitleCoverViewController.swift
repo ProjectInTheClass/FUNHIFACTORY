@@ -30,7 +30,6 @@ class TitleCoverViewController: UIViewController {
                   print(error)
               }
           }
-        //print(player.currentEpisodes)
     }
     @IBAction func startAction(_ sender: Any) {
         
