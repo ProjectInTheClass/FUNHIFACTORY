@@ -21,9 +21,6 @@
         <array key="Spoqa Han Sans Neo Regular.otf">
             <string>SpoqaHanSansNeo-Regular</string>
         </array>
-        <array key="Spoqa Han Sans Neo Thin.otf">
-            <string>SpoqaHanSansNeo-Thin</string>
-        </array>
     </customFonts>
     <scenes>
         <!--Title Cover View Controller-->
@@ -50,38 +47,28 @@
                                     <action selector="startAction:" destination="kJc-iQ-Szc" eventType="touchUpInside" id="Xz9-Hi-MmH"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="탭하여 시작하기" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aH4-gt-75x" customClass="CustomLabel" customModule="FunhiPrototype2" customModuleProvider="target">
-                                <rect key="frame" x="30" y="759" width="354" height="79"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="79" id="ZqN-cF-arb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Thin" family="Spoqa Han Sans Neo" pointSize="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="탭하여 시작하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdZ-86-mCc">
+                                <rect key="frame" x="157" y="780" width="100" height="18"/>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Light" family="Spoqa Han Sans Neo" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ipM-go-sY9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ipM-go-sY9" firstAttribute="trailing" secondItem="aH4-gt-75x" secondAttribute="trailing" constant="30" id="2ob-Rn-4pB"/>
                             <constraint firstItem="S4R-AN-iqx" firstAttribute="trailing" secondItem="ipM-go-sY9" secondAttribute="trailing" id="4cS-sV-6Vo"/>
                             <constraint firstItem="S4R-AN-iqx" firstAttribute="top" secondItem="Dnq-0k-G5u" secondAttribute="top" id="65Y-jj-Ra6"/>
                             <constraint firstItem="S4R-AN-iqx" firstAttribute="leading" secondItem="ipM-go-sY9" secondAttribute="leading" id="Jnn-fY-qbN"/>
                             <constraint firstAttribute="bottom" secondItem="S4R-AN-iqx" secondAttribute="bottom" id="Qw1-QT-yF6"/>
-                            <constraint firstAttribute="bottom" secondItem="aH4-gt-75x" secondAttribute="bottom" constant="58" id="d7L-TV-Icq"/>
-                            <constraint firstItem="aH4-gt-75x" firstAttribute="centerX" secondItem="Dnq-0k-G5u" secondAttribute="centerX" id="hv4-aB-OiX"/>
-                            <constraint firstItem="aH4-gt-75x" firstAttribute="leading" secondItem="ipM-go-sY9" secondAttribute="leading" constant="30" id="vLQ-SI-w3e"/>
+                            <constraint firstItem="cdZ-86-mCc" firstAttribute="centerX" secondItem="Dnq-0k-G5u" secondAttribute="centerX" id="dAu-jI-LzQ"/>
+                            <constraint firstAttribute="bottom" secondItem="cdZ-86-mCc" secondAttribute="bottom" constant="98" id="wZA-Xa-oLi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="LhN-MK-Amx"/>
                     <connections>
                         <outlet property="startButton" destination="S4R-AN-iqx" id="r3Y-X9-OrS"/>
-                        <outlet property="tapLabel" destination="aH4-gt-75x" id="XPQ-eG-COM"/>
+                        <outlet property="testLabel" destination="cdZ-86-mCc" id="oCn-Ia-1cy"/>
                         <segue destination="LDT-1T-9Vm" kind="show" identifier="goToSelectSelectSegue" id="mpB-tq-3CW"/>
                         <segue destination="gV8-vF-X4D" kind="show" identifier="fromCoverToMaingameSegue" id="jZx-07-KWg"/>
                         <segue destination="wpo-Yq-ikf" kind="show" identifier="fromCoverToChapterCover" animates="NO" id="Wab-dm-ahv"/>
@@ -624,7 +611,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dIO-Gc-dma"/>
+        <segue reference="jZx-07-KWg"/>
         <segue reference="Wab-dm-ahv"/>
     </inferredMetricsTieBreakers>
     <resources>

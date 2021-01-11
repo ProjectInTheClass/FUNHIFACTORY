@@ -265,12 +265,12 @@ enum ChatType :String, Codable{
 
 // 텍스트 블럭 스트럭처
 //  프라퍼티 설명: 글, 이미지, 타입, 해당 인물
-struct Chat :Codable{
+struct Chat :Codable {
     let text: String
     let image: String
     let type: ChatType
     let who: GameCharacterID
-    let characterFace : characterFace
+    let characterFace : CharacterFace
     let achievementToUnlock: AchievementID?
     let infomationToUnlock: InfomationID?
     let gameCharacterToUnlock: GameCharacterID?
@@ -358,7 +358,7 @@ struct GameData {
     let gameCharacters: [String:GameCharacter]
 }
 
-enum characterFace: String, Codable{
+enum CharacterFace: String, Codable{
     case none,angry1,angry2,basic,cry1,cry2,happy1,happy2,happy3,sad,scared,straight,surprise1,surprise2,surprise3
 }
 
@@ -628,5 +628,14 @@ extension UILabel {
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
         self.attributedText = attributedString
     }
+    func setCharacterSpacing(characterSpacing: CGFloat) {
+
+        guard let selfText = self.text else { return }
+        let attributedString = NSMutableAttributedString(string: selfText)
+        attributedString.addAttribute(NSAttributedString.Key.kern, value: characterSpacing, range: NSRange(location: 0, length: attributedString.length))
+        self.attributedText = attributedString
+     
+    }
+
 }
 

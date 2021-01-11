@@ -10,9 +10,10 @@ import UIKit
 class TitleCoverViewController: UIViewController {
 
     @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var tapLabel: CustomLabel!
+    @IBOutlet weak var testLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        testLabel.setCharacterSpacing(characterSpacing: 5)
       light()
         // Do any additional setup after loading the view.
         /*
@@ -32,7 +33,8 @@ class TitleCoverViewController: UIViewController {
         //print(player.currentEpisodes)
     }
     @IBAction func startAction(_ sender: Any) {
-        tapLabel.layer.removeAllAnimations()
+        
+        testLabel.layer.removeAllAnimations()
         if currentChatArray.count == 0 {
             //게임 처음 시작하는 거면
             if !player.currentEpisodes[0].isCleared {
@@ -64,8 +66,8 @@ class TitleCoverViewController: UIViewController {
     }
 
     func light() {
-            CustomLabel.animate(withDuration: 0.7, delay: 0.5, options: [.repeat, .autoreverse], animations: {[self]  in
-                tapLabel.alpha = 0.3
+        UILabel.animate(withDuration: 0.7, delay: 0.5, options: [.repeat, .autoreverse], animations: {[self]  in
+                testLabel.alpha = 0.1
 
             }, completion: nil)
        

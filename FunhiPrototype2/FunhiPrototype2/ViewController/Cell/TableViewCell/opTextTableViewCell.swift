@@ -16,7 +16,7 @@ class opTextTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    func opTextCellUpdate(name:String,chat:String, normalProfile:String, mainProfile:characterFace){
+    func opTextCellUpdate(name:String,chat:String, normalProfile:String, mainProfile:CharacterFace){
         profileNickname.text = name
                chatText.text = chat
         if name == "휘령"{

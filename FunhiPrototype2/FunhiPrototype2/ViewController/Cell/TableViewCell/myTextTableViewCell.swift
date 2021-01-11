@@ -17,7 +17,7 @@ class myTextTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func myTextCellUpdate(name:String,chat:String,profile:characterFace){
+    func myTextCellUpdate(name:String,chat:String,profile:CharacterFace){
         profileNickname.text = name
         chatText.text = chat
         var face : String {
