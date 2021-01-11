@@ -290,9 +290,9 @@ struct ChoiceLikeability :Codable{
 struct Choice :Codable{
     let text: String
     let likability: [ChoiceLikeability]
-    let nextTextIndex: String
     let chatType: ChatType
     let characterFace : CharacterFace
+    let nextTextIndex: String
     let achievementToUnlock: AchievementID?
     let infomationToUnlock: InfomationID?
     let gameCharacterToUnlock: GameCharacterID?
