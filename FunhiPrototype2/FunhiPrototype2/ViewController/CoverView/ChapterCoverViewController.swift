@@ -43,6 +43,7 @@ class ChapterCoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionLabel.setLineSpacing(lineSpacing: 10.0)
+        tapAndContinueLabel.setCharacterSpacing(characterSpacing: 5)
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {

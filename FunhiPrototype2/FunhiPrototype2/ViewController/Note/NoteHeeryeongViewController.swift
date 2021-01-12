@@ -199,6 +199,7 @@ class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITable
         self.navigationController?.popViewController(animated: true)
     }
     func designObjects() {
+        hwiryeongDescriptionLabel.textAlignment = .center
         hwiryeongProfileImageView.layer.cornerRadius = hwiryeongProfileImageView.frame.width/2
         hwiryeongDescriptionLabel.setLineSpacing(lineSpacing: 5)
        

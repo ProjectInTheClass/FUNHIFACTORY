@@ -165,7 +165,7 @@ class NoteGameCharacterViewController: UIViewController,UITableViewDelegate, UIT
         if let recievedGameCharacter = recievedGameCharacter {
             gameCharacterImageView.image = UIImage(named: recievedGameCharacter.profileImage)
             gameCharacterDescriptionLabel.text = recievedGameCharacter.description
-            gameCharacterIsLabel.text = "\(recievedGameCharacter.name)은..."
+            gameCharacterIsLabel.text = "\(recievedGameCharacter.name)은(는)..."
 
                 likabilityProgressWidth.constant = likabilityBackgroundView.frame.width*CGFloat(recievedGameCharacter.likability)/100
             
@@ -177,6 +177,7 @@ class NoteGameCharacterViewController: UIViewController,UITableViewDelegate, UIT
     }
     func designObjects() {
         gameCharacterDescriptionLabel.setLineSpacing(lineSpacing: 5.0)
+        gameCharacterDescriptionLabel.textAlignment = .center
         gameCharacterImageView.layer.cornerRadius = gameCharacterImageView.frame.width/2
         likabilityBackgroundView.backgroundColor = .white
         likabilityBackgroundView.layer.cornerRadius = likabilityBackgroundView.frame.height/2

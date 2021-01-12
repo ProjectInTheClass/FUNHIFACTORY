@@ -375,10 +375,21 @@ func checkAchievementInChoice(popupView: UIView, backgroundView: UIView, titleLa
                 backgroundView.addSubview(popupView)
                 notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: player.currentAchievementInfo[achievement.offset].name , infoID: infoID)
                 popupView.bringSubviewToFront(backgroundView)
+                animatenotePopup(popupView: popupView)
                 
             }
         }
     }
+}
+func animatenotePopup(popupView: UIView) {
+    UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut) {
+        let moveDown = CGAffineTransform(translationX: popupView.frame.origin.x, y: 118)
+        popupView.transform = moveDown
+    } completion: { (Bool) in
+        
+    }
+
+    
 }
 
 //mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 등장인물 해금하기
@@ -394,6 +405,7 @@ func checkGameCharacterInChoice(popupView: UIView, backgroundView: UIView, title
                 backgroundView.addSubview(popupView)
                 notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCharacterNote[gameCharacter.offset].name, infoID: infoID)
                 popupView.bringSubviewToFront(backgroundView)
+                animatenotePopup(popupView: popupView)
             }
         }
     }
@@ -412,6 +424,7 @@ func checkCaseInChoice(popupView: UIView, backgroundView: UIView, titleLabel: UI
                 backgroundView.addSubview(popupView)
                 notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCaseNote[caseNote.offset].title, infoID: infoID)
                 popupView.bringSubviewToFront(backgroundView)
+                animatenotePopup(popupView: popupView)
             }
         }
     }
@@ -430,6 +443,7 @@ func checkgameCharacterInfomationInChoice(popupView: UIView, backgroundView: UIV
                     backgroundView.addSubview(popupView)
                     notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCharacterNote[gameCharacter.offset].name, infoID: infoID)
                     popupView.bringSubviewToFront(backgroundView)
+                    animatenotePopup(popupView: popupView)
                 }
             }
         }
@@ -453,7 +467,7 @@ func checkAlbumImageInChoice(choiceIndex: Int) {
     }
     }
 }
-
+//------------------------------------------------------------------------------------------------------------------------
 //mainGame에서 currentChat 정보 읽어서 알맞는 주인공 업적 해금하기
 func checkAchievementInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel) {
     let infoID = "achievement"
@@ -545,11 +559,11 @@ func checkAlbumImageInChat() {
     }
     }
 }
-
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 func notePopupViewDesign(notePopupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel, descriptionText: String, infoID: String) {
     
     notePopupView.translatesAutoresizingMaskIntoConstraints = false
-    notePopupView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 118).isActive = true
+    notePopupView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: -53).isActive = true
         let horizontalConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: backgroundView, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
         let widthConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 231)
         let heightConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 53)
@@ -573,6 +587,7 @@ func notePopupViewDesign(notePopupView: UIView, backgroundView: UIView, titleLab
     }
     
 }
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //일단 만들어놓은 인물들 샘플 정보 변수입니다.
 
 //json 파싱 전용 파일
