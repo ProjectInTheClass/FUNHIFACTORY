@@ -104,6 +104,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 print("속마음 채팅 출력")
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "monologue", for: indexPath) as! monologueTableViewCell
                 cell.monologueText.text = chatText
+                cell.chatUpdate(nickname: currentChatArray[indexPath.row].who.info().name, profile: currentChatArray[indexPath.row].characterFace)
                 return cell
             }
             else {

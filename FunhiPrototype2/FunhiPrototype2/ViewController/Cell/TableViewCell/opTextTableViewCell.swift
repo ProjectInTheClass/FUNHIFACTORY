@@ -10,15 +10,23 @@ import UIKit
 class opTextTableViewCell: UITableViewCell {
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var profileNickname: UILabel!
-    @IBOutlet var chatText: UITextView!
+    @IBOutlet var chatText: UILabel!
+    @IBOutlet var chatView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        chatText.setLineSpacing(lineSpacing: 6)
         // Initialization code
     }
     func opTextCellUpdate(name:String,chat:String, normalProfile:String, mainProfile:CharacterFace){
         profileNickname.text = name
                chatText.text = chat
+            if mainProfile == .none{
+                noProfileUIUpdate()
+            }else{
+                chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 64).isActive = true
+                contentView.layoutIfNeeded()
+            }
         if name == "휘령"{
             var face : String {
                 switch mainProfile {
@@ -34,13 +42,21 @@ class opTextTableViewCell: UITableViewCell {
                 case .straight: return "hwiryeong straight face"
                 case .surprise1:   return "hwiryeong surprised face"
                 default : return "none"
+                }
             }
-        }
-            guard face != "none" else {return}
             profileImage.image = UIImage(named: face)
+            return
         } else {
             profileImage.image = UIImage(named: normalProfile)
         }
+    }
+    
+    func noProfileUIUpdate(){
+        //chatView.removeConstraint(chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 64))
+        profileImage.isHidden = true
+        profileNickname.isHidden = true
+        chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7).isActive = true
+        contentView.layoutIfNeeded()
     }
 
 }

@@ -38,7 +38,9 @@ class MaingameARViewController: UIViewController {
     }
 
     @IBAction func finishARButtonAction(_ sender: Any) {
-        // arView.session.pause()
+
+       //arView.session.pause()
+
         self.navigationController?.popViewController(animated: true)
     }
     

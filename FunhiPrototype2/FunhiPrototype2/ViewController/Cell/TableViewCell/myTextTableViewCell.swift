@@ -10,10 +10,12 @@ import UIKit
 class myTextTableViewCell: UITableViewCell {
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var profileNickname: UILabel!
-    @IBOutlet var chatText: UITextView!
+    @IBOutlet var chatText: UILabel!
+    @IBOutlet var chatView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        chatText.setLineSpacing(lineSpacing: 6)
         // Initialization code
     }
 
@@ -39,7 +41,16 @@ class myTextTableViewCell: UITableViewCell {
             case .surprise3:    return "danhee surprised face3"
             }
         }
-        guard face != "none" else {return}
+        if face == "none"{
+            profileImage.isHidden = true
+            profileNickname.isHidden = true
+            chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7).isActive = true
+            contentView.layoutIfNeeded()
+        } else {
+            chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 57).isActive = true
+            contentView.layoutIfNeeded()
+        }
         profileImage.image = UIImage(named: face)
+        return
     }
 }
