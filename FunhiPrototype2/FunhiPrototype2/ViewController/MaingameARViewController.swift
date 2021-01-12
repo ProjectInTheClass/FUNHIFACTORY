@@ -13,18 +13,25 @@ class MaingameARViewController: UIViewController {
 
     @IBOutlet weak var arView: ARView!
     @IBOutlet weak var finishARButton: UIButton!
+    
+    let rockAnchor = try! OpenLeaves.load장면()
+    let leafAnchor = try! OpenRock.load장면()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-       
     }
     
     override func viewWillAppear(_ animated: Bool) {
+<<<<<<< Updated upstream
         
         let rockAnchor = try! OpenLeaves.load장면()
         let leafAnchor = try! OpenRock.load장면()
+=======
+>>>>>>> Stashed changes
         arView.scene.anchors.append(leafAnchor)
     }
+    
+    
     func designButton() {
         finishARButton.layer.cornerRadius = 3
         finishARButton.layer.borderWidth = 1.5
@@ -32,9 +39,8 @@ class MaingameARViewController: UIViewController {
     }
 
     @IBAction func finishARButtonAction(_ sender: Any) {
-       //arView.session.pause()
+       arView.session.pause()
         self.navigationController?.popViewController(animated: true)
-        
     }
     
    
