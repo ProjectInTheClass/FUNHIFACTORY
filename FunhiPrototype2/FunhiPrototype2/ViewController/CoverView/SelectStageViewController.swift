@@ -150,7 +150,7 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
     func openStagePopup(indexPath: IndexPath) {
      
         selectedEP = player.currentEpisodes[indexPath.row]
-        print(selectedEP)
+        //print(selectedEP)
         selectedPopupYearLabel.text = "\(selectedEP.episodeYear)년"
         selectedPopupPlaceImage.image = UIImage(named: selectedEP.episodePlaceImage)
         selectedPopupDescriptionLabel.text = selectedEP.episodeDesciption

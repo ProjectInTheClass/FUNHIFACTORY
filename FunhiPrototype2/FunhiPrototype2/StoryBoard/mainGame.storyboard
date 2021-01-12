@@ -502,7 +502,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N3v-8x-INE">
                                         <rect key="frame" x="0.0" y="23" width="414" height="126"/>
                                         <subviews>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="53L-0h-6yk">
+                                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="53L-0h-6yk">
                                                 <rect key="frame" x="0.0" y="59" width="414" height="48"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="fW3-id-ia6">
@@ -513,10 +513,10 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="choiceCell" id="Xqx-6d-gcV" customClass="choiceCollectionViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="choiceCell" id="Xqx-6d-gcV" customClass="choiceCollectionViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="TXV-hD-S0t" userLabel="choiceCell">
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="TXV-hD-S0t" userLabel="choiceCell">
                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
@@ -530,7 +530,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
-                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="trailing" secondItem="1ZV-AS-80r" secondAttribute="trailing" constant="27" id="Oth-T5-TfZ"/>
                                                                         <constraint firstAttribute="width" constant="344" id="PhS-kn-cK3"/>
@@ -538,14 +538,6 @@
                                                                         <constraint firstItem="1ZV-AS-80r" firstAttribute="leading" secondItem="Xvg-R4-18h" secondAttribute="leading" constant="27" id="hUe-se-QL4"/>
                                                                         <constraint firstAttribute="bottom" secondItem="1ZV-AS-80r" secondAttribute="bottom" constant="12.5" id="qHU-w4-u1a"/>
                                                                     </constraints>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                                            <integer key="value" value="2"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                            <integer key="value" value="8"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
                                                                 </view>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -558,6 +550,7 @@
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="414" height="48"/>
                                                         <connections>
+                                                            <outlet property="choiceInCell" destination="Xvg-R4-18h" id="5Ns-u6-DSD"/>
                                                             <outlet property="choiceLabel" destination="1ZV-AS-80r" id="wvT-GJ-Hhv"/>
                                                         </connections>
                                                     </collectionViewCell>
@@ -741,9 +734,7 @@
                                                     <constraint firstAttribute="height" constant="30" id="gcQ-Wn-aSP"/>
                                                     <constraint firstAttribute="width" constant="30" id="mKE-xW-cFN"/>
                                                 </constraints>
-                                                <state key="normal">
-                                                    <imageReference key="image" image="arrowshape.turn.up.forward.fill" catalog="system" renderingMode="original"/>
-                                                </state>
+                                                <state key="normal" image="black arrow"/>
                                                 <connections>
                                                     <action selector="resumeTapped:" destination="58V-k4-uXR" eventType="touchUpInside" id="61V-WL-uaB"/>
                                                 </connections>
@@ -783,7 +774,7 @@
                                     <constraint firstAttribute="height" constant="105" id="txD-D9-h9r"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YwF-LL-8x7">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YwF-LL-8x7">
                                 <rect key="frame" x="359" y="182" width="55" height="55"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPE-pH-d5x">
@@ -845,6 +836,7 @@
                         <outlet property="choiceCollectionView" destination="53L-0h-6yk" id="lJF-NZ-7cK"/>
                         <outlet property="choiceHeight" destination="OKS-a3-hm7" id="lLz-4x-yJF"/>
                         <outlet property="collectionBar" destination="N3v-8x-INE" id="I97-4G-8fO"/>
+                        <outlet property="currentYear" destination="lrk-et-zzi" id="Fus-cV-jgp"/>
                         <outlet property="godChat" destination="p7L-ET-Qs2" id="66R-3B-2fK"/>
                         <outlet property="godChatTableView" destination="uzx-YQ-a2R" id="cMv-Jl-VYC"/>
                         <outlet property="mainGameTableView" destination="1X2-dM-NgP" id="Q04-Oq-ZND"/>
@@ -1289,10 +1281,18 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UGj-56-FQp">
+                                            <rect key="frame" x="0.0" y="23" width="384" height="1.5"/>
+                                            <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1.5" id="MhR-n5-Qrx"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="1w8-Dl-h2C" firstAttribute="top" secondItem="ysh-oy-HOb" secondAttribute="bottom" constant="3" id="IRy-bA-iiq"/>
+                                        <constraint firstAttribute="trailing" secondItem="UGj-56-FQp" secondAttribute="trailing" id="LlL-PP-k2b"/>
                                         <constraint firstAttribute="trailing" secondItem="1w8-Dl-h2C" secondAttribute="trailing" id="MHm-Gz-o1Y"/>
                                         <constraint firstAttribute="bottom" secondItem="1w8-Dl-h2C" secondAttribute="bottom" id="Qe7-CV-f9k"/>
                                         <constraint firstItem="ysh-oy-HOb" firstAttribute="top" secondItem="q8C-g1-Z5m" secondAttribute="top" id="Smq-dI-yq9"/>
@@ -1300,6 +1300,8 @@
                                         <constraint firstAttribute="height" constant="149" id="n1y-Rd-Nez"/>
                                         <constraint firstItem="1w8-Dl-h2C" firstAttribute="leading" secondItem="q8C-g1-Z5m" secondAttribute="leading" id="pjr-2a-hzn"/>
                                         <constraint firstAttribute="width" constant="384" id="q8y-bF-ZGC"/>
+                                        <constraint firstItem="UGj-56-FQp" firstAttribute="top" secondItem="ysh-oy-HOb" secondAttribute="bottom" constant="3" id="rjt-CF-IJa"/>
+                                        <constraint firstItem="UGj-56-FQp" firstAttribute="leading" secondItem="q8C-g1-Z5m" secondAttribute="leading" id="sKt-Fe-2xb"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -2108,7 +2110,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrowshape.turn.up.forward.fill" catalog="system" width="128" height="106"/>
+        <image name="black arrow" width="12.5" height="16.5"/>
         <image name="black x" width="22.5" height="22"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="image" width="512" height="512"/>

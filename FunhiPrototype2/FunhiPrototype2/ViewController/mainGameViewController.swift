@@ -12,6 +12,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     var isStartOfEpisode: Bool = false
     
+    @IBOutlet var currentYear: UILabel!
     @IBOutlet var wholeView: UIView!
     @IBOutlet var choiceHeight: NSLayoutConstraint!
     @IBOutlet var mainGameTableView: UITableView!
@@ -77,7 +78,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "sectionCell", for: indexPath) as! sectionTableViewCell
                 cell.sectionUpdate(text:chatText)
                 return cell
-            }else if currentChatArray[indexPath.row].type == .monologue{
+            }
+            else if currentChatArray[indexPath.row].type == .monologue{
                 print("속마음 채팅 출력")
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "monologue", for: indexPath) as! monologueTableViewCell
                 cell.monologueText.text = chatText
@@ -98,6 +100,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "choiceCell", for: indexPath) as! choiceCollectionViewCell
             cell.choiceUpdate(choiceText : dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices[indexPath.row].text)
+            pageControl.numberOfPages = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count
             return cell
         }
         func initializePageControl(collectionView : UICollectionView, choiceBar : UIView, numberOfPages: Int){
@@ -117,13 +120,13 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
 
     
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            currentChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: .onlyText, who: .danhee, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil))
+            currentChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: currentBlockOfDay().choices[indexPath.row].chatType, who: .danhee, characterFace: currentBlockOfDay().choices[indexPath.row].characterFace, achievementToUnlock: currentBlockOfDay().choices[indexPath.row].achievementToUnlock, infomationToUnlock: currentBlockOfDay().choices[indexPath.row].infomationToUnlock, gameCharacterToUnlock: currentBlockOfDay().choices[indexPath.row].gameCharacterToUnlock, caseToUnlock: currentBlockOfDay().choices[indexPath.row].caseToUnlock, albumImageToUnlock: currentBlockOfDay().choices[indexPath.row].albumImageToUnlock))
+            print("현재 ChatId : \(player.currentChatId), 선택한 선택지 : \(currentBlockOfDay().choices[indexPath.row])")
             checkAlbumImageInChoice(choiceIndex: indexPath.row)
             checkCaseInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
             checkAchievementInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
             checkGameCharacterInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
             checkgameCharacterInfomationInChoice(popupView: notePopupViewDescriptionLabel, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
-          
             
             player.currentChatId = currentBlockOfDay().choices[indexPath.row].nextTextIndex
             mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
@@ -166,8 +169,11 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             } completion: { (Bool) in
                 self.blackView.removeFromSuperview()
             }
-
         }
+        currentYear.text = "\(dummyData.stories[player.dayId]!.episodeYear)년"
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        timer.invalidate()
     }
     //가장 밑으로 스크롤해주는 함수
     func scrollToBottom(){
@@ -180,12 +186,12 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
   
     
     @IBAction func settingTapped(_ sender: Any) {
-        timer.invalidate()
         let setting = storyboard?.instantiateViewController(identifier: "setting")
         setting?.modalPresentationStyle = .fullScreen
         present(setting!, animated: true, completion: nil)
     }
     @IBAction func mapOpen(_ sender: Any) {
+            timer.invalidate()
             self.view.addSubview(map)
             //30, 20, 20, 67
             map.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 74).isActive = true
@@ -193,12 +199,15 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     @IBAction func closeMap(_ sender: Any) {
         map.removeFromSuperview()
+        chatUpdateTimer()
     }
     @IBAction func pauseTapped(_ sender: Any) {
         pauseBar.isHidden = false
+        timer.invalidate()
     }
     @IBAction func resumeTapped(_ sender: Any) {
         pauseBar.isHidden = true
+        chatUpdateTimer()
     }
     @IBAction func chatWithGod(_ sender: Any) {
         self.view!.addSubview(godChat)
