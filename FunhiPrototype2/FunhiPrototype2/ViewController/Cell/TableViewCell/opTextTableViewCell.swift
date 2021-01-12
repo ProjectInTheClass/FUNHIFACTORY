@@ -10,11 +10,12 @@ import UIKit
 class opTextTableViewCell: UITableViewCell {
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var profileNickname: UILabel!
-    @IBOutlet var chatText: UITextView!
-    
+    @IBOutlet var chatText: UILabel!
+    @IBOutlet var chatView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        chatText.setLineSpacing(lineSpacing: 6)
         // Initialization code
     }
     func opTextCellUpdate(name:String,chat:String, normalProfile:String, mainProfile:CharacterFace){
@@ -50,7 +51,7 @@ class opTextTableViewCell: UITableViewCell {
     func noProfileUIUpdate(){
         profileImage.isHidden = true
         profileNickname.isHidden = true
-        chatText.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7).isActive = true
+        chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7).isActive = true
         contentView.layoutIfNeeded()
     }
 

@@ -253,11 +253,11 @@
                                             <outlet property="profileImage" destination="53G-ZR-hGZ" id="mqr-lD-j4l"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="opTextCell" rowHeight="116" id="Nov-1r-Adf" customClass="opTextTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="156" width="414" height="116"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="opTextCell" rowHeight="120" id="Nov-1r-Adf" customClass="opTextTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="156" width="414" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nov-1r-Adf" id="b24-r2-tta">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="116"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9nd-mS-qwa">
@@ -272,16 +272,30 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="상대가 말하는 텍스트입니다." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Tt-Ft-rBe">
-                                                    <rect key="frame" x="93" y="64" width="209.5" height="45"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vep-Zh-itH">
+                                                    <rect key="frame" x="93" y="35" width="44.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vcG-rO-XTH">
+                                                    <rect key="frame" x="93" y="64" width="218.5" height="48.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상대가 말하는 텍스트입니다." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9s-VM-TCR">
+                                                            <rect key="frame" x="9" y="14" width="199.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="17"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="266" id="eXW-kl-eq5"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="rS7-pd-OER"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="266" id="8Ak-8m-IBh"/>
+                                                        <constraint firstAttribute="trailing" secondItem="z9s-VM-TCR" secondAttribute="trailing" constant="10" id="CSI-Xc-wqQ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="z9s-VM-TCR" secondAttribute="bottom" constant="14" id="loD-9g-D2f"/>
+                                                        <constraint firstItem="z9s-VM-TCR" firstAttribute="leading" secondItem="vcG-rO-XTH" secondAttribute="leading" constant="9" id="uNN-Hy-eVs"/>
+                                                        <constraint firstItem="z9s-VM-TCR" firstAttribute="top" secondItem="vcG-rO-XTH" secondAttribute="top" constant="14" id="wkq-gu-zNr"/>
                                                     </constraints>
-                                                    <color key="textColor" systemColor="labelColor"/>
-                                                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                                             <integer key="value" value="1"/>
@@ -290,33 +304,28 @@
                                                             <integer key="value" value="15"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
-                                                </textView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vep-Zh-itH">
-                                                    <rect key="frame" x="93" y="35" width="44.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="vep-Zh-itH" firstAttribute="top" secondItem="b24-r2-tta" secondAttribute="topMargin" constant="24" id="6up-P7-ROP"/>
-                                                <constraint firstItem="8Tt-Ft-rBe" firstAttribute="top" secondItem="b24-r2-tta" secondAttribute="topMargin" constant="53" id="8Vi-22-mlG"/>
                                                 <constraint firstItem="9nd-mS-qwa" firstAttribute="top" secondItem="b24-r2-tta" secondAttribute="top" constant="24" id="AlQ-aN-0RX"/>
                                                 <constraint firstItem="vep-Zh-itH" firstAttribute="leading" secondItem="9nd-mS-qwa" secondAttribute="trailing" constant="17" id="GD8-nN-nQ0"/>
-                                                <constraint firstItem="8Tt-Ft-rBe" firstAttribute="leading" secondItem="b24-r2-tta" secondAttribute="leading" constant="93" id="bKw-XJ-Ozv"/>
+                                                <constraint firstAttribute="bottom" secondItem="vcG-rO-XTH" secondAttribute="bottom" constant="7.5" id="GKH-PV-f3b"/>
+                                                <constraint firstItem="vcG-rO-XTH" firstAttribute="leading" secondItem="b24-r2-tta" secondAttribute="leading" constant="93" id="L2z-Ve-Gr2"/>
                                                 <constraint firstItem="9nd-mS-qwa" firstAttribute="leading" secondItem="b24-r2-tta" secondAttribute="leading" constant="12" id="bZX-D9-3dm"/>
-                                                <constraint firstAttribute="bottom" secondItem="8Tt-Ft-rBe" secondAttribute="bottom" constant="7" id="gVl-QV-qeL"/>
+                                                <constraint firstItem="vcG-rO-XTH" firstAttribute="top" secondItem="b24-r2-tta" secondAttribute="top" constant="64" id="gnN-Wf-reb"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="chatText" destination="8Tt-Ft-rBe" id="Xym-ZZ-qEC"/>
+                                            <outlet property="chatText" destination="z9s-VM-TCR" id="QTZ-up-2Bf"/>
+                                            <outlet property="chatView" destination="vcG-rO-XTH" id="yEa-xs-7pQ"/>
                                             <outlet property="profileImage" destination="9nd-mS-qwa" id="BvX-ch-kxZ"/>
                                             <outlet property="profileNickname" destination="vep-Zh-itH" id="k0d-E4-v0D"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myTextCell" rowHeight="116" id="kt2-Sg-BDC" customClass="myTextTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="272" width="414" height="116"/>
+                                        <rect key="frame" x="0.0" y="276" width="414" height="116"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kt2-Sg-BDC" id="6Hh-cW-zfM">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="116"/>
@@ -340,16 +349,24 @@
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="자신이 말하는 텍스트입니다." textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRY-7g-041">
-                                                    <rect key="frame" x="111.5" y="57" width="209.5" height="45"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yXJ-tz-mM8">
+                                                    <rect key="frame" x="102.5" y="57" width="218.5" height="48.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상대가 말하는 텍스트입니다." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIU-Ib-hvX">
+                                                            <rect key="frame" x="9" y="14" width="199.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="17"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
                                                     <color key="backgroundColor" red="0.86275094750000003" green="0.86273467540000004" blue="0.86274570230000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="266" id="GJU-4J-GOy"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="H8h-fg-u4b"/>
+                                                        <constraint firstItem="sIU-Ib-hvX" firstAttribute="top" secondItem="yXJ-tz-mM8" secondAttribute="top" constant="14" id="C4a-tw-nxk"/>
+                                                        <constraint firstAttribute="bottom" secondItem="sIU-Ib-hvX" secondAttribute="bottom" constant="14" id="QNI-rm-K63"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="266" id="bQ0-x9-xEd"/>
+                                                        <constraint firstItem="sIU-Ib-hvX" firstAttribute="leading" secondItem="yXJ-tz-mM8" secondAttribute="leading" constant="9" id="j1r-av-g3r"/>
+                                                        <constraint firstAttribute="trailing" secondItem="sIU-Ib-hvX" secondAttribute="trailing" constant="10" id="syu-gi-aK8"/>
                                                     </constraints>
-                                                    <color key="textColor" systemColor="labelColor"/>
-                                                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                                             <integer key="value" value="1"/>
@@ -358,27 +375,28 @@
                                                             <integer key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
-                                                </textView>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="lRY-7g-041" firstAttribute="top" secondItem="6Hh-cW-zfM" secondAttribute="topMargin" constant="46" id="4GW-7K-JG2"/>
+                                                <constraint firstAttribute="trailing" secondItem="yXJ-tz-mM8" secondAttribute="trailing" constant="93" id="8mB-qa-oie"/>
+                                                <constraint firstItem="yXJ-tz-mM8" firstAttribute="top" secondItem="6Hh-cW-zfM" secondAttribute="top" constant="57" id="EOj-4Y-QiK"/>
                                                 <constraint firstItem="ypp-tm-AJ0" firstAttribute="top" secondItem="6Hh-cW-zfM" secondAttribute="top" constant="24" id="HLh-64-2jG"/>
                                                 <constraint firstItem="Tyh-sK-xPZ" firstAttribute="top" secondItem="6Hh-cW-zfM" secondAttribute="top" constant="35" id="MMj-Gu-PhQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="yXJ-tz-mM8" secondAttribute="bottom" constant="10.5" id="S9Z-z1-Dak"/>
                                                 <constraint firstItem="ypp-tm-AJ0" firstAttribute="leading" secondItem="Tyh-sK-xPZ" secondAttribute="trailing" constant="16.5" id="bWD-PD-N5Z"/>
                                                 <constraint firstAttribute="trailing" secondItem="ypp-tm-AJ0" secondAttribute="trailing" constant="12" id="gJc-Jx-SW8"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="lRY-7g-041" secondAttribute="bottom" constant="3" id="lzb-7f-BrM"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="lRY-7g-041" secondAttribute="trailing" constant="73" id="pSK-qx-O2f"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="chatText" destination="lRY-7g-041" id="jC5-ef-idr"/>
+                                            <outlet property="chatText" destination="sIU-Ib-hvX" id="r5b-lv-c1P"/>
+                                            <outlet property="chatView" destination="yXJ-tz-mM8" id="gf3-3B-gId"/>
                                             <outlet property="profileImage" destination="ypp-tm-AJ0" id="AgO-aL-x3d"/>
                                             <outlet property="profileNickname" destination="Tyh-sK-xPZ" id="bTF-wm-jl3"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sectionCell" rowHeight="89" id="Jfh-0f-HBh" customClass="sectionTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="388" width="414" height="89"/>
+                                        <rect key="frame" x="0.0" y="392" width="414" height="89"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jfh-0f-HBh" id="yQW-Pn-ft0">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="89"/>
@@ -420,7 +438,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="295" id="Hw8-Vw-pVe" customClass="ImageTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="477" width="414" height="295"/>
+                                        <rect key="frame" x="0.0" y="481" width="414" height="295"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hw8-Vw-pVe" id="szc-Qo-WDf">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="295"/>

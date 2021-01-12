@@ -10,10 +10,12 @@ import UIKit
 class myTextTableViewCell: UITableViewCell {
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var profileNickname: UILabel!
-    @IBOutlet var chatText: UITextView!
+    @IBOutlet var chatText: UILabel!
+    @IBOutlet var chatView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        chatText.setLineSpacing(lineSpacing: 6)
         // Initialization code
     }
 
@@ -42,7 +44,7 @@ class myTextTableViewCell: UITableViewCell {
         if face == "none"{
             profileImage.isHidden = true
             profileNickname.isHidden = true
-            chatText.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7).isActive = true
+            chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7).isActive = true
             contentView.layoutIfNeeded()
         }
         profileImage.image = UIImage(named: face)
