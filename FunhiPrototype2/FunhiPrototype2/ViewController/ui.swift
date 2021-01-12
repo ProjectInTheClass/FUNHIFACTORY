@@ -8,8 +8,16 @@
 import Foundation
 import UIKit
 
-func maingameNotepopupViewDesign(popupView: UIView) {
-    popupView.layer.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+func maingameNotepopupViewDesign(popupView: UIView, parentView: UIView) {
+    
+    parentView.addSubview(popupView)
+    popupView.translatesAutoresizingMaskIntoConstraints = false
+    
+    popupView.widthAnchor.constraint(equalToConstant: 200).isActive = true
+    popupView.heightAnchor.constraint(equalToConstant: 70).isActive = true
+    popupView.centerXAnchor.constraint(equalTo: parentView.centerXAnchor).isActive = true
+    popupView.topAnchor.constraint(equalTo: parentView.topAnchor, constant: -70).isActive = true
+    
     popupView.layer.cornerRadius = 4
     popupView.layer.borderWidth = 1.3
     popupView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor

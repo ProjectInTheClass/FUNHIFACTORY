@@ -22,12 +22,11 @@ class MaingameARViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-<<<<<<< Updated upstream
+
         
         let rockAnchor = try! OpenLeaves.load장면()
         let leafAnchor = try! OpenRock.load장면()
-=======
->>>>>>> Stashed changes
+
         arView.scene.anchors.append(leafAnchor)
     }
     
@@ -39,7 +38,7 @@ class MaingameARViewController: UIViewController {
     }
 
     @IBAction func finishARButtonAction(_ sender: Any) {
-       arView.session.pause()
+        // arView.session.pause()
         self.navigationController?.popViewController(animated: true)
     }
     

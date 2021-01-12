@@ -33,8 +33,30 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     @IBAction func notePopupViewXButton(_ sender: Any) {
-        notePopupView.removeFromSuperview()
+        popupOpen = false
+        globalPopupOpen = false
     }
+    
+    //노트 팝업 켜고 꺼질 때 애니메이션 담당하는 변수
+    var popupOpen: Bool = false {
+        didSet {
+            //팝업 켜질 때
+            if popupOpen {
+                UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 4, initialSpringVelocity: 5, options: .curveEaseInOut) {
+                    // 여기서 translationX는 애니메이션 이전의 팝업창 x값 그대로 유지하는 거임. 그냥 위에서 똑바로 아래로 내려오게. 가로로 팝업 하나도 안 움직이고. 그 값 표현 방식이 좀 많이 지저분한데 깔끄미 방법 찾아야 함.
+                    self.notePopupView.transform = CGAffineTransform(translationX: 0, y: 200)
+                }
+            //팝업 꺼질 때
+            } else {
+                UIView.animate(withDuration: 0.15) {
+                    self.notePopupView.transform = CGAffineTransform.identity
+                } completion: { (Bool) in
+                   
+                }
+            }
+        }
+    }
+
     var animator : UIViewPropertyAnimator?
 
     //스토리 테이블 뷰
@@ -148,7 +170,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         chatToGodUIUpdate(hwiryeong: chatToGodView)
         
         //지우지 말아주세dyd
-        maingameNotepopupViewDesign(popupView: notePopupView)
+        maingameNotepopupViewDesign(popupView: notePopupView, parentView: self.view)
     }
     
     

@@ -348,6 +348,7 @@ enum CharacterFace: String, Codable{
     case none,angry1,angry2,basic,cry1,cry2,happy1,happy2,happy3,sad,scared,straight,surprise1,surprise2,surprise3
 }
 
+var globalPopupOpen: Bool = false
 //mainGame에서 currentChat 정보 읽어서 알맞는 주인공 업적 해금하기
 func checkAchievementInChoice(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel, choiceIndex: Int) {
     let infoID = "achievement"
@@ -358,9 +359,9 @@ func checkAchievementInChoice(popupView: UIView, backgroundView: UIView, titleLa
                 player.currentAchievementInfo[achievement.offset].isLocked = false
                 print("업적 '\(player.currentAchievementInfo[achievement.offset].name)' 달성됨")
                 
-                backgroundView.addSubview(popupView)
+                
                 notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: player.currentAchievementInfo[achievement.offset].name , infoID: infoID)
-                popupView.bringSubviewToFront(backgroundView)
+                globalPopupOpen = true
                 animatenotePopup(popupView: popupView)
                 
             }
@@ -388,9 +389,9 @@ func checkGameCharacterInChoice(popupView: UIView, backgroundView: UIView, title
                 currentDay().currentCharacterNote[gameCharacter.offset].isLocked = false
                 
                 print("캐릭터 '\(currentDay().currentCharacterNote[gameCharacter.offset].isLocked)' 해금됨")
-                backgroundView.addSubview(popupView)
+                
                 notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCharacterNote[gameCharacter.offset].name, infoID: infoID)
-                popupView.bringSubviewToFront(backgroundView)
+                globalPopupOpen = true
                 animatenotePopup(popupView: popupView)
             }
         }
@@ -407,9 +408,9 @@ func checkCaseInChoice(popupView: UIView, backgroundView: UIView, titleLabel: UI
                 currentDay().currentCaseNote[caseNote.offset].isLocked = false
                 
                 print("사건 노트 '\(currentDay().currentCaseNote[caseNote.offset].isLocked)' 해금됨")
-                backgroundView.addSubview(popupView)
+                
                 notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCaseNote[caseNote.offset].title, infoID: infoID)
-                popupView.bringSubviewToFront(backgroundView)
+               globalPopupOpen = true
                 animatenotePopup(popupView: popupView)
             }
         }
@@ -426,9 +427,9 @@ func checkgameCharacterInfomationInChoice(popupView: UIView, backgroundView: UIV
                 if infomation.element.infomationID == currentChatInfomation {
                     currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked = false
                     print("'\(currentDay().currentCharacterNote[gameCharacter.offset].isLocked)' 정보 해금됨")
-                    backgroundView.addSubview(popupView)
+                    
                     notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCharacterNote[gameCharacter.offset].name, infoID: infoID)
-                    popupView.bringSubviewToFront(backgroundView)
+                    globalPopupOpen = true
                     animatenotePopup(popupView: popupView)
                 }
             }
@@ -464,9 +465,9 @@ func checkAchievementInChat(popupView: UIView, backgroundView: UIView, titleLabe
                 player.currentAchievementInfo[achievement.offset].isLocked = false
                 print("업적 '\(player.currentAchievementInfo[achievement.offset].name)' 달성됨")
                 
-                backgroundView.addSubview(popupView)
+                
                 notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: player.currentAchievementInfo[achievement.offset].name , infoID: infoID)
-                popupView.bringSubviewToFront(backgroundView)
+                globalPopupOpen = true
                 
             }
         }
@@ -483,9 +484,9 @@ func checkGameCharacterInChat(popupView: UIView, backgroundView: UIView, titleLa
                 currentDay().currentCharacterNote[gameCharacter.offset].isLocked = false
                 
                 print("캐릭터 '\(currentDay().currentCharacterNote[gameCharacter.offset].isLocked)' 해금됨")
-                backgroundView.addSubview(popupView)
+               
                 notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCharacterNote[gameCharacter.offset].name, infoID: infoID)
-                popupView.bringSubviewToFront(backgroundView)
+                globalPopupOpen = true
             }
         }
     }
@@ -501,9 +502,9 @@ func checkCaseInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILa
                 testChapter1.currentCaseNote[caseNote.offset].isLocked = false
                 
                 print("사건 노트 '\(testChapter1.currentCaseNote[caseNote.offset].isLocked)' 해금됨")
-                backgroundView.addSubview(popupView)
+                
                 notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCaseNote[caseNote.offset].title, infoID: infoID)
-                popupView.bringSubviewToFront(backgroundView)
+                globalPopupOpen = true
             }
         }
     }
@@ -519,9 +520,9 @@ func checkgameCharacterInfomationInChat(popupView: UIView, backgroundView: UIVie
                 if infomation.element.infomationID == currentChatInfomation {
                     currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked = false
                     print("'\(testChapter1.currentCharacterNote[gameCharacter.offset].isLocked)' 정보 해금됨")
-                    backgroundView.addSubview(popupView)
+                    
                     notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCharacterNote[gameCharacter.offset].name, infoID: infoID)
-                    popupView.bringSubviewToFront(backgroundView)
+                    globalPopupOpen = true
                 }
             }
         }
