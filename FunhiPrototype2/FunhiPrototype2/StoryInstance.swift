@@ -8,7 +8,7 @@ import Foundation
 var indexNumber = 0 
 var currentChatArray : [Chat] = []
 
-let test = Episode(episodeID: "test", episodePlace: "인정전", episodeYear: 1592, episodeKingYear: "선조 25년", episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "placeImage_1x", episodeCoverImage: "", isCleared: true, chatHistory: [], storyBlocks: [
+let test = Episode(episodeID: "test", episodePlace: "chapter1Map", episodeYear: 1592, episodeKingYear: "선조 25년", episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "placeImage_1x", episodeCoverImage: "", isCleared: true, chatHistory: [], storyBlocks: [
                     
     "001":BlockOfDayEpisode(chats:
                                 [Chat(text: "사건을 시작하기 저어언에 먼저 이 사건에 대해 알려주겠다.", image: "", type: .onlyText, who: .hwiryeong, characterFace: .basic, achievementToUnlock: .donhwamun, infomationToUnlock: .hwiryeong1 , gameCharacterToUnlock: .hwiryeong, caseToUnlock: nil, albumImageToUnlock: nil)],

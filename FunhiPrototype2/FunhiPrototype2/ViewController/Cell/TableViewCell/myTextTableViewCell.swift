@@ -46,6 +46,9 @@ class myTextTableViewCell: UITableViewCell {
             profileNickname.isHidden = true
             chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7).isActive = true
             contentView.layoutIfNeeded()
+        } else {
+            chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 57).isActive = true
+            contentView.layoutIfNeeded()
         }
         profileImage.image = UIImage(named: face)
         return

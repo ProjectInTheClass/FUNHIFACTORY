@@ -239,7 +239,6 @@
                                                 <constraint firstItem="53G-ZR-hGZ" firstAttribute="top" secondItem="Syf-va-gW4" secondAttribute="topMargin" constant="13" id="GTe-dm-1Ft"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="RGn-dr-k4c" secondAttribute="trailing" constant="77" id="Gtu-1K-ubR"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="53G-ZR-hGZ" secondAttribute="trailing" constant="-4" id="LPC-Gh-CEn"/>
-                                                <constraint firstItem="RGn-dr-k4c" firstAttribute="top" secondItem="Syf-va-gW4" secondAttribute="topMargin" constant="54.5" id="Xsm-pd-oIa"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="RGn-dr-k4c" secondAttribute="bottom" constant="3.5" id="ftL-BS-fzU"/>
                                                 <constraint firstItem="eKc-Cb-3v0" firstAttribute="top" secondItem="Syf-va-gW4" secondAttribute="topMargin" constant="24" id="leG-QF-8nH"/>
                                             </constraints>
@@ -313,7 +312,6 @@
                                                 <constraint firstAttribute="bottom" secondItem="vcG-rO-XTH" secondAttribute="bottom" constant="7.5" id="GKH-PV-f3b"/>
                                                 <constraint firstItem="vcG-rO-XTH" firstAttribute="leading" secondItem="b24-r2-tta" secondAttribute="leading" constant="93" id="L2z-Ve-Gr2"/>
                                                 <constraint firstItem="9nd-mS-qwa" firstAttribute="leading" secondItem="b24-r2-tta" secondAttribute="leading" constant="12" id="bZX-D9-3dm"/>
-                                                <constraint firstItem="vcG-rO-XTH" firstAttribute="top" secondItem="b24-r2-tta" secondAttribute="top" constant="64" id="gnN-Wf-reb"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -379,7 +377,6 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="yXJ-tz-mM8" secondAttribute="trailing" constant="93" id="8mB-qa-oie"/>
-                                                <constraint firstItem="yXJ-tz-mM8" firstAttribute="top" secondItem="6Hh-cW-zfM" secondAttribute="top" constant="57" id="EOj-4Y-QiK"/>
                                                 <constraint firstItem="ypp-tm-AJ0" firstAttribute="top" secondItem="6Hh-cW-zfM" secondAttribute="top" constant="24" id="HLh-64-2jG"/>
                                                 <constraint firstItem="Tyh-sK-xPZ" firstAttribute="top" secondItem="6Hh-cW-zfM" secondAttribute="top" constant="35" id="MMj-Gu-PhQ"/>
                                                 <constraint firstAttribute="bottom" secondItem="yXJ-tz-mM8" secondAttribute="bottom" constant="10.5" id="S9Z-z1-Dak"/>
@@ -1328,7 +1325,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyf-sb-0lg">
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyf-sb-0lg">
                             <rect key="frame" x="20" y="74" width="374" height="721"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MSC-cU-Fk8">
@@ -1366,9 +1363,6 @@
                                         <constraint firstItem="cjP-CG-qDd" firstAttribute="centerX" secondItem="MSC-cU-Fk8" secondAttribute="centerX" id="zNl-Uw-Yf5"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="16"/>
-                                        </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                             <integer key="value" value="2"/>
                                         </userDefinedRuntimeAttribute>
@@ -1376,11 +1370,6 @@
                                 </view>
                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1rr-2r-SRW">
                                     <rect key="frame" x="0.0" y="59" width="374" height="662"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="16"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <segue destination="rmD-cQ-D3Y" kind="embed" id="4b0-LV-8Jx"/>
                                     </connections>
@@ -2070,15 +2059,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="자산 4" translatesAutoresizingMaskIntoConstraints="NO" id="c8Y-5F-8r1">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5a4-OL-Rsw">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="basic map" translatesAutoresizingMaskIntoConstraints="NO" id="c8Y-5F-8r1">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WAN-0R-gvm"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="WAN-0R-gvm" firstAttribute="trailing" secondItem="5a4-OL-Rsw" secondAttribute="trailing" id="2tY-VS-6o7"/>
+                            <constraint firstItem="5a4-OL-Rsw" firstAttribute="leading" secondItem="WAN-0R-gvm" secondAttribute="leading" id="Ezz-yn-7Ko"/>
+                            <constraint firstItem="WAN-0R-gvm" firstAttribute="bottom" secondItem="5a4-OL-Rsw" secondAttribute="bottom" id="TP1-of-kaa"/>
                             <constraint firstItem="c8Y-5F-8r1" firstAttribute="top" secondItem="WAN-0R-gvm" secondAttribute="top" id="V9h-4S-IyT"/>
                             <constraint firstItem="c8Y-5F-8r1" firstAttribute="leading" secondItem="WAN-0R-gvm" secondAttribute="leading" id="YFa-jM-wlW"/>
+                            <constraint firstItem="5a4-OL-Rsw" firstAttribute="top" secondItem="WAN-0R-gvm" secondAttribute="top" id="YG3-ce-IW0"/>
                             <constraint firstItem="WAN-0R-gvm" firstAttribute="trailing" secondItem="c8Y-5F-8r1" secondAttribute="trailing" id="bnc-z1-M6E"/>
                             <constraint firstItem="WAN-0R-gvm" firstAttribute="bottom" secondItem="c8Y-5F-8r1" secondAttribute="bottom" id="u6e-9a-rYr"/>
                         </constraints>
@@ -2090,6 +2087,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="basic map" width="742" height="1294"/>
         <image name="black arrow" width="12.5" height="16.5"/>
         <image name="black x" width="22.5" height="22"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
@@ -2101,7 +2099,6 @@
         <image name="setting" width="512" height="512"/>
         <image name="x" width="22" height="22"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
-        <image name="자산 4" width="372.5" height="663"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

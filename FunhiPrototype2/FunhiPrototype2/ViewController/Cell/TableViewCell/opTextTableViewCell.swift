@@ -23,6 +23,9 @@ class opTextTableViewCell: UITableViewCell {
                chatText.text = chat
             if mainProfile == .none{
                 noProfileUIUpdate()
+            }else{
+                chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 64).isActive = true
+                contentView.layoutIfNeeded()
             }
         if name == "휘령"{
             var face : String {
@@ -49,6 +52,7 @@ class opTextTableViewCell: UITableViewCell {
     }
     
     func noProfileUIUpdate(){
+        //chatView.removeConstraint(chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 64))
         profileImage.isHidden = true
         profileNickname.isHidden = true
         chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7).isActive = true
