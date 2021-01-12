@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="R0u-Xe-KaX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansCJKkr-Black.otf">
+            <string>NotoSansCJKkr-Black</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--MaingameAR View Controller-->
+        <scene sceneID="Wcm-Wd-8F2">
+            <objects>
+                <viewController id="R0u-Xe-KaX" customClass="MaingameARViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sX0-BC-cJn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q9k-K4-vVN">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </arView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B0K-TV-WSC">
+                                <rect key="frame" x="164" y="826" width="86" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EH7-OY-LCD">
+                                        <rect key="frame" x="0.0" y="0.0" width="86" height="30"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Black" family="Noto Sans CJK KR" pointSize="17"/>
+                                        <state key="normal" title="continue"/>
+                                        <connections>
+                                            <action selector="finishARButtonAction:" destination="R0u-Xe-KaX" eventType="touchUpInside" id="nX5-V1-nbE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="9wV-dU-Uaj"/>
+                                    <constraint firstItem="EH7-OY-LCD" firstAttribute="top" secondItem="B0K-TV-WSC" secondAttribute="top" id="IrA-6u-Dtl"/>
+                                    <constraint firstAttribute="trailing" secondItem="EH7-OY-LCD" secondAttribute="trailing" id="KJZ-ZB-mLI"/>
+                                    <constraint firstAttribute="bottom" secondItem="EH7-OY-LCD" secondAttribute="bottom" id="L87-qV-Q9A"/>
+                                    <constraint firstItem="EH7-OY-LCD" firstAttribute="leading" secondItem="B0K-TV-WSC" secondAttribute="leading" id="PwB-mZ-nR0"/>
+                                    <constraint firstAttribute="width" constant="86" id="uzs-H3-e3h"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="v9m-vu-wHF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="q9k-K4-vVN" firstAttribute="leading" secondItem="v9m-vu-wHF" secondAttribute="leading" id="5YM-L3-2t6"/>
+                            <constraint firstAttribute="bottom" secondItem="q9k-K4-vVN" secondAttribute="bottom" id="5mE-j8-ZE9"/>
+                            <constraint firstItem="v9m-vu-wHF" firstAttribute="trailing" secondItem="q9k-K4-vVN" secondAttribute="trailing" id="BwM-2m-GEp"/>
+                            <constraint firstItem="B0K-TV-WSC" firstAttribute="centerX" secondItem="sX0-BC-cJn" secondAttribute="centerX" id="K0j-6W-aYN"/>
+                            <constraint firstAttribute="bottom" secondItem="B0K-TV-WSC" secondAttribute="bottom" constant="40" id="MYi-cs-T0W"/>
+                            <constraint firstItem="q9k-K4-vVN" firstAttribute="top" secondItem="sX0-BC-cJn" secondAttribute="top" id="veH-uT-a95"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="arView" destination="q9k-K4-vVN" id="V32-Rq-134"/>
+                        <outlet property="finishARButton" destination="EH7-OY-LCD" id="vAY-yP-oY8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TuF-a8-5ns" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-388.40579710144931" y="-372.32142857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

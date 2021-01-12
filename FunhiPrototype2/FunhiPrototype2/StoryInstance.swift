@@ -271,7 +271,66 @@ currentCaseNote: [NoteCase(id: .case101, title: "사건 1-1", shortDescription: 
 
 let testChapter2 = Episode(episodeID: "1623", episodePlace: "선정전", episodeYear: 1623, episodeKingYear: "지조 25년", episodeDesciption: "광해군이 반정으로 인해 폐위되다", episodePlaceImage: "changdeokgung lllu image", episodeCoverImage: "changdeokgung image sample", isCleared: false, chatHistory: [],storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineSavePoint: [SavePoint(name: "시작부터", storyBlockIndex: "001")])
 
+
 let testChapter3 = Episode(episodeID: "1919", episodePlace: "대조전", episodeYear: 1919, episodeKingYear: "짱조 25년", episodeDesciption: "대한독립 만세",episodePlaceImage: "changdeokgung lllu image", episodeCoverImage: "changdeokgung image sample", isCleared: false, chatHistory: [],storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineSavePoint: [SavePoint(name: "시작부터", storyBlockIndex: "001")])
 
-let testChapter4 = Episode(episodeID: "2003", episodePlace: "낙선재", episodeYear: 2003, episodeKingYear: "맛조 25년", episodeDesciption: "7월 28일임",episodePlaceImage: "changdeokgung lllu image", episodeCoverImage: "changdeokgung image sample", isCleared: false, chatHistory: [], storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineSavePoint: [SavePoint(name: "시작부터", storyBlockIndex: "001")])
+let testChapter4 = Episode(episodeID: "2003", episodePlace: "낙선재", episodeYear: 2003, episodeKingYear: "맛조 25년", episodeDesciption: "7월 28일임",episodePlaceImage: "changdeokgung lllu image", episodeCoverImage: "changdeokgung image sample", isCleared: false, chatHistory: [], storyBlocks: [
+    
+    
+    
+                            "001":BlockOfDayEpisode(chats:
+                                                        [
+                Chat(text: "장작을 좀 찾아보렴.", image: "", type: .onlyText, who: .hwiryeong, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+                     Chat(text: "네.", image: "", type: .onlyText, who: .danhee, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+                     Chat(text: "장작이 어디 가면 있을까?", image: "", type: .monologue, who: .danhee, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+                     Chat(text: "단희는 고개를 두리번거리다가 돌무더기를 발견했다.", image: "", type: .sectionHeader, who: .danhee, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+                     Chat(text: "왜인지 저기를 들추면 장작이 있을 것만 같아.", image: "", type: .monologue, who: .danhee, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+                     Chat(text: "들춰보자.", image: "", type: .onlyText, who: .danhee, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+                     Chat(text: "단희는 돌무더기 앞으로 향했다.", image: "", type: .sectionHeader, who: .hwiryeong, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+                     Chat(text: "돌무더기를 들춰보러 이동합니다.", image: "", type: .sectionHeader, who: .hwiryeong, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+                     Chat(text: "돌무더기 아래에는..", image: "", type: .monologue, who: .danhee, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+                                                        ],
+               
+                
+                choices: [
+                        Choice(text: "장작이 한 개 있었어.", likability: [], chatType: .monologue, characterFace: .basic, nextTextIndex: "001", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+                        Choice(text: "장작이 두 개 있었어.", likability: [], chatType: .onlyText, characterFace: .basic, nextTextIndex: "002", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+                ], achievement: nil, choiceSkip: false),
+    
+    "002":BlockOfDayEpisode(chats:
+                                [
+
+Chat(text: "아닌 것 같아. 다시 찾아보자.", image: "", type: .monologue, who: .danhee, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+Chat(text: "다시 돌무더기를 들여다봐야겠어.", image: "", type: .sectionHeader, who: .hwiryeong, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+Chat(text: "돌무더기를 들춰보러 이동합니당.", image: "", type: .sectionHeader, who: .hwiryeong, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+Chat(text: "돌무더기 아래에는..", image: "", type: .monologue, who: .danhee, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+                                ],
+
+
+choices: [
+Choice(text: "장작이 한 개 있었어.", likability: [], chatType: .monologue, characterFace: .basic, nextTextIndex: "001", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+Choice(text: "장작이 두 개 있었어.", likability: [], chatType: .onlyText, characterFace: .basic, nextTextIndex: "002", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+], achievement: nil, choiceSkip: false),
+    
+    "003":BlockOfDayEpisode(chats:
+                                [
+
+Chat(text: "역시 장작이 두 개나 있었네.", image: "", type: .monologue, who: .danhee, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+Chat(text: "히히.", image: "", type: .sectionHeader, who: .danhee, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+Chat(text: "히히히", image: "", type: .sectionHeader, who: .hwiryeong, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+Chat(text: "히히히히", image: "", type: .monologue, who: .danhee, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+                                ],
+
+
+choices: [
+Choice(text: "장작이 한 개 있었어.", likability: [], chatType: .monologue, characterFace: .basic, nextTextIndex: "001", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+Choice(text: "장작이 두 개 있었어.", likability: [], chatType: .onlyText, characterFace: .basic, nextTextIndex: "002", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+], achievement: nil, choiceSkip: false),
+    
+    
+    
+    
+    
+    
+], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineSavePoint: [SavePoint(name: "시작부터", storyBlockIndex: "001")])
 

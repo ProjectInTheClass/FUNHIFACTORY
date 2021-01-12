@@ -56,6 +56,7 @@ extension mainGameViewController{
         checkCaseInChat(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel)
         checkgameCharacterInfomationInChat(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel)
         checkAlbumImageInChat()
+        openAR(currentChat: currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber])
         indexNumber += 1
         scrollToBottom()
     }

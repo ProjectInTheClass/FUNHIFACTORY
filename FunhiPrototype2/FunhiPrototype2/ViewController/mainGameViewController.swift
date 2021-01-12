@@ -50,7 +50,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         print("cellForRowAt")
         //텍스트 채팅이 나올 때
             //자신이 보냈을 때
-        
         if currentChatArray[indexPath.row].type == .onlyText && currentChatArray[indexPath.row].who.info().name == "이단희"{
             print("자신 텍스트 출력")
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
@@ -92,6 +91,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 return cell
             }
     }
+    
     //선택지 collectionView
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count
@@ -123,6 +123,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             currentChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: currentBlockOfDay().choices[indexPath.row].chatType, who: .danhee, characterFace: currentBlockOfDay().choices[indexPath.row].characterFace, achievementToUnlock: currentBlockOfDay().choices[indexPath.row].achievementToUnlock, infomationToUnlock: currentBlockOfDay().choices[indexPath.row].infomationToUnlock, gameCharacterToUnlock: currentBlockOfDay().choices[indexPath.row].gameCharacterToUnlock, caseToUnlock: currentBlockOfDay().choices[indexPath.row].caseToUnlock, albumImageToUnlock: currentBlockOfDay().choices[indexPath.row].albumImageToUnlock))
             print("현재 ChatId : \(player.currentChatId), 선택한 선택지 : \(currentBlockOfDay().choices[indexPath.row])")
             checkAlbumImageInChoice(choiceIndex: indexPath.row)
+            
             checkCaseInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
             checkAchievementInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
             checkGameCharacterInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
@@ -146,7 +147,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         choiceCollectionViewBorder(choiceView: collectionBar)
         chatToGodUIUpdate(hwiryeong: chatToGodView)
         
-        //지우지 말아주세요 정체 모르는 코드 있으면 물어보기 꼭 먼저 하기 만약 에러 뜨면 ui.swift 추가되었나 확인하기. 계속 거기에 코드 보관하는 게 깔끔할 것 같아요
+        //지우지 말아주세dyd
         maingameNotepopupViewDesign(popupView: notePopupView)
     }
     
@@ -233,6 +234,18 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                         self.mainGameTableView.layoutIfNeeded()
         })
     }
+    
+    func openAR(currentChat: Chat) {
+        if currentChat.text == "돌무더기를 들춰보러 이동합니다." {
+            performSegue(withIdentifier: "goToARView", sender: nil)
+        }
+        
+    }
+    
+    
+    
+    
+    
 }
 
 
@@ -244,5 +257,6 @@ func popupViewDesign(popupView: UIView) {
 
     popupView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
 }
+
 
 
