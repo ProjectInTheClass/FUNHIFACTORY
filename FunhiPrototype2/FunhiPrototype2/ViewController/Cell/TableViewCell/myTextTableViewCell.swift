@@ -39,7 +39,13 @@ class myTextTableViewCell: UITableViewCell {
             case .surprise3:    return "danhee surprised face3"
             }
         }
-        guard face != "none" else {return}
+        if face == "none"{
+            profileImage.isHidden = true
+            profileNickname.isHidden = true
+            chatText.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7).isActive = true
+            contentView.layoutIfNeeded()
+        }
         profileImage.image = UIImage(named: face)
+        return
     }
 }

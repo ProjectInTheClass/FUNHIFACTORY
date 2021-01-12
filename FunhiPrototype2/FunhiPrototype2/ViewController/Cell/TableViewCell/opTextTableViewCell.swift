@@ -12,6 +12,7 @@ class opTextTableViewCell: UITableViewCell {
     @IBOutlet var profileNickname: UILabel!
     @IBOutlet var chatText: UITextView!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +20,9 @@ class opTextTableViewCell: UITableViewCell {
     func opTextCellUpdate(name:String,chat:String, normalProfile:String, mainProfile:CharacterFace){
         profileNickname.text = name
                chatText.text = chat
+            if mainProfile == .none{
+                noProfileUIUpdate()
+            }
         if name == "휘령"{
             var face : String {
                 switch mainProfile {
@@ -34,13 +38,20 @@ class opTextTableViewCell: UITableViewCell {
                 case .straight: return "hwiryeong straight face"
                 case .surprise1:   return "hwiryeong surprised face"
                 default : return "none"
+                }
             }
-        }
-            guard face != "none" else {return}
             profileImage.image = UIImage(named: face)
+            return
         } else {
             profileImage.image = UIImage(named: normalProfile)
         }
+    }
+    
+    func noProfileUIUpdate(){
+        profileImage.isHidden = true
+        profileNickname.isHidden = true
+        chatText.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7).isActive = true
+        contentView.layoutIfNeeded()
     }
 
 }
