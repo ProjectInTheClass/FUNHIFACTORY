@@ -11,7 +11,7 @@ import UIKit
 let jsonEncoder = JSONEncoder()
 let jsonDecoder = JSONDecoder()
 
-let urlString = "https://raw.githubusercontent.com/ProjectInTheClass/FUNHIFACTORY/master/FunhiPrototype2/storyInstance.json?token=ALEJVFYPMJZBITPJ4OZ76QTAAEWXU"
+let urlString = "https://raw.githubusercontent.com/ProjectInTheClass/FUNHIFACTORY/master/FunhiPrototype2/storyInstance.json?token=ALEJVF6C3RWAT2DOLKAUBJLAA2HHI"
 
 func parse(jsonData : Data){
     do{
