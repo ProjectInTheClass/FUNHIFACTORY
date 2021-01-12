@@ -70,11 +70,7 @@ class NoteCase :Codable{
 
 
 enum AchievementID :String,Codable{
-    case donhwamun
-    case geumcheongyo
-    case injeongjeon
-    case achievement3
-    case achievement4
+    case donhwamun,geumcheongyo,injeongjeon,cat,achievement4,necklace,parents,faith //프롤로그
 
 }
 // 프라퍼티 설명: 업적 이름, 업적 이미지, id(업적 획득 로직에서 사용), 업적 잠금 여부
