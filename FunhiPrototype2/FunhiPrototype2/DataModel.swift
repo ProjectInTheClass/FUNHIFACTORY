@@ -146,10 +146,6 @@ class Infomation :Codable{
 enum GameCharacterID :String,Codable{
     case danhee
     case hwiryeong
-    case hwiryeong1
-    case hwiryeong2
-    case hwiryeong3
-    case hwiryeong4
     case tourguide
     case teacher
     case unknown
@@ -159,14 +155,6 @@ enum GameCharacterID :String,Codable{
         case .danhee:
             return prologueChapter.currentCharacterNote[0]
         case .hwiryeong:
-            return prologueChapter.currentCharacterNote[1]
-        case .hwiryeong1:
-            return prologueChapter.currentCharacterNote[1]
-        case .hwiryeong2:
-            return prologueChapter.currentCharacterNote[1]
-        case .hwiryeong3:
-            return prologueChapter.currentCharacterNote[1]
-        case .hwiryeong4:
             return prologueChapter.currentCharacterNote[1]
         case .tourguide:
             return prologueChapter.currentCharacterNote[2]
