@@ -173,6 +173,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         if let page = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]?.choices.count{
             initializePageControl(collectionView : choiceCollectionView, choiceBar : choiceBar, numberOfPages:page)
         }
+        self.mainGameTableView.contentInset.bottom = 82
         choiceCollectionViewBorder(choiceView: collectionBar)
         chatToGodUIUpdate(hwiryeong: chatToGodView)
         

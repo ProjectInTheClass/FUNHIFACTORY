@@ -73,7 +73,7 @@ extension mainGameViewController{
         choiceCollectionView.reloadData()
         mainGameTableView.heightAnchor.constraint(equalToConstant: 459).isActive = true
         mainGameTableView.layoutIfNeeded()
-        mainGameTableView.contentOffset.y += 149
+        mainGameTableView.contentOffset.y += 149 //231
         scrollToBottom()
     }
     func closeChoiceBar(){
