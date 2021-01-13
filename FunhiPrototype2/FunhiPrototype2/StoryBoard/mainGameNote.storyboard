@@ -1433,7 +1433,7 @@
             <objects>
                 <viewController id="ZEc-5u-pnk" customClass="NoteUserViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jr1-Xp-8Lu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1146"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6e-9C-HdW" userLabel="TopBar">
@@ -1470,7 +1470,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vaN-ZP-fhV">
-                                <rect key="frame" x="0.0" y="62.5" width="414" height="779.5"/>
+                                <rect key="frame" x="0.0" y="62.5" width="414" height="1083.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="bWO-H7-nnu">
                                     <size key="itemSize" width="200" height="195"/>
@@ -1540,9 +1540,8 @@
                                                         <constraint firstAttribute="width" secondItem="Yaa-e2-hSC" secondAttribute="height" multiplier="1:1" id="t0f-Po-QMM"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nlc-TR-Ske">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nlc-TR-Ske">
                                                     <rect key="frame" x="97" y="163" width="43.5" height="19.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1550,7 +1549,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="Yaa-e2-hSC" secondAttribute="trailing" constant="20" id="8qM-cK-UlW"/>
+                                                <constraint firstItem="Nlc-TR-Ske" firstAttribute="top" secondItem="Yaa-e2-hSC" secondAttribute="bottom" constant="14" id="Ita-60-6JS"/>
                                                 <constraint firstItem="Yaa-e2-hSC" firstAttribute="top" secondItem="wVd-0v-agt" secondAttribute="top" constant="12" id="g7j-nW-gGU"/>
+                                                <constraint firstItem="Nlc-TR-Ske" firstAttribute="centerX" secondItem="xnt-Yg-aMB" secondAttribute="centerX" id="kcy-0A-jQg"/>
                                                 <constraint firstItem="Yaa-e2-hSC" firstAttribute="leading" secondItem="wVd-0v-agt" secondAttribute="leading" constant="50" id="lnw-st-4AD"/>
                                             </constraints>
                                         </collectionViewCellContentView>
@@ -1743,6 +1744,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HdQ-62-zhN"/>
+                    <size key="freeformSize" width="414" height="1200"/>
                     <connections>
                         <outlet property="noteCollectionView" destination="vaN-ZP-fhV" id="Mi8-5m-V4q"/>
                     </connections>

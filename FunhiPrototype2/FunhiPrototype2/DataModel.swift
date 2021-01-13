@@ -86,6 +86,10 @@ struct Achievement :Codable{
 enum AlbumImageID :String,Codable{
     case prologueCase1
     case achievement1Locked
+    case chapter2case1
+    case chapter2case2
+    case chapter2case3
+
     
     func info() -> AlbumImage{
         switch self {
@@ -93,7 +97,14 @@ enum AlbumImageID :String,Codable{
             return testChapter1.currentAlbumImages[0]
         case .achievement1Locked:
             return testChapter1.currentAlbumImages[1]
+        case .chapter2case1:
+                return testChapter2.currentAlbumImages[0]
+        case .chapter2case2:
+                return testChapter2.currentAlbumImages[1]
+        case .chapter2case3:
+                return testChapter2.currentAlbumImages[2]
         }
+        
     }
 }
 class AlbumImage :Codable{
@@ -124,6 +135,17 @@ enum InfomationID :String,Codable{
     case teacher2
     case teacher3
     case teacher4
+    case leegyi1
+    case leegyi2
+    case kimjajeom1
+    case kimjajeom2
+    case kimjajeom3
+    case kimsanggung1
+    case kimsanggung2
+    case kimsanggung3
+    case kimsanggung4
+    case kimsanggung5
+    case kimsanggung6
 }
 
 // id(정보 획득 로직에서 사용), 업적 잠금 여부, 정보 텍스트
@@ -307,6 +329,8 @@ struct Episode {
     let episodeYear: Int
     //(예시 : 선조 25년, 광해군 11년)
     let episodeKingYear: String
+    
+    let episodeShortDesciption: String
     //  //(예시 : "어쩌구"\n "저쩌구"\n 창덕궁이 임진왜란으로 인해 화재의 위험에 처하다.)
     let episodeDesciption: String
     //(예시 : assets.xcassets에 넣은 이미지 이름)

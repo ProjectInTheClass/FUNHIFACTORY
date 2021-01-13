@@ -11,7 +11,7 @@ import AVFoundation
 
 
 
-var player = User(setting: playerSetting, currentEpisodes: [prologueChapter,testChapter1,testChapter2,testChapter3,testChapter4], currentCharacterInfo: currentCharactersInfo, currentAchievementInfo: [Achievement(name: "업적1", image: "leedanheeBackground", id: .geumcheongyo , isLocked: false), Achievement(name: "업적2", image: "EP1LeedanheeBackground", id: .injeongjeon , isLocked: true), Achievement(name: "업적3", image: "EP1LeedanheeBackground", id:  .cat, isLocked: true), Achievement(name: "업적4", image: "leedanheeBackground", id: .achievement4 , isLocked: true) ], dayIndex: 0, dayId: "day0", currentChatId: "001")
+var player = User(setting: playerSetting, currentEpisodes: [prologueChapter,testChapter1,testChapter2,testChapter3,testChapter4], currentCharacterInfo: currentCharactersInfo, currentAchievementInfo: [Achievement(name: "이야기의 시작", image: "leedanheeBackground", id: .geumcheongyo , isLocked: false), Achievement(name: "???", image: "EP1LeedanheeBackground", id: .injeongjeon , isLocked: true), Achievement(name: "???", image: "EP1LeedanheeBackground", id:  .cat, isLocked: true), Achievement(name: "???", image: "leedanheeBackground", id: .achievement4 , isLocked: true) ], dayIndex: 0, dayId: "day0", currentChatId: "001")
 
 
 var playerSetting = Setting(bgmVolume: 0.5, effectVolume: 0.0, textSpeed: 1.0)

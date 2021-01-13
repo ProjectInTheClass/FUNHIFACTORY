@@ -146,14 +146,16 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         selectedPopupTopbar.layer.cornerRadius = 10
         selectedPopupTopbar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
-    var selectedEP = Episode(episodeID: "", episodePlace: "", episodeYear: 0, episodeKingYear: "", episodeDesciption: "", episodePlaceImage: "", episodeCoverImage: "", isCleared: true, chatHistory: [], storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineSavePoint: [])
+    
+    //초기화 시키느라 이래 됨
+    var selectedEP = Episode(episodeID: "", episodePlace: "", episodeYear: 0, episodeKingYear: "", episodeShortDesciption: "", episodeDesciption: "", episodePlaceImage: "", episodeCoverImage: "", isCleared: true, chatHistory: [], storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineSavePoint: [])
     func openStagePopup(indexPath: IndexPath) {
      
         selectedEP = player.currentEpisodes[indexPath.row]
         //print(selectedEP)
         selectedPopupYearLabel.text = "\(selectedEP.episodeYear)년"
         selectedPopupPlaceImage.image = UIImage(named: selectedEP.episodePlaceImage)
-        selectedPopupDescriptionLabel.text = selectedEP.episodeDesciption
+        selectedPopupDescriptionLabel.text = selectedEP.episodeShortDesciption
         selectedPopupSupTitleLabel.text = "\(selectedEP.episodeKingYear),\(selectedEP.episodePlace)"
         
         selectedPopupStartButtonOutlet.setTitle("여기서 시작하기", for: .normal)
