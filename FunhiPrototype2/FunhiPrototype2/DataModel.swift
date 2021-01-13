@@ -162,8 +162,6 @@ enum GameCharacterID :String,Codable{
             return prologueChapter.currentCharacterNote[3]
         case .unknown:
             return prologueChapter.currentCharacterNote[4]
-        default:
-            break
         }
     }
 }
@@ -346,7 +344,7 @@ struct GameData {
 }
 
 enum CharacterFace: String, Codable{
-    case none,angry1,angry2,basic,cry1,cry2,happy1,happy2,happy3,sad,scared,straight,surprise1,surprise2,surprise3
+    case none,angry1,angry2,basic,cry1,cry2,happy1,happy2,happy3,sad,scared,straight,surprise1,surprise2
 }
 
 var globalPopupOpen: Bool = false

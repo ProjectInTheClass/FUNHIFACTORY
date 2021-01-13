@@ -39,7 +39,6 @@ class monologueTableViewCell: UITableViewCell {
             case .straight: return "danhee straight face"
             case .surprise1:   return "danhee surprised face1"
             case .surprise2:    return "danhee surprised face2"
-            case .surprise3:    return "danhee surprised face3"
             }
         }
         if face == "none"{

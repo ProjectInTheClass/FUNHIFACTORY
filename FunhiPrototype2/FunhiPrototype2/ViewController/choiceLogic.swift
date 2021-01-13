@@ -47,8 +47,6 @@ extension mainGameViewController{
             return
         } else if indexNumber < currentChatAmount() && currentBlockOfDay().chats[indexNumber].type == .ar{
             timer.invalidate()
-            print(timer)
-            print("timer invalidated")
             currentChatArray.append(currentBlockOfDay().chats[indexNumber])
             self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         }

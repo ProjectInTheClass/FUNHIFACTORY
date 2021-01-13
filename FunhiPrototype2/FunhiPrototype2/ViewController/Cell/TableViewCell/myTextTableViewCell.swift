@@ -43,9 +43,8 @@ class myTextTableViewCell: UITableViewCell {
             case .sad:  return "danhee sad face"
             case .scared:   return "danhee scared face"
             case .straight: return "danhee straight face"
-            case .surprise1:   return "danhee surprised face 1"
-            case .surprise2:    return "danhee surprised face 2"
-            case .surprise3:    return "danhee surprised face 3"
+            case .surprise1:   return "danhee surprise face 1"
+            case .surprise2:    return "danhee surprise face 2"
             }
         }
         if face == "none"{
