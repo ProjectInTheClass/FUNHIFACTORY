@@ -37,7 +37,7 @@ class EpisodeHistoryViewController: UIViewController, UITableViewDelegate, UITab
                 else if chats[indexPath.row].type == .onlyText {
                     print("상대 텍스트 출력")
                     let cell = episodeHistoryTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
-                    cell.opTextCellUpdate(name: chats[indexPath.row].who.info().name, chat: chatText, normalProfile: chats[indexPath.row].who.info().profileImage, mainProfile: chats[indexPath.row].characterFace)
+                    cell.opTextCellUpdate(name: chats[indexPath.row].who.info().name, chat: chatText, normalProfile: chats[indexPath.row].who.info().profileImage, mainProfile: chats[indexPath.row].characterFace, isLocked: currentChatArray[indexPath.row].who.info().isLocked)
                     return cell
                 }
             //터치할 수 없는 이미지

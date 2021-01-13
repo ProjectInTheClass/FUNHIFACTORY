@@ -20,6 +20,9 @@ class opTextTableViewCell: UITableViewCell {
     }
     func opTextCellUpdate(name:String,chat:String, normalProfile:String, mainProfile:CharacterFace, isLocked : Bool){
         profileNickname.text = name
+                if isLocked == true{
+                    profileNickname.text = "???"
+                }
                chatText.text = chat
             if mainProfile == .none{
                 noProfileUIUpdate()
