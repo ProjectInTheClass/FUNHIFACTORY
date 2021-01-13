@@ -298,6 +298,7 @@ let testChapter4 = Episode(episodeID: "2003", episodePlace: "낙선재", episode
                      Chat(text: "들춰보자.", image: "", type: .onlyText, who: .danhee, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
                      Chat(text: "단희는 돌무더기 앞으로 향했다.", image: "", type: .sectionHeader, who: .hwiryeong, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
                      Chat(text: "돌무더기를 들춰보러 이동합니다.", image: "", type: .sectionHeader, who: .hwiryeong, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+                                                            Chat(text: "    ", image: "", type: .ar, who: .danhee, characterFace: .straight, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
                      Chat(text: "돌무더기 아래에는..", image: "", type: .monologue, who: .danhee, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
                                                         ],
                
