@@ -181,6 +181,16 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         maingameNotepopupViewDesign(popupView: notePopupView, parentView: self.view!)
     }
     
+    @IBAction func notePushAction(_ sender: Any) {
+        let transition:CATransition = CATransition()
+          transition.duration = 0.3
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
+        transition.type = CATransitionType.moveIn
+          transition.subtype = CATransitionSubtype.fromBottom
+          self.navigationController!.view.layer.add(transition, forKey: kCATransition)
+        performSegue(withIdentifier: "noteSegue", sender: nil)
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         if pauseBar.isHidden == true{
