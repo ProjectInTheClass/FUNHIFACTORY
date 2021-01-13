@@ -14,6 +14,7 @@ class mapViewController: UIViewController {
         if let name = dummyData.stories[player.dayId]?.episodeYear{
             let imageName = "\(name)map"
             mapImage.image = UIImage(named: imageName)
-        }
+
     }
+}
 }

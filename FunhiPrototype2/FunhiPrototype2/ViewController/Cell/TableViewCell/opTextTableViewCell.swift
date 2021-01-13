@@ -18,7 +18,7 @@ class opTextTableViewCell: UITableViewCell {
         chatText.setLineSpacing(lineSpacing: 6)
         // Initialization code
     }
-    func opTextCellUpdate(name:String,chat:String, normalProfile:String, mainProfile:CharacterFace){
+    func opTextCellUpdate(name:String,chat:String, normalProfile:String, mainProfile:CharacterFace, isLocked : Bool){
         profileNickname.text = name
                chatText.text = chat
             if mainProfile == .none{

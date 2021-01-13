@@ -82,7 +82,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 else if currentChatArray[indexPath.row].type == .onlyText {
                     print("상대 텍스트 출력")
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
-                    cell.opTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText,normalProfile: currentChatArray[indexPath.row].who.info().profileImage, mainProfile: currentChatArray[indexPath.row].characterFace)
+                    cell.opTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText,normalProfile: currentChatArray[indexPath.row].who.info().profileImage, mainProfile: currentChatArray[indexPath.row].characterFace, isLocked: currentChatArray[indexPath.row].who.info().isLocked)
                     return cell
                 }
             //터치할 수 없는 이미지
@@ -261,13 +261,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         })
     }
     
-    func openAR(currentChat: Chat) {
-        if currentChat.text == "돌무더기를 들춰보러 이동합니다." {
-            performSegue(withIdentifier: "goToARView", sender: nil)
-        }
-        
-    }
-    
     
     
     
@@ -286,9 +279,7 @@ func popupViewDesign(popupView: UIView) {
 
 extension mainGameViewController : arDelegate{
     func goToAR() {
-        let arStoryboard = storyboard?.instantiateViewController(identifier: "arView")
-        arStoryboard?.modalPresentationStyle = .fullScreen
-        present(arStoryboard!, animated: true, completion: nil)
+        performSegue(withIdentifier: "goToARView", sender: nil)
         currentChatArray.removeLast()
         self.mainGameTableView.deleteRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)}
 }
