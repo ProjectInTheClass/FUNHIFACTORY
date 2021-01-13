@@ -25,28 +25,29 @@ extension mainGameViewController{
             print("채팅이 업데이트되었습니다.")
             currentChatArray.append(currentBlockOfDay().chats[indexNumber])
             self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)}
+        
         else if indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex == "End"{
+            //챕터가 끝났을 때
             guard timer != nil else {return}
             timer.invalidate()
         }
         if indexNumber == currentChatAmount() && currentBlockOfDay().choiceSkip == false{
+            //선택지가 나올 때
             timer.invalidate()
             print("invalidate")
             guard currentChatArray.last?.type != .choice else {return}
-
             choiceUpdate()
-            /*currentChatArray.append(Chat(text: "**선택지가 나올 자리**", image: "", type: .choice, who: danhee, characterFace: false))
-
-            self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
-            print("선택지 대용 엘리먼트 추가")
-            scrollToBottom()*/
             return
         } else if indexNumber == currentChatAmount() && currentBlockOfDay().choiceSkip == true{
+            //선택지 없이 바로 다음 스토리블럭으로 갈 때
             player.currentChatId = currentBlockOfDay().choices[0].nextTextIndex
             indexNumber = 0
             chatUpdate()
             scrollToBottom()
             return
+        } else if indexNumber < currentChatAmount() && currentBlockOfDay().chats[indexNumber].type == .ar{
+            currentChatArray.append(currentBlockOfDay().chats[indexNumber])
+            self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         }
         print("스토리 \(indexNumber+1)/\(currentChatAmount())")
         // 아래 네 개 각각 지금 챗에 새 업적/새 인물/새 역사 사건/새 인물 정보 있나 확인한 뒤 있는 경우 팝업창 띄우기/노트 정보 수정하는 코드입니다

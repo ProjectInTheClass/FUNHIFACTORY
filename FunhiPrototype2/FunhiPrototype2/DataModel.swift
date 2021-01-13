@@ -245,6 +245,7 @@ enum ChatType :String, Codable{
     case sectionHeader
     case choice
     case monologue
+    case ar
 }
 
 // 텍스트 블럭 스트럭처

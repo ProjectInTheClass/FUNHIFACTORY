@@ -400,10 +400,24 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RdH-xx-8IN">
-                                                    <rect key="frame" x="101.5" y="57" width="219.5" height="48.5"/>
+                                                    <rect key="frame" x="163.5" y="57" width="152.5" height="48.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상대가 말하는 텍스트입니다." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugD-HN-ElC">
-                                                            <rect key="frame" x="9" y="14" width="200.5" height="20.5"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ErI-Ys-wPi">
+                                                            <rect key="frame" x="0.0" y="0.0" width="152.5" height="48.5"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="10"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="leyr.borderWidth">
+                                                                    <integer key="value" value="0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="goToARView:" destination="daJ-Ci-VFo" eventType="touchUpInside" id="aiG-cK-Id3"/>
+                                                            </connections>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AR로 찾으러 가기" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugD-HN-ElC">
+                                                            <rect key="frame" x="16" y="12" width="124.5" height="19.5"/>
                                                             <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="17"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -411,11 +425,15 @@
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.86275094750000003" green="0.86273467540000004" blue="0.86274570230000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
-                                                        <constraint firstItem="ugD-HN-ElC" firstAttribute="leading" secondItem="RdH-xx-8IN" secondAttribute="leading" constant="9" id="M3e-d5-FT7"/>
-                                                        <constraint firstItem="ugD-HN-ElC" firstAttribute="top" secondItem="RdH-xx-8IN" secondAttribute="top" constant="14" id="O3q-Mm-LWm"/>
-                                                        <constraint firstAttribute="bottom" secondItem="ugD-HN-ElC" secondAttribute="bottom" constant="14" id="bdZ-z7-ORZ"/>
-                                                        <constraint firstAttribute="trailing" secondItem="ugD-HN-ElC" secondAttribute="trailing" constant="10" id="jfg-nK-axA"/>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="266" id="xnE-Q8-xRV"/>
+                                                        <constraint firstAttribute="height" constant="48.5" id="1KU-nb-ocp"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ErI-Ys-wPi" secondAttribute="bottom" id="2FD-QI-Cz5"/>
+                                                        <constraint firstItem="ugD-HN-ElC" firstAttribute="leading" secondItem="RdH-xx-8IN" secondAttribute="leading" constant="16" id="M3e-d5-FT7"/>
+                                                        <constraint firstItem="ugD-HN-ElC" firstAttribute="top" secondItem="RdH-xx-8IN" secondAttribute="top" constant="12" id="O3q-Mm-LWm"/>
+                                                        <constraint firstItem="ErI-Ys-wPi" firstAttribute="leading" secondItem="RdH-xx-8IN" secondAttribute="leading" id="Pr0-HI-ttj"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ugD-HN-ElC" secondAttribute="bottom" constant="17" id="bdZ-z7-ORZ"/>
+                                                        <constraint firstItem="ErI-Ys-wPi" firstAttribute="top" secondItem="RdH-xx-8IN" secondAttribute="top" id="dof-Y0-Ajc"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ErI-Ys-wPi" secondAttribute="trailing" id="jQS-my-Phn"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ugD-HN-ElC" secondAttribute="trailing" constant="12" id="jfg-nK-axA"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -428,8 +446,8 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="RdH-xx-8IN" secondAttribute="bottom" constant="10.5" id="JH3-eo-wcA"/>
-                                                <constraint firstAttribute="trailing" secondItem="RdH-xx-8IN" secondAttribute="trailing" constant="93" id="bWW-3u-Kfg"/>
+                                                <constraint firstItem="RdH-xx-8IN" firstAttribute="top" secondItem="vXh-7m-aMd" secondAttribute="top" constant="57" id="6Fy-xV-aIO"/>
+                                                <constraint firstAttribute="trailing" secondItem="RdH-xx-8IN" secondAttribute="trailing" constant="98" id="bWW-3u-Kfg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

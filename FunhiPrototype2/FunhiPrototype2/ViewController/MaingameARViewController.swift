@@ -43,6 +43,6 @@ class MaingameARViewController: UIViewController {
 
         self.navigationController?.popViewController(animated: true)
     }
-    
-   
 }
+
+

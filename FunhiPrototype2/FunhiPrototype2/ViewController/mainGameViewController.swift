@@ -106,6 +106,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 cell.monologueText.text = chatText
                 cell.chatUpdate(nickname: currentChatArray[indexPath.row].who.info().name, profile: currentChatArray[indexPath.row].characterFace)
                 return cell
+            }else if currentChatArray[indexPath.row].type == .ar{
+                let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "arTableViewCell", for: indexPath) as! ARTableViewCell
+                return cell
             }
             else {
                 print("그 외")
@@ -171,7 +174,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         chatToGodUIUpdate(hwiryeong: chatToGodView)
         
         //지우지 말아주세dyd
-        maingameNotepopupViewDesign(popupView: notePopupView, parentView: self.view)
+        maingameNotepopupViewDesign(popupView: notePopupView, parentView: self.view!)
     }
     
     
@@ -281,5 +284,13 @@ func popupViewDesign(popupView: UIView) {
     popupView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
 }
 
+extension mainGameViewController : arDelegate{
+    func goToAR() {
+        let arStoryboard = storyboard?.instantiateViewController(identifier: "arView")
+        arStoryboard?.modalPresentationStyle = .fullScreen
+        present(arStoryboard!, animated: true, completion: nil)
+        currentChatArray.removeLast()
+        self.mainGameTableView.deleteRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)}
+}
 
 
