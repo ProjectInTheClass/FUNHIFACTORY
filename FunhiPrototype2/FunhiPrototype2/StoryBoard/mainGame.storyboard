@@ -392,8 +392,56 @@
                                             <outlet property="profileNickname" destination="Tyh-sK-xPZ" id="bTF-wm-jl3"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="arTableViewCell" rowHeight="116" id="daJ-Ci-VFo" customClass="ARTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="392" width="414" height="116"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="daJ-Ci-VFo" id="vXh-7m-aMd">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="116"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RdH-xx-8IN">
+                                                    <rect key="frame" x="101.5" y="57" width="219.5" height="48.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상대가 말하는 텍스트입니다." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugD-HN-ElC">
+                                                            <rect key="frame" x="9" y="14" width="200.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="17"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.86275094750000003" green="0.86273467540000004" blue="0.86274570230000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstItem="ugD-HN-ElC" firstAttribute="leading" secondItem="RdH-xx-8IN" secondAttribute="leading" constant="9" id="M3e-d5-FT7"/>
+                                                        <constraint firstItem="ugD-HN-ElC" firstAttribute="top" secondItem="RdH-xx-8IN" secondAttribute="top" constant="14" id="O3q-Mm-LWm"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ugD-HN-ElC" secondAttribute="bottom" constant="14" id="bdZ-z7-ORZ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ugD-HN-ElC" secondAttribute="trailing" constant="10" id="jfg-nK-axA"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="266" id="xnE-Q8-xRV"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="RdH-xx-8IN" secondAttribute="bottom" constant="10.5" id="JH3-eo-wcA"/>
+                                                <constraint firstAttribute="trailing" secondItem="RdH-xx-8IN" secondAttribute="trailing" constant="93" id="bWW-3u-Kfg"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="chatBox" destination="RdH-xx-8IN" id="xvs-41-YTv"/>
+                                            <outlet property="chatLabel" destination="ugD-HN-ElC" id="eVu-7z-mUY"/>
+                                            <outlet property="chatText" destination="ugD-HN-ElC" id="jeF-0I-2BE"/>
+                                            <outlet property="chatView" destination="RdH-xx-8IN" id="zjP-oJ-cgR"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sectionCell" rowHeight="89" id="Jfh-0f-HBh" customClass="sectionTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="392" width="414" height="89"/>
+                                        <rect key="frame" x="0.0" y="508" width="414" height="89"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jfh-0f-HBh" id="yQW-Pn-ft0">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="89"/>
@@ -435,7 +483,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="295" id="Hw8-Vw-pVe" customClass="ImageTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="481" width="414" height="295"/>
+                                        <rect key="frame" x="0.0" y="597" width="414" height="295"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hw8-Vw-pVe" id="szc-Qo-WDf">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="295"/>
