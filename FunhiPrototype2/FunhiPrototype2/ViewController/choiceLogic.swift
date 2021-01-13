@@ -21,7 +21,7 @@ extension mainGameViewController{
     func chatUpdate(){
         print("------------chatUpdate 시작합니다------------")
         print("현재 속도: \(player.setting.textSpeed)")
-        if indexNumber < currentChatAmount(){
+        if indexNumber < currentChatAmount() && currentBlockOfDay().chats[indexNumber].type != .ar{
             print("채팅이 업데이트되었습니다.")
             currentChatArray.append(currentBlockOfDay().chats[indexNumber])
             self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)}
@@ -31,7 +31,7 @@ extension mainGameViewController{
             guard timer != nil else {return}
             timer.invalidate()
         }
-        if indexNumber == currentChatAmount() && currentBlockOfDay().choiceSkip == false{
+        else if indexNumber == currentChatAmount() && currentBlockOfDay().choiceSkip == false{
             //선택지가 나올 때
             timer.invalidate()
             print("invalidate")
@@ -46,6 +46,9 @@ extension mainGameViewController{
             scrollToBottom()
             return
         } else if indexNumber < currentChatAmount() && currentBlockOfDay().chats[indexNumber].type == .ar{
+            timer.invalidate()
+            print(timer)
+            print("timer invalidated")
             currentChatArray.append(currentBlockOfDay().chats[indexNumber])
             self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         }
@@ -63,13 +66,14 @@ extension mainGameViewController{
     }
     
     func choiceUpdate(){
+        timer.invalidate()
         choiceHeight.constant = 149
         choiceBar.setNeedsUpdateConstraints()
         choiceBar.isHidden = false
         choiceCollectionView.reloadData()
         mainGameTableView.heightAnchor.constraint(equalToConstant: 459).isActive = true
         mainGameTableView.layoutIfNeeded()
-        mainGameTableView.contentOffset.y += 149
+        mainGameTableView.contentOffset.y += 149 //231
         scrollToBottom()
     }
     func closeChoiceBar(){

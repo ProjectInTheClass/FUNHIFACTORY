@@ -108,6 +108,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 return cell
             }else if currentChatArray[indexPath.row].type == .ar{
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "arTableViewCell", for: indexPath) as! ARTableViewCell
+                cell.delegate = self
                 return cell
             }
             else {
@@ -169,7 +170,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.mainGameTableView.dataSource = self
         self.choiceCollectionView.delegate = self
         self.choiceCollectionView.dataSource = self
-        initializePageControl(collectionView : choiceCollectionView, choiceBar : choiceBar, numberOfPages: dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count)
+        if let page = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]?.choices.count{
+            initializePageControl(collectionView : choiceCollectionView, choiceBar : choiceBar, numberOfPages:page)
+        }
+        self.mainGameTableView.contentInset.bottom = 82
         choiceCollectionViewBorder(choiceView: collectionBar)
         chatToGodUIUpdate(hwiryeong: chatToGodView)
         
@@ -289,9 +293,8 @@ func popupViewDesign(popupView: UIView) {
 
 extension mainGameViewController : arDelegate{
     func goToAR() {
+        print("buttonClicked")
         performSegue(withIdentifier: "goToARView", sender: nil)
-        currentChatArray.removeLast()
-        self.mainGameTableView.deleteRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)}
 }
-
+}
 

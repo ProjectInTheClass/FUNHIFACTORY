@@ -195,7 +195,7 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sLE-hf-d6q" userLabel="Monologue textView">
                                                             <rect key="frame" x="0.0" y="3" width="120" height="45"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="혼잣말혼잣말" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXu-MF-G47">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="혼잣말혼잣말" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXu-MF-G47">
                                                                     <rect key="frame" x="13" y="11.5" width="94" height="20.5"/>
                                                                     <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="17"/>
                                                                     <color key="textColor" red="0.99978142979999995" green="0.98862773179999996" blue="0.96078091860000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -226,6 +226,7 @@
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstItem="wqF-Yr-Xhx" firstAttribute="top" secondItem="RGn-dr-k4c" secondAttribute="top" id="0P3-rs-DKs"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="266" id="Ctx-ed-IES"/>
                                                         <constraint firstAttribute="bottom" secondItem="sLE-hf-d6q" secondAttribute="bottom" id="K9u-KM-5sD"/>
                                                         <constraint firstAttribute="trailing" secondItem="wqF-Yr-Xhx" secondAttribute="trailing" id="Qcc-t8-A1P"/>
                                                         <constraint firstItem="sLE-hf-d6q" firstAttribute="top" secondItem="RGn-dr-k4c" secondAttribute="top" constant="3" id="buU-jB-xTS"/>
@@ -392,18 +393,24 @@
                                             <outlet property="profileNickname" destination="Tyh-sK-xPZ" id="bTF-wm-jl3"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="arTableViewCell" rowHeight="116" id="daJ-Ci-VFo" customClass="ARTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="392" width="414" height="116"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="arTableViewCell" rowHeight="59" id="daJ-Ci-VFo" customClass="ARTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="392" width="414" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="daJ-Ci-VFo" id="vXh-7m-aMd">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="116"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RdH-xx-8IN">
-                                                    <rect key="frame" x="163.5" y="57" width="152.5" height="48.5"/>
+                                                    <rect key="frame" x="163.5" y="7" width="152.5" height="41.5"/>
                                                     <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AR로 찾으러 가기" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugD-HN-ElC">
+                                                            <rect key="frame" x="16" y="12" width="124.5" height="19.5"/>
+                                                            <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="17"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ErI-Ys-wPi">
-                                                            <rect key="frame" x="0.0" y="0.0" width="152.5" height="48.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="152.5" height="41.5"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                     <integer key="value" value="10"/>
@@ -416,12 +423,6 @@
                                                                 <action selector="goToARView:" destination="daJ-Ci-VFo" eventType="touchUpInside" id="aiG-cK-Id3"/>
                                                             </connections>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AR로 찾으러 가기" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugD-HN-ElC">
-                                                            <rect key="frame" x="16" y="12" width="124.5" height="19.5"/>
-                                                            <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="17"/>
-                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.86275094750000003" green="0.86273467540000004" blue="0.86274570230000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
@@ -430,7 +431,7 @@
                                                         <constraint firstItem="ugD-HN-ElC" firstAttribute="leading" secondItem="RdH-xx-8IN" secondAttribute="leading" constant="16" id="M3e-d5-FT7"/>
                                                         <constraint firstItem="ugD-HN-ElC" firstAttribute="top" secondItem="RdH-xx-8IN" secondAttribute="top" constant="12" id="O3q-Mm-LWm"/>
                                                         <constraint firstItem="ErI-Ys-wPi" firstAttribute="leading" secondItem="RdH-xx-8IN" secondAttribute="leading" id="Pr0-HI-ttj"/>
-                                                        <constraint firstAttribute="bottom" secondItem="ugD-HN-ElC" secondAttribute="bottom" constant="17" id="bdZ-z7-ORZ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ugD-HN-ElC" secondAttribute="bottom" constant="10" id="bdZ-z7-ORZ"/>
                                                         <constraint firstItem="ErI-Ys-wPi" firstAttribute="top" secondItem="RdH-xx-8IN" secondAttribute="top" id="dof-Y0-Ajc"/>
                                                         <constraint firstAttribute="trailing" secondItem="ErI-Ys-wPi" secondAttribute="trailing" id="jQS-my-Phn"/>
                                                         <constraint firstAttribute="trailing" secondItem="ugD-HN-ElC" secondAttribute="trailing" constant="12" id="jfg-nK-axA"/>
@@ -446,7 +447,8 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="RdH-xx-8IN" firstAttribute="top" secondItem="vXh-7m-aMd" secondAttribute="top" constant="57" id="6Fy-xV-aIO"/>
+                                                <constraint firstItem="RdH-xx-8IN" firstAttribute="top" secondItem="vXh-7m-aMd" secondAttribute="top" constant="7" id="6Fy-xV-aIO"/>
+                                                <constraint firstAttribute="bottom" secondItem="RdH-xx-8IN" secondAttribute="bottom" constant="10.5" id="V3x-Ik-dHZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="RdH-xx-8IN" secondAttribute="trailing" constant="98" id="bWW-3u-Kfg"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -454,19 +456,17 @@
                                         <connections>
                                             <outlet property="chatBox" destination="RdH-xx-8IN" id="xvs-41-YTv"/>
                                             <outlet property="chatLabel" destination="ugD-HN-ElC" id="eVu-7z-mUY"/>
-                                            <outlet property="chatText" destination="ugD-HN-ElC" id="jeF-0I-2BE"/>
-                                            <outlet property="chatView" destination="RdH-xx-8IN" id="zjP-oJ-cgR"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sectionCell" rowHeight="89" id="Jfh-0f-HBh" customClass="sectionTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="508" width="414" height="89"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sectionCell" rowHeight="63" id="Jfh-0f-HBh" customClass="sectionTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="451" width="414" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jfh-0f-HBh" id="yQW-Pn-ft0">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="89"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apw-hX-SQ4">
-                                                    <rect key="frame" x="0.0" y="24" width="414" height="41"/>
+                                                    <rect key="frame" x="0.0" y="22" width="414" height="41"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="캐릭터의 행동이 들어갈 자리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oX6-rE-Tks">
                                                             <rect key="frame" x="123" y="11.5" width="168.5" height="18"/>
@@ -489,10 +489,10 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="apw-hX-SQ4" secondAttribute="bottom" constant="24" id="QkM-WE-RTA"/>
+                                                <constraint firstAttribute="bottom" secondItem="apw-hX-SQ4" secondAttribute="bottom" id="Epu-y4-JQ0"/>
                                                 <constraint firstItem="apw-hX-SQ4" firstAttribute="leading" secondItem="yQW-Pn-ft0" secondAttribute="leading" id="WeG-CR-oE2"/>
                                                 <constraint firstAttribute="trailing" secondItem="apw-hX-SQ4" secondAttribute="trailing" id="akl-uS-yQ1"/>
-                                                <constraint firstItem="apw-hX-SQ4" firstAttribute="top" secondItem="yQW-Pn-ft0" secondAttribute="top" constant="24" id="yyT-c9-9un"/>
+                                                <constraint firstItem="apw-hX-SQ4" firstAttribute="top" secondItem="yQW-Pn-ft0" secondAttribute="top" constant="22" id="yyT-c9-9un"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.72157359119999998" green="0.72155982259999996" blue="0.72156912090000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -501,13 +501,13 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="295" id="Hw8-Vw-pVe" customClass="ImageTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="597" width="414" height="295"/>
+                                        <rect key="frame" x="0.0" y="514" width="414" height="295"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hw8-Vw-pVe" id="szc-Qo-WDf">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="295"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W4K-Vq-5Zx">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W4K-Vq-5Zx">
                                                     <rect key="frame" x="14" y="10" width="386" height="275"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="386" id="2yx-bw-Clx"/>

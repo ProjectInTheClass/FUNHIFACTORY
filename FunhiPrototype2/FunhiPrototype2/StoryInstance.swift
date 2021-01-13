@@ -188,7 +188,7 @@ var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현
     [GameCharacter(name: "이단희", profileImage: "danhee basic face", backGroundImage: "leedanheeBackground", description: "내 곁에 아무도 없다는 게 이젠 익숙해. 이런 내 삶이 바뀔 수 있을까?", infomation: [], likability: 0, isLocked: false),
      GameCharacter(name: "휘령", profileImage: "hwiryeong basic face", backGroundImage: "hwiryeong illu 1x", description: "네가 나의 마지막 희망이다. 네가 가진 그 1초가 나를, 이 세상을 바꾸는 법. 부디 이번엔 꼭 성공하길...", infomation: [Infomation(infomationID: .hwiryeong1, isLocked: false, text: "조선이 생겨났을 때부터 존재했다."), Infomation(infomationID: .hwiryeong2, isLocked: false, text: "휘령이 곧 조선. 하지만 큰 사건들을 겪고 나서 그는 힘을 잃게 되었다. 그 힘을 찾기 위해서 내가 필요하다고 한다."), Infomation(infomationID: .hwiryeong3, isLocked: true, text: "휘령은 남자이다."), Infomation(infomationID: .hwiryeong5, isLocked: true, text: "휘령은 휘령이다.")], likability: 0, isLocked: false),
      GameCharacter(name: "투어 가이드", profileImage: "tour guide", backGroundImage: "", description: "", infomation: [], likability: 0, isLocked: false),
-     GameCharacter(name: "선생님", profileImage: "cat", backGroundImage: "cat", description: "선생님은 선생님이다. 선생님은 선생님이다. 선생님은 선생님이다. 선생님은 선생님이다. ", infomation: [Infomation(infomationID: .teacher1, isLocked: false, text: "선생님은 선생님이다."), Infomation(infomationID: .teacher1, isLocked: false, text: "선생님은 선생님이다."), Infomation(infomationID: .teacher1, isLocked: false, text: "선생님은 선생님이다."), Infomation(infomationID: .teacher1, isLocked: false, text: "선생님은 선생님이다.")], likability: 40, isLocked: false),
+     GameCharacter(name: "선생님", profileImage: "teacher", backGroundImage: "cat", description: "선생님은 선생님이다. 선생님은 선생님이다. 선생님은 선생님이다. 선생님은 선생님이다. ", infomation: [Infomation(infomationID: .teacher1, isLocked: false, text: "선생님은 선생님이다."), Infomation(infomationID: .teacher1, isLocked: false, text: "선생님은 선생님이다."), Infomation(infomationID: .teacher1, isLocked: false, text: "선생님은 선생님이다."), Infomation(infomationID: .teacher1, isLocked: false, text: "선생님은 선생님이다.")], likability: 40, isLocked: false),
      GameCharacter(name: "??", profileImage: "hwiryeong basic face", backGroundImage: "", description: "", infomation: [], likability: 0, isLocked: true)], currentCaseNote: [], currentAlbumImages: [], timelineSavePoint: [SavePoint(name: "시작부터", storyBlockIndex: "001")])
 
 
@@ -298,11 +298,9 @@ let testChapter4 = Episode(episodeID: "2003", episodePlace: "낙선재", episode
                      Chat(text: "들춰보자.", image: "", type: .onlyText, who: .danhee, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
                      Chat(text: "단희는 돌무더기 앞으로 향했다.", image: "", type: .sectionHeader, who: .hwiryeong, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
                      Chat(text: "돌무더기를 들춰보러 이동합니다.", image: "", type: .sectionHeader, who: .hwiryeong, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
-                                                            Chat(text: "    ", image: "", type: .ar, who: .danhee, characterFace: .straight, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
-                     Chat(text: "돌무더기 아래에는..", image: "", type: .monologue, who: .danhee, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
-                                                        ],
-               
-                
+                     Chat(text: "", image: "", type: .ar, who: .danhee, characterFace: .straight, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+                     Chat(text: "돌무더기 아래에는..", image: "", type: .monologue, who: .danhee, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil)],
+             
                 choices: [
                         Choice(text: "장작이 한 개 있었어.", likability: [], chatType: .monologue, characterFace: .basic, nextTextIndex: "001", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
                         Choice(text: "장작이 두 개 있었어.", likability: [], chatType: .onlyText, characterFace: .basic, nextTextIndex: "002", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),

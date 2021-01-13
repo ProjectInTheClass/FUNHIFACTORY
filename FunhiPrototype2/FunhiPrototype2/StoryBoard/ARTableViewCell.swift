@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol arDelegate {
+protocol arDelegate:AnyObject {
     func goToAR()
 }
 class ARTableViewCell: UITableViewCell {
