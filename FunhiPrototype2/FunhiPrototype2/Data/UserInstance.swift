@@ -9,14 +9,18 @@ import Foundation
 import AVFoundation
 
 
-
-
-var player = User(setting: playerSetting, currentEpisodes: [prologueChapter,Chapter1,Chapter2,Chapter3,Chapter4], currentCharacterInfo: currentCharactersInfo, currentAchievementInfo: [Achievement(name: "이야기의 시작", image: "leedanheeBackground", id: .geumcheongyo , isLocked: false), Achievement(name: "???", image: "EP1LeedanheeBackground", id: .injeongjeon , isLocked: true), Achievement(name: "???", image: "EP1LeedanheeBackground", id:  .cat, isLocked: true), Achievement(name: "???", image: "leedanheeBackground", id: .achievement4 , isLocked: true) ], dayIndex: 0, dayId: "day0", currentChatId: "001",  Achievement(name: "돈화문", image: "leedanheeBackground", id: .donhwamun , isLocked: true),
-Achievement(name: "금천교", image: "EP1LeedanheeBackground", id: .geumcheongyo , isLocked: true),
-Achievement(name: "인정전", image: "EP1LeedanheeBackground", id:  .injeongjeon, isLocked: true),
-Achievement(name: "루스", image: "leedanheeBackground", id: .cat , isLocked: true),
-Achievement(name: "휘령의 목걸이", image: "leedanheeBackground", id: .necklace , isLocked: true),
-Achievement(name: "의심 속 믿음", image: "leedanheeBackground", id: .faith , isLocked: true))
+var player = User(
+    setting: playerSetting,
+    currentEpisodes: [prologueChapter,Chapter1,Chapter2,Chapter3,Chapter4],
+    currentCharacterInfo: currentCharactersInfo,
+    currentAchievementInfo: [
+        Achievement(name: "돈화문", image: "prologue image 1", id: .donhwamun , isLocked: true),
+        Achievement(name: "금천교", image: "prologue image 2", id: .geumcheongyo , isLocked: true),
+        Achievement(name: "인정전", image: "prologue image 3", id:  .injeongjeon, isLocked: true),
+        Achievement(name: "루스", image: "leedanheeBackground", id: .cat , isLocked: true),
+        Achievement(name: "휘령의 목걸이", image: "prologue image 4", id: .necklace , isLocked: true),
+        Achievement(name: "의심 속 믿음", image: "leedanheeBackground", id: .faith , isLocked: true)],
+    dayIndex: 0, dayId: "day0", currentChatId: "001")
 
 
 

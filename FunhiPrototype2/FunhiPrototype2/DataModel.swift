@@ -71,20 +71,6 @@ class NoteCase :Codable{
 
 enum AchievementID :String,Codable{
     case donhwamun,geumcheongyo,injeongjeon,cat,necklace,faith //프롤로그
-       /*
-        func info()-> Achievement{
-            switch self {
-            case .donhwamun:
-                <#code#>
-            case .geumcheongyo:
-            case .injeongjeon:
-            case .cat:
-            case .achievement4:
-            case .necklace:
-            case .parents:
-            case .faith:
-        }
-        */
 }
 // 프라퍼티 설명: 업적 이름, 업적 이미지, id(업적 획득 로직에서 사용), 업적 잠금 여부
 struct Achievement :Codable{

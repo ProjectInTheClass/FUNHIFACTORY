@@ -11,7 +11,7 @@ import UIKit
 let jsonEncoder = JSONEncoder()
 let jsonDecoder = JSONDecoder()
 
-let urlString = "https://raw.githubusercontent.com/ProjectInTheClass/FUNHIFACTORY/master/FunhiPrototype2/storyInstance.json?token=ALEJVF7QWVBE6GL3UI3AMJLABBPI2"
+let urlString = "https://raw.githubusercontent.com/ProjectInTheClass/FUNHIFACTORY/master/FunhiPrototype2/storyInstance.json?token=ALEJVFYLUERVAL6RIEI3LWTABBRVY"
     //"https://4a73fc1268e2fa1970f6ba6649dac04234f2c5d2@raw.githubusercontent.com/ProjectInTheClass/FUNHIFACTORY/master/FunhiPrototype2/storyInstance.json"
     //4a73fc1268e2fa1970f6ba6649dac04234f2c5d2
 
