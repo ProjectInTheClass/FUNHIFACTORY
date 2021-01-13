@@ -183,10 +183,15 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     override func viewDidAppear(_ animated: Bool) {
-        chatUpdateTimer()
-        choiceHeight.constant = 0
-        choiceBar.setNeedsUpdateConstraints()
-        choiceBar.isHidden = true
+        if pauseBar.isHidden == true{
+            chatUpdateTimer()
+            choiceHeight.constant = 0
+            choiceBar.setNeedsUpdateConstraints()
+            choiceBar.isHidden = true
+        } else {
+          return
+        }
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         if isStartOfEpisode {
