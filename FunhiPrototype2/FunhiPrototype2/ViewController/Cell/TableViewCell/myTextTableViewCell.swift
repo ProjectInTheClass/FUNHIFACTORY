@@ -25,20 +25,20 @@ class myTextTableViewCell: UITableViewCell {
         var face : String {
             switch profile {
             case .none: return "none"
-            case .angry1: return "danhee angry face1"
-            case .angry2: return "danhee angryface2"
+            case .angry1: return "danhee angry face 1"
+            case .angry2: return "danhee angryface 2"
             case .basic:   return "danhee basic face"
-            case .cry1: return " danhee cry face1"
-            case .cry2: return " danhee cry face2"
-            case .happy1:  return "danhee happy face1"
-            case .happy2:   return "danhee happy face2"
-            case .happy3:   return "danhee happy face3"
+            case .cry1: return " danhee cry face 1"
+            case .cry2: return " danhee cry face 2"
+            case .happy1:  return "danhee happy face 1"
+            case .happy2:   return "danhee happy face 2"
+            case .happy3:   return "danhee happy face 3"
             case .sad:  return "danhee sad face"
             case .scared:   return "danhee scared face"
             case .straight: return "danhee straight face"
-            case .surprise1:   return "danhee surprised face1"
-            case .surprise2:    return "danhee surprised face2"
-            case .surprise3:    return "danhee surprised face3"
+            case .surprise1:   return "danhee surprised face 1"
+            case .surprise2:    return "danhee surprised face 2"
+            case .surprise3:    return "danhee surprised face 3"
             }
         }
         if face == "none"{

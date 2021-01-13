@@ -8,7 +8,7 @@ import Foundation
 var indexNumber = 0 
 var currentChatArray : [Chat] = []
 
-let test = Episode(episodeID: "test", episodePlace: "chapter1Map", episodeYear: 1592, episodeKingYear: "선조 25년", episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "placeImage_1x", episodeCoverImage: "", isCleared: true, chatHistory: [], storyBlocks: [
+let test = Episode(episodeID: "test", episodePlace: "prologue map", episodeYear: 1592, episodeKingYear: "선조 25년", episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "placeImage_1x", episodeCoverImage: "", isCleared: true, chatHistory: [], storyBlocks: [
                     
     "001":BlockOfDayEpisode(chats:
                                 [Chat(text: "사건을 시작하기 저어언에 먼저 이 사건에 대해 알려주겠다.", image: "", type: .onlyText, who: .hwiryeong, characterFace: .basic, achievementToUnlock: .donhwamun, infomationToUnlock: .hwiryeong1 , gameCharacterToUnlock: .hwiryeong, caseToUnlock: nil, albumImageToUnlock: nil)],
@@ -103,14 +103,14 @@ var currentCharactersInfo: [String:GameCharacter] = [
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
 
 
-var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현재", episodeYear: 2020, episodeKingYear: "현재 2020년", episodeDesciption: "프롤로그임", episodePlaceImage: "changdeokgung lllu image", episodeCoverImage: "changdeokgung image sample", isCleared: true, chatHistory: [], storyBlocks: [ : /*
+var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현재", episodeYear: 2020, episodeKingYear: "현재 2020년", episodeDesciption: "프롤로그임", episodePlaceImage: "changdeokgung lllu image", episodeCoverImage: "changdeokgung image sample", isCleared: true, chatHistory: [], storyBlocks: [
     "001":BlockOfDayEpisode(chats:
                                 [Chat(text: "프롤로그임. 사건을 시작하기 저어언에 먼저 이 사건에 대해 알려주겠다.", image: "", type: .onlyText, who: .hwiryeong, characterFace: .basic, achievementToUnlock: .donhwamun, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil)],
                             choices: [
                                     Choice(text: "알겠어요.", likability: [], chatType: .onlyText, characterFace: .basic, nextTextIndex: "002", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
-                                    Choice(text: "이번은 어떤 내용인가요?", likability: [], chatType: .onlyText, characterFace: .basic, nextTextIndex: "002", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil)], achievement: nil, choiceSkip: false),
+                                    Choice(text: "이번은 어떤 내용인가요?", likability: [], chatType: .onlyText, characterFace: .basic, nextTextIndex: "078", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil)], achievement: nil, choiceSkip: false),
     "002":BlockOfDayEpisode(chats:
-                                [Chat(text: "네가 학교에서 수업을 잘 들었다면 이미 알 거라고 생각한다.", image: "", type: .onlyText, who: .hwiryeong, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: .hwiryeong1, caseToUnlock: nil, albumImageToUnlock: nil),
+                                [Chat(text: "네가 학교에서 수업을 잘 들었다면 이미 알 거라고 생각한다.", image: "", type: .onlyText, who: .hwiryeong, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: .hwiryeong, caseToUnlock: nil, albumImageToUnlock: nil),
                                 Chat(text: "이번 사건은 인조반정이야.", image: "", type: .onlyText, who: .hwiryeong, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil)],
                             choices: [
                                     Choice(text: "어... 많이 들어봤는데 잘 모르겠어요.", likability: [], chatType: .onlyText, characterFace: .basic, nextTextIndex: "004", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
@@ -178,7 +178,12 @@ var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현
                                  Chat(text: "자식을 잃은 슬픔과 그리움에 못 이겨 결국 능창군 뒤를 잇게 된다.", image: "", type: .onlyText, who: .hwiryeong, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil)],
                                           choices: [
                                 Choice(text: "", likability: [], chatType: .onlyText, characterFace: .basic, nextTextIndex: "End", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
-                                Choice(text: "", likability: [], chatType: .onlyText, characterFace: .basic, nextTextIndex: "End", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil)], achievement: nil, choiceSkip: false)*/
+                                Choice(text: "", likability: [], chatType: .onlyText, characterFace: .basic, nextTextIndex: "End", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil)], achievement: nil, choiceSkip: false),
+    "078":BlockOfDayEpisode(chats:
+                                [],
+                                          choices: [
+                                Choice(text: "", likability: [], chatType: .onlyText, characterFace: .basic, nextTextIndex: "003", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+                                Choice(text: "", likability: [], chatType: .onlyText, characterFace: .basic, nextTextIndex: "선태", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil)], achievement: nil, choiceSkip: false)
 ], currentCharacterNote:
     [GameCharacter(name: "이단희", profileImage: "danhee basic face", backGroundImage: "leedanheeBackground", description: "내 곁에 아무도 없다는 게 이젠 익숙해. 이런 내 삶이 바뀔 수 있을까?", infomation: [], likability: 0, isLocked: false),
      GameCharacter(name: "휘령", profileImage: "hwiryeong basic face", backGroundImage: "hwiryeong illu 1x", description: "네가 나의 마지막 희망이다. 네가 가진 그 1초가 나를, 이 세상을 바꾸는 법. 부디 이번엔 꼭 성공하길...", infomation: [Infomation(infomationID: .hwiryeong1, isLocked: false, text: "조선이 생겨났을 때부터 존재했다."), Infomation(infomationID: .hwiryeong2, isLocked: false, text: "휘령이 곧 조선. 하지만 큰 사건들을 겪고 나서 그는 힘을 잃게 되었다. 그 힘을 찾기 위해서 내가 필요하다고 한다."), Infomation(infomationID: .hwiryeong3, isLocked: true, text: "휘령은 남자이다."), Infomation(infomationID: .hwiryeong5, isLocked: true, text: "휘령은 휘령이다.")], likability: 0, isLocked: false),
