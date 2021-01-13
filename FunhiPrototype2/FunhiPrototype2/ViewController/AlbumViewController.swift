@@ -93,7 +93,13 @@ class AlbumViewController: UIViewController,UICollectionViewDelegate,UICollectio
     @IBOutlet weak var albumPopupImageView: UIImageView!
     @IBOutlet weak var albumPopupDescriptionLabel: UILabel!
     @IBAction func backAction(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        let transition:CATransition = CATransition()
+          transition.duration = 0.35
+          transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.moveIn
+        transition.subtype = CATransitionSubtype.fromTop
+          self.navigationController!.view.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.popViewController(animated: false)
     }
     @IBAction func popupExitButton(_ sender: Any) {
         popupViewOff(popupView: albumPopupBackgroundView, priviousScale: 1.0, afterScale: 0.2)
