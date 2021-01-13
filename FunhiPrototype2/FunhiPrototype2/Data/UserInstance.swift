@@ -8,15 +8,23 @@
 import Foundation
 import AVFoundation
 
-
-
-
-var player = User(setting: playerSetting, currentEpisodes: [prologueChapter,testChapter1,testChapter2,testChapter3,testChapter4], currentCharacterInfo: currentCharactersInfo, currentAchievementInfo: [Achievement(name: "업적1", image: "leedanheeBackground", id: .geumcheongyo , isLocked: false), Achievement(name: "업적2", image: "EP1LeedanheeBackground", id: .injeongjeon , isLocked: true), Achievement(name: "업적3", image: "EP1LeedanheeBackground", id:  .cat, isLocked: true), Achievement(name: "업적4", image: "leedanheeBackground", id: .achievement4 , isLocked: true) ], dayIndex: 0, dayId: "day0", currentChatId: "001")
+var player = User(
+    setting: playerSetting,
+    currentEpisodes: [prologueChapter,Chapter1,Chapter2,Chapter3,Chapter4],
+    currentCharacterInfo: currentCharactersInfo,
+    currentAchievementInfo: [
+        Achievement(name: "돈화문", image: "leedanheeBackground", id: .donhwamun , isLocked: true),
+        Achievement(name: "금천교", image: "EP1LeedanheeBackground", id: .geumcheongyo , isLocked: true),
+        Achievement(name: "인정전", image: "EP1LeedanheeBackground", id:  .injeongjeon, isLocked: true),
+        Achievement(name: "루스", image: "leedanheeBackground", id: .cat , isLocked: true),
+        Achievement(name: "휘령의 목걸이", image: "leedanheeBackground", id: .necklace , isLocked: true),
+        Achievement(name: "의심 속 믿음", image: "leedanheeBackground", id: .faith , isLocked: true)],
+    dayIndex: 0, dayId: "day0", currentChatId: "001")
 
 
 var playerSetting = Setting(bgmVolume: 0.5, effectVolume: 0.0, textSpeed: 1.0)
 
-let dummyData = GameData(stories: ["prologue":prologueChapter,"1592":testChapter1,"1623":testChapter2,"1919":testChapter3, "2003":testChapter4], histories: ["1":NoteCase(id: .case101, title: "", shortDescription: "", longDescription: "", isLocked: true)], achivements: [:], gameCharacters: currentCharactersInfo)
+let dummyData = GameData(stories: ["prologue":prologueChapter,"1592":Chapter1,"1623":Chapter2,"1919":Chapter3, "2003":Chapter4], histories: ["1":NoteCase(id: .case101, title: "", shortDescription: "", longDescription: "", isLocked: true)], achivements: [:], gameCharacters: currentCharactersInfo)
 //더미데이터에 들어간 히스토리나 업적들은 오류를 안뜨게 하기 위해서 일부러 넣어놓은 값들. 수정해도 됨.
 
 var timer:Timer!
