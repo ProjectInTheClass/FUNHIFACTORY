@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import AVFoundation
 class TitleCoverViewController: UIViewController {
 
     @IBOutlet weak var startButton: UIButton!
@@ -30,6 +30,11 @@ class TitleCoverViewController: UIViewController {
                   print(error)
               }
           }
+        
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        audioConfigure(bgmName: "LonelyHeart", isBGM: true)
     }
     @IBAction func startAction(_ sender: Any) {
         

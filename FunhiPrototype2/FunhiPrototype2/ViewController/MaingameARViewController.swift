@@ -14,8 +14,8 @@ class MaingameARViewController: UIViewController {
     @IBOutlet weak var arView: ARView!
     @IBOutlet weak var finishARButton: UIButton!
     
-    let rockAnchor = try! OpenLeaves.load장면()
-    let leafAnchor = try! OpenRock.load장면()
+    let leafAnchor = try! OpenLeaves.load장면()
+    let rockAnchor = try! OpenRock.load장면()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +24,9 @@ class MaingameARViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
 
         
-        let rockAnchor = try! OpenLeaves.load장면()
-        let leafAnchor = try! OpenRock.load장면()
+      
 
-        arView.scene.anchors.append(leafAnchor)
+        arView.scene.anchors.append(rockAnchor)
     }
     
     
@@ -39,7 +38,7 @@ class MaingameARViewController: UIViewController {
 
     @IBAction func finishARButtonAction(_ sender: Any) {
 
-       //arView.session.pause()
+       arView.session.pause()
 
         self.navigationController?.popViewController(animated: true)
     }

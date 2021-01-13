@@ -295,6 +295,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         transition.subtype = CATransitionSubtype.fromTop
           self.navigationController!.view.layer.add(transition, forKey: kCATransition)
         self.navigationController?.popViewController(animated: false)
+        audioConfigure(bgmName: "buttonTap", isBGM: false)
     }
     func changePageDesign() {
         if currentNoteTitle == .gameCharacters {

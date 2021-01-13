@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class mainGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     //Outlet
@@ -182,6 +183,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func notePushAction(_ sender: Any) {
+        audioConfigure(bgmName: "buttonTap", isBGM: false)
         let transition:CATransition = CATransition()
           transition.duration = 0.3
         transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
@@ -192,6 +194,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func albumPushAction(_ sender: Any) {
+        audioConfigure(bgmName: "buttonTap", isBGM: false)
         let transition:CATransition = CATransition()
           transition.duration = 0.3
         transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
@@ -202,6 +205,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func timelinePushAction(_ sender: Any) {
+        audioConfigure(bgmName: "buttonTap", isBGM: false)
         let transition:CATransition = CATransition()
           transition.duration = 0.3
         transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
