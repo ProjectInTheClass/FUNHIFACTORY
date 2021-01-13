@@ -15,10 +15,17 @@ class myTextTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        chatText.setLineSpacing(lineSpacing: 6)
+        designCell()
+        
         // Initialization code
     }
-
+    func designCell() {
+        chatText.setLineSpacing(lineSpacing: 6)
+        chatView.layer.borderWidth = 1.5
+        chatView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        chatView.layer.cornerRadius = 20
+        chatView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner, .layerMaxXMaxYCorner]
+    }
     func myTextCellUpdate(name:String,chat:String,profile:CharacterFace){
         profileNickname.text = name
         chatText.text = chat

@@ -35,7 +35,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bqM-sB-4aM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3791" y="-1160"/>
+            <point key="canvasLocation" x="3012" y="-722"/>
         </scene>
         <!--ARView-->
         <scene sceneID="WiF-wh-yID">
@@ -45,7 +45,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rj1-JO-gQ7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4292" y="-739"/>
+            <point key="canvasLocation" x="3021" y="-633"/>
         </scene>
         <!--Main Game View Controller-->
         <scene sceneID="VNi-lB-Xde">
@@ -218,7 +218,7 @@
                                                                     <real key="value" value="22.5"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                                    <integer key="value" value="2"/>
+                                                                    <real key="value" value="1.5"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
@@ -296,14 +296,6 @@
                                                         <constraint firstItem="z9s-VM-TCR" firstAttribute="leading" secondItem="vcG-rO-XTH" secondAttribute="leading" constant="9" id="uNN-Hy-eVs"/>
                                                         <constraint firstItem="z9s-VM-TCR" firstAttribute="top" secondItem="vcG-rO-XTH" secondAttribute="top" constant="14" id="wkq-gu-zNr"/>
                                                     </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                            <integer key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="15"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -366,14 +358,6 @@
                                                         <constraint firstItem="sIU-Ib-hvX" firstAttribute="leading" secondItem="yXJ-tz-mM8" secondAttribute="leading" constant="9" id="j1r-av-g3r"/>
                                                         <constraint firstAttribute="trailing" secondItem="sIU-Ib-hvX" secondAttribute="trailing" constant="10" id="syu-gi-aK8"/>
                                                     </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                            <integer key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="10"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -717,7 +701,7 @@
                                                 </constraints>
                                                 <state key="normal" title="앨범" image="image"/>
                                                 <connections>
-                                                    <segue destination="IJQ-AX-mDc" kind="show" id="hMI-z6-cCf"/>
+                                                    <action selector="albumPushAction:" destination="58V-k4-uXR" eventType="touchUpInside" id="Soe-if-DYp"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -748,7 +732,7 @@
                                                 </constraints>
                                                 <state key="normal" title="타임라인" image="road"/>
                                                 <connections>
-                                                    <segue destination="v7i-Z6-t2C" kind="show" id="whF-uZ-g5S"/>
+                                                    <action selector="timelinePushAction:" destination="58V-k4-uXR" eventType="touchUpInside" id="nSU-Dk-PvZ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -893,6 +877,8 @@
                         <outlet property="wholeView" destination="Atd-3g-ohX" id="xPY-ch-KoB"/>
                         <segue destination="NYb-GR-gaT" kind="show" identifier="goToARView" id="tkT-wW-Rbo"/>
                         <segue destination="fIu-oy-oyp" kind="show" identifier="noteSegue" animates="NO" id="NQK-hz-tWN"/>
+                        <segue destination="IJQ-AX-mDc" kind="show" identifier="albumSegue" animates="NO" id="bYG-Zw-qlf"/>
+                        <segue destination="v7i-Z6-t2C" kind="show" identifier="timelineSegue" animates="NO" id="USe-dh-gZr"/>
                     </connections>
                 </viewController>
                 <view contentMode="scaleToFill" id="p7L-ET-Qs2">

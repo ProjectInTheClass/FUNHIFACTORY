@@ -191,6 +191,28 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         performSegue(withIdentifier: "noteSegue", sender: nil)
     }
     
+    @IBAction func albumPushAction(_ sender: Any) {
+        let transition:CATransition = CATransition()
+          transition.duration = 0.3
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
+        transition.type = CATransitionType.moveIn
+          transition.subtype = CATransitionSubtype.fromBottom
+          self.navigationController!.view.layer.add(transition, forKey: kCATransition)
+        performSegue(withIdentifier: "albumSegue", sender: nil)
+    }
+    
+    @IBAction func timelinePushAction(_ sender: Any) {
+        let transition:CATransition = CATransition()
+          transition.duration = 0.3
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
+        transition.type = CATransitionType.moveIn
+          transition.subtype = CATransitionSubtype.fromBottom
+          self.navigationController!.view.layer.add(transition, forKey: kCATransition)
+        performSegue(withIdentifier: "timelineSegue", sender: nil)
+    }
+    
+  
+    
     
     override func viewDidAppear(_ animated: Bool) {
         chatUpdateTimer()
