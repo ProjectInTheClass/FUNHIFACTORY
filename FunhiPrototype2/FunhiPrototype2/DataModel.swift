@@ -70,8 +70,21 @@ class NoteCase :Codable{
 
 
 enum AchievementID :String,Codable{
-    case donhwamun,geumcheongyo,injeongjeon,cat,achievement4,necklace,parents,faith //프롤로그
-
+    case donhwamun,geumcheongyo,injeongjeon,cat,necklace,faith //프롤로그
+       /*
+        func info()-> Achievement{
+            switch self {
+            case .donhwamun:
+                <#code#>
+            case .geumcheongyo:
+            case .injeongjeon:
+            case .cat:
+            case .achievement4:
+            case .necklace:
+            case .parents:
+            case .faith:
+        }
+        */
 }
 // 프라퍼티 설명: 업적 이름, 업적 이미지, id(업적 획득 로직에서 사용), 업적 잠금 여부
 struct Achievement :Codable{
@@ -84,25 +97,41 @@ struct Achievement :Codable{
 //------------------------------------앨범 이미지------------------------------------
 
 enum AlbumImageID :String,Codable{
+// case는 가독성 좋게 하나하나 만드는 게 좋다고 희종쌤께 피드백 들은 적 있음
     case prologueCase1
     case achievement1Locked
     case chapter2case1
     case chapter2case2
     case chapter2case3
 
+    case donhwamun
+    case geumcheongyo
+    case injeongjeon
+    case necklace
+   
+
     
     func info() -> AlbumImage{
         switch self {
+        case .donhwamun:
+                return prologueChapter.currentAlbumImages[0]
+        case .geumcheongyo:
+                return prologueChapter.currentAlbumImages[1]
+        case .injeongjeon:
+                return prologueChapter.currentAlbumImages[2]
+        case .necklace:
+                return prologueChapter.currentAlbumImages[3]
         case .prologueCase1:
-            return testChapter1.currentAlbumImages[0]
+            return Chapter1.currentAlbumImages[0]
         case .achievement1Locked:
-            return testChapter1.currentAlbumImages[1]
+            return Chapter1.currentAlbumImages[1]
         case .chapter2case1:
                 return testChapter2.currentAlbumImages[0]
         case .chapter2case2:
                 return testChapter2.currentAlbumImages[1]
         case .chapter2case3:
                 return testChapter2.currentAlbumImages[2]
+
         }
         
     }
@@ -522,9 +551,9 @@ func checkCaseInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILa
     if currentChatCase != nil {
         for caseNote in currentDay().currentCaseNote.enumerated() {
             if caseNote.element.id == currentChatCase {
-                testChapter1.currentCaseNote[caseNote.offset].isLocked = false
+                Chapter1.currentCaseNote[caseNote.offset].isLocked = false
                 
-                print("사건 노트 '\(testChapter1.currentCaseNote[caseNote.offset].isLocked)' 해금됨")
+                print("사건 노트 '\(Chapter1.currentCaseNote[caseNote.offset].isLocked)' 해금됨")
                 
                 notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCaseNote[caseNote.offset].title, infoID: infoID)
                 globalPopupOpen = true
@@ -542,7 +571,7 @@ func checkgameCharacterInfomationInChat(popupView: UIView, backgroundView: UIVie
             for infomation in gameCharacter.element.infomation.enumerated() {
                 if infomation.element.infomationID == currentChatInfomation {
                     currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked = false
-                    print("'\(testChapter1.currentCharacterNote[gameCharacter.offset].isLocked)' 정보 해금됨")
+                    print("'\(Chapter1.currentCharacterNote[gameCharacter.offset].isLocked)' 정보 해금됨")
                     
                     notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCharacterNote[gameCharacter.offset].name, infoID: infoID)
                     globalPopupOpen = true
