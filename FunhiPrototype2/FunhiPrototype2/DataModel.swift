@@ -112,11 +112,11 @@ enum AlbumImageID :String,Codable{
         case .achievement1Locked:
             return Chapter1.currentAlbumImages[1]
         case .chapter2case1:
-                return testChapter2.currentAlbumImages[0]
+                return Chapter2.currentAlbumImages[0]
         case .chapter2case2:
-                return testChapter2.currentAlbumImages[1]
+                return Chapter2.currentAlbumImages[1]
         case .chapter2case3:
-                return testChapter2.currentAlbumImages[2]
+                return Chapter2.currentAlbumImages[2]
 
         }
         
