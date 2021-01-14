@@ -239,7 +239,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         transition.subtype = CATransitionSubtype.fromTop
           self.navigationController!.view.layer.add(transition, forKey: kCATransition)
         self.navigationController?.popViewController(animated: false)
-        audioConfigure(bgmName: "buttonTap", isBGM: false)
+        audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     
     //--------------------첫 번째 팝업--------------------

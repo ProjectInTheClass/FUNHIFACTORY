@@ -13,13 +13,14 @@ extension mainGameViewController {
 }
 var effectPlayer: AVAudioPlayer?
 var bgmPlayer: AVAudioPlayer?
-func audioConfigure(bgmName: String, isBGM: Bool) {
+func audioConfigure(bgmName: String, isBGM: Bool, ofType: String) {
+   
+    let urlString = Bundle.main.path(forResource: bgmName, ofType: ofType)
+
    
 
-    let urlString = Bundle.main.path(forResource: bgmName, ofType: "mp3")
-
     do {
-        try AVAudioSession.sharedInstance().setMode(.default)
+                try AVAudioSession.sharedInstance().setMode(.default)
         try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
 
         guard let urlString = urlString else {

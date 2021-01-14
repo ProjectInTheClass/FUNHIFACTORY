@@ -183,7 +183,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func notePushAction(_ sender: Any) {
-        audioConfigure(bgmName: "buttonTap", isBGM: false)
+        audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
         let transition:CATransition = CATransition()
           transition.duration = 0.3
         transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
@@ -194,7 +194,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func albumPushAction(_ sender: Any) {
-        audioConfigure(bgmName: "buttonTap", isBGM: false)
+        audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
         let transition:CATransition = CATransition()
           transition.duration = 0.3
         transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
@@ -205,7 +205,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func timelinePushAction(_ sender: Any) {
-        audioConfigure(bgmName: "buttonTap", isBGM: false)
+        audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
         let transition:CATransition = CATransition()
           transition.duration = 0.3
         transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)

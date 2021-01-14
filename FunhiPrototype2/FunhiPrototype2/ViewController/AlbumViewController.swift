@@ -100,7 +100,7 @@ class AlbumViewController: UIViewController,UICollectionViewDelegate,UICollectio
         transition.subtype = CATransitionSubtype.fromTop
           self.navigationController!.view.layer.add(transition, forKey: kCATransition)
         self.navigationController?.popViewController(animated: false)
-        audioConfigure(bgmName: "buttonTap", isBGM: false)
+        audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     @IBAction func popupExitButton(_ sender: Any) {
         popupViewOff(popupView: albumPopupBackgroundView, priviousScale: 1.0, afterScale: 0.2)
