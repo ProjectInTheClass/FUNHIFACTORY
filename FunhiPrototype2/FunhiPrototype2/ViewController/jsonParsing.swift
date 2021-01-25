@@ -50,7 +50,8 @@ func dataToDictionary(storyData : [BlockOfDayEpisodeForJson], storyStorage : [St
         let choices = ex.choices
         let achievement = ex.achievement
         let choiceSkip = ex.choiceSkip
-        let story = BlockOfDayEpisode(chats: chats, choices: choices, achievement: achievement, choiceSkip: choiceSkip)
+        let godChat = ex.isGodChat
+        let story = BlockOfDayEpisode(chats: chats, choices: choices, achievement: achievement, choiceSkip: choiceSkip, isGodChat: godChat)
         prologueChapter.storyBlocks[storyId] = story
     }
     
