@@ -24,7 +24,7 @@ var player = User(
 
 
 
-var playerSetting = Setting(bgmVolume: 0.5, effectVolume: 0.0, textSpeed: 1.0)
+var playerSetting = Setting(bgmVolume: 0.5, effectVolume: 0.0, textSpeed: 1.0, darkmode: false)
 
 let dummyData = GameData(stories: ["prologue":prologueChapter,"1592":Chapter1,"1623":Chapter2,"1919":Chapter3, "2003":Chapter4], histories: ["1":NoteCase(id: .case101, title: "", shortDescription: "", longDescription: "", isLocked: true)], achivements: [:], gameCharacters: currentCharactersInfo)
 //더미데이터에 들어간 히스토리나 업적들은 오류를 안뜨게 하기 위해서 일부러 넣어놓은 값들. 수정해도 됨.

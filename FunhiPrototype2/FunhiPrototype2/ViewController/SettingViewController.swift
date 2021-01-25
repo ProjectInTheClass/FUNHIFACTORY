@@ -18,6 +18,14 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+   
+        
+    @IBOutlet weak var darkmodeSwitch: UISwitch!
+    @IBAction func darkmodeSwitchTapped(_ sender: UISwitch) {
+       
+        player.setting.darkmode = darkmodeSwitch.isOn ? true : false
+    }
+    
     @IBAction func creditTapped(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(identifier: "credit")
         vc?.modalPresentationStyle = .fullScreen

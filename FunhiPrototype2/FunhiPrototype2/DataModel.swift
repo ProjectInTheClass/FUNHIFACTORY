@@ -15,9 +15,44 @@ struct Setting {
     var bgmVolume: Double
     var effectVolume: Double
     var textSpeed: Double
+    var darkmode: Bool
     
 }
-
+var xImage: String {
+    if playerSetting.darkmode {
+        return "black x"
+    } else {
+        return "white x"
+    }
+}
+var UIbackgroundColor: UIColor {
+    if player.setting.darkmode {
+        return UIColor(displayP3Red: 0.18, green: 0.18, blue: 0.18, alpha: 1)
+    } else {
+        return UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 1)
+    }
+}
+var UIpointColor: UIColor {
+    if player.setting.darkmode {
+        return UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 1)
+    } else {
+        return UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0)
+    }
+}
+var UInoteBackgroundColor: UIColor {
+    if player.setting.darkmode {
+        return UIColor(displayP3Red: 0.367, green: 0.367, blue: 0.367, alpha: 1)
+    } else {
+        return UIColor(displayP3Red: 0.862, green: 0.862, blue: 0.862, alpha: 1)
+    }
+}
+var UInotePointColor: UIColor {
+    if player.setting.darkmode {
+        return UIColor(displayP3Red: 0.083, green: 0.083, blue: 0.083, alpha: 1)
+    } else {
+        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+    }
+}
 //------------------------------------수첩 사건------------------------------------
 
 // player.currentEpisodes에서 현재 플레이중인 episode 골라내는 인덱스. 현재 에피소드 이름으로 식별함.

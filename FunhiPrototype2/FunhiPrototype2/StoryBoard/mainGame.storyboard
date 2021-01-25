@@ -1844,14 +1844,37 @@
                                         </constraints>
                                         <color key="onTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다크 모드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x45-M5-zLr">
+                                        <rect key="frame" x="24" y="384" width="78.5" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="taX-5k-jcg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="20"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MR3-VW-jUJ">
+                                        <rect key="frame" x="339" y="379" width="53" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="iBH-3o-ZuW"/>
+                                            <constraint firstAttribute="width" constant="51" id="xe2-4r-gd3"/>
+                                        </constraints>
+                                        <color key="onTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="darkmodeSwitchTapped:" destination="huL-hd-yMs" eventType="valueChanged" id="Jee-YK-Ed3"/>
+                                        </connections>
+                                    </switch>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="P6v-Cb-g0q" firstAttribute="top" secondItem="Zrr-lD-g3e" secondAttribute="top" constant="43" id="0N5-6v-zOl"/>
                                     <constraint firstItem="J9f-wj-QSN" firstAttribute="top" secondItem="P6v-Cb-g0q" secondAttribute="bottom" constant="52" id="44S-1a-rUz"/>
+                                    <constraint firstItem="x45-M5-zLr" firstAttribute="leading" secondItem="Zrr-lD-g3e" secondAttribute="leading" constant="24" id="4cG-3k-Lwn"/>
                                     <constraint firstItem="Uhb-m7-kCR" firstAttribute="leading" secondItem="Zrr-lD-g3e" secondAttribute="leading" constant="24" id="67E-Ha-xIh"/>
                                     <constraint firstItem="Uhb-m7-kCR" firstAttribute="top" secondItem="P6v-Cb-g0q" secondAttribute="bottom" constant="57" id="Gkk-4o-z4a"/>
+                                    <constraint firstItem="J9f-wj-QSN" firstAttribute="top" secondItem="MR3-VW-jUJ" secondAttribute="bottom" constant="8" symbolic="YES" id="HvT-Bs-n55"/>
                                     <constraint firstAttribute="trailing" secondItem="D2E-fg-Swn" secondAttribute="trailing" constant="26" id="J5d-rV-ELl"/>
+                                    <constraint firstItem="Uhb-m7-kCR" firstAttribute="top" secondItem="x45-M5-zLr" secondAttribute="bottom" constant="15" id="O3q-tD-H5r"/>
                                     <constraint firstAttribute="bottom" secondItem="D2E-fg-Swn" secondAttribute="bottom" constant="61" id="ONX-g5-1ZE"/>
                                     <constraint firstItem="P6v-Cb-g0q" firstAttribute="leading" secondItem="Zrr-lD-g3e" secondAttribute="leading" constant="24" id="U3C-JG-Bbe"/>
                                     <constraint firstAttribute="trailing" secondItem="P6v-Cb-g0q" secondAttribute="trailing" constant="24" id="UcP-OE-Wdh"/>
@@ -1859,6 +1882,7 @@
                                     <constraint firstAttribute="trailing" secondItem="w8Z-qq-ydY" secondAttribute="trailing" constant="21" id="X8e-dy-kzU"/>
                                     <constraint firstAttribute="bottom" secondItem="w8Z-qq-ydY" secondAttribute="bottom" constant="56" id="dSa-vx-ePt"/>
                                     <constraint firstAttribute="trailing" secondItem="J9f-wj-QSN" secondAttribute="trailing" constant="24" id="iHr-Bb-2lk"/>
+                                    <constraint firstAttribute="trailing" secondItem="MR3-VW-jUJ" secondAttribute="trailing" constant="24" id="rHj-Ml-pml"/>
                                     <constraint firstItem="w8Z-qq-ydY" firstAttribute="leading" secondItem="Zrr-lD-g3e" secondAttribute="leading" constant="27" id="zg6-Cz-nWk"/>
                                 </constraints>
                             </view>
@@ -1885,6 +1909,9 @@
                             <constraint firstItem="WGC-8g-KAF" firstAttribute="trailing" secondItem="ruB-S2-ZGY" secondAttribute="trailing" id="ykw-hi-kMy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="darkmodeSwitch" destination="MR3-VW-jUJ" id="QA2-6m-DVa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RwW-KZ-nCG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

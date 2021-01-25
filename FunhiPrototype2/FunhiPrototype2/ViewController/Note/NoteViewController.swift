@@ -280,7 +280,10 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         return CGFloat(cellHeight)
     }
 //------여기부터 이외 아웃렛, 액션-------------
-    @IBOutlet weak var topBar: UIView!
+    @IBOutlet var backgroundView: UIView!
+    @IBOutlet weak var exitButton: UIButton!
+    @IBOutlet var titleLabel: UILabel!
+    
     @IBOutlet weak var noteBackgroundView: UIView!
     @IBOutlet weak var gameCharactersBookmarkView: UIView!
     @IBOutlet weak var gameCharactersBookmarkLineView: UIView!
@@ -458,6 +461,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     override func viewWillAppear(_ animated: Bool) {
         self.currentNoteTitle = .gameCharacters
         changePageDesign()
+        updateDarkmodeColor()
         noteTableView.reloadData()
     }
     
@@ -475,11 +479,30 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
 
     
 }
+
+
 extension NoteViewController {
     
+    func updateDarkmodeColor() {
+        backgroundView.backgroundColor = UIbackgroundColor
+        titleLabel.textColor = UIpointColor
+        exitButton.setImage(UIImage(named: xImage), for: .normal)
+        gameCharactersBookmarkView.backgroundColor = UInoteBackgroundColor
+        noteBackgroundView.backgroundColor = UInoteBackgroundColor
+        noteBackgroundView.layer.borderColor = UIpointColor.cgColor
+        casesBookmarkView.backgroundColor = UInotePointColor
+        casesBookmarkView.layer.borderColor = UIpointColor.cgColor
+        page1Button.setTitleColor(UIpointColor, for: .normal)
+        page2Button.setTitleColor(UIColor(red: 0.646, green: 0.646, blue: 0.646, alpha: 1), for: .normal)
+        page3Button.setTitleColor(UIColor(red: 0.646, green: 0.646, blue: 0.646, alpha: 1), for: .normal)
+        page4Button.setTitleColor(UIColor(red: 0.646, green: 0.646, blue: 0.646, alpha: 1), for: .normal)
+        page5Button.setTitleColor(UIColor(red: 0.646, green: 0.646, blue: 0.646, alpha: 1), for: .normal)
+        
+        
+    }
     func designObjects() {
    
- 
+     
     //--------------수첩 --------------
         noteBackgroundView.layer.backgroundColor = UIColor(red: 0.862, green: 0.862, blue: 0.862, alpha: 1).cgColor
     noteBackgroundView.layer.cornerRadius = 5
