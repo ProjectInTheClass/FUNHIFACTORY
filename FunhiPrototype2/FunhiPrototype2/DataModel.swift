@@ -366,6 +366,7 @@ struct BlockOfDayEpisode :Codable{
     let choices: [Choice]
     let achievement: Achievement?
     let choiceSkip : Bool
+    let isGodChat : Bool
 }
 //n일차
 // 프라퍼티 설명: 에피소드 이름(ex)인조반정), 에피소드 연도(1xxx년), 에피소드 설명(인조반정에서 무슨 일이 일어날 예정이다 과연 주인공은 이를 막을 수 있을까? 어쩌구저쩌구), 에피소드 이미지(전각 이미지)스토리블럭(대사 인스턴스)
@@ -660,6 +661,7 @@ struct BlockOfDayEpisodeForJson :Codable{
     let choices: [Choice]
     let achievement: Achievement?
     let choiceSkip : Bool
+    let isGodChat : Bool
 }
 
 open class CustomLabel : UILabel {
