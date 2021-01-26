@@ -46,7 +46,7 @@ class SelectStageTableViewCell: UITableViewCell {
             
         
         
-        checkBox.layer.cornerRadius = 8
+        checkBox.roundCorners(topLeft: 2, topRight: 7, bottomLeft: 2, bottomRight: 2)
         checkBox.layer.borderWidth = 2
         checkBox.layer.borderColor = UIColor(red: 0.106, green: 0.157, blue: 0.22, alpha: 1).cgColor
         
