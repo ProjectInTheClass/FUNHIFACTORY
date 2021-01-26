@@ -220,7 +220,6 @@ enum GameCharacterID :String,Codable{
     case hwiryeong
     case tourguide
     case teacher
-    case unknown
     
     func info() -> GameCharacter{
         switch self {
@@ -232,8 +231,6 @@ enum GameCharacterID :String,Codable{
             return prologueChapter.currentCharacterNote[2]
         case .teacher:
             return prologueChapter.currentCharacterNote[3]
-        case .unknown:
-            return prologueChapter.currentCharacterNote[4]
         }
     }
 }
@@ -249,8 +246,9 @@ class GameCharacter :Codable{
     var infomation: [Infomation]
     var likability: Int
     var isLocked: Bool
+    let profileBackgroundColor : CodableColor
     
-    init(name: String, profileImage: String ,backGroundImage: String, description: String, infomation: [Infomation], likability:Int, isLocked: Bool) {
+    init(name: String, profileImage: String ,backGroundImage: String, description: String, infomation: [Infomation], likability:Int, isLocked: Bool, pfBackgroundColor: UIColor) {
         self.name = name
         self.profileImage = profileImage
         self.backGroundImage = backGroundImage
@@ -258,6 +256,7 @@ class GameCharacter :Codable{
         self.infomation = infomation
         self.likability = likability
         self.isLocked = isLocked
+        self.profileBackgroundColor = pfBackgroundColor.codable()
     }
 }
 //------------------------------------유저------------------------------------
@@ -299,7 +298,6 @@ func currentChatAmount() -> Int{
 func currentChatType() -> ChatType{
     return currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type
 }
-
 //------------------------------------스토리------------------------------------
 
 // 대화할 때 나오는 텍스트 블럭 "종류"

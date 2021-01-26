@@ -83,7 +83,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 else if currentChatArray[indexPath.row].type == .onlyText {
                     print("상대 텍스트 출력")
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
-                    cell.opTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText,normalProfile: currentChatArray[indexPath.row].who.info().profileImage, mainProfile: currentChatArray[indexPath.row].characterFace, isLocked: currentChatArray[indexPath.row].who.info().isLocked)
+                    cell.opTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText,normalProfile: currentChatArray[indexPath.row].who.info().profileImage, mainProfile: currentChatArray[indexPath.row].characterFace, isLocked: currentChatArray[indexPath.row].who.info().isLocked, profileBackGroundColor: currentChatArray[indexPath.row].who.info().profileBackgroundColor)
                     return cell
                 }
             //터치할 수 없는 이미지
