@@ -250,7 +250,7 @@ class GameCharacter :Codable{
     var likability: Int
     var isLocked: Bool
     
-    init(name: String, profileImage: String ,backGroundImage: String, description: String, infomation: [Infomation], likability:Int, isLocked: Bool ) {
+    init(name: String, profileImage: String ,backGroundImage: String, description: String, infomation: [Infomation], likability:Int, isLocked: Bool) {
         self.name = name
         self.profileImage = profileImage
         self.backGroundImage = backGroundImage
@@ -258,11 +258,8 @@ class GameCharacter :Codable{
         self.infomation = infomation
         self.likability = likability
         self.isLocked = isLocked
-
     }
-    
 }
-
 //------------------------------------유저------------------------------------
 
 //  프라퍼티 설명: 게임 설정 정보, 플레이한 에피소드 내용, ???, 유저 업적, 획득된 업적 개수, 앨범 이미지, ??, ??, 현재 게임 대화 진행현황 id
@@ -270,8 +267,6 @@ struct User {
     var setting: Setting
     var currentEpisodes: [Episode]
     //var timellne: nil
-    // 얘 역할 주석으로 설명 부탁합니다 궁금함
-    var currentCharacterInfo: [String:GameCharacter]
     var currentAchievementInfo: [Achievement]
     //획득한 업적 개수 계산해주는 프로퍼티. 주인공 노트 화면에서 사용합니다
     var clearedAchievementCount: Int {
@@ -415,7 +410,6 @@ struct GameData {
     let stories: [String:Episode]
     let histories: [String:NoteCase]
     let achivements: [String:Achievement]
-    let gameCharacters: [String:GameCharacter]
 }
 
 enum CharacterFace: String, Codable{
@@ -713,6 +707,4 @@ extension UILabel {
         self.attributedText = attributedString
      
     }
-
 }
-
