@@ -33,7 +33,7 @@ class myTextTableViewCell: UITableViewCell {
             switch profile {
             case .none: return "none"
             case .angry1: return "danhee angry face 1"
-            case .angry2: return "danhee angryface 2"
+            case .angry2: return "danhee angry face 2"
             case .basic:   return "danhee basic face"
             case .cry1: return " danhee cry face 1"
             case .cry2: return " danhee cry face 2"
