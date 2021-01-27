@@ -21,7 +21,25 @@ extension mainGameViewController{
     func chatUpdate(){
         print("------------chatUpdate 시작합니다------------")
         print("현재 속도: \(player.setting.textSpeed)")
-        if indexNumber < currentChatAmount() && currentBlockOfDay().chats[indexNumber].type != .ar{
+        print("스토리 \(indexNumber)/\(currentChatAmount())")
+        //게임 오버 시 뜰 배드엔딩 창 띄우기.
+        if indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex == "badEnding"{
+            timer.invalidate()
+            player.currentChatId = "001"
+            indexNumber = 0
+            currentChatArray.removeAll()
+            mainGameTableView.reloadData()
+            let storyBoard=storyboard?.instantiateViewController(withIdentifier: "Ending")
+            storyBoard?.modalPresentationStyle = .fullScreen
+            present(storyBoard!, animated: true, completion: nil)
+            //업적이랑 이미지나 캐릭터 정보를 다 삭제해야 하나?
+            return
+        }
+        //에피소드를 깼을 때
+        else if indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex == "episodeSuccess"{
+            
+        }
+        else if indexNumber < currentChatAmount() && currentBlockOfDay().chats[indexNumber].type != .ar{
             print("채팅이 업데이트되었습니다.")
             currentChatArray.append(currentBlockOfDay().chats[indexNumber])
             self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)}
@@ -50,7 +68,7 @@ extension mainGameViewController{
             currentChatArray.append(currentBlockOfDay().chats[indexNumber])
             self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
         }
-        print("스토리 \(indexNumber+1)/\(currentChatAmount())")
+        
         // 아래 네 개 각각 지금 챗에 새 업적/새 인물/새 역사 사건/새 인물 정보 있나 확인한 뒤 있는 경우 팝업창 띄우기/노트 정보 수정하는 코드입니다
         // 그 아래는 앨범 이미지 확인하는 함수예요
         checkAchievementInChat(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel)

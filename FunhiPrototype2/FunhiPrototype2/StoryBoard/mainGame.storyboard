@@ -543,10 +543,10 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apw-hX-SQ4">
                                                     <rect key="frame" x="0.0" y="22" width="414" height="41"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="캐릭터의 행동이 들어갈 자리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oX6-rE-Tks">
-                                                            <rect key="frame" x="123" y="11.5" width="168.5" height="18"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="캐릭터의 행동이 들어갈 자리" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oX6-rE-Tks">
+                                                            <rect key="frame" x="24" y="11.5" width="366" height="18"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="18" id="YgJ-7V-poo"/>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="YgJ-7V-poo"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -555,10 +555,12 @@
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.75308370589999996" green="0.75306934120000002" blue="0.75307911630000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
-                                                        <constraint firstItem="oX6-rE-Tks" firstAttribute="centerY" secondItem="apw-hX-SQ4" secondAttribute="centerY" id="74W-BT-dfc"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="41" id="Abe-dF-eCw"/>
-                                                        <constraint firstItem="oX6-rE-Tks" firstAttribute="centerX" secondItem="apw-hX-SQ4" secondAttribute="centerX" id="mh2-mk-uS3"/>
+                                                        <constraint firstAttribute="bottom" secondItem="oX6-rE-Tks" secondAttribute="bottom" constant="11.5" id="MGu-Jz-9fN"/>
+                                                        <constraint firstItem="oX6-rE-Tks" firstAttribute="leading" secondItem="apw-hX-SQ4" secondAttribute="leading" constant="24" id="PXE-AP-W6o"/>
+                                                        <constraint firstAttribute="trailing" secondItem="oX6-rE-Tks" secondAttribute="trailing" constant="24" id="fTa-9E-JbL"/>
                                                         <constraint firstAttribute="width" constant="414" id="pAP-AU-xkS"/>
+                                                        <constraint firstItem="oX6-rE-Tks" firstAttribute="top" secondItem="apw-hX-SQ4" secondAttribute="top" constant="11.5" id="xAb-i8-Q1a"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -641,7 +643,7 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xvg-R4-18h" userLabel="ChoiceInCell">
                                                                     <rect key="frame" x="35" y="1.5" width="344" height="45"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="선택지입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZV-AS-80r">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="선택지입니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZV-AS-80r">
                                                                             <rect key="frame" x="27" y="12.5" width="290" height="20"/>
                                                                             <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="16"/>
                                                                             <nil key="textColor"/>
@@ -1111,6 +1113,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nKe-H5-t52" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3673.913043478261" y="-649.55357142857144"/>
+        </scene>
+        <!--Ending View Controller-->
+        <scene sceneID="cTJ-Rs-1eL">
+            <objects>
+                <viewController restorationIdentifier="Ending" storyboardIdentifier="Ending" id="bmc-aH-hEP" customClass="endingViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="71W-7j-DzD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배드 엔딩" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4e6-vx-Rgq">
+                                <rect key="frame" x="110.5" y="155" width="193" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldr-Fj-LCb">
+                                <rect key="frame" x="144.5" y="603" width="125" height="48"/>
+                                <color key="backgroundColor" red="0.83921568629999999" green="0.92156862750000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="pPz-Qq-SH3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <state key="normal" title="다시 시작">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="restartButton:" destination="bmc-aH-hEP" eventType="touchUpInside" id="Tu6-lM-3Ov"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="엔딩에 대한 부가적인 설명하기" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5I-wz-rsz">
+                                <rect key="frame" x="81.5" y="232" width="251" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="GrP-Ly-7xV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HdX-p4-awx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HdX-p4-awx" firstAttribute="trailing" secondItem="4e6-vx-Rgq" secondAttribute="trailing" constant="110.5" id="2tO-vN-1d3"/>
+                            <constraint firstItem="ldr-Fj-LCb" firstAttribute="top" secondItem="4e6-vx-Rgq" secondAttribute="bottom" constant="418" id="Rhk-vV-9Ia"/>
+                            <constraint firstItem="m5I-wz-rsz" firstAttribute="centerX" secondItem="71W-7j-DzD" secondAttribute="centerX" id="iJs-he-2PH"/>
+                            <constraint firstItem="4e6-vx-Rgq" firstAttribute="leading" secondItem="HdX-p4-awx" secondAttribute="leading" constant="110.5" id="rQy-6H-PQn"/>
+                            <constraint firstItem="m5I-wz-rsz" firstAttribute="top" secondItem="4e6-vx-Rgq" secondAttribute="bottom" constant="47" id="uLb-LN-lPI"/>
+                            <constraint firstItem="ldr-Fj-LCb" firstAttribute="centerX" secondItem="71W-7j-DzD" secondAttribute="centerX" id="yU6-1e-xiX"/>
+                            <constraint firstItem="4e6-vx-Rgq" firstAttribute="top" secondItem="HdX-p4-awx" secondAttribute="top" constant="111" id="zIh-vs-9Io"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="endingInformation" destination="m5I-wz-rsz" id="QHt-XA-BwZ"/>
+                        <outlet property="endingType" destination="4e6-vx-Rgq" id="coz-Wb-I5c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rAa-Gn-YRp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4350.7246376811599" y="-279.24107142857139"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="zMK-4P-pvq">
