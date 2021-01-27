@@ -29,8 +29,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var chatToGodView: UIView!
     @IBOutlet var choiceCollectionView: UICollectionView!
-    @IBOutlet var godChat: UIView!
-    @IBOutlet var godChatTableView: UITableView!
     
     
     @IBAction func notePopupViewXButton(_ sender: Any) {
@@ -138,8 +136,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             pageControl.hidesForSinglePage = true
             collectionView.showsVerticalScrollIndicator = false
             collectionView.showsHorizontalScrollIndicator = false
-            //scrollViewDidEndDecelerating(collectionView)
-            collectionView.decelerationRate = UIScrollView.DecelerationRate.fast
+            scrollViewDidEndDecelerating(collectionView)
+            //collectionView.decelerationRate = UIScrollView.DecelerationRate.fast
             pageControl.currentPageIndicatorTintColor = UIColor.black
         }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -282,13 +280,15 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         chatUpdateTimer()
     }
     @IBAction func chatWithGod(_ sender: Any) {
-        self.view!.addSubview(godChat)
-        godChat.centerXAnchor.constraint(equalTo: wholeView.centerXAnchor).isActive = true
-        godChat.centerYAnchor.constraint(equalTo: wholeView.centerYAnchor).isActive = true
-        
+        timer.invalidate()
+        chatToGodView.isHidden = true
+        topBar.isHidden = true
+        let storyBoard = storyboard?.instantiateViewController(withIdentifier: "godChat")
+        storyBoard?.modalPresentationStyle = .fullScreen
+        present(storyBoard!, animated: false, completion: chatUpdateTimer)
     }
     @IBAction func closeGodChat(_ sender: Any) {
-        godChat.removeFromSuperview()
+        dismiss(animated: false, completion: nil)
     }
     func just(){
         if mainGameTableView.contentSize.height > 608{
