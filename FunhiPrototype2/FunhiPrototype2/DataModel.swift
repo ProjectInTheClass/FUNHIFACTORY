@@ -31,10 +31,24 @@ var colorTopbarLine: UIColor {
     if player.setting.darkmode {
         return UIColor(hex: "#D9D9D9", alpha: 1)
     } else {
-        return UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 1)
+        return UIColor(hex: "#FFFFFF", alpha: 1)
     }
 }
 
+var colorWhite: UIColor {
+    if player.setting.darkmode {
+        return UIColor(hex: "#FFFFFF", alpha: 1)
+    } else {
+        return UIColor(hex: "#D9D9D9", alpha: 1)
+    }
+}
+var colorBlack: UIColor {
+    if player.setting.darkmode {
+        return UIColor(hex: "#000000", alpha: 1)
+    } else {
+        return UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 1)
+    }
+}
 //시작 버튼 색깔
 var colorEPCellBackground: UIColor {
     if !player.setting.darkmode {

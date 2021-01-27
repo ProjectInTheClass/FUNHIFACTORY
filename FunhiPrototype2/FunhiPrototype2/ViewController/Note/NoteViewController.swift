@@ -484,15 +484,15 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
 extension NoteViewController {
     
     func updateDarkmodeColor() {
-        backgroundView.backgroundColor = UIbackgroundColor
-        titleLabel.textColor = UIpointColor
+        backgroundView.backgroundColor = colorNoteUnselectedBackground
+        titleLabel.textColor = colorPopupHeader
         exitButton.setImage(UIImage(named: xImage), for: .normal)
-        gameCharactersBookmarkView.backgroundColor = UInoteBackgroundColor
-        noteBackgroundView.backgroundColor = UInoteBackgroundColor
-        noteBackgroundView.layer.borderColor = UIpointColor.cgColor
-        casesBookmarkView.backgroundColor = UInotePointColor
-        casesBookmarkView.layer.borderColor = UIpointColor.cgColor
-        page1Button.setTitleColor(UIpointColor, for: .normal)
+        gameCharactersBookmarkView.backgroundColor = colorNoteUnselectedBackground
+        noteBackgroundView.backgroundColor = colorNoteUnselectedBackground
+        noteBackgroundView.layer.borderColor = colorPopupHeader.cgColor
+        casesBookmarkView.backgroundColor = colorNoteUnselectedBackground
+        casesBookmarkView.layer.borderColor = colorNoteUnselectedBackground.cgColor
+        page1Button.setTitleColor(colorNoteUnselectedBackground, for: .normal)
         page2Button.setTitleColor(UIColor(red: 0.646, green: 0.646, blue: 0.646, alpha: 1), for: .normal)
         page3Button.setTitleColor(UIColor(red: 0.646, green: 0.646, blue: 0.646, alpha: 1), for: .normal)
         page4Button.setTitleColor(UIColor(red: 0.646, green: 0.646, blue: 0.646, alpha: 1), for: .normal)

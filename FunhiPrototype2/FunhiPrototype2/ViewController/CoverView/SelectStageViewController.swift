@@ -21,6 +21,7 @@ class SelectStageTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         designButton()
+        setColor()
         let tap = UILongPressGestureRecognizer(target: self, action: #selector(changeColorObjc))
                 tap.minimumPressDuration = 0
         cellBackground.addGestureRecognizer(tap)
@@ -80,6 +81,10 @@ class SelectStageTableViewCell: UITableViewCell {
         checkBox.layer.borderColor = UIColor(red: 0.106, green: 0.157, blue: 0.22, alpha: 1).cgColor
         
     }
+    func setColor() {
+        cellBackground.backgroundColor = colorEPCellBackground
+        leftBox.backgroundColor = colorEPCellspine
+    }
 
 }
   
@@ -107,7 +112,11 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         } else {
             cell.lockedView.isHidden = true
         }
-        
+        if selectedRowIndex != nil && selectedRowIndex == indexPath.row{
+            cell.cellBackground.backgroundColor = .darkGray
+                  }else{
+                     
+                  }
         cell.selectionStyle = .none
         return cell
     }
@@ -115,8 +124,11 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 147
     }
-
+    var selectedRowIndex: Int?
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectStageTableView.beginUpdates()
+        selectedRowIndex = indexPath.row
+        self.selectStageTableView.endUpdates()
         let dataToSend: Episode
         dataToSend = player.currentEpisodes[indexPath.row]
         
