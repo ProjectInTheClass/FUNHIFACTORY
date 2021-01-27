@@ -69,7 +69,7 @@ class AlbumViewController: UIViewController,UICollectionViewDelegate,UICollectio
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard !player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].isLocked else { return }
-        popupViewOn(popupView: albumPopupBackgroundView, titleLabel: albumPoopupTitleLabel, descriptionLabel: albumPopupDescriptionLabel, imageView: albumPopupImageView, priviousScale: 0.5, afterScale: 1.0, indexPath: indexPath)
+        popupViewOn(blackView: albumPopupBackgroundView,popupView: albumPopupBoxView, titleLabel: albumPoopupTitleLabel, descriptionLabel: albumPopupDescriptionLabel, imageView: albumPopupImageView, priviousScale: 0.5, afterScale: 1.0, indexPath: indexPath)
         
     }
     
@@ -103,7 +103,7 @@ class AlbumViewController: UIViewController,UICollectionViewDelegate,UICollectio
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     @IBAction func popupExitButton(_ sender: Any) {
-        popupViewOff(popupView: albumPopupBackgroundView, priviousScale: 1.0, afterScale: 0.2)
+        popupViewOff(popupView: albumPopupBoxView, blackView: albumPopupBackgroundView, priviousScale: 1.0, afterScale: 0.2)
     }
     
     var currentNotePageInt: Int = 1 {
@@ -202,7 +202,7 @@ class AlbumViewController: UIViewController,UICollectionViewDelegate,UICollectio
         albumPopupBoxTopBarView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
   
-    func popupViewOn(popupView: UIView,titleLabel: UILabel, descriptionLabel: UILabel, imageView: UIImageView, priviousScale: CGFloat, afterScale: CGFloat, indexPath: IndexPath) {
+    func popupViewOn(blackView: UIView, popupView: UIView,titleLabel: UILabel, descriptionLabel: UILabel, imageView: UIImageView, priviousScale: CGFloat, afterScale: CGFloat, indexPath: IndexPath) {
         let backgroundView = self.view!
         let currentAlbumImage = player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row]
         //뷰 두 개(이미지, 글씨) 서브뷰로 추가
@@ -210,14 +210,14 @@ class AlbumViewController: UIViewController,UICollectionViewDelegate,UICollectio
         imageView.image = UIImage(named: currentAlbumImage.image)
         descriptionLabel.text = currentAlbumImage.description
         
-        backgroundView.addSubview(popupView)
-        backgroundView.bringSubviewToFront(popupView)
+        backgroundView.addSubview(blackView)
+        backgroundView.bringSubviewToFront(blackView)
         
         //이미지뷰만 히든 풀고, 뷰들 정렬함. 텍스트뷰는 서서히 나타나는 애니메이션을 위해 알파 0으로 설정해둠.
-        popupView.center = backgroundView.center
+        blackView.center = backgroundView.center
         popupView.isHidden = false
         popupView.alpha = 0
-      
+        blackView.alpha = 1
         popupView.transform = CGAffineTransform(scaleX: priviousScale, y: priviousScale)
        
         //애니메이션
@@ -226,7 +226,7 @@ class AlbumViewController: UIViewController,UICollectionViewDelegate,UICollectio
             popupView.alpha = 1
         }
     }
-    func popupViewOff(popupView: UIView, priviousScale: CGFloat, afterScale: CGFloat) {
+    func popupViewOff(popupView: UIView, blackView: UIView, priviousScale: CGFloat, afterScale: CGFloat) {
         let backgroundView = self.view!
        
      
@@ -237,7 +237,13 @@ class AlbumViewController: UIViewController,UICollectionViewDelegate,UICollectio
             popupView.transform = CGAffineTransform(scaleX: afterScale, y: afterScale)
             popupView.alpha = 0
         } completion: { (Bool) in
-            popupView.removeFromSuperview()
+            UIView.animate(withDuration: 0.1) {
+                blackView.alpha = 0
+            } completion: { (Bool) in
+                blackView.removeFromSuperview()
+            }
+
+            
         }
         
     }

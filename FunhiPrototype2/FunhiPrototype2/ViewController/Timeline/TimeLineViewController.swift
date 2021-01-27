@@ -136,6 +136,16 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
                 cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[indexPath.row].episodePlaceImage)
                 // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
                 cell.lockedView.isHidden = player.currentEpisodes[indexPath.row].isCleared
+                cell.selectionStyle = .none
+                returnCell = cell
+            } else if indexPath.row == player.currentEpisodes.count-1{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "endingTimelineTableViewCell", for: indexPath) as! PrologueTimelineTableViewCell
+                cell.episodePlace.text = player.currentEpisodes[indexPath.row].episodePlace
+                cell.episodeYear.text = "\(player.currentEpisodes[indexPath.row].episodeYear)년"
+                cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[indexPath.row].episodePlaceImage)
+                // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
+                cell.lockedView.isHidden = player.currentEpisodes[indexPath.row].isCleared
+                cell.selectionStyle = .none
                 returnCell = cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "timelineTableViewCell", for: indexPath) as! TimelineTableViewCell
@@ -144,6 +154,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
                 cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[indexPath.row].episodePlaceImage)
                 // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
                 cell.lockedView.isHidden = player.currentEpisodes[indexPath.row].isCleared
+                cell.selectionStyle = .none
                 returnCell = cell
             }
         }
@@ -162,7 +173,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == timelineTableView {
-            if indexPath.row == 0 {
+            if indexPath.row == 0 || indexPath.row == player.currentEpisodes.count-1{
                 return 210
             } else {
                 return 147

@@ -252,7 +252,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             guard !player.currentEpisodes[currentNotePageInt].currentCaseNote [indexPath.row].isLocked else { return }
             caseNameLabel.text = player.currentEpisodes[currentNotePageInt].currentCaseNote[indexPath.row].title
             caseLongDescriptionLabel.text = player.currentEpisodes[currentNotePageInt].currentCaseNote[indexPath.row].longDescription
-            popupViewOn(priviousScale: 0.6, afterScale: 1.0)
+            popupViewOn(blackView: casePopupBackgroundView, popupView: casePopupBoxView, priviousScale: 0.6, afterScale: 1.0)
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -353,7 +353,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var caseNameLabel: UILabel!
     @IBOutlet weak var caseLongDescriptionLabel: UILabel!
     @IBAction func exitCasePopupAction(_ sender: Any) {
-        popupViewOff(priviousScale: 1.0, afterScale: 0.3)
+        popupViewOff(popupView: casePopupBoxView, blackView: casePopupBackgroundView, priviousScale: 1.0, afterScale: 0.3)
     }
    
   
@@ -540,40 +540,46 @@ extension NoteViewController {
         casePopopBackgroundViewTopBar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
 }
     
-    func popupViewOn(priviousScale: CGFloat, afterScale: CGFloat) {
+    func popupViewOn(blackView: UIView, popupView: UIView, priviousScale: CGFloat, afterScale: CGFloat) {
         let backgroundView = self.view!
         //뷰 두 개(이미지, 글씨) 서브뷰로 추가
-        self.view.addSubview(casePopupBackgroundView)
-        self.view.bringSubviewToFront(casePopupBackgroundView)
+        
+        backgroundView.addSubview(blackView)
+        backgroundView.bringSubviewToFront(blackView)
         
         //이미지뷰만 히든 풀고, 뷰들 정렬함. 텍스트뷰는 서서히 나타나는 애니메이션을 위해 알파 0으로 설정해둠.
-        casePopupBackgroundView.center = backgroundView.center
-        casePopupBackgroundView.isHidden = false
-        casePopupBackgroundView.alpha = 0
-      
-        casePopupBackgroundView.transform = CGAffineTransform(scaleX: priviousScale, y: priviousScale)
+        blackView.center = backgroundView.center
+        popupView.isHidden = false
+        popupView.alpha = 0
+        blackView.alpha = 1
+        popupView.transform = CGAffineTransform(scaleX: priviousScale, y: priviousScale)
        
         //애니메이션
         UIView.animate(withDuration: 0.2) {
-            self.casePopupBackgroundView.transform = CGAffineTransform(scaleX: afterScale, y: afterScale)
-            self.casePopupBackgroundView.alpha = 1
+            popupView.transform = CGAffineTransform(scaleX: afterScale, y: afterScale)
+            popupView.alpha = 1
         }
     }
-    func popupViewOff(priviousScale: CGFloat, afterScale: CGFloat) {
+    func popupViewOff(popupView: UIView, blackView: UIView, priviousScale: CGFloat, afterScale: CGFloat) {
         let backgroundView = self.view!
-        //뷰 두 개(이미지, 글씨) 서브뷰로 추가
        
-        
      
-        casePopupBackgroundView.transform = CGAffineTransform(scaleX: priviousScale, y: priviousScale)
-       
+        popupView.transform = CGAffineTransform(scaleX: priviousScale, y: priviousScale)
+        
         //애니메이션
         UIView.animate(withDuration: 0.2) {
-            self.casePopupBackgroundView.transform = CGAffineTransform(scaleX: afterScale, y: afterScale)
-            self.casePopupBackgroundView.alpha = 0
+            popupView.transform = CGAffineTransform(scaleX: afterScale, y: afterScale)
+            popupView.alpha = 0
         } completion: { (Bool) in
-            self.casePopupBackgroundView.removeFromSuperview()
+            UIView.animate(withDuration: 0.1) {
+                blackView.alpha = 0
+            } completion: { (Bool) in
+                blackView.removeFromSuperview()
+            }
+
+            
         }
         
     }
+
 }

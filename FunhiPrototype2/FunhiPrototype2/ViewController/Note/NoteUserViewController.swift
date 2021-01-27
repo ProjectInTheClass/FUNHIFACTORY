@@ -82,11 +82,13 @@ class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollec
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "achievementRightCell", for: indexPath) as! NoteCollectionViewRightCell
             cell.achievementImageView.image = UIImage(named: player.currentAchievementInfo[indexPath.row].image)
-            cell.achievementTitleLabel.text = player.currentAchievementInfo[indexPath.row].name
+            
             if player.currentAchievementInfo[indexPath.row].isLocked {
                 cell.lockedView.isHidden = false
+                cell.achievementTitleLabel.text = player.currentAchievementInfo[indexPath.row].name
             } else {
                 cell.lockedView.isHidden = true
+                cell.achievementTitleLabel.text = "???"
             }
             return cell
         }

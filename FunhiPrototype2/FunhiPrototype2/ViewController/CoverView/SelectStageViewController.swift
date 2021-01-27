@@ -17,10 +17,37 @@ class SelectStageTableViewCell: UITableViewCell {
     @IBOutlet weak var checkImageView: UIImageView!
     @IBOutlet weak var leftBox: UIView!
     @IBOutlet weak var checkBox: UIView!
+    @IBOutlet weak var lockedView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         designButton()
+        let tap = UILongPressGestureRecognizer(target: self, action: #selector(changeColorObjc))
+                tap.minimumPressDuration = 0
+        cellBackground.addGestureRecognizer(tap)
     }
+    @objc func changeColorObjc(gesture: UITapGestureRecognizer) {
+        if gesture.state == .began {
+            cellBackground.backgroundColor = UIColor.darkGray
+                return
+            }
+
+            if gesture.state == .changed {
+                print("very likely, just that the finger wiggled around while the user was holding down the button. generally, just ignore this")
+                return
+            }
+
+            if gesture.state == .possible || gesture.state == .recognized {
+                print("in almost all cases, simply ignore these two, unless you are creating very unusual custom subclasses")
+                cellBackground.backgroundColor = UIColor.lightGray
+                return
+            }
+
+            // the three remaining states are
+            // .cancelled, .failed, and .ended
+            // in all three cases, must return to the normal button look:
+            
+        }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -29,6 +56,8 @@ class SelectStageTableViewCell: UITableViewCell {
     }
     
     func designButton() {
+        
+        lockedView.layer.cornerRadius = 7
         leftBox.layer.cornerRadius = 8
         leftBox.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
         cellBackground.layer.borderWidth = 2.5
@@ -73,6 +102,13 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
         cell.checkBox.backgroundColor = player.currentEpisodes[indexPath.row].isCleared ? UIColor(red: 0.533, green: 0.533, blue: 0.533, alpha: 1) : .white
         cell.checkImageView.isHidden = player.currentEpisodes[indexPath.row].isCleared ? false : true
+        if player.currentEpisodes[indexPath.row].episodeID == "ending" {
+            cell.lockedView.isHidden = checkEndingOpenTiming(playerEpisodes: player.currentEpisodes)
+        } else {
+            cell.lockedView.isHidden = true
+        }
+        
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -84,10 +120,9 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         let dataToSend: Episode
         dataToSend = player.currentEpisodes[indexPath.row]
         
-        
-        openStagePopup(indexPath: indexPath)
-        
-        
+        if dataToSend.isCleared {
+            openStagePopup(indexPath: indexPath)
+        }
     }
    
     @IBOutlet weak var selectStageTableView: UITableView!
@@ -98,6 +133,7 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         super.viewDidLoad()
         selectStageTableView.delegate = self
         selectStageTableView.dataSource = self
+        
         designPopup()
        
         
@@ -169,5 +205,16 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         }
         self.view.addSubview(selectedPopupBackground)
     }
-}
+    func checkEndingOpenTiming(playerEpisodes: [Episode]) -> Bool {
+        var endingOpen: Bool = true
+        // 만약 에피소드 중 한 개라도 클리어 안 되어있으면 엔딩열림여부 false 될 것임
+        for ep in playerEpisodes {
+            if ep.episodeID != "ending" && !ep.isCleared {
+                endingOpen = false
+            }
+        }
+        return endingOpen
+    }
 
+
+}

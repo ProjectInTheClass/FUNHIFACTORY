@@ -25,34 +25,161 @@ var xImage: String {
         return "white x"
     }
 }
-var UIbackgroundColor: UIColor {
+
+//일반 색깔
+var colorTopbarLine: UIColor {
     if player.setting.darkmode {
-        return UIColor(displayP3Red: 0.18, green: 0.18, blue: 0.18, alpha: 1)
+        return UIColor(hex: "#D9D9D9", alpha: 1)
     } else {
         return UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 1)
     }
 }
-var UIpointColor: UIColor {
-    if player.setting.darkmode {
-        return UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 1)
-    } else {
-        return UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0)
-    }
-}
-var UInoteBackgroundColor: UIColor {
-    if player.setting.darkmode {
-        return UIColor(displayP3Red: 0.367, green: 0.367, blue: 0.367, alpha: 1)
+
+//시작 버튼 색깔
+var colorEPCellBackground: UIColor {
+    if !player.setting.darkmode {
+        return UIColor(hex: "#C4C4C4", alpha: 1)
     } else {
         return UIColor(displayP3Red: 0.862, green: 0.862, blue: 0.862, alpha: 1)
     }
 }
-var UInotePointColor: UIColor {
-    if player.setting.darkmode {
-        return UIColor(displayP3Red: 0.083, green: 0.083, blue: 0.083, alpha: 1)
+var colorEPCellTouchedBackground: UIColor {
+    if !player.setting.darkmode {
+        return UIColor(hex: "#959595", alpha: 1)
     } else {
         return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
     }
 }
+
+var colorEPCellspine: UIColor {
+    if !player.setting.darkmode {
+        return UIColor(hex: "#7A7A7A", alpha: 1)
+    } else {
+        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+    }
+}
+
+// 팝업 뷰 색깔
+var colorPopupHeader: UIColor {
+    if !player.setting.darkmode {
+        return UIColor(hex: "#313131", alpha: 1)
+    } else {
+        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+    }
+}
+
+var colorPopupButtonBackground: UIColor {
+    if !player.setting.darkmode {
+        return UIColor(hex: "#B8B8B8", alpha: 1)
+    } else {
+        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+    }
+}
+
+var colorPopupButtonBorder: UIColor {
+    if !player.setting.darkmode {
+        return UIColor(hex: "#848484", alpha: 1)
+    } else {
+        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+    }
+}
+
+//수첩 색깔
+
+var colorNoteSelectedBackground: UIColor {
+    if !player.setting.darkmode {
+        return UIColor(hex: "#DCDCDC", alpha: 1)
+    } else {
+        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+    }
+}
+
+var colorNoteUnselectedBackground: UIColor {
+    if !player.setting.darkmode {
+        return UIColor(hex: "#787878", alpha: 1)
+    } else {
+        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+    }
+}
+
+var colorLockedViewBackground: UIColor {
+    if !player.setting.darkmode {
+        return UIColor(hex: "#3F3F3F", alpha: 1)
+    } else {
+        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+    }
+}
+
+var colorNoteUnselectedEPNameText: UIColor {
+    if !player.setting.darkmode {
+        return UIColor(hex: "#717171", alpha: 1)
+    } else {
+        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+    }
+}
+
+//타임라인 색깔
+
+
+var colorTimelinePopupButtonBackground: UIColor {
+    if !player.setting.darkmode {
+        return UIColor(hex: "#656565", alpha: 1)
+    } else {
+        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+    }
+}
+
+var colorTimelinePopupButtonBorder: UIColor {
+    if !player.setting.darkmode {
+        return UIColor(hex: "#E5E5E5", alpha: 1)
+    } else {
+        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+    }
+}
+
+//호감도 색깔
+
+var colorLikability: UIColor {
+    if !player.setting.darkmode {
+        return UIColor(hex: "#92A5B6", alpha: 1)
+    } else {
+        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+    }
+}
+
+//메인게임의 업적 획득 팝업 배경 색깔
+
+var colorMaingameGetAchievementPopupBackground: UIColor {
+    if !player.setting.darkmode {
+        return UIColor(hex: "#D6EBFF", alpha: 1)
+    } else {
+        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+    }
+}
+
+
+/*
+톱바 구분선
+시작화면 버튼 배경
+시작화면 버튼 눌린 배경
+시작화면 버튼 책등
+
+팝업 머리 배경
+팝업 버튼 배경
+팝업 버튼 테두리
+
+수첩 배경
+안 선택된 수첩 배경
+업적 잠금 배경
+안 선택된 수첩/앨범 에피 텍스트
+ 
+타임라인 계속하시겠습니까 팝업 버튼 테두리
+타임라인 계속하시겠습니까 팝업 버튼 배경
+
+호감도
+메인게임노트팝업 배경
+*/
+
 //------------------------------------수첩 사건------------------------------------
 
 // player.currentEpisodes에서 현재 플레이중인 episode 골라내는 인덱스. 현재 에피소드 이름으로 식별함.
@@ -143,15 +270,15 @@ enum AlbumImageID :String,Codable{
         case .necklace:
                 return prologueChapter.currentAlbumImages[3]
         case .prologueCase1:
-            return Chapter1.currentAlbumImages[0]
+            return chapter1.currentAlbumImages[0]
         case .achievement1Locked:
-            return Chapter1.currentAlbumImages[1]
+            return chapter1.currentAlbumImages[1]
         case .chapter2case1:
-                return Chapter2.currentAlbumImages[0]
+                return chapter2.currentAlbumImages[0]
         case .chapter2case2:
-                return Chapter2.currentAlbumImages[1]
+                return chapter2.currentAlbumImages[1]
         case .chapter2case3:
-                return Chapter2.currentAlbumImages[2]
+                return chapter2.currentAlbumImages[2]
 
         }
         
@@ -565,9 +692,9 @@ func checkCaseInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILa
     if currentChatCase != nil {
         for caseNote in currentDay().currentCaseNote.enumerated() {
             if caseNote.element.id == currentChatCase {
-                Chapter1.currentCaseNote[caseNote.offset].isLocked = false
+                chapter1.currentCaseNote[caseNote.offset].isLocked = false
                 
-                print("사건 노트 '\(Chapter1.currentCaseNote[caseNote.offset].isLocked)' 해금됨")
+                print("사건 노트 '\(chapter1.currentCaseNote[caseNote.offset].isLocked)' 해금됨")
                 
                 notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCaseNote[caseNote.offset].title, infoID: infoID)
                 globalPopupOpen = true
@@ -585,7 +712,7 @@ func checkgameCharacterInfomationInChat(popupView: UIView, backgroundView: UIVie
             for infomation in gameCharacter.element.infomation.enumerated() {
                 if infomation.element.infomationID == currentChatInfomation {
                     currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked = false
-                    print("'\(Chapter1.currentCharacterNote[gameCharacter.offset].isLocked)' 정보 해금됨")
+                    print("'\(chapter1.currentCharacterNote[gameCharacter.offset].isLocked)' 정보 해금됨")
                     
                     notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCharacterNote[gameCharacter.offset].name, infoID: infoID)
                     globalPopupOpen = true
@@ -769,5 +896,33 @@ extension UIView{
         let shape = CAShapeLayer()
         shape.path = maskPath.cgPath
         layer.mask = shape
+    }
+}
+
+extension UIColor {
+    public convenience init(hex: String, alpha: CGFloat) {
+        let r, g, b, a: CGFloat
+
+        if hex.hasPrefix("#") {
+            let start = hex.index(hex.startIndex, offsetBy: 1)
+            let hexColor = String(hex[start...])
+
+            if hexColor.count == 8 {
+                let scanner = Scanner(string: hexColor)
+                var hexNumber: UInt64 = 0
+
+                if scanner.scanHexInt64(&hexNumber) {
+                    r = CGFloat((hexNumber & 0xff000000) >> 24) / 255
+                    g = CGFloat((hexNumber & 0x00ff0000) >> 16) / 255
+                    b = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
+                    a = alpha
+
+                    self.init(red: r, green: g, blue: b, alpha: a)
+                    return
+                }
+            }
+        }
+        self.init(red: 0, green: 0, blue: 0, alpha: 1)
+        return
     }
 }
