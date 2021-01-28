@@ -260,6 +260,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         let setting = storyboard?.instantiateViewController(identifier: "setting")
         setting?.modalPresentationStyle = .fullScreen
         present(setting!, animated: true, completion: nil)
+        audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     @IBAction func mapOpen(_ sender: Any) {
             timer.invalidate()
@@ -267,18 +268,22 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             //30, 20, 20, 67
             map.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 74).isActive = true
             map.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20).isActive = true
+        audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     @IBAction func closeMap(_ sender: Any) {
         map.removeFromSuperview()
         chatUpdateTimer()
+        audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     @IBAction func pauseTapped(_ sender: Any) {
         pauseBar.isHidden = false
         timer.invalidate()
+        audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     @IBAction func resumeTapped(_ sender: Any) {
         pauseBar.isHidden = true
         chatUpdateTimer()
+        audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     @IBAction func chatWithGod(_ sender: Any) {
         timer.invalidate()
