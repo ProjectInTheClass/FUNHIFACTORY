@@ -45,7 +45,7 @@ func audioConfigure(bgmName: String, isBGM: Bool, ofType: String) {
                 return
             }
             effectPlayer.volume
-                = Float(player.setting.bgmVolume)
+                = Float(player.setting.effectVolume)
             effectPlayer.play()
         }
         
