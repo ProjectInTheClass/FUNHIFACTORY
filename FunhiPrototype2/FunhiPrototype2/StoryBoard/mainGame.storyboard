@@ -1250,6 +1250,9 @@
                                                                 <color key="tintColor" red="0.47968131720000001" green="0.51557523149999995" blue="0.535259716" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <color key="minimumTrackTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="maximumTrackTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <connections>
+                                                                    <action selector="bgmSliderTapped:" destination="huL-hd-yMs" eventType="valueChanged" id="evV-fO-RrB"/>
+                                                                </connections>
                                                             </slider>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="250" translatesAutoresizingMaskIntoConstraints="NO" id="IMA-Qt-9XQ">
                                                                 <rect key="frame" x="0.0" y="26.5" width="366" height="20.5"/>
@@ -1297,6 +1300,9 @@
                                                                 <color key="tintColor" red="0.47968131720000001" green="0.51557523149999995" blue="0.535259716" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <color key="minimumTrackTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="maximumTrackTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <connections>
+                                                                    <action selector="effectSliderTapped:" destination="huL-hd-yMs" eventType="valueChanged" id="vj1-My-BaN"/>
+                                                                </connections>
                                                             </slider>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="250" translatesAutoresizingMaskIntoConstraints="NO" id="jaZ-zR-44s">
                                                                 <rect key="frame" x="0.0" y="27" width="366" height="20.5"/>
@@ -1334,11 +1340,14 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vLt-n7-2H9">
                                                         <rect key="frame" x="0.0" y="24" width="366" height="47"/>
                                                         <subviews>
-                                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="dNO-ru-l5m">
+                                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="0.80000000000000004" maxValue="3.5" translatesAutoresizingMaskIntoConstraints="NO" id="dNO-ru-l5m">
                                                                 <rect key="frame" x="-2" y="0.0" width="370" height="31"/>
                                                                 <color key="tintColor" red="0.47968131720000001" green="0.51557523149999995" blue="0.535259716" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <color key="minimumTrackTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="maximumTrackTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <connections>
+                                                                    <action selector="textSpeedSliderTapped:" destination="huL-hd-yMs" eventType="valueChanged" id="8HZ-8F-Zlh"/>
+                                                                </connections>
                                                             </slider>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="250" translatesAutoresizingMaskIntoConstraints="NO" id="A9w-D3-hFB">
                                                                 <rect key="frame" x="0.0" y="30" width="366" height="17"/>
@@ -1500,6 +1509,9 @@
                                             <constraint firstAttribute="width" constant="51" id="vCc-Td-yho"/>
                                         </constraints>
                                         <color key="onTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="vibrateSwitchTapped:" destination="huL-hd-yMs" eventType="valueChanged" id="iOu-ea-rhb"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다크 모드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x45-M5-zLr">
                                         <rect key="frame" x="24" y="384" width="78.5" height="24"/>
@@ -1567,7 +1579,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bgmSlider" destination="muF-D4-ZcN" id="MBe-gO-b8E"/>
                         <outlet property="darkmodeSwitch" destination="MR3-VW-jUJ" id="QA2-6m-DVa"/>
+                        <outlet property="effectMusicSlider" destination="I0O-hX-I2c" id="SY8-Te-vyP"/>
+                        <outlet property="textSpeedSlider" destination="dNO-ru-l5m" id="bel-Q6-Fw6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RwW-KZ-nCG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
