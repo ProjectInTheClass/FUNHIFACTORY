@@ -146,6 +146,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
 
     
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
             currentChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: currentBlockOfDay().choices[indexPath.row].chatType, who: .danhee, characterFace: currentBlockOfDay().choices[indexPath.row].characterFace, achievementToUnlock: currentBlockOfDay().choices[indexPath.row].achievementToUnlock, infomationToUnlock: currentBlockOfDay().choices[indexPath.row].infomationToUnlock, gameCharacterToUnlock: currentBlockOfDay().choices[indexPath.row].gameCharacterToUnlock, caseToUnlock: currentBlockOfDay().choices[indexPath.row].caseToUnlock, albumImageToUnlock: currentBlockOfDay().choices[indexPath.row].albumImageToUnlock))
             print("현재 ChatId : \(player.currentChatId), 선택한 선택지 : \(currentBlockOfDay().choices[indexPath.row])")
             checkAlbumImageInChoice(choiceIndex: indexPath.row)
@@ -169,6 +170,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.mainGameTableView.dataSource = self
         self.choiceCollectionView.delegate = self
         self.choiceCollectionView.dataSource = self
+        self.transitioningDelegate = self
         if let page = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]?.choices.count{
             initializePageControl(collectionView : choiceCollectionView, choiceBar : choiceBar, numberOfPages:page)
         }
@@ -259,6 +261,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func settingTapped(_ sender: Any) {
         let setting = storyboard?.instantiateViewController(identifier: "setting")
         setting?.modalPresentationStyle = .fullScreen
+        setting?.modalTransitionStyle = .coverVertical
         present(setting!, animated: true, completion: nil)
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
@@ -332,6 +335,11 @@ extension mainGameViewController : arDelegate{
     func goToAR() {
         print("buttonClicked")
         performSegue(withIdentifier: "goToARView", sender: nil)
-}
+    }
 }
 
+extension mainGameViewController : UIViewControllerTransitioningDelegate{
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController)-> UIViewControllerAnimatedTransitioning?{
+        return AnimationController(animationDuration: 3.5, animationType: .present)
+    }
+}
