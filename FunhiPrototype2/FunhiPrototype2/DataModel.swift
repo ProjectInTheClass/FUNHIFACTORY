@@ -11,7 +11,7 @@ import UIKit
 //------------------------------------설정------------------------------------
 
 // 프라퍼티 설명:  언어 설정, 배경음, 효과음, 넘김 속도
-struct Setting {
+struct Setting: Codable {
     var bgmVolume: Double
     var effectVolume: Double
     var textSpeed: Double
@@ -217,13 +217,13 @@ var currentEpIndex: Int {
 }
 //수첩 사건
 
-enum NoteCaseID :String,Codable{
+enum NoteCaseID: String,Codable{
     case case101
     case case201
     case case301
     case case401
 }
-class NoteCase :Codable{
+class NoteCase: Codable{
     //구별 위한 ID
     let id: NoteCaseID
     let title: String
@@ -245,11 +245,11 @@ class NoteCase :Codable{
 //주인공 업적
 
 
-enum AchievementID :String,Codable{
+enum AchievementID: String,Codable {
     case donhwamun,geumcheongyo,injeongjeon,cat,necklace,faith //프롤로그
 }
 // 프라퍼티 설명: 업적 이름, 업적 이미지, id(업적 획득 로직에서 사용), 업적 잠금 여부
-struct Achievement :Codable{
+struct Achievement: Codable {
     let name: String
     let image: String
     let id: AchievementID
@@ -258,7 +258,7 @@ struct Achievement :Codable{
 
 //------------------------------------앨범 이미지------------------------------------
 
-enum AlbumImageID :String,Codable{
+enum AlbumImageID: String,Codable{
 // case는 가독성 좋게 하나하나 만드는 게 좋다고 희종쌤께 피드백 들은 적 있음
     case prologueCase1
     case achievement1Locked
@@ -298,7 +298,7 @@ enum AlbumImageID :String,Codable{
         
     }
 }
-class AlbumImage :Codable{
+class AlbumImage: Codable{
     //구별 위한 ID
     let id: AlbumImageID
     let image: String
@@ -340,7 +340,7 @@ enum InfomationID :String,Codable{
 }
 
 // id(정보 획득 로직에서 사용), 업적 잠금 여부, 정보 텍스트
-class Infomation :Codable{
+class Infomation: Codable{
     var infomationID: InfomationID
     var isLocked: Bool
     var text: String
@@ -356,7 +356,7 @@ class Infomation :Codable{
 // 프라퍼티 설명:  인물 이름, 대표 이미지, 키렐이 관찰기록한 듯한 내용의 해당 인물 정보들(인물상세페이지에 있음), 시련 미션, 호감도
 //인물
 
-enum GameCharacterID :String,Codable{
+enum GameCharacterID: String,Codable{
     case danhee
     case hwiryeong
     case tourguide
@@ -378,7 +378,7 @@ enum GameCharacterID :String,Codable{
 
 // gameCharacter는 참조 기능 필요해서 class임
 // 프라퍼티 설명: 등장인물 이름, 프로필 이미지, 배경 이미지, 등장인물 설명, 등장인물 정보 목록, 호감도, 잠금 여부
-class GameCharacter :Codable{
+class GameCharacter: Codable {
     let name: String
     let profileImage: String
     let backGroundImage : String
@@ -403,7 +403,7 @@ class GameCharacter :Codable{
 //------------------------------------유저------------------------------------
 
 //  프라퍼티 설명: 게임 설정 정보, 플레이한 에피소드 내용, ???, 유저 업적, 획득된 업적 개수, 앨범 이미지, ??, ??, 현재 게임 대화 진행현황 id
-struct User {
+struct User: Codable {
     var setting: Setting
     var currentEpisodes: [Episode]
     //var timellne: nil
@@ -443,7 +443,7 @@ func currentChatType() -> ChatType{
 
 // 대화할 때 나오는 텍스트 블럭 "종류"
 // 프라퍼티 설명:  그냥 글, 터치하면 확대되는 큰 이미지, 터치 안 되는 작은 이미지, 팝업(키렐 혼잣말), 팝업(짤막한 움짤), 섹션 해더같은 애
-enum ChatType :String, Codable{
+enum ChatType: String, Codable{
     case onlyText
     case untouchableImage
     case sectionHeader
@@ -454,7 +454,7 @@ enum ChatType :String, Codable{
 
 // 텍스트 블럭 스트럭처
 //  프라퍼티 설명: 글, 이미지, 타입, 해당 인물
-struct Chat :Codable {
+struct Chat: Codable {
     let text: String
     let image: String
     let type: ChatType
@@ -469,14 +469,14 @@ struct Chat :Codable {
 
 //선택지 누르면 변경될 호감도
 // 프라퍼티 설명:  해당 인물, 변경될 호감도 수치
-struct ChoiceLikeability :Codable{
+struct ChoiceLikeability: Codable {
     let who: GameCharacter
     let number: Int
 }
 
 //선택지
 // 프라퍼티 설명: 선택지 텍스트, 변경될 호감도
-struct Choice :Codable{
+struct Choice: Codable {
     let text: String
     let likability: [ChoiceLikeability]
     let chatType: ChatType
@@ -492,7 +492,7 @@ struct Choice :Codable{
 //n일차를 쪼갠 조각의 단위 : 일반 대화들 ~ 키렐 선택지가 마지막.
 // 에피소드를 어떤 단위대로 쪼개야 할지 고민했음. 이거 게임 구조가 이랬음.[ 캐릭터들 대사가 자동으로 나옴 -> 키렐 선택지 나옴 -> 자동으로 나오던 대사는 멈춤 -> 키렐 선택지 결정하면 그 다음 대사들이 결정되고 또 자동으로 나옴] -> 그러니까 키렐 대사 선택지가 나오면 게임 진행이 멈춤. 그리고 이 선택을 기점으로 다음 내용이 결정되고, 진행이 되는 거임. 그러려면 키렐 대사 선택지는 하나하나 쪼개야 하나하나 쪼개야 했음. 그래서 본문을 이렇게 나눔.[키렐 대사 선택 직후 시작되는 인물들 대사부터 선택지 나오기 직전까지의 대화 내용 + 키렐 선택지]. 이 단위가 여러 개 이어지면 [대사-> 선택지-> 대사-> 선택지...]인 거고 이러면 괜찮지 않을까 싶었음.
 // 프라퍼티 설명: 순차적으로 나오는 텍스트 블록, 선택지, 이거 깨면 달성되는 업적
-struct BlockOfDayEpisode :Codable{
+struct BlockOfDayEpisode: Codable {
     let chats: [Chat]
     
     //다음 페이지(?)블럭(?)을 선택하는 로직을 좀 더 간결하게 할 수 있을지 고민하다 딕셔너리 어떨까 생각함. 원래는 다음 페이지를 nextIndexPage값으로 했다면, 이번에는 key값을 이용해보는 거? 만약 key 값이 각가 1, 2를 가진 선택지가 있따면, 현재 페이지 번호에 선택지 key 값인 1, 2를 더한 수를 가진 페이지가 다음 페이지가 됨. 예를 들어서 3번 페이지에서 1번 선택지를 고르면 1+1= 2번 페이지로 가게 되고, 2번을 고르면 1+2 = 3번 페이지로 가게 됨.
@@ -504,7 +504,7 @@ struct BlockOfDayEpisode :Codable{
 }
 //n일차
 // 프라퍼티 설명: 에피소드 이름(ex)인조반정), 에피소드 연도(1xxx년), 에피소드 설명(인조반정에서 무슨 일이 일어날 예정이다 과연 주인공은 이를 막을 수 있을까? 어쩌구저쩌구), 에피소드 이미지(전각 이미지)스토리블럭(대사 인스턴스)
-struct Episode {
+struct Episode: Codable {
     
     let episodeID: String
     //(예시 : 임진왜란)
@@ -538,7 +538,7 @@ struct Episode {
     let timelineSavePoint:[SavePoint]
 
 }
-struct SavePoint {
+struct SavePoint: Codable {
     let name: String
     let storyBlockIndex: String
 }
@@ -938,5 +938,37 @@ extension UIColor {
         }
         self.init(red: 0, green: 0, blue: 0, alpha: 1)
         return
+    }
+}
+
+
+func saveToFile() {
+    let documentsDirectory =
+      FileManager.default.urls(for: .documentDirectory,
+      in: .userDomainMask).first!
+    let archiveURL =
+      documentsDirectory.appendingPathComponent("notes_test").appendingPathExtension("plist")
+    let propertyListEncoder = PropertyListEncoder()
+    let jsonEncoder = JSONEncoder()
+    let encodedNotes = try? propertyListEncoder.encode(player)
+    let encodedNote2 = try? jsonEncoder.encode(currentChatArray)
+   
+    try? encodedNotes?.write(to: archiveURL,options: .noFileProtection)
+    try? encodedNote2?.write(to: archiveURL, options: .noFileProtection)
+}
+// saving Data : 데이터 로컬에서 불러오기
+func loadFromFile() {
+    let documentsDirectory =
+      FileManager.default.urls(for: .documentDirectory,
+      in: .userDomainMask).first!
+    let archiveURL =
+      documentsDirectory.appendingPathComponent("notes_test").appendingPathExtension("plist")
+    let propertyListDecoder = PropertyListDecoder()
+    let jsonDecoder = JSONDecoder()
+    if let retrievedNotesData = try? Data(contentsOf: archiveURL), let decodedNotes = try? propertyListDecoder.decode(User.self, from:retrievedNotesData), let decodedNote2 = try? jsonDecoder.decode([Chat].self, from:retrievedNotesData) {
+        print(decodedNotes)
+        player = decodedNotes
+        currentChatArray = decodedNote2
+        print("이야아아아ㅏ아아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아\(currentChatArray)")
     }
 }
