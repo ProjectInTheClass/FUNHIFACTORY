@@ -222,6 +222,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             choiceHeight.constant = 0
             choiceBar.setNeedsUpdateConstraints()
             choiceBar.isHidden = true
+            audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: "mp3")
         } else {
           return
         }

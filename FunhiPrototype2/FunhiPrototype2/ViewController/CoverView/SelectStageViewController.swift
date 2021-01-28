@@ -18,6 +18,7 @@ class SelectStageTableViewCell: UITableViewCell {
     @IBOutlet weak var leftBox: UIView!
     @IBOutlet weak var checkBox: UIView!
     @IBOutlet weak var lockedView: UIView!
+    var touched: Bool = false
     override func awakeFromNib() {
         super.awakeFromNib()
         designButton()
@@ -126,9 +127,7 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     var selectedRowIndex: Int?
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectStageTableView.beginUpdates()
-        selectedRowIndex = indexPath.row
-        self.selectStageTableView.endUpdates()
+      
         let dataToSend: Episode
         dataToSend = player.currentEpisodes[indexPath.row]
         

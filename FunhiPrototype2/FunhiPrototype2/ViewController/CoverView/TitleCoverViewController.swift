@@ -34,7 +34,7 @@ class TitleCoverViewController: UIViewController {
         
     }
     override func viewDidAppear(_ animated: Bool) {
-        audioConfigure(bgmName: "bgmSample", isBGM: true, ofType: "m4a")
+        audioConfigure(bgmName: "coverBGM", isBGM: true, ofType: "mp3")
     }
     @IBAction func startAction(_ sender: Any) {
         
