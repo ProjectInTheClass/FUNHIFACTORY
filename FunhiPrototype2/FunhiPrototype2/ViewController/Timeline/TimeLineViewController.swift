@@ -289,7 +289,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         guard let currentEpisode = selectedEpisode else { return }
         let dataToSend = currentEpisode
         player.currentChatArray.removeAll()
-        indexNumber = 0   
+        player.indexNumber = 0   
         player.dayId = currentEpisode.episodeID
         // 세이브포인트 버튼 테블뷰로 바꾸고 인덱스값 수정하기
         player.currentChatId = selectedEpisodeStoryBlockIndex

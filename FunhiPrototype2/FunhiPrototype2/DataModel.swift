@@ -425,6 +425,7 @@ struct User: Codable {
     var dayId:String
     var currentChatId: String
     var currentChatArray: [Chat]
+    var indexNumber = 0 
 }
 
 func currentDay() -> Episode{
@@ -437,7 +438,7 @@ func currentChatAmount() -> Int{
     return currentBlockOfDay().chats.count
 }
 func currentChatType() -> ChatType{
-    return currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].type
+    return currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber].type
 }
 //------------------------------------스토리------------------------------------
 
@@ -665,7 +666,7 @@ func checkAlbumImageInChoice(choiceIndex: Int) {
 //mainGame에서 currentChat 정보 읽어서 알맞는 주인공 업적 해금하기
 func checkAchievementInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel) {
     let infoID = "achievement"
-    let currentChatAchievement = currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].achievementToUnlock
+    let currentChatAchievement = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber].achievementToUnlock
     if currentChatAchievement != nil {
         for achievement in player.currentAchievementInfo.enumerated() {
             if achievement.element.id == currentChatAchievement {
@@ -684,7 +685,7 @@ func checkAchievementInChat(popupView: UIView, backgroundView: UIView, titleLabe
 //mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 등장인물 해금하기
 func checkGameCharacterInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel) {
     let infoID = "gameCharacter"
-    let currentChatGameCharacter = currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].gameCharacterToUnlock
+    let currentChatGameCharacter = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber].gameCharacterToUnlock
     if let currentChatGameCharacter = currentChatGameCharacter {
         for gameCharacter in currentDay().currentCharacterNote.enumerated() {
             if gameCharacter.element.name == currentChatGameCharacter.info().name {
@@ -702,7 +703,7 @@ func checkGameCharacterInChat(popupView: UIView, backgroundView: UIView, titleLa
 //mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 사건 금하기
 func checkCaseInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel) {
     let infoID = "case"
-    let currentChatCase = currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].caseToUnlock
+    let currentChatCase = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber].caseToUnlock
     if currentChatCase != nil {
         for caseNote in currentDay().currentCaseNote.enumerated() {
             if caseNote.element.id == currentChatCase {
@@ -720,7 +721,7 @@ func checkCaseInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILa
 //mainGame에서 currentChat 정보 읽어서 알맞는 등장인물의 infomation 해금하기
 func checkgameCharacterInfomationInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel) {
     let infoID = "characterInfomation"
-    let currentChatInfomation = currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].infomationToUnlock
+    let currentChatInfomation = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber].infomationToUnlock
     if currentChatInfomation != nil {
         for gameCharacter in currentDay().currentCharacterNote.enumerated() {
             for infomation in gameCharacter.element.infomation.enumerated() {
@@ -739,7 +740,7 @@ func checkgameCharacterInfomationInChat(popupView: UIView, backgroundView: UIVie
 //mainGame에서 currentChat 정보 읽어서 알맞은 앨범 이미지 해금하기
 func checkAlbumImageInChat() {
     
-    let currentChatAlbumImage = currentDay().storyBlocks[player.currentChatId]!.chats[indexNumber].albumImageToUnlock
+    let currentChatAlbumImage = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber].albumImageToUnlock
     
     if currentChatAlbumImage != nil {
    

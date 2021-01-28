@@ -159,7 +159,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             player.currentChatId = currentBlockOfDay().choices[indexPath.row].nextTextIndex
             mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
             scrollToBottom()
-            indexNumber = 0
+            player.indexNumber = 0
             closeChoiceBar()
             chatUpdateTimer()
         }

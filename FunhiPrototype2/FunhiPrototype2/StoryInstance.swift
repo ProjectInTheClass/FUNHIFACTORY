@@ -7,7 +7,7 @@
 import Foundation
 import UIKit
 
-var indexNumber = 0 
+
 
 
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
