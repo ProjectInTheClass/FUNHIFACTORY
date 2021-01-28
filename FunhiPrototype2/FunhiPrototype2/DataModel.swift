@@ -424,7 +424,8 @@ struct User: Codable {
     //이 아래 두 개 역할이 어떻게 되고 어떤 차이점이 있는지 주석으로 설명 부탁합니다 궁금22
     var dayIndex:Int
     var dayId:String
-    var currentChatId:String
+    var currentChatId: String
+    var currentChatArray: [Chat]
 }
 
 func currentDay() -> Episode{
@@ -949,12 +950,9 @@ func saveToFile() {
     let archiveURL =
       documentsDirectory.appendingPathComponent("notes_test").appendingPathExtension("plist")
     let propertyListEncoder = PropertyListEncoder()
-    let jsonEncoder = JSONEncoder()
     let encodedNotes = try? propertyListEncoder.encode(player)
-    let encodedNote2 = try? jsonEncoder.encode(currentChatArray)
-   
     try? encodedNotes?.write(to: archiveURL,options: .noFileProtection)
-    try? encodedNote2?.write(to: archiveURL, options: .noFileProtection)
+  
 }
 // saving Data : 데이터 로컬에서 불러오기
 func loadFromFile() {
@@ -964,11 +962,10 @@ func loadFromFile() {
     let archiveURL =
       documentsDirectory.appendingPathComponent("notes_test").appendingPathExtension("plist")
     let propertyListDecoder = PropertyListDecoder()
-    let jsonDecoder = JSONDecoder()
-    if let retrievedNotesData = try? Data(contentsOf: archiveURL), let decodedNotes = try? propertyListDecoder.decode(User.self, from:retrievedNotesData), let decodedNote2 = try? jsonDecoder.decode([Chat].self, from:retrievedNotesData) {
+   
+    if let retrievedNotesData = try? Data(contentsOf: archiveURL), let decodedNotes = try? propertyListDecoder.decode(User.self, from:retrievedNotesData) {
         print(decodedNotes)
         player = decodedNotes
-        currentChatArray = decodedNote2
-        print("이야아아아ㅏ아아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아\(currentChatArray)")
+        print("이야아아아ㅏ아아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아\(player.currentChatArray)")
     }
 }

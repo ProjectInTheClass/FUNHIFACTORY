@@ -38,7 +38,7 @@ class EpisodeHistoryViewController: UIViewController, UITableViewDelegate, UITab
                     print("상대 텍스트 출력")
                     let cell = episodeHistoryTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
 
-                    cell.opTextCellUpdate(name: chats[indexPath.row].who.info().name, chat: chatText, normalProfile: chats[indexPath.row].who.info().profileImage, mainProfile: chats[indexPath.row].characterFace, isLocked: currentChatArray[indexPath.row].who.info().isLocked, profileBackGroundColor: currentChatArray[indexPath.row].who.info().profileBackgroundColor)
+                    cell.opTextCellUpdate(name: chats[indexPath.row].who.info().name, chat: chatText, normalProfile: chats[indexPath.row].who.info().profileImage, mainProfile: chats[indexPath.row].characterFace, isLocked: player.currentChatArray[indexPath.row].who.info().isLocked, profileBackGroundColor: player.currentChatArray[indexPath.row].who.info().profileBackgroundColor)
 
                     return cell
                 }

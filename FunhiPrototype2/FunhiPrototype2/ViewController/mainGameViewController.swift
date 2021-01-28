@@ -63,49 +63,49 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        currentChatArray.count
+        player.currentChatArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let chatText = currentChatArray[indexPath.row].text
+        let chatText = player.currentChatArray[indexPath.row].text
         print("cellForRowAt")
         //텍스트 채팅이 나올 때
             //자신이 보냈을 때
-        if currentChatArray[indexPath.row].type == .onlyText && currentChatArray[indexPath.row].who.info().name == "이단희"{
+        if player.currentChatArray[indexPath.row].type == .onlyText && player.currentChatArray[indexPath.row].who.info().name == "이단희"{
             print("자신 텍스트 출력")
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
-            cell.myTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: currentChatArray[indexPath.row].characterFace)
+            cell.myTextCellUpdate(name: player.currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: player.currentChatArray[indexPath.row].characterFace)
                     return cell
                 }
             //상대가 보냈을 때
-                else if currentChatArray[indexPath.row].type == .onlyText {
+                else if player.currentChatArray[indexPath.row].type == .onlyText {
                     print("상대 텍스트 출력")
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
-                    cell.opTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText,normalProfile: currentChatArray[indexPath.row].who.info().profileImage, mainProfile: currentChatArray[indexPath.row].characterFace, isLocked: currentChatArray[indexPath.row].who.info().isLocked, profileBackGroundColor: currentChatArray[indexPath.row].who.info().profileBackgroundColor)
+                    cell.opTextCellUpdate(name: player.currentChatArray[indexPath.row].who.info().name, chat: chatText,normalProfile: player.currentChatArray[indexPath.row].who.info().profileImage, mainProfile: player.currentChatArray[indexPath.row].characterFace, isLocked: player.currentChatArray[indexPath.row].who.info().isLocked, profileBackGroundColor: player.currentChatArray[indexPath.row].who.info().profileBackgroundColor)
                     return cell
                 }
             //터치할 수 없는 이미지
-            else if currentChatArray[indexPath.row].type == .untouchableImage {
+            else if player.currentChatArray[indexPath.row].type == .untouchableImage {
                 print("이미지 출력")
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! ImageTableViewCell
 
-                cell.imageUpdate(mainImage: currentChatArray[indexPath.row].image)
+                cell.imageUpdate(mainImage: player.currentChatArray[indexPath.row].image)
                 return cell
                 }
             //행동 표시글 셀
-            else if currentChatArray[indexPath.row].type == .sectionHeader{
+            else if player.currentChatArray[indexPath.row].type == .sectionHeader{
                 print("섹션헤더 출력")
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "sectionCell", for: indexPath) as! sectionTableViewCell
                 cell.sectionUpdate(text:chatText)
                 return cell
             }
-            else if currentChatArray[indexPath.row].type == .monologue{
+            else if player.currentChatArray[indexPath.row].type == .monologue{
                 print("속마음 채팅 출력")
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "monologue", for: indexPath) as! monologueTableViewCell
                 cell.monologueText.text = chatText
-                cell.chatUpdate(nickname: currentChatArray[indexPath.row].who.info().name, profile: currentChatArray[indexPath.row].characterFace)
+                cell.chatUpdate(nickname: player.currentChatArray[indexPath.row].who.info().name, profile: player.currentChatArray[indexPath.row].characterFace)
                 return cell
-            }else if currentChatArray[indexPath.row].type == .ar{
+            }else if player.currentChatArray[indexPath.row].type == .ar{
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "arTableViewCell", for: indexPath) as! ARTableViewCell
                 cell.delegate = self
                 return cell
@@ -113,7 +113,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             else {
                 print("그 외")
                 let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
-                cell.myTextCellUpdate(name: currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: currentChatArray[indexPath.row].characterFace)
+                cell.myTextCellUpdate(name: player.currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: player.currentChatArray[indexPath.row].characterFace)
                 return cell
             }
     }
@@ -147,7 +147,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
-            currentChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: currentBlockOfDay().choices[indexPath.row].chatType, who: .danhee, characterFace: currentBlockOfDay().choices[indexPath.row].characterFace, achievementToUnlock: currentBlockOfDay().choices[indexPath.row].achievementToUnlock, infomationToUnlock: currentBlockOfDay().choices[indexPath.row].infomationToUnlock, gameCharacterToUnlock: currentBlockOfDay().choices[indexPath.row].gameCharacterToUnlock, caseToUnlock: currentBlockOfDay().choices[indexPath.row].caseToUnlock, albumImageToUnlock: currentBlockOfDay().choices[indexPath.row].albumImageToUnlock))
+            player.currentChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: currentBlockOfDay().choices[indexPath.row].chatType, who: .danhee, characterFace: currentBlockOfDay().choices[indexPath.row].characterFace, achievementToUnlock: currentBlockOfDay().choices[indexPath.row].achievementToUnlock, infomationToUnlock: currentBlockOfDay().choices[indexPath.row].infomationToUnlock, gameCharacterToUnlock: currentBlockOfDay().choices[indexPath.row].gameCharacterToUnlock, caseToUnlock: currentBlockOfDay().choices[indexPath.row].caseToUnlock, albumImageToUnlock: currentBlockOfDay().choices[indexPath.row].albumImageToUnlock))
             print("현재 ChatId : \(player.currentChatId), 선택한 선택지 : \(currentBlockOfDay().choices[indexPath.row])")
             checkAlbumImageInChoice(choiceIndex: indexPath.row)
             
@@ -157,7 +157,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             checkgameCharacterInfomationInChoice(popupView: notePopupViewDescriptionLabel, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
             
             player.currentChatId = currentBlockOfDay().choices[indexPath.row].nextTextIndex
-            mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
+            mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
             scrollToBottom()
             indexNumber = 0
             closeChoiceBar()
@@ -250,9 +250,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     //가장 밑으로 스크롤해주는 함수
     func scrollToBottom(){
-        guard currentChatArray.count != 0 else {return}
+        guard player.currentChatArray.count != 0 else {return}
         DispatchQueue.main.async {
-            let indexPath = IndexPath(row: currentChatArray.count-1, section: 0)
+            let indexPath = IndexPath(row: player.currentChatArray.count-1, section: 0)
             self.mainGameTableView.scrollToRow(at: indexPath, at: .bottom, animated: false) //true로 바꾸면 좀 더 천천히 내려가긴 하는데, 못 따라오는 경우도 있다.
         }
     }

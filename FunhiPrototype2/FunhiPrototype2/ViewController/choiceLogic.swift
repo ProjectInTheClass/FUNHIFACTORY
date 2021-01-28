@@ -27,7 +27,7 @@ extension mainGameViewController{
             timer.invalidate()
             player.currentChatId = "001"
             indexNumber = 0
-            currentChatArray.removeAll()
+            player.currentChatArray.removeAll()
             mainGameTableView.reloadData()
             let storyBoard=storyboard?.instantiateViewController(withIdentifier: "Ending")
             storyBoard?.modalPresentationStyle = .fullScreen
@@ -41,8 +41,8 @@ extension mainGameViewController{
         }
         else if indexNumber < currentChatAmount() && currentBlockOfDay().chats[indexNumber].type != .ar{
             print("채팅이 업데이트되었습니다.")
-            currentChatArray.append(currentBlockOfDay().chats[indexNumber])
-            self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)}
+            player.currentChatArray.append(currentBlockOfDay().chats[indexNumber])
+            self.mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)}
         
         else if indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex == "End"{
             //챕터가 끝났을 때
@@ -53,7 +53,7 @@ extension mainGameViewController{
             //선택지가 나올 때
             timer.invalidate()
             print("invalidate")
-            guard currentChatArray.last?.type != .choice else {return}
+            guard player.currentChatArray.last?.type != .choice else {return}
             choiceUpdate()
             return
         } else if indexNumber == currentChatAmount() && currentBlockOfDay().choiceSkip == true{
@@ -65,8 +65,8 @@ extension mainGameViewController{
             return
         } else if indexNumber < currentChatAmount() && currentBlockOfDay().chats[indexNumber].type == .ar{
             timer.invalidate()
-            currentChatArray.append(currentBlockOfDay().chats[indexNumber])
-            self.mainGameTableView.insertRows(at: [IndexPath(row: currentChatArray.count-1, section: 0)], with: .none)
+            player.currentChatArray.append(currentBlockOfDay().chats[indexNumber])
+            self.mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
         }
         
         // 아래 네 개 각각 지금 챗에 새 업적/새 인물/새 역사 사건/새 인물 정보 있나 확인한 뒤 있는 경우 팝업창 띄우기/노트 정보 수정하는 코드입니다

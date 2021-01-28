@@ -147,9 +147,10 @@ struct User: Codable {
     var currentAchievements: [Achievement]
     //var timellne: nil
     var currentGameCharacter: [String:GameCharacter]
-    var dayIndex:Int
-    var dayId:String
-    var currentChatId:String
+    var dayIndex: Int
+    var dayId: String
+    var currentChatId: String
+    
 }
 func currentDay() -> DayEpisode{
     return dummyData.stories[player.dayId]!
