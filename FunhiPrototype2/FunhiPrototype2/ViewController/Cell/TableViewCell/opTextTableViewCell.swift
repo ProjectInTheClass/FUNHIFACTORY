@@ -32,14 +32,14 @@ class opTextTableViewCell: UITableViewCell {
                 if isLocked == true{
                     profileNickname.text = "???"
                 }
-               chatText.text = chat
+        chatText.text = chat
         profileImage.backgroundColor = profileBackGroundColor.color
-            if mainProfile == .none{
-                noProfileUIUpdate()
-            }else{
-                chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 64).isActive = true
-                contentView.layoutIfNeeded()
-            }
+        if mainProfile == .none{
+            noProfileUIUpdate()
+        }else{
+            chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 64).isActive = true
+            contentView.layoutIfNeeded()
+        }
         if name == "휘령"{
             var face : String {
                 switch mainProfile {
