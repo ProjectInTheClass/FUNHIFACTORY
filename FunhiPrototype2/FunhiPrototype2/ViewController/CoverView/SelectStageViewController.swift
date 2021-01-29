@@ -130,6 +130,7 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
       
         let dataToSend: Episode
         dataToSend = player.currentEpisodes[indexPath.row]
+        player.dayIndex = indexPath.row
         
         if dataToSend.isCleared {
             openStagePopup(indexPath: indexPath)

@@ -37,7 +37,16 @@ extension mainGameViewController{
         }
         //에피소드를 깼을 때
         else if player.indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex == "episodeSuccess"{
+            timer.invalidate()
+            player.currentEpisodes[player.dayIndex].isCleared = true
+            print("\(player.currentEpisodes[player.dayIndex].episodeID) 클리어")
+            //currentChatArray를 저장해야 함.
+            player.currentChatArray.removeAll()
             
+            let selectStageStoryBoard = storyboard?.instantiateViewController(withIdentifier: "selectStage")
+            selectStageStoryBoard?.modalPresentationStyle = .fullScreen
+            present(selectStageStoryBoard!, animated: true, completion: nil)
+            return
         }
         else if player.indexNumber < currentChatAmount() && currentBlockOfDay().chats[player.indexNumber].type != .ar{
             print("채팅이 업데이트되었습니다.")
