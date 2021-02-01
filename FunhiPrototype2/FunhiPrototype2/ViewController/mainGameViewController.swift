@@ -30,6 +30,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var chatToGodView: UIView!
     @IBOutlet var choiceCollectionView: UICollectionView!
+    @IBOutlet var myChoiceText: UILabel!
     
     
     @IBAction func notePopupViewXButton(_ sender: Any) {
@@ -221,11 +222,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     override func viewDidAppear(_ animated: Bool) {
-        if pauseBar.isHidden == true || isChoiceOn == false{
+        if (pauseBar.isHidden == true || isChoiceOn == false) && timer == nil{
             chatUpdateTimer()
-            choiceHeight.constant = 0
-            choiceBar.setNeedsUpdateConstraints()
-            choiceBar.isHidden = true
+            closeChoiceBar()
             audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: "mp3")
         } else {
             audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: "mp3")
@@ -293,11 +292,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     @IBAction func chatWithGod(_ sender: Any) {
         timer.invalidate()
-        chatToGodView.isHidden = true
-        topBar.isHidden = true
         let storyBoard = storyboard?.instantiateViewController(withIdentifier: "godChat")
         storyBoard?.modalPresentationStyle = .fullScreen
-        present(storyBoard!, animated: false, completion: chatUpdateTimer)
+        present(storyBoard!, animated: false, completion: nil)
     }
     @IBAction func closeGodChat(_ sender: Any) {
         dismiss(animated: false, completion: nil)

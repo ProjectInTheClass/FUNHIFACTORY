@@ -92,16 +92,14 @@ extension mainGameViewController{
     func choiceUpdate(){
         isChoiceOn = true
         timer.invalidate()
-            DispatchQueue.main.async {
-                let indexPath = IndexPath(row: player.currentChatArray.count-1, section: 0)
-                self.choiceCollectionView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition(rawValue: 0), animated: false)
-                self.pageControl.numberOfPages = 0
-            }
+        /*let indexPath = IndexPath(row: player.currentChatArray.count-1, section: 0)
+        self.choiceCollectionView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition(rawValue: 0), animated: false)
+        self.pageControl.numberOfPages = 0*/
+        
         choiceHeight.constant = 149
         choiceBar.setNeedsUpdateConstraints()
         choiceBar.isHidden = false
         choiceCollectionView.reloadData()
-        mainGameTableView.heightAnchor.constraint(equalToConstant: 459).isActive = true
         mainGameTableView.layoutIfNeeded()
         mainGameTableView.contentOffset.y += 149 //231
         scrollToBottom()
@@ -111,9 +109,7 @@ extension mainGameViewController{
         choiceHeight.constant = 0
         choiceBar.isHidden = true
         choiceBar.setNeedsUpdateConstraints()
-        mainGameTableView.heightAnchor.constraint(equalToConstant: 608).isActive = true
         mainGameTableView.layoutIfNeeded()
-        //mainGameTableView.contentOffset.y -= 149
         scrollToBottom()
     }
     
