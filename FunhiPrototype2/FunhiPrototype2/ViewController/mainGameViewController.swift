@@ -12,6 +12,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     //Outlet
     
     var isStartOfEpisode: Bool = false
+    var isChoiceOn = false
     
     @IBOutlet var currentYear: UILabel!
     @IBOutlet var wholeView: UIView!
@@ -150,6 +151,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             player.currentChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: currentBlockOfDay().choices[indexPath.row].chatType, who: .danhee, characterFace: currentBlockOfDay().choices[indexPath.row].characterFace, achievementToUnlock: currentBlockOfDay().choices[indexPath.row].achievementToUnlock, infomationToUnlock: currentBlockOfDay().choices[indexPath.row].infomationToUnlock, gameCharacterToUnlock: currentBlockOfDay().choices[indexPath.row].gameCharacterToUnlock, caseToUnlock: currentBlockOfDay().choices[indexPath.row].caseToUnlock, albumImageToUnlock: currentBlockOfDay().choices[indexPath.row].albumImageToUnlock))
             print("현재 ChatId : \(player.currentChatId), 선택한 선택지 : \(currentBlockOfDay().choices[indexPath.row])")
             checkAlbumImageInChoice(choiceIndex: indexPath.row)
+            checkLikability(choiceNumber: indexPath.row)
             
             checkCaseInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
             checkAchievementInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
@@ -219,13 +221,14 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     override func viewDidAppear(_ animated: Bool) {
-        if pauseBar.isHidden == true{
+        if pauseBar.isHidden == true || isChoiceOn == false{
             chatUpdateTimer()
             choiceHeight.constant = 0
             choiceBar.setNeedsUpdateConstraints()
             choiceBar.isHidden = true
             audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: "mp3")
         } else {
+            audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: "mp3")
           return
         }
         

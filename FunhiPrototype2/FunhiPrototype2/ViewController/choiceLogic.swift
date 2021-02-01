@@ -8,7 +8,6 @@
 import UIKit
 
 extension mainGameViewController{
-    
     func chatUpdateTimer()
     {
         print("chatUpdateTimer 실행")
@@ -91,6 +90,7 @@ extension mainGameViewController{
     }
     
     func choiceUpdate(){
+        isChoiceOn = true
         timer.invalidate()
             DispatchQueue.main.async {
                 let indexPath = IndexPath(row: player.currentChatArray.count-1, section: 0)
@@ -107,6 +107,7 @@ extension mainGameViewController{
         scrollToBottom()
     }
     func closeChoiceBar(){
+        isChoiceOn = false
         choiceHeight.constant = 0
         choiceBar.isHidden = true
         choiceBar.setNeedsUpdateConstraints()
@@ -114,5 +115,16 @@ extension mainGameViewController{
         mainGameTableView.layoutIfNeeded()
         //mainGameTableView.contentOffset.y -= 149
         scrollToBottom()
+    }
+    
+    func checkLikability(choiceNumber : Int){
+        let choiceLikability = currentBlockOfDay().choices[choiceNumber].likability
+        guard choiceLikability.count != 0 else {return}
+        for a in choiceLikability{
+            let target = a.who
+            let amount = a.number
+            target.info().likability = target.info().likability + amount
+            print("\(target.info().name)의 호감도에 \(amount)만큼 변동")
+        }
     }
 }

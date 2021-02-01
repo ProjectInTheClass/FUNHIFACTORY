@@ -17,7 +17,7 @@ var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현
     "001":BlockOfDayEpisode(chats:
                                 [Chat(text: "프롤로그임. 사건을 시작하기 저어언에 먼저 이 사건에 대해 알려주겠다.", image: "", type: .onlyText, who: .hwiryeong, characterFace: .basic, achievementToUnlock: .donhwamun, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil)],
                             choices: [
-                                    Choice(text: "알겠어요.", likability: [], chatType: .onlyText, characterFace: .basic, nextTextIndex: "002", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
+                                Choice(text: "알겠어요.", likability: [ChoiceLikeability(who: .tourguide, number: 50)], chatType: .onlyText, characterFace: .basic, nextTextIndex: "002", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
                                 Choice(text: "이번은 어떤 내용인가요?", likability: [], chatType: .onlyText, characterFace: .basic, nextTextIndex: "078", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil)], achievement: nil, choiceSkip: false, isGodChat: false),
     "002":BlockOfDayEpisode(chats:
                                 [Chat(text: "네가 학교에서 수업을 잘 들었다면 이미 알 거라고 생각한다.", image: "", type: .onlyText, who: .hwiryeong, characterFace: .basic, achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: .hwiryeong, caseToUnlock: nil, albumImageToUnlock: nil),
