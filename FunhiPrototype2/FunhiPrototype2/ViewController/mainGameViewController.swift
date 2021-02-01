@@ -14,6 +14,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     var isStartOfEpisode: Bool = false
     var isChoiceOn = false
     
+    @IBOutlet var godChat: UIView!
     @IBOutlet var currentYear: UILabel!
     @IBOutlet var wholeView: UIView!
     @IBOutlet var choiceHeight: NSLayoutConstraint!
@@ -263,7 +264,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func settingTapped(_ sender: Any) {
         let setting = storyboard?.instantiateViewController(identifier: "setting")
         setting?.modalPresentationStyle = .fullScreen
-        setting?.modalTransitionStyle = .coverVertical
+        setting?.modalTransitionStyle = .crossDissolve
         present(setting!, animated: true, completion: nil)
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
@@ -292,12 +293,36 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     @IBAction func chatWithGod(_ sender: Any) {
         timer.invalidate()
-        let storyBoard = storyboard?.instantiateViewController(withIdentifier: "godChat")
-        storyBoard?.modalPresentationStyle = .fullScreen
-        present(storyBoard!, animated: false, completion: nil)
+        blackView.bounds = self.view.bounds
+        blackView.center = self.view.center
+        self.view.addSubview(blackView)
+        blackView.alpha = 1
+        UIView.animate(withDuration: 0.2) {
+            self.blackView.alpha = 0.7
+        }
+        wholeView.addSubview(godChat)
+        godChat.transform = CGAffineTransform(scaleX: 0, y: 0)
+        godChat.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        godChat.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
+                                                                    let scaleDown = CGAffineTransform(scaleX: 1, y: 1)
+                                                                    self.godChat.transform = scaleDown})
+        /*
+         let storyBoard = storyboard?.instantiateViewController(withIdentifier: "godChat")
+         storyBoard?.modalPresentationStyle = .fullScreen
+         storyBoard?.modalTransitionStyle = .crossDissolve
+         present(storyBoard!, animated: false, completion: nil)
+         */
     }
     @IBAction func closeGodChat(_ sender: Any) {
-        dismiss(animated: false, completion: nil)
+        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
+            self.godChat.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+            self.blackView.alpha = 0
+        }, completion: {_ in
+            self.godChat.removeFromSuperview()
+            self.chatUpdateTimer()
+            self.blackView.removeFromSuperview()
+        })
     }
     func just(){
         if mainGameTableView.contentSize.height > 608{
