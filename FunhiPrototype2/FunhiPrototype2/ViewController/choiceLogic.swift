@@ -102,7 +102,7 @@ extension mainGameViewController{
         //현재 채팅이 isGodChat on일때는 메인게임의 선택지는 작동 안되도록. 메인게임채팅 중일때는 신 채팅창의 선택지가 나오지 못하도록
         if isGodChatOn == true{
             self.godChatCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
-            pageControl.numberOfPages = 0
+            pageControl.currentPage = 0
             godChatChoiceHeight.constant = 183
             godChatChoiceBar.setNeedsUpdateConstraints()
             godChatChoiceBar.isHidden = false
@@ -112,7 +112,7 @@ extension mainGameViewController{
             scrollToBottom(input: 1)
         }else if isGodChatOn == false{
             self.choiceCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
-            pageControl.numberOfPages = 0
+            pageControl.currentPage = 0
             choiceHeight.constant = 149
             choiceBar.setNeedsUpdateConstraints()
             choiceBar.isHidden = false

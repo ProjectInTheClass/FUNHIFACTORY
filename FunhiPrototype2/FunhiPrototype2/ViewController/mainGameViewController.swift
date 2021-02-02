@@ -181,6 +181,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "choiceCell", for: indexPath) as! choiceCollectionViewCell
             cell.choiceUpdate(choiceText : dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices[indexPath.row].text)
             pageControl.numberOfPages = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count
+            godChatPageControl.numberOfPages = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count
             return cell
         }
         func initializePageControl(collectionView : UICollectionView, choiceBar : UIView, numberOfPages: Int){
@@ -259,7 +260,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.godChatTableView.contentInset.bottom = 82
         choiceCollectionViewBorder(choiceView: collectionBar)
         chatToGodUIUpdate(hwiryeong: chatToGodView)
-        
+        map.layer.borderColor = UIColor.white.cgColor
         //지우지 말아주세dyd
         maingameNotepopupViewDesign(popupView: notePopupView, parentView: self.view!)
     }
@@ -357,16 +358,34 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     @IBAction func mapOpen(_ sender: Any) {
-            timer.invalidate()
-            self.view.addSubview(map)
-            //30, 20, 20, 67
-            map.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 74).isActive = true
-            map.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20).isActive = true
+        timer.invalidate()
+        blackView.bounds = self.view.bounds
+        blackView.center = self.view.center
+        self.view.addSubview(blackView)
+        blackView.alpha = 1
+        UIView.animate(withDuration: 0.2) {
+            self.blackView.alpha = 0.7
+        }
+        wholeView.addSubview(map)
+        map.transform = CGAffineTransform(scaleX: 0, y: 0)
+        map.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 77).isActive = true
+        map.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20).isActive = true
+        //map.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        //map.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
+                                                                    let scaleDown = CGAffineTransform(scaleX: 1, y: 1)
+                                                                    self.map.transform = scaleDown})
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     @IBAction func closeMap(_ sender: Any) {
-        map.removeFromSuperview()
-        chatUpdateTimer()
+        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
+            self.map.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+            self.blackView.alpha = 0
+        }, completion: {_ in
+            self.map.removeFromSuperview()
+            self.chatUpdateTimer()
+            self.blackView.removeFromSuperview()
+        })
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     @IBAction func pauseTapped(_ sender: Any) {
