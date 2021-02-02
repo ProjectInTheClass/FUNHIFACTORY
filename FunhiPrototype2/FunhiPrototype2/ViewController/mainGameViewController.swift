@@ -12,7 +12,13 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     //Outlet
     
     var isStartOfEpisode: Bool = false
+    var isChoiceOn = false
     
+    @IBOutlet var godChatChoiceBar: UIView!
+    @IBOutlet var godChatTableView: UITableView!
+    @IBOutlet var godChatPageControl: UIPageControl!
+    @IBOutlet var godChatCollectionView: UICollectionView!
+    @IBOutlet var godChat: UIView!
     @IBOutlet var currentYear: UILabel!
     @IBOutlet var wholeView: UIView!
     @IBOutlet var choiceHeight: NSLayoutConstraint!
@@ -29,13 +35,11 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var chatToGodView: UIView!
     @IBOutlet var choiceCollectionView: UICollectionView!
-    
-    
+    @IBOutlet var myChoiceText: UILabel!
     @IBAction func notePopupViewXButton(_ sender: Any) {
         popupOpen = false
         globalPopupOpen = false
     }
-    
     //노트 팝업 켜고 꺼질 때 애니메이션 담당하는 변수
     var popupOpen: Bool = false {
         didSet {
@@ -150,6 +154,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             player.currentChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: currentBlockOfDay().choices[indexPath.row].chatType, who: .danhee, characterFace: currentBlockOfDay().choices[indexPath.row].characterFace, achievementToUnlock: currentBlockOfDay().choices[indexPath.row].achievementToUnlock, infomationToUnlock: currentBlockOfDay().choices[indexPath.row].infomationToUnlock, gameCharacterToUnlock: currentBlockOfDay().choices[indexPath.row].gameCharacterToUnlock, caseToUnlock: currentBlockOfDay().choices[indexPath.row].caseToUnlock, albumImageToUnlock: currentBlockOfDay().choices[indexPath.row].albumImageToUnlock))
             print("현재 ChatId : \(player.currentChatId), 선택한 선택지 : \(currentBlockOfDay().choices[indexPath.row])")
             checkAlbumImageInChoice(choiceIndex: indexPath.row)
+            checkLikability(choiceNumber: indexPath.row)
             
             checkCaseInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
             checkAchievementInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
@@ -170,6 +175,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.mainGameTableView.dataSource = self
         self.choiceCollectionView.delegate = self
         self.choiceCollectionView.dataSource = self
+        self.godChatTableView.dataSource = self
+        self.godChatCollectionView.dataSource = self
+        self.godChatTableView.delegate = self
+        self.godChatCollectionView.delegate = self
         self.transitioningDelegate = self
         if let page = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]?.choices.count{
             initializePageControl(collectionView : choiceCollectionView, choiceBar : choiceBar, numberOfPages:page)
@@ -219,13 +228,13 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     override func viewDidAppear(_ animated: Bool) {
-        if pauseBar.isHidden == true{
+        if (pauseBar.isHidden == true || isChoiceOn == false) && timer == nil{
             chatUpdateTimer()
-            choiceHeight.constant = 0
-            choiceBar.setNeedsUpdateConstraints()
-            choiceBar.isHidden = true
-            audioConfigure(bgmName: "testBGM", isBGM: true, ofType: "mp3")
+            closeChoiceBar()
+            audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: "mp3")
+
         } else {
+            audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: "mp3")
           return
         }
         
@@ -256,12 +265,11 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             self.mainGameTableView.scrollToRow(at: indexPath, at: .bottom, animated: false) //true로 바꾸면 좀 더 천천히 내려가긴 하는데, 못 따라오는 경우도 있다.
         }
     }
-  
     
     @IBAction func settingTapped(_ sender: Any) {
         let setting = storyboard?.instantiateViewController(identifier: "setting")
         setting?.modalPresentationStyle = .fullScreen
-        setting?.modalTransitionStyle = .coverVertical
+        setting?.modalTransitionStyle = .crossDissolve
         present(setting!, animated: true, completion: nil)
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
@@ -290,14 +298,36 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     @IBAction func chatWithGod(_ sender: Any) {
         timer.invalidate()
-        chatToGodView.isHidden = true
-        topBar.isHidden = true
-        let storyBoard = storyboard?.instantiateViewController(withIdentifier: "godChat")
-        storyBoard?.modalPresentationStyle = .fullScreen
-        present(storyBoard!, animated: false, completion: chatUpdateTimer)
+        blackView.bounds = self.view.bounds
+        blackView.center = self.view.center
+        self.view.addSubview(blackView)
+        blackView.alpha = 1
+        UIView.animate(withDuration: 0.2) {
+            self.blackView.alpha = 0.7
+        }
+        wholeView.addSubview(godChat)
+        godChat.transform = CGAffineTransform(scaleX: 0, y: 0)
+        godChat.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        godChat.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
+                                                                    let scaleDown = CGAffineTransform(scaleX: 1, y: 1)
+                                                                    self.godChat.transform = scaleDown})
+        /*
+         let storyBoard = storyboard?.instantiateViewController(withIdentifier: "godChat")
+         storyBoard?.modalPresentationStyle = .fullScreen
+         storyBoard?.modalTransitionStyle = .crossDissolve
+         present(storyBoard!, animated: false, completion: nil)
+         */
     }
     @IBAction func closeGodChat(_ sender: Any) {
-        dismiss(animated: false, completion: nil)
+        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
+            self.godChat.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+            self.blackView.alpha = 0
+        }, completion: {_ in
+            self.godChat.removeFromSuperview()
+            self.chatUpdateTimer()
+            self.blackView.removeFromSuperview()
+        })
     }
     func just(){
         if mainGameTableView.contentSize.height > 608{
@@ -314,11 +344,12 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                         self.mainGameTableView.layoutIfNeeded()
         })
     }
-    
-    
-    
-    
-    
+    @IBAction func touchPageControl(_ sender: Any) {
+        print(pageControl.currentPage)
+        //choiceCollectionView.scrollToItem(at: IndexPath(item: pageControl.currentPage, section: 0), at: .centeredHorizontally, animated: true)
+        let rect = self.choiceCollectionView.layoutAttributesForItem(at: IndexPath(item: pageControl.currentPage, section: 0))?.frame
+        self.choiceCollectionView.scrollRectToVisible(rect!, animated: true)
+    }
 }
 
 

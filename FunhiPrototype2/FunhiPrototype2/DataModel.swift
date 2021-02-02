@@ -471,7 +471,7 @@ struct Chat: Codable {
 //선택지 누르면 변경될 호감도
 // 프라퍼티 설명:  해당 인물, 변경될 호감도 수치
 struct ChoiceLikeability: Codable {
-    let who: GameCharacter
+    let who: GameCharacterID
     let number: Int
 }
 

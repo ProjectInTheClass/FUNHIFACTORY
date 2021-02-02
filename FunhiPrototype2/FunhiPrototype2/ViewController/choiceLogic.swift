@@ -8,7 +8,6 @@
 import UIKit
 
 extension mainGameViewController{
-    
     func chatUpdateTimer()
     {
         print("chatUpdateTimer 실행")
@@ -37,7 +36,16 @@ extension mainGameViewController{
         }
         //에피소드를 깼을 때
         else if player.indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex == "episodeSuccess"{
+            timer.invalidate()
+            player.currentEpisodes[player.dayIndex].isCleared = true
+            print("\(player.currentEpisodes[player.dayIndex].episodeID) 클리어")
+            //currentChatArray를 저장해야 함.
+            player.currentChatArray.removeAll()
             
+            let selectStageStoryBoard = storyboard?.instantiateViewController(withIdentifier: "selectStage")
+            selectStageStoryBoard?.modalPresentationStyle = .fullScreen
+            present(selectStageStoryBoard!, animated: true, completion: nil)
+            return
         }
         else if player.indexNumber < currentChatAmount() && currentBlockOfDay().chats[player.indexNumber].type != .ar{
             print("채팅이 업데이트되었습니다.")
@@ -82,23 +90,35 @@ extension mainGameViewController{
     }
     
     func choiceUpdate(){
+        isChoiceOn = true
         timer.invalidate()
+        self.choiceCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
+        pageControl.numberOfPages = 0
         choiceHeight.constant = 149
         choiceBar.setNeedsUpdateConstraints()
         choiceBar.isHidden = false
         choiceCollectionView.reloadData()
-        mainGameTableView.heightAnchor.constraint(equalToConstant: 459).isActive = true
         mainGameTableView.layoutIfNeeded()
         mainGameTableView.contentOffset.y += 149 //231
         scrollToBottom()
     }
     func closeChoiceBar(){
+        isChoiceOn = false
         choiceHeight.constant = 0
         choiceBar.isHidden = true
         choiceBar.setNeedsUpdateConstraints()
-        mainGameTableView.heightAnchor.constraint(equalToConstant: 608).isActive = true
         mainGameTableView.layoutIfNeeded()
-        //mainGameTableView.contentOffset.y -= 149
         scrollToBottom()
+    }
+    
+    func checkLikability(choiceNumber : Int){
+        let choiceLikability = currentBlockOfDay().choices[choiceNumber].likability
+        guard choiceLikability.count != 0 else {return}
+        for a in choiceLikability{
+            let target = a.who
+            let amount = a.number
+            target.info().likability = target.info().likability + amount
+            print("\(target.info().name)의 호감도에 \(amount)만큼 변동")
+        }
     }
 }

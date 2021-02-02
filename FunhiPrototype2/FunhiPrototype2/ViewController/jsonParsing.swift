@@ -11,15 +11,15 @@ import UIKit
 let jsonEncoder = JSONEncoder()
 let jsonDecoder = JSONDecoder()
 
-let urlString = "https://raw.githubusercontent.com/ProjectInTheClass/FUNHIFACTORYGameData/master/storyInstance.json"
+let prologueJsonURL = "https://raw.githubusercontent.com/ProjectInTheClass/FUNHIFACTORYGameData/master/storyInstance.json"
     //"https://4a73fc1268e2fa1970f6ba6649dac04234f2c5d2@raw.githubusercontent.com/ProjectInTheClass/FUNHIFACTORY/master/FunhiPrototype2/storyInstance.json"
     //4a73fc1268e2fa1970f6ba6649dac04234f2c5d2
 
-func parse(jsonData : Data){
+func parse(jsonData : Data, targetEpisode : Int){
     do{
         //let jsonString = try String(data: asset.data, encoding: .utf8)
         let ex = try jsonDecoder.decode([BlockOfDayEpisodeForJson].self, from: jsonData)
-        dataToDictionary(storyData: ex, storyStorage: prologueChapter.storyBlocks)
+        dataToTargetEpisode(storyData: ex, input: targetEpisode)
     }
   catch let DecodingError.dataCorrupted(context){
          print("**데이터가 손상되었거나 유효하지 않다**")
@@ -42,7 +42,7 @@ func parse(jsonData : Data){
     }
 }
 
-func dataToDictionary(storyData : [BlockOfDayEpisodeForJson], storyStorage : [String:BlockOfDayEpisode]){
+func dataToTargetEpisode(storyData : [BlockOfDayEpisodeForJson], input:Int){
     
     for ex in storyData{
         let storyId = ex.id
@@ -52,9 +52,19 @@ func dataToDictionary(storyData : [BlockOfDayEpisodeForJson], storyStorage : [St
         let choiceSkip = ex.choiceSkip
         let godChat = ex.isGodChat
         let story = BlockOfDayEpisode(chats: chats, choices: choices, achievement: achievement, choiceSkip: choiceSkip, isGodChat: godChat)
-        prologueChapter.storyBlocks[storyId] = story
+        if input == 0{
+            prologueChapter.storyBlocks[storyId] = story
+        } else if input == 1{
+            chapter1.storyBlocks[storyId] = story
+        } else if input == 2{
+            chapter2.storyBlocks[storyId] = story
+        } else if input == 3{
+            chapter3.storyBlocks[storyId] = story
+        } else if input == 4{
+            chapter4.storyBlocks[storyId] = story
+        }
+        
     }
-    
 }
 func loadJson(fromURLString urlString: String,
                       completion: @escaping (Result<Data, Error>) -> Void) {
@@ -88,14 +98,3 @@ func readLocalFile(forName name: String) -> Data? {
    
    return nil
 }
-
-/*
- loadJson(fromURLString: urlString) { (result) in
-      switch result {
-      case .success(let data):
-          self.parse(jsonData: data)
-      case .failure(let error):
-          print(error)
-      }
-  }
- */
