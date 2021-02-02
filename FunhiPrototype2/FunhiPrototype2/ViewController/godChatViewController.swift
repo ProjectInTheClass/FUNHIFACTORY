@@ -27,7 +27,7 @@ class godChatViewController: UIViewController, UITableViewDelegate, UITableViewD
         player.currentChatArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if dummyData.stories[player.dayId]?.storyBlocks[player.currentChatId]?.isGodChat == true{
+        if dummyData.stories[player.dayId]?.storyBlocks[player.currentChatId]?.isGodChat == .on{
             let chatText = player.currentChatArray[indexPath.row].text
             print("cellForRowAt")
             //텍스트 채팅이 나올 때

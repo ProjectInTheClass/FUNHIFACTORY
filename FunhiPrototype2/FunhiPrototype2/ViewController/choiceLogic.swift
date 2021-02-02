@@ -48,9 +48,14 @@ extension mainGameViewController{
             return
         }
         else if player.indexNumber < currentChatAmount() && currentBlockOfDay().chats[player.indexNumber].type != .ar{
-            print("채팅이 업데이트되었습니다.")
-            player.currentChatArray.append(currentBlockOfDay().chats[player.indexNumber])
-            self.mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)}
+            if currentBlockOfDay().isGodChat == .on{
+                player.currentGodChatArray.append(currentBlockOfDay().chats[player.indexNumber])
+                self.godChatTableView.insertRows(at: [IndexPath(row: player.currentGodChatArray.count-1, section: 0)], with: .none)
+            }else if currentBlockOfDay().isGodChat == .off{
+                player.currentChatArray.append(currentBlockOfDay().chats[player.indexNumber])
+                self.mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
+            }
+        }
         
         else if player.indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex == "End"{
             //챕터가 끝났을 때
@@ -69,7 +74,8 @@ extension mainGameViewController{
             player.currentChatId = currentBlockOfDay().choices[0].nextTextIndex
             player.indexNumber = 0
             chatUpdate()
-            scrollToBottom()
+            scrollToBottom(input: 0)
+            scrollToBottom(input: 1)
             return
         } else if player.indexNumber < currentChatAmount() && currentBlockOfDay().chats[player.indexNumber].type == .ar{
             timer.invalidate()
@@ -86,29 +92,51 @@ extension mainGameViewController{
         popupOpen = globalPopupOpen
         checkAlbumImageInChat()
         player.indexNumber += 1
-        scrollToBottom()
+        scrollToBottom(input: 0)
+        scrollToBottom(input: 1)
     }
     
     func choiceUpdate(){
         isChoiceOn = true
         timer.invalidate()
-        self.choiceCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
-        pageControl.numberOfPages = 0
-        choiceHeight.constant = 149
-        choiceBar.setNeedsUpdateConstraints()
-        choiceBar.isHidden = false
-        choiceCollectionView.reloadData()
-        mainGameTableView.layoutIfNeeded()
-        mainGameTableView.contentOffset.y += 149 //231
-        scrollToBottom()
+        //현재 채팅이 isGodChat on일때는 메인게임의 선택지는 작동 안되도록. 메인게임채팅 중일때는 신 채팅창의 선택지가 나오지 못하도록
+        if isGodChatOn == true{
+            self.godChatCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
+            pageControl.numberOfPages = 0
+            godChatChoiceHeight.constant = 183
+            godChatChoiceBar.setNeedsUpdateConstraints()
+            godChatChoiceBar.isHidden = false
+            godChatCollectionView.reloadData()
+            godChatTableView.layoutIfNeeded()
+            godChatTableView.contentOffset.y += 183
+            scrollToBottom(input: 1)
+        }else if isGodChatOn == false{
+            self.choiceCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
+            pageControl.numberOfPages = 0
+            choiceHeight.constant = 149
+            choiceBar.setNeedsUpdateConstraints()
+            choiceBar.isHidden = false
+            choiceCollectionView.reloadData()
+            mainGameTableView.layoutIfNeeded()
+            mainGameTableView.contentOffset.y += 149 //231
+            scrollToBottom(input: 0)
+        }
     }
     func closeChoiceBar(){
         isChoiceOn = false
-        choiceHeight.constant = 0
-        choiceBar.isHidden = true
-        choiceBar.setNeedsUpdateConstraints()
-        mainGameTableView.layoutIfNeeded()
-        scrollToBottom()
+        if isGodChatOn == true{
+            godChatChoiceHeight.constant = 0
+            godChatChoiceBar.isHidden = true
+            godChatChoiceBar.setNeedsUpdateConstraints()
+            godChatTableView.layoutIfNeeded()
+            scrollToBottom(input: 1)
+        }else if isGodChatOn == false{
+            choiceHeight.constant = 0
+            choiceBar.isHidden = true
+            choiceBar.setNeedsUpdateConstraints()
+            mainGameTableView.layoutIfNeeded()
+            scrollToBottom(input: 0)
+        }
     }
     
     func checkLikability(choiceNumber : Int){
