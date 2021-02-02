@@ -21,10 +21,10 @@ class TitleCoverViewController: UIViewController {
          parse(jsonData: ex)
          */
         
-         loadJson(fromURLString: urlString) { (result) in
+        loadJson(fromURLString: urlString) { (result) in
               switch result {
               case .success(let data):
-                  parse(jsonData: data)
+                parse(jsonData: data, targetEpisode: 0)
                 print("********json 불러오기 성공*********")
               case .failure(let error):
                   print(error)
