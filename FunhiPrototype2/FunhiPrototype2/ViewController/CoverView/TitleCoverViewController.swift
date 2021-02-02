@@ -21,7 +21,7 @@ class TitleCoverViewController: UIViewController {
          parse(jsonData: ex)
          */
         
-        loadJson(fromURLString: urlString) { (result) in
+        loadJson(fromURLString: prologueJsonURL) { (result) in
               switch result {
               case .success(let data):
                 parse(jsonData: data, targetEpisode: 0)

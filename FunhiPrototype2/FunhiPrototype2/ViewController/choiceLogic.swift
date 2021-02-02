@@ -92,10 +92,8 @@ extension mainGameViewController{
     func choiceUpdate(){
         isChoiceOn = true
         timer.invalidate()
-        /*let indexPath = IndexPath(row: player.currentChatArray.count-1, section: 0)
-        self.choiceCollectionView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition(rawValue: 0), animated: false)
-        self.pageControl.numberOfPages = 0*/
-        
+        self.choiceCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
+        pageControl.numberOfPages = 0
         choiceHeight.constant = 149
         choiceBar.setNeedsUpdateConstraints()
         choiceBar.isHidden = false

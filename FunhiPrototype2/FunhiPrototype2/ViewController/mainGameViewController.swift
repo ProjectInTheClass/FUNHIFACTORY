@@ -14,6 +14,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     var isStartOfEpisode: Bool = false
     var isChoiceOn = false
     
+    @IBOutlet var godChatChoiceBar: UIView!
+    @IBOutlet var godChatTableView: UITableView!
+    @IBOutlet var godChatPageControl: UIPageControl!
+    @IBOutlet var godChatCollectionView: UICollectionView!
     @IBOutlet var godChat: UIView!
     @IBOutlet var currentYear: UILabel!
     @IBOutlet var wholeView: UIView!
@@ -32,13 +36,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var chatToGodView: UIView!
     @IBOutlet var choiceCollectionView: UICollectionView!
     @IBOutlet var myChoiceText: UILabel!
-    
-    
     @IBAction func notePopupViewXButton(_ sender: Any) {
         popupOpen = false
         globalPopupOpen = false
     }
-    
     //노트 팝업 켜고 꺼질 때 애니메이션 담당하는 변수
     var popupOpen: Bool = false {
         didSet {
@@ -174,6 +175,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.mainGameTableView.dataSource = self
         self.choiceCollectionView.delegate = self
         self.choiceCollectionView.dataSource = self
+        self.godChatTableView.dataSource = self
+        self.godChatCollectionView.dataSource = self
+        self.godChatTableView.delegate = self
+        self.godChatCollectionView.delegate = self
         self.transitioningDelegate = self
         if let page = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]?.choices.count{
             initializePageControl(collectionView : choiceCollectionView, choiceBar : choiceBar, numberOfPages:page)
@@ -259,7 +264,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             self.mainGameTableView.scrollToRow(at: indexPath, at: .bottom, animated: false) //true로 바꾸면 좀 더 천천히 내려가긴 하는데, 못 따라오는 경우도 있다.
         }
     }
-  
     
     @IBAction func settingTapped(_ sender: Any) {
         let setting = storyboard?.instantiateViewController(identifier: "setting")
@@ -339,11 +343,12 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                         self.mainGameTableView.layoutIfNeeded()
         })
     }
-    
-    
-    
-    
-    
+    @IBAction func touchPageControl(_ sender: Any) {
+        print(pageControl.currentPage)
+        //choiceCollectionView.scrollToItem(at: IndexPath(item: pageControl.currentPage, section: 0), at: .centeredHorizontally, animated: true)
+        let rect = self.choiceCollectionView.layoutAttributesForItem(at: IndexPath(item: pageControl.currentPage, section: 0))?.frame
+        self.choiceCollectionView.scrollRectToVisible(rect!, animated: true)
+    }
 }
 
 
