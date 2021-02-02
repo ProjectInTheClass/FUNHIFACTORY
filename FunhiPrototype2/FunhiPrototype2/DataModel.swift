@@ -557,6 +557,15 @@ enum CharacterFace: String, Codable{
 }
 
 var globalPopupOpen: Bool = false
+
+
+
+
+
+
+
+
+
 //mainGame에서 currentChat 정보 읽어서 알맞는 주인공 업적 해금하기
 func checkAchievementInChoice(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel, choiceIndex: Int) {
     let infoID = "achievement"
@@ -663,10 +672,15 @@ func checkAlbumImageInChoice(choiceIndex: Int) {
     }
 }
 //------------------------------------------------------------------------------------------------------------------------
+
+var popupInfoTupleArray: [Any] = []
 //mainGame에서 currentChat 정보 읽어서 알맞는 주인공 업적 해금하기
 func checkAchievementInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel) {
-    let infoID = "achievement"
-    let currentChatAchievement = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber].achievementToUnlock
+    
+    let currentChat = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber]
+    let currentChatAchievement = currentChat.achievementToUnlock
+    
+    // 팝업에 띄울 게 있다면
     if currentChatAchievement != nil {
         for achievement in player.currentAchievementInfo.enumerated() {
             if achievement.element.id == currentChatAchievement {
@@ -674,9 +688,11 @@ func checkAchievementInChat(popupView: UIView, backgroundView: UIView, titleLabe
                 print("업적 '\(player.currentAchievementInfo[achievement.offset].name)' 달성됨")
                 
                 
-                notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: player.currentAchievementInfo[achievement.offset].name , infoID: infoID)
+                notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: player.currentAchievementInfo[achievement.offset].name, infoID: "" )
                 globalPopupOpen = true
                 
+                let achievementPopupInfo = ("업적", player.currentAchievementInfo[achievement.offset].name)
+                popupInfoTupleArray.append(achievementPopupInfo)
             }
         }
     }
@@ -756,18 +772,21 @@ func checkAlbumImageInChat() {
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 func notePopupViewDesign(notePopupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel, descriptionText: String, infoID: String) {
-    
+    //--------------------------------------------------
     notePopupView.translatesAutoresizingMaskIntoConstraints = false
     notePopupView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: -53).isActive = true
         let horizontalConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: backgroundView, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
         let widthConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 231)
         let heightConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 53)
     backgroundView.addConstraints([horizontalConstraint, widthConstraint, heightConstraint])
+    //-----------------------------------------------------
     
-    if infoID == "achievement" {
+    for _ in 0...popupInfoTupleArray.count {
+        //팝업 띄우는 애니메이션
         titleLabel.text = "업적"
         descriptionLabel.text = "\(descriptionText) 획득"
     }
+    
     if infoID == "gameCharacter" {
         titleLabel.text = "수첩 - 인물"
         descriptionLabel.text = "\(descriptionText) 정보 획득"
@@ -900,6 +919,7 @@ extension UIBezierPath {
     }
 }
 // view 코너마다 다른 radius 값 주기 위한 extension 2
+//위의 extension은 준비 단계고, 여기 있는 메소드를 쓰면 되는 거.
 //view.roundCorners(...)  사용하면 됨.
 extension UIView{
     func roundCorners(topLeft: CGFloat = 0, topRight: CGFloat = 0, bottomLeft: CGFloat = 0, bottomRight: CGFloat = 0) {//(topLeft: CGFloat, topRight: CGFloat, bottomLeft: CGFloat, bottomRight: CGFloat) {

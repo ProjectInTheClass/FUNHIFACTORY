@@ -42,7 +42,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             //팝업 켜질 때
             if popupOpen {
                 UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 4, initialSpringVelocity: 5, options: .curveEaseInOut) {
-                    // 여기서 translationX는 애니메이션 이전의 팝업창 x값 그대로 유지하는 거임. 그냥 위에서 똑바로 아래로 내려오게. 가로로 팝업 하나도 안 움직이고. 그 값 표현 방식이 좀 많이 지저분한데 깔끄미 방법 찾아야 함.
+                  
                     self.notePopupView.transform = CGAffineTransform(translationX: 0, y: 200)
                 }
             //팝업 꺼질 때
@@ -224,7 +224,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             choiceHeight.constant = 0
             choiceBar.setNeedsUpdateConstraints()
             choiceBar.isHidden = true
-            audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: "mp3")
+            audioConfigure(bgmName: "testBGM", isBGM: true, ofType: "mp3")
         } else {
           return
         }
