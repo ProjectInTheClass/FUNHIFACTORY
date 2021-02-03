@@ -45,7 +45,9 @@ extension mainGameViewController{
         }
         //에피소드를 깼을 때
         else if player.indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex == "episodeSuccess"{
-            timer.invalidate()
+            if timer != nil{
+timer.invalidate()
+}
             player.currentEpisodes[player.dayIndex].isCleared = true
             print("\(player.currentEpisodes[player.dayIndex].episodeID) 클리어")
             //currentChatArray를 저장해야 함.
@@ -73,7 +75,9 @@ extension mainGameViewController{
         }
         else if player.indexNumber == currentChatAmount() && currentBlockOfDay().choiceSkip == false{
             //선택지가 나올 때
-            timer.invalidate()
+            if timer != nil{
+timer.invalidate()
+}
             print("invalidate")
             guard player.currentChatArray.last?.type != .choice else {return}
             choiceUpdate()
@@ -87,7 +91,9 @@ extension mainGameViewController{
             scrollToBottom(input: 1)
             return
         } else if player.indexNumber < currentChatAmount() && currentBlockOfDay().chats[player.indexNumber].type == .ar{
-            timer.invalidate()
+            if timer != nil{
+timer.invalidate()
+}
             player.currentChatArray.append(currentBlockOfDay().chats[player.indexNumber])
             self.mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
         }
@@ -110,7 +116,9 @@ extension mainGameViewController{
     
     func choiceUpdate(){
         isChoiceOn = true
-        timer.invalidate()
+        if timer != nil{
+timer.invalidate()
+}
         //현재 채팅이 isGodChat on일때는 메인게임의 선택지는 작동 안되도록. 메인게임채팅 중일때는 신 채팅창의 선택지가 나오지 못하도록
         if isGodChatOn == true && currentBlockOfDay().isGodChat == .on{
             self.godChatCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
