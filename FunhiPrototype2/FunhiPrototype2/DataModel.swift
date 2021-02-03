@@ -565,10 +565,10 @@ var globalPopupOpen: Bool = false
 
 
 
-
+//-------------------------------------------------------------------------------------------------
 //mainGame에서 currentChat 정보 읽어서 알맞는 주인공 업적 해금하기
-func checkAchievementInChoice(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel, choiceIndex: Int) {
-    let infoID = "achievement"
+func checkAchievementInChoice(choiceIndex: Int) {
+
     let currentChatAchievement = currentDay().storyBlocks[player.currentChatId]!.choices[choiceIndex].achievementToUnlock
     if currentChatAchievement != nil {
         for achievement in player.currentAchievementInfo.enumerated() {
@@ -576,15 +576,11 @@ func checkAchievementInChoice(popupView: UIView, backgroundView: UIView, titleLa
                 player.currentAchievementInfo[achievement.offset].isLocked = false
                 print("업적 '\(player.currentAchievementInfo[achievement.offset].name)' 달성됨")
                 
-                
-                notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: player.currentAchievementInfo[achievement.offset].name , infoID: infoID)
-                globalPopupOpen = true
-                animatenotePopup(popupView: popupView)
-                
             }
         }
     }
 }
+
 func animatenotePopup(popupView: UIView) {
     UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut) {
         let moveDown = CGAffineTransform(translationX: popupView.frame.origin.x, y: 118)
@@ -597,57 +593,45 @@ func animatenotePopup(popupView: UIView) {
 }
 
 //mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 등장인물 해금하기
-func checkGameCharacterInChoice(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel, choiceIndex: Int) {
-    let infoID = "gameCharacter"
+func checkGameCharacterInChoice(choiceIndex: Int) {
+ 
     let currentChatGameCharacter = currentDay().storyBlocks[player.currentChatId]!.choices[choiceIndex].gameCharacterToUnlock
+    
     if let currentChatGameCharacter = currentChatGameCharacter {
         for gameCharacter in currentDay().currentCharacterNote.enumerated() {
             if gameCharacter.element.name == currentChatGameCharacter.info().name {
                 currentDay().currentCharacterNote[gameCharacter.offset].isLocked = false
-                
                 print("캐릭터 '\(currentDay().currentCharacterNote[gameCharacter.offset].isLocked)' 해금됨")
-                
-                notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCharacterNote[gameCharacter.offset].name, infoID: infoID)
-                globalPopupOpen = true
-                animatenotePopup(popupView: popupView)
             }
         }
     }
 }
 
 //mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 사건 금하기
-func checkCaseInChoice(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel, choiceIndex: Int) {
-    let infoID = "case"
+func checkCaseInChoice(choiceIndex: Int) {
+    
     let currentChatCase = currentDay().storyBlocks[player.currentChatId]!.choices[choiceIndex].caseToUnlock
+    
     if currentChatCase != nil {
         for caseNote in currentDay().currentCaseNote.enumerated() {
             if caseNote.element.id == currentChatCase {
                 currentDay().currentCaseNote[caseNote.offset].isLocked = false
-                
                 print("사건 노트 '\(currentDay().currentCaseNote[caseNote.offset].isLocked)' 해금됨")
-                
-                notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCaseNote[caseNote.offset].title, infoID: infoID)
-               globalPopupOpen = true
-                animatenotePopup(popupView: popupView)
             }
         }
     }
 }
 
 //mainGame에서 currentChat 정보 읽어서 알맞는 등장인물의 infomation 해금하기
-func checkgameCharacterInfomationInChoice(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel, choiceIndex: Int) {
-    let infoID = "characterInfomation"
+func checkgameCharacterInfomationInChoice(choiceIndex: Int) {
     let currentChatInfomation = currentDay().storyBlocks[player.currentChatId]!.choices[choiceIndex].infomationToUnlock
+    
     if currentChatInfomation != nil {
         for gameCharacter in currentDay().currentCharacterNote.enumerated() {
             for infomation in gameCharacter.element.infomation.enumerated() {
                 if infomation.element.infomationID == currentChatInfomation {
                     currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked = false
                     print("'\(currentDay().currentCharacterNote[gameCharacter.offset].isLocked)' 정보 해금됨")
-                    
-                    notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCharacterNote[gameCharacter.offset].name, infoID: infoID)
-                    globalPopupOpen = true
-                    animatenotePopup(popupView: popupView)
                 }
             }
         }
@@ -660,25 +644,26 @@ func checkAlbumImageInChoice(choiceIndex: Int) {
     let currentChatAlbumImage = currentDay().storyBlocks[player.currentChatId]!.choices[choiceIndex].albumImageToUnlock
     
     if currentChatAlbumImage != nil {
-   
-    for albumImage in currentDay().currentAlbumImages.enumerated() {
-        if albumImage.element.id == currentChatAlbumImage {
-            currentDay().currentAlbumImages[albumImage.offset].isLocked = false
-            print("'\(currentDay().currentAlbumImages[albumImage.offset].isLocked)' 앨범 이미지 해금됨")
-          
-            
+        for albumImage in currentDay().currentAlbumImages.enumerated() {
+            if albumImage.element.id == currentChatAlbumImage {
+                currentDay().currentAlbumImages[albumImage.offset].isLocked = false
+                print("'\(currentDay().currentAlbumImages[albumImage.offset].isLocked)' 앨범 이미지 해금됨")
+            }
         }
     }
-    }
 }
-//------------------------------------------------------------------------------------------------------------------------
 
+//------------------------------------------------------------------------------------------------------------
+
+// 타입 : (String, String)
 var popupInfoTupleArray: [Any] = []
+
 //mainGame에서 currentChat 정보 읽어서 알맞는 주인공 업적 해금하기
-func checkAchievementInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel) {
+func checkAchievementInChat() {
     
     let currentChat = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber]
     let currentChatAchievement = currentChat.achievementToUnlock
+    
     
     // 팝업에 띄울 게 있다면
     if currentChatAchievement != nil {
@@ -686,10 +671,6 @@ func checkAchievementInChat(popupView: UIView, backgroundView: UIView, titleLabe
             if achievement.element.id == currentChatAchievement {
                 player.currentAchievementInfo[achievement.offset].isLocked = false
                 print("업적 '\(player.currentAchievementInfo[achievement.offset].name)' 달성됨")
-                
-                
-                notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: player.currentAchievementInfo[achievement.offset].name, infoID: "" )
-                globalPopupOpen = true
                 
                 let achievementPopupInfo = ("업적", player.currentAchievementInfo[achievement.offset].name)
                 popupInfoTupleArray.append(achievementPopupInfo)
@@ -699,44 +680,39 @@ func checkAchievementInChat(popupView: UIView, backgroundView: UIView, titleLabe
 }
 
 //mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 등장인물 해금하기
-func checkGameCharacterInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel) {
-    let infoID = "gameCharacter"
+func checkGameCharacterInChat() {
+ 
     let currentChatGameCharacter = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber].gameCharacterToUnlock
+    
     if let currentChatGameCharacter = currentChatGameCharacter {
         for gameCharacter in currentDay().currentCharacterNote.enumerated() {
             if gameCharacter.element.name == currentChatGameCharacter.info().name {
                 currentDay().currentCharacterNote[gameCharacter.offset].isLocked = false
-                
                 print("캐릭터 '\(currentDay().currentCharacterNote[gameCharacter.offset].isLocked)' 해금됨")
-               
-                notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCharacterNote[gameCharacter.offset].name, infoID: infoID)
-                globalPopupOpen = true
+
             }
         }
     }
 }
 
 //mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 사건 금하기
-func checkCaseInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel) {
-    let infoID = "case"
+func checkCaseInChat() {
+   
     let currentChatCase = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber].caseToUnlock
     if currentChatCase != nil {
         for caseNote in currentDay().currentCaseNote.enumerated() {
             if caseNote.element.id == currentChatCase {
                 chapter1.currentCaseNote[caseNote.offset].isLocked = false
-                
                 print("사건 노트 '\(chapter1.currentCaseNote[caseNote.offset].isLocked)' 해금됨")
-                
-                notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCaseNote[caseNote.offset].title, infoID: infoID)
-                globalPopupOpen = true
+      
             }
         }
     }
 }
 
 //mainGame에서 currentChat 정보 읽어서 알맞는 등장인물의 infomation 해금하기
-func checkgameCharacterInfomationInChat(popupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel) {
-    let infoID = "characterInfomation"
+func checkgameCharacterInfomationInChat() {
+ 
     let currentChatInfomation = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber].infomationToUnlock
     if currentChatInfomation != nil {
         for gameCharacter in currentDay().currentCharacterNote.enumerated() {
@@ -744,9 +720,7 @@ func checkgameCharacterInfomationInChat(popupView: UIView, backgroundView: UIVie
                 if infomation.element.infomationID == currentChatInfomation {
                     currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked = false
                     print("'\(chapter1.currentCharacterNote[gameCharacter.offset].isLocked)' 정보 해금됨")
-                    
-                    notePopupViewDesign(notePopupView: popupView, backgroundView: backgroundView, titleLabel: titleLabel, descriptionLabel: descriptionLabel, descriptionText: currentDay().currentCharacterNote[gameCharacter.offset].name, infoID: infoID)
-                    globalPopupOpen = true
+
                 }
             }
         }
@@ -772,7 +746,7 @@ func checkAlbumImageInChat() {
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 func notePopupViewDesign(notePopupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel, descriptionText: String, infoID: String) {
-    //--------------------------------------------------
+    //-----------------------팝업 constraint---------------------------
     notePopupView.translatesAutoresizingMaskIntoConstraints = false
     notePopupView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: -53).isActive = true
         let horizontalConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: backgroundView, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)

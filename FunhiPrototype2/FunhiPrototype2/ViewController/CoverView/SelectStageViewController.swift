@@ -41,6 +41,7 @@ class SelectStageTableViewCell: UITableViewCell {
             if gesture.state == .possible || gesture.state == .recognized {
                 print("in almost all cases, simply ignore these two, unless you are creating very unusual custom subclasses")
                 cellBackground.backgroundColor = UIColor.lightGray
+                //popup open
                 return
             }
 
@@ -145,7 +146,7 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         super.viewDidLoad()
         selectStageTableView.delegate = self
         selectStageTableView.dataSource = self
-        
+    
         designPopup()
        
         
@@ -228,5 +229,11 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         return endingOpen
     }
 
+
+}
+
+
+
+extension SelectStageViewController: UIGestureRecognizerDelegate {
 
 }

@@ -156,10 +156,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             checkAlbumImageInChoice(choiceIndex: indexPath.row)
             checkLikability(choiceNumber: indexPath.row)
             
-            checkCaseInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
-            checkAchievementInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
-            checkGameCharacterInChoice(popupView: notePopupView, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
-            checkgameCharacterInfomationInChoice(popupView: notePopupViewDescriptionLabel, backgroundView: self.view, titleLabel: notePopupViewTitle, descriptionLabel: notePopupViewDescriptionLabel, choiceIndex: indexPath.row)
+            checkCaseInChoice(choiceIndex: indexPath.row)
+            checkAchievementInChoice(choiceIndex: indexPath.row)
+            checkGameCharacterInChoice(choiceIndex: indexPath.row)
+            checkgameCharacterInfomationInChoice(choiceIndex: indexPath.row)
             
             player.currentChatId = currentBlockOfDay().choices[indexPath.row].nextTextIndex
             mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
