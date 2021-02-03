@@ -13,8 +13,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     //Outlet
     
     var isStartOfEpisode: Bool = false
-    var isChoiceOn = false
-    var isGodChatOn = false
     
     @IBOutlet var godChatChoiceHeight: NSLayoutConstraint!
     @IBOutlet var godChatChoiceBar: UIView!
@@ -309,12 +307,14 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     override func viewDidAppear(_ animated: Bool) {
-        if (pauseBar.isHidden == true || isChoiceOn == false) && timer == nil{
+        if pauseBar.isHidden == true || isChoiceOn == false{
+            print("퍼즈바 :\(pauseBar.isHidden), 초이스 :\(isChoiceOn), 타이머 :\(timer==nil)")
             chatUpdateTimer()
             closeChoiceBar()
             audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: "mp3")
 
         } else {
+            print("퍼즈바 :\(pauseBar.isHidden), 초이스 :\(isChoiceOn), 타이머 :\(timer==nil)")
             audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: "mp3")
           return
         }

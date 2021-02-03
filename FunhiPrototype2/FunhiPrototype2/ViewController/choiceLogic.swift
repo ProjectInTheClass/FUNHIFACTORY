@@ -7,6 +7,9 @@
 
 import UIKit
 
+var isChoiceOn = false
+var isGodChatOn = false
+
 extension mainGameViewController{
     func chatUpdateTimer()
     {
@@ -23,10 +26,13 @@ extension mainGameViewController{
         print("스토리 \(player.indexNumber)/\(currentChatAmount())")
         //게임 오버 시 뜰 배드엔딩 창 띄우기.
         if player.indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex == "badEnding"{
-            timer.invalidate()
+            while timer == nil{
+                timer.invalidate()
+            }
             player.currentChatId = "001"
             player.indexNumber = 0
             player.currentChatArray.removeAll()
+            player.currentGodChatArray.removeAll()
             mainGameTableView.reloadData()
             let storyBoard=storyboard?.instantiateViewController(withIdentifier: "Ending")
             storyBoard?.modalPresentationStyle = .fullScreen

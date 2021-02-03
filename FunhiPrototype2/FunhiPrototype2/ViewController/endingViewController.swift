@@ -18,6 +18,8 @@ class endingViewController: UIViewController {
     }
     
     @IBAction func restartButton(_ sender: Any) {
+        //업적 초기화
+        player.currentChatId = "001"
         dismiss(animated: true, completion: nil)
     }
 }
