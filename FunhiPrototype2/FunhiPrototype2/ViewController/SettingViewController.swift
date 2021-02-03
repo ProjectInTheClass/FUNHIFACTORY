@@ -45,7 +45,13 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     }
     
     @IBAction func vibrateSwitchTapped(_ sender: Any) {
-        
+        if playerSetting.vibration == true{
+            print("진동을 비활성화했습니다.")
+            playerSetting.vibration = false
+        }else{
+            print("진동을 활성화시켰습니다.")
+            playerSetting.vibration = true
+        }
     }
     
     @IBAction func bgmSliderTapped(_ sender: Any) {
