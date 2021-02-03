@@ -229,7 +229,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             if dummyData.stories[player.dayId]?.storyBlocks[currentBlockOfDay().choices[indexPath.row].nextTextIndex]?.isGodChat == .on{
                 //진동 울리기 및 색 변경이나 알림(아이템 뱃지와 같은) 등이 떠야 함.
                 timer.invalidate()
-                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+                vibrate(vibrateIsOn: playerSetting.vibration)
                 chatToGodView.backgroundColor = UIColor.red
             }
             //다음 페이지가 신 채팅이 아닐 경우
@@ -299,7 +299,13 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         performSegue(withIdentifier: "timelineSegue", sender: nil)
     }
     
-  
+    func vibrate(vibrateIsOn : Bool){
+        if vibrateIsOn == true{
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+        }else {
+         return
+        }
+    }
     
     
     override func viewDidAppear(_ animated: Bool) {

@@ -16,6 +16,7 @@ struct Setting : Codable{
     var effectVolume: Float
     var textSpeed: Double
     var darkmode: Bool
+    var vibration : Bool
 }
 var xImage: String {
     if playerSetting.darkmode {
