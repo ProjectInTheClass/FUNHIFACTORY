@@ -255,6 +255,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         godChatTableView.layoutIfNeeded()
         if let page = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]?.choices.count{
             initializePageControl(collectionView : choiceCollectionView, choiceBar : choiceBar, numberOfPages:page)
+            initializePageControl(collectionView: godChatCollectionView, choiceBar: godChatChoiceBar, numberOfPages: page)
         }
         self.mainGameTableView.contentInset.bottom = 82
         self.godChatTableView.contentInset.bottom = 82
@@ -333,15 +334,17 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     //가장 밑으로 스크롤해주는 함수
     func scrollToBottom(input:Int){
-        guard player.currentChatArray.count != 0 else {return}
-        guard player.currentGodChatArray.count != 0 else {return}
+        
+        
         DispatchQueue.main.async {
             if input==0{
+                guard player.currentChatArray.count != 0 else {return}
                 //메인 게임 테이블뷰 전용
                 let indexPath = IndexPath(row: player.currentChatArray.count-1, section: 0)
                 self.mainGameTableView.scrollToRow(at: indexPath, at: .bottom, animated: false) //true로 바꾸면 좀 더 천천히 내려가긴 하는데, 못 따라오는 경우도 있다.
             }else if input==1{
                 //휘령 채팅 테이블뷰 전용
+                guard player.currentGodChatArray.count != 0 else {return}
                 let indexPath = IndexPath(row: player.currentGodChatArray.count-1, section: 0)
                 self.godChatTableView.scrollToRow(at: indexPath, at: .bottom, animated: false) //true로 바꾸면 좀 더 천천히 내려가긴 하는데, 못 따라오는 경우도 있다.
             }else{
@@ -417,12 +420,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                                                                     let scaleDown = CGAffineTransform(scaleX: 1, y: 1)
                                                                     self.godChat.transform = scaleDown})
         chatUpdateTimer()
-        /*
-         let storyBoard = storyboard?.instantiateViewController(withIdentifier: "godChat")
-         storyBoard?.modalPresentationStyle = .fullScreen
-         storyBoard?.modalTransitionStyle = .crossDissolve
-         present(storyBoard!, animated: false, completion: nil)
-         */
     }
     @IBAction func closeGodChat(_ sender: Any) {
         isGodChatOn = false

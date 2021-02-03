@@ -92,15 +92,18 @@ extension mainGameViewController{
         popupOpen = globalPopupOpen
         checkAlbumImageInChat()
         player.indexNumber += 1
-        scrollToBottom(input: 0)
-        scrollToBottom(input: 1)
+        if isGodChatOn == true{
+            scrollToBottom(input: 1)
+        }else {
+            scrollToBottom(input: 0)
+        }
     }
     
     func choiceUpdate(){
         isChoiceOn = true
         timer.invalidate()
         //현재 채팅이 isGodChat on일때는 메인게임의 선택지는 작동 안되도록. 메인게임채팅 중일때는 신 채팅창의 선택지가 나오지 못하도록
-        if isGodChatOn == true{
+        if isGodChatOn == true && currentBlockOfDay().isGodChat == .on{
             self.godChatCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
             pageControl.currentPage = 0
             godChatChoiceHeight.constant = 183
@@ -110,7 +113,7 @@ extension mainGameViewController{
             godChatTableView.layoutIfNeeded()
             godChatTableView.contentOffset.y += 183
             scrollToBottom(input: 1)
-        }else if isGodChatOn == false{
+        }else if isGodChatOn == false && currentBlockOfDay().isGodChat == .off{
             self.choiceCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
             pageControl.currentPage = 0
             choiceHeight.constant = 149
@@ -129,13 +132,13 @@ extension mainGameViewController{
             godChatChoiceBar.isHidden = true
             godChatChoiceBar.setNeedsUpdateConstraints()
             godChatTableView.layoutIfNeeded()
-            scrollToBottom(input: 1)
+            //scrollToBottom(input: 1)
         }else if isGodChatOn == false{
             choiceHeight.constant = 0
             choiceBar.isHidden = true
             choiceBar.setNeedsUpdateConstraints()
             mainGameTableView.layoutIfNeeded()
-            scrollToBottom(input: 0)
+            //scrollToBottom(input: 0)
         }
     }
     
