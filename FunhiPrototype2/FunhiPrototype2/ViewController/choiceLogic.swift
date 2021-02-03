@@ -26,9 +26,12 @@ extension mainGameViewController{
         print("스토리 \(player.indexNumber)/\(currentChatAmount())")
         //게임 오버 시 뜰 배드엔딩 창 띄우기.
         if player.indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex == "badEnding"{
-            while timer == nil{
-                timer.invalidate()
-            }
+            print("타이머 여부 :\(timer == nil)")
+            if timer != nil {
+                print("timer invalidate")
+                timer!.invalidate()
+                timer = nil
+              }
             player.currentChatId = "001"
             player.indexNumber = 0
             player.currentChatArray.removeAll()

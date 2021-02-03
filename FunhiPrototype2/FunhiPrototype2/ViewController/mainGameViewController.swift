@@ -260,7 +260,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         choiceCollectionViewBorder(choiceView: collectionBar)
         chatToGodUIUpdate(hwiryeong: chatToGodView)
         map.layer.borderColor = UIColor.white.cgColor
-        //지우지 말아주세dyd
+        //지우지 말아주세요
         maingameNotepopupViewDesign(popupView: notePopupView, parentView: self.view!)
     }
     
@@ -307,7 +307,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     override func viewDidAppear(_ animated: Bool) {
-        if pauseBar.isHidden == true || isChoiceOn == false{
+        if (pauseBar.isHidden == true || isChoiceOn == false) && timer == nil{
             print("퍼즈바 :\(pauseBar.isHidden), 초이스 :\(isChoiceOn), 타이머 :\(timer==nil)")
             chatUpdateTimer()
             closeChoiceBar()
@@ -336,7 +336,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         currentYear.text = "\(dummyData.stories[player.dayId]!.episodeYear)년"
     }
     override func viewWillDisappear(_ animated: Bool) {
-        timer.invalidate()
+        if timer != nil {
+            timer!.invalidate()
+            timer = nil
+          }
     }
     //가장 밑으로 스크롤해주는 함수
     func scrollToBottom(input:Int){
