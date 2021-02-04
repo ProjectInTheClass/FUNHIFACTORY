@@ -18,23 +18,21 @@ extension mainGameViewController{
     private func calculateSectionInset(layout : UICollectionViewFlowLayout) -> CGFloat {
         let cellBodyWidth: CGFloat = layout.itemSize.width
         
-        var buttonWidth: CGFloat {
-            if layout == normalChoiceCollectionViewLayout{
-                return 0
-            }else {
-                return 18
-            }
-        }
-        
-        let inset = (layout.collectionView!.frame.width - cellBodyWidth + buttonWidth) / 4
+        //let inset = (layout.collectionView!.frame.width - cellBodyWidth + buttonWidth) / 4
+        let inset = layout.collectionView!.frame.width - cellBodyWidth / 2
         return inset
     }
     
     private func configureCollectionViewLayoutItemSize(layout : UICollectionViewFlowLayout) {
         let inset: CGFloat = calculateSectionInset(layout: layout) // This inset calculation is some magic so the next and the previous cells will peek from the sides. Don't worry about it
-        layout.sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
-        
-        layout.itemSize = CGSize(width: layout.collectionView!.frame.size.width - inset * 2, height: layout.collectionView!.frame.size.height)
+        /*
+         //width에 layout.collectionView!.frame.size.width + layout.minimumLineSpacing - 100 도 낫배드
+         layout.itemSize = CGSize(width: layout.collectionView!.frame.size.width - inset * 2, height: layout.collectionView!.frame.size.height)
+         //left는 0을 넣는 게 좋아보임.
+         layout.sectionInset = UIEdgeInsets(top: 0, left: 0 bottom: 0, right: inset)
+         */
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: inset)
+        layout.itemSize = CGSize(width: layout.collectionView!.frame.size.width + layout.minimumLineSpacing - 100, height: layout.collectionView!.frame.size.height)
     }
     
     func indexOfMajorCell(layout : UICollectionViewFlowLayout) -> Int {
