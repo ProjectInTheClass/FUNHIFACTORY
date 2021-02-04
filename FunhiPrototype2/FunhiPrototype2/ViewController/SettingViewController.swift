@@ -90,24 +90,17 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         print("게임 데이터가 초기화되었습니다.")
         player.currentChatArray.removeAll()
         player.currentGodChatArray.removeAll()
-        for var a in player.currentEpisodes{
-            a.isCleared = false
-            for b in a.currentCharacterNote{
-                b.isLocked = true
-            }
-            for c in a.currentAlbumImages{
-                c.isLocked = true
-            }
-        }
-        for var a in player.currentAchievementInfo{
-            a.isLocked = true
-        }
-        player.currentEpisodes[0].currentCharacterNote[0].isLocked = false
-        
+        print(player)
+        /*
          let pvc = self.presentingViewController
          self.dismiss(animated: false, completion: {
              pvc?.dismiss(animated: false, completion: nil)
          })
+         */
+        self.view.window?.rootViewController?.dismiss(animated: false, completion: {
+            let homeVC = TitleCoverViewController()
+            homeVC.modalPresentationStyle = .fullScreen
+        })
     }
     @IBAction func noButtonTapped(_ sender: Any) {
         initializeAlert.removeFromSuperview()
@@ -126,3 +119,20 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
                 present(emailVC, animated: true, completion: nil)
     }
 }
+/*
+private func initializeUser(){
+    for var a in episodes{
+        a.isCleared = false
+        for b in a.currentCharacterNote{
+            b.isLocked = true
+        }
+        for c in a.currentAlbumImages{
+            c.isLocked = true
+        }
+    }
+     for var a in achievements{
+         a.isLocked = true
+     }
+    //player.currentEpisodes[0].currentCharacterNote[0].isLocked = false
+}
+*/
