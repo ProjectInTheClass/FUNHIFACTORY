@@ -885,6 +885,7 @@
                         <outlet property="godChatChoiceBar" destination="nU7-Bb-Ld6" id="i4j-kZ-0zc"/>
                         <outlet property="godChatChoiceHeight" destination="tz8-w9-SDS" id="dj3-cR-iUB"/>
                         <outlet property="godChatCollectionView" destination="14l-4e-JvQ" id="L5W-52-cJm"/>
+                        <outlet property="godChatCollectionViewLayout" destination="G8f-Me-r8U" id="rbP-J6-37l"/>
                         <outlet property="godChatPageControl" destination="GEv-sN-INa" id="zry-rH-mbM"/>
                         <outlet property="godChatTableView" destination="KLR-x2-bqe" id="ecg-wU-fvL"/>
                         <outlet property="mainGameTableView" destination="1X2-dM-NgP" id="Q04-Oq-ZND"/>
@@ -1483,25 +1484,24 @@
                                             <viewLayoutGuide key="contentLayoutGuide" id="gpA-0o-sxP"/>
                                             <viewLayoutGuide key="frameLayoutGuide" id="hCb-qN-vOi"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="G8f-Me-r8U">
-                                                <size key="itemSize" width="384" height="77"/>
-                                                <size key="estimatedItemSize" width="384" height="77"/>
+                                                <size key="itemSize" width="300" height="77"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="choiceCell" id="mG5-Zx-b9a" customClass="choiceCollectionViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="77"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="450" height="77"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <collectionViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OLU-vm-2vp" userLabel="choiceCell">
-                                                        <rect key="frame" x="0.0" y="0.0" width="384" height="77"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="450" height="77"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Fh-va-1O0" userLabel="ChoiceInCell">
-                                                                <rect key="frame" x="16" y="15" width="289" height="45.5"/>
+                                                                <rect key="frame" x="167" y="16.5" width="116.5" height="44"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="선택지입니다." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XxF-IC-Sgi">
-                                                                        <rect key="frame" x="12" y="13" width="265" height="19.5"/>
+                                                                        <rect key="frame" x="12" y="13" width="92.5" height="18"/>
                                                                         <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="16"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -1510,7 +1510,6 @@
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstItem="XxF-IC-Sgi" firstAttribute="leading" secondItem="6Fh-va-1O0" secondAttribute="leading" constant="12" id="8qf-HY-G0Y"/>
-                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="226" id="Sah-Nn-Nyg"/>
                                                                     <constraint firstAttribute="trailing" secondItem="XxF-IC-Sgi" secondAttribute="trailing" constant="12" id="Vb7-zc-vSu"/>
                                                                     <constraint firstItem="XxF-IC-Sgi" firstAttribute="top" secondItem="6Fh-va-1O0" secondAttribute="top" constant="13" id="ccX-NI-19s"/>
                                                                     <constraint firstAttribute="bottom" secondItem="XxF-IC-Sgi" secondAttribute="bottom" constant="13" id="og0-Fa-9YK"/>
@@ -1519,13 +1518,12 @@
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="6Fh-va-1O0" secondAttribute="trailing" constant="79" id="1UG-eV-bP4"/>
-                                                            <constraint firstItem="6Fh-va-1O0" firstAttribute="leading" secondItem="OLU-vm-2vp" secondAttribute="leading" constant="16" id="pid-LO-x9O"/>
+                                                            <constraint firstItem="6Fh-va-1O0" firstAttribute="centerX" secondItem="OLU-vm-2vp" secondAttribute="centerX" id="Uo6-Pf-L75"/>
+                                                            <constraint firstItem="6Fh-va-1O0" firstAttribute="centerY" secondItem="OLU-vm-2vp" secondAttribute="centerY" id="j1p-D8-xgq"/>
                                                             <constraint firstAttribute="bottom" secondItem="6Fh-va-1O0" secondAttribute="bottom" constant="16.5" id="rvG-gV-Lye"/>
-                                                            <constraint firstItem="6Fh-va-1O0" firstAttribute="top" secondItem="OLU-vm-2vp" secondAttribute="top" constant="15" id="x7C-M6-ihe"/>
                                                         </constraints>
                                                     </collectionViewCellContentView>
-                                                    <size key="customSize" width="384" height="77"/>
+                                                    <size key="customSize" width="450" height="77"/>
                                                     <connections>
                                                         <outlet property="choiceInCell" destination="6Fh-va-1O0" id="5IY-Rj-a9g"/>
                                                         <outlet property="choiceLabel" destination="XxF-IC-Sgi" id="SYK-Ui-TDJ"/>
@@ -2155,6 +2153,16 @@
                 </view>
             </objects>
             <point key="canvasLocation" x="5164" y="-513"/>
+        </scene>
+        <!--coverView-->
+        <scene sceneID="eSf-ep-FCz">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="coverView" storyboardName="coverView" referencedIdentifier="coverView" id="Uir-q0-K3n" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="kOc-bR-iOt"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wp2-8t-Fxg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5028" y="-86"/>
         </scene>
         <!--Credit View Controller-->
         <scene sceneID="1UI-2z-w8q">

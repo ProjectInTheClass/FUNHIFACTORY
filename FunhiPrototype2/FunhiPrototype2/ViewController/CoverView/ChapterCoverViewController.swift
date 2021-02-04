@@ -25,6 +25,7 @@ class ChapterCoverViewController: UIViewController {
             self.blackView.alpha = 1
         } completion: { (Bool) in
             let dataToSend = true
+            self.blackView.removeFromSuperview()
             self.performSegue(withIdentifier: "goToMainGameSegue", sender: dataToSend)
         }
 

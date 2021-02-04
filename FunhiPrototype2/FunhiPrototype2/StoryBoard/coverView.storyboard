@@ -26,7 +26,7 @@
         <!--Title Cover View Controller-->
         <scene sceneID="xOp-Fo-9Fz">
             <objects>
-                <viewController id="kJc-iQ-Szc" customClass="TitleCoverViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="coverView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kJc-iQ-Szc" customClass="TitleCoverViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dnq-0k-G5u">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,7 +73,7 @@
                         <outlet property="startButton" destination="S4R-AN-iqx" id="r3Y-X9-OrS"/>
                         <outlet property="testLabel" destination="cdZ-86-mCc" id="oCn-Ia-1cy"/>
                         <segue destination="LDT-1T-9Vm" kind="show" identifier="goToSelectSelectSegue" id="mpB-tq-3CW"/>
-                        <segue destination="gV8-vF-X4D" kind="show" identifier="fromCoverToMaingameSegue" id="jZx-07-KWg"/>
+                        <segue destination="gV8-vF-X4D" kind="presentation" identifier="fromCoverToMaingameSegue" modalPresentationStyle="fullScreen" id="jZx-07-KWg"/>
                         <segue destination="wpo-Yq-ikf" kind="show" identifier="fromCoverToChapterCover" animates="NO" id="Wab-dm-ahv"/>
                     </connections>
                 </viewController>
@@ -501,7 +501,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="257.97101449275362" y="75.669642857142847"/>
+            <point key="canvasLocation" x="241" y="-5"/>
         </scene>
         <!--Chapter Cover View Controller-->
         <scene sceneID="uNB-wN-cFZ">
@@ -588,7 +588,7 @@
                         <outlet property="descriptionLabel" destination="GAI-RJ-Zzv" id="V09-9C-CjM"/>
                         <outlet property="tapAndContinueLabel" destination="tiL-65-qc0" id="Vwj-rI-Stk"/>
                         <outlet property="yearLabel" destination="3NJ-Ge-siI" id="G04-eR-Mwv"/>
-                        <segue destination="gV8-vF-X4D" kind="show" identifier="goToMainGameSegue" animates="NO" id="dIO-Gc-dma"/>
+                        <segue destination="gV8-vF-X4D" kind="presentation" identifier="goToMainGameSegue" animates="NO" modalPresentationStyle="fullScreen" id="dIO-Gc-dma"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GsM-aA-IJf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -631,7 +631,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jZx-07-KWg"/>
+        <segue reference="dIO-Gc-dma"/>
         <segue reference="cgE-z7-gJC"/>
     </inferredMetricsTieBreakers>
     <resources>
