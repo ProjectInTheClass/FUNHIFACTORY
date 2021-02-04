@@ -158,7 +158,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             rowInSectionsCount = player.currentEpisodes[currentNotePageInt].currentCharacterNote.count
         }
         if currentNoteTitle == .cases {
-            rowInSectionsCount = player.currentEpisodes[currentNotePageInt].currentCharacterNote.count
+            rowInSectionsCount = player.currentEpisodes[currentNotePageInt].currentCaseNote.count
         }
         return rowInSectionsCount
     }
