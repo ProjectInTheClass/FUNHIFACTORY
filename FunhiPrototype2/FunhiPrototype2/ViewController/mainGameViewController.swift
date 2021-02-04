@@ -227,7 +227,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             //다음 페이지가 신 채팅일 경우
             if dummyData.stories[player.dayId]?.storyBlocks[currentBlockOfDay().choices[indexPath.row].nextTextIndex]?.isGodChat == .on{
                 //진동 울리기 및 색 변경이나 알림(아이템 뱃지와 같은) 등이 떠야 함.
-                timer.invalidate()
+                if timer != nil{
+timer.invalidate()
+}
                 vibrate(vibrateIsOn: playerSetting.vibration)
                 chatToGodView.backgroundColor = UIColor.red
             }
@@ -308,12 +310,12 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     override func viewDidAppear(_ animated: Bool) {
-        if (pauseBar.isHidden == true || isChoiceOn == false) && timer == nil{
+        if isChoiceOn == false && timer == nil{
+            guard pauseBar.isHidden == true else {return}
             print("퍼즈바 :\(pauseBar.isHidden), 초이스 :\(isChoiceOn), 타이머 :\(timer==nil)")
             chatUpdateTimer()
             closeChoiceBar()
             audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: "mp3")
-
         } else {
             print("퍼즈바 :\(pauseBar.isHidden), 초이스 :\(isChoiceOn), 타이머 :\(timer==nil)")
             audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: "mp3")
@@ -371,7 +373,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     @IBAction func mapOpen(_ sender: Any) {
-        timer.invalidate()
+        if timer != nil{
+timer.invalidate()
+}
         blackView.bounds = self.view.bounds
         blackView.center = self.view.center
         self.view.addSubview(blackView)
@@ -403,18 +407,24 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     @IBAction func pauseTapped(_ sender: Any) {
         pauseBar.isHidden = false
-        timer.invalidate()
+        if timer != nil{
+timer.invalidate()
+}
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     @IBAction func resumeTapped(_ sender: Any) {
         pauseBar.isHidden = true
-        chatUpdateTimer()
+        if timer == nil {
+            chatUpdateTimer()
+        }
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     @IBAction func chatWithGod(_ sender: Any) {
         isGodChatOn = true
         chatToGodView.backgroundColor = UIColor.black
-        timer.invalidate()
+        if timer != nil{
+timer.invalidate()
+}
         blackView.bounds = self.view.bounds
         blackView.center = self.view.center
         self.view.addSubview(blackView)

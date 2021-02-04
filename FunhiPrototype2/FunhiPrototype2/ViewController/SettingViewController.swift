@@ -10,9 +10,13 @@ import MessageUI
 
 class SettingViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
+    @IBOutlet var yesButton: UIButton!
+    @IBOutlet var noButton: UIButton!
     @IBOutlet var bgmSlider: UISlider!
     @IBOutlet var effectMusicSlider: UISlider!
+    @IBOutlet var initializeAlert: UIView!
     @IBOutlet var textSpeedSlider: UISlider!
+    let blackView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +30,8 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         effectMusicSlider.value = player.setting.effectVolume
         textSpeedSlider.value = Float(player.setting.textSpeed)
         // Do any additional setup after loading the view.
+        yesButton.layer.borderColor = UIColor(red: 0.396, green: 0.396, blue: 0.396, alpha: 1).cgColor
+        noButton.layer.borderColor = UIColor(red: 0.396, green: 0.396, blue: 0.396, alpha: 1).cgColor
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -67,6 +73,25 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     @IBAction func textSpeedSliderTapped(_ sender: Any) {
         player.setting.textSpeed = Double(textSpeedSlider.value)
         print(textSpeedSlider.value)
+    }
+    @IBAction func initializeButtonTapped(_ sender: Any) {
+        
+        blackView.backgroundColor = UIColor.black
+        blackView.bounds = self.view.bounds
+        blackView.center = self.view.center
+        blackView.alpha = 0.8
+        self.view.addSubview(blackView)
+        self.view.addSubview(initializeAlert)
+        initializeAlert.layer.borderColor = UIColor(red: 0.862, green: 0.862, blue: 0.862, alpha: 1).cgColor
+        initializeAlert.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 325).isActive = true
+        initializeAlert.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 40).isActive = true
+    }
+    @IBAction func yesButtonTapped(_ sender: Any) {
+        print("게임 데이터가 초기화되었습니다.")
+    }
+    @IBAction func noButtonTapped(_ sender: Any) {
+        initializeAlert.removeFromSuperview()
+        blackView.removeFromSuperview()
     }
     
     
