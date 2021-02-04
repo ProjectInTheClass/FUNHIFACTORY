@@ -885,11 +885,13 @@
                         <outlet property="godChatChoiceBar" destination="nU7-Bb-Ld6" id="i4j-kZ-0zc"/>
                         <outlet property="godChatChoiceHeight" destination="tz8-w9-SDS" id="dj3-cR-iUB"/>
                         <outlet property="godChatCollectionView" destination="14l-4e-JvQ" id="L5W-52-cJm"/>
+                        <outlet property="godChatCollectionViewLayout" destination="G8f-Me-r8U" id="W2v-8c-mdh"/>
                         <outlet property="godChatPageControl" destination="GEv-sN-INa" id="zry-rH-mbM"/>
                         <outlet property="godChatTableView" destination="KLR-x2-bqe" id="ecg-wU-fvL"/>
                         <outlet property="mainGameTableView" destination="1X2-dM-NgP" id="Q04-Oq-ZND"/>
                         <outlet property="map" destination="EkU-Ps-5iU" id="fX4-dh-l3K"/>
                         <outlet property="myChoiceText" destination="bc3-xc-fYC" id="SGL-Fe-nSF"/>
+                        <outlet property="normalChoiceCollectionViewLayout" destination="fW3-id-ia6" id="5QH-nq-PgW"/>
                         <outlet property="notePopupView" destination="bqs-CT-rOt" id="k03-hF-tMx"/>
                         <outlet property="notePopupViewDescriptionLabel" destination="c7m-pu-a3U" id="G3m-rV-2ST"/>
                         <outlet property="notePopupViewTitle" destination="LDm-ml-n10" id="5vu-zi-rPM"/>
@@ -1483,49 +1485,61 @@
                                             <viewLayoutGuide key="contentLayoutGuide" id="gpA-0o-sxP"/>
                                             <viewLayoutGuide key="frameLayoutGuide" id="hCb-qN-vOi"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="G8f-Me-r8U">
-                                                <size key="itemSize" width="300" height="77"/>
+                                                <size key="itemSize" width="270" height="77"/>
+                                                <size key="estimatedItemSize" width="270" height="77"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
-                                                <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="choiceCell" id="mG5-Zx-b9a" customClass="choiceCollectionViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="450" height="77"/>
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="godChatChoiceCell" id="8zu-9J-T0u" customClass="godChatCollectionViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="77"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <collectionViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OLU-vm-2vp" userLabel="choiceCell">
-                                                        <rect key="frame" x="0.0" y="0.0" width="450" height="77"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="H2l-ir-kEy">
+                                                        <rect key="frame" x="0.0" y="0.0" width="270" height="77"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Fh-va-1O0" userLabel="ChoiceInCell">
-                                                                <rect key="frame" x="167" y="16.5" width="116.5" height="44"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMN-W0-TkE">
+                                                                <rect key="frame" x="15" y="15" width="240" height="45"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="선택지입니다." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XxF-IC-Sgi">
-                                                                        <rect key="frame" x="12" y="13" width="92.5" height="18"/>
-                                                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="16"/>
-                                                                        <nil key="textColor"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="261" verticalHuggingPriority="251" horizontalCompressionResistancePriority="757" verticalCompressionResistancePriority="756" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsH-bw-L5j">
+                                                                        <rect key="frame" x="12" y="13" width="216" height="19"/>
+                                                                        <attributedString key="attributedText">
+                                                                            <fragment content="Label">
+                                                                                <attributes>
+                                                                                    <font key="NSFont" metaFont="system" size="17"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                        </attributedString>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
-                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
-                                                                    <constraint firstItem="XxF-IC-Sgi" firstAttribute="leading" secondItem="6Fh-va-1O0" secondAttribute="leading" constant="12" id="8qf-HY-G0Y"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="XxF-IC-Sgi" secondAttribute="trailing" constant="12" id="Vb7-zc-vSu"/>
-                                                                    <constraint firstItem="XxF-IC-Sgi" firstAttribute="top" secondItem="6Fh-va-1O0" secondAttribute="top" constant="13" id="ccX-NI-19s"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="XxF-IC-Sgi" secondAttribute="bottom" constant="13" id="og0-Fa-9YK"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="xsH-bw-L5j" secondAttribute="bottom" constant="13" id="BoA-4w-Jr8"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="xsH-bw-L5j" secondAttribute="trailing" constant="12" id="YWr-XN-Ip4"/>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="a9G-pi-vQH"/>
+                                                                    <constraint firstItem="xsH-bw-L5j" firstAttribute="top" secondItem="YMN-W0-TkE" secondAttribute="top" constant="13" id="dnI-zi-ZwG"/>
+                                                                    <constraint firstItem="xsH-bw-L5j" firstAttribute="leading" secondItem="YMN-W0-TkE" secondAttribute="leading" constant="12" id="sDd-cy-LCp"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="8"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstItem="6Fh-va-1O0" firstAttribute="centerX" secondItem="OLU-vm-2vp" secondAttribute="centerX" id="Uo6-Pf-L75"/>
-                                                            <constraint firstItem="6Fh-va-1O0" firstAttribute="centerY" secondItem="OLU-vm-2vp" secondAttribute="centerY" id="j1p-D8-xgq"/>
-                                                            <constraint firstAttribute="bottom" secondItem="6Fh-va-1O0" secondAttribute="bottom" constant="16.5" id="rvG-gV-Lye"/>
+                                                            <constraint firstAttribute="bottom" secondItem="YMN-W0-TkE" secondAttribute="bottom" constant="17" id="9Bk-WP-qO7"/>
+                                                            <constraint firstItem="YMN-W0-TkE" firstAttribute="leading" secondItem="H2l-ir-kEy" secondAttribute="leading" constant="15" id="Z65-Vp-eLd"/>
+                                                            <constraint firstAttribute="trailing" secondItem="YMN-W0-TkE" secondAttribute="trailing" constant="15" id="eL1-VT-ofC"/>
+                                                            <constraint firstItem="YMN-W0-TkE" firstAttribute="top" secondItem="H2l-ir-kEy" secondAttribute="top" constant="15" id="kqa-gV-RiX"/>
                                                         </constraints>
                                                     </collectionViewCellContentView>
-                                                    <size key="customSize" width="450" height="77"/>
+                                                    <size key="customSize" width="270" height="77"/>
                                                     <connections>
-                                                        <outlet property="choiceInCell" destination="6Fh-va-1O0" id="5IY-Rj-a9g"/>
-                                                        <outlet property="choiceLabel" destination="XxF-IC-Sgi" id="SYK-Ui-TDJ"/>
+                                                        <outlet property="choiceInCell" destination="YMN-W0-TkE" id="blT-f0-fyi"/>
+                                                        <outlet property="choiceLabel" destination="xsH-bw-L5j" id="ncF-99-lkA"/>
                                                     </connections>
                                                 </collectionViewCell>
                                             </cells>

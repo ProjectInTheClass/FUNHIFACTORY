@@ -13,7 +13,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     //Outlet
     
     var isStartOfEpisode: Bool = false
+    var indexOfCellBeforeDragging = 0
     
+    @IBOutlet var normalChoiceCollectionViewLayout: UICollectionViewFlowLayout!
+    @IBOutlet var godChatCollectionViewLayout: UICollectionViewFlowLayout!
     @IBOutlet var godChatChoiceHeight: NSLayoutConstraint!
     @IBOutlet var godChatChoiceBar: UIView!
     @IBOutlet var godChatTableView: UITableView!
@@ -174,28 +177,29 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count
         }
-        
+    
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "choiceCell", for: indexPath) as! choiceCollectionViewCell
-            cell.choiceUpdate(choiceText : dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices[indexPath.row].text)
-            pageControl.numberOfPages = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count
-            godChatPageControl.numberOfPages = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count
-            return cell
+            if collectionView == godChatCollectionView{
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "godChatChoiceCell", for: indexPath) as! godChatCollectionViewCell
+                cell.choiceUpdate(choiceText : dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices[indexPath.row].text)
+                godChatPageControl.numberOfPages = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count
+                return cell
+            }else if collectionView == choiceCollectionView{
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "choiceCell", for: indexPath) as! choiceCollectionViewCell
+                cell.choiceUpdate(choiceText : dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices[indexPath.row].text)
+                pageControl.numberOfPages = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count
+                return cell
+            }else{
+                return UICollectionViewCell()
+            }
         }
         func initializePageControl(collectionView : UICollectionView, choiceBar : UIView, numberOfPages: Int){
-            //
-            collectionView.isPagingEnabled = true
-            pageControl.numberOfPages = numberOfPages
+            collectionView.contentInsetAdjustmentBehavior = .never
+            collectionView.decelerationRate = .fast
             pageControl.hidesForSinglePage = true
-            collectionView.showsVerticalScrollIndicator = false
             collectionView.showsHorizontalScrollIndicator = false
-            scrollViewDidEndDecelerating(collectionView)
-            //collectionView.decelerationRate = UIScrollView.DecelerationRate.fast
             pageControl.currentPageIndicatorTintColor = UIColor.black
         }
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if fmod(scrollView.contentOffset.x, scrollView.frame.maxX) == 0 {
-            pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX) } }
 
     
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -254,6 +258,7 @@ timer.invalidate()
         godChatChoiceBar.isHidden = true
         godChatChoiceBar.setNeedsUpdateConstraints()
         godChatTableView.layoutIfNeeded()
+        //initialize()
         if let page = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]?.choices.count{
             initializePageControl(collectionView : choiceCollectionView, choiceBar : choiceBar, numberOfPages:page)
             initializePageControl(collectionView: godChatCollectionView, choiceBar: godChatChoiceBar, numberOfPages: page)
