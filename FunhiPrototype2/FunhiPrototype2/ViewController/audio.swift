@@ -4,7 +4,7 @@
 //
 //  Created by 최서연 on 2021/01/13.
 //
-
+var currentBGM : String = "mainGameBGM"
 import Foundation
 import AVFoundation
 extension mainGameViewController {
@@ -16,8 +16,7 @@ var bgmPlayer: AVAudioPlayer?
 func audioConfigure(bgmName: String, isBGM: Bool, ofType: String) {
    
     let urlString = Bundle.main.path(forResource: bgmName, ofType: ofType)
-
-   
+    
 
     do {
                 try AVAudioSession.sharedInstance().setMode(.default)
@@ -28,7 +27,9 @@ func audioConfigure(bgmName: String, isBGM: Bool, ofType: String) {
             return
         }
         if isBGM {
+            currentBGM = bgmName
             bgmPlayer = try AVAudioPlayer(contentsOf: URL(string: urlString)!)
+            bgmPlayer?.numberOfLoops = -1
 
             guard let bgmPlayer = bgmPlayer else {
                 print("player is nil")

@@ -23,6 +23,7 @@ extension mainGameViewController{
     func chatUpdate(){
         print("스토리 \(player.indexNumber)/\(currentChatAmount())")
         //게임 오버 시 뜰 배드엔딩 창 띄우기.
+        bgm()
         if player.indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex == "badEnding"{
             print("타이머 여부 :\(timer == nil)")
             if timer != nil {
@@ -44,8 +45,8 @@ extension mainGameViewController{
         //에피소드를 깼을 때
         else if player.indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex == "episodeSuccess"{
             if timer != nil{
-timer.invalidate()
-}
+                timer.invalidate()
+            }
             player.currentEpisodes[player.dayIndex].isCleared = true
             print("\(player.currentEpisodes[player.dayIndex].episodeID) 클리어")
             //currentChatArray를 저장해야 함.
@@ -74,8 +75,8 @@ timer.invalidate()
         else if player.indexNumber == currentChatAmount() && currentBlockOfDay().choiceSkip == false{
             //선택지가 나올 때
             if timer != nil{
-timer.invalidate()
-}
+            timer.invalidate()
+            }
             print("invalidate")
             guard player.currentChatArray.last?.type != .choice else {return}
             choiceUpdate()
@@ -90,8 +91,8 @@ timer.invalidate()
             return
         } else if player.indexNumber < currentChatAmount() && currentBlockOfDay().chats[player.indexNumber].type == .ar{
             if timer != nil{
-timer.invalidate()
-}
+                timer.invalidate()
+            }
             player.currentChatArray.append(currentBlockOfDay().chats[player.indexNumber])
             self.mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
         }
@@ -115,8 +116,8 @@ timer.invalidate()
     func choiceUpdate(){
         isChoiceOn = true
         if timer != nil{
-timer.invalidate()
-}
+            timer.invalidate()
+        }
         //현재 채팅이 isGodChat on일때는 메인게임의 선택지는 작동 안되도록. 메인게임채팅 중일때는 신 채팅창의 선택지가 나오지 못하도록
         if isGodChatOn == true && currentBlockOfDay().isGodChat == .on{
             self.godChatCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
@@ -165,6 +166,18 @@ timer.invalidate()
             let amount = a.number
             target.info().likability = target.info().likability + amount
             print("\(target.info().name)의 호감도에 \(amount)만큼 변동")
+        }
+    }
+    
+    func bgm(){
+        let bgm = currentBlockOfDay().backGroundMusic.info()
+        guard bgm != currentBGM else {return}
+        if bgm == ""{
+            bgmPlayer?.stop()
+            currentBGM = bgm
+            return
+        }else{
+            audioConfigure(bgmName: bgm, isBGM: true, ofType: "mp3")
         }
     }
 }
