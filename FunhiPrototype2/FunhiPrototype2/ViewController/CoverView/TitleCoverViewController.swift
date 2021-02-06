@@ -14,12 +14,7 @@ class TitleCoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         testLabel.setCharacterSpacing(characterSpacing: 5)
-      light()
-        // Do any additional setup after loading the view.
-        /*
-         guard let ex = readLocalFile(forName: "storyInstance") else {return}
-         parse(jsonData: ex)
-         */
+        light()
         
         loadJson(fromURLString: prologueJsonURL) { (result) in
               switch result {
@@ -30,8 +25,6 @@ class TitleCoverViewController: UIViewController {
                   print(error)
               }
           }
-        
-        
     }
     override func viewDidAppear(_ animated: Bool) {
         audioConfigure(bgmName: "coverBGM", isBGM: true, ofType: "mp3")

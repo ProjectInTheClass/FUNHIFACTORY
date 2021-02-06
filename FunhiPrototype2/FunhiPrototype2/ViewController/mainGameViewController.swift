@@ -405,8 +405,11 @@ timer.invalidate()
             self.blackView.alpha = 0
         }, completion: {_ in
             self.map.removeFromSuperview()
-            self.chatUpdateTimer()
             self.blackView.removeFromSuperview()
+            if isChoiceOn == false && timer == nil{
+                guard self.pauseBar.isHidden == true else {return}
+                self.chatUpdateTimer()
+            }
         })
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }

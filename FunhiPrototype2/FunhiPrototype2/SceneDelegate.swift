@@ -38,7 +38,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-        loadFromFile()
+        //loadFromFile()
+        
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {

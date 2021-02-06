@@ -21,8 +21,6 @@ extension mainGameViewController{
         
     }
     func chatUpdate(){
-        print("------------chatUpdate 시작합니다------------")
-        print("현재 속도: \(player.setting.textSpeed)")
         print("스토리 \(player.indexNumber)/\(currentChatAmount())")
         //게임 오버 시 뜰 배드엔딩 창 띄우기.
         if player.indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex == "badEnding"{
