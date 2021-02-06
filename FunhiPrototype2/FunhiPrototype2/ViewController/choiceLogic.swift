@@ -180,12 +180,22 @@ extension mainGameViewController{
             audioConfigure(bgmName: bgm, isBGM: true, ofType: "mp3")
         }
     }
-    /*
+    
     func checkEnterAnimation(){
         let animation = currentBlockOfDay().enterAnimation
         switch animation {
         case .none:
+            return
         case .fadeInfadeOut:
+            blackView.bounds = self.view.bounds
+            blackView.center = self.view.center
+            self.view.addSubview(blackView)
+            blackView.alpha = 1
+            UIView.animate(withDuration: 1.0) {
+                self.blackView.alpha = 0
+            } completion: { (Bool) in
+                self.blackView.removeFromSuperview()
+            }
         }
-    }*/
+    }
 }
