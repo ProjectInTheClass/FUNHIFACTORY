@@ -180,4 +180,12 @@ extension mainGameViewController{
             audioConfigure(bgmName: bgm, isBGM: true, ofType: "mp3")
         }
     }
+    /*
+    func checkEnterAnimation(){
+        let animation = currentBlockOfDay().enterAnimation
+        switch animation {
+        case .none:
+        case .fadeInfadeOut:
+        }
+    }*/
 }

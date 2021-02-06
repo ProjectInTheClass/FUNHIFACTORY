@@ -34,9 +34,15 @@ class opTextTableViewCell: UITableViewCell {
                 }
         chatText.text = chat
         profileImage.backgroundColor = profileBackGroundColor.color
-        if mainProfile == .none{
-            noProfileUIUpdate()
-        }else{
+        switch mainProfile {
+        case .none:
+            //chatView.removeConstraint(chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 64))
+            profileImage.isHidden = true
+            profileNickname.isHidden = true
+            chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7).isActive = true
+            contentView.layoutIfNeeded()
+        default:
+            chatView.removeConstraint(chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7))
             chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 64).isActive = true
             contentView.layoutIfNeeded()
         }
@@ -62,14 +68,6 @@ class opTextTableViewCell: UITableViewCell {
         } else {
             profileImage.image = UIImage(named: normalProfile)
         }
-    }
-    
-    func noProfileUIUpdate(){
-        //chatView.removeConstraint(chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 64))
-        profileImage.isHidden = true
-        profileNickname.isHidden = true
-        chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7).isActive = true
-        contentView.layoutIfNeeded()
     }
 
 }

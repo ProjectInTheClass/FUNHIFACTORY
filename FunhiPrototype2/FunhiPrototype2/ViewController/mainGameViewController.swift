@@ -86,21 +86,21 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             //텍스트 채팅이 나올 때
                 //자신이 보냈을 때
             if player.currentChatArray[indexPath.row].type == .onlyText && player.currentChatArray[indexPath.row].who.info().name == "이단희"{
-                print("자신 텍스트 출력")
+                print("메인게임 - 자신 텍스트 출력")
                         let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
                 cell.myTextCellUpdate(name: player.currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: player.currentChatArray[indexPath.row].characterFace)
                         return cell
                     }
                 //상대가 보냈을 때
                     else if player.currentChatArray[indexPath.row].type == .onlyText {
-                        print("상대 텍스트 출력")
+                        print("메인게임 - 상대 텍스트 출력")
                         let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
                         cell.opTextCellUpdate(name: player.currentChatArray[indexPath.row].who.info().name, chat: chatText,normalProfile: player.currentChatArray[indexPath.row].who.info().profileImage, mainProfile: player.currentChatArray[indexPath.row].characterFace, isLocked: player.currentChatArray[indexPath.row].who.info().isLocked, profileBackGroundColor: player.currentChatArray[indexPath.row].who.info().profileBackgroundColor)
                         return cell
                     }
                 //터치할 수 없는 이미지
                 else if player.currentChatArray[indexPath.row].type == .untouchableImage {
-                    print("이미지 출력")
+                    print("메인게임 - 이미지 출력")
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! ImageTableViewCell
 
                     cell.imageUpdate(mainImage: player.currentChatArray[indexPath.row].image)
@@ -108,13 +108,13 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                     }
                 //행동 표시글 셀
                 else if player.currentChatArray[indexPath.row].type == .sectionHeader{
-                    print("섹션헤더 출력")
+                    print("메인게임 - 섹션헤더 출력")
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "sectionCell", for: indexPath) as! sectionTableViewCell
                     cell.sectionUpdate(text:chatText)
                     return cell
                 }
                 else if player.currentChatArray[indexPath.row].type == .monologue{
-                    print("속마음 채팅 출력")
+                    print("메인게임 - 속마음 채팅 출력")
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "monologue", for: indexPath) as! monologueTableViewCell
                     cell.monologueText.text = chatText
                     cell.chatUpdate(nickname: player.currentChatArray[indexPath.row].who.info().name, profile: player.currentChatArray[indexPath.row].characterFace)
@@ -125,26 +125,26 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                     return cell
                 }
                 else {
-                   print("오류 발생1")
+                   print("메인게임 - 오류 발생1")
                     return UITableViewCell()
                 }
         }else if tableView == godChatTableView{
             let chatText = player.currentGodChatArray[indexPath.row].text
             if player.currentGodChatArray[indexPath.row].type == .onlyText && player.currentGodChatArray[indexPath.row].who.info().name == "이단희"{
-                print("자신 텍스트 출력")
+                print("신 - 자신 텍스트 출력")
                         let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
                 cell.myTextCellUpdate(name: player.currentGodChatArray[indexPath.row].who.info().name, chat: chatText, profile: player.currentGodChatArray[indexPath.row].characterFace)
                         return cell
                     }
                     else if player.currentGodChatArray[indexPath.row].type == .onlyText {
-                        print("상대 텍스트 출력")
+                        print("신 - 상대 텍스트 출력")
                         let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
                         cell.opTextCellUpdate(name: player.currentGodChatArray[indexPath.row].who.info().name, chat: chatText,normalProfile: player.currentGodChatArray[indexPath.row].who.info().profileImage, mainProfile: player.currentGodChatArray[indexPath.row].characterFace, isLocked: player.currentGodChatArray[indexPath.row].who.info().isLocked, profileBackGroundColor: player.currentGodChatArray[indexPath.row].who.info().profileBackgroundColor)
                         return cell
                     }
                 //터치할 수 없는 이미지
                 else if player.currentGodChatArray[indexPath.row].type == .untouchableImage {
-                    print("이미지 출력")
+                    print("신 - 이미지 출력")
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! ImageTableViewCell
 
                     cell.imageUpdate(mainImage: player.currentGodChatArray[indexPath.row].image)
@@ -152,23 +152,23 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                     }
                 //행동 표시글 셀
                 else if player.currentGodChatArray[indexPath.row].type == .sectionHeader{
-                    print("섹션헤더 출력")
+                    print("신 - 섹션헤더 출력")
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "sectionCell", for: indexPath) as! sectionTableViewCell
                     cell.sectionUpdate(text:chatText)
                     return cell
                 }
                 else if player.currentGodChatArray[indexPath.row].type == .monologue{
-                    print("속마음 채팅 출력")
+                    print("신 - 속마음 채팅 출력")
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "monologue", for: indexPath) as! monologueTableViewCell
                     cell.monologueText.text = chatText
                     cell.chatUpdate(nickname: player.currentGodChatArray[indexPath.row].who.info().name, profile: player.currentGodChatArray[indexPath.row].characterFace)
                     return cell
                 }else {
-                   print("오류 발생2")
+                   print("신 - 오류 발생2")
                     return UITableViewCell()
                 }
         } else {
-            print("오류 발생3")
+            print("테이블뷰 - 오류 발생3")
             return UITableViewCell()
         }
     }
