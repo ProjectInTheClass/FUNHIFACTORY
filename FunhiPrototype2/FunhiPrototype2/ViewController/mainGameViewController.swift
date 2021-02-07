@@ -12,6 +12,7 @@ import AudioToolbox
 class mainGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     //Outlet
     
+    var alertTimer = Timer()
     var isStartOfEpisode: Bool = false
     var indexOfCellBeforeDragging = 0
     
@@ -232,10 +233,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             if dummyData.stories[player.dayId]?.storyBlocks[currentBlockOfDay().choices[indexPath.row].nextTextIndex]?.isGodChat == .on{
                 //진동 울리기 및 색 변경이나 알림(아이템 뱃지와 같은) 등이 떠야 함.
                 if timer != nil{
-timer.invalidate()
-}
+                    timer.invalidate()
+                }
                 vibrate(vibrateIsOn: playerSetting.vibration)
-                chatToGodView.backgroundColor = UIColor.red
+                alertTargetView(targetView: chatToGodView, timeInterval: 0.7, firstColor: UIColor.black, secondColor: UIColor(red: 0.792, green: 0.086, blue: 0.043, alpha: 1))
             }
             //다음 페이지가 신 채팅이 아닐 경우
             else{
@@ -379,8 +380,8 @@ timer.invalidate()
     }
     @IBAction func mapOpen(_ sender: Any) {
         if timer != nil{
-timer.invalidate()
-}
+            timer.invalidate()
+        }
         blackView.bounds = self.view.bounds
         blackView.center = self.view.center
         self.view.addSubview(blackView)
@@ -416,8 +417,8 @@ timer.invalidate()
     @IBAction func pauseTapped(_ sender: Any) {
         pauseBar.isHidden = false
         if timer != nil{
-timer.invalidate()
-}
+            timer.invalidate()
+        }
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     @IBAction func resumeTapped(_ sender: Any) {
@@ -429,10 +430,11 @@ timer.invalidate()
     }
     @IBAction func chatWithGod(_ sender: Any) {
         isGodChatOn = true
+        alertTimer.invalidate()
         chatToGodView.backgroundColor = UIColor.black
         if timer != nil{
-timer.invalidate()
-}
+            timer.invalidate()
+        }
         blackView.bounds = self.view.bounds
         blackView.center = self.view.center
         self.view.addSubview(blackView)

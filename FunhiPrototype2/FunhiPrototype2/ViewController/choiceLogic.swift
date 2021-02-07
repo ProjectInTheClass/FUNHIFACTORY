@@ -22,8 +22,9 @@ extension mainGameViewController{
     }
     func chatUpdate(){
         print("스토리 \(player.indexNumber)/\(currentChatAmount())")
-        //게임 오버 시 뜰 배드엔딩 창 띄우기.
         bgm()
+        checkEnterAnimation()
+        //게임 오버 시 뜰 배드엔딩 창 띄우기.
         if player.indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex == "badEnding"{
             print("타이머 여부 :\(timer == nil)")
             if timer != nil {
@@ -197,5 +198,14 @@ extension mainGameViewController{
                 self.blackView.removeFromSuperview()
             }
         }
+    }
+    func alertTargetView(targetView: UIView, timeInterval : Double, firstColor : UIColor, secondColor : UIColor){
+        alertTimer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: {timer in
+            if targetView.backgroundColor == firstColor{
+                targetView.backgroundColor = secondColor
+            }else {
+                targetView.backgroundColor = firstColor
+            }
+        })
     }
 }
