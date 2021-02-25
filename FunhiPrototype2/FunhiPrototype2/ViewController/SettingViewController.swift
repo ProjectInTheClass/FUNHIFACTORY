@@ -16,6 +16,8 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     @IBOutlet var effectMusicSlider: UISlider!
     @IBOutlet var initializeAlert: UIView!
     @IBOutlet var textSpeedSlider: UISlider!
+    @IBOutlet var initializeAlertButtons: [UIButton]!
+    
     let blackView = UIView()
     
     override func viewDidLoad() {
@@ -32,6 +34,12 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         // Do any additional setup after loading the view.
         yesButton.layer.borderColor = UIColor(red: 0.396, green: 0.396, blue: 0.396, alpha: 1).cgColor
         noButton.layer.borderColor = UIColor(red: 0.396, green: 0.396, blue: 0.396, alpha: 1).cgColor
+        for button in initializeAlertButtons {
+            button.layer.shadowColor = UIColor(red: 0.38, green: 0.457, blue: 0.521, alpha: 1).cgColor
+            button.layer.shadowOpacity = 1
+            button.layer.shadowRadius = 0
+            button.layer.shadowOffset = CGSize(width: 0, height: 4)
+        }
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -82,7 +90,8 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         blackView.alpha = 0.8
         self.view.addSubview(blackView)
         self.view.addSubview(initializeAlert)
-        initializeAlert.layer.borderColor = UIColor(red: 0.862, green: 0.862, blue: 0.862, alpha: 1).cgColor
+// 아웃렛 디자인 접근하기 편하게 스토리보드에 몰아놓느라 주석처리 해놓았어요 색상 스토리보드에서 확인하심 됩니당
+//        initializeAlert.layer.borderColor = UIColor(red: 0.862, green: 0.862, blue: 0.862, alpha: 1).cgColor
         initializeAlert.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 325).isActive = true
         initializeAlert.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 40).isActive = true
     }

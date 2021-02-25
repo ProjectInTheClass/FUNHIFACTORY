@@ -83,9 +83,10 @@ class SelectStageTableViewCell: UITableViewCell {
         checkBox.layer.borderColor = UIColor(red: 0.106, green: 0.157, blue: 0.22, alpha: 1).cgColor
         
     }
+    
+    //당분간 안 쓸예정
     func setColor() {
-        cellBackground.backgroundColor = colorEPCellBackground
-        leftBox.backgroundColor = colorEPCellspine
+       
     }
 
 }

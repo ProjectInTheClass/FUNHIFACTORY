@@ -39,6 +39,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var collectionBar: UIView!
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var chatToGodView: UIView!
+    @IBOutlet var chatToGodViewTopbar: UIView!
     @IBOutlet var choiceCollectionView: UICollectionView!
     @IBOutlet var myChoiceText: UILabel!
     @IBAction func notePopupViewXButton(_ sender: Any) {
@@ -259,6 +260,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         godChatChoiceBar.isHidden = true
         godChatChoiceBar.setNeedsUpdateConstraints()
         godChatTableView.layoutIfNeeded()
+        chatToGodViewTopbar.layer.cornerRadius = 10
+        chatToGodViewTopbar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMinYCorner]
         //initialize()
         if let page = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]?.choices.count{
             initializePageControl(collectionView : choiceCollectionView, choiceBar : choiceBar, numberOfPages:page)
@@ -313,6 +316,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
          return
         }
     }
+    
     
     
     override func viewDidAppear(_ animated: Bool) {
