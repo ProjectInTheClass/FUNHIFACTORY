@@ -70,10 +70,10 @@ class SelectStageTableViewCell: UITableViewCell {
         let shadowPath0 = UIBezierPath(roundedRect: cellBackground.bounds, cornerRadius: 8)
           
         cellBackground.layer.shadowPath = shadowPath0.cgPath
-        cellBackground.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        cellBackground.layer.shadowColor = UIColor(red: 0.418, green: 0.496, blue: 0.579, alpha: 1).cgColor
         cellBackground.layer.shadowOpacity = 1
         cellBackground.layer.shadowRadius = 0
-        cellBackground.layer.shadowOffset = CGSize(width: 7, height: 7)
+        cellBackground.layer.shadowOffset = CGSize(width: 0, height: 5)
         cellBackground.layer.position = cellBackground.center
             
         
@@ -185,16 +185,13 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         
         selectedPopupBackground.bounds = self.view.bounds
         selectedPopupBackground.center = self.view.center
-        selectedPopup.layer.cornerRadius = 10
-        selectedPopup.layer.borderWidth = 4
-        selectedPopup.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
-        selectedPopupBackground.bounds = self.view.bounds
-        selectedPopupBackground.center = self.view.center
-        selectedPopupStartButtonOutlet.layer.cornerRadius = 3
-        selectedPopupStartButtonOutlet.layer.borderWidth = 1.5
-        selectedPopupStartButtonOutlet.layer.borderColor = UIColor(red: 0.106, green: 0.157, blue: 0.22, alpha: 1).cgColor
-        selectedPopupTopbar.layer.cornerRadius = 10
+     
         selectedPopupTopbar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        
+        selectedPopupStartButtonOutlet.layer.shadowColor = UIColor(red: 0.442, green: 0.562, blue: 0.662, alpha: 1).cgColor
+        selectedPopupStartButtonOutlet.layer.shadowOpacity = 1
+        selectedPopupStartButtonOutlet.layer.shadowRadius = 0
+        selectedPopupStartButtonOutlet.layer.shadowOffset = CGSize(width: 0, height: 4)
     }
     
     //초기화 시키느라 이래 됨
