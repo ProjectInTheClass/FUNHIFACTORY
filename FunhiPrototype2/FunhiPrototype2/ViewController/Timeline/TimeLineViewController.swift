@@ -302,9 +302,13 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     }
     
     
+    //-------------------세 번째 팝업----------------
     
-    
-    
+    @IBOutlet var thirdPopup: UIView!
+    @IBOutlet var thirdPopupLabel: UILabel!
+    @IBOutlet var thirdPopupOkayButton: UIButton!
+    @IBAction func thirdPopupOkayButtonTouched(_ sender: Any) {
+    }
     
     
     
@@ -330,22 +334,21 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     
     //팝업 디자인하는 함수
     func designObjects(firstPopupView: UIView, secondPopupView: UIView, secondPopupButton1: UIButton, secondPopupButton2: UIButton) {
-        firstPopupView.layer.cornerRadius = 10
-        firstPopupView.layer.borderWidth = 4
-        firstPopupView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+     
+        secondPopupButton1.layer.shadowColor = UIColor(red: 0.443, green: 0.561, blue: 0.663, alpha: 1).cgColor
+        secondPopupButton1.layer.shadowOpacity = 1
+        secondPopupButton1.layer.shadowRadius = 0
+        secondPopupButton1.layer.shadowOffset = CGSize(width: 0, height: 3)
         
-       
+        secondPopupButton2.layer.shadowColor = UIColor(red: 0.443, green: 0.561, blue: 0.663, alpha: 1).cgColor
+        secondPopupButton2.layer.shadowOpacity = 1
+        secondPopupButton2.layer.shadowRadius = 0
+        secondPopupButton2.layer.shadowOffset = CGSize(width: 0, height: 3)
+    
+        thirdPopupOkayButton.layer.shadowColor = UIColor(red: 0.443, green: 0.561, blue: 0.663, alpha: 1).cgColor
+        thirdPopupOkayButton.layer.shadowOpacity = 1
+        thirdPopupOkayButton.layer.shadowRadius = 0
+        thirdPopupOkayButton.layer.shadowOffset = CGSize(width: 0, height: 3)
         
-        secondPopupView.layer.cornerRadius = 10
-        secondPopupView.layer.borderWidth = 4
-        secondPopupView.layer.borderColor = UIColor(red: 0.862, green: 0.862, blue: 0.862, alpha: 1).cgColor
-        
-        secondPopupButton1.layer.cornerRadius = 10
-        secondPopupButton1.layer.borderWidth = 1.5
-        secondPopupButton1.layer.borderColor = UIColor(red: 0.396, green: 0.396, blue: 0.396, alpha: 1).cgColor
-        
-        secondPopupButton2.layer.cornerRadius = 10
-        secondPopupButton2.layer.borderWidth = 1.5
-        secondPopupButton2.layer.borderColor = UIColor(red: 0.396, green: 0.396, blue: 0.396, alpha: 1).cgColor
     }
 }

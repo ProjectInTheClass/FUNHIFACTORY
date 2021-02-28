@@ -194,9 +194,7 @@ class AlbumViewController: UIViewController,UICollectionViewDelegate,UICollectio
         pageButtonLine4.backgroundColor = .clear
     }
     func designPopup() {
-        albumPopupBoxView.layer.cornerRadius = 16
-        albumPopupBoxView.layer.borderWidth = 4
-        albumPopupBoxView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+       
         
         albumPopupBoxTopBarView.layer.cornerRadius = 16
         albumPopupBoxTopBarView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
