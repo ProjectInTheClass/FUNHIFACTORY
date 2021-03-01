@@ -63,21 +63,24 @@ class SelectStageTableViewCell: UITableViewCell {
         lockedView.layer.cornerRadius = 7
         leftBox.layer.cornerRadius = 8
         leftBox.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
-       
+        cellBackground.layer.borderWidth = 2.5
+        cellBackground.layer.borderColor = CGColor(red: 0.106, green: 0.157, blue: 0.22, alpha: 1)
         cellBackground.layer.cornerRadius = 8
-        
-        
-        cellBackground.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 8).cgPath
+           
+        let shadowPath0 = UIBezierPath(roundedRect: cellBackground.bounds, cornerRadius: 8)
+          
+        cellBackground.layer.shadowPath = shadowPath0.cgPath
         cellBackground.layer.shadowColor = UIColor(red: 0.418, green: 0.496, blue: 0.579, alpha: 1).cgColor
         cellBackground.layer.shadowOpacity = 1
         cellBackground.layer.shadowRadius = 0
         cellBackground.layer.shadowOffset = CGSize(width: 0, height: 5)
-
+        cellBackground.layer.position = cellBackground.center
             
         
         
         checkBox.roundCorners(topLeft: 2, topRight: 7, bottomLeft: 2, bottomRight: 2)
-        
+        checkBox.layer.borderWidth = 2
+        checkBox.layer.borderColor = UIColor(red: 0.106, green: 0.157, blue: 0.22, alpha: 1).cgColor
         
     }
     
@@ -205,7 +208,8 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         selectedPopupStartButtonOutlet.setTitle("여기서 시작하기", for: .normal)
         selectedPopupStartButtonOutlet.isEnabled = true
         selectedPopupStartButtonOutlet.layer.cornerRadius = 3
-        
+        selectedPopupStartButtonOutlet.layer.borderWidth = 2
+        selectedPopupStartButtonOutlet.layer.borderColor = UIColor(red: 0.517, green: 0.517, blue: 0.517, alpha: 1).cgColor
         if player.currentEpisodes[indexPath.row].storyBlocks.count == 0 {
             selectedPopupStartButtonOutlet.isEnabled = false
             selectedPopupStartButtonOutlet.setTitle("준비 중입니다.", for: .normal)
