@@ -18,6 +18,7 @@ class SelectStageTableViewCell: UITableViewCell {
     @IBOutlet weak var leftBox: UIView!
     @IBOutlet weak var checkBox: UIView!
     @IBOutlet weak var lockedView: UIView!
+    @IBOutlet weak var shadowView: UIView!
     var touched: Bool = false
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -60,27 +61,20 @@ class SelectStageTableViewCell: UITableViewCell {
     
     func designButton() {
         
+        episodeYear.font = UIFont(name: "NEXONLv2GothicBold", size: 24)
+        episodePlace.font = UIFont(name: "NanumSquareEB", size: 15)
         lockedView.layer.cornerRadius = 7
         leftBox.layer.cornerRadius = 8
         leftBox.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
-        cellBackground.layer.borderWidth = 2.5
-        cellBackground.layer.borderColor = CGColor(red: 0.106, green: 0.157, blue: 0.22, alpha: 1)
+        
         cellBackground.layer.cornerRadius = 8
-           
-        let shadowPath0 = UIBezierPath(roundedRect: cellBackground.bounds, cornerRadius: 8)
-          
-        cellBackground.layer.shadowPath = shadowPath0.cgPath
-        cellBackground.layer.shadowColor = UIColor(red: 0.418, green: 0.496, blue: 0.579, alpha: 1).cgColor
-        cellBackground.layer.shadowOpacity = 1
-        cellBackground.layer.shadowRadius = 0
-        cellBackground.layer.shadowOffset = CGSize(width: 0, height: 5)
-        cellBackground.layer.position = cellBackground.center
+        
+        shadowView.layer.cornerRadius = 14
             
         
         
         checkBox.roundCorners(topLeft: 2, topRight: 7, bottomLeft: 2, bottomRight: 2)
-        checkBox.layer.borderWidth = 2
-        checkBox.layer.borderColor = UIColor(red: 0.106, green: 0.157, blue: 0.22, alpha: 1).cgColor
+       
         
     }
     
@@ -108,7 +102,7 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         cell.episodeYear.text = "\(player.currentEpisodes[indexPath.row].episodeYear)년"
         cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[indexPath.row].episodePlaceImage)
         // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
-        cell.checkBox.backgroundColor = player.currentEpisodes[indexPath.row].isCleared ? UIColor(red: 0.533, green: 0.533, blue: 0.533, alpha: 1) : .white
+        cell.checkBox.backgroundColor = player.currentEpisodes[indexPath.row].isCleared ? UIColor(red: 0.42, green: 0.498, blue: 0.58, alpha: 1) : .white
         cell.checkImageView.isHidden = player.currentEpisodes[indexPath.row].isCleared ? false : true
         if player.currentEpisodes[indexPath.row].episodeID == "ending" {
             cell.lockedView.isHidden = checkEndingOpenTiming(playerEpisodes: player.currentEpisodes)
@@ -125,7 +119,7 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 147
+        return 143
     }
     var selectedRowIndex: Int?
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -183,15 +177,26 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     func designPopup() {
         
+        selectedPopupYearLabel.font = UIFont(name: "NEXONLv2GothicBold", size: 26)
+        selectedPopupSupTitleLabel.font = UIFont(name: "NanumSquareEB", size: 15)
+        selectedPopupDescriptionLabel.font = UIFont(name: "NanumSquareB", size: 18)
+        selectedPopupDescriptionLabel.setLineSpacing(lineSpacing: 6)
+        selectedPopupDescriptionLabel.textAlignment = .center
+        selectedPopup.layer.borderWidth = 4
+        selectedPopup.layer.borderColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 1).cgColor
         selectedPopupBackground.bounds = self.view.bounds
         selectedPopupBackground.center = self.view.center
      
+        
+        selectedPopupTopbar.layer.cornerRadius = 10
         selectedPopupTopbar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         
-        selectedPopupStartButtonOutlet.layer.shadowColor = UIColor(red: 0.442, green: 0.562, blue: 0.662, alpha: 1).cgColor
-        selectedPopupStartButtonOutlet.layer.shadowOpacity = 1
-        selectedPopupStartButtonOutlet.layer.shadowRadius = 0
-        selectedPopupStartButtonOutlet.layer.shadowOffset = CGSize(width: 0, height: 4)
+//        selectedPopupStartButtonOutlet.layer.shadowColor = UIColor(red: 0.442, green: 0.562, blue: 0.662, alpha: 1).cgColor
+//        selectedPopupStartButtonOutlet.layer.shadowOpacity = 1
+//        selectedPopupStartButtonOutlet.layer.shadowRadius = 0
+//        selectedPopupStartButtonOutlet.layer.shadowOffset = CGSize(width: 0, height: 4)
+        
+       
     }
     
     //초기화 시키느라 이래 됨
@@ -207,9 +212,8 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         
         selectedPopupStartButtonOutlet.setTitle("여기서 시작하기", for: .normal)
         selectedPopupStartButtonOutlet.isEnabled = true
-        selectedPopupStartButtonOutlet.layer.cornerRadius = 3
-        selectedPopupStartButtonOutlet.layer.borderWidth = 2
-        selectedPopupStartButtonOutlet.layer.borderColor = UIColor(red: 0.517, green: 0.517, blue: 0.517, alpha: 1).cgColor
+        
+        
         if player.currentEpisodes[indexPath.row].storyBlocks.count == 0 {
             selectedPopupStartButtonOutlet.isEnabled = false
             selectedPopupStartButtonOutlet.setTitle("준비 중입니다.", for: .normal)

@@ -256,6 +256,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.godChatTableView.delegate = self
         self.godChatCollectionView.delegate = self
         self.transitioningDelegate = self
+        
         godChatChoiceHeight.constant = 0
         godChatChoiceBar.isHidden = true
         godChatChoiceBar.setNeedsUpdateConstraints()

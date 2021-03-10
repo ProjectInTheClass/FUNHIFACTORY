@@ -13,6 +13,14 @@ class TitleCoverViewController: UIViewController {
     @IBOutlet weak var testLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        for family: String in UIFont.familyNames
+             {
+                 print(family)
+                 for names: String in UIFont.fontNames(forFamilyName: family)
+                 {
+                     print("== \(names)")
+                 }
+             }
         testLabel.setCharacterSpacing(characterSpacing: 5)
         light()
         
@@ -72,10 +80,5 @@ class TitleCoverViewController: UIViewController {
                 testLabel.alpha = 0.1
 
             }, completion: nil)
-       
-        
-        
     }
- 
-
 }
