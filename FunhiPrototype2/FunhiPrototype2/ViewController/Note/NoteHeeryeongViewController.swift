@@ -161,6 +161,7 @@ class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITable
     
     
     
+    @IBOutlet var hwiryeongLabel: UILabel!
     @IBOutlet weak var hwiryeongInfomationTableView: UITableView!
     @IBOutlet weak var hwiryeongProfileImageView: UIImageView!
     
@@ -179,7 +180,9 @@ class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITable
         self.hwiryeongInfomationTableView.delegate = self
         self.hwiryeongInfomationTableView.dataSource = self
         
-     
+        hwiryeongDescriptionLabel.font = UIFont(name: "GyeonggiBatangB", size: 17)
+        hwiryeongDescriptionLabel.textAlignment = .center
+
     
         // Do any additional setup after loading the view.
     }
@@ -202,7 +205,8 @@ class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITable
         hwiryeongDescriptionLabel.textAlignment = .center
         hwiryeongProfileImageView.layer.cornerRadius = hwiryeongProfileImageView.frame.width/2
         hwiryeongDescriptionLabel.setLineSpacing(lineSpacing: 5)
-       
+        hwiryeongLabel.font = UIFont(name: "NanumSquareEB", size: 29)
+
     }
 }
 

@@ -143,6 +143,7 @@ class NoteGameCharacterViewController: UIViewController,UITableViewDelegate, UIT
         return returnCell
     }
     //----------------일반 아웃렛, 메소드------------------------------
+    @IBOutlet var nameLabel: UILabel!
     var recievedGameCharacter: GameCharacter?
     @IBOutlet weak var infomationTableView: UITableView!
     @IBOutlet weak var gameCharacterImageView: UIImageView!
@@ -176,6 +177,9 @@ class NoteGameCharacterViewController: UIViewController,UITableViewDelegate, UIT
         self.navigationController?.popViewController(animated: true)
     }
     func designObjects() {
+        
+        nameLabel.font = UIFont(name: "NanumSquareEB", size: 29)
+
         gameCharacterDescriptionLabel.setLineSpacing(lineSpacing: 5.0)
         gameCharacterDescriptionLabel.textAlignment = .center
         gameCharacterImageView.layer.cornerRadius = gameCharacterImageView.frame.width/2

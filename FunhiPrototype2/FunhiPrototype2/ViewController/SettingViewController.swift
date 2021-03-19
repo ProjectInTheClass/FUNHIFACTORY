@@ -10,6 +10,7 @@ import MessageUI
 
 class SettingViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
+    @IBOutlet var settingLabel: UILabel!
     @IBOutlet var yesButton: UIButton!
     @IBOutlet var noButton: UIButton!
     @IBOutlet var bgmSlider: UISlider!
@@ -17,6 +18,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     @IBOutlet var initializeAlert: UIView!
     @IBOutlet var textSpeedSlider: UISlider!
     @IBOutlet var initializeAlertButtons: [UIButton]!
+    @IBOutlet var settingPropertyLabels: [UILabel]!
     
     let blackView = UIView()
     
@@ -40,6 +42,11 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
             button.layer.shadowRadius = 0
             button.layer.shadowOffset = CGSize(width: 0, height: 4)
         }
+        settingLabel.font = UIFont(name: "NanumSquareEB", size: 29)
+        
+        for label in settingPropertyLabels {
+            label.font = UIFont(name: "NanumSquareEB", size: 20)
+        }
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -47,11 +54,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
    
-        
-    @IBOutlet weak var darkmodeSwitch: UISwitch!
-    @IBAction func darkmodeSwitchTapped(_ sender: UISwitch) {
-        player.setting.darkmode = darkmodeSwitch.isOn ? true : false
-    }
+
     @IBAction func creditTapped(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(identifier: "credit")
         vc?.modalPresentationStyle = .fullScreen

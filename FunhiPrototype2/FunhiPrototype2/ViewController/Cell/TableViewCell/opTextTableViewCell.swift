@@ -20,9 +20,12 @@ class opTextTableViewCell: UITableViewCell {
     }
     func designCell() {
        
+      
         chatText.setLineSpacing(lineSpacing: 6)
-        chatView.layer.borderWidth = 1.5
-        chatView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        profileNickname.font = UIFont(name: "NanumSquareEB", size: 18)
+        chatText.font = UIFont(name: "NanumSquareB", size: 17)
+        chatView.layer.borderWidth = 1.7
+        chatView.layer.borderColor = UIColor(red: 0.707, green: 0.76, blue: 0.804, alpha: 1).cgColor
         chatView.layer.cornerRadius = 20
         chatView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner]
     }

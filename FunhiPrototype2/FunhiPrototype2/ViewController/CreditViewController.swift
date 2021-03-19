@@ -8,11 +8,12 @@
 import UIKit
 
 class CreditViewController: UIViewController {
-
+    @IBOutlet var creditLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        creditLabel.font = UIFont(name: "NanumSquareEB", size: 29)
 
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func back(_ sender: UIButton) {

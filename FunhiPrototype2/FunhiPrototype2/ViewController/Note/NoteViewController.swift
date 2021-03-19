@@ -32,9 +32,9 @@ class NoteSmallGameCharacterTableViewCell: UITableViewCell {
         lockedView.layer.borderWidth = 3
         lockedView.layer.borderColor = UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1).cgColor
         
-        cellBackgroundView.layer.cornerRadius = 7
-        cellBackgroundView.layer.borderWidth = 3
-        cellBackgroundView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+//        cellBackgroundView.layer.cornerRadius = 7
+//        cellBackgroundView.layer.borderWidth = 3
+//        cellBackgroundView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
         
         profileImageView.layer.cornerRadius = profileImageView.frame.width/2
         
@@ -86,7 +86,7 @@ class NoteGameCharacterTableViewCell: UITableViewCell {
 class NoteCaseTableViewCell: UITableViewCell {
 
     @IBOutlet weak var caseNameLabel: UILabel!
-    @IBOutlet weak var caseDescriptionLabel: UILabel!
+ 
     @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var lockedView: UIView!
     
@@ -245,7 +245,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             
             cell.selectionStyle = .none
             cell.caseNameLabel.text = currentCase.title
-            cell.caseDescriptionLabel.text = currentCase.shortDescription
+          
             if currentCase.isLocked {
                 cell.lockedView.isHidden = false
             } else {
@@ -306,14 +306,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         }
         
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView == designTableView {
-            return 80
-        } else {
-            return CGFloat(cellHeight)
-        }
-       
-    }
+  
 //------여기부터 이외 아웃렛, 액션-------------
     @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var exitButton: UIButton!
@@ -466,6 +459,8 @@ extension NoteViewController {
      
     //--------------수첩 --------------
     
+        titleLabel.font = UIFont(name: "NanumSquareEB", size: 29)
+
     noteBackgroundView.layer.cornerRadius = 5
    
         noteBackgroundView.layer.shadowColor = UIColor(red: 0.174, green: 0.292, blue: 0.404, alpha: 1).cgColor
@@ -499,7 +494,7 @@ extension NoteViewController {
     //--------사건 팝업------------------
     casePopupBoxView.layer.cornerRadius = 16
     casePopupBoxView.layer.borderWidth = 4
-    casePopupBoxView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+    casePopupBoxView.layer.borderColor = UIColor(red: 0.616, green: 0.71, blue: 0.796, alpha: 1).cgColor
         
         casePopopBackgroundViewTopBar.layer.cornerRadius = 16
         casePopopBackgroundViewTopBar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]

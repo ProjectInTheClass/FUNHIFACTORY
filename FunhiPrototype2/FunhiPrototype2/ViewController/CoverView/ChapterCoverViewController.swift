@@ -14,9 +14,11 @@ class ChapterCoverViewController: UIViewController {
     @IBOutlet weak var chapterNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    @IBOutlet weak var sandGlassImageView: UIImageView!
     @IBOutlet weak var closeCoverButton: UIButton!
     @IBOutlet weak var tapAndContinueLabel: UILabel!
     @IBAction func closeCoverButtonAction(_ sender: Any) {
+        self.buttonIsOn = true
         blackView.bounds = self.view.bounds
         blackView.center = self.view.center
         blackView.alpha = 0
@@ -32,6 +34,17 @@ class ChapterCoverViewController: UIViewController {
         
        
     }
+    
+    func designView() {
+        yearLabel.font = UIFont(name: "NEXONLv2GothicBold", size: 20)
+        chapterNameLabel.font = UIFont(name: "NanumSquareEB", size: 40)
+        descriptionLabel.font = UIFont(name: "NanumSquareR", size: 20)
+        descriptionLabel.setLineSpacing(lineSpacing: 10)
+        descriptionLabel.textAlignment = .center
+        tapAndContinueLabel.setCharacterSpacing(characterSpacing: 5)
+        tapAndContinueLabel.font = UIFont(name: "NanumSquareR", size: 15)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToMainGameSegue" {
             let destination = segue.destination as! mainGameViewController
@@ -43,9 +56,7 @@ class ChapterCoverViewController: UIViewController {
     @IBOutlet var blackView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        descriptionLabel.setLineSpacing(lineSpacing: 10.0)
-        tapAndContinueLabel.setCharacterSpacing(characterSpacing: 5)
-        descriptionLabel.textAlignment = .center
+        designView() 
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -57,10 +68,15 @@ class ChapterCoverViewController: UIViewController {
         chapterNameLabel.text = currentDay().episodePlace
         descriptionLabel.text = currentDay().episodeDesciption
         closeCoverButton.isHidden = true
+        
         yearLabel.alpha = 0
         chapterNameLabel.alpha = 0
         descriptionLabel.alpha = 0
-        tapAndContinueLabel.alpha = 0
+        sandGlassImageView.isHidden = true
+        tapAndContinueLabel.isHidden = true
+        
+        buttonIsOn = false
+      
         UIView.animate(withDuration: 1.0, delay: 0.3) {
             self.yearLabel.alpha = 1
         } completion: { (true) in
@@ -70,18 +86,54 @@ class ChapterCoverViewController: UIViewController {
                 UIView.animate(withDuration: 1.0, delay: 0.3) {
                     self.descriptionLabel.alpha = 1
                 } completion: { (Bool) in
+                    self.sandGlassImageView.isHidden = false
                     UIView.animate(withDuration: 1.0) {
-                        self.tapAndContinueLabel.alpha = 1
+                        
+                        self.chapterNameLabel.alpha = 1
+                    } completion: { (Bool) in
+                        self.tapAndContinueLabel.isHidden = false
                         self.closeCoverButton.isHidden = false
+                        UIView.animate(withDuration: 1.0) {
+                            
+                            
+                        }
                     }
                 }
-
             }
-
         }
+    }
+    
+    var buttonIsOn = Bool() {
+        didSet {
+          // rotateButton()
+           light()
+        }
+    }
+    func rotateButton() {
+        if !buttonIsOn {
+            UIImageView.animate(withDuration: 0.8, delay: 0.5, options: [.repeat], animations: {[self]  in
+                sandGlassImageView.transform = CGAffineTransform(rotationAngle: .pi)
 
+            }, completion: nil)
+        } else {
+            sandGlassImageView.layer.removeAnimation(forKey: "")
+        }
+      
+        
+    }
+    
+    func light() {
+        if !buttonIsOn {
+            UIImageView.animate(withDuration: 0.6, delay: 0, options: [.repeat, .autoreverse], animations: {[self]  in
+                sandGlassImageView.alpha = 0.3
+                tapAndContinueLabel.alpha = 0.3
+
+            }, completion: nil)
+        } else {
+            sandGlassImageView.layer.removeAllAnimations()
+            tapAndContinueLabel.layer.removeAllAnimations()
+        }
     }
 
-
-
+    
 }

@@ -6,85 +6,83 @@
 //
 
 import UIKit
-class LeftAlbumCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var albumImageView: UIImageView!
-    @IBOutlet weak var lockedView: UIView!
-    @IBOutlet weak var albumTitleLabel: UILabel!
-    override func awakeFromNib() {
-        designCell()
-    }
-    func designCell() {
-        albumImageView.layer.cornerRadius = 5
-        albumImageView.layer.borderWidth = 3
-        albumImageView.layer.borderColor = UIColor(red: 0.123, green: 0.201, blue: 0.271, alpha: 1).cgColor
-        lockedView.layer.cornerRadius = 5
-    }
+
+class AlbumTableViewCell: UITableViewCell {
     
-}
-class RightAlbumCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var albumImageView: UIImageView!
+    @IBOutlet weak var albumImageNameLabel: UILabel!
     @IBOutlet weak var lockedView: UIView!
-    @IBOutlet weak var albumTitleLabel: UILabel!
+    
     override func awakeFromNib() {
-        designCell()
+        super.awakeFromNib()
+        albumImageNameLabel.font = UIFont(name: "NanumSquareEB", size: 15)
+        albumImageView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+        albumImageView.layer.borderWidth = 4
+        albumImageView.layer.cornerRadius = 7
+        
+        lockedView.layer.cornerRadius = 7
+        lockedView.layer.borderWidth = 4
+        lockedView.layer.borderColor = UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1).cgColor
     }
-    func designCell() {
-        albumImageView.layer.cornerRadius = 5
-        albumImageView.layer.borderWidth = 3
-        albumImageView.layer.borderColor = UIColor(red: 0.123, green: 0.201, blue: 0.271, alpha: 1).cgColor
-        lockedView.layer.cornerRadius = 5
+    override func setSelected(_ selected: Bool, animated: Bool) {
+       
     }
 }
 //---------------뷰컨------------------
-class AlbumViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout   {
+class AlbumViewController: UIViewController,UITableViewDelegate,UITableViewDataSource   {
     
-  
-  //--------------콜렉션 뷰----------------
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return player.currentEpisodes[currentNotePageInt].currentAlbumImages.count
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == designTableView {
+            return 20
+        } else {
+            return player.currentEpisodes[currentNotePageInt].currentAlbumImages.count
+        }
+        
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if Int(indexPath.row) % 2 == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "leftAlbumCollectionViewCell", for: indexPath) as! LeftAlbumCollectionViewCell
-            cell.albumImageView.image = UIImage(named: player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].image)
-            cell.albumTitleLabel.text = player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].title
-            if player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].isLocked {
-                cell.lockedView.isHidden = false
-            } else {
-                cell.lockedView.isHidden = true
-            }
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rightAlbumCollectionViewCell", for: indexPath) as! RightAlbumCollectionViewCell
-            cell.albumImageView.image = UIImage(named: player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].image)
-            cell.albumTitleLabel.text = player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].title
-            if player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].isLocked {
-                cell.lockedView.isHidden = false
-            } else {
-                cell.lockedView.isHidden = true
-            }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard tableView == albumTableView else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "designTableViewCell", for: indexPath) as! DesignTableViewCell
+            cell.springImageView.image = UIImage(named: "spring image")
             return cell
         }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "albumCell", for: indexPath) as! AlbumTableViewCell
+        cell.albumImageView.image = UIImage(named: player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].image)
+        cell.albumImageNameLabel.text = player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].title
+        if player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].isLocked {
+            cell.lockedView.isHidden = false
+        } else {
+            cell.lockedView.isHidden = true
+        }
+        return cell
     }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard !player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].isLocked else { return }
         popupViewOn(blackView: albumPopupBackgroundView,popupView: albumPopupBoxView, titleLabel: albumPoopupTitleLabel, descriptionLabel: albumPopupDescriptionLabel, imageView: albumPopupImageView, priviousScale: 0.5, afterScale: 1.0, indexPath: indexPath)
         
     }
+  
+  
     
 //-----------------일반--------------------
     
-    @IBOutlet weak var albumCollectionView: UICollectionView!
+
     
+    @IBOutlet var albumLabel: UILabel!
+    @IBOutlet weak var albumTableView: UITableView!
+    @IBOutlet weak var designTableView: UITableView!
+    
+    @IBOutlet weak var albumBackgroundView: UIView!
     @IBOutlet weak var pageButton1: UIButton!
     @IBOutlet weak var pageButton2: UIButton!
     @IBOutlet weak var pageButton3: UIButton!
     @IBOutlet weak var pageButton4: UIButton!
-    @IBOutlet weak var pageButtonLine1: UIView!
-    @IBOutlet weak var pageButtonLine2: UIView!
-    @IBOutlet weak var pageButtonLine3: UIView!
-    @IBOutlet weak var pageButtonLine4: UIView!
+    @IBOutlet weak var pageButton5: UIButton!
+
+    
+    @IBOutlet var pageButtons: [UIButton]!
     //팝업뷰
     @IBOutlet var albumPopupBackgroundView: UIView!
     @IBOutlet weak var albumPopupBoxTopBarView: UIView!
@@ -108,7 +106,7 @@ class AlbumViewController: UIViewController,UICollectionViewDelegate,UICollectio
     
     var currentNotePageInt: Int = 1 {
         didSet {
-            albumCollectionView.reloadData()
+            albumTableView.reloadData()
             
         }
     }
@@ -116,63 +114,48 @@ class AlbumViewController: UIViewController,UICollectionViewDelegate,UICollectio
    
     
     @IBAction func pageButton1Action(_ sender: Any) {
-        currentNotePageInt = 1
-        pageButton1.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        pageButton2.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
-        pageButton3.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
-        pageButton4.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
-        pageButtonLine1.backgroundColor = .black
-        pageButtonLine2.backgroundColor = .clear
-        pageButtonLine3.backgroundColor = .clear
-        pageButtonLine4.backgroundColor = .clear
+ 
+        setButtonTitleColor(newPageNumber: 1)
     }
     @IBAction func pageButton2Action(_ sender: Any) {
-        currentNotePageInt = 2
-        pageButton1.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
-        pageButton2.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        pageButton3.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
-        pageButton4.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
-        pageButtonLine1.backgroundColor = .clear
-        pageButtonLine2.backgroundColor = .black
-        pageButtonLine3.backgroundColor = .clear
-        pageButtonLine4.backgroundColor = .clear
+      
+        setButtonTitleColor(newPageNumber: 2)
     }
     @IBAction func pageButton3Action(_ sender: Any) {
-        currentNotePageInt = 3
-        pageButton1.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
-        pageButton2.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
-        pageButton3.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        pageButton4.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
-        pageButtonLine1.backgroundColor = .clear
-        pageButtonLine2.backgroundColor = .clear
-        pageButtonLine3.backgroundColor = .black
-        pageButtonLine4.backgroundColor = .clear
+      
+        setButtonTitleColor(newPageNumber: 3)
     }
     @IBAction func pageButton4Action(_ sender: Any) {
-        currentNotePageInt = 4
-        pageButton1.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
-        pageButton2.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
-        pageButton3.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
-        pageButton4.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        pageButtonLine1.backgroundColor = .clear
-        pageButtonLine2.backgroundColor = .clear
-        pageButtonLine3.backgroundColor = .clear
-        pageButtonLine4.backgroundColor = .black
+   
+        setButtonTitleColor(newPageNumber: 4)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.albumCollectionView.delegate = self
-        self.albumCollectionView.dataSource = self
-        self.albumCollectionView.isUserInteractionEnabled = true
+        self.albumTableView.delegate = self
+        self.albumTableView.dataSource = self
+        self.designTableView.delegate = self
+        self.designTableView.dataSource = self
+        albumBackgroundView.layer.cornerRadius = 24
+        albumBackgroundView.layer.shadowColor = UIColor(red: 0.174, green: 0.292, blue: 0.404, alpha: 1).cgColor
+        albumBackgroundView.layer.shadowOffset = CGSize(width: 26, height: -17)
+        albumBackgroundView.layer.shadowOpacity = 1
+        albumBackgroundView.layer.shadowRadius = 0
+        albumBackgroundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         buttonBarDesign()
         designPopup()
         currentNotePageInt = 1
+        for button in pageButtons {
+            button.layer.cornerRadius = 10
+            button.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        }
+        
+        
         
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         currentNotePageInt = 1
-        albumCollectionView.reloadData()
+        albumTableView.reloadData()
         buttonBarDesign()
       
     }
@@ -188,18 +171,29 @@ class AlbumViewController: UIViewController,UICollectionViewDelegate,UICollectio
         pageButton2.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
         pageButton3.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
         pageButton4.setTitleColor(UIColor(red: 0.471, green: 0.471, blue: 0.471, alpha: 1), for: .normal)
-        pageButtonLine1.backgroundColor = .black
-        pageButtonLine2.backgroundColor = .clear
-        pageButtonLine3.backgroundColor = .clear
-        pageButtonLine4.backgroundColor = .clear
+        
     }
     func designPopup() {
-       
+        albumLabel.font = UIFont(name: "NanumSquareEB", size: 29)
+
         
         albumPopupBoxTopBarView.layer.cornerRadius = 16
         albumPopupBoxTopBarView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
   
+    func setButtonTitleColor(newPageNumber: Int) {
+        let buttons = [pageButton5, pageButton1, pageButton2, pageButton3, pageButton4]
+        if let button = buttons[currentNotePageInt] {
+            button.setTitleColor(UIColor(red: 0.109, green: 0.201, blue: 0.275, alpha: 1), for: .normal)
+            button.backgroundColor = UIColor(red: 0.341, green: 0.478, blue: 0.604, alpha: 1)
+            currentNotePageInt = newPageNumber
+        }
+        if let button = buttons[currentNotePageInt] {
+            button.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+            button.backgroundColor = UIColor(red: 157/255, green: 181/255, blue: 203/255, alpha: 1)
+        }
+        
+    }
     func popupViewOn(blackView: UIView, popupView: UIView,titleLabel: UILabel, descriptionLabel: UILabel, imageView: UIImageView, priviousScale: CGFloat, afterScale: CGFloat, indexPath: IndexPath) {
         let backgroundView = self.view!
         let currentAlbumImage = player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row]

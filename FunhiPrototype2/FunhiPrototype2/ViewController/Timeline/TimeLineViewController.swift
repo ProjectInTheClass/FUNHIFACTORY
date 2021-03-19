@@ -21,9 +21,7 @@ class SavePointTableViewCell: UITableViewCell {
         
     }
     func designCell() {
-        view.layer.cornerRadius = 7
-        view.layer.borderWidth = 1.5
-        view.layer.borderColor = UIColor(red: 0.517, green: 0.517, blue: 0.517, alpha: 1).cgColor
+        titleLabel.font = UIFont(name: "NanumSquareEB", size: 14)
     }
 }
 
@@ -49,18 +47,9 @@ class PrologueTimelineTableViewCell: UITableViewCell {
         lockedView.layer.cornerRadius = 8
         leftBox.layer.cornerRadius = 8
         leftBox.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
-        cellBackground.layer.borderWidth = 2.5
-        cellBackground.layer.borderColor = CGColor(red: 0.106, green: 0.157, blue: 0.22, alpha: 1)
+  
         cellBackground.layer.cornerRadius = 8
-           
-        let shadowPath0 = UIBezierPath(roundedRect: cellBackground.bounds, cornerRadius: 8)
-          
-        cellBackground.layer.shadowPath = shadowPath0.cgPath
-        cellBackground.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
-        cellBackground.layer.shadowOpacity = 1
-        cellBackground.layer.shadowRadius = 0
-        cellBackground.layer.shadowOffset = CGSize(width: 7, height: 7)
-        cellBackground.layer.position = cellBackground.center
+    
     }
 }
 class TimelineTableViewCell: UITableViewCell {
@@ -85,18 +74,8 @@ class TimelineTableViewCell: UITableViewCell {
         lockedView.layer.cornerRadius = 8
         leftBox.layer.cornerRadius = 8
         leftBox.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
-        cellBackground.layer.borderWidth = 2.5
-        cellBackground.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
         cellBackground.layer.cornerRadius = 8
-           
-        let shadowPath0 = UIBezierPath(roundedRect: cellBackground.bounds, cornerRadius: 8)
-          
-        cellBackground.layer.shadowPath = shadowPath0.cgPath
-        cellBackground.layer.shadowColor = UIColor(red: 0.106, green: 0.157, blue: 0.22, alpha: 1).cgColor
-        cellBackground.layer.shadowOpacity = 1
-        cellBackground.layer.shadowRadius = 0
-        cellBackground.layer.shadowOffset = CGSize(width: 7, height: 7)
-        cellBackground.layer.position = cellBackground.center
+       
     }
 }
 //---------------------------뷰컨--------------------------
@@ -109,8 +88,18 @@ class TimelineTableViewCell: UITableViewCell {
 class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
 //---------------------------TableView---------------------------
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if tableView == timelineTableView {
+            return 1
+            //tableView == savepointTableView
+        } else {
+            guard let currentEpisode = selectedEpisode else {
+                return 1
+            }
+
+            return currentEpisode.timelineSavePoint.count
+        }
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == timelineTableView {
             return player.currentEpisodes.count
@@ -118,10 +107,10 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         // tableView == savePointTableView면
         else {
             guard let currentEpisode = selectedEpisode else {
-                return 0
+                return 1
             }
-            savePointTableViewHeight.constant = CGFloat(49*currentEpisode.timelineSavePoint.count)
-            return currentEpisode.timelineSavePoint.count
+          //  savePointTableViewHeight.constant = CGFloat(49*currentEpisode.timelineSavePoint.count)
+            return currentEpisode.timelineSavePoint[section].count
         }
         
     }
@@ -164,7 +153,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
                 return UITableViewCell()
             }
             let cell = tableView.dequeueReusableCell(withIdentifier: "savePointTableViewCell", for: indexPath) as! SavePointTableViewCell
-            cell.titleLabel.text = currentEpisode.timelineSavePoint[indexPath.row].name
+            cell.titleLabel.text = currentEpisode.timelineSavePoint[indexPath.section][indexPath.row].name
             returnCell = cell
         }
 
@@ -173,11 +162,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == timelineTableView {
-            if indexPath.row == 0 || indexPath.row == player.currentEpisodes.count-1{
-                return 210
-            } else {
-                return 147
-            }
+           return UITableView.automaticDimension
         } else {
             return 49
         }
@@ -197,9 +182,32 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
             guard let selectedEpisode = selectedEpisode else {
                 return
             }
-            selectedEpisodeStoryBlockIndex = selectedEpisode.timelineSavePoint[indexPath.row].storyBlockIndex
+            selectedEpisodeStoryBlockIndex = selectedEpisode.timelineSavePoint[indexPath.section][indexPath.row].storyBlockIndex
             openGettingStartPopup()
         }
+        
+        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        guard tableView == savePointTableView else {
+            return UIView()
+        }
+        
+        if section == 0 {
+            let headerView = savePointTableView.dequeueReusableHeaderFooterView(withIdentifier: "SavepointHeaderView") as! SavepointHeaderFooterView
+            headerView.sectionLabel.text = "여기서부터 다시 시작"
+            headerView.sectionImageView.image = UIImage(named: "start here icon")
+            return headerView
+        } else {
+           let headerView = savePointTableView.dequeueReusableHeaderFooterView(withIdentifier: "SavepointHeaderView2") as! SavepointHeaderFooterView2
+            headerView.sectionLabel.text = "\(section)번째 길"
+            headerView.sectionImageView.image = UIImage(named: "start here icon")
+            return headerView
+        }
+       
         
         
     }
@@ -210,10 +218,8 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     
     
     
-    
-    
-    
     //---------------------------일반---------------------------
+    @IBOutlet var timelineLabel: UILabel!
     @IBOutlet weak var timelineTableView: UITableView!
     @IBOutlet weak var savePointTableView: UITableView!
     @IBOutlet weak var savePointTableViewHeight: NSLayoutConstraint!
@@ -225,6 +231,9 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         self.timelineTableView.dataSource = self
         self.savePointTableView.delegate = self
         self.savePointTableView.dataSource = self
+        
+        savePointTableView.register(UINib(nibName: "SavepointHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "SavepointHeaderView")
+        savePointTableView.register(UINib(nibName: "SavepointHeaderView2", bundle: nil), forHeaderFooterViewReuseIdentifier: "SavepointHeaderView2")
         designObjects(firstPopupView: selectedEpisodePopupBox, secondPopupView: gettingStartPopupBox, secondPopupButton1: continueButton, secondPopupButton2: exitButton)
     }
     
@@ -261,7 +270,8 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     @IBOutlet weak var selectedEpisodePopupExitButton: UIButton!
     @IBOutlet weak var selectedEpisodeDescriptionLabel: UILabel!
     @IBOutlet weak var selectedEpisodePlaceImageView: UIImageView!
-
+    @IBOutlet var episodeHistoryButtonBakgroundView: UIView!
+    
   
     
     //이전 기록 보기 버튼
@@ -305,6 +315,8 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     //-------------------세 번째 팝업----------------
     
     @IBOutlet var thirdPopup: UIView!
+    @IBOutlet weak var thirdPopupBox: UIView!
+    @IBOutlet weak var thirdPopupImageView: UIImageView!
     @IBOutlet var thirdPopupLabel: UILabel!
     @IBOutlet var thirdPopupOkayButton: UIButton!
     @IBAction func thirdPopupOkayButtonTouched(_ sender: Any) {
@@ -321,7 +333,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         self.view.addSubview(selectedEpisodePopup)
         selectedEpisodeYearLabel.text = "\(currentEpisode.episodeYear)년"
         selectedEpisodeDescriptionLabel.text = currentEpisode.episodeDesciption
-        selectedEpisodePlaceImageView.image = UIImage(named: currentEpisode.episodePlaceImage)
+
     }
     
     //첫 번째 팝업에서 두 번째 팝업 넘어가는 함수
@@ -335,15 +347,36 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     //팝업 디자인하는 함수
     func designObjects(firstPopupView: UIView, secondPopupView: UIView, secondPopupButton1: UIButton, secondPopupButton2: UIButton) {
      
-        secondPopupButton1.layer.shadowColor = UIColor(red: 0.443, green: 0.561, blue: 0.663, alpha: 1).cgColor
-        secondPopupButton1.layer.shadowOpacity = 1
-        secondPopupButton1.layer.shadowRadius = 0
-        secondPopupButton1.layer.shadowOffset = CGSize(width: 0, height: 3)
+        timelineLabel.font = UIFont(name: "NanumSquareEB", size: 29)
+
+        selectedEpisodeYearLabel.font = UIFont(name: "NEXONLv2GothicB", size: 24)
+         episodeHistoryButtonBakgroundView.layer.borderWidth = 3
+        episodeHistoryButtonBakgroundView.layer.borderColor = UIColor(red: 0.524, green: 0.646, blue: 0.75, alpha: 1).cgColor
+       
+        selectedEpisodeYearLabel.textAlignment = .center
+        selectedEpisodePopupBox.layer.cornerRadius = 10
+        selectedEpisodePopupBox.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+        selectedEpisodePopupBox.layer.borderWidth = 4
         
-        secondPopupButton2.layer.shadowColor = UIColor(red: 0.443, green: 0.561, blue: 0.663, alpha: 1).cgColor
-        secondPopupButton2.layer.shadowOpacity = 1
-        secondPopupButton2.layer.shadowRadius = 0
-        secondPopupButton2.layer.shadowOffset = CGSize(width: 0, height: 3)
+        selectedEpisodeDescriptionLabel.font = UIFont(name: "NanumSquareB", size: 16)
+        
+        selectedEpisodeDescriptionLabel.setLineSpacing(lineSpacing: 6)
+        selectedEpisodeDescriptionLabel.textAlignment = .center
+        
+        
+        gettingStartPopupBox.layer.cornerRadius = 20
+        gettingStartPopupBox.layer.borderWidth = 6
+        gettingStartPopupBox.layer.borderColor = UIColor(red:0.647, green: 0.737, blue: 0.812, alpha: 1).cgColor
+        
+        thirdPopupBox.layer.cornerRadius = 20
+        thirdPopupBox.layer.borderWidth = 6
+        thirdPopupBox.layer.borderColor = UIColor(red:0.647, green: 0.737, blue: 0.812, alpha: 1).cgColor
+     
+        
+        thirdPopupImageView.layer.shadowColor = UIColor(red: 0.051, green: 0.192, blue: 0.312, alpha: 1).cgColor
+        thirdPopupImageView.layer.shadowOpacity = 1
+        thirdPopupImageView.layer.shadowRadius = 5
+        thirdPopupImageView.layer.shadowOffset = CGSize(width: 0, height: 0)
     
         thirdPopupOkayButton.layer.shadowColor = UIColor(red: 0.443, green: 0.561, blue: 0.663, alpha: 1).cgColor
         thirdPopupOkayButton.layer.shadowOpacity = 1

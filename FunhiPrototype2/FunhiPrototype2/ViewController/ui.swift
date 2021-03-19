@@ -24,7 +24,8 @@ func maingameNotepopupViewDesign(popupView: UIView, parentView: UIView) {
 }
 
 func monologueUI(cell : UIView){
-    cell.layer.borderColor = CGColor(red: 0.77, green: 0.77, blue: 0.77, alpha: 1.0)
+    cell.layer.borderWidth = 1.5
+    cell.layer.borderColor = UIColor(red: 0.785, green: 0.872, blue: 0.942, alpha: 1).cgColor
 }
 
 func choiceCollectionViewBorder(choiceView : UIView){
@@ -62,14 +63,7 @@ func chatToGodUIUpdate(hwiryeong view : UIView){
 func choiceCellUIUpdate(target view : UIView){
   
 
-
-    view.layer.shadowColor = UIColor(red: 0.173, green: 0.227, blue: 0.278, alpha: 1).cgColor
-    view.layer.shadowOpacity = 1
-    view.layer.shadowRadius = 0
-    view.layer.shadowOffset = CGSize(width: 0, height: 4)
-
-
-
+    view.layer.cornerRadius = 20
     view.translatesAutoresizingMaskIntoConstraints = false
     //view.widthAnchor.constraint(equalToConstant: 344).isActive = true
     //view.heightAnchor.constraint(equalToConstant: 45).isActive = true

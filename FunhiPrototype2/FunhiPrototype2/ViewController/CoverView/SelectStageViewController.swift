@@ -24,34 +24,29 @@ class SelectStageTableViewCell: UITableViewCell {
         super.awakeFromNib()
         designButton()
         setColor()
-        let tap = UILongPressGestureRecognizer(target: self, action: #selector(changeColorObjc))
-                tap.minimumPressDuration = 0
-        cellBackground.addGestureRecognizer(tap)
+//        let tap = UILongPressGestureRecognizer(target: self, action: #selector(changeColorObjc))
+//                tap.minimumPressDuration = 0
+//        cellBackground.addGestureRecognizer(tap)
     }
-    @objc func changeColorObjc(gesture: UITapGestureRecognizer) {
-        if gesture.state == .began {
-            cellBackground.backgroundColor = UIColor.darkGray
-                return
-            }
-
-            if gesture.state == .changed {
-                print("very likely, just that the finger wiggled around while the user was holding down the button. generally, just ignore this")
-                return
-            }
-
-            if gesture.state == .possible || gesture.state == .recognized {
-                print("in almost all cases, simply ignore these two, unless you are creating very unusual custom subclasses")
-                cellBackground.backgroundColor = UIColor.lightGray
-                //popup open
-                return
-            }
-
-            // the three remaining states are
-            // .cancelled, .failed, and .ended
-            // in all three cases, must return to the normal button look:
-            
-        }
-    
+//    @objc func changeColorObjc(gesture: UITapGestureRecognizer) {
+//        if gesture.state == .began {
+//            cellBackground.backgroundColor = UIColor.darkGray
+//                return
+//            }
+//
+//            if gesture.state == .changed {
+//                print("very likely, just that the finger wiggled around while the user was holding down the button. generally, just ignore this")
+//                return
+//            }
+//
+//            if gesture.state == .possible || gesture.state == .recognized {
+//                print("in almost all cases, simply ignore these two, unless you are creating very unusual custom subclasses")
+//                cellBackground.backgroundColor = UIColor.lightGray
+//                //popup open
+//                return
+//            }
+//        }
+//
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

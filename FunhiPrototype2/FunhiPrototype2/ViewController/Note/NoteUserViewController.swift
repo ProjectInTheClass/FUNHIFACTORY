@@ -6,12 +6,30 @@
 //
 
 import UIKit
+/*
+나눔손글씨 할아버지의나눔
+== NanumHarABeoJiEuiNaNum
+ GyeonggiBatang
+ == GyeonggiBatangR
+ == GyeonggiBatangB
+NanumSquare
+== NanumSquareR
+== NanumSquareB
+== NanumSquareEB
+NEXON Lv2 Gothic
+== NEXONLv2GothicRegular
+== NEXONLv2GothicLight
+== NEXONLv2GothicMedium
+== NEXONLv2GothicBold
 
+ 
+*/
 class NoteCollectionViewReusableCell: UICollectionViewCell {
     @IBOutlet weak var gameCharacteBackgroundImageView: UIImageView!
     @IBOutlet weak var gameCharacterProfileImageView: UIImageView!
     @IBOutlet weak var gameCharacterDescriptionLabel: UILabel!
     @IBOutlet weak var achievementLabel: UILabel!
+    @IBOutlet weak var achievementNumberLabel: UILabel!
    
     
     override func awakeFromNib() {
@@ -39,7 +57,7 @@ class NoteCollectionViewLeftCell: UICollectionViewCell {
         lockedView.layer.cornerRadius = 7
         achievementImageView.layer.cornerRadius = 7
         achievementImageView.layer.borderWidth = 3
-        achievementImageView.layer.borderColor = UIColor(red: 0.255, green: 0.204, blue: 0.129, alpha: 1).cgColor
+        achievementImageView.layer.borderColor = UIColor(red: 0.587, green: 0.7, blue: 0.796, alpha: 1).cgColor
     }
 }
 class NoteCollectionViewRightCell: UICollectionViewCell {
@@ -56,7 +74,7 @@ class NoteCollectionViewRightCell: UICollectionViewCell {
         lockedView.layer.cornerRadius = 7
         achievementImageView.layer.cornerRadius = 7
         achievementImageView.layer.borderWidth = 3
-        achievementImageView.layer.borderColor = UIColor(red: 0.255, green: 0.204, blue: 0.129, alpha: 1).cgColor
+        achievementImageView.layer.borderColor = UIColor(red: 0.587, green: 0.7, blue: 0.796, alpha: 1).cgColor
     }
 }
 class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout  {
@@ -113,7 +131,11 @@ class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollec
                 cell.gameCharacteBackgroundImageView.image = UIImage(named: recievedGameCharacter.backGroundImage)
                 cell.gameCharacterProfileImageView.image = UIImage(named: recievedGameCharacter.profileImage)
                 cell.gameCharacterDescriptionLabel.text = recievedGameCharacter.description
-                cell.achievementLabel.text = "\(player.clearedAchievementCount)/\(player.currentAchievementInfo.count)"
+                cell.achievementNumberLabel.text = "\(player.clearedAchievementCount)/\(player.currentAchievementInfo.count)"
+                cell.gameCharacterDescriptionLabel.font = UIFont(name: "GyeonggiBatangB", size: 17)
+                cell.gameCharacterDescriptionLabel.textAlignment = .center
+                cell.achievementLabel.font = UIFont(name: "NanumSquareEB", size: 21)
+                cell.achievementNumberLabel.font = UIFont(name: "NanumSquareB", size: 14)
             }
             
             return cell
@@ -123,13 +145,14 @@ class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     //-------------------일반 아웃렛, 메소드------------
+    @IBOutlet var nameLabel: UILabel!
     var recievedGameCharacter: GameCharacter?
     @IBOutlet weak var noteCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.noteCollectionView.delegate = self
         self.noteCollectionView.dataSource = self
-        
+        designObjects()
         
         // Do any additional setup after loading the view.
     }
@@ -138,8 +161,9 @@ class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollec
         self.navigationController?.popViewController(animated: true)
     }
     
-    func designObjectis() {
-        
+    func designObjects() {
+        nameLabel.font = UIFont(name: "NanumSquareEB", size: 29)
+
     }
     /*
     // MARK: - Navigation

@@ -20,10 +20,13 @@ class myTextTableViewCell: UITableViewCell {
         // Initialization code
     }
     func designCell() {
+        profileNickname.font = UIFont(name: "NanumSquareEB", size: 18)
+        chatText.font = UIFont(name: "NanumSquareB", size: 17)
         chatText.setLineSpacing(lineSpacing: 6)
-        chatView.layer.borderWidth = 1.5
-        chatView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        chatView.layer.borderWidth = 1.7
+        chatView.layer.borderColor = UIColor(red: 0.319, green: 0.457, blue: 0.575, alpha: 1).cgColor
         chatView.layer.cornerRadius = 20
+        // 뷰의 세 모서리만 cornerRadus 값 적용되게 하는 코드
         chatView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner, .layerMaxXMaxYCorner]
     }
     func myTextCellUpdate(name:String,chat:String,profile:CharacterFace){
@@ -53,7 +56,7 @@ class myTextTableViewCell: UITableViewCell {
             chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7).isActive = true
             contentView.layoutIfNeeded()
         } else {
-            chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 57).isActive = true
+            chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 63).isActive = true
             contentView.layoutIfNeeded()
         }
         profileImage.image = UIImage(named: face)

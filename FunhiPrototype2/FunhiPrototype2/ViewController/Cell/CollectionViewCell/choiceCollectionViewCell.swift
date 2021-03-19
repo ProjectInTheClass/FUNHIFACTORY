@@ -11,11 +11,16 @@ class choiceCollectionViewCell: UICollectionViewCell {
     @IBOutlet var choiceLabel: UILabel!
     
     @IBOutlet var choiceInCell: UIView!
+    @IBOutlet weak var choiceCellShadowView: UIView!
     override func awakeFromNib() {
         choiceCellUIUpdate(target: choiceInCell)
         choiceInCell.bringSubviewToFront(choiceLabel)
+        choiceCellShadowView.layer.cornerRadius = 20
+        choiceLabel.font = UIFont(name: "NanumSquareB", size: 16)
+        
     }
     
+  
     func choiceUpdate(choiceText : String){
         choiceLabel.text = choiceText
     }

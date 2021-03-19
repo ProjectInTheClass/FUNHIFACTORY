@@ -558,11 +558,13 @@ struct Episode: Codable {
     // 해당 사건의 앨범 창에 추가될 이미지
     var currentAlbumImages: [AlbumImage]
     
-    let timelineSavePoint:[SavePoint]
-
+    let timelineSavePoint:[[Savepoint]]
 }
-struct SavePoint: Codable {
+
+struct Savepoint: Codable {
+    //이름
     let name: String
+    //블럭 인덱스
     let storyBlockIndex: String
 }
 
@@ -986,3 +988,5 @@ func loadFromFile() {
         print("이야아아아ㅏ아아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아\(player.currentChatArray)")
     }
 }
+
+

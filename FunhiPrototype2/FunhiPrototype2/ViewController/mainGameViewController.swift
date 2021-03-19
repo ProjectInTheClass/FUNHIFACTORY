@@ -46,6 +46,12 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         popupOpen = false
         globalPopupOpen = false
     }
+    
+    @IBOutlet var floatingButtons: [UIView]!
+    
+    
+    
+    
     //노트 팝업 켜고 꺼질 때 애니메이션 담당하는 변수
     var popupOpen: Bool = false {
         didSet {
@@ -91,12 +97,14 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 print("메인게임 - 자신 텍스트 출력")
                         let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
                 cell.myTextCellUpdate(name: player.currentChatArray[indexPath.row].who.info().name, chat: chatText, profile: player.currentChatArray[indexPath.row].characterFace)
+                cell.profileNickname.textColor = .white
                         return cell
                     }
                 //상대가 보냈을 때
                     else if player.currentChatArray[indexPath.row].type == .onlyText {
                         print("메인게임 - 상대 텍스트 출력")
                         let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
+                        cell.profileNickname.textColor = .white
                         cell.opTextCellUpdate(name: player.currentChatArray[indexPath.row].who.info().name, chat: chatText,normalProfile: player.currentChatArray[indexPath.row].who.info().profileImage, mainProfile: player.currentChatArray[indexPath.row].characterFace, isLocked: player.currentChatArray[indexPath.row].who.info().isLocked, profileBackGroundColor: player.currentChatArray[indexPath.row].who.info().profileBackgroundColor)
                         return cell
                     }
@@ -116,13 +124,18 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                     return cell
                 }
                 else if player.currentChatArray[indexPath.row].type == .monologue{
+                    
                     print("메인게임 - 속마음 채팅 출력")
+                    
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "monologue", for: indexPath) as! monologueTableViewCell
                     cell.monologueText.text = chatText
+                    cell.name.textColor = .white
                     cell.chatUpdate(nickname: player.currentChatArray[indexPath.row].who.info().name, profile: player.currentChatArray[indexPath.row].characterFace)
                     return cell
-                }else if player.currentChatArray[indexPath.row].type == .ar{
-                    let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "arTableViewCell", for: indexPath) as! ARTableViewCell
+                    
+                }
+                else if player.currentChatArray[indexPath.row].type == .ar{
+                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "arTableViewCell", for: indexPath) as! ARTableViewCell
                     cell.delegate = self
                     return cell
                 }
@@ -130,18 +143,22 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                    print("메인게임 - 오류 발생1")
                     return UITableViewCell()
                 }
-        }else if tableView == godChatTableView{
+            
+         // 신 테이블 뷰
+        }else if tableView == godChatTableView {
             let chatText = player.currentGodChatArray[indexPath.row].text
             if player.currentGodChatArray[indexPath.row].type == .onlyText && player.currentGodChatArray[indexPath.row].who.info().name == "이단희"{
                 print("신 - 자신 텍스트 출력")
                         let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
                 cell.myTextCellUpdate(name: player.currentGodChatArray[indexPath.row].who.info().name, chat: chatText, profile: player.currentGodChatArray[indexPath.row].characterFace)
+                cell.profileNickname.textColor = .black
                         return cell
                     }
                     else if player.currentGodChatArray[indexPath.row].type == .onlyText {
                         print("신 - 상대 텍스트 출력")
                         let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
                         cell.opTextCellUpdate(name: player.currentGodChatArray[indexPath.row].who.info().name, chat: chatText,normalProfile: player.currentGodChatArray[indexPath.row].who.info().profileImage, mainProfile: player.currentGodChatArray[indexPath.row].characterFace, isLocked: player.currentGodChatArray[indexPath.row].who.info().isLocked, profileBackGroundColor: player.currentGodChatArray[indexPath.row].who.info().profileBackgroundColor)
+                        cell.profileNickname.textColor = .black
                         return cell
                     }
                 //터치할 수 없는 이미지
@@ -159,10 +176,12 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                     cell.sectionUpdate(text:chatText)
                     return cell
                 }
+                //속마음 셀
                 else if player.currentGodChatArray[indexPath.row].type == .monologue{
                     print("신 - 속마음 채팅 출력")
                     let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "monologue", for: indexPath) as! monologueTableViewCell
                     cell.monologueText.text = chatText
+                    cell.name.textColor = .black
                     cell.chatUpdate(nickname: player.currentGodChatArray[indexPath.row].who.info().name, profile: player.currentGodChatArray[indexPath.row].characterFace)
                     return cell
                 }else {
@@ -200,7 +219,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             collectionView.decelerationRate = .fast
             pageControl.hidesForSinglePage = true
             collectionView.showsHorizontalScrollIndicator = false
-            pageControl.currentPageIndicatorTintColor = UIColor.black
+            pageControl.currentPageIndicatorTintColor = UIColor.white
         }
 
     
@@ -257,12 +276,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.godChatCollectionView.delegate = self
         self.transitioningDelegate = self
         
-        godChatChoiceHeight.constant = 0
-        godChatChoiceBar.isHidden = true
-        godChatChoiceBar.setNeedsUpdateConstraints()
-        godChatTableView.layoutIfNeeded()
-        chatToGodViewTopbar.layer.cornerRadius = 10
-        chatToGodViewTopbar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMinYCorner]
+       
+        mainGameDesign()
         //initialize()
         if let page = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]?.choices.count{
             initializePageControl(collectionView : choiceCollectionView, choiceBar : choiceBar, numberOfPages:page)
@@ -398,8 +413,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         map.transform = CGAffineTransform(scaleX: 0, y: 0)
         map.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 77).isActive = true
         map.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20).isActive = true
-        //map.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        //map.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        map.center = self.view.center
+        map.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        map.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
                                                                     let scaleDown = CGAffineTransform(scaleX: 1, y: 1)
                                                                     self.map.transform = scaleDown})
@@ -449,8 +465,11 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         }
         wholeView.addSubview(godChat)
         godChat.transform = CGAffineTransform(scaleX: 0, y: 0)
+        godChat.center = self.view.center
         godChat.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         godChat.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        godChat.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 77).isActive = true
+        godChat.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20).isActive = true
         animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
                                                                     let scaleDown = CGAffineTransform(scaleX: 1, y: 1)
                                                                     self.godChat.transform = scaleDown})
@@ -491,6 +510,25 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     func godChatButtonFirstAppear(){
         
     }
+    func mainGameDesign() {
+        currentYear.font = UIFont(name: "NanumSquareEB", size: 29)
+        
+        godChat.layer.borderWidth = 4
+        godChat.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+        godChatChoiceHeight.constant = 0
+        godChatChoiceBar.isHidden = true
+        godChatChoiceBar.setNeedsUpdateConstraints()
+        godChatTableView.layoutIfNeeded()
+        chatToGodViewTopbar.layer.cornerRadius = 10
+        chatToGodViewTopbar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMinYCorner]
+        
+        for button in floatingButtons {
+            button.layer.borderWidth = 3
+            button.layer.borderColor = UIColor(red: 0.524, green: 0.646, blue: 0.75, alpha: 1).cgColor
+            button.backgroundColor = .white
+            myChoiceText.font = UIFont(name: "NanumSquareEB", size: 16)
+        }
+    }
 }
 
 
@@ -502,6 +540,7 @@ func popupViewDesign(popupView: UIView) {
 
     popupView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
 }
+
 
 extension mainGameViewController : arDelegate{
     func goToAR() {
