@@ -30,13 +30,12 @@ class opTextTableViewCell: UITableViewCell {
         chatView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner]
     }
    
-    func opTextCellUpdate(name:String,chat:String, normalProfile:String, mainProfile:CharacterFace, isLocked : Bool,profileBackGroundColor:CodableColor){
+    func opTextCellUpdate(name:String,chat:String, normalProfile:String, mainProfile:CharacterFace, isLocked : Bool){
         profileNickname.text = name
                 if isLocked == true{
                     profileNickname.text = "???"
                 }
         chatText.text = chat
-        profileImage.backgroundColor = profileBackGroundColor.color
         switch mainProfile {
         case .none:
             //chatView.removeConstraint(chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 64))
