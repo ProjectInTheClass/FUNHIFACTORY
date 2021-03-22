@@ -36,7 +36,7 @@ class opTextTableViewCell: UITableViewCell {
                     profileNickname.text = "???"
                 }
         chatText.text = chat
-        profileImage.backgroundColor = .white
+
         switch mainProfile {
         case .none:
             //chatView.removeConstraint(chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 64))

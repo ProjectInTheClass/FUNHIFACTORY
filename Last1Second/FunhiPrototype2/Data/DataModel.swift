@@ -397,7 +397,7 @@ class GameCharacter: Codable {
         self.infomation = infomation
         self.likability = likability
         self.isLocked = isLocked
-        
+
     }
 }
 //------------------------------------유저------------------------------------
