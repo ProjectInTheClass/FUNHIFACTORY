@@ -197,6 +197,7 @@ class AlbumViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     func popupViewOn(blackView: UIView, popupView: UIView,titleLabel: UILabel, descriptionLabel: UILabel, imageView: UIImageView, priviousScale: CGFloat, afterScale: CGFloat, indexPath: IndexPath) {
         let backgroundView = self.view!
         let currentAlbumImage = player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row]
+        
         //뷰 두 개(이미지, 글씨) 서브뷰로 추가
         titleLabel.text = currentAlbumImage.title
         imageView.image = UIImage(named: currentAlbumImage.image)
@@ -239,5 +240,8 @@ class AlbumViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         }
         
     }
+    
+    
+    
 
 }

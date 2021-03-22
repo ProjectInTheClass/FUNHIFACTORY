@@ -9,6 +9,14 @@ import UIKit
 
 class endingViewController: UIViewController {
 
+    @IBOutlet var backgroundImageView: UIImageView!
+    @IBOutlet var gameOverImageView: UIImageView!
+    @IBOutlet var yearLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
+    
+    
+    
+    
     @IBOutlet var endingType: UILabel!
     @IBOutlet var endingInformation: UILabel!
     override func viewDidLoad() {

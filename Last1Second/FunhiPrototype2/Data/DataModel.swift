@@ -389,7 +389,7 @@ class GameCharacter: Codable {
     var isLocked: Bool
    
     
-    init(name: String, profileImage: String ,backGroundImage: String, description: String, infomation: [Infomation], likability:Int, isLocked: Bool, pfBackgroundColor: UIColor) {
+    init(name: String, profileImage: String ,backGroundImage: String, description: String, infomation: [Infomation], likability:Int, isLocked: Bool) {
         self.name = name
         self.profileImage = profileImage
         self.backGroundImage = backGroundImage
@@ -397,7 +397,7 @@ class GameCharacter: Codable {
         self.infomation = infomation
         self.likability = likability
         self.isLocked = isLocked
-        self.profileBackgroundColor = pfBackgroundColor.codable()
+        
     }
 }
 //------------------------------------유저------------------------------------
