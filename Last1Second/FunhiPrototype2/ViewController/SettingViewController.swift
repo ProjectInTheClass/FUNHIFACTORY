@@ -24,6 +24,11 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initializeVc();
+    }
+    
+    func initializeVc()
+    {
         bgmSlider.minimumValue = 0.0
         bgmSlider.maximumValue = 1.0
         effectMusicSlider.minimumValue = 0.0
@@ -44,7 +49,8 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         }
         settingLabel.font = UIFont(name: "NanumSquareEB", size: 29)
         
-        for label in settingPropertyLabels {
+        for label in settingPropertyLabels
+        {
             label.font = UIFont(name: "NanumSquareEB", size: 20)
         }
     }
@@ -119,8 +125,6 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         initializeAlert.removeFromSuperview()
         blackView.removeFromSuperview()
     }
-    
-    
     
     @IBAction func bugReportTapped(_ sender: Any) {
         if !MFMailComposeViewController.canSendMail() {return}
