@@ -110,16 +110,11 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         player.currentChatArray.removeAll()
         player.currentGodChatArray.removeAll()
         print(player)
-        /*
-         let pvc = self.presentingViewController
-         self.dismiss(animated: false, completion: {
-             pvc?.dismiss(animated: false, completion: nil)
-         })
-         */
         self.view.window?.rootViewController?.dismiss(animated: false, completion: {
             let homeVC = TitleCoverViewController()
             homeVC.modalPresentationStyle = .fullScreen
         })
+        //userinstance의 
     }
     @IBAction func noButtonTapped(_ sender: Any) {
         initializeAlert.removeFromSuperview()
