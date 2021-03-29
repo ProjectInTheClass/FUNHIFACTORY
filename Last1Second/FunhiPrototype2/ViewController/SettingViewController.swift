@@ -114,7 +114,8 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
             let homeVC = TitleCoverViewController()
             homeVC.modalPresentationStyle = .fullScreen
         })
-        //userinstance의 
+        
+        //userinstance의
     }
     @IBAction func noButtonTapped(_ sender: Any) {
         initializeAlert.removeFromSuperview()
@@ -131,20 +132,5 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
                 present(emailVC, animated: true, completion: nil)
     }
 }
-/*
-private func initializeUser(){
-    for var a in episodes{
-        a.isCleared = false
-        for b in a.currentCharacterNote{
-            b.isLocked = true
-        }
-        for c in a.currentAlbumImages{
-            c.isLocked = true
-        }
-    }
-     for var a in achievements{
-         a.isLocked = true
-     }
-    //player.currentEpisodes[0].currentCharacterNote[0].isLocked = false
-}
-*/
+
+
