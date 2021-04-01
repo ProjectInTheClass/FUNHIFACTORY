@@ -158,8 +158,7 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBAction func selectedPopupStartButton(_ sender: Any) {
         
         player.dayId = selectedEP.episodeID
-        //player.currentChatId = "001" //기본 시작id로 지정하기
-        //나중에 필요한 정보 넣을 것
+        player.currentChatId = "001" //기본 시작id로 지정하기
         performSegue(withIdentifier: "goToChapterCoverSegue", sender: nil)
         
     }
@@ -209,7 +208,7 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         selectedPopupStartButtonOutlet.isEnabled = true
         
         
-        if player.currentEpisodes[indexPath.row].storyBlocks.count == 0 {
+        if player.currentEpisodes[indexPath.row].storyBlocks.isEmpty {
             selectedPopupStartButtonOutlet.isEnabled = false
             selectedPopupStartButtonOutlet.setTitle("준비 중입니다.", for: .normal)
         }
@@ -225,8 +224,6 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         }
         return endingOpen
     }
-
-
 }
 
 

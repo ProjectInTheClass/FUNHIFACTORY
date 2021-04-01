@@ -45,7 +45,7 @@ class TitleCoverViewController: UIViewController {
     @IBAction func startAction(_ sender: Any) {
         
         testLabel.layer.removeAllAnimations()
-        if player.currentChatArray.count == 0
+        if player.currentChatArray.isEmpty
         {
             if !player.currentEpisodes[0].isCleared //게임 처음 시작하는 거면
             {

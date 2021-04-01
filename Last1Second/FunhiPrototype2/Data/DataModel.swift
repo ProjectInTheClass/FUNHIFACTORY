@@ -447,6 +447,7 @@ struct Chat: Codable {
     let gameCharacterToUnlock: GameCharacterID?
     let caseToUnlock: NoteCaseID?
     let albumImageToUnlock: AlbumImageID?
+    let animationOption : screenAnimation
 }
 
 //선택지 누르면 변경될 호감도
@@ -471,9 +472,10 @@ struct Choice: Codable {
     let albumImageToUnlock: AlbumImageID?
 }
 
-enum enterAnimation : String, Codable{
+enum  screenAnimation: String, Codable{
     case none
-    case fadeInfadeOut
+    case fadeIn
+    case fadeOut
 }
 enum backGroundMusic : String, Codable{
     case none
@@ -499,7 +501,6 @@ struct BlockOfDayEpisode: Codable {
     let choiceSkip : Bool
     let isGodChat : isGodChat   //현재 신 채팅인지 구분
     let backGroundMusic : backGroundMusic
-    let enterAnimation : enterAnimation
 }
 enum isGodChat : String,Codable{
     case on, off
@@ -792,7 +793,6 @@ struct BlockOfDayEpisodeForJson :Codable{
     let choiceSkip : Bool
     let isGodChat : isGodChat
     let backGroundMusic : backGroundMusic
-    let enterAnimation : enterAnimation
 }
 
 open class CustomLabel : UILabel {
