@@ -47,9 +47,11 @@ class monologueTableViewCell: UITableViewCell {
             profileImage.isHidden = true
             name.isHidden = true
             monologueView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4).isActive = true
+            monologueView.bottomAnchor.constraint(equalTo: contentView.topAnchor, constant: 22).isActive = true
             contentView.layoutIfNeeded()
         }else{
-            monologueView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 54.5).isActive = true
+            monologueView.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 10).isActive = true
+            monologueView.bottomAnchor.constraint(equalTo: contentView.topAnchor, constant: 14).isActive = true
             contentView.layoutIfNeeded()
         }
         profileImage.image = UIImage(named: face)

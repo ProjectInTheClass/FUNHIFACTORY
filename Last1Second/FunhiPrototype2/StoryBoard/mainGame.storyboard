@@ -11,14 +11,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Cafe24Ohsquare.ttf">
-            <string>Cafe24Ohsquare</string>
-        </array>
         <array key="NanumGothic.otf">
             <string>NanumGothicOTF</string>
         </array>
         <array key="NanumSquareExtraBold.ttf">
             <string>NanumSquareEB</string>
+        </array>
+        <array key="NanumSquareRegular.ttf">
+            <string>NanumSquareR</string>
         </array>
         <array key="NotoSansCJKkr-Black.otf">
             <string>NotoSansCJKkr-Black</string>
@@ -269,6 +269,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="53G-ZR-hGZ" secondAttribute="trailing" constant="-4" id="LPC-Gh-CEn"/>
                                                 <constraint firstItem="53G-ZR-hGZ" firstAttribute="leading" secondItem="RGn-dr-k4c" secondAttribute="trailing" constant="16" id="Qjd-ar-Scz"/>
                                                 <constraint firstItem="RGn-dr-k4c" firstAttribute="top" secondItem="Syf-va-gW4" secondAttribute="top" constant="63" id="TRm-6Y-dL2"/>
+                                                <constraint firstAttribute="bottom" secondItem="53G-ZR-hGZ" secondAttribute="bottom" constant="40" id="bdv-MU-DOc"/>
                                                 <constraint firstItem="eKc-Cb-3v0" firstAttribute="top" secondItem="Syf-va-gW4" secondAttribute="top" constant="31" id="pN9-BD-D8K"/>
                                                 <constraint firstAttribute="trailing" secondItem="53G-ZR-hGZ" secondAttribute="trailing" constant="16" id="y1l-Rg-iXh"/>
                                             </constraints>
@@ -1009,10 +1010,10 @@
                         <outletCollection property="floatingButtons" destination="wsg-Hv-hrA" collectionClass="NSMutableArray" id="BZY-KR-ddm"/>
                         <outletCollection property="floatingButtons" destination="Pba-fI-eqF" collectionClass="NSMutableArray" id="UzV-4Y-pmr"/>
                         <outletCollection property="floatingButtons" destination="szN-Jt-APr" collectionClass="NSMutableArray" id="SyJ-jW-9ti"/>
-                        <segue destination="NYb-GR-gaT" kind="show" identifier="goToARView" id="tkT-wW-Rbo"/>
-                        <segue destination="fIu-oy-oyp" kind="show" identifier="noteSegue" animates="NO" id="NQK-hz-tWN"/>
-                        <segue destination="IJQ-AX-mDc" kind="show" identifier="albumSegue" animates="NO" id="bYG-Zw-qlf"/>
-                        <segue destination="v7i-Z6-t2C" kind="show" identifier="timelineSegue" animates="NO" id="USe-dh-gZr"/>
+                        <segue destination="NYb-GR-gaT" kind="presentation" identifier="goToARView" modalPresentationStyle="fullScreen" id="tkT-wW-Rbo"/>
+                        <segue destination="fIu-oy-oyp" kind="presentation" identifier="noteSegue" animates="NO" modalPresentationStyle="fullScreen" id="NQK-hz-tWN"/>
+                        <segue destination="IJQ-AX-mDc" kind="presentation" identifier="albumSegue" animates="NO" modalPresentationStyle="fullScreen" id="bYG-Zw-qlf"/>
+                        <segue destination="v7i-Z6-t2C" kind="presentation" identifier="timelineSegue" animates="NO" modalPresentationStyle="fullScreen" id="USe-dh-gZr"/>
                     </connections>
                 </viewController>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EkU-Ps-5iU">
@@ -2167,7 +2168,7 @@
                                 <constraint firstAttribute="height" constant="41" id="w9o-zL-54S"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
-                            <state key="normal" title="예">
+                            <state key="normal" title="계속할래요">
                                 <color key="titleColor" red="0.19215840100000001" green="0.19215402009999999" blue="0.1921569705" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -2187,7 +2188,7 @@
                                 <constraint firstAttribute="height" constant="41" id="vFG-lD-PPw"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
-                            <state key="normal" title="아니오">
+                            <state key="normal" title="취소">
                                 <color key="titleColor" red="0.19215840100000001" green="0.19215402009999999" blue="0.1921569705" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -2229,7 +2230,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </objects>
-            <point key="canvasLocation" x="6072.4637681159429" y="-513.61607142857144"/>
+            <point key="canvasLocation" x="6028" y="-514"/>
         </scene>
         <!--coverView-->
         <scene sceneID="eSf-ep-FCz">
@@ -2253,11 +2254,14 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="61"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0A0-Ct-z0i">
-                                        <rect key="frame" x="19" y="12" width="25" height="35"/>
+                                        <rect key="frame" x="16" y="18" width="17" height="24"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="DWH-NJ-tMd"/>
-                                            <constraint firstAttribute="width" constant="25" id="Whx-kw-pbR"/>
+                                            <constraint firstAttribute="width" constant="17" id="I6J-Um-a4D"/>
+                                            <constraint firstAttribute="height" constant="24" id="Knd-Jl-Taj"/>
                                         </constraints>
+                                        <state key="normal">
+                                            <imageReference key="image" image="previous icon" symbolScale="large"/>
+                                        </state>
                                         <connections>
                                             <action selector="back:" destination="9Cd-47-cRm" eventType="touchUpInside" id="K2X-9i-LMS"/>
                                         </connections>
@@ -2276,116 +2280,121 @@
                                 <constraints>
                                     <constraint firstItem="ZQY-fo-kQV" firstAttribute="centerX" secondItem="B7K-t8-PEk" secondAttribute="centerX" id="3wN-uU-B1S"/>
                                     <constraint firstItem="ZQY-fo-kQV" firstAttribute="top" secondItem="B7K-t8-PEk" secondAttribute="top" constant="12" id="7vy-22-X0a"/>
-                                    <constraint firstItem="0A0-Ct-z0i" firstAttribute="leading" secondItem="B7K-t8-PEk" secondAttribute="leading" constant="19" id="QST-1f-owU"/>
+                                    <constraint firstItem="0A0-Ct-z0i" firstAttribute="top" secondItem="B7K-t8-PEk" secondAttribute="top" constant="18" id="Aj8-j0-fUY"/>
                                     <constraint firstAttribute="height" constant="61" id="Rvq-LC-HpU"/>
-                                    <constraint firstItem="0A0-Ct-z0i" firstAttribute="top" secondItem="B7K-t8-PEk" secondAttribute="top" constant="12" id="vzK-4Z-qSl"/>
+                                    <constraint firstItem="0A0-Ct-z0i" firstAttribute="leading" secondItem="B7K-t8-PEk" secondAttribute="leading" constant="16" id="V08-8p-6Af"/>
                                     <constraint firstAttribute="width" constant="414" id="y0N-Z1-h7k"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ekp-cm-Nzr">
                                 <rect key="frame" x="0.0" y="105" width="414" height="757"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="72" translatesAutoresizingMaskIntoConstraints="NO" id="x18-VV-g7x">
-                                        <rect key="frame" x="105" y="91" width="204.5" height="560"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ePP-e5-Cod">
+                                        <rect key="frame" x="160" y="89" width="94" height="117"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="94" id="L0f-ro-eIk"/>
+                                            <constraint firstAttribute="height" constant="117" id="gdS-IS-OMw"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DuT-ND-x44">
+                                        <rect key="frame" x="160" y="227" width="34" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="i6D-m6-0kl"/>
+                                            <constraint firstAttribute="width" constant="34" id="ugp-GI-q3y"/>
+                                        </constraints>
+                                        <state key="normal" image="instagram icon"/>
+                                        <connections>
+                                            <action selector="instaButtonTapped:" destination="9sr-pP-6Ki" eventType="touchUpInside" id="9oX-AB-Elg"/>
+                                            <action selector="instaButtonTapped:" destination="9Cd-47-cRm" eventType="touchUpInside" id="VJT-e1-7Y6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYL-Ay-kIt">
+                                        <rect key="frame" x="220" y="227" width="34" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="BIa-0M-whP"/>
+                                            <constraint firstAttribute="width" constant="34" id="SdE-ml-Uls"/>
+                                        </constraints>
+                                        <state key="normal" image="funfac web icon"/>
+                                        <connections>
+                                            <action selector="pageButtonTapped:" destination="9Cd-47-cRm" eventType="touchUpInside" id="FLg-Yp-dxh"/>
+                                            <action selector="webButtonTapped:" destination="9sr-pP-6Ki" eventType="touchUpInside" id="Idh-PI-Q7e"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="TPk-sJ-ZxJ">
+                                        <rect key="frame" x="132" y="337" width="150.5" height="361"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="zzE-Hn-zIz">
-                                                <rect key="frame" x="0.0" y="0.0" width="204.5" height="73"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="eXW-dw-Gvb">
+                                                <rect key="frame" x="0.0" y="0.0" width="150.5" height="56.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STORY &amp; LOGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgy-Cb-EDO">
-                                                        <rect key="frame" x="0.0" y="0.0" width="204.5" height="33"/>
-                                                        <fontDescription key="fontDescription" name="Cafe24Ohsquare" family="Cafe24 Ohsquare" pointSize="28"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Story &amp; Design" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gso-eT-EX9">
+                                                        <rect key="frame" x="0.0" y="0.0" width="150.5" height="23.5"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="21"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="베리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoc-Zm-Unr">
-                                                        <rect key="frame" x="83" y="47" width="38.5" height="26"/>
-                                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="22"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="손서연" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7GL-zt-SeR">
+                                                        <rect key="frame" x="0.0" y="37.5" width="150.5" height="19"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="17"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="Z6J-26-25D">
-                                                <rect key="frame" x="53" y="145" width="98" height="73"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="sT1-4m-bf2">
+                                                <rect key="frame" x="0.0" y="90.5" width="150.5" height="89.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UI &amp; UX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPd-nZ-Vim">
-                                                        <rect key="frame" x="0.0" y="0.0" width="98" height="33"/>
-                                                        <fontDescription key="fontDescription" name="Cafe24Ohsquare" family="Cafe24 Ohsquare" pointSize="28"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Programming" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4u-pk-1Cv">
+                                                        <rect key="frame" x="0.0" y="0.0" width="150.5" height="23.5"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="21"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YuQ-qG-0dc">
-                                                        <rect key="frame" x="0.0" y="47" width="98" height="26"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="베리, 쑥" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAh-sg-ZPt">
-                                                                <rect key="frame" x="14.5" y="0.0" width="69.5" height="26"/>
-                                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="22"/>
-                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="919-8r-mlZ">
-                                                <rect key="frame" x="64" y="290" width="76.5" height="99"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ART" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RtP-Lw-uBr">
-                                                        <rect key="frame" x="0.0" y="0.0" width="76.5" height="33"/>
-                                                        <fontDescription key="fontDescription" name="Cafe24Ohsquare" family="Cafe24 Ohsquare" pointSize="28"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="손영웅" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvU-ib-ZNc">
+                                                        <rect key="frame" x="0.0" y="37.5" width="150.5" height="19"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="17"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dvn-ff-FDQ">
-                                                        <rect key="frame" x="0.0" y="47" width="76.5" height="52"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가브" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pM-X6-cMl">
-                                                                <rect key="frame" x="19" y="0.0" width="38.5" height="26"/>
-                                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="22"/>
-                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="엘로시아" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9r-OV-aJ9">
-                                                                <rect key="frame" x="0.0" y="26" width="76.5" height="26"/>
-                                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="22"/>
-                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최서연" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLc-Ql-wFc">
+                                                        <rect key="frame" x="0.0" y="70.5" width="150.5" height="19"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="17"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="XyX-jt-sRc">
-                                                <rect key="frame" x="17.5" y="461" width="169.5" height="99"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="9e7-ta-a4F">
+                                                <rect key="frame" x="0.0" y="214" width="150.5" height="56.5"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="3FR-ha-rfP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="169.5" height="33"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Programming" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hp-DZ-1KV">
-                                                                <rect key="frame" x="0.0" y="0.0" width="169.5" height="33"/>
-                                                                <fontDescription key="fontDescription" name="Cafe24Ohsquare" family="Cafe24 Ohsquare" pointSize="28"/>
-                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bq8-TJ-HoB">
-                                                        <rect key="frame" x="65.5" y="47" width="38.5" height="52"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="쑥" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sb-3Q-hz6">
-                                                                <rect key="frame" x="0.0" y="0.0" width="38.5" height="26"/>
-                                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="22"/>
-                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="히로" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7a-bF-6At">
-                                                                <rect key="frame" x="0.0" y="26" width="38.5" height="26"/>
-                                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="22"/>
-                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Art" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJE-KP-aV0">
+                                                        <rect key="frame" x="0.0" y="0.0" width="150.5" height="23.5"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="21"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BELL (하영주)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KON-On-P25">
+                                                        <rect key="frame" x="0.0" y="37.5" width="150.5" height="19"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="17"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="Xhe-aa-hsf">
+                                                <rect key="frame" x="0.0" y="304.5" width="150.5" height="56.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLa-Ft-Ihj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="150.5" height="23.5"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="21"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="유달헌" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AhK-fU-12v">
+                                                        <rect key="frame" x="0.0" y="37.5" width="150.5" height="19"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="17"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -2393,8 +2402,16 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="x18-VV-g7x" firstAttribute="centerX" secondItem="ekp-cm-Nzr" secondAttribute="centerX" id="Vvp-yF-IxB"/>
-                                    <constraint firstItem="x18-VV-g7x" firstAttribute="top" secondItem="ekp-cm-Nzr" secondAttribute="top" constant="91" id="ohw-GS-O7W"/>
+                                    <constraint firstItem="DuT-ND-x44" firstAttribute="top" secondItem="ePP-e5-Cod" secondAttribute="bottom" constant="21" id="1vx-9B-WIL"/>
+                                    <constraint firstAttribute="trailing" secondItem="iYL-Ay-kIt" secondAttribute="trailing" constant="160" id="6Kz-bX-xvd"/>
+                                    <constraint firstItem="iYL-Ay-kIt" firstAttribute="leading" secondItem="DuT-ND-x44" secondAttribute="trailing" constant="26" id="BQc-pP-3wT"/>
+                                    <constraint firstItem="ePP-e5-Cod" firstAttribute="leading" secondItem="ekp-cm-Nzr" secondAttribute="leading" constant="160" id="HZX-CU-bol"/>
+                                    <constraint firstItem="DuT-ND-x44" firstAttribute="leading" secondItem="ekp-cm-Nzr" secondAttribute="leading" constant="160" id="OeU-RI-4fk"/>
+                                    <constraint firstItem="TPk-sJ-ZxJ" firstAttribute="centerX" secondItem="ekp-cm-Nzr" secondAttribute="centerX" id="QNa-pO-jub"/>
+                                    <constraint firstItem="iYL-Ay-kIt" firstAttribute="top" secondItem="ePP-e5-Cod" secondAttribute="bottom" constant="21" id="UVF-pA-zXG"/>
+                                    <constraint firstAttribute="trailing" secondItem="ePP-e5-Cod" secondAttribute="trailing" constant="160" id="hso-Tt-DP3"/>
+                                    <constraint firstItem="TPk-sJ-ZxJ" firstAttribute="top" secondItem="DuT-ND-x44" secondAttribute="bottom" constant="76" id="ndh-xn-u5A"/>
+                                    <constraint firstItem="ePP-e5-Cod" firstAttribute="top" secondItem="ekp-cm-Nzr" secondAttribute="top" constant="89" id="uc4-M1-gxH"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C1M-q9-VTN">
@@ -2425,8 +2442,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9o5-8g-CrN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="9sr-pP-6Ki" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6760.8695652173919" y="-514.28571428571422"/>
+            <point key="canvasLocation" x="6833" y="-514"/>
         </scene>
         <!--mainGameNote-->
         <scene sceneID="tfz-dX-el7">
@@ -2901,9 +2919,12 @@
         <image name="basic map" width="742" height="1294"/>
         <image name="black arrow" width="12.5" height="16.5"/>
         <image name="black x" width="22.5" height="22"/>
+        <image name="funfac web icon" width="364" height="364.5"/>
+        <image name="instagram icon" width="364.5" height="364.5"/>
         <image name="location icon" width="511" height="522.5"/>
         <image name="note icon" width="385" height="512"/>
         <image name="pause.fill" catalog="system" width="116" height="128"/>
+        <image name="previous icon" width="217" height="353.5"/>
         <image name="sandglass 2" width="540.5" height="915.5"/>
         <image name="setting icon_1" width="506.5" height="507"/>
         <systemColor name="systemBackgroundColor">

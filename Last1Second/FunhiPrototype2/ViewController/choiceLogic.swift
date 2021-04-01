@@ -23,7 +23,10 @@ extension mainGameViewController{
     func chatUpdate(){
         print("스토리 \(player.indexNumber)/\(currentChatAmount())")
         bgm()
-        checkEnterAnimation()
+        if (player.indexNumber != currentChatAmount())
+        {
+            checkEnterAnimation()
+        }
         //게임 오버 시 뜰 배드엔딩 창 띄우기.
         if player.indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex == "badEnding"{
             print("타이머 여부 :\(timer == nil)")
@@ -183,19 +186,31 @@ extension mainGameViewController{
     }
     
     func checkEnterAnimation(){
-        let animation = currentBlockOfDay().enterAnimation
-        switch animation {
-        case .none:
-            return
-        case .fadeInfadeOut:
-            blackView.bounds = self.view.bounds
-            blackView.center = self.view.center
-            self.view.addSubview(blackView)
-            blackView.alpha = 1
-            UIView.animate(withDuration: 1.0) {
-                self.blackView.alpha = 0
-            } completion: { (Bool) in
-                self.blackView.removeFromSuperview()
+        if let animation = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]?.chats[player.indexNumber].animationOption
+        {
+            switch animation
+            {
+                case .none:
+                    return
+                case .fadeIn:
+                    blackView.bounds = self.view.bounds
+                    blackView.center = self.view.center
+                    self.view.addSubview(blackView)
+                    blackView.alpha = 1
+                    UIView.animate(withDuration: 2.0) {
+                        self.blackView.alpha = 0
+                    } completion: { (Bool) in
+                        self.blackView.removeFromSuperview()
+                    }
+            case .fadeOut:
+                blackView.bounds = self.view.bounds
+                blackView.center = self.view.center
+                self.view.addSubview(blackView)
+                blackView.alpha = 0
+                UIView.animate(withDuration: 2.0) {
+                    self.blackView.alpha = 1
+                } completion: { _ in
+                }
             }
         }
     }

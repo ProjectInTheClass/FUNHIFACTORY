@@ -51,8 +51,7 @@ func dataToTargetEpisode(storyData : [BlockOfDayEpisodeForJson], input:Int){
         let choiceSkip = ex.choiceSkip
         let godChat = ex.isGodChat
         let bgm = ex.backGroundMusic
-        let animation = ex.enterAnimation
-        let story = BlockOfDayEpisode(chats: chats, choices: choices, choiceSkip: choiceSkip, isGodChat: godChat, backGroundMusic: bgm, enterAnimation: animation)
+        let story = BlockOfDayEpisode(chats: chats, choices: choices, choiceSkip: choiceSkip, isGodChat: godChat, backGroundMusic: bgm)
         if input == 0{
             prologueChapter.storyBlocks[storyId] = story
         } else if input == 1{

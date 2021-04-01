@@ -24,6 +24,11 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initializeVc();
+    }
+    
+    func initializeVc()
+    {
         bgmSlider.minimumValue = 0.0
         bgmSlider.maximumValue = 1.0
         effectMusicSlider.minimumValue = 0.0
@@ -44,7 +49,8 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         }
         settingLabel.font = UIFont(name: "NanumSquareEB", size: 29)
         
-        for label in settingPropertyLabels {
+        for label in settingPropertyLabels
+        {
             label.font = UIFont(name: "NanumSquareEB", size: 20)
         }
     }
@@ -104,23 +110,17 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         player.currentChatArray.removeAll()
         player.currentGodChatArray.removeAll()
         print(player)
-        /*
-         let pvc = self.presentingViewController
-         self.dismiss(animated: false, completion: {
-             pvc?.dismiss(animated: false, completion: nil)
-         })
-         */
         self.view.window?.rootViewController?.dismiss(animated: false, completion: {
             let homeVC = TitleCoverViewController()
             homeVC.modalPresentationStyle = .fullScreen
         })
+        
+        //userinstance의
     }
     @IBAction func noButtonTapped(_ sender: Any) {
         initializeAlert.removeFromSuperview()
         blackView.removeFromSuperview()
     }
-    
-    
     
     @IBAction func bugReportTapped(_ sender: Any) {
         if !MFMailComposeViewController.canSendMail() {return}
@@ -132,20 +132,5 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
                 present(emailVC, animated: true, completion: nil)
     }
 }
-/*
-private func initializeUser(){
-    for var a in episodes{
-        a.isCleared = false
-        for b in a.currentCharacterNote{
-            b.isLocked = true
-        }
-        for c in a.currentAlbumImages{
-            c.isLocked = true
-        }
-    }
-     for var a in achievements{
-         a.isLocked = true
-     }
-    //player.currentEpisodes[0].currentCharacterNote[0].isLocked = false
-}
-*/
+
+
