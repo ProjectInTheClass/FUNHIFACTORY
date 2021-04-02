@@ -274,7 +274,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.godChatCollectionView.dataSource = self
         self.godChatTableView.delegate = self
         self.godChatCollectionView.delegate = self
-        self.transitioningDelegate = self
         
        
         mainGameDesign()
@@ -392,10 +391,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func settingTapped(_ sender: Any) {
-        let setting = storyboard?.instantiateViewController(identifier: "setting")
-        setting?.modalPresentationStyle = .fullScreen
-        setting?.modalTransitionStyle = .crossDissolve
-        present(setting!, animated: true, completion: nil)
+        guard let VC = storyboard?.instantiateViewController(identifier: "settings") else {return}
+        VC.modalPresentationStyle = .fullScreen
+        present(VC, animated: true, completion: nil)
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     @IBAction func mapOpen(_ sender: Any) {
@@ -546,11 +544,5 @@ extension mainGameViewController : arDelegate{
     func goToAR() {
         print("buttonClicked")
         performSegue(withIdentifier: "goToARView", sender: nil)
-    }
-}
-
-extension mainGameViewController : UIViewControllerTransitioningDelegate{
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController)-> UIViewControllerAnimatedTransitioning?{
-        return AnimationController(animationDuration: 3.5, animationType: .present)
     }
 }

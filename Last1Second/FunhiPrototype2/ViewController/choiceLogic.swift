@@ -195,8 +195,8 @@ extension mainGameViewController{
                 case .fadeIn:
                     blackView.bounds = self.view.bounds
                     blackView.center = self.view.center
-                    self.view.addSubview(blackView)
-                    blackView.alpha = 1
+//                    self.view.addSubview(blackView)
+//                    blackView.alpha = 1
                     UIView.animate(withDuration: 2.0) {
                         self.blackView.alpha = 0
                     } completion: { (Bool) in

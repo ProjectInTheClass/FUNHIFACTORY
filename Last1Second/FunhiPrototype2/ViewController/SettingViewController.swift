@@ -25,6 +25,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeVc();
+        self.transitioningDelegate = self
     }
     
     func initializeVc()
@@ -133,4 +134,12 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     }
 }
 
-
+extension SettingViewController : UIViewControllerTransitioningDelegate{
+    func animationController(forPresented presented: UIViewController,
+                             presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return AnimationController(animationDuration: 0.4, animationType: .present)
+    }
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return AnimationController(animationDuration: 0.4, animationType: .dismiss)
+    }
+}
