@@ -16,7 +16,8 @@ class CreditViewController: UIViewController {
     }
     
     @IBAction func back(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func instaButtonTapped(_ sender: Any) {

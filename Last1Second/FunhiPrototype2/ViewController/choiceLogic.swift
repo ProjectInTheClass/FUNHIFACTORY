@@ -42,7 +42,7 @@ extension mainGameViewController{
             mainGameTableView.reloadData()
             let storyBoard=storyboard?.instantiateViewController(withIdentifier: "Ending")
             storyBoard?.modalPresentationStyle = .fullScreen
-            present(storyBoard!, animated: true, completion: nil)
+            performSegue(withIdentifier: "badEnding", sender: nil)
             //업적이랑 이미지나 캐릭터 정보를 다 삭제해야 하나?
             return
         }
@@ -56,9 +56,10 @@ extension mainGameViewController{
             //currentChatArray를 저장해야 함.
             player.currentChatArray.removeAll()
             
-            let selectStageStoryBoard = storyboard?.instantiateViewController(withIdentifier: "selectStage")
-            selectStageStoryBoard?.modalPresentationStyle = .fullScreen
-            present(selectStageStoryBoard!, animated: true, completion: nil)
+//            let selectStageStoryBoard = storyboard?.instantiateViewController(withIdentifier: "selectStage")
+//            selectStageStoryBoard?.modalPresentationStyle = .fullScreen
+//            present(selectStageStoryBoard!, animated: true, completion: nil)
+            performSegue(withIdentifier: "unwindSelectStage", sender: nil)
             return
         }
         else if player.indexNumber < currentChatAmount() && currentBlockOfDay().chats[player.indexNumber].type != .ar{
@@ -124,6 +125,7 @@ extension mainGameViewController{
         }
         //현재 채팅이 isGodChat on일때는 메인게임의 선택지는 작동 안되도록. 메인게임채팅 중일때는 신 채팅창의 선택지가 나오지 못하도록
         if isGodChatOn == true && currentBlockOfDay().isGodChat == .on{
+            godChatTableView.beginUpdates()
             self.godChatCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
             pageControl.currentPage = 0
             godChatChoiceHeight.constant = 183
@@ -133,7 +135,9 @@ extension mainGameViewController{
             godChatTableView.layoutIfNeeded()
             godChatTableView.contentOffset.y += 183
             scrollToBottom(input: 1)
+            godChatTableView.endUpdates()
         }else if isGodChatOn == false && currentBlockOfDay().isGodChat == .off{
+            mainGameTableView.beginUpdates()
             self.choiceCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
             pageControl.currentPage = 0
             choiceHeight.constant = 149
@@ -143,21 +147,26 @@ extension mainGameViewController{
             mainGameTableView.layoutIfNeeded()
             mainGameTableView.contentOffset.y += 149 //231
             scrollToBottom(input: 0)
+            mainGameTableView.endUpdates()
         }
     }
     func closeChoiceBar(){
         isChoiceOn = false
         if isGodChatOn == true{
+            godChatTableView.beginUpdates()
             godChatChoiceHeight.constant = 0
             godChatChoiceBar.isHidden = true
             godChatChoiceBar.setNeedsUpdateConstraints()
             godChatTableView.layoutIfNeeded()
+            godChatTableView.endUpdates()
             //scrollToBottom(input: 1)
         }else if isGodChatOn == false{
+            mainGameTableView.beginUpdates()
             choiceHeight.constant = 0
             choiceBar.isHidden = true
             choiceBar.setNeedsUpdateConstraints()
             mainGameTableView.layoutIfNeeded()
+            mainGameTableView.endUpdates()
             //scrollToBottom(input: 0)
         }
     }

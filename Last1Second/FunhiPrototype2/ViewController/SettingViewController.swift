@@ -63,8 +63,8 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
    
 
     @IBAction func creditTapped(_ sender: Any) {
-//        performSegue(withIdentifier: "o", sender: nil)
-//        let vc = storyboard?.instantiateViewController(identifier: "credit")
+        performSegue(withIdentifier: "o", sender: nil)
+//        let vc = storyboard?.instantiateViewController(identifier: "o")
 //        vc?.modalPresentationStyle = .fullScreen
 //        present(vc!, animated: true, completion: nil)
     }
@@ -111,11 +111,11 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         player.currentChatArray.removeAll()
         player.currentGodChatArray.removeAll()
         print(player)
-        self.view.window?.rootViewController?.dismiss(animated: false, completion: {
-            let homeVC = TitleCoverViewController()
-            homeVC.modalPresentationStyle = .fullScreen
-        })
-        
+//        self.view.window?.rootViewController?.dismiss(animated: false, completion: {
+//            let homeVC = TitleCoverViewController()
+//            homeVC.modalPresentationStyle = .fullScreen
+//        })
+        performSegue(withIdentifier: "gotoCover", sender: nil)
         //userinstance의
     }
     @IBAction func noButtonTapped(_ sender: Any) {
