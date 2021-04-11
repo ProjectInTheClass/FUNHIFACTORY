@@ -226,13 +226,20 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
             if collectionView == choiceCollectionView{
-                player.currentChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: currentBlockOfDay().choices[indexPath.row].chatType, who: .danhee, characterFace: currentBlockOfDay().choices[indexPath.row].characterFace, optionalOption: nil, animationOption: .none))
+
+                mainGameTableView.beginUpdates()
+                player.currentChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: currentBlockOfDay().choices[indexPath.row].chatType, who: .danhee, characterFace: currentBlockOfDay().choices[indexPath.row].characterFace, optionalOption: currentBlockOfDay().choices[indexPath.row].optionalOption, animationOption: .none))
+
                 mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
+                mainGameTableView.endUpdates()
             }else if collectionView == godChatCollectionView{
-                player.currentGodChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: currentBlockOfDay().choices[indexPath.row].chatType, who: .danhee, characterFace: currentBlockOfDay().choices[indexPath.row].characterFace, optionalOption: nil, animationOption: .none))
+
+                godChatTableView.beginUpdates()
+                player.currentGodChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: currentBlockOfDay().choices[indexPath.row].chatType, who: .danhee, characterFace: currentBlockOfDay().choices[indexPath.row].characterFace, optionalOption: currentBlockOfDay().choices[indexPath.row].optionalOption, animationOption: .none))
+
                 godChatTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
+                godChatTableView.endUpdates()
             }
-            
             print("현재 ChatId : \(player.currentChatId), 선택한 선택지 : \(currentBlockOfDay().choices[indexPath.row])")
             checkAlbumImageInChoice(choiceIndex: indexPath.row)
             checkLikability(choiceNumber: indexPath.row)
@@ -250,7 +257,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             closeChoiceBar()
             //다음 페이지가 신 채팅일 경우, 타이머를 멈추고, 신 채팅을 들어갈 수 있도록 해야할 듯.
             //다음 페이지가 신 채팅일 경우
-            if dummyData.stories[player.dayId]?.storyBlocks[currentBlockOfDay().choices[indexPath.row].nextTextIndex]?.isGodChat == .on{
+            if isGodChatOn == false && dummyData.stories[player.dayId]?.storyBlocks[currentBlockOfDay().choices[indexPath.row].nextTextIndex]?.isGodChat == .on
+            {
+                chatToGodView.isHidden = false
                 //진동 울리기 및 색 변경이나 알림(아이템 뱃지와 같은) 등이 떠야 함.
                 if timer != nil{
                     timer.invalidate()
@@ -274,8 +283,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.godChatCollectionView.dataSource = self
         self.godChatTableView.delegate = self
         self.godChatCollectionView.delegate = self
-        
-       
         mainGameDesign()
         //initialize()
         if let page = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]?.choices.count{
@@ -287,6 +294,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         choiceCollectionViewBorder(choiceView: collectionBar)
         chatToGodUIUpdate(hwiryeong: chatToGodView)
         map.layer.borderColor = UIColor.white.cgColor
+        if player.currentGodChatArray.isEmpty
+        {
+            chatToGodView.isHidden = true
+        }
         //지우지 말아주세요
         maingameNotepopupViewDesign(popupView: notePopupView, parentView: self.view!)
     }
@@ -398,6 +409,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     @IBAction func mapOpen(_ sender: Any) {
         if timer != nil{
+            print("map : timer invalidate")
             timer.invalidate()
         }
         blackView.bounds = self.view.bounds
@@ -424,9 +436,11 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             self.map.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
             self.blackView.alpha = 0
         }, completion: {_ in
+            print("퍼즈바 :\(self.pauseBar.isHidden), 초이스 :\(isChoiceOn), 타이머 :\(timer==nil)")
             self.map.removeFromSuperview()
             self.blackView.removeFromSuperview()
-            if isChoiceOn == false && timer == nil{
+            if isChoiceOn == false// && timer == nil
+            {
                 guard self.pauseBar.isHidden == true else {return}
                 self.chatUpdateTimer()
             }

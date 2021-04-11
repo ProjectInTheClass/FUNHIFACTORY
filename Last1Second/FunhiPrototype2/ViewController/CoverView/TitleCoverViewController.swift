@@ -24,15 +24,7 @@ class TitleCoverViewController: UIViewController {
         testLabel.setCharacterSpacing(characterSpacing: 5)
         light()
         
-        loadJson(fromURLString: prologueJsonURL) { (result) in
-              switch result {
-              case .success(let data):
-                parse(jsonData: data, targetEpisode: 0)
-                print("********json 불러오기 성공*********")
-              case .failure(let error):
-                  print(error)
-              }
-          }
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         audioConfigure(bgmName: "coverBGM", isBGM: true, ofType: "mp3")
@@ -82,5 +74,9 @@ class TitleCoverViewController: UIViewController {
                 testLabel.alpha = 0.1
 
             }, completion: nil)
+    }
+    @IBAction func unwindToCover(_ unwindSegue: UIStoryboardSegue) {
+        let sourceViewController = unwindSegue.source
+        // Use data from the view controller which initiated the unwind segue
     }
 }

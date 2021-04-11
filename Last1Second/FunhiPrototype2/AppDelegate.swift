@@ -14,9 +14,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-       // loadFromFile()
-        
-        
+
+        loadFromFile()
+        loadJson(fromURLString: prologueJsonURL) { (result) in
+              switch result {
+              case .success(let data):
+                parse(jsonData: data, targetEpisode: 0)
+                print("********json 불러오기 성공*********")
+              case .failure(let error):
+                  print(error)
+              }
+          }
+
         return true
     }
 

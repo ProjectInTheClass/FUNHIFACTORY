@@ -158,7 +158,7 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBAction func selectedPopupStartButton(_ sender: Any) {
         
         player.dayId = selectedEP.episodeID
-        player.currentChatId = "001" //기본 시작id로 지정하기
+//        player.currentChatId = "001" //기본 시작id로 지정하기
         performSegue(withIdentifier: "goToChapterCoverSegue", sender: nil)
         
     }
@@ -223,6 +223,11 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
             }
         }
         return endingOpen
+    }
+    
+    @IBAction func unwindToSelectStage(_ unwindSegue: UIStoryboardSegue) {
+        let sourceViewController = unwindSegue.source
+        // Use data from the view controller which initiated the unwind segue
     }
 }
 

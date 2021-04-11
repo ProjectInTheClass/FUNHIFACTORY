@@ -1014,6 +1014,8 @@
                         <segue destination="fIu-oy-oyp" kind="show" identifier="noteSegue" animates="NO" id="NQK-hz-tWN"/>
                         <segue destination="IJQ-AX-mDc" kind="show" identifier="albumSegue" animates="NO" id="bYG-Zw-qlf"/>
                         <segue destination="v7i-Z6-t2C" kind="show" identifier="timelineSegue" animates="NO" id="USe-dh-gZr"/>
+                        <segue destination="o6w-Ff-HrJ" kind="show" identifier="badEnding" id="Y7E-3u-pTd"/>
+                        <segue destination="OGC-Jy-Quw" kind="unwind" identifier="unwindSelectStage" unwindAction="unwindToSelectStage:" id="KnL-SI-QC9"/>
                     </connections>
                 </viewController>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EkU-Ps-5iU">
@@ -1147,6 +1149,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nKe-H5-t52" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="OGC-Jy-Quw" userLabel="Exit" sceneMemberID="exit"/>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X4d-em-HeW" userLabel="godChat">
                     <rect key="frame" x="0.0" y="0.0" width="359" height="694"/>
                     <subviews>
@@ -1740,7 +1743,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </objects>
-            <point key="canvasLocation" x="3673.913043478261" y="-649.55357142857144"/>
+            <point key="canvasLocation" x="3720" y="-731"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="zMK-4P-pvq">
@@ -1999,7 +2002,6 @@
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="creditTapped:" destination="huL-hd-yMs" eventType="touchUpInside" id="nAW-Qc-9WL"/>
-                                                            <segue destination="9Cd-47-cRm" kind="show" identifier="o" id="RLb-JJ-4iC"/>
                                                         </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VXB-Qs-iEi">
@@ -2140,9 +2142,12 @@
                         <outletCollection property="settingPropertyLabels" destination="kZ6-o2-URj" collectionClass="NSMutableArray" id="4nX-Sn-rcb"/>
                         <outletCollection property="settingPropertyLabels" destination="MF9-yJ-UMa" collectionClass="NSMutableArray" id="wvU-kV-0ma"/>
                         <outletCollection property="settingPropertyLabels" destination="Uhb-m7-kCR" collectionClass="NSMutableArray" id="Hfx-rx-alN"/>
+                        <segue destination="Y2P-of-vIP" kind="unwind" identifier="gotoCover" unwindAction="unwindToCover:" id="c6H-CE-xEI"/>
+                        <segue destination="9Cd-47-cRm" kind="presentation" identifier="o" modalPresentationStyle="fullScreen" id="6rg-7f-5lN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RwW-KZ-nCG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Y2P-of-vIP" userLabel="Exit" sceneMemberID="exit"/>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5cO-Lk-REJ">
                     <rect key="frame" x="0.0" y="0.0" width="330" height="238"/>
                     <subviews>
@@ -2230,7 +2235,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </objects>
-            <point key="canvasLocation" x="6028" y="-514"/>
+            <point key="canvasLocation" x="5871" y="-514"/>
         </scene>
         <!--coverView-->
         <scene sceneID="eSf-ep-FCz">
@@ -2245,7 +2250,7 @@
         <!--Credit View Controller-->
         <scene sceneID="1UI-2z-w8q">
             <objects>
-                <viewController storyboardIdentifier="credit" id="9Cd-47-cRm" customClass="CreditViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="credit" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Cd-47-cRm" customClass="CreditViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6NL-Lc-EMm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2524,7 +2529,7 @@
         <!--Navigation Controller-->
         <scene sceneID="GEm-0m-1Oe">
             <objects>
-                <navigationController storyboardIdentifier="setting" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Uey-ic-aIz" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="setting" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" navigationBarHidden="YES" id="Uey-ic-aIz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="i0f-OY-yX0">
@@ -2537,18 +2542,18 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Irx-la-PcR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5162.3188405797109" y="-513.61607142857144"/>
+            <point key="canvasLocation" x="4936" y="-523"/>
         </scene>
         <!--Ending View Controller-->
         <scene sceneID="m7i-MG-7ed">
             <objects>
                 <viewController restorationIdentifier="Ending" storyboardIdentifier="Ending" id="o6w-Ff-HrJ" customClass="endingViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R5U-gN-pUY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wRG-nK-qnB">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배드 엔딩" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJl-qL-vqW">
                                 <rect key="frame" x="20" y="377" width="374" height="30"/>
@@ -2575,7 +2580,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="qGf-6m-aJe">
-                                <rect key="frame" x="26" y="623" width="362" height="185"/>
+                                <rect key="frame" x="26" y="569" width="362" height="185"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0GI-sM-nlA">
                                         <rect key="frame" x="101.5" y="0.0" width="159" height="81"/>
@@ -2765,6 +2770,7 @@
                             <constraint firstItem="DkA-ui-Szy" firstAttribute="leading" secondItem="N0R-1b-A4i" secondAttribute="leading" constant="20" id="ww2-oZ-U5H"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="DmL-md-H3m"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="wRG-nK-qnB" id="WQK-iD-NPJ"/>
                         <outlet property="descriptionLabel" destination="QJl-qL-vqW" id="syf-x5-K59"/>
@@ -2910,7 +2916,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="4474" y="318"/>
+            <point key="canvasLocation" x="4161" y="52"/>
         </scene>
     </scenes>
     <resources>
