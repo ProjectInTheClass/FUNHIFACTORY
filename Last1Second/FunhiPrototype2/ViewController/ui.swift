@@ -12,11 +12,11 @@ func maingameNotepopupViewDesign(popupView: UIView, parentView: UIView) {
     
     parentView.addSubview(popupView)
     popupView.translatesAutoresizingMaskIntoConstraints = false
-    
     popupView.widthAnchor.constraint(equalToConstant: 200).isActive = true
     popupView.heightAnchor.constraint(equalToConstant: 70).isActive = true
     popupView.centerXAnchor.constraint(equalTo: parentView.centerXAnchor).isActive = true
     popupView.topAnchor.constraint(equalTo: parentView.topAnchor, constant: -70).isActive = true
+
     
     popupView.layer.cornerRadius = 4
     popupView.layer.borderWidth = 1.3

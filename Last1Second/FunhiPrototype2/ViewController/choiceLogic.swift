@@ -107,7 +107,7 @@ extension mainGameViewController{
         checkGameCharacterInChat()
         checkCaseInChat()
         checkgameCharacterInfomationInChat()
-        popupOpen = globalPopupOpen
+//        popupOpen = globalPopupOpen
         checkAlbumImageInChat()
         player.indexNumber += 1
         if isGodChatOn == true{

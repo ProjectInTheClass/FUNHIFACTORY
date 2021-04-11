@@ -28,149 +28,149 @@ var xImage: String {
 }
 
 //일반 색깔
-var colorTopbarLine: UIColor {
-    if player.setting.darkmode {
-        return UIColor(hex: "#D9D9D9", alpha: 1)
-    } else {
-        return UIColor(hex: "#FFFFFF", alpha: 1)
-    }
-}
-
-var colorWhite: UIColor {
-    if player.setting.darkmode {
-        return UIColor(hex: "#FFFFFF", alpha: 1)
-    } else {
-        return UIColor(hex: "#D9D9D9", alpha: 1)
-    }
-}
-var colorBlack: UIColor {
-    if player.setting.darkmode {
-        return UIColor(hex: "#000000", alpha: 1)
-    } else {
-        return UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 1)
-    }
-}
-//시작 버튼 색깔
-var colorEPCellBackground: UIColor {
-    if !player.setting.darkmode {
-        return UIColor(hex: "#C4C4C4", alpha: 1)
-    } else {
-        return UIColor(displayP3Red: 0.862, green: 0.862, blue: 0.862, alpha: 1)
-    }
-}
-var colorEPCellTouchedBackground: UIColor {
-    if !player.setting.darkmode {
-        return UIColor(hex: "#959595", alpha: 1)
-    } else {
-        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-    }
-}
-
-var colorEPCellspine: UIColor {
-    if !player.setting.darkmode {
-        return UIColor(hex: "#7A7A7A", alpha: 1)
-    } else {
-        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-    }
-}
-
-// 팝업 뷰 색깔
-var colorPopupHeader: UIColor {
-    if !player.setting.darkmode {
-        return UIColor(hex: "#313131", alpha: 1)
-    } else {
-        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-    }
-}
-
-var colorPopupButtonBackground: UIColor {
-    if !player.setting.darkmode {
-        return UIColor(hex: "#B8B8B8", alpha: 1)
-    } else {
-        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-    }
-}
-
-var colorPopupButtonBorder: UIColor {
-    if !player.setting.darkmode {
-        return UIColor(hex: "#848484", alpha: 1)
-    } else {
-        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-    }
-}
-
-//수첩 색깔
-
-var colorNoteSelectedBackground: UIColor {
-    if !player.setting.darkmode {
-        return UIColor(hex: "#DCDCDC", alpha: 1)
-    } else {
-        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-    }
-}
-
-var colorNoteUnselectedBackground: UIColor {
-    if !player.setting.darkmode {
-        return UIColor(hex: "#787878", alpha: 1)
-    } else {
-        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-    }
-}
-
-var colorLockedViewBackground: UIColor {
-    if !player.setting.darkmode {
-        return UIColor(hex: "#3F3F3F", alpha: 1)
-    } else {
-        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-    }
-}
-
-var colorNoteUnselectedEPNameText: UIColor {
-    if !player.setting.darkmode {
-        return UIColor(hex: "#717171", alpha: 1)
-    } else {
-        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-    }
-}
-
-//타임라인 색깔
-
-
-var colorTimelinePopupButtonBackground: UIColor {
-    if !player.setting.darkmode {
-        return UIColor(hex: "#656565", alpha: 1)
-    } else {
-        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-    }
-}
-
-var colorTimelinePopupButtonBorder: UIColor {
-    if !player.setting.darkmode {
-        return UIColor(hex: "#E5E5E5", alpha: 1)
-    } else {
-        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-    }
-}
-
-//호감도 색깔
-
-var colorLikability: UIColor {
-    if !player.setting.darkmode {
-        return UIColor(hex: "#92A5B6", alpha: 1)
-    } else {
-        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-    }
-}
-
-//메인게임의 업적 획득 팝업 배경 색깔
-
-var colorMaingameGetAchievementPopupBackground: UIColor {
-    if !player.setting.darkmode {
-        return UIColor(hex: "#D6EBFF", alpha: 1)
-    } else {
-        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-    }
-}
+//var colorTopbarLine: UIColor {
+//    if player.setting.darkmode {
+//        return UIColor(hex: "#D9D9D9", alpha: 1)
+//    } else {
+//        return UIColor(hex: "#FFFFFF", alpha: 1)
+//    }
+//}
+//
+//var colorWhite: UIColor {
+//    if player.setting.darkmode {
+//        return UIColor(hex: "#FFFFFF", alpha: 1)
+//    } else {
+//        return UIColor(hex: "#D9D9D9", alpha: 1)
+//    }
+//}
+//var colorBlack: UIColor {
+//    if player.setting.darkmode {
+//        return UIColor(hex: "#000000", alpha: 1)
+//    } else {
+//        return UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 1)
+//    }
+//}
+////시작 버튼 색깔
+//var colorEPCellBackground: UIColor {
+//    if !player.setting.darkmode {
+//        return UIColor(hex: "#C4C4C4", alpha: 1)
+//    } else {
+//        return UIColor(displayP3Red: 0.862, green: 0.862, blue: 0.862, alpha: 1)
+//    }
+//}
+//var colorEPCellTouchedBackground: UIColor {
+//    if !player.setting.darkmode {
+//        return UIColor(hex: "#959595", alpha: 1)
+//    } else {
+//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+//    }
+//}
+//
+//var colorEPCellspine: UIColor {
+//    if !player.setting.darkmode {
+//        return UIColor(hex: "#7A7A7A", alpha: 1)
+//    } else {
+//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+//    }
+//}
+//
+//// 팝업 뷰 색깔
+//var colorPopupHeader: UIColor {
+//    if !player.setting.darkmode {
+//        return UIColor(hex: "#313131", alpha: 1)
+//    } else {
+//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+//    }
+//}
+//
+//var colorPopupButtonBackground: UIColor {
+//    if !player.setting.darkmode {
+//        return UIColor(hex: "#B8B8B8", alpha: 1)
+//    } else {
+//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+//    }
+//}
+//
+//var colorPopupButtonBorder: UIColor {
+//    if !player.setting.darkmode {
+//        return UIColor(hex: "#848484", alpha: 1)
+//    } else {
+//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+//    }
+//}
+//
+////수첩 색깔
+//
+//var colorNoteSelectedBackground: UIColor {
+//    if !player.setting.darkmode {
+//        return UIColor(hex: "#DCDCDC", alpha: 1)
+//    } else {
+//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+//    }
+//}
+//
+//var colorNoteUnselectedBackground: UIColor {
+//    if !player.setting.darkmode {
+//        return UIColor(hex: "#787878", alpha: 1)
+//    } else {
+//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+//    }
+//}
+//
+//var colorLockedViewBackground: UIColor {
+//    if !player.setting.darkmode {
+//        return UIColor(hex: "#3F3F3F", alpha: 1)
+//    } else {
+//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+//    }
+//}
+//
+//var colorNoteUnselectedEPNameText: UIColor {
+//    if !player.setting.darkmode {
+//        return UIColor(hex: "#717171", alpha: 1)
+//    } else {
+//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+//    }
+//}
+//
+////타임라인 색깔
+//
+//
+//var colorTimelinePopupButtonBackground: UIColor {
+//    if !player.setting.darkmode {
+//        return UIColor(hex: "#656565", alpha: 1)
+//    } else {
+//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+//    }
+//}
+//
+//var colorTimelinePopupButtonBorder: UIColor {
+//    if !player.setting.darkmode {
+//        return UIColor(hex: "#E5E5E5", alpha: 1)
+//    } else {
+//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+//    }
+//}
+//
+////호감도 색깔
+//
+//var colorLikability: UIColor {
+//    if !player.setting.darkmode {
+//        return UIColor(hex: "#92A5B6", alpha: 1)
+//    } else {
+//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+//    }
+//}
+//
+////메인게임의 업적 획득 팝업 배경 색깔
+//
+//var colorMaingameGetAchievementPopupBackground: UIColor {
+//    if !player.setting.darkmode {
+//        return UIColor(hex: "#D6EBFF", alpha: 1)
+//    } else {
+//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
+//    }
+//}
 
 
 //------------------------------------수첩 사건------------------------------------
@@ -277,7 +277,7 @@ enum AlbumImageID: String,Codable{
         
     }
 }
-class AlbumImage: Codable{
+class AlbumImage: Codable {
     //구별 위한 ID
     let id: AlbumImageID
     let image: String
@@ -295,7 +295,7 @@ class AlbumImage: Codable{
 }
 //------------------------------------등장인물 정보------------------------------------
 //수첩 인물 정보
-enum InfomationID :String,Codable{
+enum InfomationID: String, Codable {
     case hwiryeong1
     case hwiryeong2
     case hwiryeong3
@@ -319,7 +319,7 @@ enum InfomationID :String,Codable{
 }
 
 // id(정보 획득 로직에서 사용), 업적 잠금 여부, 정보 텍스트
-class Infomation: Codable{
+class Infomation: Codable {
     var infomationID: InfomationID
     var isLocked: Bool
     var text: String
@@ -335,7 +335,7 @@ class Infomation: Codable{
 // 프라퍼티 설명:  인물 이름, 대표 이미지, 키렐이 관찰기록한 듯한 내용의 해당 인물 정보들(인물상세페이지에 있음), 시련 미션, 호감도
 //인물
 
-enum GameCharacterID: String,Codable{
+enum GameCharacterID: String,Codable {
     case danhee
     case hwiryeong
     case tourguide
@@ -442,12 +442,16 @@ struct Chat: Codable {
     let type: ChatType
     let who: GameCharacterID
     let characterFace : CharacterFace
+    let optionalOption: OptionalOption?
+    let animationOption : screenAnimation
+}
+
+struct OptionalOption: Codable {
     let achievementToUnlock: AchievementID?
     let infomationToUnlock: InfomationID?
     let gameCharacterToUnlock: GameCharacterID?
     let caseToUnlock: NoteCaseID?
     let albumImageToUnlock: AlbumImageID?
-    let animationOption : screenAnimation
 }
 
 //선택지 누르면 변경될 호감도
@@ -465,14 +469,10 @@ struct Choice: Codable {
     let chatType: ChatType
     let characterFace : CharacterFace
     let nextTextIndex: String
-    let achievementToUnlock: AchievementID?
-    let infomationToUnlock: InfomationID?
-    let gameCharacterToUnlock: GameCharacterID?
-    let caseToUnlock: NoteCaseID?
-    let albumImageToUnlock: AlbumImageID?
+    let optionalOption: OptionalOption?
 }
 
-enum  screenAnimation: String, Codable{
+enum  screenAnimation: String, Codable {
     case none
     case fadeIn
     case fadeOut
@@ -570,215 +570,7 @@ var globalPopupOpen: Bool = false
 
 //MARK: 함수, Extension
 //-------------------------------------------------------------------------------------------------
-//mainGame에서 currentChat 정보 읽어서 알맞는 주인공 업적 해금하기
-func checkAchievementInChoice(choiceIndex: Int) {
 
-    let currentChatAchievement = currentDay().storyBlocks[player.currentChatId]!.choices[choiceIndex].achievementToUnlock
-    if currentChatAchievement != nil {
-        for achievement in player.currentAchievementInfo.enumerated() {
-            if achievement.element.id == currentChatAchievement {
-                player.currentAchievementInfo[achievement.offset].isLocked = false
-                print("업적 '\(player.currentAchievementInfo[achievement.offset].name)' 달성됨")
-                
-            }
-        }
-    }
-}
-
-func animatenotePopup(popupView: UIView) {
-    UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut) {
-        let moveDown = CGAffineTransform(translationX: popupView.frame.origin.x, y: 118)
-        popupView.transform = moveDown
-    } completion: { (Bool) in
-        
-    }
-
-    
-}
-
-//mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 등장인물 해금하기
-func checkGameCharacterInChoice(choiceIndex: Int) {
- 
-    let currentChatGameCharacter = currentDay().storyBlocks[player.currentChatId]!.choices[choiceIndex].gameCharacterToUnlock
-    
-    if let currentChatGameCharacter = currentChatGameCharacter {
-        for gameCharacter in currentDay().currentCharacterNote.enumerated() {
-            if gameCharacter.element.name == currentChatGameCharacter.info().name {
-                currentDay().currentCharacterNote[gameCharacter.offset].isLocked = false
-                print("캐릭터 '\(currentDay().currentCharacterNote[gameCharacter.offset].isLocked)' 해금됨")
-            }
-        }
-    }
-}
-
-//mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 사건 금하기
-func checkCaseInChoice(choiceIndex: Int) {
-    
-    let currentChatCase = currentDay().storyBlocks[player.currentChatId]!.choices[choiceIndex].caseToUnlock
-    
-    if currentChatCase != nil {
-        for caseNote in currentDay().currentCaseNote.enumerated() {
-            if caseNote.element.id == currentChatCase {
-                currentDay().currentCaseNote[caseNote.offset].isLocked = false
-                print("사건 노트 '\(currentDay().currentCaseNote[caseNote.offset].isLocked)' 해금됨")
-            }
-        }
-    }
-}
-
-//mainGame에서 currentChat 정보 읽어서 알맞는 등장인물의 infomation 해금하기
-func checkgameCharacterInfomationInChoice(choiceIndex: Int) {
-    let currentChatInfomation = currentDay().storyBlocks[player.currentChatId]!.choices[choiceIndex].infomationToUnlock
-    
-    if currentChatInfomation != nil {
-        for gameCharacter in currentDay().currentCharacterNote.enumerated() {
-            for infomation in gameCharacter.element.infomation.enumerated() {
-                if infomation.element.infomationID == currentChatInfomation {
-                    currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked = false
-                    print("'\(currentDay().currentCharacterNote[gameCharacter.offset].isLocked)' 정보 해금됨")
-                }
-            }
-        }
-    }
-}
-
-//mainGame에서 currentChat 정보 읽어서 알맞은 앨범 이미지 해금하기
-func checkAlbumImageInChoice(choiceIndex: Int) {
-    
-    let currentChatAlbumImage = currentDay().storyBlocks[player.currentChatId]!.choices[choiceIndex].albumImageToUnlock
-    
-    if currentChatAlbumImage != nil {
-        for albumImage in currentDay().currentAlbumImages.enumerated() {
-            if albumImage.element.id == currentChatAlbumImage {
-                currentDay().currentAlbumImages[albumImage.offset].isLocked = false
-                print("'\(currentDay().currentAlbumImages[albumImage.offset].isLocked)' 앨범 이미지 해금됨")
-            }
-        }
-    }
-}
-
-//------------------------------------------------------------------------------------------------------------
-
-// 타입 : (String, String)
-var popupInfoTupleArray: [Any] = []
-
-//mainGame에서 currentChat 정보 읽어서 알맞는 주인공 업적 해금하기
-func checkAchievementInChat() {
-    
-    let currentChat = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber]
-    let currentChatAchievement = currentChat.achievementToUnlock
-    
-    
-    // 팝업에 띄울 게 있다면
-    if currentChatAchievement != nil {
-        for achievement in player.currentAchievementInfo.enumerated() {
-            if achievement.element.id == currentChatAchievement {
-                player.currentAchievementInfo[achievement.offset].isLocked = false
-                print("업적 '\(player.currentAchievementInfo[achievement.offset].name)' 달성됨")
-                
-                let achievementPopupInfo = ("업적", player.currentAchievementInfo[achievement.offset].name)
-                popupInfoTupleArray.append(achievementPopupInfo)
-            }
-        }
-    }
-}
-
-//mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 등장인물 해금하기
-func checkGameCharacterInChat() {
- 
-    let currentChatGameCharacter = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber].gameCharacterToUnlock
-    
-    if let currentChatGameCharacter = currentChatGameCharacter {
-        for gameCharacter in currentDay().currentCharacterNote.enumerated() {
-            if gameCharacter.element.name == currentChatGameCharacter.info().name {
-                currentDay().currentCharacterNote[gameCharacter.offset].isLocked = false
-                print("캐릭터 '\(currentDay().currentCharacterNote[gameCharacter.offset].isLocked)' 해금됨")
-
-            }
-        }
-    }
-}
-
-//mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 사건 금하기
-func checkCaseInChat() {
-   
-    let currentChatCase = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber].caseToUnlock
-    if currentChatCase != nil {
-        for caseNote in currentDay().currentCaseNote.enumerated() {
-            if caseNote.element.id == currentChatCase {
-                chapter1.currentCaseNote[caseNote.offset].isLocked = false
-                print("사건 노트 '\(chapter1.currentCaseNote[caseNote.offset].isLocked)' 해금됨")
-      
-            }
-        }
-    }
-}
-
-//mainGame에서 currentChat 정보 읽어서 알맞는 등장인물의 infomation 해금하기
-func checkgameCharacterInfomationInChat() {
- 
-    let currentChatInfomation = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber].infomationToUnlock
-    if currentChatInfomation != nil {
-        for gameCharacter in currentDay().currentCharacterNote.enumerated() {
-            for infomation in gameCharacter.element.infomation.enumerated() {
-                if infomation.element.infomationID == currentChatInfomation {
-                    currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked = false
-                    print("'\(chapter1.currentCharacterNote[gameCharacter.offset].isLocked)' 정보 해금됨")
-
-                }
-            }
-        }
-    }
-}
-
-//mainGame에서 currentChat 정보 읽어서 알맞은 앨범 이미지 해금하기
-func checkAlbumImageInChat() {
-    
-    let currentChatAlbumImage = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber].albumImageToUnlock
-    
-    if currentChatAlbumImage != nil {
-   
-    for albumImage in currentDay().currentAlbumImages.enumerated() {
-        if albumImage.element.id == currentChatAlbumImage {
-            currentDay().currentAlbumImages[albumImage.offset].isLocked = false
-            print("'\(currentDay().currentAlbumImages[albumImage.offset].isLocked)' 앨범 이미지 해금됨")
-          
-            
-        }
-    }
-    }
-}
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-func notePopupViewDesign(notePopupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel, descriptionText: String, infoID: String) {
-    //-----------------------팝업 constraint---------------------------
-    notePopupView.translatesAutoresizingMaskIntoConstraints = false
-    notePopupView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: -53).isActive = true
-        let horizontalConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: backgroundView, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-        let widthConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 231)
-        let heightConstraint = NSLayoutConstraint(item: notePopupView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 53)
-    backgroundView.addConstraints([horizontalConstraint, widthConstraint, heightConstraint])
-    //-----------------------------------------------------
-    
-    for _ in 0...popupInfoTupleArray.count {
-        //팝업 띄우는 애니메이션
-        titleLabel.text = "업적"
-        descriptionLabel.text = "\(descriptionText) 획득"
-    }
-    
-    if infoID == "gameCharacter" {
-        titleLabel.text = "수첩 - 인물"
-        descriptionLabel.text = "\(descriptionText) 정보 획득"
-    }
-    if infoID == "case" {
-        titleLabel.text = "수첩 - 역사"
-        descriptionLabel.text = "\(descriptionText) 정보 획득"
-    }
-    if infoID == "characterInfomation" {
-        titleLabel.text = "수첩 - 인물"
-        descriptionLabel.text = "\(descriptionText) 획득"
-    }
-    
-}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //일단 만들어놓은 인물들 샘플 정보 변수입니다.
 

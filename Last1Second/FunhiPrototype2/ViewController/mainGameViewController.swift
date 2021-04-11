@@ -43,7 +43,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var choiceCollectionView: UICollectionView!
     @IBOutlet var myChoiceText: UILabel!
     @IBAction func notePopupViewXButton(_ sender: Any) {
-        popupOpen = false
+       
         globalPopupOpen = false
     }
     
@@ -52,25 +52,25 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     
-    //노트 팝업 켜고 꺼질 때 애니메이션 담당하는 변수
-    var popupOpen: Bool = false {
-        didSet {
-            //팝업 켜질 때
-            if popupOpen {
-                UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 4, initialSpringVelocity: 5, options: .curveEaseInOut) {
-                  
-                    self.notePopupView.transform = CGAffineTransform(translationX: 0, y: 200)
-                }
-            //팝업 꺼질 때
-            } else {
-                UIView.animate(withDuration: 0.15) {
-                    self.notePopupView.transform = CGAffineTransform.identity
-                } completion: { (Bool) in
-                   
-                }
-            }
-        }
-    }
+//    //노트 팝업 켜고 꺼질 때 애니메이션 담당하는 변수
+//    var popupOpen: Bool = false {
+//        didSet {
+//            //팝업 켜질 때
+//            if popupOpen {
+//                UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 4, initialSpringVelocity: 5, options: .curveEaseInOut) {
+//
+//                    self.notePopupView.transform = CGAffineTransform(translationX: 0, y: 200)
+//                }
+//            //팝업 꺼질 때
+//            } else {
+//                UIView.animate(withDuration: 0.15) {
+//                    self.notePopupView.transform = CGAffineTransform.identity
+//                } completion: { (Bool) in
+//
+//                }
+//            }
+//        }
+//    }
 
     var animator : UIViewPropertyAnimator?
 
@@ -226,10 +226,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
             if collectionView == choiceCollectionView{
-                player.currentChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: currentBlockOfDay().choices[indexPath.row].chatType, who: .danhee, characterFace: currentBlockOfDay().choices[indexPath.row].characterFace, achievementToUnlock: currentBlockOfDay().choices[indexPath.row].achievementToUnlock, infomationToUnlock: currentBlockOfDay().choices[indexPath.row].infomationToUnlock, gameCharacterToUnlock: currentBlockOfDay().choices[indexPath.row].gameCharacterToUnlock, caseToUnlock: currentBlockOfDay().choices[indexPath.row].caseToUnlock, albumImageToUnlock: currentBlockOfDay().choices[indexPath.row].albumImageToUnlock, animationOption: .none))
+                player.currentChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: currentBlockOfDay().choices[indexPath.row].chatType, who: .danhee, characterFace: currentBlockOfDay().choices[indexPath.row].characterFace, optionalOption: nil, animationOption: .none))
                 mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
             }else if collectionView == godChatCollectionView{
-                player.currentGodChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: currentBlockOfDay().choices[indexPath.row].chatType, who: .danhee, characterFace: currentBlockOfDay().choices[indexPath.row].characterFace, achievementToUnlock: currentBlockOfDay().choices[indexPath.row].achievementToUnlock, infomationToUnlock: currentBlockOfDay().choices[indexPath.row].infomationToUnlock, gameCharacterToUnlock: currentBlockOfDay().choices[indexPath.row].gameCharacterToUnlock, caseToUnlock: currentBlockOfDay().choices[indexPath.row].caseToUnlock, albumImageToUnlock: currentBlockOfDay().choices[indexPath.row].albumImageToUnlock, animationOption: .none))
+                player.currentGodChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: currentBlockOfDay().choices[indexPath.row].chatType, who: .danhee, characterFace: currentBlockOfDay().choices[indexPath.row].characterFace, optionalOption: nil, animationOption: .none))
                 godChatTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
             }
             
@@ -527,6 +527,40 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             myChoiceText.font = UIFont(name: "NanumSquareEB", size: 16)
         }
     }
+    
+    var notePopupItemArray: [(a: String, b: String)] = [] {
+        didSet {
+            // 현재 팝업 띄울 것 1개 이상일 때
+            if notePopupItemArray.count >= 1 && !isNotePopupAnimationRunning {
+                notePopupAnimation()
+            }
+        }
+    }
+    
+    func notePopupAnimation() {
+        isNotePopupAnimationRunning = true
+        notePopupViewTitle.text = notePopupItemArray[0].a
+        notePopupViewDescriptionLabel.text = notePopupItemArray[0].b
+
+        UIView.animate(withDuration: 0.2, delay: 1, usingSpringWithDamping: 4, initialSpringVelocity: 5, options: .curveEaseInOut) {
+    
+            self.notePopupView.transform = CGAffineTransform(translationX: 0, y: 200)
+        } completion: { (Bool) in
+            UIView.animate(withDuration: 0.2, delay: 1, options: .allowAnimatedContent) {
+                self.notePopupView.transform = CGAffineTransform.identity
+               
+            } completion: { (Bool) in
+                self.notePopupItemArray.remove(at: 0)
+                if self.notePopupItemArray.count != 0 {
+                    self.notePopupAnimation()
+                } else {
+                    isNotePopupAnimationRunning = false
+                }
+            }
+        }
+    }
+    
+    
 }
 
 
