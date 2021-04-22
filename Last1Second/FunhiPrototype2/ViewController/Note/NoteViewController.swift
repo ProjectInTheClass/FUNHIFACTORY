@@ -227,7 +227,6 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 cell.nameLabel.text = currentEpisode.currentCharacterNote[indexPath.row].name
                 cell.descriptionLabel.text = currentEpisode.currentCharacterNote[indexPath.row].description
                 cell.profileImageView.image = UIImage(named: currentEpisode.currentCharacterNote[indexPath.row].profileImage)
-                cell.likabilityProgressWidth.constant = cell.likabilityBackgroundView.frame.width*CGFloat(player.currentEpisodes[currentNotePageInt].currentCharacterNote[indexPath.row].likability)/100
                 if currentEpisode.currentCharacterNote[indexPath.row].isLocked {
                     cell.lockedView.isHidden = false
                 } else {

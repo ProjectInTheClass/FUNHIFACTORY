@@ -364,17 +364,15 @@ class GameCharacter: Codable {
     //노트 인물 페이지 셀에 들어갈 주인공 설명
     let description: String
     var infomation: [Infomation]
-    var likability: Int
     var isLocked: Bool
    
     
-    init(name: String, profileImage: String ,backGroundImage: String, description: String, infomation: [Infomation], likability:Int, isLocked: Bool) {
+    init(name: String, profileImage: String ,backGroundImage: String, description: String, infomation: [Infomation], isLocked: Bool) {
         self.name = name
         self.profileImage = profileImage
         self.backGroundImage = backGroundImage
         self.description = description
         self.infomation = infomation
-        self.likability = likability
         self.isLocked = isLocked
 
     }
@@ -465,7 +463,6 @@ struct ChoiceLikeability: Codable {
 // 프라퍼티 설명: 선택지 텍스트, 변경될 호감도
 struct Choice: Codable {
     let text: String
-    let likability: [ChoiceLikeability]
     let chatType: ChatType
     let characterFace : CharacterFace
     let nextTextIndex: String

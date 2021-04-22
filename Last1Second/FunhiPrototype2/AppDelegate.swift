@@ -21,6 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
               case .success(let data):
                 parse(jsonData: data, targetEpisode: 0)
                 print("********json 불러오기 성공*********")
+                if (player.currentEpisodes[0].storyBlocks.isEmpty)
+                {
+                    print("프롤로그 챕터가 비었습니다")
+                }
+                else
+                {
+                    print("프롤로그 챕터가 들어있습니다")
+                }
               case .failure(let error):
                   print(error)
               }

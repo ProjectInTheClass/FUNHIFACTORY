@@ -167,9 +167,6 @@ class NoteGameCharacterViewController: UIViewController,UITableViewDelegate, UIT
             gameCharacterImageView.image = UIImage(named: recievedGameCharacter.profileImage)
             gameCharacterDescriptionLabel.text = recievedGameCharacter.description
             gameCharacterIsLabel.text = "\(recievedGameCharacter.name)은(는)..."
-
-                likabilityProgressWidth.constant = likabilityBackgroundView.frame.width*CGFloat(recievedGameCharacter.likability)/100
-            
         }
     }
     
@@ -190,11 +187,6 @@ class NoteGameCharacterViewController: UIViewController,UITableViewDelegate, UIT
         
         likabilityProgressView.layer.cornerRadius = likabilityBackgroundView.frame.height/2
         likabilityProgressView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
-        if let recievedGameCharacter = recievedGameCharacter {
-            likabilityProgressWidth.constant = likabilityBackgroundView.frame.width*CGFloat(recievedGameCharacter.likability)/100
-            
-        }
-       
     }
     /*
     // MARK: - Navigation
