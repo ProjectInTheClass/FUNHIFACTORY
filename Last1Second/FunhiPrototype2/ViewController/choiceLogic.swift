@@ -171,16 +171,6 @@ extension mainGameViewController{
         }
     }
     
-    func checkLikability(choiceNumber : Int){
-        let choiceLikability = currentBlockOfDay().choices[choiceNumber].likability
-        guard choiceLikability.count != 0 else {return}
-        for a in choiceLikability{
-            let target = a.who
-            let amount = a.number
-            target.info().likability = target.info().likability + amount
-            print("\(target.info().name)의 호감도에 \(amount)만큼 변동")
-        }
-    }
     
     func bgm(){
         let bgm = currentBlockOfDay().backGroundMusic.info()

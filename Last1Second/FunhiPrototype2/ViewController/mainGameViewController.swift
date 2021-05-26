@@ -242,7 +242,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             }
             print("현재 ChatId : \(player.currentChatId), 선택한 선택지 : \(currentBlockOfDay().choices[indexPath.row])")
             checkAlbumImageInChoice(choiceIndex: indexPath.row)
-            checkLikability(choiceNumber: indexPath.row)
 
             checkCaseInChoice(choiceIndex: indexPath.row)
             checkAchievementInChoice(choiceIndex: indexPath.row)
