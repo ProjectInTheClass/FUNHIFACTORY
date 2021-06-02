@@ -17,13 +17,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     var indexOfCellBeforeDragging = 0
     
     @IBOutlet var normalChoiceCollectionViewLayout: UICollectionViewFlowLayout!
-    @IBOutlet var godChatCollectionViewLayout: UICollectionViewFlowLayout!
-    @IBOutlet var godChatChoiceHeight: NSLayoutConstraint!
-    @IBOutlet var godChatChoiceBar: UIView!
-    @IBOutlet var godChatTableView: UITableView!
-    @IBOutlet var godChatPageControl: UIPageControl!
-    @IBOutlet var godChatCollectionView: UICollectionView!
-    @IBOutlet var godChat: UIView!
     @IBOutlet var currentYear: UILabel!
     @IBOutlet var wholeView: UIView!
     @IBOutlet var choiceHeight: NSLayoutConstraint!
@@ -38,8 +31,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var blackView: UIView!
     @IBOutlet var collectionBar: UIView!
     @IBOutlet var pageControl: UIPageControl!
-    @IBOutlet var chatToGodView: UIView!
-    @IBOutlet var chatToGodViewTopbar: UIView!
     @IBOutlet var choiceCollectionView: UICollectionView!
     @IBOutlet var myChoiceText: UILabel!
     @IBAction func notePopupViewXButton(_ sender: Any) {
@@ -79,17 +70,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == mainGameTableView{
-            return player.currentChatArray.count
-        }else if tableView == godChatTableView{
-            return player.currentGodChatArray.count
-        } else {
-            return 0
-        }
+        player.currentChatArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == mainGameTableView{
             let chatText = player.currentChatArray[indexPath.row].text
             //텍스트 채팅이 나올 때
                 //자신이 보냈을 때
@@ -143,55 +127,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                    print("메인게임 - 오류 발생1")
                     return UITableViewCell()
                 }
-            
-         // 신 테이블 뷰
-        }else if tableView == godChatTableView {
-            let chatText = player.currentGodChatArray[indexPath.row].text
-            if player.currentGodChatArray[indexPath.row].type == .onlyText && player.currentGodChatArray[indexPath.row].who.info().name == "이단희"{
-                print("신 - 자신 텍스트 출력")
-                        let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
-                cell.myTextCellUpdate(name: player.currentGodChatArray[indexPath.row].who.info().name, chat: chatText, profile: player.currentGodChatArray[indexPath.row].characterFace)
-                cell.profileNickname.textColor = .black
-                        return cell
-                    }
-                    else if player.currentGodChatArray[indexPath.row].type == .onlyText {
-                        print("신 - 상대 텍스트 출력")
-                        let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
-                        cell.opTextCellUpdate(name: player.currentGodChatArray[indexPath.row].who.info().name, chat: chatText,normalProfile: player.currentGodChatArray[indexPath.row].who.info().profileImage, mainProfile: player.currentGodChatArray[indexPath.row].characterFace, isLocked: player.currentGodChatArray[indexPath.row].who.info().isLocked)
-                        cell.profileNickname.textColor = .black
-                        return cell
-                    }
-                //터치할 수 없는 이미지
-                else if player.currentGodChatArray[indexPath.row].type == .untouchableImage {
-                    print("신 - 이미지 출력")
-                    let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! ImageTableViewCell
-
-                    cell.imageUpdate(mainImage: player.currentGodChatArray[indexPath.row].image)
-                    return cell
-                    }
-                //행동 표시글 셀
-                else if player.currentGodChatArray[indexPath.row].type == .sectionHeader{
-                    print("신 - 섹션헤더 출력")
-                    let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "sectionCell", for: indexPath) as! sectionTableViewCell
-                    cell.sectionUpdate(text:chatText)
-                    return cell
-                }
-                //속마음 셀
-                else if player.currentGodChatArray[indexPath.row].type == .monologue{
-                    print("신 - 속마음 채팅 출력")
-                    let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "monologue", for: indexPath) as! monologueTableViewCell
-                    cell.monologueText.text = chatText
-                    cell.name.textColor = .black
-                    cell.chatUpdate(nickname: player.currentGodChatArray[indexPath.row].who.info().name, profile: player.currentGodChatArray[indexPath.row].characterFace)
-                    return cell
-                }else {
-                   print("신 - 오류 발생2")
-                    return UITableViewCell()
-                }
-        } else {
-            print("테이블뷰 - 오류 발생3")
-            return UITableViewCell()
-        }
     }
     
     //선택지 collectionView
@@ -200,12 +135,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         }
     
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            if collectionView == godChatCollectionView{
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "godChatChoiceCell", for: indexPath) as! godChatCollectionViewCell
-                cell.choiceUpdate(choiceText : dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices[indexPath.row].text)
-                godChatPageControl.numberOfPages = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count
-                return cell
-            }else if collectionView == choiceCollectionView{
+            if collectionView == choiceCollectionView{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "choiceCell", for: indexPath) as! choiceCollectionViewCell
                 cell.choiceUpdate(choiceText : dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices[indexPath.row].text)
                 pageControl.numberOfPages = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count
@@ -232,13 +162,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
 
                 mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
                 mainGameTableView.endUpdates()
-            }else if collectionView == godChatCollectionView{
-
-                godChatTableView.beginUpdates()
-                player.currentGodChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: currentBlockOfDay().choices[indexPath.row].chatType, who: .danhee, characterFace: currentBlockOfDay().choices[indexPath.row].characterFace, optionalOption: currentBlockOfDay().choices[indexPath.row].optionalOption, animationOption: .none))
-
-                godChatTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
-                godChatTableView.endUpdates()
             }
             print("현재 ChatId : \(player.currentChatId), 선택한 선택지 : \(currentBlockOfDay().choices[indexPath.row])")
             checkAlbumImageInChoice(choiceIndex: indexPath.row)
@@ -250,21 +173,19 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
 
             player.currentChatId = currentBlockOfDay().choices[indexPath.row].nextTextIndex
             
-            scrollToBottom(input: 0)
-            scrollToBottom(input: 1)
+            scrollToBottom()
             player.indexNumber = 0
             closeChoiceBar()
             //다음 페이지가 신 채팅일 경우, 타이머를 멈추고, 신 채팅을 들어갈 수 있도록 해야할 듯.
             //다음 페이지가 신 채팅일 경우
             if isGodChatOn == false && dummyData.stories[player.dayId]?.storyBlocks[currentBlockOfDay().choices[indexPath.row].nextTextIndex]?.isGodChat == .on
             {
-                chatToGodView.isHidden = false
+//                chatToGodView.isHidden = false
                 //진동 울리기 및 색 변경이나 알림(아이템 뱃지와 같은) 등이 떠야 함.
                 if timer != nil{
                     timer.invalidate()
                 }
                 vibrate(vibrateIsOn: playerSetting.vibration)
-                alertTargetView(targetView: chatToGodView, timeInterval: 0.7, firstColor: UIColor.black, secondColor: UIColor(red: 0.792, green: 0.086, blue: 0.043, alpha: 1))
             }
             //다음 페이지가 신 채팅이 아닐 경우
             else{
@@ -278,25 +199,14 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.mainGameTableView.dataSource = self
         self.choiceCollectionView.delegate = self
         self.choiceCollectionView.dataSource = self
-        self.godChatTableView.dataSource = self
-        self.godChatCollectionView.dataSource = self
-        self.godChatTableView.delegate = self
-        self.godChatCollectionView.delegate = self
         mainGameDesign()
         //initialize()
         if let page = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]?.choices.count{
             initializePageControl(collectionView : choiceCollectionView, choiceBar : choiceBar, numberOfPages:page)
-            initializePageControl(collectionView: godChatCollectionView, choiceBar: godChatChoiceBar, numberOfPages: page)
         }
         self.mainGameTableView.contentInset.bottom = 82
-        self.godChatTableView.contentInset.bottom = 82
         choiceCollectionViewBorder(choiceView: collectionBar)
-        chatToGodUIUpdate(hwiryeong: chatToGodView)
         map.layer.borderColor = UIColor.white.cgColor
-        if player.currentGodChatArray.isEmpty
-        {
-            chatToGodView.isHidden = true
-        }
         //지우지 말아주세요
         maingameNotepopupViewDesign(popupView: notePopupView, parentView: self.view!)
     }
@@ -380,24 +290,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
           }
     }
     //가장 밑으로 스크롤해주는 함수
-    func scrollToBottom(input:Int){
-        
-        
-        DispatchQueue.main.async {
-            if input==0{
-                guard player.currentChatArray.count != 0 else {return}
-                //메인 게임 테이블뷰 전용
-                let indexPath = IndexPath(row: player.currentChatArray.count-1, section: 0)
-                self.mainGameTableView.scrollToRow(at: indexPath, at: .bottom, animated: false) //true로 바꾸면 좀 더 천천히 내려가긴 하는데, 못 따라오는 경우도 있다.
-            }else if input==1{
-                //휘령 채팅 테이블뷰 전용
-                guard player.currentGodChatArray.count != 0 else {return}
-                let indexPath = IndexPath(row: player.currentGodChatArray.count-1, section: 0)
-                self.godChatTableView.scrollToRow(at: indexPath, at: .bottom, animated: false) //true로 바꾸면 좀 더 천천히 내려가긴 하는데, 못 따라오는 경우도 있다.
-            }else{
-                print("ScrollToBottom에 잘못된 값이 들어갔음.")
-            }
-        }
+    func scrollToBottom(){
+        guard player.currentChatArray.count != 0 else {return}
+        let indexPath = IndexPath(row: player.currentChatArray.count-1, section: 0)
+        self.mainGameTableView.scrollToRow(at: indexPath, at: .bottom, animated: false) //true로 바꾸면 좀 더 천천히 내려가긴 하는데, 못 따라오는 경우도 있다.
     }
     
     @IBAction func settingTapped(_ sender: Any) {
@@ -460,43 +356,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         }
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
-    @IBAction func chatWithGod(_ sender: Any) {
-        isGodChatOn = true
-        alertTimer.invalidate()
-        chatToGodView.backgroundColor = UIColor.black
-        if timer != nil{
-            timer.invalidate()
-        }
-        blackView.bounds = self.view.bounds
-        blackView.center = self.view.center
-        self.view.addSubview(blackView)
-        blackView.alpha = 1
-        UIView.animate(withDuration: 0.2) {
-            self.blackView.alpha = 0.7
-        }
-        wholeView.addSubview(godChat)
-        godChat.transform = CGAffineTransform(scaleX: 0, y: 0)
-        godChat.center = self.view.center
-        godChat.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        godChat.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        godChat.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 77).isActive = true
-        godChat.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20).isActive = true
-        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
-                                                                    let scaleDown = CGAffineTransform(scaleX: 1, y: 1)
-                                                                    self.godChat.transform = scaleDown})
-        chatUpdateTimer()
-    }
-    @IBAction func closeGodChat(_ sender: Any) {
-        isGodChatOn = false
-        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
-            self.godChat.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-            self.blackView.alpha = 0
-        }, completion: {_ in
-            self.godChat.removeFromSuperview()
-            self.chatUpdateTimer()
-            self.blackView.removeFromSuperview()
-        })
-    }
     func just(){
         if mainGameTableView.contentSize.height > 608{
             let expandedOffSetY = CGFloat(52)
@@ -524,19 +383,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     func mainGameDesign() {
         currentYear.font = UIFont(name: "NanumSquareEB", size: 29)
         
-        godChat.layer.borderWidth = 4
-        godChat.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
-        godChatChoiceHeight.constant = 0
-        godChatChoiceBar.isHidden = true
-        godChatChoiceBar.setNeedsUpdateConstraints()
-        godChatTableView.layoutIfNeeded()
-        chatToGodViewTopbar.layer.cornerRadius = 10
-        chatToGodViewTopbar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMinYCorner]
-        
         for button in floatingButtons {
             button.layer.borderWidth = 3
             button.layer.borderColor = UIColor(red: 0.524, green: 0.646, blue: 0.75, alpha: 1).cgColor
-            button.backgroundColor = .white
+            button.layer.backgroundColor = UIColor(red: 0.743, green: 0.817, blue: 0.879, alpha: 1).cgColor
             myChoiceText.font = UIFont(name: "NanumSquareEB", size: 16)
         }
     }

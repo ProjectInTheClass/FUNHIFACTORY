@@ -64,10 +64,7 @@ extension mainGameViewController{
         }
         else if player.indexNumber < currentChatAmount() && currentBlockOfDay().chats[player.indexNumber].type != .ar{
             //일반적인 채팅
-            if currentBlockOfDay().isGodChat == .on{
-                player.currentGodChatArray.append(currentBlockOfDay().chats[player.indexNumber])
-                self.godChatTableView.insertRows(at: [IndexPath(row: player.currentGodChatArray.count-1, section: 0)], with: .none)
-            }else if currentBlockOfDay().isGodChat == .off{
+            if currentBlockOfDay().isGodChat == .off{
                 player.currentChatArray.append(currentBlockOfDay().chats[player.indexNumber])
                 self.mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
             }
@@ -89,8 +86,8 @@ extension mainGameViewController{
             player.currentChatId = currentBlockOfDay().choices[0].nextTextIndex
             player.indexNumber = 0
             chatUpdate()
-            scrollToBottom(input: 0)
-            scrollToBottom(input: 1)
+            scrollToBottom()
+            scrollToBottom()
             return
         }
         else if player.indexNumber < currentChatAmount() && currentBlockOfDay().chats[player.indexNumber].type == .ar
@@ -112,9 +109,9 @@ extension mainGameViewController{
         checkAlbumImageInChat()
         player.indexNumber += 1
         if isGodChatOn == true{
-            scrollToBottom(input: 1)
+            scrollToBottom()
         }else {
-            scrollToBottom(input: 0)
+            scrollToBottom()
         }
     }
     
@@ -124,19 +121,7 @@ extension mainGameViewController{
             timer.invalidate()
         }
         //현재 채팅이 isGodChat on일때는 메인게임의 선택지는 작동 안되도록. 메인게임채팅 중일때는 신 채팅창의 선택지가 나오지 못하도록
-        if isGodChatOn == true && currentBlockOfDay().isGodChat == .on{
-            godChatTableView.beginUpdates()
-            self.godChatCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
-            pageControl.currentPage = 0
-            godChatChoiceHeight.constant = 183
-            godChatChoiceBar.setNeedsUpdateConstraints()
-            godChatChoiceBar.isHidden = false
-            godChatCollectionView.reloadData()
-            godChatTableView.layoutIfNeeded()
-            godChatTableView.contentOffset.y += 183
-            scrollToBottom(input: 1)
-            godChatTableView.endUpdates()
-        }else if isGodChatOn == false && currentBlockOfDay().isGodChat == .off{
+        if isGodChatOn == false && currentBlockOfDay().isGodChat == .off{
             mainGameTableView.beginUpdates()
             self.choiceCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
             pageControl.currentPage = 0
@@ -146,21 +131,13 @@ extension mainGameViewController{
             choiceCollectionView.reloadData()
             mainGameTableView.layoutIfNeeded()
             mainGameTableView.contentOffset.y += 149 //231
-            scrollToBottom(input: 0)
+            scrollToBottom()
             mainGameTableView.endUpdates()
         }
     }
     func closeChoiceBar(){
         isChoiceOn = false
-        if isGodChatOn == true{
-            godChatTableView.beginUpdates()
-            godChatChoiceHeight.constant = 0
-            godChatChoiceBar.isHidden = true
-            godChatChoiceBar.setNeedsUpdateConstraints()
-            godChatTableView.layoutIfNeeded()
-            godChatTableView.endUpdates()
-            //scrollToBottom(input: 1)
-        }else if isGodChatOn == false{
+        if isGodChatOn == false{
             mainGameTableView.beginUpdates()
             choiceHeight.constant = 0
             choiceBar.isHidden = true
