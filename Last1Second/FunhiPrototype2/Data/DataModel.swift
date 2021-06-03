@@ -403,7 +403,6 @@ struct User: Codable {
     var dayId:String
     var currentChatId: String
     var currentChatArray: [Chat]
-    var currentGodChatArray: [Chat]
     var indexNumber = 0 
 }
 

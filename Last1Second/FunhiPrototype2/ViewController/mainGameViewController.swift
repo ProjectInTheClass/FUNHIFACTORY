@@ -116,7 +116,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                     cell.name.textColor = .white
                     cell.chatUpdate(nickname: player.currentChatArray[indexPath.row].who.info().name, profile: player.currentChatArray[indexPath.row].characterFace)
                     return cell
-                    
                 }
                 else if player.currentChatArray[indexPath.row].type == .ar{
                      let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "arTableViewCell", for: indexPath) as! ARTableViewCell
@@ -155,14 +154,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
-            if collectionView == choiceCollectionView{
-
-                mainGameTableView.beginUpdates()
+            
                 player.currentChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: currentBlockOfDay().choices[indexPath.row].chatType, who: .danhee, characterFace: currentBlockOfDay().choices[indexPath.row].characterFace, optionalOption: currentBlockOfDay().choices[indexPath.row].optionalOption, animationOption: .none))
 
                 mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
-                mainGameTableView.endUpdates()
-            }
             print("현재 ChatId : \(player.currentChatId), 선택한 선택지 : \(currentBlockOfDay().choices[indexPath.row])")
             checkAlbumImageInChoice(choiceIndex: indexPath.row)
 
@@ -176,16 +171,15 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             scrollToBottom()
             player.indexNumber = 0
             closeChoiceBar()
-            //다음 페이지가 신 채팅일 경우, 타이머를 멈추고, 신 채팅을 들어갈 수 있도록 해야할 듯.
             //다음 페이지가 신 채팅일 경우
             if isGodChatOn == false && dummyData.stories[player.dayId]?.storyBlocks[currentBlockOfDay().choices[indexPath.row].nextTextIndex]?.isGodChat == .on
             {
-//                chatToGodView.isHidden = false
                 //진동 울리기 및 색 변경이나 알림(아이템 뱃지와 같은) 등이 떠야 함.
-                if timer != nil{
-                    timer.invalidate()
-                }
-                vibrate(vibrateIsOn: playerSetting.vibration)
+//                if timer != nil{
+//                    timer.invalidate()
+//                }
+//                vibrate(vibrateIsOn: playerSetting.vibration)
+                chatUpdateTimer()
             }
             //다음 페이지가 신 채팅이 아닐 경우
             else{
@@ -381,8 +375,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     func mainGameDesign() {
-        currentYear.font = UIFont(name: "NanumSquareEB", size: 29)
-        
         for button in floatingButtons {
             button.layer.borderWidth = 3
             button.layer.borderColor = UIColor(red: 0.524, green: 0.646, blue: 0.75, alpha: 1).cgColor
