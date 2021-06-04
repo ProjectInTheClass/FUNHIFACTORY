@@ -12,8 +12,6 @@ let jsonEncoder = JSONEncoder()
 let jsonDecoder = JSONDecoder()
 
 let prologueJsonURL = "https://raw.githubusercontent.com/ProjectInTheClass/FUNHIFACTORYGameData/master/storyInstance.json"
-    //"https://4a73fc1268e2fa1970f6ba6649dac04234f2c5d2@raw.githubusercontent.com/ProjectInTheClass/FUNHIFACTORY/master/FunhiPrototype2/storyInstance.json"
-    //4a73fc1268e2fa1970f6ba6649dac04234f2c5d2
 
 func parse(jsonData : Data, targetEpisode : Int){
     do{
@@ -80,7 +78,6 @@ func loadJson(fromURLString urlString: String,
                 completion(.success(data))
             }
         }
-        
         urlSession.resume()
     }
 }

@@ -29,6 +29,7 @@ class myTextTableViewCell: UITableViewCell {
         // 뷰의 세 모서리만 cornerRadus 값 적용되게 하는 코드
         chatView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner, .layerMaxXMaxYCorner]
     }
+    
     func myTextCellUpdate(name:String,chat:String,profile:CharacterFace){
         profileNickname.text = name
         chatText.text = chat

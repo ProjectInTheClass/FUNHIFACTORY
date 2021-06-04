@@ -15,10 +15,10 @@ class TitleCoverViewController: UIViewController {
         super.viewDidLoad()
         for family: String in UIFont.familyNames
              {
-                 print(family)
+//                 print(family)
                  for names: String in UIFont.fontNames(forFamilyName: family)
                  {
-                     print("== \(names)")
+//                     print("== \(names)")
                  }
              }
         testLabel.setCharacterSpacing(characterSpacing: 5)

@@ -12,7 +12,6 @@ class sectionTableViewCell: UITableViewCell {
     @IBOutlet var sectionText: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        sectionText.font = UIFont(name: "NanumSquareEB", size: 15.5)
         // Initialization code
     }
 
