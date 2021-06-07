@@ -211,7 +211,9 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         } else {
            let headerView = savePointTableView.dequeueReusableHeaderFooterView(withIdentifier: "SavepointHeaderView2") as! SavepointHeaderFooterView2
             headerView.sectionLabel.text = "\(section)번째 길"
+
             headerView.sectionView.backgroundColor = .blue
+
             return headerView
         }
        

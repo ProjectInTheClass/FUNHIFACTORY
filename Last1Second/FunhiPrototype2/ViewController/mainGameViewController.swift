@@ -210,6 +210,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         transition.type = CATransitionType.moveIn
           transition.subtype = CATransitionSubtype.fromBottom
           self.navigationController!.view.layer.add(transition, forKey: kCATransition)
+        buttonAlertOff(input: 0)
         performSegue(withIdentifier: "noteSegue", sender: nil)
     }
     
@@ -221,6 +222,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         transition.type = CATransitionType.moveIn
           transition.subtype = CATransitionSubtype.fromBottom
           self.navigationController!.view.layer.add(transition, forKey: kCATransition)
+        buttonAlertOff(input: 1)
         performSegue(withIdentifier: "albumSegue", sender: nil)
     }
     
@@ -232,6 +234,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         transition.type = CATransitionType.moveIn
           transition.subtype = CATransitionSubtype.fromBottom
           self.navigationController!.view.layer.add(transition, forKey: kCATransition)
+        buttonAlertOff(input: 2)
         performSegue(withIdentifier: "timelineSegue", sender: nil)
     }
     
