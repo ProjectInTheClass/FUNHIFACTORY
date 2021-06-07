@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mHh-gU-bDL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mHh-gU-bDL">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -32,6 +32,16 @@
         </array>
     </customFonts>
     <scenes>
+        <!--HomeView-->
+        <scene sceneID="uE0-uL-PrC">
+            <objects>
+                <viewControllerPlaceholder storyboardName="HomeView" id="XzB-wJ-Fle" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="lzU-ac-JJ9"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="psm-40-Y1u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-716" y="-350"/>
+        </scene>
         <!--Title Cover View Controller-->
         <scene sceneID="xOp-Fo-9Fz">
             <objects>
@@ -82,8 +92,8 @@
                         <outlet property="startButton" destination="S4R-AN-iqx" id="r3Y-X9-OrS"/>
                         <outlet property="testLabel" destination="cdZ-86-mCc" id="oCn-Ia-1cy"/>
                         <segue destination="LDT-1T-9Vm" kind="show" identifier="goToSelectSelectSegue" animates="NO" id="mpB-tq-3CW"/>
-                        <segue destination="gV8-vF-X4D" kind="show" identifier="fromCoverToMaingameSegue" id="jZx-07-KWg"/>
                         <segue destination="wpo-Yq-ikf" kind="show" identifier="fromCoverToChapterCover" animates="NO" id="Wab-dm-ahv"/>
+                        <segue destination="XzB-wJ-Fle" kind="show" identifier="fromCoverToHomeSegue" id="h7F-f9-L29"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6g3-of-CNn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -203,7 +213,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectStageTableViewCell" rowHeight="147" id="GEw-W9-AXL" customClass="SelectStageTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="334" height="147"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="334" height="147"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GEw-W9-AXL" id="vKY-oa-j0b">
                                             <rect key="frame" x="0.0" y="0.0" width="334" height="147"/>
@@ -275,16 +285,16 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="1UV-Ho-YWZ">
-                                                                    <rect key="frame" x="38" y="37.5" width="80" height="51"/>
+                                                                    <rect key="frame" x="38" y="37.5" width="80" height="50.5"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1592년" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0LG-Fz-VWX">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="28"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1592년" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0LG-Fz-VWX">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="27.5"/>
                                                                             <fontDescription key="fontDescription" name="NEXONLv2GothicBold" family="NEXON Lv2 Gothic" pointSize="24"/>
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="전각 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMN-m8-8qY">
-                                                                            <rect key="frame" x="0.0" y="34" width="80" height="17"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전각 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMN-m8-8qY">
+                                                                            <rect key="frame" x="0.0" y="33.5" width="80" height="17"/>
                                                                             <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="15"/>
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
@@ -547,7 +557,7 @@
         <!--Chapter Cover View Controller-->
         <scene sceneID="uNB-wN-cFZ">
             <objects>
-                <viewController id="wpo-Yq-ikf" customClass="ChapterCoverViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChapterCover" id="wpo-Yq-ikf" customClass="ChapterCoverViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NQZ-i6-sV4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -687,11 +697,10 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ye3-9f-pMK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2095" y="-188"/>
+            <point key="canvasLocation" x="1288" y="-398"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jZx-07-KWg"/>
         <segue reference="cgE-z7-gJC"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -703,7 +712,7 @@
         <image name="check icon" width="572.5" height="420.5"/>
         <image name="cover image" width="1023.5" height="2203"/>
         <image name="image sample" width="2016" height="1512"/>
-        <image name="lock icon" width="363" height="406"/>
+        <image name="lock icon" width="377" height="422"/>
         <image name="sandglass 1" width="461" height="764.5"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">

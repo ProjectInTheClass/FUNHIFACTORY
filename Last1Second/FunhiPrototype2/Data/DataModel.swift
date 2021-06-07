@@ -760,4 +760,13 @@ func loadFromFile() {
     }
 }
 
+extension UIView {
+    //뷰 섀도우 주는 코드 간단화한 함수
+    func setShadow(color: UIColor, offsetX: Int, offsetY: Int, opacity: Int, radius: Int) {
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOffset = CGSize(width: offsetX, height: offsetY)
+        self.layer.shadowOpacity = Float(opacity)
+        self.layer.shadowRadius = CGFloat(radius)
+    }
+}
 

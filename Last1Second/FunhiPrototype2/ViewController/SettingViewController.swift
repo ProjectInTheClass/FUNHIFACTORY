@@ -66,6 +66,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+    
     }
    
 

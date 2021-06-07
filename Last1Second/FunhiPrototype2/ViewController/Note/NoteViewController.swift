@@ -318,14 +318,20 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var casesBookmarkLineView: UIView!
     
     @IBAction func backAction(_ sender: Any) {
-        let transition:CATransition = CATransition()
-          transition.duration = 0.35
-          transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        transition.type = CATransitionType.moveIn
-        transition.subtype = CATransitionSubtype.fromTop
-          self.navigationController!.view.layer.add(transition, forKey: kCATransition)
-        self.navigationController?.popViewController(animated: false)
+        if self.parent == mainGameViewController() {
+            let transition:CATransition = CATransition()
+              transition.duration = 0.35
+              transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+            transition.type = CATransitionType.moveIn
+            transition.subtype = CATransitionSubtype.fromTop
+              self.navigationController!.view.layer.add(transition, forKey: kCATransition)
+            self.navigationController?.popViewController(animated: false)
+           
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+       
     }
     func changePageDesign() {
         if currentNoteTitle == .gameCharacters {

@@ -52,7 +52,7 @@ class TitleCoverViewController: UIViewController {
         }
         else //에피 진행중이면
         {
-            performSegue(withIdentifier: "fromCoverToMaingameSegue", sender: nil)
+            performSegue(withIdentifier: "fromCoverToHomeSegue", sender: nil)
         }
     }
     
