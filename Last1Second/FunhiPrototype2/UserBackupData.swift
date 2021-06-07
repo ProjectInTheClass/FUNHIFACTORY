@@ -21,7 +21,7 @@ func initializePlayer(paraPlayer : inout User)
             Achievement(name: "루스", image: "leedanheeBackground", id: .cat , isLocked: true),
             Achievement(name: "휘령의 목걸이", image: "prologue image 4", id: .necklace , isLocked: true),
             Achievement(name: "의심 속 믿음", image: "leedanheeBackground", id: .faith , isLocked: true)],
-        dayIndex: 0, dayId: "day0", currentChatId: "014", currentChatArray: [], currentGodChatArray: [])
+        dayIndex: 0, dayId: "day0", currentChatId: "014", currentChatArray: [])
     
     paraPlayer = playerBackup;
 }

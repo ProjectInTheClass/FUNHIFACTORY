@@ -29,6 +29,7 @@ class myTextTableViewCell: UITableViewCell {
         // 뷰의 세 모서리만 cornerRadus 값 적용되게 하는 코드
         chatView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner, .layerMaxXMaxYCorner]
     }
+    
     func myTextCellUpdate(name:String,chat:String,profile:CharacterFace){
         profileNickname.text = name
         chatText.text = chat
@@ -53,11 +54,6 @@ class myTextTableViewCell: UITableViewCell {
         if face == "none"{
             profileImage.isHidden = true
             profileNickname.isHidden = true
-            chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7).isActive = true
-            contentView.layoutIfNeeded()
-        } else {
-            chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 63).isActive = true
-            contentView.layoutIfNeeded()
         }
         profileImage.image = UIImage(named: face)
         return

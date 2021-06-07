@@ -403,7 +403,6 @@ struct User: Codable {
     var dayId:String
     var currentChatId: String
     var currentChatArray: [Chat]
-    var currentGodChatArray: [Chat]
     var indexNumber = 0 
 }
 
@@ -537,8 +536,12 @@ struct Episode: Codable {
     
     let timelineSavePoint:[[Savepoint]]
 }
-
+enum SavepointID: String, Codable {
+    case id201, id202, id203, id211, id221
+}
 struct Savepoint: Codable {
+    //아이디
+ //   let id: SavepointID
     //이름
     let name: String
     //블럭 인덱스

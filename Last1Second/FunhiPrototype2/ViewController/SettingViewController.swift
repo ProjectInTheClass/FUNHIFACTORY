@@ -18,6 +18,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     @IBOutlet var initializeAlert: UIView!
     @IBOutlet var textSpeedSlider: UISlider!
     @IBOutlet var initializeAlertButtons: [UIButton]!
+    @IBOutlet var initConfirmView: UIView!
     @IBOutlet var settingPropertyLabels: [UILabel]!
     
     let blackView = UIView()
@@ -30,6 +31,12 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     
     func initializeVc()
     {
+        initConfirmView.frame = initConfirmView.frame.insetBy(dx: -6, dy: -6);
+        initializeAlert.frame = initializeAlert.frame.insetBy(dx: -6, dy: -6);
+        initConfirmView.layer.borderWidth = 6;
+        initConfirmView.layer.borderColor = CGColor(red: 0.65, green: 0.74, blue: 0.81, alpha: 1.0)
+        initializeAlert.layer.borderWidth = 6;
+        initializeAlert.layer.borderColor = CGColor(red: 0.65, green: 0.74, blue: 0.81, alpha: 1.0)
         bgmSlider.minimumValue = 0.0
         bgmSlider.maximumValue = 1.0
         effectMusicSlider.minimumValue = 0.0
@@ -106,17 +113,17 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         initializeAlert.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 325).isActive = true
         initializeAlert.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 40).isActive = true
     }
+    @IBAction func initConfirmButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "gotoCover", sender: nil)
+    }
     @IBAction func yesButtonTapped(_ sender: Any) {
         print("게임 데이터가 초기화되었습니다.")
         player.currentChatArray.removeAll()
-        player.currentGodChatArray.removeAll()
         print(player)
-//        self.view.window?.rootViewController?.dismiss(animated: false, completion: {
-//            let homeVC = TitleCoverViewController()
-//            homeVC.modalPresentationStyle = .fullScreen
-//        })
-        performSegue(withIdentifier: "gotoCover", sender: nil)
-        //userinstance의
+        self.view.bringSubviewToFront(blackView)
+        self.view.addSubview(initConfirmView)
+        initConfirmView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 314).isActive = true
+        initConfirmView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     }
     @IBAction func noButtonTapped(_ sender: Any) {
         initializeAlert.removeFromSuperview()

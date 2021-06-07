@@ -42,12 +42,9 @@ class opTextTableViewCell: UITableViewCell {
             //chatView.removeConstraint(chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 64))
             profileImage.isHidden = true
             profileNickname.isHidden = true
-            chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7).isActive = true
-            contentView.layoutIfNeeded()
         default:
-            chatView.removeConstraint(chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7))
-            chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 64).isActive = true
-            contentView.layoutIfNeeded()
+            profileNickname.isHidden = false
+            profileImage.isHidden = false
         }
         if name == "휘령"{
             var face : String {

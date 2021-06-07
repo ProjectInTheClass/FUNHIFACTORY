@@ -12,7 +12,6 @@ extension mainGameViewController{
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         configureCollectionViewLayoutItemSize(layout: normalChoiceCollectionViewLayout)
-        configureCollectionViewLayoutItemSize(layout: godChatCollectionViewLayout)
     }
     
     private func calculateSectionInset(layout : UICollectionViewFlowLayout) -> CGFloat {
@@ -42,8 +41,6 @@ extension mainGameViewController{
         let safeIndex = max(0, min(dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count - 1, index))
         if layout == normalChoiceCollectionViewLayout{
             pageControl.currentPage = safeIndex
-        }else{
-            godChatPageControl.currentPage = safeIndex
         }
         return safeIndex
     }
@@ -51,10 +48,7 @@ extension mainGameViewController{
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if scrollView == choiceCollectionView{
             indexOfCellBeforeDragging = indexOfMajorCell(layout: normalChoiceCollectionViewLayout)
-        }else if scrollView == godChatCollectionView{
-            indexOfCellBeforeDragging = indexOfMajorCell(layout: godChatCollectionViewLayout)
         }
-        
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -65,10 +59,7 @@ extension mainGameViewController{
         var indexOfMajorCell : Int = 0
         if scrollView == choiceCollectionView{
             indexOfMajorCell = self.indexOfMajorCell(layout: normalChoiceCollectionViewLayout)
-        }else if scrollView == godChatCollectionView{
-            indexOfMajorCell = self.indexOfMajorCell(layout: godChatCollectionViewLayout)
         }
-        
         
         // calculate conditions:
         let swipeVelocityThreshold: CGFloat = 0.5 // after some trail and error
@@ -83,8 +74,6 @@ extension mainGameViewController{
             var toValue : CGFloat = 0
             if scrollView == choiceCollectionView{
                 toValue = normalChoiceCollectionViewLayout.itemSize.width * CGFloat(snapToIndex)
-            }else if scrollView == godChatCollectionView{
-                toValue = godChatCollectionViewLayout.itemSize.width * CGFloat(snapToIndex)
             }
             
             
@@ -99,8 +88,6 @@ extension mainGameViewController{
             let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
             if scrollView == choiceCollectionView{
                 normalChoiceCollectionViewLayout.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            }else if scrollView == godChatCollectionView{
-                godChatCollectionViewLayout.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             }
         }
     }
