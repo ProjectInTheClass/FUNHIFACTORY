@@ -28,7 +28,7 @@ extension mainGameViewController {
                 if achievement.element.id == currentChoiceAchievement {
                     player.currentAchievementInfo[achievement.offset].isLocked = false
                     print("업적 '\(player.currentAchievementInfo[achievement.offset].name)' 달성됨")
-                 
+                    buttonAlertOn(input: 0)
                     let achievementPopupInfo = ("업적", player.currentAchievementInfo[achievement.offset].name)
                     notePopupItemArray.append(achievementPopupInfo)
                 }
@@ -50,7 +50,7 @@ extension mainGameViewController {
                 if gameCharacter.element.name == currentChatGameCharacter.info().name {
                     currentDay().currentCharacterNote[gameCharacter.offset].isLocked = false
                     print("캐릭터 '\(currentDay().currentCharacterNote[gameCharacter.offset].isLocked)' 해금됨")
-                    
+                    buttonAlertOn(input: 0)
                     let gameCharacterPopupInfo = ("수첩 - 인물", currentDay().currentCharacterNote[gameCharacter.offset].name )
                     notePopupItemArray.append(gameCharacterPopupInfo)
                 }
@@ -72,7 +72,7 @@ extension mainGameViewController {
                 if caseNote.element.id == currentChatCase {
                     currentDay().currentCaseNote[caseNote.offset].isLocked = false
                     print("사건 노트 '\(currentDay().currentCaseNote[caseNote.offset].isLocked)' 해금됨")
-                    
+                    buttonAlertOn(input: 0)
                     let casePopupInfo = ("수첩 - 사건", currentDay().currentCaseNote[caseNote.offset].title )
                     notePopupItemArray.append(casePopupInfo)
                 }
@@ -95,7 +95,7 @@ extension mainGameViewController {
                     if infomation.element.infomationID == currentChatInfomation {
                         currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked = false
                         print("'\(currentDay().currentCharacterNote[gameCharacter.offset].isLocked)' 정보 해금됨")
-                        
+                        buttonAlertOn(input: 0)
                         let gameCharacterInfomationInfo = ("수첩 - 인물 정보", currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].text )
                         notePopupItemArray.append(gameCharacterInfomationInfo)
                     }
@@ -118,7 +118,7 @@ extension mainGameViewController {
                 if albumImage.element.id == currentChatAlbumImage {
                     currentDay().currentAlbumImages[albumImage.offset].isLocked = false
                     print("'\(currentDay().currentAlbumImages[albumImage.offset].isLocked)' 앨범 이미지 해금됨")
-                    
+                    buttonAlertOn(input: 1)
                     let albumImageInfo = ("앨범", currentDay().currentAlbumImages[albumImage.offset].title )
                     notePopupItemArray.append(albumImageInfo)
                 }
@@ -147,7 +147,7 @@ extension mainGameViewController {
                     if achievement.element.id == currentChatAchievement {
                         player.currentAchievementInfo[achievement.offset].isLocked = false
                         print("업적 '\(player.currentAchievementInfo[achievement.offset].name)' 달성됨")
-                        
+                        buttonAlertOn(input: 0)
                         let achievementPopupInfo = ("업적", player.currentAchievementInfo[achievement.offset].name)
                         notePopupItemArray.append(achievementPopupInfo)
                     }
@@ -171,7 +171,7 @@ extension mainGameViewController {
                 if gameCharacter.element.name == currentChatGameCharacter.info().name {
                     currentDay().currentCharacterNote[gameCharacter.offset].isLocked = false
                     print("캐릭터 '\(currentDay().currentCharacterNote[gameCharacter.offset].isLocked)' 해금됨")
-                    
+                    buttonAlertOn(input: 0)
                     let gameCharacterPopupInfo = ("수첩 - 인물", currentDay().currentCharacterNote[gameCharacter.offset].name )
                     notePopupItemArray.append(gameCharacterPopupInfo)
                 }
@@ -191,8 +191,7 @@ extension mainGameViewController {
                 if caseNote.element.id == currentChatCase {
                     currentDay().currentCaseNote[caseNote.offset].isLocked = false
                     print("사건 노트 '\(currentDay().currentCaseNote[caseNote.offset].isLocked)' 해금됨")
-          
-                    
+                    buttonAlertOn(input: 0)
                     let casePopupInfo = ("수첩 - 사건", currentDay().currentCaseNote[caseNote.offset].title )
                     notePopupItemArray.append(casePopupInfo)
                 }
@@ -213,7 +212,7 @@ extension mainGameViewController {
                     if infomation.element.infomationID == currentChatInfomation {
                         currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked = false
                         print("'\(currentDay().currentCharacterNote[gameCharacter.offset].isLocked)' 정보 해금됨")
-                        
+                        buttonAlertOn(input: 0)
                         let gameCharacterInfomationInfo = ("수첩 - 인물 정보", currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].text )
                         notePopupItemArray.append(gameCharacterInfomationInfo)
 
@@ -237,7 +236,7 @@ extension mainGameViewController {
                 if albumImage.element.id == currentChatAlbumImage {
                     currentDay().currentAlbumImages[albumImage.offset].isLocked = false
                     print("'\(currentDay().currentAlbumImages[albumImage.offset].isLocked)' 앨범 이미지 해금됨")
-                  
+                    buttonAlertOn(input: 1)
                     let albumImageInfo = ("앨범", currentDay().currentAlbumImages[albumImage.offset].title )
                     notePopupItemArray.append(albumImageInfo)
             
