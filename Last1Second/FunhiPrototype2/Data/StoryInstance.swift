@@ -55,7 +55,7 @@ var chapter1 = Episode(episodeID: "1592", episodePlace: "인정전", episodeYear
                         choices: [
                             Choice(text: "장작이 한 개 있었어.", chatType: .monologue, characterFace: .basic, nextTextIndex: "002", optionalOption: OptionalOption(achievementToUnlock: .injeongjeon, infomationToUnlock: .kimjajeom2, gameCharacterToUnlock: .hwiryeong, caseToUnlock: .case301, albumImageToUnlock: .chapter2case3)),
                                 Choice(text: "장작이 두 개 있었어.", chatType: .onlyText, characterFace: .basic, nextTextIndex: "003", optionalOption: nil),
-                        ], choiceSkip: false, isGodChat: .off, backGroundMusic: .normal),
+                        ], choiceSkip: false, isGodChat: false, backGroundMusic: .normal),
             
             "002":BlockOfDayEpisode(chats:
                                         [
@@ -70,7 +70,7 @@ var chapter1 = Episode(episodeID: "1592", episodePlace: "인정전", episodeYear
         choices: [
         Choice(text: "장작이 한 개 있었어.", chatType: .monologue, characterFace: .basic, nextTextIndex: "001", optionalOption: nil),
         Choice(text: "장작이 두 개 있었어.", chatType: .onlyText, characterFace: .basic, nextTextIndex: "002", optionalOption: nil)
-        ], choiceSkip: false, isGodChat: .off, backGroundMusic: .none)],
+        ], choiceSkip: false, isGodChat: false, backGroundMusic: .none)],
 currentCharacterNote: [
     GameCharacter(name: "단희",profileImage: "heeryeongBackgroundImage",backGroundImage: "",description: "인물 설명",infomation: [Infomation(infomationID: .hwiryeong1, isLocked: false, text: "휘령 정보 1"),Infomation(infomationID: .hwiryeong2, isLocked: true, text: "휘령 정보 2"),Infomation(infomationID: .hwiryeong3, isLocked: false, text: "휘령 정보 3"),Infomation(infomationID: .hwiryeong4, isLocked: true, text: "휘령 정보 4"),Infomation(infomationID: .hwiryeong5, isLocked: true, text: "휘령 정보 5 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화")], isLocked: false)],
 currentCaseNote: [NoteCase(id: .case201, title: "[인조반정]", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "1623년 4월 11일에 일어난 사건이다. 조선의 3대 반정 중 하나로, 서인 세력이 광해군과 대북파를 몰아내고 인조인 능양군을 왕위에 앉혔다.", isLocked: false)], currentAlbumImages: [AlbumImage(id: .prologueCase1, image: "prologueCase1", title: "단희 창덕궁 감", description: "단희가 창덕궁에 갔다. 눈 앞에는 돈화문으로 보이는 대문이 있다.", isLocked: true), AlbumImage(id: .achievement1Locked, image: "achievement1Locked", title: "병사가 된 단희", description: "창덕궁을 구하기 위해 과거로 이동한 단희는 남자가 되어있었다.", isLocked: true)], timelineSavePoint: [])
@@ -122,7 +122,7 @@ var chapter4 = Episode(episodeID: "2003", episodePlace: "대조전", episodeYear
                 choices: [
                         Choice(text: "장작이 한 개 있었어.", chatType: .monologue, characterFace: .basic, nextTextIndex: "002", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
                         Choice(text: "장작이 두 개 있었어.", chatType: .onlyText, characterFace: .basic, nextTextIndex: "003", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
-                ], choiceSkip: false, isGodChat: .off, backGroundMusic: .normal),
+                ], choiceSkip: false, isGodChat: false, backGroundMusic: .normal),
     
     "002":BlockOfDayEpisode(chats:
                                 [
@@ -137,7 +137,7 @@ var chapter4 = Episode(episodeID: "2003", episodePlace: "대조전", episodeYear
 choices: [
 Choice(text: "장작이 한 개 있었어.", chatType: .monologue, characterFace: .basic, nextTextIndex: "001", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
 Choice(text: "장작이 두 개 있었어.", chatType: .onlyText, characterFace: .basic, nextTextIndex: "002", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
-], choiceSkip: false, isGodChat: .off, backGroundMusic: .none),
+], choiceSkip: false, isGodChat: false, backGroundMusic: .none),
 
     "003":BlockOfDayEpisode(chats:
     [
@@ -149,7 +149,7 @@ Choice(text: "장작이 두 개 있었어.", chatType: .onlyText, characterFace:
 choices: [
     Choice(text: "장작이 한 개 있었어.", chatType: .monologue, characterFace: .basic, nextTextIndex: "001", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
     Choice(text: "장작이 두 개 있었어.", chatType: .onlyText, characterFace: .basic, nextTextIndex: "002", achievementToUnlock: nil, infomationToUnlock: nil, gameCharacterToUnlock: nil, caseToUnlock: nil, albumImageToUnlock: nil),
-], choiceSkip: false, isGodChat: .off, backGroundMusic: .normal),
+], choiceSkip: false, isGodChat: false, backGroundMusic: .normal),
     
   
                         */:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineSavePoint: [])
