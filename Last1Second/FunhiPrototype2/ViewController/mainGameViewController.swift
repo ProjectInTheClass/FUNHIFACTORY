@@ -169,7 +169,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             player.indexNumber = 0
             closeChoiceBar()
             //다음 페이지가 신 채팅일 경우
-            if isGodChatOn == false && dummyData.stories[player.dayId]?.storyBlocks[currentBlockOfDay().choices[indexPath.row].nextTextIndex]?.isGodChat == .on
+            if isGodChatOn == false && dummyData.stories[player.dayId]?.storyBlocks[currentBlockOfDay().choices[indexPath.row].nextTextIndex]?.isGodChat == true
             {
                 //진동 울리기 및 색 변경이나 알림(아이템 뱃지와 같은) 등이 떠야 함.
 //                if timer != nil{
@@ -183,6 +183,42 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 chatUpdateTimer()
             }
         }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if isChoiceOn == false && timer == nil{
+            guard pauseBar.isHidden == true else {return}
+            print("퍼즈바 :\(pauseBar.isHidden), 초이스 :\(isChoiceOn), 타이머 :\(timer==nil)")
+            chatUpdateTimer()
+            closeChoiceBar()
+            audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: "mp3")
+        } else {
+            print("퍼즈바 :\(pauseBar.isHidden), 초이스 :\(isChoiceOn), 타이머 :\(timer==nil)")
+            audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: "mp3")
+          return
+        }
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        if isStartOfEpisode {
+            isStartOfEpisode = false
+            blackView.bounds = self.view.bounds
+            blackView.center = self.view.center
+            self.view.addSubview(blackView)
+            blackView.alpha = 1
+            UIView.animate(withDuration: 1.0) {
+                self.blackView.alpha = 0
+            } completion: { (Bool) in
+                self.blackView.removeFromSuperview()
+            }
+        }
+        currentYear.text = "\(dummyData.stories[player.dayId]!.episodeYear)년"
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        if timer != nil {
+            timer!.invalidate()
+            timer = nil
+          }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -246,43 +282,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if isChoiceOn == false && timer == nil{
-            guard pauseBar.isHidden == true else {return}
-            print("퍼즈바 :\(pauseBar.isHidden), 초이스 :\(isChoiceOn), 타이머 :\(timer==nil)")
-            chatUpdateTimer()
-            closeChoiceBar()
-            audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: "mp3")
-        } else {
-            print("퍼즈바 :\(pauseBar.isHidden), 초이스 :\(isChoiceOn), 타이머 :\(timer==nil)")
-            audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: "mp3")
-          return
-        }
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        if isStartOfEpisode {
-            isStartOfEpisode = false
-            blackView.bounds = self.view.bounds
-            blackView.center = self.view.center
-            self.view.addSubview(blackView)
-            blackView.alpha = 1
-            UIView.animate(withDuration: 1.0) {
-                self.blackView.alpha = 0
-            } completion: { (Bool) in
-                self.blackView.removeFromSuperview()
-            }
-        }
-        currentYear.text = "\(dummyData.stories[player.dayId]!.episodeYear)년"
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        if timer != nil {
-            timer!.invalidate()
-            timer = nil
-          }
-    }
     //가장 밑으로 스크롤해주는 함수
     func scrollToBottom(){
         guard player.currentChatArray.count != 0 else {return}

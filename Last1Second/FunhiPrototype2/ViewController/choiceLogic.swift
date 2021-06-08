@@ -113,16 +113,15 @@ extension mainGameViewController{
         if timer != nil{
             timer.invalidate()
         }
-        //현재 채팅이 isGodChat on일때는 메인게임의 선택지는 작동 안되도록. 메인게임채팅 중일때는 신 채팅창의 선택지가 나오지 못하도록
-            self.choiceCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
-            pageControl.currentPage = 0
-            choiceHeight.constant = 149
-            choiceBar.setNeedsUpdateConstraints()
-            choiceBar.isHidden = false
-            choiceCollectionView.reloadData()
-            mainGameTableView.layoutIfNeeded()
-            mainGameTableView.contentOffset.y += 149 //231
-            scrollToBottom()
+        self.choiceCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
+        pageControl.currentPage = 0
+        choiceHeight.constant = 149
+        choiceBar.setNeedsUpdateConstraints()
+        choiceBar.isHidden = false
+        choiceCollectionView.reloadData()
+        mainGameTableView.layoutIfNeeded()
+        mainGameTableView.contentOffset.y += 149
+        scrollToBottom()
     }
     func closeChoiceBar(){
         isChoiceOn = false

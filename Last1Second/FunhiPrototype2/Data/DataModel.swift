@@ -497,12 +497,10 @@ struct BlockOfDayEpisode: Codable {
     // choices: [[다음페이지 결정짓는 key값 : 선택지 텍스트]]
     let choices: [Choice]
     let choiceSkip : Bool
-    let isGodChat : isGodChat   //현재 신 채팅인지 구분
+    let isGodChat : Bool   //현재 신 채팅인지 구분
     let backGroundMusic : backGroundMusic
 }
-enum isGodChat : String,Codable{
-    case on, off
-}
+
 //n일차
 // 프라퍼티 설명: 에피소드 이름(ex)인조반정), 에피소드 연도(1xxx년), 에피소드 설명(인조반정에서 무슨 일이 일어날 예정이다 과연 주인공은 이를 막을 수 있을까? 어쩌구저쩌구), 에피소드 이미지(전각 이미지)스토리블럭(대사 인스턴스)
 struct Episode: Codable {
@@ -589,7 +587,7 @@ struct BlockOfDayEpisodeForJson :Codable{
     // choices: [[다음페이지 결정짓는 key값 : 선택지 텍스트]]
     let choices: [Choice]
     let choiceSkip : Bool
-    let isGodChat : isGodChat
+    let isGodChat : Bool
     let backGroundMusic : backGroundMusic
 }
 

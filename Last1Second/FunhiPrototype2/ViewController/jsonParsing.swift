@@ -17,6 +17,10 @@ func parse(jsonData : Data, targetEpisode : Int){
     do{
         //let jsonString = try String(data: asset.data, encoding: .utf8)
         let ex = try jsonDecoder.decode([BlockOfDayEpisodeForJson].self, from: jsonData)
+        if (!ex.isEmpty)
+        {
+            print("변환됨")
+        }
         dataToTargetEpisode(storyData: ex, input: targetEpisode)
     }
   catch let DecodingError.dataCorrupted(context){
@@ -44,12 +48,7 @@ func dataToTargetEpisode(storyData : [BlockOfDayEpisodeForJson], input:Int){
     
     for ex in storyData{
         let storyId = ex.id
-        let chats = ex.chats
-        let choices = ex.choices
-        let choiceSkip = ex.choiceSkip
-        let godChat = ex.isGodChat
-        let bgm = ex.backGroundMusic
-        let story = BlockOfDayEpisode(chats: chats, choices: choices, choiceSkip: choiceSkip, isGodChat: godChat, backGroundMusic: bgm)
+        let story = BlockOfDayEpisode(chats: ex.chats, choices: ex.choices, choiceSkip: ex.choiceSkip, isGodChat: ex.isGodChat, backGroundMusic: ex.backGroundMusic)
         if input == 0{
             prologueChapter.storyBlocks[storyId] = story
         } else if input == 1{
@@ -61,7 +60,7 @@ func dataToTargetEpisode(storyData : [BlockOfDayEpisodeForJson], input:Int){
         } else if input == 4{
             chapter4.storyBlocks[storyId] = story
         }
-        
+        print("실행됨")
     }
 }
 func loadJson(fromURLString urlString: String,
