@@ -31,6 +31,7 @@ extension mainGameViewController {
                     buttonAlertOn(input: 0)
                     let achievementPopupInfo = ("업적", player.currentAchievementInfo[achievement.offset].name)
                     notePopupItemArray.append(achievementPopupInfo)
+                    
                 }
             }
         }
@@ -87,6 +88,7 @@ extension mainGameViewController {
         guard let currentChoiceOptionalOption = currentChoice.optionalOption else {
             return
         }
+        
         let currentChatInfomation = currentChoiceOptionalOption.infomationToUnlock
         
         if currentChatInfomation != nil {

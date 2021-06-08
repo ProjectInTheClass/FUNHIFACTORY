@@ -7,7 +7,7 @@
 
 import UIKit
 //--------------------------테이블뷰 셀--------------------------
-class SavePointTableViewCell: UITableViewCell {
+class CheckPointTableViewCell: UITableViewCell {
     
     
     @IBOutlet weak var view: UIView!
@@ -25,32 +25,18 @@ class SavePointTableViewCell: UITableViewCell {
     }
 }
 
-class PrologueTimelineTableViewCell: UITableViewCell {
+class ClockTimelineTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var cellBackground: UIView!
-    @IBOutlet weak var episodeYear: UILabel!
-    @IBOutlet weak var episodePlace: UILabel!
-    @IBOutlet weak var episodePlaceImage: UIImageView!
-    @IBOutlet weak var lockedView: UIView!
-    @IBOutlet weak var leftBox: UIView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        designButton()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    func designButton() {
-        
-        lockedView.layer.cornerRadius = 8
-        leftBox.layer.cornerRadius = 8
-        leftBox.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
-  
-        cellBackground.layer.cornerRadius = 8
-    
-    }
+   
 }
 class TimelineTableViewCell: UITableViewCell {
 
@@ -60,6 +46,11 @@ class TimelineTableViewCell: UITableViewCell {
     @IBOutlet weak var episodePlaceImage: UIImageView!
     @IBOutlet weak var lockedView: UIView!
     @IBOutlet weak var leftBox: UIView!
+    
+    
+    @IBOutlet var lineTopConstraint: NSLayoutConstraint!
+    @IBOutlet var lineBottomConstraint: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         designButton()
@@ -90,27 +81,27 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     func numberOfSections(in tableView: UITableView) -> Int {
         if tableView == timelineTableView {
             return 1
-            //tableView == savepointTableView
+            //tableView == checkpointTableView
         } else {
             guard let currentEpisode = selectedEpisode else {
                 return 1
             }
 
-            return currentEpisode.timelineSavePoint.count
+            return currentEpisode.timelineCheckPoint.count
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == timelineTableView {
-            return player.currentEpisodes.count
+            return player.currentEpisodes.count + 2
         }
-        // tableView == savePointTableView면
+        // tableView == checkPointTableView면
         else {
             guard let currentEpisode = selectedEpisode else {
                 return 1
             }
-          //  savePointTableViewHeight.constant = CGFloat(49*currentEpisode.timelineSavePoint.count)
-            return currentEpisode.timelineSavePoint[section].count
+          //  checkPointTableViewHeight.constant = CGFloat(49*currentEpisode.timelineCheckPoint.count)
+            return currentEpisode.timelineCheckPoint[section].count
         }
         
     }
@@ -118,42 +109,54 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var returnCell = UITableViewCell()
         if tableView == timelineTableView {
-            if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "prologueTimelineTableViewCell", for: indexPath) as! PrologueTimelineTableViewCell
-                cell.episodePlace.text = player.currentEpisodes[indexPath.row].episodePlace
-                cell.episodeYear.text = "\(player.currentEpisodes[indexPath.row].episodeYear)년"
-                cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[indexPath.row].episodePlaceImage)
-                // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
-                cell.lockedView.isHidden = player.currentEpisodes[indexPath.row].isCleared
+            if indexPath.row == 1 || indexPath.row == 6 {
+                //타임라인 시계 셀
+                let cell = tableView.dequeueReusableCell(withIdentifier: "clockTimelineTableViewCell", for: indexPath) as! ClockTimelineTableViewCell
                 cell.selectionStyle = .none
                 returnCell = cell
-            } else if indexPath.row == player.currentEpisodes.count-1{
-                let cell = tableView.dequeueReusableCell(withIdentifier: "endingTimelineTableViewCell", for: indexPath) as! PrologueTimelineTableViewCell
-                cell.episodePlace.text = player.currentEpisodes[indexPath.row].episodePlace
-                cell.episodeYear.text = "\(player.currentEpisodes[indexPath.row].episodeYear)년"
-                cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[indexPath.row].episodePlaceImage)
-                // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
-                cell.lockedView.isHidden = player.currentEpisodes[indexPath.row].isCleared
-                cell.selectionStyle = .none
-                returnCell = cell
+            
             } else {
+                //일반 타임라인 셀
                 let cell = tableView.dequeueReusableCell(withIdentifier: "timelineTableViewCell", for: indexPath) as! TimelineTableViewCell
-                cell.episodePlace.text = player.currentEpisodes[indexPath.row].episodePlace
-                cell.episodeYear.text = "\(player.currentEpisodes[indexPath.row].episodeYear)년"
-                cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[indexPath.row].episodePlaceImage)
+                
+                var timelineIndex = Int()
+                switch indexPath.row {
+                case 0:
+                    timelineIndex = indexPath.row
+                case 2...5:
+                    timelineIndex = indexPath.row - 1
+                case 7:
+                    timelineIndex = indexPath.row - 2
+                default:
+                    timelineIndex = 0
+                }
+                cell.episodePlace.text = player.currentEpisodes[timelineIndex].episodePlace
+                cell.episodeYear.text = "\(player.currentEpisodes[timelineIndex].episodeYear)년"
+                cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[timelineIndex].episodePlaceImage)
                 // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
-                cell.lockedView.isHidden = player.currentEpisodes[indexPath.row].isCleared
+                cell.lockedView.isHidden = player.currentEpisodes[timelineIndex].isCleared
                 cell.selectionStyle = .none
+                
+                if indexPath.row == 0 {
+                    cell.lineTopConstraint.constant = 20
+                    cell.lineBottomConstraint.constant = 0
+                } else if indexPath.row == 7 {
+                    cell.lineTopConstraint.constant = 0
+                    cell.lineBottomConstraint.constant = 20
+                } else {
+                    cell.lineTopConstraint.constant = 0
+                    cell.lineBottomConstraint.constant = 0
+                }
                 returnCell = cell
             }
         }
-        // tableView == savePointTableView면
+        // tableView == checkPointTableView면
         else {
             guard let currentEpisode = selectedEpisode else {
                 return UITableViewCell()
             }
-            let cell = tableView.dequeueReusableCell(withIdentifier: "savePointTableViewCell", for: indexPath) as! SavePointTableViewCell
-            cell.titleLabel.text = currentEpisode.timelineSavePoint[indexPath.section][indexPath.row].name
+            let cell = tableView.dequeueReusableCell(withIdentifier: "checkPointTableViewCell", for: indexPath) as! CheckPointTableViewCell
+            cell.titleLabel.text = currentEpisode.timelineCheckPoint[indexPath.section][indexPath.row].name
             returnCell = cell
         }
 
@@ -161,18 +164,36 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        //타임라인 테이블 뷰
         if tableView == timelineTableView {
            return UITableView.automaticDimension
         } else {
+            //체크포인트 테이블 뷰
             return 49
         }
     }
    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == timelineTableView {
-            guard player.currentEpisodes[indexPath.row].isCleared else {
+        
+        // 타임라인 테이블 뷰의 경우(시계 셀은 뺌)
+        if tableView == timelineTableView && indexPath.row != 1 && indexPath.row != 6 {
+            
+            var timelineIndex = Int()
+            switch indexPath.row {
+            case 0:
+                timelineIndex = indexPath.row
+            case 2...5:
+                timelineIndex = indexPath.row - 1
+            case 7:
+                timelineIndex = indexPath.row - 2
+            default:
+               // 걍 예외 땜빵용
+                timelineIndex = 0
+            }
+            
+            guard player.currentEpisodes[timelineIndex].isCleared else {
                 
-                if indexPath.row == player.currentEpisodes.count-1 {
+                if timelineIndex == player.currentEpisodes.count-1 {
                     openAlertPopup(isEndingCell: true)
                 }
                 else {
@@ -180,16 +201,17 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
                 }
                 return
             }
-            selectedEpisode = player.currentEpisodes[indexPath.row]
-            openSelectedEpisodePopup(indexPath: indexPath)
+            selectedEpisode = player.currentEpisodes[timelineIndex]
+            
+            openSelectedEpisodePopup(indexPathRow: timelineIndex)
         }
-        // tableView == savePointTableView면
-        else {
+        // 체크포인트 테이블 뷰의 경우
+        if tableView == checkPointTableView {
             
             guard let selectedEpisode = selectedEpisode else {
                 return
             }
-            selectedEpisodeStoryBlockIndex = selectedEpisode.timelineSavePoint[indexPath.section][indexPath.row].storyBlockIndex
+            selectedEpisodeStoryBlockIndex = selectedEpisode.timelineCheckPoint[indexPath.section][indexPath.row].storyBlockIndex
             openGettingStartPopup()
         }
         
@@ -199,17 +221,17 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        guard tableView == savePointTableView else {
+        guard tableView == checkPointTableView else {
             return UIView()
         }
         
         if section == 0 {
-            let headerView = savePointTableView.dequeueReusableHeaderFooterView(withIdentifier: "SavepointHeaderView") as! SavepointHeaderFooterView
+            let headerView = checkPointTableView.dequeueReusableHeaderFooterView(withIdentifier: "CheckPointHeaderView") as! CheckPointHeaderFooterView
             headerView.sectionLabel.text = "여기서부터 다시 시작"
             headerView.sectionImageView.image = UIImage(named: "start here icon")
             return headerView
         } else {
-           let headerView = savePointTableView.dequeueReusableHeaderFooterView(withIdentifier: "SavepointHeaderView2") as! SavepointHeaderFooterView2
+           let headerView = checkPointTableView.dequeueReusableHeaderFooterView(withIdentifier: "CheckPointHeaderView2") as! CheckPointHeaderFooterView2
             headerView.sectionLabel.text = "\(section)번째 길"
 
             headerView.sectionView.backgroundColor = .blue
@@ -230,19 +252,19 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     //---------------------------일반---------------------------
     @IBOutlet var timelineLabel: UILabel!
     @IBOutlet weak var timelineTableView: UITableView!
-    @IBOutlet weak var savePointTableView: UITableView!
-    @IBOutlet weak var savePointTableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var checkPointTableView: UITableView!
+
     var selectedEpisode: Episode?
     var selectedEpisodeStoryBlockIndex = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.timelineTableView.delegate = self
         self.timelineTableView.dataSource = self
-        self.savePointTableView.delegate = self
-        self.savePointTableView.dataSource = self
+        self.checkPointTableView.delegate = self
+        self.checkPointTableView.dataSource = self
         
-        savePointTableView.register(UINib(nibName: "SavepointHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "SavepointHeaderView")
-        savePointTableView.register(UINib(nibName: "SavepointHeaderView2", bundle: nil), forHeaderFooterViewReuseIdentifier: "SavepointHeaderView2")
+        checkPointTableView.register(UINib(nibName: "CheckPointHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "CheckPointHeaderView")
+        checkPointTableView.register(UINib(nibName: "CheckPointHeaderView2", bundle: nil), forHeaderFooterViewReuseIdentifier: "CheckPointHeaderView2")
         designObjects(firstPopupView: selectedEpisodePopupBox, secondPopupView: gettingStartPopupBox, secondPopupButton1: continueButton, secondPopupButton2: exitButton)
     }
     
@@ -336,11 +358,12 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     
   
     //첫 번째 팝업 여는 함수
-    func openSelectedEpisodePopup(indexPath: IndexPath) {
-        selectedEpisode = player.currentEpisodes[indexPath.row]
+    func openSelectedEpisodePopup(indexPathRow: Int) {
+        selectedEpisode = player.currentEpisodes[indexPathRow]
         
         guard let currentEpisode = selectedEpisode else { return }
         self.view.addSubview(selectedEpisodePopup)
+        checkPointTableView.reloadData()
         selectedEpisodeYearLabel.text = "\(currentEpisode.episodeYear)년"
         selectedEpisodeDescriptionLabel.text = currentEpisode.episodeDesciption
 

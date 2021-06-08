@@ -7,13 +7,13 @@
 
 import UIKit
 
-class SavepointHeaderFooterView: UITableViewHeaderFooterView {
+class CheckPointHeaderFooterView: UITableViewHeaderFooterView {
     @IBOutlet var sectionImageView: UIImageView!
     @IBOutlet var sectionLabel: UILabel!
     
 }
 
-class SavepointHeaderFooterView2: UITableViewHeaderFooterView {
+class CheckPointHeaderFooterView2: UITableViewHeaderFooterView {
 
     @IBOutlet var sectionLabel: UILabel!
     @IBOutlet var sectionView: UIView!

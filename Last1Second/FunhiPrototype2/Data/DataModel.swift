@@ -433,6 +433,7 @@ enum ChatType: String, Codable{
 
 // 텍스트 블럭 스트럭처
 //  프라퍼티 설명: 글, 이미지, 타입, 해당 인물
+//MARK: CHAT
 struct Chat: Codable {
     let text: String
     let image: String
@@ -449,6 +450,7 @@ struct OptionalOption: Codable {
     let gameCharacterToUnlock: GameCharacterID?
     let caseToUnlock: NoteCaseID?
     let albumImageToUnlock: AlbumImageID?
+   // let checkPointToUnlock: CheckPointID?
 }
 
 //선택지 누르면 변경될 호감도
@@ -534,18 +536,22 @@ struct Episode: Codable {
     // 해당 사건의 앨범 창에 추가될 이미지
     var currentAlbumImages: [AlbumImage]
     
-    let timelineSavePoint:[[Savepoint]]
+    let timelineCheckPoint:[[CheckPoint]]
 }
-enum SavepointID: String, Codable {
+
+//MARK: 체크포인트드ㅏㄹ
+enum CheckPointID: String, Codable {
     case id201, id202, id203, id211, id221
 }
-struct Savepoint: Codable {
+struct CheckPoint: Codable {
     //아이디
- //   let id: SavepointID
+    let id: CheckPointID
     //이름
     let name: String
-    //블럭 인덱스
+    //블럭 인덱스 : 체크포인트가 어떤 인덱스
     let storyBlockIndex: String
+    //해금 여부
+    var isLocked: Bool
 }
 
 // 더미데이터 담을 스트럭처
