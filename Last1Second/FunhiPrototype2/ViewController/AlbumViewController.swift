@@ -50,11 +50,8 @@ class AlbumViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         let cell = tableView.dequeueReusableCell(withIdentifier: "albumCell", for: indexPath) as! AlbumTableViewCell
         cell.albumImageView.image = UIImage(named: player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].image)
         cell.albumImageNameLabel.text = player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].title
-        if player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].isLocked {
-            cell.lockedView.isHidden = false
-        } else {
-            cell.lockedView.isHidden = true
-        }
+        player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].isLocked ? (cell.lockedView.isHidden = false) : (cell.lockedView.isHidden = true)
+     
         return cell
     }
     

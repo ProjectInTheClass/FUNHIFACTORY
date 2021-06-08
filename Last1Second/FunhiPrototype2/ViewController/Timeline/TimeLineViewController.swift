@@ -12,6 +12,7 @@ class CheckPointTableViewCell: UITableViewCell {
     
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet var lockedView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -157,6 +158,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
             }
             let cell = tableView.dequeueReusableCell(withIdentifier: "checkPointTableViewCell", for: indexPath) as! CheckPointTableViewCell
             cell.titleLabel.text = currentEpisode.timelineCheckPoint[indexPath.section][indexPath.row].name
+            currentEpisode.timelineCheckPoint[indexPath.section][indexPath.row].isLocked ? (cell.lockedView.isHidden = false) : (cell.lockedView.isHidden = true)
             returnCell = cell
         }
 
@@ -211,8 +213,14 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
             guard let selectedEpisode = selectedEpisode else {
                 return
             }
+            let selectedCheckPoint = selectedEpisode.timelineCheckPoint[indexPath.section][indexPath.row]
             selectedEpisodeStoryBlockIndex = selectedEpisode.timelineCheckPoint[indexPath.section][indexPath.row].storyBlockIndex
-            openGettingStartPopup()
+            
+            //체크포인트 해금 되었다면 터치 되게 하기
+            if !selectedCheckPoint.isLocked {
+                openGettingStartPopup()
+            }
+            
         }
         
         
