@@ -249,26 +249,26 @@ extension mainGameViewController {
 }
 
 //mainGame에서 currentChat 정보 읽어서 알맞은 체크포인트 해금하기
-func checkCheckPointInChat() {
-    let currentChat = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber]
-    guard let currentChatOptionalOption = currentChat.optionalOption else {
-        return
-    }
-    let currentChatCheckPoint = currentChatOptionalOption.checkPointToUnlock
-    
-    if currentChatCheckPoint != nil {
-   
-        for checkPointSection in currentDay().timelineCheckPoint.enumerated() {
-            for checkPoint in checkPointSection.element.enumerated() {
-                if checkPoint.element.id == currentChatCheckPoint {
-                    player.currentEpisodes[player.dayIndex].timelineCheckPoint[checkPointSection.offset][checkPoint.offset].isLocked = false
-                    print("'\(player.currentEpisodes[player.dayIndex].timelineCheckPoint[checkPointSection.offset][checkPoint.offset].name): 해금\(!player.currentEpisodes[player.dayIndex].timelineCheckPoint[checkPointSection.offset][checkPoint.offset].isLocked)임' 앨범 이미지 해금됨")
-                 
-                }
-            }
-        }
-    }
-}
+//func checkCheckPointInChat() {
+//    let currentChat = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber]
+//    guard let currentChatOptionalOption = currentChat.optionalOption else {
+//        return
+//    }
+//    let currentChatCheckPoint = currentChatOptionalOption.checkPointToUnlock
+//
+//    if currentChatCheckPoint != nil {
+//
+//        for checkPointSection in currentDay().timelineCheckPoint.enumerated() {
+//            for checkPoint in checkPointSection.element.enumerated() {
+//                if checkPoint.element.id == currentChatCheckPoint {
+//                    player.currentEpisodes[player.dayIndex].timelineCheckPoint[checkPointSection.offset][checkPoint.offset].isLocked = false
+//                    print("'\(player.currentEpisodes[player.dayIndex].timelineCheckPoint[checkPointSection.offset][checkPoint.offset].name): 해금\(!player.currentEpisodes[player.dayIndex].timelineCheckPoint[checkPointSection.offset][checkPoint.offset].isLocked)임' 앨범 이미지 해금됨")
+//
+//                }
+//            }
+//        }
+//    }
+//}
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //func notePopupViewDesign(notePopupView: UIView, backgroundView: UIView, titleLabel: UILabel, descriptionLabel: UILabel, descriptionText: String, infoID: String) {
 //    //-----------------------팝업 constraint---------------------------

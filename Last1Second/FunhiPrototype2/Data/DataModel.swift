@@ -534,7 +534,7 @@ struct Episode: Codable {
     // 해당 사건의 앨범 창에 추가될 이미지
     var currentAlbumImages: [AlbumImage]
     
-    let timelineCheckPoint:[[CheckPoint]]
+    var timelineCheckPoint:[[CheckPoint]]
 }
 
 //MARK: 체크포인트드ㅏㄹ
