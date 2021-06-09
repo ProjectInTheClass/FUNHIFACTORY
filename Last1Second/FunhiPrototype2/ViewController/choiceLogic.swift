@@ -104,6 +104,7 @@ extension mainGameViewController{
         checkgameCharacterInfomationInChat()
 //        popupOpen = globalPopupOpen
         checkAlbumImageInChat()
+        checkCheckPointInChat()
         player.indexNumber += 1
         scrollToBottom()
     }

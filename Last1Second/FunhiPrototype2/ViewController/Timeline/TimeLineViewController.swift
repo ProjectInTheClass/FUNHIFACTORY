@@ -217,7 +217,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
             selectedEpisodeStoryBlockIndex = selectedEpisode.timelineCheckPoint[indexPath.section][indexPath.row].storyBlockIndex
             
             //체크포인트 해금 되었다면 터치 되게 하기
-            if !selectedCheckPoint.isLocked {
+            if selectedCheckPoint.isLocked {
                 openGettingStartPopup()
             }
             
