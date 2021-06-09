@@ -151,7 +151,7 @@ extension mainGameViewController{
     }
     
     func checkEnterAnimation(){
-        if let animation = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]?.chats[player.indexNumber].animationOption
+        if let animation = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentChatId]?.chats[player.indexNumber].animationOption
         {
             if (animation != .none)
             {

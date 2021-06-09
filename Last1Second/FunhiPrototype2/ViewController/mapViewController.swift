@@ -11,10 +11,8 @@ class mapViewController: UIViewController {
 
     @IBOutlet var mapImage: UIImageView!
     override func viewWillAppear(_ animated: Bool) {
-        if let name = dummyData.stories[player.dayId]?.episodeYear{
-            let imageName = "\(name)map"
-            mapImage.image = UIImage(named: imageName)
-
+        let name = player.currentEpisodes[strToIndex(str: player.dayId)].episodeYear
+        let imageName = "\(name)map"
+        mapImage.image = UIImage(named: imageName)
     }
-}
 }

@@ -407,7 +407,7 @@ struct User: Codable {
 }
 
 func currentDay() -> Episode{
-    return dummyData.stories[player.dayId]!
+    return player.currentEpisodes[strToIndex(str: player.dayId)]
 }
 func currentBlockOfDay() -> BlockOfDayEpisode{
     return currentDay().storyBlocks[player.currentChatId]!
@@ -555,7 +555,7 @@ struct CheckPoint: Codable {
 // 더미데이터 담을 스트럭처
 // 총 스토리 본문, 모든 히스토리, 모든 업적, 전체 인물 정보
 struct GameData {
-    let stories: [String:Episode]
+    var stories: [String:Episode]
     let histories: [String:NoteCase]
     let achivements: [String:Achievement]
 }

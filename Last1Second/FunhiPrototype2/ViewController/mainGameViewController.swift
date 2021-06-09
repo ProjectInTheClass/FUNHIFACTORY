@@ -129,14 +129,14 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     //선택지 collectionView
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count
+            player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentChatId]!.choices.count
         }
     
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             if collectionView == choiceCollectionView{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "choiceCell", for: indexPath) as! choiceCollectionViewCell
-                cell.choiceUpdate(choiceText : dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices[indexPath.row].text)
-                pageControl.numberOfPages = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count
+                cell.choiceUpdate(choiceText : player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentChatId]!.choices[indexPath.row].text)
+                pageControl.numberOfPages = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentChatId]!.choices.count
                 return cell
             }else{
                 return UICollectionViewCell()
@@ -169,7 +169,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             player.indexNumber = 0
             closeChoiceBar()
             //다음 페이지가 신 채팅일 경우
-            if isGodChatOn == false && dummyData.stories[player.dayId]?.storyBlocks[currentBlockOfDay().choices[indexPath.row].nextTextIndex]?.isGodChat == true
+            if isGodChatOn == false && player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[currentBlockOfDay().choices[indexPath.row].nextTextIndex]?.isGodChat == true
             {
                 //진동 울리기 및 색 변경이나 알림(아이템 뱃지와 같은) 등이 떠야 함.
 //                if timer != nil{
@@ -211,7 +211,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 self.blackView.removeFromSuperview()
             }
         }
-        currentYear.text = "\(dummyData.stories[player.dayId]!.episodeYear)년"
+        currentYear.text = "\(player.currentEpisodes[strToIndex(str: player.dayId)].episodeYear)년"
     }
     override func viewWillDisappear(_ animated: Bool) {
         if timer != nil {
@@ -228,7 +228,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.choiceCollectionView.dataSource = self
         mainGameDesign()
         //initialize()
-        if let page = dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]?.choices.count{
+        if let page = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentChatId]?.choices.count{
             initializePageControl(collectionView : choiceCollectionView, choiceBar : choiceBar, numberOfPages:page)
         }
         self.mainGameTableView.contentInset.bottom = 82
