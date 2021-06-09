@@ -49,18 +49,18 @@ func dataToTargetEpisode(storyData : [BlockOfDayEpisodeForJson], input:Int){
     for ex in storyData{
         let storyId = ex.id
         let story = BlockOfDayEpisode(chats: ex.chats, choices: ex.choices, choiceSkip: ex.choiceSkip, isGodChat: ex.isGodChat, backGroundMusic: ex.backGroundMusic)
-        if input == 0{
-            prologueChapter.storyBlocks[storyId] = story
-        } else if input == 1{
-            chapter1.storyBlocks[storyId] = story
-        } else if input == 2{
-            chapter2.storyBlocks[storyId] = story
-        } else if input == 3{
-            chapter3.storyBlocks[storyId] = story
-        } else if input == 4{
-            chapter4.storyBlocks[storyId] = story
-        }
-        print("실행됨")
+        prologueChapter.storyBlocks[storyId] = story
+        //        if input == 0{
+//            prologueChapter.storyBlocks[storyId] = story
+//        } else if input == 1{
+//            chapter1.storyBlocks[storyId] = story
+//        } else if input == 2{
+//            chapter2.storyBlocks[storyId] = story
+//        } else if input == 3{
+//            chapter3.storyBlocks[storyId] = story
+//        } else if input == 4{
+//            chapter4.storyBlocks[storyId] = story
+//        }
     }
 }
 func loadJson(fromURLString urlString: String,
