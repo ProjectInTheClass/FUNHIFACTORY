@@ -54,6 +54,7 @@ func dataToTargetEpisode(storyData : [BlockOfDayEpisodeForJson], target : inout 
     }
     target = storyBlock
 }
+
 func loadJson(fromURLString urlString: String,
                       completion: @escaping (Result<Data, Error>) -> Void) {
     if let url = URL(string: urlString) {

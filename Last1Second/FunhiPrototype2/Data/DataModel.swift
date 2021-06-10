@@ -566,11 +566,62 @@ enum CharacterFace: String, Codable{
 
 var globalPopupOpen: Bool = false
 
+func strToIndex(str : String) -> Int
+{
+    switch str {
+    case "prologue":
+        return 0
+    case "1592":
+        return 1
+    case "1623":
+        return 2
+    case "1919":
+        return 3
+    case "2003":
+        return 4
+    case "ending":
+        return 5
+    default:
+        return 0
+    }
+}
 
+struct Ending{
+    let name : String
+    let comment : String
+    let buttonUIColor : [UIColor]
+    /*
+     0. 좌측 원 테두리
+     1. 좌측 원 배경 및 버튼 테두리
+     2. 좌측 원 버튼 그림 색깔 //이건 이미지로 받아서 필요 없을 수도 있음.
+     3. 버튼 배경
+     4. 버튼 빛반사 부분
+     */
+}
 
-
-
-
+func checkEnding(id : String) -> Ending
+{
+    switch id {
+        case "ending01":
+            return Ending(name: "당신은 죽었습니다.", comment: "나는 이렇게 끝낼 순 없어.", buttonUIColor: [
+                                UIColor(red: 0.483, green: 0.246, blue: 0.246, alpha: 1),
+                                UIColor(red: 0.558, green: 0.286, blue: 0.286, alpha: 1),
+                                UIColor(red: 0.925, green: 0.813, blue: 0.813, alpha: 1),
+                                UIColor(red: 0.843, green: 0.553, blue: 0.553, alpha: 1),
+                                UIColor(red: 0.843, green: 0.553, blue: 0.553, alpha: 1)])
+        case "ending02":
+            return Ending(name: "당신은 과거에 갇혔습니다.", comment: "나는 이렇게 끝낼 순 없어.", buttonUIColor: [
+                                UIColor(red: 0.358, green: 0.358, blue: 0.358, alpha: 1),
+                                UIColor(red: 0.412, green: 0.412, blue: 0.412, alpha: 1),
+                                UIColor(red: 0.883, green: 0.883, blue: 0.883, alpha: 1),
+                                UIColor(red: 0.769, green: 0.769, blue: 0.769, alpha: 1),
+                                UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.25)])
+        case "ending03" :
+            return Ending(name: "당신은 현실로 돌아왔습니다.", comment: "한 번만 기회가 있다면..\n잘 할 수 있을 텐데...", buttonUIColor: [UIColor(red: 1, green: 1, blue: 1, alpha: 1)])
+        default :
+            return Ending(name: "Error Occured", comment: "", buttonUIColor: [])
+    }
+}
 
 //MARK: 함수, Extension
 //-------------------------------------------------------------------------------------------------
