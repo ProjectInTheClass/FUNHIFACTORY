@@ -418,6 +418,13 @@ func currentChatAmount() -> Int{
 func currentChatType() -> ChatType{
     return currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber].type
 }
+
+// 요런 것도 될라나..🧐
+//var curreentChatType: ChatType {
+//    get {
+//        return currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber].type
+//    }
+//}
 //------------------------------------스토리------------------------------------
 
 // 대화할 때 나오는 텍스트 블럭 "종류"
@@ -535,6 +542,8 @@ struct Episode: Codable {
     var currentAlbumImages: [AlbumImage]
     
     var timelineCheckPoint:[[CheckPoint]]
+    
+    var currentStoryBlockIndex: String
 }
 
 //MARK: 체크포인트드ㅏㄹ

@@ -23,6 +23,7 @@ class CheckPointTableViewCell: UITableViewCell {
     }
     func designCell() {
         titleLabel.font = UIFont(name: "NanumSquareEB", size: 14)
+        
     }
 }
 
@@ -47,6 +48,8 @@ class TimelineTableViewCell: UITableViewCell {
     @IBOutlet weak var episodePlaceImage: UIImageView!
     @IBOutlet weak var lockedView: UIView!
     @IBOutlet weak var leftBox: UIView!
+    @IBOutlet var progressBackgroundView: UIView!
+    @IBOutlet var progressView: CircularProgressView!
     
     
     @IBOutlet var lineTopConstraint: NSLayoutConstraint!
@@ -68,6 +71,11 @@ class TimelineTableViewCell: UITableViewCell {
         leftBox.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
         cellBackground.layer.cornerRadius = 8
        
+        progressView.trackColor = UIColor(red: 0.333, green: 0.429, blue: 0.529, alpha: 1)
+        progressView.progressColor = UIColor(red: 0.78, green: 0.89, blue: 1, alpha: 1)
+        progressView.centerCircleColor = UIColor(red: 0.521, green: 0.646, blue: 0.771, alpha: 1)
+        progressView.finishImage = "test ver 2"
+        progressView.progressNumberString.font = UIFont(name: "NanumSquareEB", size: 10)
     }
 }
 //---------------------------뷰컨--------------------------
@@ -107,6 +115,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var returnCell = UITableViewCell()
         if tableView == timelineTableView {
@@ -136,6 +145,28 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
                 cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[timelineIndex].episodePlaceImage)
                 // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
                 cell.lockedView.isHidden = player.currentEpisodes[timelineIndex].isCleared
+                
+                let currentEpisodeTotalStoryBlockCount = player.currentEpisodes[timelineIndex].storyBlocks.count
+                print("currentEpisodeTotalStoryBlockCount: \(currentEpisodeTotalStoryBlockCount)")
+                
+                //현재 스토리블럭 인덱스 int로 변환 잘 되었다면
+                if let currentStoryBlockIndex = Int(player.currentEpisodes[timelineIndex].currentStoryBlockIndex) {
+                    print("currentStoryBlockIndex: \(currentStoryBlockIndex)")
+                    
+                    //에피소드 스토리 블럭 안 비어있다면
+                    if currentEpisodeTotalStoryBlockCount != 0 {
+                        //프로그레스원 값 업뎃하기
+                        print("currentStoryBlockIndex/currentEpisodeTotalStoryBlockCount: \(Double(currentStoryBlockIndex)/Double(currentEpisodeTotalStoryBlockCount))")
+                        cell.progressView.updateProgress(value: CGFloat(Double(currentStoryBlockIndex)/Double(currentEpisodeTotalStoryBlockCount)))
+                    } else {
+                        cell.progressView.updateProgress(value: CGFloat(0))
+                    }
+                   
+                } else {
+                    cell.progressView.updateProgress(value: CGFloat(0))
+                }
+               
+               
                 cell.selectionStyle = .none
                 
                 if indexPath.row == 0 {
@@ -175,6 +206,19 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         }
     }
    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if tableView == checkPointTableView {
+            switch section {
+            case 0:
+                return 34
+            default:
+                return 15
+                
+            }
+        } else {
+            return UITableView.automaticDimension
+        }
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // 타임라인 테이블 뷰의 경우(시계 셀은 뺌)
@@ -217,7 +261,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
             selectedEpisodeStoryBlockIndex = selectedEpisode.timelineCheckPoint[indexPath.section][indexPath.row].storyBlockIndex
             
             //체크포인트 해금 되었다면 터치 되게 하기
-            if selectedCheckPoint.isLocked {
+            if !selectedCheckPoint.isLocked {
                 openGettingStartPopup()
             }
             
@@ -252,7 +296,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     }
     
     
-    
+  
     
     
     
@@ -308,8 +352,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     @IBOutlet weak var selectedEpisodeYearLabel: UILabel!
     @IBOutlet weak var selectedEpisodePopupExitButton: UIButton!
     @IBOutlet weak var selectedEpisodeDescriptionLabel: UILabel!
-    @IBOutlet weak var selectedEpisodePlaceImageView: UIImageView!
-    @IBOutlet var episodeHistoryButtonBakgroundView: UIView!
+
     
   
     
@@ -372,7 +415,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         guard let currentEpisode = selectedEpisode else { return }
         self.view.addSubview(selectedEpisodePopup)
         checkPointTableView.reloadData()
-        selectedEpisodeYearLabel.text = "\(currentEpisode.episodeYear)년"
+        selectedEpisodeYearLabel.text = "\(currentEpisode.episodeYear)년 \(currentEpisode.episodePlace)"
         selectedEpisodeDescriptionLabel.text = currentEpisode.episodeDesciption
 
     }
@@ -401,10 +444,9 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
      
         timelineLabel.font = UIFont(name: "NanumSquareEB", size: 29)
 
-        selectedEpisodeYearLabel.font = UIFont(name: "NEXONLv2GothicB", size: 24)
-         episodeHistoryButtonBakgroundView.layer.borderWidth = 3
-        episodeHistoryButtonBakgroundView.layer.borderColor = UIColor(red: 0.524, green: 0.646, blue: 0.75, alpha: 1).cgColor
-       
+       // selectedEpisodeYearLabel.font = UIFont(name: "NEXONLv2GothicB", size: 24)
+        
+        
         selectedEpisodeYearLabel.textAlignment = .center
         selectedEpisodePopupBox.layer.cornerRadius = 10
         selectedEpisodePopupBox.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
@@ -416,25 +458,22 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         selectedEpisodeDescriptionLabel.textAlignment = .center
         
         
+        
         gettingStartPopupBox.layer.cornerRadius = 20
         gettingStartPopupBox.layer.borderWidth = 6
         gettingStartPopupBox.layer.borderColor = UIColor(red:0.647, green: 0.737, blue: 0.812, alpha: 1).cgColor
         
+        warningLabel.setLineSpacing(lineSpacing: 6)
+        warningLabel.textAlignment = .center
         thirdPopupBox.layer.cornerRadius = 20
         thirdPopupBox.layer.borderWidth = 6
         thirdPopupBox.layer.borderColor = UIColor(red:0.647, green: 0.737, blue: 0.812, alpha: 1).cgColor
-     
         
-        thirdPopupImageView.layer.shadowColor = UIColor(red: 0.051, green: 0.192, blue: 0.312, alpha: 1).cgColor
-        thirdPopupImageView.layer.shadowOpacity = 1
-        thirdPopupImageView.layer.shadowRadius = 5
-        thirdPopupImageView.layer.shadowOffset = CGSize(width: 0, height: 0)
-    
-        thirdPopupOkayButton.layer.shadowColor = UIColor(red: 0.443, green: 0.561, blue: 0.663, alpha: 1).cgColor
-        thirdPopupOkayButton.layer.shadowOpacity = 1
-        thirdPopupOkayButton.layer.shadowRadius = 0
-        thirdPopupOkayButton.layer.shadowOffset = CGSize(width: 0, height: 3)
         
+        thirdPopupLabel.setLineSpacing(lineSpacing: 6)
+        thirdPopupLabel.textAlignment = .center
+       
+   
     
     }
 }
