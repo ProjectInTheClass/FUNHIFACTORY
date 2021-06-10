@@ -28,21 +28,19 @@ extension mainGameViewController{
             checkEnterAnimation()
         }
         //게임 오버 시 뜰 배드엔딩 창 띄우기.
-        if player.indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex == "badEnding"{
+        if player.indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex.hasPrefix("ending"){
             print("타이머 여부 :\(timer == nil)")
             if timer != nil {
                 print("timer invalidate")
                 timer!.invalidate()
                 timer = nil
               }
-            player.currentChatId = "001"
             player.indexNumber = 0
             player.currentChatArray.removeAll()
-            mainGameTableView.reloadData()
-            let storyBoard=storyboard?.instantiateViewController(withIdentifier: "Ending")
-            storyBoard?.modalPresentationStyle = .fullScreen
+//            mainGameTableView.reloadData()
+//            let storyBoard=storyboard?.instantiateViewController(withIdentifier: "Ending")
+//            storyBoard?.modalPresentationStyle = .fullScreen
             performSegue(withIdentifier: "badEnding", sender: nil)
-            //업적이랑 이미지나 캐릭터 정보를 다 삭제해야 하나?
             return
         }
         //에피소드를 깼을 때

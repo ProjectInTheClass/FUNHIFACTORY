@@ -23,27 +23,4 @@ var player = User(
 
 var playerSetting = Setting(bgmVolume: 0.0, effectVolume: 0.5, textSpeed: 1.0, darkmode: false, vibration: true)
 
-//var dummyData = GameData(stories: ["prologue":prologueChapter,"1592":chapter1,"1623":chapter2,"1919":chapter3, "2003":chapter4, "ending":endingChapter], histories: ["1":NoteCase(id: .case101, title: "", shortDescription: "", longDescription: "", isLocked: true)], achivements: [:] )
-
 var timer:Timer!
-
-func strToIndex(str : String) -> Int
-{
-    switch str {
-    case "prologue":
-        return 0
-    case "1592":
-        return 1
-    case "1623":
-        return 2
-    case "1919":
-        return 3
-    case "2003":
-        return 4
-    case "ending":
-        return 5
-    default:
-        return 0
-    }
-}
-

@@ -14,13 +14,15 @@ class endingViewController: UIViewController {
     @IBOutlet var gameOverImageView: UIImageView!
     @IBOutlet var yearLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
-    
     @IBOutlet var scriptLabel: UILabel!
     @IBOutlet var sandglassImageView: UIImageView!
     
     @IBOutlet var firstButtonImageView: UIImageView!
     @IBOutlet var secondButtonImageView: UIImageView!
     @IBOutlet var thirdButtonImageView: UIImageView!
+    
+    @IBOutlet var insideButtonViews: [UIView]!
+    @IBOutlet var floatingButtons: [UIButton]!
     
 //MARK: 팝업 뷰 OUTLET
     
@@ -39,8 +41,28 @@ class endingViewController: UIViewController {
 //MARK: 코드
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        endingDesign()
+    }
+    
+    func endingDesign()
+    {
+        let ending = checkEnding(id: player.currentChatId)
+        
+        backgroundImageView.image = UIImage(named: "\(player.currentChatId)Background")
+        gameOverImageView.image = UIImage(named: "\(player.currentChatId)GameOver")
+        sandglassImageView.image = UIImage(named: "\(player.currentChatId)Sandglass")
+        firstButtonImageView.image = UIImage(named: "\(player.currentChatId)1stButton")
+        secondButtonImageView.image = UIImage(named: "\(player.currentChatId)2ndButton")
+        thirdButtonImageView.image = UIImage(named: "\(player.currentChatId)3rdButton")
+        yearLabel.text = "\(player.currentEpisodes[strToIndex(str: player.dayId)].episodeYear)년"
+        descriptionLabel.text = ending.name
+        scriptLabel.text = ending.comment
+        for target in insideButtonViews {
+            target.backgroundColor = ending.buttonUIColor[1]
+        }
+        for target in floatingButtons {
+            target.backgroundColor = ending.buttonUIColor[3]
+        }
     }
     
     @IBAction func restartButton(_ sender: Any) {
