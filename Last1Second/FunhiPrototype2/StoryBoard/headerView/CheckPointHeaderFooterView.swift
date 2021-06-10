@@ -15,6 +15,7 @@ class CheckPointHeaderFooterView: UITableViewHeaderFooterView {
 
 class CheckPointHeaderFooterView2: UITableViewHeaderFooterView {
 
+    @IBOutlet var sectionIconView: UIView!
     @IBOutlet var sectionLabel: UILabel!
     @IBOutlet var sectionView: UIView!
     

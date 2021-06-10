@@ -74,8 +74,12 @@ class TimelineTableViewCell: UITableViewCell {
         progressView.trackColor = UIColor(red: 0.333, green: 0.429, blue: 0.529, alpha: 1)
         progressView.progressColor = UIColor(red: 0.78, green: 0.89, blue: 1, alpha: 1)
         progressView.centerCircleColor = UIColor(red: 0.521, green: 0.646, blue: 0.771, alpha: 1)
-        progressView.finishImage = "test ver 2"
+      
+        progressView.finishImageView.layer.cornerRadius = 3
+        progressView.finishImageView.setShadow(color: UIColor(red: 1, green: 1, blue: 1, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 5)
         progressView.progressNumberString.font = UIFont(name: "NanumSquareEB", size: 10)
+        progressView.finishImage = "finish stamp"
+        progressBackgroundView.setShadow(color: UIColor(red: 0.325, green: 0.455, blue: 0.584, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 4)
     }
 }
 //---------------------------뷰컨--------------------------
@@ -153,11 +157,14 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
                 if let currentStoryBlockIndex = Int(player.currentEpisodes[timelineIndex].currentStoryBlockIndex) {
                     print("currentStoryBlockIndex: \(currentStoryBlockIndex)")
                     
+                    let progressValue = (Double(currentStoryBlockIndex)/Double(currentEpisodeTotalStoryBlockCount))
                     //에피소드 스토리 블럭 안 비어있다면
                     if currentEpisodeTotalStoryBlockCount != 0 {
                         //프로그레스원 값 업뎃하기
                         print("currentStoryBlockIndex/currentEpisodeTotalStoryBlockCount: \(Double(currentStoryBlockIndex)/Double(currentEpisodeTotalStoryBlockCount))")
-                        cell.progressView.updateProgress(value: CGFloat(Double(currentStoryBlockIndex)/Double(currentEpisodeTotalStoryBlockCount)))
+                        cell.progressView.updateProgress(value: CGFloat(progressValue))
+                        progressValue == 1.0 ? (cell.progressBackgroundView.isHidden = true) : (cell.progressBackgroundView.isHidden = false)
+                        
                     } else {
                         cell.progressView.updateProgress(value: CGFloat(0))
                     }
@@ -286,7 +293,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
            let headerView = checkPointTableView.dequeueReusableHeaderFooterView(withIdentifier: "CheckPointHeaderView2") as! CheckPointHeaderFooterView2
             headerView.sectionLabel.text = "\(section)번째 길"
 
-            headerView.sectionView.backgroundColor = .blue
+            headerView.sectionIconView.backgroundColor = UIColor(red: 0.149, green: 0.231, blue: 0.306, alpha: 1)
 
             return headerView
         }

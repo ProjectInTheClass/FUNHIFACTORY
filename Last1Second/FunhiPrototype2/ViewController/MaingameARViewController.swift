@@ -15,7 +15,7 @@ class MaingameARViewController: UIViewController {
     @IBOutlet weak var finishARButton: UIButton!
     
     let leafAnchor = try! OpenLeaves.load장면()
-    let rockAnchor = try! OpenRock.load장면()
+//    let rockAnchor = try! OpenRock.load장면()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class MaingameARViewController: UIViewController {
         
       
 
-        arView.scene.anchors.append(rockAnchor)
+        //   arView.scene.anchors.append(rockAnchor)
     }
     
     

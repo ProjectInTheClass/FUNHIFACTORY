@@ -14,7 +14,7 @@ class CircularProgressView: UIView {
     fileprivate var trackLayer = CAShapeLayer()
     fileprivate var centerCircleLayer = CAShapeLayer()
     
-    fileprivate var finishView = UIImageView()
+    open var finishImageView = UIImageView()
     open var progressNumberString = UILabel()
 
     
@@ -49,14 +49,14 @@ class CircularProgressView: UIView {
     
     var finishImage = String() {
         didSet {
-            finishView.image = UIImage(named: finishImage)
+            finishImageView.image = UIImage(named: finishImage)
         }
     }
     
     
     func checkProgressHidden() {
         progressLayer.strokeEnd == 1.0 ? (circleView.isHidden = true) : (circleView.isHidden = false)
-        progressLayer.strokeEnd == 1.0 ? (finishView.isHidden = false) : (finishView.isHidden = true)
+        progressLayer.strokeEnd == 1.0 ? (finishImageView.isHidden = false) : (finishImageView.isHidden = true)
        
     }
     
@@ -104,17 +104,17 @@ class CircularProgressView: UIView {
         self.addSubview(circleView)
         
         
-        finishView.frame.size = CGSize(width: self.layer.frame.width*2, height: self.layer.frame.width)
-        finishView.center = CGPoint(x: frame.size.width/2, y: frame.size.height/2)
-        finishView.image = UIImage(named: finishImage)
-        finishView.contentMode = .scaleAspectFit
-        finishView.isHidden = true
+        finishImageView.frame.size = CGSize(width: 57, height: 29)
+        finishImageView.center = CGPoint(x: frame.size.width/2, y: frame.size.height/2)
+        finishImageView.image = UIImage(named: finishImage)
+        finishImageView.contentMode = .scaleAspectFit
+        finishImageView.isHidden = true
         
-        self.addSubview(finishView)
+        self.addSubview(finishImageView)
         
         circleView.addSubview(progressNumberString)
-        let xConstraint = progressNumberString.centerXAnchor.constraint(equalTo: finishView.centerXAnchor)
-        let yConstraint = progressNumberString.centerYAnchor.constraint(equalTo: finishView.centerYAnchor)
+        let xConstraint = progressNumberString.centerXAnchor.constraint(equalTo: finishImageView.centerXAnchor)
+        let yConstraint = progressNumberString.centerYAnchor.constraint(equalTo: finishImageView.centerYAnchor)
         xConstraint.isActive = true
         yConstraint.isActive = true
         
