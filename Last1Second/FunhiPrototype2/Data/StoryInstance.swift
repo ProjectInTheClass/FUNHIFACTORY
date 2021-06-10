@@ -77,6 +77,7 @@ currentCaseNote: [NoteCase(id: .case201, title: "[인조반정]", shortDescripti
 
 
 var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear: 1623, episodeKingYear: "광해 15년", episodeShortDesciption: "반란으로 왕이 바뀐 사건이다. 인조가 광해를 끌어내리고 왕 위에 오르던 과정에서 인정전을 제외한 모든 건물이 불에 타 버렸다. 반란이 성공하지 못하도록 하는 것이 이 사건의 실마리가 될 것이다.", episodeDesciption: "나는 현실로 돌아가야만 하는 사람이다.\n그런데 왜 자꾸 다른 마음을 품게 되는 거냐고!\n역사가 똑같이 흘러가게 냅두어서는 안 돼.\n안 되는 걸 너무 잘 아는데...\n정신 차리자.\n내가 할 선택은.....", episodePlaceImage: "Seonjeongjeon image", episodeCoverImage: "changdeokgung image sample", isCleared: true, chatHistory: [],storyBlocks: [:], currentCharacterNote: [
+    
     GameCharacter(name: "주인공", profileImage: "", backGroundImage: "", description: "내가 부잣집 양반의 개인 사병이라고? 내가 모시는 양반이 반역자의 주요 인물이라니...들키지 않고 방해할 수 있을까?", infomation: [],isLocked: false),
     GameCharacter(name: "이귀", profileImage: "", backGroundImage: "", description: "", infomation: [
         Infomation(infomationID: .leegyi1, isLocked: false, text: "1616년에 역모 사건에 관련되어 이천에 유배되었다가 1619년 유배에서 풀려났다."),
@@ -96,9 +97,10 @@ var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear
         Infomation(infomationID: .kimsanggung6, isLocked: false, text: "광해군이 그녀를 아끼고 신뢰를 하면서 후궁보다 권세가 더 높았다.")
     ],isLocked: false)
 ], currentCaseNote: [NoteCase(id: .case201, title: "[인조반정]", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "1623년 4월 11일에 일어난 사건이다. 조선의 3대 반정 중 하나로, 서인 세력이 광해군과 대북파를 몰아내고 인조인 능양군을 왕위에 앉혔다.", isLocked: false) ], currentAlbumImages: [
-                            AlbumImage(id: .chapter2case1, image: "case 2 image 1", title: "[반역을 꾀하는 자들]", description: "내 앞에 있는 사람들은 회의를 하는 것처럼 보인다. 그런데 그 내용이...반정을 일으킨다는 것이라니. 내가 반역자의 한 명이 될 수도 있다는 건가?", isLocked: false),
-                            AlbumImage(id: .chapter2case2, image: "case 2 image 2", title: "[반정의 지름길]", description: "나도 모르게 뇌물을 전해버렸어...이걸 전해주면 이번 사건은 틀림없이 실패할 텐데.", isLocked: false),
-    AlbumImage(id: .chapter2case3, image: "case 2 image 3", title: "[반복되는 역사]", description: "불길이 건물을 덮치고 그에도 부족했는지 하늘까지 온통 검게 변했다. 내가....내가 막았으면 됐는데... 도대체 내가 무슨 짓을 한 거야? 분명...분명 좀 전까지만 해도 황홀한 풍경이었는데... 이 모습도 어떻게 보면 황홀한 광경이라고 할 수 있을까..", isLocked: true) ], timelineCheckPoint: [
+    
+        AlbumImage(id: .chapter2case1, image: "sampleAlbumImage", title: "[반역을 꾀하는 자들]", description: "내 앞에 있는 사람들은 회의를 하는 것처럼 보인다. 그런데 그 내용이...반정을 일으킨다는 것이라니. 내가 반역자의 한 명이 될 수도 있다는 건가?", isLocked: false),
+        AlbumImage(id: .chapter2case2, image: "case 2 image 2", title: "[반정의 지름길]", description: "나도 모르게 뇌물을 전해버렸어...이걸 전해주면 이번 사건은 틀림없이 실패할 텐데.", isLocked: false),
+        AlbumImage(id: .chapter2case3, image: "case 2 image 3", title: "[반복되는 역사]", description: "불길이 건물을 덮치고 그에도 부족했는지 하늘까지 온통 검게 변했다. 내가....내가 막았으면 됐는데... 도대체 내가 무슨 짓을 한 거야? 분명...분명 좀 전까지만 해도 황홀한 풍경이었는데... 이 모습도 어떻게 보면 황홀한 광경이라고 할 수 있을까..", isLocked: true) ], timelineCheckPoint: [
         
         [CheckPoint(id: .id201, name: "처음부터", storyBlockIndex: "000", isLocked: false),
          CheckPoint(id: .id202, name: "반란의 회의장", storyBlockIndex: "000", isLocked: false),
