@@ -457,7 +457,17 @@ struct OptionalOption: Codable {
     let gameCharacterToUnlock: GameCharacterID?
     let caseToUnlock: NoteCaseID?
     let albumImageToUnlock: AlbumImageID?
-   // let checkPointToUnlock: CheckPointID?
+//    let checkPointToUnlock: CheckPointID?
+    
+//    init(from decoder: Decoder) throws {
+//        let values = try decoder.container(keyedBy: CodingKeys.self)
+//        achievementToUnlock = (try? values.decode(AchievementID.self, forKey: .achievementToUnlock)) ?? .none
+//        infomationToUnlock = (try? values.decode(InfomationID.self, forKey: .infomationToUnlock)) ?? .none
+//        gameCharacterToUnlock = (try? values.decode(GameCharacterID.self, forKey: .gameCharacterToUnlock)) ?? .none
+//        caseToUnlock = (try? values.decode(NoteCaseID.self, forKey: .caseToUnlock)) ?? .none
+//        albumImageToUnlock = (try? values.decode(AlbumImageID.self, forKey: .albumImageToUnlock)) ?? .none
+//        checkPointToUnlock = (try? values.decode(CheckPointID.self, forKey: .checkPointToUnlock)) ?? .none
+//    }
 }
 
 //선택지 누르면 변경될 호감도
@@ -482,7 +492,7 @@ enum  screenAnimation: String, Codable {
     case fadeIn
     case fadeOut
 }
-enum backGroundMusic : String, Codable{
+enum bgm : String, Codable{
     case none
     case normal
     func info() -> String{
@@ -505,7 +515,7 @@ struct BlockOfDayEpisode: Codable {
     let choices: [Choice]
     let choiceSkip : Bool
     let isGodChat : Bool   //현재 신 채팅인지 구분
-    let backGroundMusic : backGroundMusic
+    let backGroundMusic : bgm
 }
 
 //n일차
@@ -648,7 +658,18 @@ struct BlockOfDayEpisodeForJson :Codable{
     let choices: [Choice]
     let choiceSkip : Bool
     let isGodChat : Bool
-    let backGroundMusic : backGroundMusic
+    let backGroundMusic : bgm
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        id = (try? values.decode(String.self, forKey: .id)) ?? ""
+        chats = (try? values.decode([Chat].self, forKey: .chats)) ?? []
+        choices = (try? values.decode([Choice].self, forKey: .choices)) ?? []
+        choiceSkip = (try? values.decode(Bool.self, forKey: .choiceSkip)) ?? false
+        isGodChat = (try? values.decode(Bool.self, forKey: .isGodChat)) ?? false
+        backGroundMusic = (try? values.decode(bgm.self, forKey: .backGroundMusic)) ?? .none
+    }
 }
 
 open class CustomLabel : UILabel {
