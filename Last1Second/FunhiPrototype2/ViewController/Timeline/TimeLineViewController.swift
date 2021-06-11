@@ -364,9 +364,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     @IBOutlet weak var selectedEpisodePopupExitButton: UIButton!
     @IBOutlet weak var selectedEpisodeDescriptionLabel: UILabel!
 
-    
-  
-    
+
     //이전 기록 보기 버튼
     @IBAction func openEpisodeHistoryAction(_ sender: Any) {
         guard let currentEpisode = selectedEpisode else { return }
@@ -377,9 +375,23 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     @IBAction func selectedEpisodePopupExitButtonAction(_ sender: Any) {
         selectedEpisodePopup.removeFromSuperview()
     }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        if let headerView = checkPointTableView.tableHeaderView {
+
+            let height = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+            var headerFrame = headerView.frame
+
+            //Comparison necessary to avoid infinite loop
+            if height != headerFrame.size.height {
+                headerFrame.size.height = height
+                headerView.frame = headerFrame
+                checkPointTableView.tableHeaderView = headerView
+            }
+        }
+    }
     
-    
-   
     //-------------------두 번째 팝업----------------
     @IBOutlet var gettingStartPopup: UIView!
     @IBOutlet var gettingStartPopupBox: UIView!
