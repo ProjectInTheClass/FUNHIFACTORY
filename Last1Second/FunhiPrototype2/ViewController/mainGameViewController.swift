@@ -336,9 +336,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         })
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
-    @IBAction func homeTapped(_ sender: Any) {
-        //홈 뷰컨이 만들어지면 추가 예정
-    }
     @IBAction func pauseTapped(_ sender: Any) {
         pauseBar.isHidden = false
         if timer != nil{
@@ -373,6 +370,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         //choiceCollectionView.scrollToItem(at: IndexPath(item: pageControl.currentPage, section: 0), at: .centeredHorizontally, animated: true)
         let rect = self.choiceCollectionView.layoutAttributesForItem(at: IndexPath(item: pageControl.currentPage, section: 0))?.frame
         self.choiceCollectionView.scrollRectToVisible(rect!, animated: true)
+    }
+    
+    @IBAction func homeButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "mainToHome", sender: nil)
     }
     
     func mainGameDesign() {
