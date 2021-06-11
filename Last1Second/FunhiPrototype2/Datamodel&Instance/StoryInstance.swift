@@ -23,7 +23,16 @@ var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현
                      AlbumImage(id: .geumcheongyo, image: "prologue image 2", title: "금천교", description: "", isLocked: true),
                      AlbumImage(id: .injeongjeon, image: "prologue image 3", title: "인정전", description: "", isLocked: true),
                      AlbumImage(id: .necklace, image: "prologue image 4", title: "휘령의 목걸이", description: "", isLocked: true)],
-    timelineCheckPoint: [], currentStoryBlockIndex: "23")
+    timelineCheckPoint: [
+        
+        [CheckPoint(id: .id201, name: "처음부터", storyBlockIndex: "012", isLocked: false),
+         CheckPoint(id: .id202, name: "반란의 회의장", storyBlockIndex: "020", isLocked: false),
+         CheckPoint(id: .id203, name: "김상궁과의 만남", storyBlockIndex: "001", isLocked: false)],
+        
+        [CheckPoint(id: .id211, name: "거짓말", storyBlockIndex: "065", isLocked: false)],
+    
+        [CheckPoint(id: .id221, name: "휘령과의 대화", storyBlockIndex: "000", isLocked: true)]
+        ], currentStoryBlockIndex: "23")
 
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
 var chapter1 = Episode(episodeID: "1592", episodePlace: "인정전", episodeYear: 1592, episodeKingYear: "선조 25년", episodeShortDesciption: "우리나라의 뼈아픈 역사 중 하나다. ",episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "Donhwamun image", episodeCoverImage: "changdeokgung image sample", isCleared: true, chatHistory: [], storyBlocks: [

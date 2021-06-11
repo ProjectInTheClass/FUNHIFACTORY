@@ -385,13 +385,26 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     
     //예 버튼 눌렀을 때
     @IBAction func continueButtonAction(_ sender: Any) {
-        guard let currentEpisode = selectedEpisode else { return }
-        let dataToSend = currentEpisode
+        guard let selectedEpisode = selectedEpisode else { return }
+        
+        //selectedEpisode: 선택한 체크포인트가 속해있는 에피소드
+        let dataToSend = selectedEpisode
+        
+        // 기존에 메인게임에서 플레이하던 내용은 이전 기록 보기에 저장
+        player.currentEpisodes[strToIndex(str: player.dayId)].chatHistory = player.currentChatArray
+        //그 다음 메인게임 화면의 챗 전체 삭제
         player.currentChatArray.removeAll()
-        player.indexNumber = 0   
-        player.dayId = currentEpisode.episodeID
+        
+        //챗 인덱스 0으로 바꾸기
+        player.indexNumber = 0
+        
+        //현제 에피소드 id 바꾸기
+        player.dayId = selectedEpisode.episodeID
+        
         // 세이브포인트 버튼 테블뷰로 바꾸고 인덱스값 수정하기
         player.currentChatId = selectedEpisodeStoryBlockIndex
+        
+       //푸쉬
         performSegue(withIdentifier: "fromTimelineToMaingameSegue", sender: dataToSend)
         }
     
