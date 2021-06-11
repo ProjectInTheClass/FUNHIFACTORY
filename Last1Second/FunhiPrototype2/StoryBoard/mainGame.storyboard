@@ -13,7 +13,7 @@
         <array key="EBS훈민정음SB.otf">
             <string>EBSHunminjeongeumSB</string>
         </array>
-        <array key="NEXON Lv2 Gothic Bold.ttf">
+        <array key="NEXON Lv2 Gothic Bold 2.ttf">
             <string>NEXONLv2GothicBold</string>
         </array>
         <array key="NanumSquareBold.ttf">
@@ -719,7 +719,7 @@
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5g-oq-KE8" userLabel="homeButton">
                                                         <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
                                                         <connections>
-                                                            <action selector="homeTapped:" destination="58V-k4-uXR" eventType="touchUpInside" id="Kd8-0t-Ft2"/>
+                                                            <action selector="homeButtonTapped:" destination="58V-k4-uXR" eventType="touchUpInside" id="7AN-hC-XpE"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1022,6 +1022,7 @@
                         <segue destination="v7i-Z6-t2C" kind="show" identifier="timelineSegue" animates="NO" id="USe-dh-gZr"/>
                         <segue destination="o6w-Ff-HrJ" kind="show" identifier="badEnding" id="Y7E-3u-pTd"/>
                         <segue destination="OGC-Jy-Quw" kind="unwind" identifier="unwindSelectStage" unwindAction="unwindToSelectStage:" id="KnL-SI-QC9"/>
+                        <segue destination="r5r-u9-SPi" kind="show" identifier="mainToHome" id="aUj-xn-bsI"/>
                     </connections>
                 </viewController>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EkU-Ps-5iU">
@@ -2054,10 +2055,10 @@
             </objects>
             <point key="canvasLocation" x="6833" y="-514"/>
         </scene>
-        <!--mainGameNote-->
+        <!--NoteView-->
         <scene sceneID="tfz-dX-el7">
             <objects>
-                <viewControllerPlaceholder storyboardName="mainGameNote" id="fIu-oy-oyp" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="NoteView" id="fIu-oy-oyp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="bvf-YU-4R2"/>
                     <navigationItem key="navigationItem" id="gae-Ti-Glu"/>
                 </viewControllerPlaceholder>
@@ -2065,10 +2066,10 @@
             </objects>
             <point key="canvasLocation" x="3022" y="-887"/>
         </scene>
-        <!--mainGameAlbum-->
+        <!--AlbumView-->
         <scene sceneID="hqw-hG-7dn">
             <objects>
-                <viewControllerPlaceholder storyboardName="mainGameAlbum" id="IJQ-AX-mDc" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="AlbumView" id="IJQ-AX-mDc" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="jRI-jQ-54v"/>
                     <navigationItem key="navigationItem" id="78T-R0-XK0"/>
                 </viewControllerPlaceholder>
@@ -2535,6 +2536,16 @@
             </objects>
             <point key="canvasLocation" x="4161" y="52"/>
         </scene>
+        <!--home-->
+        <scene sceneID="V1y-tG-0Zc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="HomeView" referencedIdentifier="home" id="r5r-u9-SPi" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="nxv-hm-TU2"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F5a-kL-nwZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3356" y="-1093"/>
+        </scene>
     </scenes>
     <resources>
         <image name="2020map" width="742" height="1294"/>
@@ -2548,7 +2559,7 @@
         <image name="home icon" width="578.5" height="549.5"/>
         <image name="instagram icon" width="60" height="60"/>
         <image name="map icon" width="511" height="522.5"/>
-        <image name="note icon" width="385" height="512"/>
+        <image name="note icon" width="309" height="368"/>
         <image name="previous icon" width="217" height="353.5"/>
         <image name="reset icon" width="272" height="266"/>
         <image name="sandglass 2" width="540.5" height="915.5"/>
