@@ -36,13 +36,11 @@ class ChapterCoverViewController: UIViewController {
     }
     
     func designView() {
-        yearLabel.font = UIFont(name: "NEXONLv2GothicBold", size: 20)
-        chapterNameLabel.font = UIFont(name: "NanumSquareEB", size: 40)
-        descriptionLabel.font = UIFont(name: "NanumSquareR", size: 20)
+      
         descriptionLabel.setLineSpacing(lineSpacing: 10)
         descriptionLabel.textAlignment = .center
         tapAndContinueLabel.setCharacterSpacing(characterSpacing: 5)
-        tapAndContinueLabel.font = UIFont(name: "NanumSquareR", size: 15)
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

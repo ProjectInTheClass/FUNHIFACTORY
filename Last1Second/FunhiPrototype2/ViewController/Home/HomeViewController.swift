@@ -43,15 +43,26 @@ class HomeViewController: UIViewController {
         
     }
     
-   
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func noteButtonAction(_ sender: Any) {
+        pushMenuViewsAnimation()
     }
-    */
-
+    @IBAction func albumButtonAction(_ sender: Any) {
+        pushMenuViewsAnimation()
+    }
+    @IBAction func timelineButtonAction(_ sender: Any) {
+        pushMenuViewsAnimation()
+    }
+    @IBAction func settingButtonAction(_ sender: Any) {
+        pushMenuViewsAnimation()
+    }
+    
+    func pushMenuViewsAnimation() {
+        audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+        let transition:CATransition = CATransition()
+          transition.duration = 0.3
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
+        transition.type = CATransitionType.moveIn
+          transition.subtype = CATransitionSubtype.fromBottom
+          self.navigationController!.view.layer.add(transition, forKey: kCATransition)
+    }
 }

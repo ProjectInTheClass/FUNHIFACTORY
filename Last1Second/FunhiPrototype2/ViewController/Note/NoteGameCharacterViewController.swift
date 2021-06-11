@@ -171,7 +171,13 @@ class NoteGameCharacterViewController: UIViewController,UITableViewDelegate, UIT
     }
     
     @IBAction func exitButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        let transition:CATransition = CATransition()
+          transition.duration = 0.35
+          transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.moveIn
+        transition.subtype = CATransitionSubtype.fromTop
+          self.navigationController!.view.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.popViewController(animated: false)
     }
     func designObjects() {
         

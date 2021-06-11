@@ -66,7 +66,7 @@ class TimelineTableViewCell: UITableViewCell {
     
     func designButton() {
         
-        lockedView.layer.cornerRadius = 8
+        lockedView.layer.cornerRadius = 12
         leftBox.layer.cornerRadius = 8
         leftBox.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
         cellBackground.layer.cornerRadius = 8
@@ -313,6 +313,8 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     @IBOutlet weak var timelineTableView: UITableView!
     @IBOutlet weak var checkPointTableView: UITableView!
 
+
+  
     var selectedEpisode: Episode?
     var selectedEpisodeStoryBlockIndex = String()
     override func viewDidLoad() {
@@ -329,8 +331,10 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         timelineTableView.reloadData()
+        
     }
     
+    @IBOutlet var scrollViewHeight: NSLayoutConstraint!
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //이전 기록 보기
         if segue.identifier == "textSegue" {
@@ -483,6 +487,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         gettingStartPopupBox.layer.borderWidth = 6
         gettingStartPopupBox.layer.borderColor = UIColor(red:0.647, green: 0.737, blue: 0.812, alpha: 1).cgColor
         
+        
         warningLabel.setLineSpacing(lineSpacing: 6)
         warningLabel.textAlignment = .center
         thirdPopupBox.layer.cornerRadius = 20
@@ -496,4 +501,6 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
    
     
     }
+    //-------------체크포인트 스크롤뷰 높이 다이나믹하게 만들귀
+
 }
