@@ -129,14 +129,14 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     //선택지 collectionView
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentChatId]!.choices.count
+            player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices.count
         }
     
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             if collectionView == choiceCollectionView{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "choiceCell", for: indexPath) as! choiceCollectionViewCell
-                cell.choiceUpdate(choiceText : player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentChatId]!.choices[indexPath.row].text)
-                pageControl.numberOfPages = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentChatId]!.choices.count
+                cell.choiceUpdate(choiceText : player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices[indexPath.row].text)
+                pageControl.numberOfPages = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices.count
                 return cell
             }else{
                 return UICollectionViewCell()
@@ -157,7 +157,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 player.currentChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: currentBlockOfDay().choices[indexPath.row].chatType, who: .danhee, characterFace: currentBlockOfDay().choices[indexPath.row].characterFace, optionalOption: currentBlockOfDay().choices[indexPath.row].optionalOption, animationOption: .none))
 
                 mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
-            print("현재 ChatId : \(player.currentChatId), 선택한 선택지 : \(currentBlockOfDay().choices[indexPath.row])")
+            print("현재 ChatId : \(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex), 선택한 선택지 : \(currentBlockOfDay().choices[indexPath.row])")
             checkAlbumImageInChoice(choiceIndex: indexPath.row)
 
             checkCaseInChoice(choiceIndex: indexPath.row)
@@ -165,7 +165,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             checkGameCharacterInChoice(choiceIndex: indexPath.row)
             checkgameCharacterInfomationInChoice(choiceIndex: indexPath.row)
 
-            player.currentChatId = currentBlockOfDay().choices[indexPath.row].nextTextIndex
+            player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = currentBlockOfDay().choices[indexPath.row].nextTextIndex
             player.indexNumber = 0
             closeChoiceBar()
             //다음 페이지가 신 채팅일 경우
@@ -229,7 +229,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.choiceCollectionView.dataSource = self
         mainGameDesign()
         //initialize()
-        if let page = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentChatId]?.choices.count{
+        if let page = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]?.choices.count{
             initializePageControl(collectionView : choiceCollectionView, choiceBar : choiceBar, numberOfPages:page)
         }
         self.mainGameTableView.contentInset.bottom = 82

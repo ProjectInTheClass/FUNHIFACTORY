@@ -46,14 +46,14 @@ class endingViewController: UIViewController {
     
     func endingDesign()
     {
-        let ending = checkEnding(id: player.currentChatId)
+        let ending = checkEnding(id: player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)
         
-        backgroundImageView.image = UIImage(named: "\(player.currentChatId)Background")
-        gameOverImageView.image = UIImage(named: "\(player.currentChatId)GameOver")
-        sandglassImageView.image = UIImage(named: "\(player.currentChatId)Sandglass")
-        firstButtonImageView.image = UIImage(named: "\(player.currentChatId)1stButton")
-        secondButtonImageView.image = UIImage(named: "\(player.currentChatId)2ndButton")
-        thirdButtonImageView.image = UIImage(named: "\(player.currentChatId)3rdButton")
+        backgroundImageView.image = UIImage(named: "\(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)Background")
+        gameOverImageView.image = UIImage(named: "\(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)GameOver")
+        sandglassImageView.image = UIImage(named: "\(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)Sandglass")
+        firstButtonImageView.image = UIImage(named: "\(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)1stButton")
+        secondButtonImageView.image = UIImage(named: "\(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)2ndButton")
+        thirdButtonImageView.image = UIImage(named: "\(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)3rdButton")
         yearLabel.text = "\(player.currentEpisodes[strToIndex(str: player.dayId)].episodeYear)년"
         descriptionLabel.text = ending.name
         scriptLabel.text = ending.comment
@@ -67,7 +67,7 @@ class endingViewController: UIViewController {
     
     @IBAction func restartButton(_ sender: Any) {
         //업적 초기화
-        player.currentChatId = "001"
+        player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = "001"
         dismiss(animated: true, completion: nil)
     }
 }

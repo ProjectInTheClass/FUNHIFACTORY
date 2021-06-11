@@ -18,7 +18,7 @@ extension mainGameViewController {
 
     //mainGame에서 currentChat 정보 읽어서 알맞는 주인공 업적 해금하기
     func checkAchievementInChoice(choiceIndex: Int) {
-        let currentChoice = currentDay().storyBlocks[player.currentChatId]!.choices[choiceIndex]
+        let currentChoice = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices[choiceIndex]
         guard let currentChoiceOptionalOption = currentChoice.optionalOption else {
             return
         }
@@ -40,7 +40,7 @@ extension mainGameViewController {
     //mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 등장인물 해금하기
     func checkGameCharacterInChoice(choiceIndex: Int) {
         
-        let currentChoice = currentDay().storyBlocks[player.currentChatId]!.choices[choiceIndex]
+        let currentChoice = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices[choiceIndex]
         guard let currentChoiceOptionalOption = currentChoice.optionalOption else {
             return
         }
@@ -62,7 +62,7 @@ extension mainGameViewController {
     //mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 사건 금하기
     func checkCaseInChoice(choiceIndex: Int) {
         
-        let currentChoice = currentDay().storyBlocks[player.currentChatId]!.choices[choiceIndex]
+        let currentChoice = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices[choiceIndex]
         guard let currentChoiceOptionalOption = currentChoice.optionalOption else {
             return
         }
@@ -84,7 +84,7 @@ extension mainGameViewController {
     //mainGame에서 currentChat 정보 읽어서 알맞는 등장인물의 infomation 해금하기
     func checkgameCharacterInfomationInChoice(choiceIndex: Int) {
         
-        let currentChoice = currentDay().storyBlocks[player.currentChatId]!.choices[choiceIndex]
+        let currentChoice = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices[choiceIndex]
         guard let currentChoiceOptionalOption = currentChoice.optionalOption else {
             return
         }
@@ -109,7 +109,7 @@ extension mainGameViewController {
     //mainGame에서 currentChat 정보 읽어서 알맞은 앨범 이미지 해금하기
     func checkAlbumImageInChoice(choiceIndex: Int) {
         
-        let currentChoice = currentDay().storyBlocks[player.currentChatId]!.choices[choiceIndex]
+        let currentChoice = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices[choiceIndex]
         guard let currentChoiceOptionalOption = currentChoice.optionalOption else {
             return
         }
@@ -136,7 +136,7 @@ extension mainGameViewController {
         func checkAchievementInChat() {
            
             
-            let currentChat = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber]
+            let currentChat = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber]
             guard let currentChatOptionalOption = currentChat.optionalOption else {
                 return
             }
@@ -162,7 +162,7 @@ extension mainGameViewController {
     //mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 등장인물 해금하기
     func checkGameCharacterInChat() {
      
-        let currentChat = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber]
+        let currentChat = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber]
         guard let currentChatOptionalOption = currentChat.optionalOption else {
             return
         }
@@ -183,7 +183,7 @@ extension mainGameViewController {
 
     //mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 사건 금하기
     func checkCaseInChat() {
-        let currentChat = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber]
+        let currentChat = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber]
         guard let currentChatOptionalOption = currentChat.optionalOption else {
             return
         }
@@ -203,7 +203,7 @@ extension mainGameViewController {
 
     //mainGame에서 currentChat 정보 읽어서 알맞는 등장인물의 infomation 해금하기
     func checkgameCharacterInfomationInChat() {
-        let currentChat = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber]
+        let currentChat = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber]
         guard let currentChatOptionalOption = currentChat.optionalOption else {
             return
         }
@@ -226,7 +226,7 @@ extension mainGameViewController {
 
     //mainGame에서 currentChat 정보 읽어서 알맞은 앨범 이미지 해금하기
     func checkAlbumImageInChat() {
-        let currentChat = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber]
+        let currentChat = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber]
         guard let currentChatOptionalOption = currentChat.optionalOption else {
             return
         }
@@ -250,7 +250,7 @@ extension mainGameViewController {
 
 //mainGame에서 currentChat 정보 읽어서 알맞은 체크포인트 해금하기
 //func checkCheckPointInChat() {
-//    let currentChat = currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber]
+//    let currentChat = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber]
 //    guard let currentChatOptionalOption = currentChat.optionalOption else {
 //        return
 //    }

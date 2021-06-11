@@ -10,12 +10,12 @@ import UIKit
 /*
  extension mainGameViewController : UICollectionViewDelegate, UICollectionViewDataSource{
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices.count
+         dummyData.stories[player.dayId]!.storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices.count
      }
      
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "choiceCell", for: indexPath) as! choiceCollectionViewCell
-         cell.choiceUpdate(choiceText : dummyData.stories[player.dayId]!.storyBlocks[player.currentChatId]!.choices[indexPath.row].text)
+         cell.choiceUpdate(choiceText : dummyData.stories[player.dayId]!.storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices[indexPath.row].text)
          return cell
      }
      func initializePageControl(collectionView : UICollectionView, choiceBar : UIView, numberOfPages: Int){

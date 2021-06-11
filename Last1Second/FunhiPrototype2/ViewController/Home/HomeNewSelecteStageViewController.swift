@@ -88,7 +88,7 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
     @IBAction func selectedPopupStartButton(_ sender: Any) {
         
         player.dayId = selectedEP.episodeID
-//        player.currentChatId = "001" //기본 시작id로 지정하기
+//        player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = "001" //기본 시작id로 지정하기
         performSegue(withIdentifier: "goToChapterCoverSegue", sender: nil)
         
     }

@@ -410,19 +410,19 @@ func currentDay() -> Episode{
     return player.currentEpisodes[strToIndex(str: player.dayId)]
 }
 func currentBlockOfDay() -> BlockOfDayEpisode{
-    return currentDay().storyBlocks[player.currentChatId]!
+    return currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!
 }
 func currentChatAmount() -> Int{
     return currentBlockOfDay().chats.count
 }
 func currentChatType() -> ChatType{
-    return currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber].type
+    return currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber].type
 }
 
 // 요런 것도 될라나..🧐
 //var curreentChatType: ChatType {
 //    get {
-//        return currentDay().storyBlocks[player.currentChatId]!.chats[player.indexNumber].type
+//        return currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber].type
 //    }
 //}
 //------------------------------------스토리------------------------------------

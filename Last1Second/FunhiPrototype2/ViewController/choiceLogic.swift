@@ -78,7 +78,7 @@ extension mainGameViewController{
         else if player.indexNumber == currentChatAmount() && currentBlockOfDay().choiceSkip == true
         {
             //선택지 없이 바로 다음 스토리블럭으로 갈 때
-            player.currentChatId = currentBlockOfDay().choices[0].nextTextIndex
+            player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = currentBlockOfDay().choices[0].nextTextIndex
             player.indexNumber = 0
             chatUpdate()
             scrollToBottom()
@@ -150,7 +150,7 @@ extension mainGameViewController{
     }
     
     func checkEnterAnimation(){
-        if let animation = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentChatId]?.chats[player.indexNumber].animationOption
+        if let animation = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]?.chats[player.indexNumber].animationOption
         {
             if (animation != .none)
             {

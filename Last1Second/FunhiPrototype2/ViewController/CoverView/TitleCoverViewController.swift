@@ -30,7 +30,7 @@ class TitleCoverViewController: UIViewController {
         audioConfigure(bgmName: "coverBGM", isBGM: true, ofType: "mp3")
         print("현재 currentChatArray: \(player.currentChatArray)")
         print("현재 dayId: \(player.dayId)")
-        print("현재 currentChatId: \(player.currentChatId)")
+        print("현재 currentChatId: \(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)")
         print("현재 dayIndex: \(player.dayIndex)")
         
     }
@@ -43,7 +43,7 @@ class TitleCoverViewController: UIViewController {
             {
                 player.dayId = player.currentEpisodes[0].episodeID
                 player.indexNumber = 0
-                player.currentChatId = "001"
+                player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = "001"
                 performSegue(withIdentifier: "fromCoverToChapterCover", sender: nil)
             } else //새 에피 선택해야 하면
             {

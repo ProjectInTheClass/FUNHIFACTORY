@@ -212,7 +212,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
             return 49
         }
     }
-   
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if tableView == checkPointTableView {
             switch section {
@@ -395,14 +395,14 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         //그 다음 메인게임 화면의 챗 전체 삭제
         player.currentChatArray.removeAll()
         
-        //챗 인덱스 0으로 바꾸기
+        //챗 인덱스 0으로 바꾸기, 초이스바 끄기
         player.indexNumber = 0
-        
+        isChoiceOn = false
         //현제 에피소드 id 바꾸기
         player.dayId = selectedEpisode.episodeID
         
         // 세이브포인트 버튼 테블뷰로 바꾸고 인덱스값 수정하기
-        player.currentChatId = selectedEpisodeStoryBlockIndex
+        player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = selectedEpisodeStoryBlockIndex
         
        //푸쉬
         performSegue(withIdentifier: "fromTimelineToMaingameSegue", sender: dataToSend)

@@ -38,7 +38,7 @@ extension mainGameViewController{
         let itemWidth = layout.itemSize.width
         let proportionalOffset = layout.collectionView!.contentOffset.x / itemWidth
         let index = Int(round(proportionalOffset))
-        let safeIndex = max(0, min(player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentChatId]!.choices.count - 1, index))
+        let safeIndex = max(0, min(player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices.count - 1, index))
         if layout == normalChoiceCollectionViewLayout{
             pageControl.currentPage = safeIndex
         }
@@ -63,7 +63,7 @@ extension mainGameViewController{
         
         // calculate conditions:
         let swipeVelocityThreshold: CGFloat = 0.5 // after some trail and error
-        let hasEnoughVelocityToSlideToTheNextCell = indexOfCellBeforeDragging + 1 < player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentChatId]!.choices.count && velocity.x > swipeVelocityThreshold
+        let hasEnoughVelocityToSlideToTheNextCell = indexOfCellBeforeDragging + 1 < player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices.count && velocity.x > swipeVelocityThreshold
         let hasEnoughVelocityToSlideToThePreviousCell = indexOfCellBeforeDragging - 1 >= 0 && velocity.x < -swipeVelocityThreshold
         let majorCellIsTheCellBeforeDragging = indexOfMajorCell == indexOfCellBeforeDragging
         let didUseSwipeToSkipCell = majorCellIsTheCellBeforeDragging && (hasEnoughVelocityToSlideToTheNextCell || hasEnoughVelocityToSlideToThePreviousCell)
