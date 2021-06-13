@@ -13,9 +13,9 @@ var player = User(
     setting: playerSetting,
     currentEpisodes: [prologueChapter,chapter1,chapter2,chapter3,chapter4,endingChapter],
     currentAchievementInfo: [
-        Achievement(name: "돈화문", image: "prologue image 1", id: .donhwamun , isLocked: true),
-        Achievement(name: "금천교", image: "prologue image 2", id: .geumcheongyo , isLocked: true),
-        Achievement(name: "인정전", image: "prologue image 3", id:  .injeongjeon, isLocked: true),
+        Achievement(name: "돈화문", image: "prologue image 1", id: .donhwamun , isLocked: false),
+        Achievement(name: "금천교", image: "prologue image 2", id: .geumcheongyo , isLocked: false),
+        Achievement(name: "인정전", image: "prologue image 3", id:  .injeongjeon, isLocked: false),
         Achievement(name: "루스", image: "leedanheeBackground", id: .cat , isLocked: true),
         Achievement(name: "휘령의 목걸이", image: "prologue image 4", id: .necklace , isLocked: true),
         Achievement(name: "의심 속 믿음", image: "leedanheeBackground", id: .faith , isLocked: true)],

@@ -540,6 +540,8 @@ struct Episode: Codable {
     let episodeCoverImage: String
     //(예시 : 해당 에피 클리어 여부)
     var isCleared: Bool = false
+    // 에피소드 첫 진입 했는지 안 했는지 여부. 수첩/앨범 에피소드 이름 표시 여부 식별 위함
+    var isStarted: Bool = false
     // 에피소드 완료시, 해당 에피소드 대화 내용이 저장되는 곳. 추후 타임라인에서 '이전 기록 보기'기능 할 때 사용될 예정임.
     var chatHistory: [Chat]
     //(예시 : 대사)
@@ -550,9 +552,9 @@ struct Episode: Codable {
     var currentCaseNote: [NoteCase]
     // 해당 사건의 앨범 창에 추가될 이미지
     var currentAlbumImages: [AlbumImage]
-    
+    // 해당 사건에 포함 되어있는 체크포인트
     var timelineCheckPoint:[[CheckPoint]]
-    
+    // 마지막으로 플레이 한 지점 인덱스
     var currentStoryBlockIndex: String
 }
 
@@ -852,6 +854,11 @@ extension UIView {
         self.layer.shadowOffset = CGSize(width: offsetX, height: offsetY)
         self.layer.shadowOpacity = Float(opacity)
         self.layer.shadowRadius = CGFloat(radius)
+    }
+    
+    func setBolder(color: UIColor, width: Double) {
+        self.layer.borderColor = color.cgColor
+        self.layer.borderWidth = CGFloat(width)
     }
 }
 

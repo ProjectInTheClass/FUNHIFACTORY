@@ -8,90 +8,41 @@
 import UIKit
 
 
-class HeeryeongSingleinfomationCell: UITableViewCell {
-    @IBOutlet weak var smallCircle: UIView!
-    @IBOutlet weak var informationLabel: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        designCell()
-    }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    func designCell() {
-        informationLabel.setLineSpacing(lineSpacing: 2.0)
-        smallCircle.layer.borderWidth = 2
-        smallCircle.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
-        smallCircle.layer.cornerRadius = smallCircle.frame.width/2
-    }
-}
-class HeeryeongFirstinfomationCell: UITableViewCell {
-    @IBOutlet weak var smallCircle: UIView!
-    @IBOutlet weak var informationLabel: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        designCell()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    func designCell() {
-        informationLabel.setLineSpacing(lineSpacing: 2.0)
-        smallCircle.layer.borderWidth = 2
-        smallCircle.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
-        smallCircle.layer.cornerRadius = smallCircle.frame.width/2
-    }
-}
-class HeeryeongMiddleinfomationCell: UITableViewCell {
-    @IBOutlet weak var smallCircle: UIView!
-    @IBOutlet weak var informationLabel: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        designCell()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    func designCell() {
-        informationLabel.setLineSpacing(lineSpacing: 2.0)
-        smallCircle.layer.borderWidth = 2
-        smallCircle.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
-        smallCircle.layer.cornerRadius = smallCircle.frame.width/2
-    }
-}
-class HeeryeongLastinfomationCell: UITableViewCell {
-    @IBOutlet weak var smallCircle: UIView!
-    @IBOutlet weak var informationLabel: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        designCell()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    func designCell() {
-        informationLabel.setLineSpacing(lineSpacing: 2.0)
-        smallCircle.layer.borderWidth = 2
-        smallCircle.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
-        smallCircle.layer.cornerRadius = smallCircle.frame.width/2
+extension UITableView {
+    func updateHeaderViewHeight() {
+        if let header = self.tableHeaderView {
+            let newSize = header.systemLayoutSizeFitting(CGSize(width: self.bounds.width, height: 0))
+            header.frame.size.height = newSize.height
+        }
     }
 }
 //-------------------뷰컨-------------
 class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
     var openedInfomation = [Infomation]()
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+           guard let headerView = hwiryeongInfomationTableView.tableHeaderView else { return }
+
+        let height = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+           var headerFrame = headerView.frame
+
+           if height != headerFrame.size.height {
+               headerFrame.size.height = height
+               headerView.frame = headerFrame
+            hwiryeongInfomationTableView.tableHeaderView = headerView
+
+               if #available(iOS 9.0, *) {
+                hwiryeongInfomationTableView.layoutIfNeeded()
+               }
+           }
+
+           headerView.translatesAutoresizingMaskIntoConstraints = true
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let recievedGameCharacter = recievedGameCharacter else { return 0 }
             openedInfomation.removeAll()
@@ -108,10 +59,11 @@ class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITable
         var returnCell = UITableViewCell()
 
         guard let recievedGameCharacter = recievedGameCharacter else { return UITableViewCell() }
-            
+        
+            let infomations = recievedGameCharacter.infomation
             // 인포메이션 1개일 때 singleCell 모양 반환
             if openedInfomation.count == 1 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "heeryeongSinglenfomationCell", for: indexPath) as! HeeryeongSingleinfomationCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "gameCharacterSinglenfomationCell", for: indexPath) as! GameCharacterSingleinfomationCell
                 cell.informationLabel.text = openedInfomation[indexPath.row].text
                 returnCell = cell
             }
@@ -119,44 +71,31 @@ class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITable
             if openedInfomation.count > 1 {
                 // 인포메이션 목록의 처음 부분이면 firstCell 모양임
                 if indexPath.row == 0 {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "heeryeongFirstInfomationCell", for: indexPath) as! HeeryeongFirstinfomationCell
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "gameCharacterFirstInfomationCell", for: indexPath) as! GameCharacterFirstinfomationCell
                     cell.informationLabel.text = openedInfomation[indexPath.row].text
                     returnCell = cell
                 }
                 
                 // 인포메이션 목록의 중간 부분이면 middleCell 모양임
-                if indexPath.row > 0 && indexPath.row < openedInfomation.count-1 {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "heeryeongMiddleInfomationCell", for: indexPath) as! HeeryeongMiddleinfomationCell
+                if indexPath.row > 0 && indexPath.row < infomations.count-1 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "gameCharacterMiddleInfomationCell", for: indexPath) as! GameCharacterMiddleinfomationCell
                     cell.informationLabel.text = openedInfomation[indexPath.row].text
                     returnCell = cell
                 }
                 
                 // 인포메이션 목록의 마지막 부분이면 lastCell 모양임
                 if indexPath.row == openedInfomation.count-1 {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "heeryeongLastInfomationCell", for: indexPath) as! HeeryeongLastinfomationCell
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "gameCharacterLastInfomationCell", for: indexPath) as! GameCharacterLastinfomationCell
                     cell.informationLabel.text = openedInfomation[indexPath.row].text
                     returnCell = cell
                 }
             }
-
         return returnCell
     }
+ 
+   
     
-    @IBOutlet weak var headerView: UIView!
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        guard let headerView = hwiryeongInfomationTableView.tableHeaderView else {
-            return }
-        headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-        
-//        if headerView.frame.size.height != headerView.layer.height {
-//            headerView.frame.size.height = height
-//            hwiryeongInfomationTableView.tableHeaderView = headerView
-//            hwiryeongInfomationTableView.layoutIfNeeded()
-//        }
-    }
-    
-    //----------------일반 아웃렛, 메소드------------------------------
+    //----------------일반 아웃렛, 메소드---------------------------------------------
     var recievedGameCharacter: GameCharacter?
     
     
@@ -164,10 +103,7 @@ class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITable
     @IBOutlet var hwiryeongLabel: UILabel!
     @IBOutlet weak var hwiryeongInfomationTableView: UITableView!
     @IBOutlet weak var hwiryeongProfileImageView: UIImageView!
-    
     @IBOutlet weak var hwiryeongBackgroundImageView: UIImageView!
-    
-    
     @IBOutlet weak var hwiryeongDescriptionLabel: UILabel!
     
 
@@ -175,38 +111,38 @@ class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         designObjects()
-       
         
         self.hwiryeongInfomationTableView.delegate = self
         self.hwiryeongInfomationTableView.dataSource = self
         
-        hwiryeongDescriptionLabel.font = UIFont(name: "GyeonggiBatangB", size: 17)
-        hwiryeongDescriptionLabel.textAlignment = .center
-
-    
-        // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         if let recievedGameCharacter = recievedGameCharacter {
-            hwiryeongProfileImageView.image = UIImage(named: recievedGameCharacter.profileImage)
-            hwiryeongBackgroundImageView.image = UIImage(named: recievedGameCharacter.backGroundImage)
-          
-            hwiryeongDescriptionLabel.text = recievedGameCharacter.description
-            hwiryeongInfomationTableView.reloadData()
-           
-            
+            updateObjects(recievedGameCharacter: recievedGameCharacter)
         }
     }
+    
+  
     
     @IBAction func exitButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func updateObjects(recievedGameCharacter: GameCharacter) {
+        hwiryeongProfileImageView.image = UIImage(named: recievedGameCharacter.profileImage)
+        hwiryeongBackgroundImageView.image = UIImage(named: recievedGameCharacter.backGroundImage)
+      
+        hwiryeongDescriptionLabel.text = recievedGameCharacter.description
+        hwiryeongInfomationTableView.reloadData()
+       
+    }
     func designObjects() {
-        hwiryeongDescriptionLabel.textAlignment = .center
+      
         hwiryeongProfileImageView.layer.cornerRadius = hwiryeongProfileImageView.frame.width/2
-        hwiryeongDescriptionLabel.setLineSpacing(lineSpacing: 5)
+        hwiryeongDescriptionLabel.font = UIFont(name: "GyeonggiBatangB", size: 17)
+        hwiryeongDescriptionLabel.setLineSpacing(lineSpacing: 10)
+        
         hwiryeongLabel.font = UIFont(name: "NanumSquareEB", size: 29)
-
     }
 }
 

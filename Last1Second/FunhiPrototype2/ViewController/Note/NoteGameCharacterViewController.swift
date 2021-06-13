@@ -22,15 +22,17 @@ class GameCharacterSingleinfomationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func designCell() {
-        informationLabel.setLineSpacing(lineSpacing: 2.0)
-        smallCircle.layer.borderWidth = 2
-        smallCircle.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        informationLabel.setLineSpacing(lineSpacing: 7.0)
+        informationLabel.font = UIFont(name: "NanumSquareR", size: 15)
+        smallCircle.setBolder(color: UIColor(red: 0.404, green: 0.561, blue: 0.694, alpha: 1), width: 1.2)
+        smallCircle.backgroundColor = UIColor(red: 0.588, green: 0.698, blue: 0.796, alpha: 1)
         smallCircle.layer.cornerRadius = smallCircle.frame.width/2
     }
 }
 class GameCharacterFirstinfomationCell: UITableViewCell {
     @IBOutlet weak var smallCircle: UIView!
     @IBOutlet weak var informationLabel: UILabel!
+    @IBOutlet var line: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         designCell()
@@ -42,15 +44,18 @@ class GameCharacterFirstinfomationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func designCell() {
-        informationLabel.setLineSpacing(lineSpacing: 2.0)
-        smallCircle.layer.borderWidth = 2
-        smallCircle.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        informationLabel.setLineSpacing(lineSpacing: 7.0)
+        informationLabel.font = UIFont(name: "NanumSquareR", size: 15)
+        smallCircle.setBolder(color: UIColor(red: 0.404, green: 0.561, blue: 0.694, alpha: 1), width: 1.2)
+        smallCircle.backgroundColor = UIColor(red: 0.588, green: 0.698, blue: 0.796, alpha: 1)
         smallCircle.layer.cornerRadius = smallCircle.frame.width/2
+        line.backgroundColor = UIColor(red: 0.404, green: 0.561, blue: 0.694, alpha: 1)
     }
 }
 class GameCharacterMiddleinfomationCell: UITableViewCell {
     @IBOutlet weak var smallCircle: UIView!
     @IBOutlet weak var informationLabel: UILabel!
+    @IBOutlet var line: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         designCell()
@@ -62,15 +67,18 @@ class GameCharacterMiddleinfomationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func designCell() {
-        informationLabel.setLineSpacing(lineSpacing: 2.0)
-        smallCircle.layer.borderWidth = 2
-        smallCircle.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        informationLabel.setLineSpacing(lineSpacing: 7.0)
+        informationLabel.font = UIFont(name: "NanumSquareR", size: 15)
+        smallCircle.setBolder(color: UIColor(red: 0.404, green: 0.561, blue: 0.694, alpha: 1), width: 1.2)
+        smallCircle.backgroundColor = UIColor(red: 0.588, green: 0.698, blue: 0.796, alpha: 1)
         smallCircle.layer.cornerRadius = smallCircle.frame.width/2
+        line.backgroundColor = UIColor(red: 0.404, green: 0.561, blue: 0.694, alpha: 1)
     }
 }
 class GameCharacterLastinfomationCell: UITableViewCell {
     @IBOutlet weak var smallCircle: UIView!
     @IBOutlet weak var informationLabel: UILabel!
+    @IBOutlet var line: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         designCell()
@@ -82,16 +90,25 @@ class GameCharacterLastinfomationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func designCell() {
-        informationLabel.setLineSpacing(lineSpacing: 2.0)
-        smallCircle.layer.borderWidth = 2
-        smallCircle.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        informationLabel.setLineSpacing(lineSpacing: 7.0)
+        informationLabel.font = UIFont(name: "NanumSquareR", size: 15)
+        smallCircle.setBolder(color: UIColor(red: 0.404, green: 0.561, blue: 0.694, alpha: 1), width: 1.2)
+        smallCircle.backgroundColor = UIColor(red: 0.588, green: 0.698, blue: 0.796, alpha: 1)
         smallCircle.layer.cornerRadius = smallCircle.frame.width/2
+        line.backgroundColor = UIColor(red: 0.404, green: 0.561, blue: 0.694, alpha: 1)
     }
 }
 //-------------------뷰컨-------------
 class NoteGameCharacterViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
     var openedInfomation = [Infomation]()
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        guard let headerView = infomationTableView.tableHeaderView else {
+            return }
+        headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let recievedGameCharacter = recievedGameCharacter else { return 0 }
@@ -166,9 +183,11 @@ class NoteGameCharacterViewController: UIViewController,UITableViewDelegate, UIT
         if let recievedGameCharacter = recievedGameCharacter {
             gameCharacterImageView.image = UIImage(named: recievedGameCharacter.profileImage)
             gameCharacterDescriptionLabel.text = recievedGameCharacter.description
-            gameCharacterIsLabel.text = "\(recievedGameCharacter.name)은(는)..."
+            gameCharacterIsLabel.text = postPositionText(recievedGameCharacter.name)
         }
     }
+    
+   
     
     @IBAction func exitButton(_ sender: Any) {
         let transition:CATransition = CATransition()
@@ -183,25 +202,26 @@ class NoteGameCharacterViewController: UIViewController,UITableViewDelegate, UIT
         
         nameLabel.font = UIFont(name: "NanumSquareEB", size: 29)
 
-        gameCharacterDescriptionLabel.setLineSpacing(lineSpacing: 5.0)
+        gameCharacterDescriptionLabel.setLineSpacing(lineSpacing: 10)
         gameCharacterDescriptionLabel.textAlignment = .center
         gameCharacterImageView.layer.cornerRadius = gameCharacterImageView.frame.width/2
-        likabilityBackgroundView.backgroundColor = .white
-        likabilityBackgroundView.layer.cornerRadius = likabilityBackgroundView.frame.height/2
-        likabilityBackgroundView.layer.borderWidth = 1
-        likabilityBackgroundView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
-        
-        likabilityProgressView.layer.cornerRadius = likabilityBackgroundView.frame.height/2
-        likabilityProgressView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+       
     }
-    /*
-    // MARK: - Navigation
+  
+    func postPositionText(_ name: String) -> String {
+            guard let lastText = name.last else { return name }     // 글자의 마지막 부분을 가져옴
+            
+            let unicodeVal = UnicodeScalar(String(lastText))?.value // 유니코드 전환
+            
+            guard let value = unicodeVal else { return name }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+            if (value < 0xAC00 || value > 0xD7A3) { return name }   // 한글아니면 반환
 
+            let last = (value - 0xAC00) % 28                        // 종성인지 확인
+
+            let str = last > 0 ? "은..." : "는..."      // 받침있으면 은 없으면 는 반환
+            
+            return name + str
+            
+        }
 }

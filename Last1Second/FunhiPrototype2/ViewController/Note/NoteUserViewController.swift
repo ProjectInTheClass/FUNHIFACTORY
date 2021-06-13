@@ -38,7 +38,7 @@ class NoteCollectionViewReusableCell: UICollectionViewCell {
     }
    
     func designCell() {
-        gameCharacterDescriptionLabel.setLineSpacing(lineSpacing: 5.0)
+        gameCharacterDescriptionLabel.setLineSpacing(lineSpacing: 10)
         gameCharacterProfileImageView.layer.cornerRadius = gameCharacterProfileImageView.frame.width/2
         
     }
@@ -47,8 +47,9 @@ class NoteCollectionViewLeftCell: UICollectionViewCell {
     @IBOutlet weak var achievementImageView: UIImageView!
     @IBOutlet weak var lockedView: UIView!
     @IBOutlet weak var achievementTitleLabel: UILabel!
-   
+    @IBOutlet var cellBackground: UIView!
     
+
     override func awakeFromNib() {
         super.awakeFromNib()
         designCell() 
@@ -58,6 +59,13 @@ class NoteCollectionViewLeftCell: UICollectionViewCell {
         achievementImageView.layer.cornerRadius = 7
         achievementImageView.layer.borderWidth = 3
         achievementImageView.layer.borderColor = UIColor(red: 0.587, green: 0.7, blue: 0.796, alpha: 1).cgColor
+        cellBackground.layer.cornerRadius = 7
+      
+    }
+    
+    func changeShadowAndBorder(view: UIView, shadowColor: UIColor, borderColor: UIColor) {
+        view.setShadow(color: shadowColor, offsetX: 0, offsetY: 0, opacity: 1, radius: 9)
+        view.setBolder(color: borderColor, width: 4)
     }
 }
 class NoteCollectionViewRightCell: UICollectionViewCell {
@@ -65,6 +73,8 @@ class NoteCollectionViewRightCell: UICollectionViewCell {
     @IBOutlet weak var achievementImageView: UIImageView!
     @IBOutlet weak var lockedView: UIView!
     @IBOutlet weak var achievementTitleLabel: UILabel!
+    
+    @IBOutlet var cellBackground: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -75,6 +85,12 @@ class NoteCollectionViewRightCell: UICollectionViewCell {
         achievementImageView.layer.cornerRadius = 7
         achievementImageView.layer.borderWidth = 3
         achievementImageView.layer.borderColor = UIColor(red: 0.587, green: 0.7, blue: 0.796, alpha: 1).cgColor
+        cellBackground.layer.cornerRadius = 7
+    }
+    
+    func changeShadowAndBorder(view: UIView, shadowColor: UIColor, borderColor: UIColor) {
+        view.setShadow(color: shadowColor, offsetX: 0, offsetY: 0, opacity: 1, radius: 9)
+        view.setBolder(color: borderColor, width: 4)
     }
 }
 class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout  {
@@ -157,12 +173,23 @@ class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollec
         // Do any additional setup after loading the view.
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+
+        // Get the view for the first header
+        let indexPath = IndexPath(row: 0, section: section)
+        let headerView = self.collectionView(collectionView, viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: indexPath)
+
+        // Use this view to calculate the optimal size based on the collection view's width
+        return headerView.systemLayoutSizeFitting(CGSize(width: collectionView.frame.width, height: UIView.layoutFittingExpandedSize.height), withHorizontalFittingPriority: .required, // Width is fixed
+            verticalFittingPriority: .fittingSizeLevel) // Height can be as large as needed
+    }
+    
     @IBAction func exitButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
     func designObjects() {
-        nameLabel.font = UIFont(name: "NanumSquareEB", size: 29)
+//        nameLabel.font = UIFont(name: "NanumSquareEB", size: 29)
 
     }
     /*
