@@ -168,20 +168,21 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = currentBlockOfDay().choices[indexPath.row].nextTextIndex
             player.indexNumber = 0
             closeChoiceBar()
+            chatUpdateTimer()
             //다음 페이지가 신 채팅일 경우
-            if isGodChatOn == false && player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[currentBlockOfDay().choices[indexPath.row].nextTextIndex]?.isGodChat == true
-            {
-                //진동 울리기 및 색 변경이나 알림(아이템 뱃지와 같은) 등이 떠야 함.
-//                if timer != nil{
-//                    timer.invalidate()
-//                }
-//                vibrate(vibrateIsOn: playerSetting.vibration)
-                chatUpdateTimer()
-            }
-            //다음 페이지가 신 채팅이 아닐 경우
-            else{
-                chatUpdateTimer()
-            }
+//            if isGodChatOn == false && player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[currentBlockOfDay().choices[indexPath.row].nextTextIndex]?.isGodChat == true
+//            {
+//                //진동 울리기 및 색 변경이나 알림(아이템 뱃지와 같은) 등이 떠야 함.
+////                if timer != nil{
+////                    timer.invalidate()
+////                }
+////                vibrate(vibrateIsOn: playerSetting.vibration)
+//                chatUpdateTimer()
+//            }
+//            //다음 페이지가 신 채팅이 아닐 경우
+//            else{
+//                chatUpdateTimer()
+//            }
         }
     
     override func viewDidAppear(_ animated: Bool) {

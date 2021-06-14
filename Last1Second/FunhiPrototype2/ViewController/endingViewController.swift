@@ -29,18 +29,15 @@ class endingViewController: UIViewController {
     @IBOutlet var popupView: UIView!
     @IBOutlet var popupBox: UIView!
     @IBOutlet var popupLabel: UILabel!
-    @IBOutlet var popupButton1: UIButton!
-    @IBOutlet var popupButton2: UIButton!
-    @IBOutlet var popupButton1Shadow: UIView!
-    @IBOutlet var popupButton2Shadow: UIView!
-    
-    
-    
-    
-    
+    @IBOutlet var popupButtonShadows: [UIView]!
+    @IBOutlet var popupButtons: [UIButton]!
 //MARK: 코드
+
+    var buttonInput = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         endingDesign()
     }
     
@@ -63,11 +60,31 @@ class endingViewController: UIViewController {
         for target in floatingButtons {
             target.backgroundColor = ending.buttonUIColor[3]
         }
+        popupBox.frame = popupBox.frame.insetBy(dx: -6, dy: -6)
+        popupBox.layer.borderWidth = 6
+        popupBox.layer.borderColor = ending.buttonUIColor[0].cgColor
+        for target in popupButtons {
+            target.backgroundColor = ending.buttonUIColor[3]
+        }
+        for target in popupButtonShadows {
+            target.backgroundColor = ending.buttonUIColor[1]
+        }
     }
     
-    @IBAction func restartButton(_ sender: Any) {
-        //업적 초기화
-        player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = "001"
-        dismiss(animated: true, completion: nil)
+    @IBAction func restartEpisode(_ sender: Any) {
+        buttonInput = 0
+        self.view!.addSubview(popupView)
+        popupView.fullScreen(to: self.view!)
     }
+    @IBAction func restartPrologue(_ sender: Any) {
+        buttonInput = 1
+        self.view!.addSubview(popupView)
+        popupView.fullScreen(to: self.view!)
+    }
+    @IBAction func goToTimeLine(_ sender: Any) {
+        buttonInput = 2
+        self.view!.addSubview(popupView)
+        popupView.fullScreen(to: self.view!)
+    }
+    
 }

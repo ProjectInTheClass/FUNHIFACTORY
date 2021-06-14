@@ -19,7 +19,7 @@ func parse(jsonData : Data, targetEpisode : Int){
         let ex = try jsonDecoder.decode([BlockOfDayEpisodeForJson].self, from: jsonData)
         if (!ex.isEmpty)
         {
-            print("변환됨")
+            print("에피소드 \(targetEpisode + 1) 다운로드 완료")
         }
         dataToTargetEpisode(storyData: ex, target : &player.currentEpisodes[targetEpisode].storyBlocks)
     }

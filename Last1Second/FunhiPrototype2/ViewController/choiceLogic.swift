@@ -29,6 +29,7 @@ extension mainGameViewController{
         }
         //게임 오버 시 뜰 배드엔딩 창 띄우기.
         if player.indexNumber == currentChatAmount() && currentBlockOfDay().choices[0].nextTextIndex.hasPrefix("ending"){
+            player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = currentBlockOfDay().choices[0].nextTextIndex
             print("타이머 여부 :\(timer == nil)")
             if timer != nil {
                 print("timer invalidate")

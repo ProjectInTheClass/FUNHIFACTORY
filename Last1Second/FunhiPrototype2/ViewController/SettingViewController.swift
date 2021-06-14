@@ -117,6 +117,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     @IBAction func initConfirmButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "gotoCover", sender: nil)
     }
+
     @IBAction func yesButtonTapped(_ sender: Any) {
         print("게임 데이터가 초기화되었습니다.")
         player.currentChatArray.removeAll()

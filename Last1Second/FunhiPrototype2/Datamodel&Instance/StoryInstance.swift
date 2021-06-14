@@ -32,7 +32,7 @@ var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현
         [CheckPoint(id: .id211, name: "거짓말", storyBlockIndex: "065", isLocked: false)],
     
         [CheckPoint(id: .id221, name: "휘령과의 대화", storyBlockIndex: "000", isLocked: true)]
-        ], currentStoryBlockIndex: "023")
+        ], currentStoryBlockIndex: "014")
 
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
 var chapter1 = Episode(episodeID: "1592", episodePlace: "인정전", episodeYear: 1592, episodeKingYear: "선조 25년", episodeShortDesciption: "우리나라의 뼈아픈 역사 중 하나다. ",episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "Donhwamun image", episodeCoverImage: "changdeokgung image sample", isCleared: true, chatHistory: [], storyBlocks: [
