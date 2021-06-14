@@ -436,6 +436,9 @@ enum ChatType: String, Codable{
     case choice
     case monologue
     case ar
+//    init(from decoder: Decoder) throws {
+//        self = try ChatType(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? .onlyText
+//    }
 }
 
 // 텍스트 블럭 스트럭처
@@ -449,6 +452,28 @@ struct Chat: Codable {
     let characterFace : CharacterFace
     let optionalOption: OptionalOption?
     let animationOption : screenAnimation
+    
+    init(text_ : String, image_ : String, type_ : ChatType, who_ : GameCharacterID, characterFace_ : CharacterFace, optionalOption_ : OptionalOption?, animationOption_ : screenAnimation) {
+        text = text_
+        image = image_
+        type = type_
+        who = who_
+        characterFace = characterFace_
+        optionalOption = optionalOption_
+        animationOption = animationOption_
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        text = (try? values.decode(String.self, forKey: .text)) ?? ""
+        image = (try? values.decode(String.self, forKey: .image)) ?? ""
+        type = (try? values.decode(ChatType.self, forKey: .type)) ?? .onlyText
+        who = (try? values.decode(GameCharacterID.self, forKey: .who)) ?? .danhee
+        characterFace = (try? values.decode(CharacterFace.self, forKey: .characterFace)) ?? .basic
+        optionalOption = (try? values.decode(OptionalOption.self, forKey: .optionalOption))
+        animationOption = (try? values.decode(screenAnimation.self, forKey: .animationOption)) ?? .none
+    }
 }
 
 struct OptionalOption: Codable {
@@ -457,17 +482,27 @@ struct OptionalOption: Codable {
     let gameCharacterToUnlock: GameCharacterID?
     let caseToUnlock: NoteCaseID?
     let albumImageToUnlock: AlbumImageID?
-//    let checkPointToUnlock: CheckPointID?
+    let checkPointToUnlock: CheckPointID?
     
-//    init(from decoder: Decoder) throws {
-//        let values = try decoder.container(keyedBy: CodingKeys.self)
-//        achievementToUnlock = (try? values.decode(AchievementID.self, forKey: .achievementToUnlock)) ?? .none
-//        infomationToUnlock = (try? values.decode(InfomationID.self, forKey: .infomationToUnlock)) ?? .none
-//        gameCharacterToUnlock = (try? values.decode(GameCharacterID.self, forKey: .gameCharacterToUnlock)) ?? .none
-//        caseToUnlock = (try? values.decode(NoteCaseID.self, forKey: .caseToUnlock)) ?? .none
-//        albumImageToUnlock = (try? values.decode(AlbumImageID.self, forKey: .albumImageToUnlock)) ?? .none
-//        checkPointToUnlock = (try? values.decode(CheckPointID.self, forKey: .checkPointToUnlock)) ?? .none
-//    }
+    init(achieve : AchievementID?, inform : InfomationID?, gamecharacter : GameCharacterID?, cases : NoteCaseID?, album : AlbumImageID?, check : CheckPointID?) {
+        achievementToUnlock = achieve
+        infomationToUnlock = inform
+        gameCharacterToUnlock = gamecharacter
+        caseToUnlock = cases
+        albumImageToUnlock = album
+        checkPointToUnlock = check
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+    
+        achievementToUnlock = (try? values.decode(AchievementID.self, forKey: .achievementToUnlock)) ?? .none
+        infomationToUnlock = (try? values.decode(InfomationID.self, forKey: .infomationToUnlock)) ?? .none
+        gameCharacterToUnlock = (try? values.decode(GameCharacterID.self, forKey: .gameCharacterToUnlock)) ?? .none
+        caseToUnlock = (try? values.decode(NoteCaseID.self, forKey: .caseToUnlock)) ?? .none
+        albumImageToUnlock = (try? values.decode(AlbumImageID.self, forKey: .albumImageToUnlock)) ?? .none
+        checkPointToUnlock = (try? values.decode(CheckPointID.self, forKey: .checkPointToUnlock)) ?? .none
+    }
 }
 
 //선택지 누르면 변경될 호감도
@@ -485,6 +520,27 @@ struct Choice: Codable {
     let characterFace : CharacterFace
     let nextTextIndex: String
     let optionalOption: OptionalOption?
+
+    init(text_ : String, chatType_ : ChatType, characterFace_ : CharacterFace, nextTextIndex_ : String,optionalOption_ : OptionalOption?) {
+        text = text_
+        chatType = chatType_
+        characterFace = characterFace_
+        optionalOption = optionalOption_
+        nextTextIndex = nextTextIndex_
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        text = (try? values.decode(String.self, forKey: .text)) ?? ""
+        chatType = (try? values.decode(ChatType.self, forKey: .chatType)) ?? .onlyText
+        characterFace = (try? values.decode(CharacterFace.self, forKey: .characterFace)) ?? .basic
+        nextTextIndex = (try? values.decode(String.self, forKey: .nextTextIndex)) ?? "001"
+        optionalOption = (try? values.decode(OptionalOption.self, forKey: .optionalOption))
+    }
+    
+
+
 }
 
 enum  screenAnimation: String, Codable {

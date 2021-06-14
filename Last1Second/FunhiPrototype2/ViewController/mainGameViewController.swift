@@ -154,7 +154,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
             
-                player.currentChatArray.append(Chat(text: currentBlockOfDay().choices[indexPath.row].text, image: "", type: currentBlockOfDay().choices[indexPath.row].chatType, who: .danhee, characterFace: currentBlockOfDay().choices[indexPath.row].characterFace, optionalOption: currentBlockOfDay().choices[indexPath.row].optionalOption, animationOption: .none))
+            player.currentChatArray.append(Chat(text_: currentBlockOfDay().choices[indexPath.row].text, image_: "", type_: currentBlockOfDay().choices[indexPath.row].chatType, who_: .danhee, characterFace_: currentBlockOfDay().choices[indexPath.row].characterFace, optionalOption_: currentBlockOfDay().choices[indexPath.row].optionalOption, animationOption_: .none))
 
                 mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
             print("현재 ChatId : \(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex), 선택한 선택지 : \(currentBlockOfDay().choices[indexPath.row])")
