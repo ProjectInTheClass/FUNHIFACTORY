@@ -61,10 +61,10 @@ class ChapterCoverViewController: UIViewController {
         animateCover()
     }
     func animateCover() {
-        backgroundImageView.image = UIImage(named: currentDay().episodeCoverImage)
-        yearLabel.text = "\(currentDay().episodeYear)년"
-        chapterNameLabel.text = currentDay().episodePlace
-        descriptionLabel.text = currentDay().episodeDesciption
+        backgroundImageView.image = UIImage(named: currentEpisode().episodeCoverImage)
+        yearLabel.text = "\(currentEpisode().episodeYear)년"
+        chapterNameLabel.text = currentEpisode().episodePlace
+        descriptionLabel.text = currentEpisode().episodeDesciption
         closeCoverButton.isHidden = true
         
         yearLabel.alpha = 0

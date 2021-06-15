@@ -18,7 +18,7 @@ extension mainGameViewController {
 
     //mainGame에서 currentChat 정보 읽어서 알맞는 주인공 업적 해금하기
     func checkAchievementInChoice(choiceIndex: Int) {
-        let currentChoice = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices[choiceIndex]
+        let currentChoice = currentEpisode().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices[choiceIndex]
         guard let currentChoiceOptionalOption = currentChoice.optionalOption else {
             return
         }
@@ -40,19 +40,19 @@ extension mainGameViewController {
     //mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 등장인물 해금하기
     func checkGameCharacterInChoice(choiceIndex: Int) {
         
-        let currentChoice = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices[choiceIndex]
+        let currentChoice = currentEpisode().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices[choiceIndex]
         guard let currentChoiceOptionalOption = currentChoice.optionalOption else {
             return
         }
         let currentChatGameCharacter = currentChoiceOptionalOption.gameCharacterToUnlock
         
         if let currentChatGameCharacter = currentChatGameCharacter {
-            for gameCharacter in currentDay().currentCharacterNote.enumerated() {
+            for gameCharacter in currentEpisode().currentCharacterNote.enumerated() {
                 if gameCharacter.element.name == currentChatGameCharacter.info().name {
-                    currentDay().currentCharacterNote[gameCharacter.offset].isLocked = false
-                    print("캐릭터 '\(currentDay().currentCharacterNote[gameCharacter.offset].isLocked)' 해금됨")
+                    currentEpisode().currentCharacterNote[gameCharacter.offset].isLocked = false
+                    print("캐릭터 '\(currentEpisode().currentCharacterNote[gameCharacter.offset].isLocked)' 해금됨")
                     buttonAlertOn(input: 0)
-                    let gameCharacterPopupInfo = ("수첩 - 인물", currentDay().currentCharacterNote[gameCharacter.offset].name )
+                    let gameCharacterPopupInfo = ("수첩 - 인물", currentEpisode().currentCharacterNote[gameCharacter.offset].name )
                     notePopupItemArray.append(gameCharacterPopupInfo)
                 }
             }
@@ -62,19 +62,19 @@ extension mainGameViewController {
     //mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 사건 금하기
     func checkCaseInChoice(choiceIndex: Int) {
         
-        let currentChoice = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices[choiceIndex]
+        let currentChoice = currentEpisode().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices[choiceIndex]
         guard let currentChoiceOptionalOption = currentChoice.optionalOption else {
             return
         }
         let currentChatCase = currentChoiceOptionalOption.caseToUnlock
         
         if currentChatCase != nil {
-            for caseNote in currentDay().currentCaseNote.enumerated() {
+            for caseNote in currentEpisode().currentCaseNote.enumerated() {
                 if caseNote.element.id == currentChatCase {
-                    currentDay().currentCaseNote[caseNote.offset].isLocked = false
-                    print("사건 노트 '\(currentDay().currentCaseNote[caseNote.offset].isLocked)' 해금됨")
+                    currentEpisode().currentCaseNote[caseNote.offset].isLocked = false
+                    print("사건 노트 '\(currentEpisode().currentCaseNote[caseNote.offset].isLocked)' 해금됨")
                     buttonAlertOn(input: 0)
-                    let casePopupInfo = ("수첩 - 사건", currentDay().currentCaseNote[caseNote.offset].title )
+                    let casePopupInfo = ("수첩 - 사건", currentEpisode().currentCaseNote[caseNote.offset].title )
                     notePopupItemArray.append(casePopupInfo)
                 }
             }
@@ -84,7 +84,7 @@ extension mainGameViewController {
     //mainGame에서 currentChat 정보 읽어서 알맞는 등장인물의 infomation 해금하기
     func checkgameCharacterInfomationInChoice(choiceIndex: Int) {
         
-        let currentChoice = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices[choiceIndex]
+        let currentChoice = currentEpisode().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices[choiceIndex]
         guard let currentChoiceOptionalOption = currentChoice.optionalOption else {
             return
         }
@@ -92,13 +92,13 @@ extension mainGameViewController {
         let currentChatInfomation = currentChoiceOptionalOption.infomationToUnlock
         
         if currentChatInfomation != nil {
-            for gameCharacter in currentDay().currentCharacterNote.enumerated() {
+            for gameCharacter in currentEpisode().currentCharacterNote.enumerated() {
                 for infomation in gameCharacter.element.infomation.enumerated() {
                     if infomation.element.infomationID == currentChatInfomation {
-                        currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked = false
-                        print("'\(currentDay().currentCharacterNote[gameCharacter.offset].isLocked)' 정보 해금됨")
+                        currentEpisode().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked = false
+                        print("'\(currentEpisode().currentCharacterNote[gameCharacter.offset].isLocked)' 정보 해금됨")
                         buttonAlertOn(input: 0)
-                        let gameCharacterInfomationInfo = ("수첩 - 인물 정보", currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].text )
+                        let gameCharacterInfomationInfo = ("수첩 - 인물 정보", currentEpisode().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].text )
                         notePopupItemArray.append(gameCharacterInfomationInfo)
                     }
                 }
@@ -109,19 +109,19 @@ extension mainGameViewController {
     //mainGame에서 currentChat 정보 읽어서 알맞은 앨범 이미지 해금하기
     func checkAlbumImageInChoice(choiceIndex: Int) {
         
-        let currentChoice = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices[choiceIndex]
+        let currentChoice = currentEpisode().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices[choiceIndex]
         guard let currentChoiceOptionalOption = currentChoice.optionalOption else {
             return
         }
         let currentChatAlbumImage = currentChoiceOptionalOption.albumImageToUnlock
         
         if currentChatAlbumImage != nil {
-            for albumImage in currentDay().currentAlbumImages.enumerated() {
+            for albumImage in currentEpisode().currentAlbumImages.enumerated() {
                 if albumImage.element.id == currentChatAlbumImage {
-                    currentDay().currentAlbumImages[albumImage.offset].isLocked = false
-                    print("'\(currentDay().currentAlbumImages[albumImage.offset].isLocked)' 앨범 이미지 해금됨")
+                    currentEpisode().currentAlbumImages[albumImage.offset].isLocked = false
+                    print("'\(currentEpisode().currentAlbumImages[albumImage.offset].isLocked)' 앨범 이미지 해금됨")
                     buttonAlertOn(input: 1)
-                    let albumImageInfo = ("앨범", currentDay().currentAlbumImages[albumImage.offset].title )
+                    let albumImageInfo = ("앨범", currentEpisode().currentAlbumImages[albumImage.offset].title )
                     notePopupItemArray.append(albumImageInfo)
                 }
             }
@@ -136,7 +136,7 @@ extension mainGameViewController {
         func checkAchievementInChat() {
            
             
-            let currentChat = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber]
+            let currentChat = currentEpisode().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber]
             guard let currentChatOptionalOption = currentChat.optionalOption else {
                 return
             }
@@ -162,19 +162,19 @@ extension mainGameViewController {
     //mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 등장인물 해금하기
     func checkGameCharacterInChat() {
      
-        let currentChat = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber]
+        let currentChat = currentEpisode().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber]
         guard let currentChatOptionalOption = currentChat.optionalOption else {
             return
         }
         let currentChatGameCharacter = currentChatOptionalOption.gameCharacterToUnlock
         
         if let currentChatGameCharacter = currentChatGameCharacter {
-            for gameCharacter in currentDay().currentCharacterNote.enumerated() {
+            for gameCharacter in currentEpisode().currentCharacterNote.enumerated() {
                 if gameCharacter.element.name == currentChatGameCharacter.info().name {
-                    currentDay().currentCharacterNote[gameCharacter.offset].isLocked = false
-                    print("캐릭터 '\(currentDay().currentCharacterNote[gameCharacter.offset].isLocked)' 해금됨")
+                    currentEpisode().currentCharacterNote[gameCharacter.offset].isLocked = false
+                    print("캐릭터 '\(currentEpisode().currentCharacterNote[gameCharacter.offset].isLocked)' 해금됨")
                     buttonAlertOn(input: 0)
-                    let gameCharacterPopupInfo = ("수첩 - 인물", currentDay().currentCharacterNote[gameCharacter.offset].name )
+                    let gameCharacterPopupInfo = ("수첩 - 인물", currentEpisode().currentCharacterNote[gameCharacter.offset].name )
                     notePopupItemArray.append(gameCharacterPopupInfo)
                 }
             }
@@ -183,18 +183,18 @@ extension mainGameViewController {
 
     //mainGame에서 currentChat 정보 읽어서 알맞는 수첩 속 사건 금하기
     func checkCaseInChat() {
-        let currentChat = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber]
+        let currentChat = currentEpisode().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber]
         guard let currentChatOptionalOption = currentChat.optionalOption else {
             return
         }
         let currentChatCase = currentChatOptionalOption.caseToUnlock
         if currentChatCase != nil {
-            for caseNote in currentDay().currentCaseNote.enumerated() {
+            for caseNote in currentEpisode().currentCaseNote.enumerated() {
                 if caseNote.element.id == currentChatCase {
-                    currentDay().currentCaseNote[caseNote.offset].isLocked = false
-                    print("사건 노트 '\(currentDay().currentCaseNote[caseNote.offset].isLocked)' 해금됨")
+                    currentEpisode().currentCaseNote[caseNote.offset].isLocked = false
+                    print("사건 노트 '\(currentEpisode().currentCaseNote[caseNote.offset].isLocked)' 해금됨")
                     buttonAlertOn(input: 0)
-                    let casePopupInfo = ("수첩 - 사건", currentDay().currentCaseNote[caseNote.offset].title )
+                    let casePopupInfo = ("수첩 - 사건", currentEpisode().currentCaseNote[caseNote.offset].title )
                     notePopupItemArray.append(casePopupInfo)
                 }
             }
@@ -203,19 +203,19 @@ extension mainGameViewController {
 
     //mainGame에서 currentChat 정보 읽어서 알맞는 등장인물의 infomation 해금하기
     func checkgameCharacterInfomationInChat() {
-        let currentChat = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber]
+        let currentChat = currentEpisode().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber]
         guard let currentChatOptionalOption = currentChat.optionalOption else {
             return
         }
         let currentChatInfomation = currentChatOptionalOption.infomationToUnlock
         if currentChatInfomation != nil {
-            for gameCharacter in currentDay().currentCharacterNote.enumerated() {
+            for gameCharacter in currentEpisode().currentCharacterNote.enumerated() {
                 for infomation in gameCharacter.element.infomation.enumerated() {
                     if infomation.element.infomationID == currentChatInfomation {
-                        currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked = false
-                        print("'\(currentDay().currentCharacterNote[gameCharacter.offset].isLocked)' 정보 해금됨")
+                        currentEpisode().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked = false
+                        print("'\(currentEpisode().currentCharacterNote[gameCharacter.offset].isLocked)' 정보 해금됨")
                         buttonAlertOn(input: 0)
-                        let gameCharacterInfomationInfo = ("수첩 - 인물 정보", currentDay().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].text )
+                        let gameCharacterInfomationInfo = ("수첩 - 인물 정보", currentEpisode().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].text )
                         notePopupItemArray.append(gameCharacterInfomationInfo)
 
                     }
@@ -226,7 +226,7 @@ extension mainGameViewController {
 
     //mainGame에서 currentChat 정보 읽어서 알맞은 앨범 이미지 해금하기
     func checkAlbumImageInChat() {
-        let currentChat = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber]
+        let currentChat = currentEpisode().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber]
         guard let currentChatOptionalOption = currentChat.optionalOption else {
             return
         }
@@ -234,12 +234,12 @@ extension mainGameViewController {
         
         if currentChatAlbumImage != nil {
        
-            for albumImage in currentDay().currentAlbumImages.enumerated() {
+            for albumImage in currentEpisode().currentAlbumImages.enumerated() {
                 if albumImage.element.id == currentChatAlbumImage {
-                    currentDay().currentAlbumImages[albumImage.offset].isLocked = false
-                    print("'\(currentDay().currentAlbumImages[albumImage.offset].isLocked)' 앨범 이미지 해금됨")
+                    currentEpisode().currentAlbumImages[albumImage.offset].isLocked = false
+                    print("'\(currentEpisode().currentAlbumImages[albumImage.offset].isLocked)' 앨범 이미지 해금됨")
                     buttonAlertOn(input: 1)
-                    let albumImageInfo = ("앨범", currentDay().currentAlbumImages[albumImage.offset].title )
+                    let albumImageInfo = ("앨범", currentEpisode().currentAlbumImages[albumImage.offset].title )
                     notePopupItemArray.append(albumImageInfo)
             
                 }
@@ -250,7 +250,7 @@ extension mainGameViewController {
 
 //mainGame에서 currentChat 정보 읽어서 알맞은 체크포인트 해금하기
 //func checkCheckPointInChat() {
-//    let currentChat = currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber]
+//    let currentChat = currentEpisode().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber]
 //    guard let currentChatOptionalOption = currentChat.optionalOption else {
 //        return
 //    }
@@ -258,7 +258,7 @@ extension mainGameViewController {
 //
 //    if currentChatCheckPoint != nil {
 //
-//        for checkPointSection in currentDay().timelineCheckPoint.enumerated() {
+//        for checkPointSection in currentEpisode().timelineCheckPoint.enumerated() {
 //            for checkPoint in checkPointSection.element.enumerated() {
 //                if checkPoint.element.id == currentChatCheckPoint {
 //                    player.currentEpisodes[player.dayIndex].timelineCheckPoint[checkPointSection.offset][checkPoint.offset].isLocked = false

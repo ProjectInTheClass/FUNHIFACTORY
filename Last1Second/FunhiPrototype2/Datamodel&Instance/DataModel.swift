@@ -178,15 +178,15 @@ var xImage: String {
 // player.currentEpisodes에서 현재 플레이중인 episode 골라내는 인덱스. 현재 에피소드 이름으로 식별함.
 var currentEpIndex: Int {
     get {
-        if currentDay().episodePlace == "프롤로그" {
+        if currentEpisode().episodePlace == "프롤로그" {
             return 0
-        } else if currentDay().episodePlace == "임진왜란" {
+        } else if currentEpisode().episodePlace == "임진왜란" {
             return 1
-        } else if currentDay().episodePlace == "인조반정" {
+        } else if currentEpisode().episodePlace == "인조반정" {
             return 2
-        } else if currentDay().episodePlace == "3.1 운동" {
+        } else if currentEpisode().episodePlace == "3.1 운동" {
             return 3
-        } else if currentDay().episodePlace == "내 생일" {
+        } else if currentEpisode().episodePlace == "내 생일" {
             return 4
         } else {
             print("currentEpIndex 없음. 수정 필요")
@@ -406,23 +406,23 @@ struct User: Codable {
     var indexNumber = 0 
 }
 
-func currentDay() -> Episode{
+func currentEpisode() -> Episode{
     return player.currentEpisodes[strToIndex(str: player.dayId)]
 }
 func currentBlockOfDay() -> BlockOfDayEpisode{
-    return currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!
+    return currentEpisode().storyBlocks[currentEpisode().currentStoryBlockIndex]!
 }
 func currentChatAmount() -> Int{
     return currentBlockOfDay().chats.count
 }
 func currentChatType() -> ChatType{
-    return currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber].type
+    return currentEpisode().storyBlocks[currentEpisode().currentStoryBlockIndex]!.chats[player.indexNumber].type
 }
 
 // 요런 것도 될라나..🧐
 //var curreentChatType: ChatType {
 //    get {
-//        return currentDay().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber].type
+//        return currentEpisode().storyBlocks[currentEpisode().currentStoryBlockIndex]!.chats[player.indexNumber].type
 //    }
 //}
 //------------------------------------스토리------------------------------------

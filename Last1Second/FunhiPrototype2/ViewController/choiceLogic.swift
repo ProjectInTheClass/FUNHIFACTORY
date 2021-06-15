@@ -38,9 +38,7 @@ extension mainGameViewController{
               }
             player.indexNumber = 0
             player.currentChatArray.removeAll()
-//            mainGameTableView.reloadData()
-//            let storyBoard=storyboard?.instantiateViewController(withIdentifier: "Ending")
-//            storyBoard?.modalPresentationStyle = .fullScreen
+            mainGameTableView.reloadData()
             performSegue(withIdentifier: "badEnding", sender: nil)
             return
         }

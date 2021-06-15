@@ -19,9 +19,9 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         player.dayId = prologueChapter.episodeID
-        episodeYearLabel.text = "\(currentDay().episodeYear)년"
-        episodeNameLabel.text = currentDay().episodePlace
-        episodeDescriptionLabel.text = currentDay().episodeDesciption
+        episodeYearLabel.text = "\(currentEpisode().episodeYear)년"
+        episodeNameLabel.text = currentEpisode().episodePlace
+        episodeDescriptionLabel.text = currentEpisode().episodeDesciption
         episodeDescriptionLabel.setLineSpacing(lineSpacing: 16)
         episodeDescriptionLabel.textAlignment = .center
         
