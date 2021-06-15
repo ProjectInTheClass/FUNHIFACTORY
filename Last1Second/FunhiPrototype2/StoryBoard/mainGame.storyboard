@@ -13,7 +13,7 @@
         <array key="EBS훈민정음SB.otf">
             <string>EBSHunminjeongeumSB</string>
         </array>
-        <array key="NEXON Lv2 Gothic Bold.ttf">
+        <array key="NEXON Lv2 Gothic Bold 2.ttf">
             <string>NEXONLv2GothicBold</string>
         </array>
         <array key="NanumSquareBold.ttf">
@@ -2406,9 +2406,12 @@
                         <outletCollection property="popupButtonShadows" destination="DZP-6Q-SQa" collectionClass="NSMutableArray" id="yX9-yB-vAQ"/>
                         <outletCollection property="popupButtons" destination="nUO-m2-oS2" collectionClass="NSMutableArray" id="Upj-Tt-nLh"/>
                         <outletCollection property="popupButtonShadows" destination="Lsp-eI-AT4" collectionClass="NSMutableArray" id="36d-AK-oJA"/>
+                        <segue destination="v7i-Z6-t2C" kind="show" identifier="endingToTimeline" id="ka3-Pt-7qY"/>
+                        <segue destination="1za-tp-XJ1" kind="unwind" identifier="unwindToMain" unwindAction="unwindToMainGame:" id="VW5-K3-NxL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xqt-U3-R4W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="1za-tp-XJ1" userLabel="Exit" sceneMemberID="exit"/>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U6Y-KD-kEG">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
@@ -2433,6 +2436,9 @@
                                                             <integer key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="popupContinue:" destination="o6w-Ff-HrJ" eventType="touchUpInside" id="EIa-07-ejh"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.4431372549" green="0.56078431370000004" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -2463,6 +2469,9 @@
                                                             <integer key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="popupCancel:" destination="o6w-Ff-HrJ" eventType="touchUpInside" id="wOg-ge-TFl"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.4431372549" green="0.56078431370000004" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -2561,7 +2570,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="4368" y="67"/>
+            <point key="canvasLocation" x="4449" y="80"/>
         </scene>
         <!--home-->
         <scene sceneID="V1y-tG-0Zc">
@@ -2574,6 +2583,9 @@
             <point key="canvasLocation" x="3356" y="-1093"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ka3-Pt-7qY"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="2020map" width="742" height="1294"/>
         <image name="X icon" width="306.5" height="306.5"/>

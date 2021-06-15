@@ -43,15 +43,15 @@ class endingViewController: UIViewController {
     
     func endingDesign()
     {
-        let ending = checkEnding(id: player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)
+        let ending = checkEnding(id: currentEpisode().currentStoryBlockIndex)
         
-        backgroundImageView.image = UIImage(named: "\(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)Background")
-        gameOverImageView.image = UIImage(named: "\(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)GameOver")
-        sandglassImageView.image = UIImage(named: "\(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)Sandglass")
-        firstButtonImageView.image = UIImage(named: "\(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)1stButton")
-        secondButtonImageView.image = UIImage(named: "\(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)2ndButton")
-        thirdButtonImageView.image = UIImage(named: "\(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)3rdButton")
-        yearLabel.text = "\(player.currentEpisodes[strToIndex(str: player.dayId)].episodeYear)년"
+        backgroundImageView.image = UIImage(named: "\(currentEpisode().currentStoryBlockIndex)Background")
+        gameOverImageView.image = UIImage(named: "\(currentEpisode().currentStoryBlockIndex)GameOver")
+        sandglassImageView.image = UIImage(named: "\(currentEpisode().currentStoryBlockIndex)Sandglass")
+        firstButtonImageView.image = UIImage(named: "\(currentEpisode().currentStoryBlockIndex)1stButton")
+        secondButtonImageView.image = UIImage(named: "\(currentEpisode().currentStoryBlockIndex)2ndButton")
+        thirdButtonImageView.image = UIImage(named: "\(currentEpisode().currentStoryBlockIndex)3rdButton")
+        yearLabel.text = "\(currentEpisode().episodeYear)년"
         descriptionLabel.text = ending.name
         scriptLabel.text = ending.comment
         for target in insideButtonViews {
@@ -75,16 +75,36 @@ class endingViewController: UIViewController {
         buttonInput = 0
         self.view!.addSubview(popupView)
         popupView.fullScreen(to: self.view!)
+        popupLabel.text = "현재 \(currentEpisode().episodeYear)년 에피소드를\n처음부터 진행합니다."
     }
     @IBAction func restartPrologue(_ sender: Any) {
         buttonInput = 1
         self.view!.addSubview(popupView)
         popupView.fullScreen(to: self.view!)
+        popupLabel.text = "프롤로그부터 다시 재시작하여\n이전 사건 기록이 사라집니다."
     }
     @IBAction func goToTimeLine(_ sender: Any) {
         buttonInput = 2
         self.view!.addSubview(popupView)
         popupView.fullScreen(to: self.view!)
+        popupLabel.text = "지금까지 진행한\n사건 타임라인을 보러 갑니다."
     }
-    
+    @IBAction func popupContinue(_ sender: Any) {
+        switch buttonInput {
+        case 0:
+            player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = "001"
+            performSegue(withIdentifier: "unwindToMain", sender: nil)
+        case 1:
+            player.dayId = "prologue"
+            player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = "001"
+            performSegue(withIdentifier: "unwindToMain", sender: nil)
+        case 2:
+            performSegue(withIdentifier: "endingToTimeline", sender: nil)
+        default:
+            return
+        }
+    }
+    @IBAction func popupCancel(_ sender: Any) {
+        popupView.removeFromSuperview()
+    }
 }
