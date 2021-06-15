@@ -141,7 +141,7 @@ class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITable
         hwiryeongProfileImageView.layer.cornerRadius = hwiryeongProfileImageView.frame.width/2
         hwiryeongDescriptionLabel.font = UIFont(name: "GyeonggiBatangB", size: 17)
         hwiryeongDescriptionLabel.setLineSpacing(lineSpacing: 10)
-        
+        hwiryeongDescriptionLabel.textAlignment = .center
         hwiryeongLabel.font = UIFont(name: "NanumSquareEB", size: 29)
     }
 }

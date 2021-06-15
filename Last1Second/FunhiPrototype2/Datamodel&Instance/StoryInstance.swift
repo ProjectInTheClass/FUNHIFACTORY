@@ -107,7 +107,7 @@ var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear
     ],isLocked: false)
 ], currentCaseNote: [NoteCase(id: .case201, title: "[인조반정]", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "1623년 4월 11일에 일어난 사건이다. 조선의 3대 반정 중 하나로, 서인 세력이 광해군과 대북파를 몰아내고 인조인 능양군을 왕위에 앉혔다.", isLocked: false) ], currentAlbumImages: [
     
-        AlbumImage(id: .chapter2case1, image: "sampleAlbumImage", title: "[반역을 꾀하는 자들]", description: "내 앞에 있는 사람들은 회의를 하는 것처럼 보인다. 그런데 그 내용이...반정을 일으킨다는 것이라니. 내가 반역자의 한 명이 될 수도 있다는 건가?", isLocked: false),
+        AlbumImage(id: .chapter2case1, image: "prologueAlbumImage1", title: "[반역을 꾀하는 자들]", description: "내 앞에 있는 사람들은 회의를 하는 것처럼 보인다. 그런데 그 내용이...반정을 일으킨다는 것이라니. 내가 반역자의 한 명이 될 수도 있다는 건가?", isLocked: false),
         AlbumImage(id: .chapter2case2, image: "case 2 image 2", title: "[반정의 지름길]", description: "나도 모르게 뇌물을 전해버렸어...이걸 전해주면 이번 사건은 틀림없이 실패할 텐데.", isLocked: false),
         AlbumImage(id: .chapter2case3, image: "case 2 image 3", title: "[반복되는 역사]", description: "불길이 건물을 덮치고 그에도 부족했는지 하늘까지 온통 검게 변했다. 내가....내가 막았으면 됐는데... 도대체 내가 무슨 짓을 한 거야? 분명...분명 좀 전까지만 해도 황홀한 풍경이었는데... 이 모습도 어떻게 보면 황홀한 광경이라고 할 수 있을까..", isLocked: true) ], timelineCheckPoint: [
         
