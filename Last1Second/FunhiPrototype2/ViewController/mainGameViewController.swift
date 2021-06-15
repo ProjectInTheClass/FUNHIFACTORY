@@ -400,11 +400,11 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         notePopupViewTitle.text = notePopupItemArray[0].a
         notePopupViewDescriptionLabel.text = notePopupItemArray[0].b
 
-        UIView.animate(withDuration: 0.7, delay: 2, usingSpringWithDamping: 4, initialSpringVelocity: 5, options: .curveEaseInOut) {
+        UIView.animate(withDuration: 0.7, delay: 1, usingSpringWithDamping: 4, initialSpringVelocity: 5, options: .curveEaseInOut) {
     
             self.notePopupView.transform = CGAffineTransform(translationX: 0, y: 200)
         } completion: { (Bool) in
-            UIView.animate(withDuration: 0.7, delay: 1, options: .allowAnimatedContent) {
+            UIView.animate(withDuration: 0.7, delay: 2, options: .allowAnimatedContent) {
                 self.notePopupView.transform = CGAffineTransform.identity
                
             } completion: { (Bool) in

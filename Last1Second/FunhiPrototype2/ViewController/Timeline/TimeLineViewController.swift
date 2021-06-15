@@ -450,6 +450,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         
         guard let currentEpisode = selectedEpisode else { return }
         self.view.addSubview(selectedEpisodePopup)
+        
         checkPointTableView.reloadData()
         selectedEpisodeYearLabel.text = "\(currentEpisode.episodeYear)년 \(currentEpisode.episodePlace)"
         selectedEpisodeDescriptionLabel.text = currentEpisode.episodeDesciption
@@ -482,6 +483,14 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
 
        // selectedEpisodeYearLabel.font = UIFont(name: "NEXONLv2GothicB", size: 24)
         
+        selectedEpisodePopup.center = self.view.center
+        selectedEpisodePopup.bounds = self.view.bounds
+        
+        gettingStartPopup.center = self.view.center
+        gettingStartPopup.bounds = self.view.bounds
+        
+        thirdPopup.center = self.view.center
+        thirdPopup.bounds = self.view.bounds
         
         selectedEpisodeYearLabel.textAlignment = .center
         selectedEpisodePopupBox.layer.cornerRadius = 10

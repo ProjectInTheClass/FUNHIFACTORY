@@ -437,6 +437,7 @@ extension NoteViewController {
         backgroundView.bringSubviewToFront(blackView)
         
         //이미지뷰만 히든 풀고, 뷰들 정렬함. 텍스트뷰는 서서히 나타나는 애니메이션을 위해 알파 0으로 설정해둠.
+        blackView.bounds = self.view.bounds
         blackView.center = backgroundView.center
         popupView.isHidden = false
         popupView.alpha = 0
