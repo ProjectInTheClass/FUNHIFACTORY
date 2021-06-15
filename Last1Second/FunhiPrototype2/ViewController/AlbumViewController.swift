@@ -204,7 +204,7 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let button = pageButtons[currentNotePageInt]
         
         let currentPageButtonTitleColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        let currentPageButtonBackgroundColor = UIColor(red: 0.614, green: 0.71, blue: 0.796, alpha: 1)
+        let currentPageButtonBackgroundColor = UIColor(red: 157/255, green: 181/255, blue: 203/255, alpha: 1)
         let otherPageButtonTitledColor = UIColor(red: 0.109, green: 0.201, blue: 0.275, alpha: 1)
         let otherPageButtonBackgroundColor = UIColor(red: 0.341, green: 0.478, blue: 0.604, alpha: 1)
         
