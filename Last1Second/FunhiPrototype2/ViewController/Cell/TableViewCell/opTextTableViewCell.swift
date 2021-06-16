@@ -46,37 +46,7 @@ class opTextTableViewCell: UITableViewCell {
             profileNickname.isHidden = false
             profileImage.isHidden = false
         }
-        var face : String = normalProfile
-        if name == "휘령"{
-                switch mainProfile {
-                case .none: face = "none"
-                case .angry1: face = "hwiryeong angry 1"
-                case .angry2: face = "hwiryeong angry 2"
-                case .angry3: face = "hwiryeong angry 3"
-                case .angry4: face = "hwiryeong angry 4"
-                case .basic:   face = "hwiryeong basic"
-                case .basictalk: face = "hwiryeong basic talk"
-                case .cry1: face = " hwiryeong cry"
-                case .happy1:  face = "hwiryeong happy 1"
-                case .happy2:   face = "hwiryeong happy 2"
-                case .sad1:  face = "hwiryeong sad"
-                case .straight: face = "hwiryeong straight"
-                case .surprise1:   face = "hwiryeong surprise 1"
-                case .surprise2:   face = "hwiryeong surprise 2"
-                default : face = "none"
-                }
-        }
-        else if name == "투어 가이드"{
-                switch mainProfile {
-                case .none: face = "none"
-                case .basictalk: face = "guide basic talk"
-                case .basic: face = "guide basic"
-                case .happytalk: face = "guide happy talk"
-                case .happy1: face = "guide happy"
-                default : face = "none"
-            }
-        }
+        let face = findFaceImage(nickname: name, profile: mainProfile, normalProfile: normalProfile)
         profileImage.image = UIImage(named: face)
     }
-
 }
