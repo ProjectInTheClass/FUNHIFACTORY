@@ -225,7 +225,7 @@ class NoteCase: Codable{
 
 
 enum AchievementID: String,Codable {
-    case donhwamun,geumcheongyo,injeongjeon,cat,necklace,faith //프롤로그
+    case donhwamun,geumcheongyo,injeongjeon,cat,parents,necklace_0, liar, huijeongdang, huwon_garden //프롤로그
 }
 // 프라퍼티 설명: 업적 이름, 업적 이미지, id(업적 획득 로직에서 사용), 업적 잠금 여부
 struct Achievement: Codable {
@@ -239,40 +239,39 @@ struct Achievement: Codable {
 
 enum AlbumImageID: String,Codable{
 // case는 가독성 좋게 하나하나 만드는 게 좋다고 희종쌤께 피드백 들은 적 있음
-    case prologueCase1
-    case achievement1Locked
-    case chapter2case1
-    case chapter2case2
-    case chapter2case3
-
-    case donhwamun
-    case geumcheongyo
-    case injeongjeon
-    case necklace
-   
-
+    case donhwamun_with_danhee
+    case drawing_geumcheongyo
+    case drawing_injeongjeon
+    case prolog_danhee
+    case prolog_hwiryeong
+    case necklace_in_hand
+    case conference_hall
+    case bribe
+    case huijeongdang_fire
+    case huwon_garden_fire
     
     func info() -> AlbumImage{
         switch self {
-        case .donhwamun:
+        case .donhwamun_with_danhee:
                 return prologueChapter.currentAlbumImages[0]
-        case .geumcheongyo:
+        case .drawing_geumcheongyo:
                 return prologueChapter.currentAlbumImages[1]
-        case .injeongjeon:
+        case .drawing_injeongjeon:
                 return prologueChapter.currentAlbumImages[2]
-        case .necklace:
+        case .necklace_in_hand:
                 return prologueChapter.currentAlbumImages[3]
-        case .prologueCase1:
-            return chapter1.currentAlbumImages[0]
-        case .achievement1Locked:
-            return chapter1.currentAlbumImages[1]
-        case .chapter2case1:
+        case .prolog_danhee :
+                return prologueChapter.currentAlbumImages[4]
+        case .prolog_hwiryeong :
+                return prologueChapter.currentAlbumImages[5]
+        case .conference_hall:
                 return chapter2.currentAlbumImages[0]
-        case .chapter2case2:
+        case .bribe:
                 return chapter2.currentAlbumImages[1]
-        case .chapter2case3:
+        case .huijeongdang_fire:
                 return chapter2.currentAlbumImages[2]
-
+        case .huwon_garden_fire:
+            return chapter2.currentAlbumImages[3]
         }
         
     }
@@ -638,7 +637,7 @@ struct GameData {
 }
 
 enum CharacterFace: String, Codable{
-    case none,angry1,angry2,basic,cry1,cry2,happy1,happy2,happy3,sad,scared,straight,surprise1,surprise2
+    case none,angry1,angry2,angry3, angry4,basic,cry1,cry2,happy1,happy2,happy3,sad1,scared,straight,surprise1,surprise2,basictalk,cryangry1,cryangry2,thanks,danger,happytalk
 }
 
 var globalPopupOpen: Bool = false
