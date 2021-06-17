@@ -198,9 +198,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: "mp3")
           return
         }
-        
     }
     override func viewWillAppear(_ animated: Bool) {
+        closeChoiceBar()
         if isStartOfEpisode {
             isStartOfEpisode = false
             blackView.bounds = self.view.bounds
@@ -229,7 +229,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.choiceCollectionView.delegate = self
         self.choiceCollectionView.dataSource = self
         mainGameDesign()
-        //initialize()
+        mainGameTableView.reloadData()
         if let page = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]?.choices.count{
             initializePageControl(collectionView : choiceCollectionView, choiceBar : choiceBar, numberOfPages:page)
         }

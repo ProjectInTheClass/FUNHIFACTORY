@@ -77,7 +77,7 @@ timelineCheckPoint: [
          CheckPoint(id: .id203, name: "김상궁과의 만남", storyBlockIndex: "000", isLocked: false)],
         [CheckPoint(id: .id211, name: "거짓말", storyBlockIndex: "000", isLocked: true)],
         [CheckPoint(id: .id221, name: "휘령과의 대화", storyBlockIndex: "000", isLocked: true)]
-        ], currentStoryBlockIndex: "000")
+        ], currentStoryBlockIndex: "001")
 
 
 var chapter3 = Episode(episodeID: "1919", episodePlace: "선정전", episodeYear: 1803, episodeKingYear: "순조 3년", episodeShortDesciption: "왕의 나이가 너무 어려 대비가 대신 정치를 했다. 그 과정에서 한쪽 세력에만 힘을 실게 되고, 종교의 자유를 억압하게 되었다. 복수심을 가지고 있는 자가 이번 사건의 범인일지도.", episodeDesciption: "대한독립 만세",episodePlaceImage: "Daejojeon image", episodeCoverImage: "changdeokgung image sample", isCleared: false, chatHistory: [],storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "")
