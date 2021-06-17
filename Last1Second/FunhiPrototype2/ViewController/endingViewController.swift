@@ -99,6 +99,7 @@ class endingViewController: UIViewController {
             player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = "001"
             performSegue(withIdentifier: "unwindToMain", sender: nil)
         case 2:
+            popupView.removeFromSuperview()
             performSegue(withIdentifier: "endingToTimeline", sender: nil)
         default:
             return

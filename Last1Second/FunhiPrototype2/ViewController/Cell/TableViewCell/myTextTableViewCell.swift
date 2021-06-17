@@ -33,24 +33,7 @@ class myTextTableViewCell: UITableViewCell {
     func myTextCellUpdate(name:String,chat:String,profile:CharacterFace){
         profileNickname.text = name
         chatText.text = chat
-        var face : String {
-            switch profile {
-            case .none: return "none"
-            case .angry1: return "danhee angry face 1"
-            case .angry2: return "danhee angry face 2"
-            case .basic:   return "danhee basic face"
-            case .cry1: return " danhee cry face 1"
-            case .cry2: return " danhee cry face 2"
-            case .happy1:  return "danhee happy face 1"
-            case .happy2:   return "danhee happy face 2"
-            case .happy3:   return "danhee happy face 3"
-            case .sad:  return "danhee sad face"
-            case .scared:   return "danhee scared face"
-            case .straight: return "danhee straight face"
-            case .surprise1:   return "danhee surprise face 1"
-            case .surprise2:    return "danhee surprise face 2"
-            }
-        }
+        let face = findFaceImage(nickname: name, profile: profile, normalProfile: "none")
         if face == "none"{
             profileImage.isHidden = true
             profileNickname.isHidden = true

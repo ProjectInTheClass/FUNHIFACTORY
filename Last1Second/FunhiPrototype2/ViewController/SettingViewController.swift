@@ -41,11 +41,11 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         bgmSlider.maximumValue = 1.0
         effectMusicSlider.minimumValue = 0.0
         effectMusicSlider.maximumValue = 1.0
-        textSpeedSlider.minimumValue = 0.85
-        textSpeedSlider.maximumValue = 3.5
+//        textSpeedSlider.minimumValue = 0.8
+//        textSpeedSlider.maximumValue = 3.5
         bgmSlider.value = player.setting.bgmVolume
         effectMusicSlider.value = player.setting.effectVolume
-        textSpeedSlider.value = Float(player.setting.textSpeed)
+        textSpeedSlider.value = Float(3.5 - player.setting.textSpeed + 0.8)
         // Do any additional setup after loading the view.
         yesButton.layer.borderColor = UIColor(red: 0.396, green: 0.396, blue: 0.396, alpha: 1).cgColor
         noButton.layer.borderColor = UIColor(red: 0.396, green: 0.396, blue: 0.396, alpha: 1).cgColor
@@ -98,8 +98,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         print(bgmSlider.value)
     }
     @IBAction func textSpeedSliderTapped(_ sender: Any) {
-        player.setting.textSpeed = Double(textSpeedSlider.value)
-        print(textSpeedSlider.value)
+        player.setting.textSpeed = (3.5 - Double(textSpeedSlider.value) + 0.8)
     }
     @IBAction func initializeButtonTapped(_ sender: Any) {
         

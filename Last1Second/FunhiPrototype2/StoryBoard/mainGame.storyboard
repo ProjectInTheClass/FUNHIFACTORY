@@ -13,7 +13,7 @@
         <array key="EBS훈민정음SB.otf">
             <string>EBSHunminjeongeumSB</string>
         </array>
-        <array key="NEXON Lv2 Gothic Bold 2.ttf">
+        <array key="NEXON Lv2 Gothic Bold.ttf">
             <string>NEXONLv2GothicBold</string>
         </array>
         <array key="NanumSquareBold.ttf">
@@ -327,10 +327,17 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vcG-rO-XTH">
                                                             <rect key="frame" x="0.0" y="37" width="221.5" height="50"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상대가 말하는 텍스트입니다." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9s-VM-TCR">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9s-VM-TCR">
                                                                     <rect key="frame" x="17" y="16" width="187.5" height="18"/>
-                                                                    <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="16"/>
-                                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <attributedString key="attributedText">
+                                                                        <fragment content="상대가 말하는 텍스트입니다.">
+                                                                            <attributes>
+                                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                                <font key="NSFont" size="16" name="NanumSquareB"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -393,10 +400,17 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yXJ-tz-mM8">
                                                             <rect key="frame" x="0.0" y="37" width="266" height="50"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="자신이 말하는 텍스트입니다." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIU-Ib-hvX">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIU-Ib-hvX">
                                                                     <rect key="frame" x="17" y="16" width="236" height="18"/>
-                                                                    <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="16"/>
-                                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <attributedString key="attributedText">
+                                                                        <fragment content="자신이 말하는 텍스트입니다.">
+                                                                            <attributes>
+                                                                                <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <font key="NSFont" size="16" name="NanumSquareB"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -1617,8 +1631,8 @@
                         <outletCollection property="settingPropertyLabels" destination="kZ6-o2-URj" collectionClass="NSMutableArray" id="4nX-Sn-rcb"/>
                         <outletCollection property="settingPropertyLabels" destination="MF9-yJ-UMa" collectionClass="NSMutableArray" id="wvU-kV-0ma"/>
                         <outletCollection property="settingPropertyLabels" destination="Uhb-m7-kCR" collectionClass="NSMutableArray" id="Hfx-rx-alN"/>
-                        <segue destination="Y2P-of-vIP" kind="unwind" identifier="gotoCover" unwindAction="unwindToCover:" id="c6H-CE-xEI"/>
                         <segue destination="9Cd-47-cRm" kind="presentation" identifier="o" modalPresentationStyle="fullScreen" id="6rg-7f-5lN"/>
+                        <segue destination="Y2P-of-vIP" kind="unwind" identifier="gotoCover" unwindAction="unwindToCover:" id="WaN-6T-bIs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RwW-KZ-nCG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1694,7 +1708,6 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="initConfirmButtonTapped:" destination="huL-hd-yMs" eventType="touchUpInside" id="x37-v4-6Le"/>
-                                <action selector="yesButtonTapped:" destination="huL-hd-yMs" eventType="touchUpInside" id="d8M-px-oIC"/>
                             </connections>
                         </button>
                     </subviews>
@@ -2584,7 +2597,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ka3-Pt-7qY"/>
+        <segue reference="USe-dh-gZr"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="2020map" width="742" height="1294"/>

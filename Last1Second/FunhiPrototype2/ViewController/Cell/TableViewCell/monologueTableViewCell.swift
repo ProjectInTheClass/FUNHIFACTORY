@@ -25,24 +25,7 @@ class monologueTableViewCell: UITableViewCell {
     }
     func chatUpdate(nickname:String, profile:CharacterFace){
         name.text = nickname
-        var face : String {
-            switch profile {
-            case .none: return "none"
-            case .angry1: return "danhee angry face1"
-            case .angry2: return "danhee angryface2"
-            case .basic:   return "danhee basic face"
-            case .cry1: return " danhee cry face1"
-            case .cry2: return " danhee cry face2"
-            case .happy1:  return "danhee happy face1"
-            case .happy2:   return "danhee happy face2"
-            case .happy3:   return "danhee happy face3"
-            case .sad:  return "danhee sad face"
-            case .scared:   return "danhee scared face"
-            case .straight: return "danhee straight face"
-            case .surprise1:   return "danhee surprised face1"
-            case .surprise2:    return "danhee surprised face2"
-            }
-        }
+        let face = findFaceImage(nickname: nickname, profile: profile, normalProfile: "none")
         if face == "none"{
             profileImage.isHidden = true
             name.isHidden = true
