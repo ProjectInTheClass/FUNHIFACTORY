@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-//        loadFromFile()
+        loadFromFile()
         loadJson(fromURLString: prologueJsonURL) { (result) in
               switch result {
               case .success(let data):

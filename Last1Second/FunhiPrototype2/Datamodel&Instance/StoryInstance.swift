@@ -13,7 +13,7 @@ import UIKit
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
 
 
-var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현재", episodeYear: 2020, episodeKingYear: "현재 2020년", episodeShortDesciption: "누군가 나에게 내 하루를 바꿀 수 있는, 내 인생을 바꿀 수 있는 구원의 손길을 내밀어 준다면, 나는 그 손을....잡을 수 있을까?", episodeDesciption: "지루하고 따분한, 그저 우울하기만 한 내 인생은 변하긴 할까?\n이런 삶은 이제 그만하고 싶다.\n누군가 나에게 내 하루를 바꿀 수 있는, 내 인생을 바꿀 수 있는 구원의 손길을 내밀어 준다면,\n 나는 그 손을....잡을 수 있을까?", episodePlaceImage: "changdeokgung lllu image", episodeCoverImage: "changdeokgung image sample", isCleared: true, chatHistory: [], storyBlocks: [:], currentCharacterNote:
+var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현재", episodeYear: 2020, episodeKingYear: "현재 2020년", episodeShortDesciption: "누군가 나에게 내 하루를 바꿀 수 있는, 내 인생을 바꿀 수 있는 구원의 손길을 내밀어 준다면, 나는 그 손을....잡을 수 있을까?", episodeDesciption: "지루하고 따분한, 그저 우울하기만 한 내 인생은 변하긴 할까?\n이런 삶은 이제 그만하고 싶다.\n누군가 나에게 내 하루를 바꿀 수 있는, 내 인생을 바꿀 수 있는 구원의 손길을 내밀어 준다면,\n 나는 그 손을....잡을 수 있을까?", episodePlaceImage: "Donhwamun image", episodeCoverImage: "changdeokgung image sample", isCleared: true, chatHistory: [], storyBlocks: [:], currentCharacterNote:
     [GameCharacter(name: "이단희", profileImage: "danhee angry face 1", backGroundImage: "leedanheeBackground", description: "내 곁에 아무도 없다는 게 이젠 익숙해. 이런 내 삶이 바뀔 수 있을까?", infomation: [],isLocked: false),
      GameCharacter(name: "휘령", profileImage: "hwiryeong basic face", backGroundImage: "hwiryeong illu 1x", description: "네가 나의 마지막 희망이다. 네가 가진 그 1초가 나를, 이 세상을 바꾸는 법. 부디 이번엔 꼭 성공하길...", infomation: [Infomation(infomationID: .hwiryeong1, isLocked: false, text: "조선이 생겨났을 때부터 존재했다."), Infomation(infomationID: .hwiryeong2, isLocked: false, text: "휘령이 곧 조선. 하지만 큰 사건들을 겪고 나서 그는 힘을 잃게 되었다. 그 힘을 찾기 위해서 내가 필요하다고 한다."), Infomation(infomationID: .hwiryeong3, isLocked: true, text: "휘령은 남자이다."), Infomation(infomationID: .hwiryeong5, isLocked: true, text: "휘령은 휘령이다.")],isLocked: false),
      GameCharacter(name: "투어 가이드", profileImage: "tour guide", backGroundImage: "", description: "", infomation: [],isLocked: true),
@@ -87,7 +87,7 @@ currentCaseNote: [NoteCase(id: .case201, title: "[인조반정]", shortDescripti
     AlbumImage(id: .achievement1Locked, image: "achievement1Locked", title: "병사가 된 단희", description: "창덕궁을 구하기 위해 과거로 이동한 단희는 남자가 되어있었다.", isLocked: true)], timelineCheckPoint: [], currentStoryBlockIndex: "002")
 
 
-var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear: 1623, episodeKingYear: "광해 15년", episodeShortDesciption: "반란으로 왕이 바뀐 사건이다. 인조가 광해를 끌어내리고 왕 위에 오르던 과정에서 인정전을 제외한 모든 건물이 불에 타 버렸다. 반란이 성공하지 못하도록 하는 것이 이 사건의 실마리가 될 것이다.", episodeDesciption: "나는 현실로 돌아가야만 하는 사람이다.\n그런데 왜 자꾸 다른 마음을 품게 되는 거냐고!\n역사가 똑같이 흘러가게 냅두어서는 안 돼.\n안 되는 걸 너무 잘 아는데...\n정신 차리자.\n내가 할 선택은.....", episodePlaceImage: "Seonjeongjeon image", episodeCoverImage: "changdeokgung image sample", isCleared: true, chatHistory: [],storyBlocks: [:], currentCharacterNote: [
+var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear: 1623, episodeKingYear: "광해 15년", episodeShortDesciption: "반란으로 왕이 바뀐 사건이다.\n인조가 광해를 끌어내리고 왕 위에\n오르던 과정에서 인정전을 제외한\n모든 건물이 불에 타 버렸다.\n반란이 성공하지 못하도록 하는 것이\n이 사건의 실마리가 될 것이다.", episodeDesciption: "나는 현실로 돌아가야만 하는 사람이다.\n그런데 왜 자꾸 다른 마음을 품게 되는 거냐고!\n역사가 똑같이 흘러가게 냅두어서는 안 돼.\n안 되는 걸 너무 잘 아는데...\n정신 차리자.\n내가 할 선택은.....", episodePlaceImage: "Seonjeongjeon image", episodeCoverImage: "changdeokgung image sample", isCleared: true, chatHistory: [],storyBlocks: [:], currentCharacterNote: [
     
     GameCharacter(name: "주인공", profileImage: "", backGroundImage: "", description: "내가 부잣집 양반의 개인 사병이라고? 내가 모시는 양반이 반역자의 주요 인물이라니...들키지 않고 방해할 수 있을까?", infomation: [],isLocked: false),
     GameCharacter(name: "이귀", profileImage: "", backGroundImage: "", description: "", infomation: [
@@ -107,11 +107,11 @@ var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear
         Infomation(infomationID: .kimsanggung5, isLocked: false, text: "후궁이 되는 것을 거부하여 계속 상궁의 신분을 유지하였다. 그 덕에 자유롭게 궐 밖으로 돌아다닐 수 있어 다양한 정보를 확보할 수 있었다."),
         Infomation(infomationID: .kimsanggung6, isLocked: false, text: "광해군이 그녀를 아끼고 신뢰를 하면서 후궁보다 권세가 더 높았다.")
     ],isLocked: false)
-], currentCaseNote: [NoteCase(id: .case201, title: "[인조반정]", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "1623년 4월 11일에 일어난 사건이다. 조선의 3대 반정 중 하나로, 서인 세력이 광해군과 대북파를 몰아내고 인조인 능양군을 왕위에 앉혔다.", isLocked: false) ], currentAlbumImages: [
+], currentCaseNote: [NoteCase(id: .case201, title: "인조반정", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "1623년 4월 11일에 일어난 사건이다. 조선의 3대 반정 중 하나로, 서인 세력이 광해군과 대북파를 몰아내고 인조인 능양군을 왕위에 앉혔다.", isLocked: false) ], currentAlbumImages: [
     
-        AlbumImage(id: .chapter2case1, image: "prologueAlbumImage1", title: "[반역을 꾀하는 자들]", description: "내 앞에 있는 사람들은 회의를 하는 것처럼 보인다. 그런데 그 내용이...반정을 일으킨다는 것이라니. 내가 반역자의 한 명이 될 수도 있다는 건가?", isLocked: false),
-        AlbumImage(id: .chapter2case2, image: "case 2 image 2", title: "[반정의 지름길]", description: "나도 모르게 뇌물을 전해버렸어...이걸 전해주면 이번 사건은 틀림없이 실패할 텐데.", isLocked: false),
-        AlbumImage(id: .chapter2case3, image: "case 2 image 3", title: "[반복되는 역사]", description: "불길이 건물을 덮치고 그에도 부족했는지 하늘까지 온통 검게 변했다. 내가....내가 막았으면 됐는데... 도대체 내가 무슨 짓을 한 거야? 분명...분명 좀 전까지만 해도 황홀한 풍경이었는데... 이 모습도 어떻게 보면 황홀한 광경이라고 할 수 있을까..", isLocked: true) ], timelineCheckPoint: [
+        AlbumImage(id: .chapter2case1, image: "prologueAlbumImage1", title: "반역을 꾀하는 자들", description: "내 앞에 있는 사람들은 회의를 하는 것처럼 보인다. 그런데 그 내용이...반정을 일으킨다는 것이라니. 내가 반역자의 한 명이 될 수도 있다는 건가?", isLocked: false),
+        AlbumImage(id: .chapter2case2, image: "case 2 image 2", title: "반정의 지름길", description: "나도 모르게 뇌물을 전해버렸어...이걸 전해주면 이번 사건은 틀림없이 실패할 텐데.", isLocked: false),
+        AlbumImage(id: .chapter2case3, image: "case 2 image 3", title: "반복되는 역사", description: "불길이 건물을 덮치고 그에도 부족했는지 하늘까지 온통 검게 변했다. 내가....내가 막았으면 됐는데... 도대체 내가 무슨 짓을 한 거야? 분명...분명 좀 전까지만 해도 황홀한 풍경이었는데... 이 모습도 어떻게 보면 황홀한 광경이라고 할 수 있을까..", isLocked: true) ], timelineCheckPoint: [
         
         [CheckPoint(id: .id201, name: "처음부터", storyBlockIndex: "000", isLocked: false),
          CheckPoint(id: .id202, name: "반란의 회의장", storyBlockIndex: "000", isLocked: false),

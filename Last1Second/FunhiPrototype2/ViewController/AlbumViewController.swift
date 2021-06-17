@@ -113,14 +113,14 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
         albumBackgroundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         
         
-        buttonDesign()
+        
         designPopup()
         
     }
     override func viewWillAppear(_ animated: Bool) {
         
         updatePage(newPageNumber: 0)
-      
+        buttonDesign()
     }
     
     

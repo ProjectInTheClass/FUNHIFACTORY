@@ -37,21 +37,22 @@ class TitleCoverViewController: UIViewController {
     @IBAction func startAction(_ sender: Any) {
         
         testLabel.layer.removeAllAnimations()
-        if player.currentChatArray.isEmpty
-        {
-            if !player.currentEpisodes[0].isCleared //게임 처음 시작하는 거면
-            {
+        
+        let didntStartEpisode = player.currentChatArray.isEmpty
+        let didntStartPrologue = !player.currentEpisodes[0].isStarted
+        
+        if didntStartEpisode && didntStartPrologue {
                 player.dayId = player.currentEpisodes[0].episodeID
                 player.indexNumber = 0
                 player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = "001"
                 performSegue(withIdentifier: "fromCoverToChapterCover", sender: nil)
-            } else //새 에피 선택해야 하면
-            {
-                performSegue(withIdentifier: "goToSelectSelectSegue", sender: nil)
-            }
         }
-        else //에피 진행중이면
-        {
+        
+        if didntStartEpisode && !didntStartPrologue {
+            performSegue(withIdentifier: "goToSelectSelectSegue", sender: nil)
+        }
+    
+        if !didntStartEpisode {
             performSegue(withIdentifier: "fromCoverToHomeSegue", sender: nil)
         }
     }

@@ -453,7 +453,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         
         checkPointTableView.reloadData()
         selectedEpisodeYearLabel.text = "\(currentEpisode.episodeYear)년 \(currentEpisode.episodePlace)"
-        selectedEpisodeDescriptionLabel.text = currentEpisode.episodeDesciption
+        selectedEpisodeDescriptionLabel.text = currentEpisode.episodeShortDesciption
 
     }
     //얼러트 팝업 여는 함수
@@ -473,7 +473,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         selectedEpisodePopup.removeFromSuperview()
         self.view.addSubview(gettingStartPopup)
         //이 문구는 베리가 넘겨주면 넣을 예정
-        warningLabel.text = "현재 진행 중인 게임을 그만두고, 선택한 지점부터 사건을 재시작하여 이전 사건 기록이 사라집니다.\n\n계속하시겠습니까?"
+        warningLabel.text = "현재 진행 중인 게임을 그만두고,\n선택한 지점부터 사건을 재시작하여\n이전 사건 기록이 사라집니다.\n\n계속하시겠습니까?"
     }
     
     //팝업 디자인하는 함수

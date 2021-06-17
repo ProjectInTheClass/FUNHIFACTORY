@@ -246,8 +246,8 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     }
     override func viewWillAppear(_ animated: Bool) {
         updateTitle(newTitleNumber: 0)
+        designButtons()
         
-        noteTableView.reloadData()
     }
   
 //----------------------일반----------------------
@@ -418,7 +418,8 @@ extension NoteViewController {
         noteBackgroundView.layer.shadowOffset = CGSize(width: 26, height: -17)
         noteBackgroundView.layer.shadowOpacity = 1
         noteBackgroundView.layer.shadowRadius = 0
-    
+        caseLongDescriptionLabel.setLineSpacing(lineSpacing: 6)
+        caseLongDescriptionLabel.textAlignment = .center
   
     //--------사건 팝업------------------
         casePopupBoxView.layer.cornerRadius = 14
