@@ -67,6 +67,7 @@ class ChapterCoverViewController: UIViewController {
         descriptionLabel.text = currentEpisode().episodeDesciption
         closeCoverButton.isHidden = true
         
+        player.currentEpisodes[strToIndex(str: player.dayId)].isStarted = true
         yearLabel.alpha = 0
         chapterNameLabel.alpha = 0
         descriptionLabel.alpha = 0
