@@ -148,7 +148,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
                 cell.episodeYear.text = "\(player.currentEpisodes[timelineIndex].episodeYear)년"
                 cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[timelineIndex].episodePlaceImage)
                 // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
-                cell.lockedView.isHidden = player.currentEpisodes[timelineIndex].isCleared
+                cell.lockedView.isHidden = player.currentEpisodes[timelineIndex].isStarted
                 
                 let currentEpisodeTotalStoryBlockCount = player.currentEpisodes[timelineIndex].storyBlocks.count
                 print("currentEpisodeTotalStoryBlockCount: \(currentEpisodeTotalStoryBlockCount)")
@@ -244,7 +244,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
                 timelineIndex = 0
             }
             
-            guard player.currentEpisodes[timelineIndex].isCleared else {
+            guard player.currentEpisodes[timelineIndex].isStarted else {
                 
                 if timelineIndex == player.currentEpisodes.count-1 {
                     openAlertPopup(isEndingCell: true)
