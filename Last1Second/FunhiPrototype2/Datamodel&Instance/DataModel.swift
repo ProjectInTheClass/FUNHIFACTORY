@@ -338,10 +338,7 @@ class Infomation: Codable {
 //인물
 
 enum GameCharacterID: String,Codable {
-    case danhee
-    case hwiryeong
-    case tourguide
-    case teacher
+    case danhee, hwiryeong, tourguide, teacher, danhee2, extra1, extra2, extra3, igwi, kimman, kimwoman, poorman, everyone, injo
     
     func info() -> GameCharacter{
         switch self {
@@ -353,6 +350,16 @@ enum GameCharacterID: String,Codable {
             return prologueChapter.currentCharacterNote[2]
         case .teacher:
             return prologueChapter.currentCharacterNote[3]
+        case .danhee2:
+            return chapter2.currentCharacterNote[0]
+        case .igwi:
+            return  chapter2.currentCharacterNote[1]
+        case .kimman:
+            return chapter2.currentCharacterNote[2]
+        case .kimwoman:
+            return chapter2.currentCharacterNote[3]
+        default :
+            return GameCharacter(name: "엑스트라", profileImage: "", backGroundImage: "", description: "", infomation: [], isLocked: true)
         }
     }
 }
@@ -367,7 +374,6 @@ class GameCharacter: Codable {
     let description: String
     var infomation: [Infomation]
     var isLocked: Bool
-   
     
     init(name: String, profileImage: String ,backGroundImage: String, description: String, infomation: [Infomation], isLocked: Bool) {
         self.name = name
@@ -904,9 +910,9 @@ func loadFromFile() {
     let propertyListDecoder = PropertyListDecoder()
    
     if let retrievedNotesData = try? Data(contentsOf: archiveURL), let decodedNotes = try? propertyListDecoder.decode(User.self, from:retrievedNotesData) {
-        print(decodedNotes)
+//        print(decodedNotes)
         player = decodedNotes
-        print("이야아아아ㅏ아아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아\(player.currentChatArray)")
+//        print("이야아아아ㅏ아아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아야아아아ㅏ아아\(player.currentChatArray)")
     }
 }
 

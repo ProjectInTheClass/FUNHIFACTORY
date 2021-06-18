@@ -17,6 +17,9 @@ func initializePlayer(paraPlayer : inout User)
     for index in paraPlayer.currentAchievementInfo.indices {
         paraPlayer.currentAchievementInfo[index].isLocked = true
     }
+//    paraPlayer.currentEpisodes[0].isStarted = true
+    paraPlayer.currentEpisodes[0].currentCharacterNote[0].isLocked = false
+    paraPlayer.currentEpisodes[0].currentCharacterNote[2].isLocked = false
     paraPlayer.dayIndex = 0
     paraPlayer.dayId = "prologue"
     paraPlayer.currentChatId = "001"
