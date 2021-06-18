@@ -109,8 +109,10 @@ class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollec
             cell.achievementTitleLabel.text = player.currentAchievementInfo[indexPath.row].name
             if player.currentAchievementInfo[indexPath.row].isLocked {
                 cell.lockedView.isHidden = false
+                cell.achievementTitleLabel.text = "???"
             } else {
                 cell.lockedView.isHidden = true
+                cell.achievementTitleLabel.text = player.currentAchievementInfo[indexPath.row].name
             }
             return cell
         } else {
@@ -119,10 +121,11 @@ class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollec
             
             if player.currentAchievementInfo[indexPath.row].isLocked {
                 cell.lockedView.isHidden = false
-                cell.achievementTitleLabel.text = player.currentAchievementInfo[indexPath.row].name
+                cell.achievementTitleLabel.text = "???"
+                
             } else {
                 cell.lockedView.isHidden = true
-                cell.achievementTitleLabel.text = "???"
+                cell.achievementTitleLabel.text = player.currentAchievementInfo[indexPath.row].name
             }
             return cell
         }
@@ -137,6 +140,7 @@ class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollec
     //가장 윗 셀 그리는 함수
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
+        var headerCell = UICollectionReusableView()
         switch kind {
         case UICollectionView.elementKindSectionHeader:
             guard
@@ -153,12 +157,14 @@ class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollec
                 cell.achievementLabel.font = UIFont(name: "NanumSquareEB", size: 21)
                 cell.achievementNumberLabel.font = UIFont(name: "NanumSquareB", size: 14)
             }
-            
-            return cell
+            headerCell = cell
+           
         default:
             assert(false, "Invalid element type")
         }
+        return headerCell
     }
+    
     
     //-------------------일반 아웃렛, 메소드------------
     @IBOutlet var nameLabel: UILabel!
