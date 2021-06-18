@@ -96,7 +96,7 @@ class endingViewController: UIViewController {
             performSegue(withIdentifier: "unwindToMain", sender: nil)
         case 1:
             player.dayId = "prologue"
-            player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = "001"
+            initializePlayer(paraPlayer: &player)
             performSegue(withIdentifier: "unwindToMain", sender: nil)
         case 2:
             popupView.removeFromSuperview()

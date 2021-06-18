@@ -15,16 +15,16 @@ import UIKit
 
 var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현재", episodeYear: 2020, episodeKingYear: "현재 2020년", episodeShortDesciption: "누군가 나에게 내 하루를 바꿀 수 있는, 내 인생을 바꿀 수 있는 구원의 손길을 내밀어 준다면, 나는 그 손을....잡을 수 있을까?", episodeDesciption: "지루하고 따분한, 그저 우울하기만 한 내 인생은 변하긴 할까?\n이런 삶은 이제 그만하고 싶다.\n누군가 나에게 내 하루를 바꿀 수 있는, 내 인생을 바꿀 수 있는 구원의 손길을 내밀어 준다면,\n 나는 그 손을....잡을 수 있을까?", episodePlaceImage: "Donhwamun image", episodeCoverImage: "changdeokgung image sample", isCleared: true, chatHistory: [], storyBlocks: [:], currentCharacterNote:
     [GameCharacter(name: "이단희", profileImage: "danhee angry face 1", backGroundImage: "leedanheeBackground", description: "내 곁에 아무도 없다는 게 이젠 익숙해. 이런 내 삶이 바뀔 수 있을까?", infomation: [],isLocked: false),
-     GameCharacter(name: "휘령", profileImage: "hwiryeong basic face", backGroundImage: "hwiryeong illu 1x", description: "네가 나의 마지막 희망이다. 네가 가진 그 1초가 나를, 이 세상을 바꾸는 법. 부디 이번엔 꼭 성공하길...", infomation: [Infomation(infomationID: .hwiryeong1, isLocked: false, text: "조선이 생겨났을 때부터 존재했다."), Infomation(infomationID: .hwiryeong2, isLocked: false, text: "휘령이 곧 조선. 하지만 큰 사건들을 겪고 나서 그는 힘을 잃게 되었다. 그 힘을 찾기 위해서 내가 필요하다고 한다."), Infomation(infomationID: .hwiryeong3, isLocked: true, text: "휘령은 남자이다."), Infomation(infomationID: .hwiryeong5, isLocked: true, text: "휘령은 휘령이다.")],isLocked: false),
+     GameCharacter(name: "휘령", profileImage: "hwiryeong basic face", backGroundImage: "hwiryeong illu 1x", description: "네가 나의 마지막 희망이다. 네가 가진 그 1초가 나를, 이 세상을 바꾸는 법. 부디 이번엔 꼭 성공하길...", infomation: [Infomation(infomationID: .hwiryeong1, isLocked: false, text: "조선이 생겨났을 때부터 존재했다."), Infomation(infomationID: .hwiryeong2, isLocked: false, text: "휘령이 곧 조선. 하지만 큰 사건들을 겪고 나서 그는 힘을 잃게 되었다. 그 힘을 찾기 위해서 내가 필요하다고 한다."), Infomation(infomationID: .hwiryeong3, isLocked: false, text: "휘령은 남자이다."), Infomation(infomationID: .hwiryeong5, isLocked: false, text: "휘령은 휘령이다.")],isLocked: false),
      GameCharacter(name: "투어 가이드", profileImage: "tour guide", backGroundImage: "", description: "", infomation: [],isLocked: false),
      GameCharacter(name: "선생님", profileImage: "teacher", backGroundImage: "cat", description: "선생님은 선생님이다. 선생님은 선생님이다. 선생님은 선생님이다. 선생님은 선생님이다. ", infomation: [Infomation(infomationID: .teacher1, isLocked: false, text: "선생님은 선생님이다."), Infomation(infomationID: .teacher1, isLocked: false, text: "선생님은 선생님이다."), Infomation(infomationID: .teacher1, isLocked: false, text: "선생님은 선생님이다."), Infomation(infomationID: .teacher1, isLocked: false, text: "선생님은 선생님이다.")],isLocked: false)],
     currentCaseNote: [],
-    currentAlbumImages: [AlbumImage(id: .donhwamun_with_danhee, image: "donhwamun_with_danhee", title: "돈화문", description: "", isLocked: true),
-                     AlbumImage(id: .drawing_geumcheongyo, image: "drawing_geumcheongyo", title: "금천교", description: "", isLocked: false),
-                     AlbumImage(id: .drawing_injeongjeon, image: "drawing_injeongjeon", title: "인정전", description: "", isLocked: true),
-                     AlbumImage(id: .necklace_in_hand, image: "necklace_in_hand", title: "휘령의 목걸이", description: "", isLocked: true),
-                     AlbumImage(id: .prolog_danhee, image: "prologue image 4", title: "휘령의 목걸이", description: "", isLocked: true),
-                     AlbumImage(id: .prolog_hwiryeong, image: "prologue image 4", title: "휘령의 목걸이", description: "", isLocked: true)],
+    currentAlbumImages: [AlbumImage(id: .donhwamun_with_danhee, image: "donhwamun_with_danhee", title: "돈화문 앞 혼자인 나", description: "언제나 그랬듯이\n나는 친구도 없이 혼자 서 있다.\n\n이렇게 반복되는 외로움에\n이제는 무뎌질 만도 한데,\n아직도 처음 마주한 것처럼 아프다.\n이곳에서 벗어나고 싶어.", isLocked: false),
+                     AlbumImage(id: .drawing_geumcheongyo, image: "drawing_geumcheongyo", title: "금천교 앞에서", description: "생각보다 나무와 꽃이 많네.\n\n이 장면을 안 담아두면 나중에 후회할 것 같아.", isLocked: false),
+                     AlbumImage(id: .drawing_injeongjeon, image: "drawing_injeongjeon", title: "내 상상 속 인정전", description: "옛날에는 어떤 모습으로 있었을까?\n궁금하다.\n\n내 상상으로 그려볼래.", isLocked: false),
+                     AlbumImage(id: .necklace_in_hand, image: "necklace_in_hand", title: "휘령의 목걸이", description: "휘령의 힘을 담는 목걸이...\n\n내가 잘 해낼 수 있을까?", isLocked: false),
+                     AlbumImage(id: .prolog_danhee, image: "prolog_danhee", title: "나와 루스", description: "내가 세상에서 제일 사랑하는 나의 유일한 가족", isLocked: false),
+                     AlbumImage(id: .prolog_hwiryeong, image: "prolog_hwiryeong", title: "휘령", description: "너를 줄곧 기다리고 있었어!\n네가 내 유일한 희망이야.\n부디 나를 도와줘.", isLocked: false)],
     timelineCheckPoint: [
         
         [CheckPoint(id: .id201, name: "처음부터", storyBlockIndex: "012", isLocked: false),
@@ -33,14 +33,14 @@ var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현
         
         [CheckPoint(id: .id211, name: "거짓말", storyBlockIndex: "065", isLocked: false)],
     
-        [CheckPoint(id: .id221, name: "휘령과의 대화", storyBlockIndex: "000", isLocked: true)]
+        [CheckPoint(id: .id221, name: "휘령과의 대화", storyBlockIndex: "000", isLocked: false)]
         ], currentStoryBlockIndex: "014")
 
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
 
 var chapter1 = Episode(episodeID: "1592", episodePlace: "인정전", episodeYear: 1592, episodeKingYear: "선조 25년", episodeShortDesciption: "우리나라의 뼈아픈 역사 중 하나다. ",episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "Donhwamun image", episodeCoverImage: "changdeokgung image sample", isCleared: true, chatHistory: [], storyBlocks: [:],
 currentCharacterNote: [
-    GameCharacter(name: "단희",profileImage: "heeryeongBackgroundImage",backGroundImage: "",description: "인물 설명",infomation: [Infomation(infomationID: .hwiryeong1, isLocked: false, text: "휘령 정보 1"),Infomation(infomationID: .hwiryeong2, isLocked: true, text: "휘령 정보 2"),Infomation(infomationID: .hwiryeong3, isLocked: false, text: "휘령 정보 3"),Infomation(infomationID: .hwiryeong4, isLocked: true, text: "휘령 정보 4"),Infomation(infomationID: .hwiryeong5, isLocked: true, text: "휘령 정보 5 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화")], isLocked: false)],
+    GameCharacter(name: "단희",profileImage: "heeryeongBackgroundImage",backGroundImage: "",description: "인물 설명",infomation: [Infomation(infomationID: .hwiryeong1, isLocked: false, text: "휘령 정보 1"),Infomation(infomationID: .hwiryeong2, isLocked: false, text: "휘령 정보 2"),Infomation(infomationID: .hwiryeong3, isLocked: false, text: "휘령 정보 3"),Infomation(infomationID: .hwiryeong4, isLocked: false, text: "휘령 정보 4"),Infomation(infomationID: .hwiryeong5, isLocked: false, text: "휘령 정보 5 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화")], isLocked: false)],
 currentCaseNote: [NoteCase(id: .case201, title: "[인조반정]", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "1623년 4월 11일에 일어난 사건이다. 조선의 3대 반정 중 하나로, 서인 세력이 광해군과 대북파를 몰아내고 인조인 능양군을 왕위에 앉혔다.", isLocked: false)], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "002")
 
 
@@ -48,7 +48,7 @@ var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear
     
     GameCharacter(name: "주인공", profileImage: "", backGroundImage: "", description: "내가 부잣집 양반의 개인 사병이라고? 내가 모시는 양반이 반역자의 주요 인물이라니...들키지 않고 방해할 수 있을까?", infomation: [],isLocked: false),
     GameCharacter(name: "이귀", profileImage: "", backGroundImage: "", description: "", infomation: [
-        Infomation(infomationID: .leegyi1, isLocked: true, text: "1616년에 역모 사건에 관련되어 이천에 유배되었다가 1619년 유배에서 풀려났다."),
+        Infomation(infomationID: .leegyi1, isLocked: false, text: "1616년에 역모 사건에 관련되어 이천에 유배되었다가 1619년 유배에서 풀려났다."),
         Infomation(infomationID: .leegyi2, isLocked: false, text: "이런 상황에서 반역이 먼저 계획되고 있었고, 이후 이 계획에 참여하게 되었다.")
     ],isLocked: false),
     GameCharacter(name: "김자점", profileImage: "", backGroundImage: "", description: "", infomation: [
@@ -67,17 +67,18 @@ var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear
 
 ], currentCaseNote: [NoteCase(id: .case201, title: "[인조반정]", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "1623년 4월 11일에 일어난 사건이다. 조선의 3대 반정 중 하나로, 서인 세력이 광해군과 대북파를 몰아내고 인조인 능양군을 왕위에 앉혔다.", isLocked: false) ],
 currentAlbumImages: [
-        AlbumImage(id: .conference_hall, image: "", title: "반란의 회의장", description: "내 앞에 있는 사람들은 회의를 하는 것처럼 보인다. 그런데 그 내용이...반정을 일으킨다는 것이라니. 내가 반역자의 한 명이 될 수도 있다는 건가?", isLocked: false),
-        AlbumImage(id: .bribe, image: "", title: "뇌물", description: "나도 모르게 뇌물을 전해버렸어...이걸 전해주면 이번 사건은 틀림없이 실패할 텐데.", isLocked: false),
-        AlbumImage(id: .huijeongdang_fire, image: "", title: "불타는 희정당", description: "불길이 건물을 덮치고 그에도 부족했는지 하늘까지 온통 검게 변했다. 내가....내가 막았으면 됐는데... 도대체 내가 무슨 짓을 한 거야? 분명...분명 좀 전까지만 해도 황홀한 풍경이었는데... 이 모습도 어떻게 보면 황홀한 광경이라고 할 수 있을까..", isLocked: true),
-        AlbumImage(id: .huijeongdang_fire, image: "", title: "후원의 화재", description: "", isLocked: true)],
+        AlbumImage(id: .conference_hall, image: "conference_hall", title: "반란의 회의장", description: "내 앞에 있는 사람들은\n회의를 하는 것처럼 보인다.\n\n그런데 그 내용이...\n반정을 일으킨다는 것이라니.\n\n내가 반역자의 한 명이 될 수도 있다는 건가?", isLocked: false),
+        AlbumImage(id: .bribe, image: "bribe", title: "뇌물", description: "나도 모르게 뇌물을 전해버렸어...\n이걸 전해주면 이번 사건은\n틀림없이 실패할 텐데.", isLocked: false),
+        AlbumImage(id: .huijeongdang_fire, image: "huijeongdang_fire", title: "불타는 희정당", description: "불길이 건물을 덮치고 그에도 부족했는지\n하늘까지 온통 검게 변했다.\n\n내가…. 내가 막았으면 됐는데...\n도대체 내가 무슨 짓을 한 거야?", isLocked: false),
+    AlbumImage(id: .huwon_garden_fire, image: "huwon_garden_fire", title: "후원의 화재", description: "분명… 분명 좀 전까지만 해도\n황홀한 풍경이었는데….\n\n이 모습도 어떻게 보면\n황홀한 광경이라고 할 수 있을까..\n\n다시 시간을 돌려서 이 모습을 구하고 싶어.", isLocked: false),
+    AlbumImage(id: .revolt_image, image: "revolt_image", title: "반란의 시작점", description: "내 옆에는 많은 군사들이 있고,\n나는 지금 돈화문 앞이다.\n\n“다들 정신 똑바로 차리거라!!\n이 문만 지나가면 우리의 세상이 오는 것이니!”\n\n무섭게도 소리 지르는 군사들을 보니\n등골이 서름해지면서 실감이 났다.\n\n아, 내가 인조반정 날에 왔구나.", isLocked: false)],
 timelineCheckPoint: [
         [CheckPoint(id: .id201, name: "처음부터", storyBlockIndex: "000", isLocked: false),
          CheckPoint(id: .id202, name: "반란의 회의장", storyBlockIndex: "000", isLocked: false),
          CheckPoint(id: .id203, name: "김상궁과의 만남", storyBlockIndex: "000", isLocked: false)],
-        [CheckPoint(id: .id211, name: "거짓말", storyBlockIndex: "000", isLocked: true)],
-        [CheckPoint(id: .id221, name: "휘령과의 대화", storyBlockIndex: "000", isLocked: true)]
-        ], currentStoryBlockIndex: "000")
+        [CheckPoint(id: .id211, name: "거짓말", storyBlockIndex: "000", isLocked: false)],
+        [CheckPoint(id: .id221, name: "휘령과의 대화", storyBlockIndex: "000", isLocked: false)]
+        ], currentStoryBlockIndex: "001")
 
 
 var chapter3 = Episode(episodeID: "1919", episodePlace: "선정전", episodeYear: 1803, episodeKingYear: "순조 3년", episodeShortDesciption: "왕의 나이가 너무 어려 대비가 대신 정치를 했다. 그 과정에서 한쪽 세력에만 힘을 실게 되고, 종교의 자유를 억압하게 되었다. 복수심을 가지고 있는 자가 이번 사건의 범인일지도.", episodeDesciption: "대한독립 만세",episodePlaceImage: "Daejojeon image", episodeCoverImage: "changdeokgung image sample", isCleared: false, chatHistory: [],storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "")

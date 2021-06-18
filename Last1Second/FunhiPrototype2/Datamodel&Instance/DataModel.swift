@@ -225,7 +225,7 @@ class NoteCase: Codable{
 
 
 enum AchievementID: String,Codable {
-    case donhwamun,geumcheongyo,injeongjeon,cat,parents,necklace_0, liar, huijeongdang, huwon_garden //프롤로그
+    case donhwamun,geumcheongyo,injeongjeon,cat,parents,necklace_0, liar, huijeongdang, huwon_garden, revolt //프롤로그
 }
 // 프라퍼티 설명: 업적 이름, 업적 이미지, id(업적 획득 로직에서 사용), 업적 잠금 여부
 struct Achievement: Codable {
@@ -249,6 +249,7 @@ enum AlbumImageID: String,Codable{
     case bribe
     case huijeongdang_fire
     case huwon_garden_fire
+    case revolt_image
     
     func info() -> AlbumImage{
         switch self {
@@ -272,6 +273,8 @@ enum AlbumImageID: String,Codable{
                 return chapter2.currentAlbumImages[2]
         case .huwon_garden_fire:
             return chapter2.currentAlbumImages[3]
+        case .revolt_image:
+            return chapter3.currentAlbumImages[4]
         }
         
     }
@@ -678,21 +681,21 @@ struct Ending{
 func checkEnding(id : String) -> Ending
 {
     switch id {
-        case "ending01":
+        case "endingDied":
             return Ending(name: "당신은 죽었습니다.", comment: "나는 이렇게 끝낼 순 없어.", buttonUIColor: [
                                 UIColor(red: 0.737, green: 0.452, blue: 0.452, alpha: 1),
                                 UIColor(red: 0.558, green: 0.286, blue: 0.286, alpha: 1),
                                 UIColor(red: 0.925, green: 0.813, blue: 0.813, alpha: 1),
                                 UIColor(red: 0.843, green: 0.553, blue: 0.553, alpha: 1),
                                 UIColor(red: 0.843, green: 0.553, blue: 0.553, alpha: 1)])
-        case "ending02":
+        case "endingLocked":
             return Ending(name: "당신은 과거에 갇혔습니다.", comment: "나는 이렇게 끝낼 순 없어.", buttonUIColor: [
                                 UIColor(red: 0.546, green: 0.546, blue: 0.546, alpha: 1),
                                 UIColor(red: 0.412, green: 0.412, blue: 0.412, alpha: 1),
                                 UIColor(red: 0.883, green: 0.883, blue: 0.883, alpha: 1),
                                 UIColor(red: 0.769, green: 0.769, blue: 0.769, alpha: 1),
                                 UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.25)])
-        case "ending03" :
+        case "endingReturn" :
             return Ending(name: "당신은 현실로 돌아왔습니다.", comment: "한 번만 기회가 있다면..\n잘 할 수 있을 텐데...", buttonUIColor: [
                                 UIColor(red: 0.698, green: 0.588, blue: 0.376, alpha: 1),
                                 UIColor(red: 0.514, green: 0.404, blue: 0.204, alpha: 1),

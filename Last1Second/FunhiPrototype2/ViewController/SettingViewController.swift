@@ -119,8 +119,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
 
     @IBAction func yesButtonTapped(_ sender: Any) {
         print("게임 데이터가 초기화되었습니다.")
-        player.currentChatArray.removeAll()
-        print(player)
+        initializePlayer(paraPlayer: &player)
         self.view.bringSubviewToFront(blackView)
         self.view.addSubview(initConfirmView)
         initConfirmView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 314).isActive = true
