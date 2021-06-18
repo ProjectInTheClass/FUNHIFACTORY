@@ -27,150 +27,6 @@ var xImage: String {
     }
 }
 
-//일반 색깔
-//var colorTopbarLine: UIColor {
-//    if player.setting.darkmode {
-//        return UIColor(hex: "#D9D9D9", alpha: 1)
-//    } else {
-//        return UIColor(hex: "#FFFFFF", alpha: 1)
-//    }
-//}
-//
-//var colorWhite: UIColor {
-//    if player.setting.darkmode {
-//        return UIColor(hex: "#FFFFFF", alpha: 1)
-//    } else {
-//        return UIColor(hex: "#D9D9D9", alpha: 1)
-//    }
-//}
-//var colorBlack: UIColor {
-//    if player.setting.darkmode {
-//        return UIColor(hex: "#000000", alpha: 1)
-//    } else {
-//        return UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 1)
-//    }
-//}
-////시작 버튼 색깔
-//var colorEPCellBackground: UIColor {
-//    if !player.setting.darkmode {
-//        return UIColor(hex: "#C4C4C4", alpha: 1)
-//    } else {
-//        return UIColor(displayP3Red: 0.862, green: 0.862, blue: 0.862, alpha: 1)
-//    }
-//}
-//var colorEPCellTouchedBackground: UIColor {
-//    if !player.setting.darkmode {
-//        return UIColor(hex: "#959595", alpha: 1)
-//    } else {
-//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-//    }
-//}
-//
-//var colorEPCellspine: UIColor {
-//    if !player.setting.darkmode {
-//        return UIColor(hex: "#7A7A7A", alpha: 1)
-//    } else {
-//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-//    }
-//}
-//
-//// 팝업 뷰 색깔
-//var colorPopupHeader: UIColor {
-//    if !player.setting.darkmode {
-//        return UIColor(hex: "#313131", alpha: 1)
-//    } else {
-//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-//    }
-//}
-//
-//var colorPopupButtonBackground: UIColor {
-//    if !player.setting.darkmode {
-//        return UIColor(hex: "#B8B8B8", alpha: 1)
-//    } else {
-//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-//    }
-//}
-//
-//var colorPopupButtonBorder: UIColor {
-//    if !player.setting.darkmode {
-//        return UIColor(hex: "#848484", alpha: 1)
-//    } else {
-//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-//    }
-//}
-//
-////수첩 색깔
-//
-//var colorNoteSelectedBackground: UIColor {
-//    if !player.setting.darkmode {
-//        return UIColor(hex: "#DCDCDC", alpha: 1)
-//    } else {
-//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-//    }
-//}
-//
-//var colorNoteUnselectedBackground: UIColor {
-//    if !player.setting.darkmode {
-//        return UIColor(hex: "#787878", alpha: 1)
-//    } else {
-//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-//    }
-//}
-//
-//var colorLockedViewBackground: UIColor {
-//    if !player.setting.darkmode {
-//        return UIColor(hex: "#3F3F3F", alpha: 1)
-//    } else {
-//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-//    }
-//}
-//
-//var colorNoteUnselectedEPNameText: UIColor {
-//    if !player.setting.darkmode {
-//        return UIColor(hex: "#717171", alpha: 1)
-//    } else {
-//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-//    }
-//}
-//
-////타임라인 색깔
-//
-//
-//var colorTimelinePopupButtonBackground: UIColor {
-//    if !player.setting.darkmode {
-//        return UIColor(hex: "#656565", alpha: 1)
-//    } else {
-//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-//    }
-//}
-//
-//var colorTimelinePopupButtonBorder: UIColor {
-//    if !player.setting.darkmode {
-//        return UIColor(hex: "#E5E5E5", alpha: 1)
-//    } else {
-//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-//    }
-//}
-//
-////호감도 색깔
-//
-//var colorLikability: UIColor {
-//    if !player.setting.darkmode {
-//        return UIColor(hex: "#92A5B6", alpha: 1)
-//    } else {
-//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-//    }
-//}
-//
-////메인게임의 업적 획득 팝업 배경 색깔
-//
-//var colorMaingameGetAchievementPopupBackground: UIColor {
-//    if !player.setting.darkmode {
-//        return UIColor(hex: "#D6EBFF", alpha: 1)
-//    } else {
-//        return UIColor(displayP3Red: 0.479, green: 0.479, blue: 0.479, alpha: 1)
-//    }
-//}
 
 
 //------------------------------------수첩 사건------------------------------------
@@ -485,6 +341,12 @@ struct OptionalOption: Codable {
     let caseToUnlock: NoteCaseID?
     let albumImageToUnlock: AlbumImageID?
     let checkPointToUnlock: CheckPointID?
+   // let arContent: ARID?
+    
+    enum ARID {
+        case hidePocketInGround
+        case hidePocketInRocks
+    }
     
     init(achieve : AchievementID?, inform : InfomationID?, gamecharacter : GameCharacterID?, cases : NoteCaseID?, album : AlbumImageID?, check : CheckPointID?) {
         achievementToUnlock = achieve

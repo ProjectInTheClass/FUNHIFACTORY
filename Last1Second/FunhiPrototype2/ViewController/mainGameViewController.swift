@@ -435,7 +435,7 @@ func popupViewDesign(popupView: UIView) {
 }
 
 
-extension mainGameViewController : arDelegate{
+extension mainGameViewController : arDelegate {
     func goToAR() {
         print("buttonClicked")
         performSegue(withIdentifier: "goToARView", sender: nil)
