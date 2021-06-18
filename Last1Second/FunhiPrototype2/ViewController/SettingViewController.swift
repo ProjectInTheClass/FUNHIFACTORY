@@ -110,7 +110,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         self.view.addSubview(initializeAlert)
 // 아웃렛 디자인 접근하기 편하게 스토리보드에 몰아놓느라 주석처리 해놓았어요 색상 스토리보드에서 확인하심 됩니당
 //        initializeAlert.layer.borderColor = UIColor(red: 0.862, green: 0.862, blue: 0.862, alpha: 1).cgColor
-        initializeAlert.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 325).isActive = true
+        initializeAlert.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 295).isActive = true
         initializeAlert.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 40).isActive = true
     }
     @IBAction func initConfirmButtonTapped(_ sender: Any) {
