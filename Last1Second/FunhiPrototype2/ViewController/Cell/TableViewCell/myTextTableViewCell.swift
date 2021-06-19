@@ -30,7 +30,7 @@ class myTextTableViewCell: UITableViewCell {
         chatView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner, .layerMaxXMaxYCorner]
     }
     
-    func myTextCellUpdate(name:String,chat:String,profile:CharacterFace){
+    func myTextCellUpdate(name:String,chat:String,profile:CharacterFace, godchat : Bool){
         profileNickname.text = name
         chatText.text = chat
         
@@ -41,6 +41,12 @@ class myTextTableViewCell: UITableViewCell {
         default:
             profileImage.isHidden = false
             profileNickname.isHidden = false
+        }
+        switch godchat {
+        case true:
+            backgroundColor = UIColor(red: 0.545, green: 0.631, blue: 0.71, alpha: 1)
+        case false:
+            backgroundColor =  UIColor(red: 0.07, green: 0.15, blue: 0.22, alpha: 1)
         }
         let face = findFaceImage(nickname: name, profile: profile, normalProfile: "none")
         profileImage.image = UIImage(named: face)

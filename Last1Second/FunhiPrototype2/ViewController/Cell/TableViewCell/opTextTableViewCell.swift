@@ -30,7 +30,7 @@ class opTextTableViewCell: UITableViewCell {
         chatView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner]
     }
    
-    func opTextCellUpdate(name:String,chat:String, normalProfile:String, mainProfile:CharacterFace, isLocked : Bool){
+    func opTextCellUpdate(name:String,chat:String, normalProfile:String, mainProfile:CharacterFace, isLocked : Bool, godchat : Bool){
         profileNickname.text = name
                 if isLocked == true{
                     profileNickname.text = "???"
@@ -45,6 +45,12 @@ class opTextTableViewCell: UITableViewCell {
         default:
             profileNickname.isHidden = false
             profileImage.isHidden = false
+        }
+        switch godchat {
+        case true:
+            backgroundColor = UIColor(red: 0.545, green: 0.631, blue: 0.71, alpha: 1)
+        case false:
+            backgroundColor =  UIColor(red: 0.07, green: 0.15, blue: 0.22, alpha: 1)
         }
         let face = findFaceImage(nickname: name, profile: mainProfile, normalProfile: normalProfile)
         profileImage.image = UIImage(named: face)

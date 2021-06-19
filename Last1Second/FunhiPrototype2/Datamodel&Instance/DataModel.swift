@@ -308,8 +308,9 @@ struct Chat: Codable {
     let characterFace : CharacterFace
     let optionalOption: OptionalOption?
     let animationOption : screenAnimation
+    let isGodChat : Bool
     
-    init(text_ : String, image_ : String, type_ : ChatType, who_ : GameCharacterID, characterFace_ : CharacterFace, optionalOption_ : OptionalOption?, animationOption_ : screenAnimation) {
+    init(text_ : String, image_ : String, type_ : ChatType, who_ : GameCharacterID, characterFace_ : CharacterFace, optionalOption_ : OptionalOption?, animationOption_ : screenAnimation, isGodChat_ : Bool) {
         text = text_
         image = image_
         type = type_
@@ -317,6 +318,7 @@ struct Chat: Codable {
         characterFace = characterFace_
         optionalOption = optionalOption_
         animationOption = animationOption_
+        isGodChat = isGodChat_
     }
     
     init(from decoder: Decoder) throws {
@@ -329,6 +331,7 @@ struct Chat: Codable {
         characterFace = (try? values.decode(CharacterFace.self, forKey: .characterFace)) ?? .basic
         optionalOption = (try? values.decode(OptionalOption.self, forKey: .optionalOption))
         animationOption = (try? values.decode(screenAnimation.self, forKey: .animationOption)) ?? .none
+        isGodChat = (try? values.decode(Bool.self, forKey: .isGodChat)) ?? false
     }
 }
 
@@ -344,17 +347,18 @@ struct OptionalOption: Codable {
     let caseToUnlock: NoteCaseID?
     let albumImageToUnlock: AlbumImageID?
     let checkPointToUnlock: CheckPointID?
-   // let arContent: ARID?
+    let arContent: ARID?
     
-   
+
     
-    init(achieve : AchievementID?, inform : InfomationID?, gamecharacter : GameCharacterID?, cases : NoteCaseID?, album : AlbumImageID?, check : CheckPointID?) {
+    init(achieve : AchievementID?, inform : InfomationID?, gamecharacter : GameCharacterID?, cases : NoteCaseID?, album : AlbumImageID?, check : CheckPointID?, ar : ARID?) {
         achievementToUnlock = achieve
         infomationToUnlock = inform
         gameCharacterToUnlock = gamecharacter
         caseToUnlock = cases
         albumImageToUnlock = album
         checkPointToUnlock = check
+        arContent = ar
     }
     
     init(from decoder: Decoder) throws {
@@ -366,6 +370,7 @@ struct OptionalOption: Codable {
         caseToUnlock = (try? values.decode(NoteCaseID.self, forKey: .caseToUnlock)) ?? .none
         albumImageToUnlock = (try? values.decode(AlbumImageID.self, forKey: .albumImageToUnlock)) ?? .none
         checkPointToUnlock = (try? values.decode(CheckPointID.self, forKey: .checkPointToUnlock)) ?? .none
+        arContent = (try? values.decode(ARID.self, forKey: .arContent)) ?? .none
     }
 }
 
@@ -584,7 +589,7 @@ struct BlockOfDayEpisodeForJson :Codable{
     // choices: [[다음페이지 결정짓는 key값 : 선택지 텍스트]]
     let choices: [Choice]
     let choiceSkip : Bool
-    let isGodChat : Bool
+    let isGodChatBlock : Bool
     let backGroundMusic : bgm
     
     init(from decoder: Decoder) throws {
@@ -594,7 +599,7 @@ struct BlockOfDayEpisodeForJson :Codable{
         chats = (try? values.decode([Chat].self, forKey: .chats)) ?? []
         choices = (try? values.decode([Choice].self, forKey: .choices)) ?? []
         choiceSkip = (try? values.decode(Bool.self, forKey: .choiceSkip)) ?? false
-        isGodChat = (try? values.decode(Bool.self, forKey: .isGodChat)) ?? false
+        isGodChatBlock = (try? values.decode(Bool.self, forKey: .isGodChatBlock)) ?? false
         backGroundMusic = (try? values.decode(bgm.self, forKey: .backGroundMusic)) ?? .none
     }
 }

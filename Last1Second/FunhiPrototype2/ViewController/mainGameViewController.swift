@@ -81,7 +81,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         if target.type == .onlyText && target.who.info().name == "이단희"{
             print("메인게임 - 자신 텍스트 출력")
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
-            cell.myTextCellUpdate(name: target.who.info().name, chat: chatText, profile: target.characterFace)
+            cell.myTextCellUpdate(name: target.who.info().name, chat: chatText, profile: target.characterFace, godchat: target.isGodChat)
             return cell
         }
         //상대가 보냈을 때
@@ -89,7 +89,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             print("메인게임 - 상대 텍스트 출력")
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
             cell.profileNickname.textColor = .white
-            cell.opTextCellUpdate(name: target.who.info().name, chat: chatText,normalProfile: target.who.info().profileImage, mainProfile: target.characterFace, isLocked: target.who.info().isLocked)
+            cell.opTextCellUpdate(name: target.who.info().name, chat: chatText,normalProfile: target.who.info().profileImage, mainProfile: target.characterFace, isLocked: target.who.info().isLocked, godchat: target.isGodChat)
             cell.contentView.setNeedsDisplay()
             return cell
         }
@@ -98,14 +98,14 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             print("메인게임 - 이미지 출력")
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! ImageTableViewCell
 
-            cell.imageUpdate(mainImage: target.image)
+            cell.imageUpdate(mainImage: target.image, godchat: target.isGodChat)
             return cell
         }
         //행동 표시글 셀
         else if target.type == .sectionHeader{
             print("메인게임 - 섹션헤더 출력")
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "sectionCell", for: indexPath) as! sectionTableViewCell
-            cell.sectionUpdate(text:chatText)
+            cell.sectionUpdate(text:chatText, godchat: target.isGodChat)
             return cell
         }
         else if target.type == .monologue{
@@ -114,7 +114,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "monologue", for: indexPath) as! monologueTableViewCell
             cell.monologueText.text = chatText
             cell.name.textColor = .white
-            cell.chatUpdate(nickname: target.who.info().name, profile: target.characterFace)
+            cell.chatUpdate(nickname: target.who.info().name, profile: target.characterFace, godchat: target.isGodChat)
             return cell
         }
         else if target.type == .ar{
@@ -161,18 +161,24 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
             
-            player.currentChatArray.append(Chat(text_: currentBlockOfDay().choices[indexPath.row].text, image_: "", type_: currentBlockOfDay().choices[indexPath.row].chatType, who_: .danhee, characterFace_: currentBlockOfDay().choices[indexPath.row].characterFace, optionalOption_: currentBlockOfDay().choices[indexPath.row].optionalOption, animationOption_: .none))
-
+            if currentBlockOfDay().isGodChat == true
+            {
+                player.currentChatArray.append(Chat(text_: currentBlockOfDay().choices[indexPath.row].text, image_: "", type_: currentBlockOfDay().choices[indexPath.row].chatType, who_: .danhee, characterFace_: currentBlockOfDay().choices[indexPath.row].characterFace, optionalOption_: currentBlockOfDay().choices[indexPath.row].optionalOption, animationOption_: .none, isGodChat_: true))
+            }
+            else
+            {
+                player.currentChatArray.append(Chat(text_: currentBlockOfDay().choices[indexPath.row].text, image_: "", type_: currentBlockOfDay().choices[indexPath.row].chatType, who_: .danhee, characterFace_: currentBlockOfDay().choices[indexPath.row].characterFace, optionalOption_: currentBlockOfDay().choices[indexPath.row].optionalOption, animationOption_: .none, isGodChat_: false))
+            }
                 mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
             if (currentBlockOfDay().isGodChat != currentEpisode().storyBlocks[currentBlockOfDay().choices[indexPath.row].nextTextIndex]?.isGodChat)
             {
                 if (currentBlockOfDay().isGodChat == true)
                 {
-                    player.currentChatArray.append(Chat(text_: "", image_: "", type_: .endGodChat, who_: .danhee, characterFace_: .none, optionalOption_: nil, animationOption_: .none))
+                    player.currentChatArray.append(Chat(text_: "", image_: "", type_: .endGodChat, who_: .danhee, characterFace_: .none, optionalOption_: nil, animationOption_: .none, isGodChat_: false))
                 }
                 else
                 {
-                    player.currentChatArray.append(Chat(text_: "", image_: "", type_: .startGodChat, who_: .danhee, characterFace_: .none, optionalOption_: nil, animationOption_: .none))
+                    player.currentChatArray.append(Chat(text_: "", image_: "", type_: .startGodChat, who_: .danhee, characterFace_: .none, optionalOption_: nil, animationOption_: .none, isGodChat_: true))
                 }
                 mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
             }

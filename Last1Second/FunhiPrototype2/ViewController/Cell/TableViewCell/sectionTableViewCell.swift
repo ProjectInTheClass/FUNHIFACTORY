@@ -20,7 +20,13 @@ class sectionTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func sectionUpdate(text : String){
+    func sectionUpdate(text : String, godchat : Bool){
         sectionText.text = text
+        switch godchat {
+        case true:
+            backgroundColor = UIColor(red: 0.545, green: 0.631, blue: 0.71, alpha: 1)
+        case false:
+            backgroundColor =  UIColor(red: 0.07, green: 0.15, blue: 0.22, alpha: 1)
+        }
     }
 }
