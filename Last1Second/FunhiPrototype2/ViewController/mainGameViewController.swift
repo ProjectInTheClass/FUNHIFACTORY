@@ -124,6 +124,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         }
         else if (target.type == .endGodChat || target.type == .startGodChat)
         {
+            print("메인게임 - 구분자 채팅 출력")
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "separatorCell", for: indexPath) as! SeparatorTableViewCell
             cell.separatorUpdate(chatType: target.type)
             return cell
@@ -170,15 +171,21 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 player.currentChatArray.append(Chat(text_: currentBlockOfDay().choices[indexPath.row].text, image_: "", type_: currentBlockOfDay().choices[indexPath.row].chatType, who_: .danhee, characterFace_: currentBlockOfDay().choices[indexPath.row].characterFace, optionalOption_: currentBlockOfDay().choices[indexPath.row].optionalOption, animationOption_: .none, isGodChat_: false))
             }
                 mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
-            if (currentBlockOfDay().isGodChat != currentEpisode().storyBlocks[currentBlockOfDay().choices[indexPath.row].nextTextIndex]?.isGodChat)
+           
+            if (currentBlockOfDay().isGodChat != currentEpisode().storyBlocks[currentBlockOfDay().choices[indexPath.row].nextTextIndex]!.isGodChat)
             {
+                
                 if (currentBlockOfDay().isGodChat == true)
                 {
                     player.currentChatArray.append(Chat(text_: "", image_: "", type_: .endGodChat, who_: .danhee, characterFace_: .none, optionalOption_: nil, animationOption_: .none, isGodChat_: false))
+                    mainGameTableView.backgroundColor =  UIColor(red: 0.07, green: 0.15, blue: 0.22, alpha: 1)
+                    myChoiceText.textColor = .white
                 }
                 else
                 {
                     player.currentChatArray.append(Chat(text_: "", image_: "", type_: .startGodChat, who_: .danhee, characterFace_: .none, optionalOption_: nil, animationOption_: .none, isGodChat_: true))
+                    mainGameTableView.backgroundColor = UIColor(red: 0.545, green: 0.631, blue: 0.71, alpha: 1)
+                    myChoiceText.textColor = .black
                 }
                 mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
             }

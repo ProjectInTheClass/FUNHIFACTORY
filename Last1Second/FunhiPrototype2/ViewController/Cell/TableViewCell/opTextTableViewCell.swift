@@ -48,6 +48,7 @@ class opTextTableViewCell: UITableViewCell {
         }
         switch godchat {
         case true:
+            profileNickname.textColor = .black
             backgroundColor = UIColor(red: 0.545, green: 0.631, blue: 0.71, alpha: 1)
         case false:
             backgroundColor =  UIColor(red: 0.07, green: 0.15, blue: 0.22, alpha: 1)

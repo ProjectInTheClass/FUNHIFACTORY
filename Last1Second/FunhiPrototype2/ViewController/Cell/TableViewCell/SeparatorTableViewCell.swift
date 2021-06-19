@@ -30,6 +30,7 @@ class SeparatorTableViewCell: UITableViewCell {
             case .endGodChat:
                 separatorImage.image = UIImage(named: "endGodChat")
             default :
+                print("default godchat 실행")
                 separatorImage.isHidden = true
         }
     }

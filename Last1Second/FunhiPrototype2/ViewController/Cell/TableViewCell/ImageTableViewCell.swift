@@ -25,5 +25,4 @@ class ImageTableViewCell: UITableViewCell {
         guard mainImage != "" else {return}
            unTouchableImage.image = UIImage(named: mainImage)
        }
-    
 }
