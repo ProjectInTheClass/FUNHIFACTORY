@@ -332,6 +332,11 @@ struct Chat: Codable {
     }
 }
 
+enum ARID: String, Codable {
+    case hidePocketInGround
+    case hidePocketInRocks
+}
+
 struct OptionalOption: Codable {
     let achievementToUnlock: AchievementID?
     let infomationToUnlock: InfomationID?
@@ -341,10 +346,7 @@ struct OptionalOption: Codable {
     let checkPointToUnlock: CheckPointID?
    // let arContent: ARID?
     
-    enum ARID {
-        case hidePocketInGround
-        case hidePocketInRocks
-    }
+   
     
     init(achieve : AchievementID?, inform : InfomationID?, gamecharacter : GameCharacterID?, cases : NoteCaseID?, album : AlbumImageID?, check : CheckPointID?) {
         achievementToUnlock = achieve

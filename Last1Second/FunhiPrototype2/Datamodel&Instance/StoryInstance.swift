@@ -15,21 +15,24 @@ import UIKit
 
 var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현재", episodeYear: 2020, episodeKingYear: "현재 2020년", episodeShortDesciption: "누군가 나에게 내 하루를 바꿀 수 있는, 내 인생을 바꿀 수 있는 구원의 손길을 내밀어 준다면, 나는 그 손을....잡을 수 있을까?", episodeDesciption: "지루하고 따분한, 그저 우울하기만 한 내 인생은 변하긴 할까?\n이런 삶은 이제 그만하고 싶다.\n누군가 나에게 내 하루를 바꿀 수 있는, 내 인생을 바꿀 수 있는 구원의 손길을 내밀어 준다면,\n 나는 그 손을....잡을 수 있을까?", episodePlaceImage: "Donhwamun image", episodeCoverImage: "changdeokgung image sample", isCleared: true, chatHistory: [], storyBlocks: [:], currentCharacterNote:
                                         
-    [GameCharacter(name: "이단희", profileImage: "prolog danhee", backGroundImage: "prolog danhee", description: "내 곁에 아무도 없다는 게 이젠 익숙해. 이런 내 삶이 바뀔 수 있을까?", infomation: [],isLocked: false),
+    [GameCharacter(name: "이단희", profileImage: "prolog danhee", backGroundImage: "prolog danhee_background", description: "내 곁에 아무도 없다는 게 이젠 익숙해. 이런 내 삶이 바뀔 수 있을까?", infomation: [],isLocked: false),
      
-     GameCharacter(name: "휘령", profileImage: "hwiryeong", backGroundImage: "prolog hwiryeong", description: "네가 나의 마지막 희망이다. 네가 가진 그 1초가 나를, 이 세상을 바꾸는 법. 부디 이번엔 꼭 성공하길...", infomation: [
-                    Infomation(infomationID: .hwiryeong1, isLocked: false, text: "조선이 생겨났을 때부터 존재했다."),
-                    Infomation(infomationID: .hwiryeong2, isLocked: false, text: "휘령이 곧 조선. 하지만 큰 사건들을 겪고 나서 그는 힘을 잃게 되었다. 그 힘을 찾기 위해서 내가 필요하다고 한다."),
-                    Infomation(infomationID: .hwiryeong3, isLocked: false, text: "휘령은 남자이다."),
-                    Infomation(infomationID: .hwiryeong5, isLocked: false, text: "휘령은 휘령이다.")],isLocked: false),
+     GameCharacter(name: "휘령", profileImage: "hwiryeong", backGroundImage: "prolog hwiryeong_background", description: "네가 나의 마지막 희망이다. 네가 가진 그 1초가 나를, 이 세상을 바꾸는 법. 부디 이번엔 꼭 성공하길...", infomation: [
+                    Infomation(infomationID: .hwiryeong1, isLocked: false, text: "조선이 생겨났을 때부터 존재했다고 한다. "),
+                    Infomation(infomationID: .hwiryeong2, isLocked: false, text: "휘령이 곧 조선. 하지만 큰 사건들을 겪고 나서 그는 힘을 잃게 되었다. 그 힘을 찾기 위해서는 내가 필요하다고 하는데… "),
+                    Infomation(infomationID: .hwiryeong3, isLocked: false, text: "그 대가로 내 소원을 들어주겠다고 하니.. 어떻게 해야 할까?")
+        
+                   ],isLocked: false),
      
-     GameCharacter(name: "투어 가이드", profileImage: "tour guide", backGroundImage: "", description: "", infomation: [],isLocked: false),
+     GameCharacter(name: "투어 가이드", profileImage: "guide", backGroundImage: "", description: "오늘 하루동안 저와 창덕궁 투어를\n함께하게 되어 반가워요!", infomation: [
+                    Infomation(infomationID: .teacher1, isLocked: false, text: "우리 반이 현장체험학습으로 간 창덕궁에서 가이드를 맡은 사람이다."),
+                    Infomation(infomationID: .teacher1, isLocked: false, text: "창덕궁에 대해 꽤나 애정이 있는 것처럼 보인다.")
+     ],isLocked: false),
      
-     GameCharacter(name: "선생님", profileImage: "teacher", backGroundImage: "", description: "선생님은 선생님이다. 선생님은 선생님이다. 선생님은 선생님이다. 선생님은 선생님이다. ", infomation: [
-                    Infomation(infomationID: .teacher1, isLocked: false, text: "선생님은 선생님이다."),
-                    Infomation(infomationID: .teacher1, isLocked: false, text: "선생님은 선생님이다."),
-                    Infomation(infomationID: .teacher1, isLocked: false, text: "선생님은 선생님이다."),
-                    Infomation(infomationID: .teacher1, isLocked: false, text: "선생님은 선생님이다.")],isLocked: false)],
+     GameCharacter(name: "선생님", profileImage: "teacher", backGroundImage: "", description: "거기 너! 마음대로 돌아다니지 말랬지!!", infomation: [
+                    Infomation(infomationID: .teacher1, isLocked: false, text: "우리 반 담임 선생님이다."),
+                    Infomation(infomationID: .teacher1, isLocked: false, text: "내가 도망친 걸 들키면 엄청 화낼 텐데..")
+     ],isLocked: false)],
                                        
     currentCaseNote: [],
     currentAlbumImages: [AlbumImage(id: .donhwamun_with_danhee, image: "donhwamun_with_danhee", title: "돈화문 앞 혼자인 나", description: "언제나 그랬듯이\n나는 친구도 없이 혼자 서 있다.\n\n이렇게 반복되는 외로움에\n이제는 무뎌질 만도 한데,\n아직도 처음 마주한 것처럼 아프다.\n이곳에서 벗어나고 싶어.", isLocked: false),
@@ -40,13 +43,10 @@ var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현
                      AlbumImage(id: .prolog_hwiryeong, image: "prolog_hwiryeong", title: "휘령", description: "너를 줄곧 기다리고 있었어!\n네가 내 유일한 희망이야.\n부디 나를 도와줘.", isLocked: false)],
     timelineCheckPoint: [
         
-        [CheckPoint(id: .id201, name: "처음부터", storyBlockIndex: "012", isLocked: false),
-         CheckPoint(id: .id202, name: "반란의 회의장", storyBlockIndex: "020", isLocked: false),
-         CheckPoint(id: .id203, name: "김상궁과의 만남", storyBlockIndex: "001", isLocked: false)],
+        [CheckPoint(id: .id201, name: "처음부터", storyBlockIndex: "001", isLocked: false),
+         CheckPoint(id: .id202, name: "휘령과의 만남", storyBlockIndex: "016", isLocked: false),
+         CheckPoint(id: .id203, name: "소원", storyBlockIndex: "042", isLocked: false)]
         
-        [CheckPoint(id: .id211, name: "거짓말", storyBlockIndex: "065", isLocked: false)],
-    
-        [CheckPoint(id: .id221, name: "휘령과의 대화", storyBlockIndex: "000", isLocked: false)]
         ], currentStoryBlockIndex: "014")
 
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
@@ -59,9 +59,9 @@ currentCaseNote: [NoteCase(id: .case201, title: "[인조반정]", shortDescripti
 
 var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear: 1623, episodeKingYear: "광해 15년", episodeShortDesciption: "반란으로 왕이 바뀐 사건이다.\n인조가 광해를 끌어내리고 왕 위에\n오르던 과정에서 인정전을 제외한\n모든 건물이 불에 타 버렸다.\n반란이 성공하지 못하도록 하는 것이\n이 사건의 실마리가 될 것이다.", episodeDesciption: "나는 현실로 돌아가야만 하는 사람이다.\n그런데 왜 자꾸 다른 마음을 품게 되는 거냐고!\n역사가 똑같이 흘러가게 냅두어서는 안 돼.\n안 되는 걸 너무 잘 아는데...\n정신 차리자.\n내가 할 선택은.....", episodePlaceImage: "Seonjeongjeon image", episodeCoverImage: "changdeokgung image sample", isCleared: true, chatHistory: [],storyBlocks: [:], currentCharacterNote: [
     
-    GameCharacter(name: "이단희", profileImage: "danhee2", backGroundImage: "case 2 danhee", description: "내가 부잣집 양반의 개인 사병이라고?\n내가 모시는 양반이 반역의 주요 인물이라니...\n들키지 않고 방해할 수 있을까?", infomation: [], isLocked: false),
+    GameCharacter(name: "이단희", profileImage: "danhee2", backGroundImage: "case 2 danhee_background", description: "내가 부잣집 양반의 개인 사병이라고?\n내가 모시는 양반이 반역의 주요 인물이라니...\n들키지 않고 방해할 수 있을까?", infomation: [], isLocked: false),
     
-    GameCharacter(name: "이귀", profileImage: "commoner", backGroundImage: "", description: "내가 전하를 직접 만나 설득해봐야겠어.", infomation: [
+    GameCharacter(name: "이귀", profileImage: "", backGroundImage: "", description: "내가 전하를 직접 만나 설득해봐야겠어.", infomation: [
         Infomation(infomationID: .leegyi1, isLocked: false, text: "1616년에 역모 사건에 관련되어 이천에 유배되었다가 1619년 유배에서 풀려났다."),
         Infomation(infomationID: .leegyi2, isLocked: false, text: "이런 상황에서 반역이 먼저 계획되고 있었고, 이후 이 계획에 참여하게 되었다.")
     ],isLocked: false),
@@ -70,6 +70,17 @@ var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear
         Infomation(infomationID: .kimjajeom1, isLocked: false, text: "개인 사병을 지니고 있고, 그 중 한 명이 주인공이다."),
         Infomation(infomationID: .kimjajeom2, isLocked: false, text: "이귀와 함께 역모 사건에 연루되어 곤경에 처했었다."),
         Infomation(infomationID: .kimjajeom3, isLocked: false, text: "김상궁에게 뇌물을 주며 반역의 소문을 잠재우려 했다.")
+    ],isLocked: false),
+    
+    GameCharacter(name: "능양군", profileImage: "commoner", backGroundImage: "", description: "내가.. 내가 곧 이 나라의 왕이 될 것이다!", infomation: [
+        Infomation(infomationID: .kimjajeom1, isLocked: false, text: "집안의 풍비박산으로 복수심을 다졌다."),
+        Infomation(infomationID: .kimjajeom2, isLocked: false, text: "인조반정을 일으켜 훗날 조선시대 제16대 왕 인조가 된다.")
+    ],isLocked: false),
+    
+    GameCharacter(name: "가난한 평민", profileImage: "commoner", backGroundImage: "", description: "거기 누구요?!\n이곳엔 더 이상 가져갈 것도 없으니\n썩 물러가시오!", infomation: [
+        Infomation(infomationID: .kimjajeom2, isLocked: false, text: "마을 끝자락에 위치한 가난한 사람들끼리 뭉쳐있는 곳에 살고 있는 사람이다."),
+        Infomation(infomationID: .kimjajeom2, isLocked: false, text: "생각보다 경계심이 있네.")
+        
     ],isLocked: false),
     
     GameCharacter(name: "김상궁", profileImage: "a court lady2", backGroundImage: "", description: "돈이 최고지~\n왕은 나를 제일 사랑하신다고.\n내가 없으면 이 나라는 돌아가지 않아.", infomation: [
