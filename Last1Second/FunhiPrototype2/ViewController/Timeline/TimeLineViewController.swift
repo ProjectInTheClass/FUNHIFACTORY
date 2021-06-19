@@ -454,6 +454,9 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         checkPointTableView.reloadData()
         selectedEpisodeYearLabel.text = "\(currentEpisode.episodeYear)년 \(currentEpisode.episodePlace)"
         selectedEpisodeDescriptionLabel.text = currentEpisode.episodeShortDesciption
+        if currentEpisode.episodeID == "prologue" {
+            selectedEpisodeDescriptionLabel.text = "\(currentEpisode.episodeShortDesciption)\n\n\n\n\n"
+        }
 
     }
     //얼러트 팝업 여는 함수

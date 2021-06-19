@@ -103,12 +103,9 @@ class NoteGameCharacterViewController: UIViewController,UITableViewDelegate, UIT
     
     var openedInfomation = [Infomation]()
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        guard let headerView = infomationTableView.tableHeaderView else {
-            return }
-        headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-    }
+  
+  
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let recievedGameCharacter = recievedGameCharacter else { return 0 }
@@ -157,6 +154,7 @@ class NoteGameCharacterViewController: UIViewController,UITableViewDelegate, UIT
                     returnCell = cell
                 }
             }
+        infomationTableView.updateHeaderViewHeight()
         return returnCell
     }
     //----------------일반 아웃렛, 메소드------------------------------
@@ -165,9 +163,6 @@ class NoteGameCharacterViewController: UIViewController,UITableViewDelegate, UIT
     @IBOutlet weak var infomationTableView: UITableView!
     @IBOutlet weak var gameCharacterImageView: UIImageView!
     @IBOutlet weak var gameCharacterDescriptionLabel: UILabel!
-    @IBOutlet weak var likabilityBackgroundView: UIView!
-    @IBOutlet weak var likabilityProgressView: UIView!
-    @IBOutlet weak var likabilityProgressWidth: NSLayoutConstraint!
     @IBOutlet weak var gameCharacterIsLabel: UILabel!
     
     
@@ -190,13 +185,8 @@ class NoteGameCharacterViewController: UIViewController,UITableViewDelegate, UIT
    
     
     @IBAction func exitButton(_ sender: Any) {
-        let transition:CATransition = CATransition()
-          transition.duration = 0.35
-          transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        transition.type = CATransitionType.moveIn
-        transition.subtype = CATransitionSubtype.fromTop
-          self.navigationController!.view.layer.add(transition, forKey: kCATransition)
-        self.navigationController?.popViewController(animated: false)
+    
+        self.navigationController?.popViewController(animated: true)
     }
     func designObjects() {
         

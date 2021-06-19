@@ -35,6 +35,7 @@ class NoteSmallGameCharacterTableViewCell: UITableViewCell {
         view.setShadow(color: shadowColor, offsetX: 0, offsetY: 0, opacity: 1, radius: 9)
         view.setBolder(color: borderColor, width: 4)
     }
+  
 }
 
 //------------------------------------------------------------------------------------------------
@@ -150,26 +151,39 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //인물 창일 때--------------------
         let currentEpisode = player.currentEpisodes[currentNotePageInt]
+        
+        //수첩 테이블 뷰일 때
         guard tableView == noteTableView else {
+        
+            //수첩 링 이미지
             let cell = tableView.dequeueReusableCell(withIdentifier: "designTableViewCell", for: indexPath) as! DesignTableViewCell
             cell.springImageView.image = UIImage(named: "note ring image")
             return cell
         }
-        if currentNoteTitleInt == 0 {
-            
-            
+        
+        let isCharacterPage = (currentNoteTitleInt == 0)
+        let currentCharacter = currentEpisode.currentCharacterNote[indexPath.row]
+        //인물 페이지일 때
+        if isCharacterPage {
+         
+           
             //큰 인물 셀
-            if currentEpisode.currentCharacterNote[indexPath.row].name == "이단희" || currentEpisode.currentCharacterNote[indexPath.row].name == "휘령" {
+            if currentCharacter.name == "이단희" || currentCharacter.name == "휘령" {
+                
                 let cell = tableView.dequeueReusableCell(withIdentifier: "gameCharacterCell", for: indexPath) as! NoteGameCharacterTableViewCell
+                
                 cell.selectionStyle = .none
-                cell.nameLabel.text = currentEpisode.currentCharacterNote[indexPath.row].name
-                cell.descriptionLabel.text = currentEpisode.currentCharacterNote[indexPath.row].description
-                cell.profileImage.image = UIImage(named: currentEpisode.currentCharacterNote[indexPath.row].profileImage)
+                cell.nameLabel.text = currentCharacter.name
+                cell.descriptionLabel.text = currentCharacter.description
+                cell.profileImage.image = UIImage(named: "\(currentCharacter.profileImage)_noteLarge")
                 cell.achievementLabel.text = "업적 \(player.clearedAchievementCount)/\(player.currentAchievementInfo.count)"
-                print(currentEpisode.currentCharacterNote[indexPath.row].isLocked )
-                currentEpisode.currentCharacterNote[indexPath.row].isLocked ? (cell.lockedView.isHidden = false) : (cell.lockedView.isHidden = true)
+                
+                print("\(currentCharacter.name) 잠김: \(currentEpisode.currentCharacterNote[indexPath.row].isLocked)")
+                
+                currentCharacter.isLocked ? (cell.lockedView.isHidden = false) : (cell.lockedView.isHidden = true)
              
-                currentEpisode.currentCharacterNote[indexPath.row].isLocked ? cell.changeShadowAndBorder(view: cell.cellBorderAndShadowView, shadowColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1), borderColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1)) : cell.changeShadowAndBorder(view: cell.cellBorderAndShadowView, shadowColor: .white, borderColor: .white)
+                currentCharacter.isLocked ? cell.changeShadowAndBorder(view: cell.cellBorderAndShadowView, shadowColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1), borderColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1)) : cell.changeShadowAndBorder(view: cell.cellBorderAndShadowView, shadowColor: .white, borderColor: .white)
+                
                 if cell.nameLabel.text != "이단희" {
                    cell.achievementLabel.text = ""
                 }
@@ -178,15 +192,18 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             } else {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "smallGameCharacterCell", for: indexPath) as! NoteSmallGameCharacterTableViewCell
+                
                 cell.selectionStyle = .none
-                cell.nameLabel.text = currentEpisode.currentCharacterNote[indexPath.row].name
-               
-                cell.profileImageView.image = UIImage(named: "\(currentEpisode.currentCharacterNote[indexPath.row].profileImage)_noteLarge")
-                currentEpisode.currentCharacterNote[indexPath.row].isLocked ? cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1), borderColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1)) : cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: .white, borderColor: .white)
-                currentEpisode.currentCharacterNote[indexPath.row].isLocked ? (cell.lockedView.isHidden = false) : (cell.lockedView.isHidden = true)
+                cell.nameLabel.text = currentCharacter.name
+                cell.profileImageView.image = UIImage(named: "\(currentCharacter.profileImage)_noteLarge")
+                
+                currentCharacter.isLocked ? cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1), borderColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1)) : cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: .white, borderColor: .white)
+                
+                currentCharacter.isLocked ? (cell.lockedView.isHidden = false) : (cell.lockedView.isHidden = true)
                 
                 return cell
             }
+            
         //사건 창일 때
         } else {
            
@@ -196,8 +213,8 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             cell.selectionStyle = .none
             cell.caseNameLabel.text = currentCase.title
             
-            currentEpisode.currentCharacterNote[indexPath.row].isLocked ? cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1), borderColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1)) : cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: .white, borderColor: .white)
-            currentEpisode.currentCharacterNote[indexPath.row].isLocked ? (cell.lockedView.isHidden = false) : (cell.lockedView.isHidden = true)
+            currentCase.isLocked ? cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1), borderColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1)) : cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: .white, borderColor: .white)
+            currentCase.isLocked ? (cell.lockedView.isHidden = false) : (cell.lockedView.isHidden = true)
           
             return cell
         }

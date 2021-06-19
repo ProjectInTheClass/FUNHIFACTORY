@@ -129,7 +129,7 @@ class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITable
     }
     
     func updateObjects(recievedGameCharacter: GameCharacter) {
-        hwiryeongProfileImageView.image = UIImage(named: recievedGameCharacter.profileImage)
+        hwiryeongProfileImageView.image = UIImage(named: "\(recievedGameCharacter.profileImage)_noteLarge")
         hwiryeongBackgroundImageView.image = UIImage(named: recievedGameCharacter.backGroundImage)
       
         hwiryeongDescriptionLabel.text = recievedGameCharacter.description

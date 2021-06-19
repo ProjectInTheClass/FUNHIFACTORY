@@ -103,16 +103,19 @@ class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        let currentAchievement = player.currentAchievementInfo[indexPath.row]
         if Int(indexPath.row) % 2 == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "achievementLeftCell", for: indexPath) as! NoteCollectionViewLeftCell
-            cell.achievementImageView.image = UIImage(named: player.currentAchievementInfo[indexPath.row].image)
-            cell.achievementTitleLabel.text = player.currentAchievementInfo[indexPath.row].name
-            if player.currentAchievementInfo[indexPath.row].isLocked {
+            cell.achievementImageView.image = UIImage(named: currentAchievement.image)
+            cell.achievementTitleLabel.text = currentAchievement.name
+            if currentAchievement.isLocked {
                 cell.lockedView.isHidden = false
                 cell.achievementTitleLabel.text = "???"
             } else {
                 cell.lockedView.isHidden = true
-                cell.achievementTitleLabel.text = player.currentAchievementInfo[indexPath.row].name
+                cell.achievementTitleLabel.text = currentAchievement.name
+            
+                currentAchievement.isLocked ? cell.changeShadowAndBorder(view: cell.cellBackground, shadowColor: UIColor(red: 0.404, green: 0.561, blue: 0.694, alpha: 1), borderColor: UIColor(red: 0.587, green: 0.7, blue: 0.796, alpha: 1)) : cell.changeShadowAndBorder(view: cell.cellBackground, shadowColor: UIColor(red: 0.404, green: 0.561, blue: 0.694, alpha: 1), borderColor: UIColor(red: 0.588, green: 0.698, blue: 0.796, alpha: 1))
             }
             return cell
         } else {
@@ -127,6 +130,7 @@ class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollec
                 cell.lockedView.isHidden = true
                 cell.achievementTitleLabel.text = player.currentAchievementInfo[indexPath.row].name
             }
+            currentAchievement.isLocked ? cell.changeShadowAndBorder(view: cell.cellBackground, shadowColor: UIColor(red: 0.404, green: 0.561, blue: 0.694, alpha: 1), borderColor: UIColor(red: 0.587, green: 0.7, blue: 0.796, alpha: 1)) : cell.changeShadowAndBorder(view: cell.cellBackground, shadowColor: UIColor(red: 0.404, green: 0.561, blue: 0.694, alpha: 1), borderColor: UIColor(red: 0.588, green: 0.698, blue: 0.796, alpha: 1))
             return cell
         }
            
@@ -149,7 +153,8 @@ class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollec
             }
             if let recievedGameCharacter = recievedGameCharacter {
                 cell.gameCharacteBackgroundImageView.image = UIImage(named: recievedGameCharacter.backGroundImage)
-                cell.gameCharacterProfileImageView.image = UIImage(named: recievedGameCharacter.profileImage)
+                cell.gameCharacterProfileImageView.image = UIImage(named: "\(recievedGameCharacter.profileImage)_noteLarge")
+                
                 cell.gameCharacterDescriptionLabel.text = recievedGameCharacter.description
                 cell.achievementNumberLabel.text = "\(player.clearedAchievementCount)/\(player.currentAchievementInfo.count)"
                 cell.gameCharacterDescriptionLabel.font = UIFont(name: "GyeonggiBatangB", size: 17)
