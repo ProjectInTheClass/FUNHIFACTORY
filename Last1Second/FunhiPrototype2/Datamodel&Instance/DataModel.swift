@@ -589,7 +589,7 @@ struct BlockOfDayEpisodeForJson :Codable{
     // choices: [[다음페이지 결정짓는 key값 : 선택지 텍스트]]
     let choices: [Choice]
     let choiceSkip : Bool
-    let isGodChatBlock : Bool
+    let isGodChat : Bool
     let backGroundMusic : bgm
     
     init(from decoder: Decoder) throws {
@@ -599,7 +599,7 @@ struct BlockOfDayEpisodeForJson :Codable{
         chats = (try? values.decode([Chat].self, forKey: .chats)) ?? []
         choices = (try? values.decode([Choice].self, forKey: .choices)) ?? []
         choiceSkip = (try? values.decode(Bool.self, forKey: .choiceSkip)) ?? false
-        isGodChatBlock = (try? values.decode(Bool.self, forKey: .isGodChatBlock)) ?? false
+        isGodChat = (try? values.decode(Bool.self, forKey: .isGodChat)) ?? false
         backGroundMusic = (try? values.decode(bgm.self, forKey: .backGroundMusic)) ?? .none
     }
 }
