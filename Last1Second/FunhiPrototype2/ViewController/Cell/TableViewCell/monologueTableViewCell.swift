@@ -23,7 +23,13 @@ class monologueTableViewCell: UITableViewCell {
         monologueUI(cell: monologueCell)
         monologueUI(cell: monologueCircle)
     }
-    func chatUpdate(nickname:String, profile:CharacterFace){
+    func chatUpdate(nickname:String, profile:CharacterFace, godchat : Bool){
+        switch godchat {
+        case true:
+            backgroundColor = UIColor(red: 0.545, green: 0.631, blue: 0.71, alpha: 1)
+        case false:
+            backgroundColor =  UIColor(red: 0.07, green: 0.15, blue: 0.22, alpha: 1)
+        }
         name.text = nickname
         let face = findFaceImage(nickname: nickname, profile: profile, normalProfile: "none")
         if face == "none"{
