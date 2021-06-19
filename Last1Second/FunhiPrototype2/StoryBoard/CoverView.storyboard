@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mHh-gU-bDL">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -47,8 +48,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover image" translatesAutoresizingMaskIntoConstraints="NO" id="GPZ-zE-Umf">
-                                <rect key="frame" x="0.0" y="-1" width="414" height="898"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverImage" translatesAutoresizingMaskIntoConstraints="NO" id="GPZ-zE-Umf">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="895.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="GPZ-zE-Umf" secondAttribute="height" multiplier="428:926" id="Gwh-Np-mbu"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4R-AN-iqx">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -72,15 +76,14 @@
                         <viewLayoutGuide key="safeArea" id="ipM-go-sY9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="GPZ-zE-Umf" firstAttribute="trailing" secondItem="ipM-go-sY9" secondAttribute="trailing" id="0Bb-VU-5BE"/>
+                            <constraint firstItem="GPZ-zE-Umf" firstAttribute="trailing" secondItem="Dnq-0k-G5u" secondAttribute="trailing" id="0Bb-VU-5BE"/>
                             <constraint firstItem="S4R-AN-iqx" firstAttribute="trailing" secondItem="ipM-go-sY9" secondAttribute="trailing" id="4cS-sV-6Vo"/>
-                            <constraint firstItem="S4R-AN-iqx" firstAttribute="top" secondItem="Dnq-0k-G5u" secondAttribute="top" id="65Y-jj-Ra6"/>
-                            <constraint firstItem="GPZ-zE-Umf" firstAttribute="leading" secondItem="ipM-go-sY9" secondAttribute="leading" id="Eb3-bS-ujG"/>
+                            <constraint firstItem="GPZ-zE-Umf" firstAttribute="leading" secondItem="Dnq-0k-G5u" secondAttribute="leading" id="Eb3-bS-ujG"/>
                             <constraint firstItem="S4R-AN-iqx" firstAttribute="leading" secondItem="ipM-go-sY9" secondAttribute="leading" id="Jnn-fY-qbN"/>
                             <constraint firstAttribute="bottom" secondItem="S4R-AN-iqx" secondAttribute="bottom" id="Qw1-QT-yF6"/>
-                            <constraint firstAttribute="bottom" secondItem="GPZ-zE-Umf" secondAttribute="bottom" constant="-1" id="RMd-Jd-oNo"/>
+                            <constraint firstItem="S4R-AN-iqx" firstAttribute="top" secondItem="Dnq-0k-G5u" secondAttribute="top" id="aW5-HL-nSz"/>
                             <constraint firstItem="cdZ-86-mCc" firstAttribute="centerX" secondItem="Dnq-0k-G5u" secondAttribute="centerX" id="dAu-jI-LzQ"/>
-                            <constraint firstItem="GPZ-zE-Umf" firstAttribute="top" secondItem="Dnq-0k-G5u" secondAttribute="top" constant="-1" id="eaR-6O-lDk"/>
+                            <constraint firstItem="GPZ-zE-Umf" firstAttribute="top" secondItem="Dnq-0k-G5u" secondAttribute="top" id="eaR-6O-lDk"/>
                             <constraint firstAttribute="bottom" secondItem="cdZ-86-mCc" secondAttribute="bottom" constant="98" id="wZA-Xa-oLi"/>
                         </constraints>
                     </view>
@@ -95,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6g3-of-CNn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-686" y="108"/>
+            <point key="canvasLocation" x="-686.95652173913049" y="107.8125"/>
         </scene>
         <!--Select Stage View Controller-->
         <scene sceneID="3dQ-li-Dim">
@@ -717,7 +720,7 @@
         <image name="blue emergency" width="670.5" height="670.5"/>
         <image name="case backgroud_test" width="414" height="896"/>
         <image name="case choose text image" width="1065.5" height="142.5"/>
-        <image name="cover image" width="1023.5" height="2203"/>
+        <image name="coverImage" width="428" height="926"/>
         <image name="image sample" width="2016" height="1512"/>
         <image name="lock icon" width="377" height="422"/>
         <image name="sandglass 1" width="68.5" height="115"/>

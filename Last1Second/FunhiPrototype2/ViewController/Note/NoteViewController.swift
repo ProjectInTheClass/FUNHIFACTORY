@@ -181,7 +181,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 cell.selectionStyle = .none
                 cell.nameLabel.text = currentEpisode.currentCharacterNote[indexPath.row].name
                
-                cell.profileImageView.image = UIImage(named: currentEpisode.currentCharacterNote[indexPath.row].profileImage)
+                cell.profileImageView.image = UIImage(named: "\(currentEpisode.currentCharacterNote[indexPath.row].profileImage)_noteLarge")
                 currentEpisode.currentCharacterNote[indexPath.row].isLocked ? cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1), borderColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1)) : cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: .white, borderColor: .white)
                 currentEpisode.currentCharacterNote[indexPath.row].isLocked ? (cell.lockedView.isHidden = false) : (cell.lockedView.isHidden = true)
                 
