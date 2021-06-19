@@ -69,6 +69,7 @@ func choiceCellUIUpdate(target view : UIView){
     //view.heightAnchor.constraint(equalToConstant: 45).isActive = true
    
 }
+
 extension UIView {
     func clearConstraints() {
         for subview in self.subviews {

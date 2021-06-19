@@ -33,12 +33,16 @@ class myTextTableViewCell: UITableViewCell {
     func myTextCellUpdate(name:String,chat:String,profile:CharacterFace){
         profileNickname.text = name
         chatText.text = chat
-        let face = findFaceImage(nickname: name, profile: profile, normalProfile: "none")
-        if face == "none"{
+        
+        switch profile {
+        case .none:
             profileImage.isHidden = true
             profileNickname.isHidden = true
+        default:
+            profileImage.isHidden = false
+            profileNickname.isHidden = false
         }
+        let face = findFaceImage(nickname: name, profile: profile, normalProfile: "none")
         profileImage.image = UIImage(named: face)
-        return
     }
 }
