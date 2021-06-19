@@ -469,7 +469,7 @@ extension NoteViewController {
         }
     }
     func popupViewOff(popupView: UIView, blackView: UIView, priviousScale: CGFloat, afterScale: CGFloat) {
-        let backgroundView = self.view!
+        _ = self.view!
        
      
         popupView.transform = CGAffineTransform(scaleX: priviousScale, y: priviousScale)

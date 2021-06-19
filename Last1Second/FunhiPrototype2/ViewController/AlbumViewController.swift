@@ -201,7 +201,7 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         currentNotePageInt = newPageNumber
         
-        let button = pageButtons[currentNotePageInt]
+        _ = pageButtons[currentNotePageInt]
         
         let currentPageButtonTitleColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         let currentPageButtonBackgroundColor = UIColor(red: 157/255, green: 181/255, blue: 203/255, alpha: 1)
@@ -249,7 +249,7 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func popupViewOff(popupView: UIView, blackView: UIView, priviousScale: CGFloat, afterScale: CGFloat) {
-        let backgroundView = self.view!
+        _ = self.view!
        
      
         popupView.transform = CGAffineTransform(scaleX: priviousScale, y: priviousScale)

@@ -449,7 +449,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func unwindToMainGame(_ unwindSegue: UIStoryboardSegue) {
-        let sourceViewController = unwindSegue.source
+        _ = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
     }
 }
@@ -469,9 +469,11 @@ func popupViewDesign(popupView: UIView) {
 extension mainGameViewController : arDelegate {
     func goToAR(arid: ARID) {
         print("buttonClicked")
+
         let dataToSend: ARID
         dataToSend = arid
         performSegue(withIdentifier: "goToARView", sender: dataToSend)
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
