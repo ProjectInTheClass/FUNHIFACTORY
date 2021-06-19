@@ -14,7 +14,10 @@ class MaingameARViewController: UIViewController {
     @IBOutlet weak var arView: ARView!
     @IBOutlet weak var finishARButton: UIButton!
     
-    let leafAnchor = try! OpenLeaves.load장면()
+    let groundAnchor = try! HidePocketInGround.loadGround()
+    let rocksAnchor = try! HidePocketBetweenRocks.loadRock()
+    
+    var recievedAR: ARID?
 //let rockAnchor = try! OpenRock.load장면()
     
     override func viewDidLoad() {
@@ -23,10 +26,20 @@ class MaingameARViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
 
+        if let recievedAR = recievedAR {
+            switch recievedAR {
+            case .hidePocketInGround:
+                arView.scene.anchors.append(groundAnchor)
+            case .hidePocketInRocks:
+                arView.scene.anchors.append(rocksAnchor)
+          
+            }
+        }
+       
         
       
 
-       arView.scene.anchors.append(leafAnchor)
+      
     }
     
     
