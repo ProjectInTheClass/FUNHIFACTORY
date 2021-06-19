@@ -8,10 +8,11 @@
 import UIKit
 
 protocol arDelegate:AnyObject {
-    func goToAR()
+    func goToAR(arid: ARID)
 }
 class ARTableViewCell: UITableViewCell {
 
+    var currentAR: ARID?
     @IBOutlet weak var chatBox: UIView!
     @IBOutlet weak var chatLabel: UILabel!
     override func awakeFromNib() {
@@ -23,7 +24,15 @@ class ARTableViewCell: UITableViewCell {
     }
     var delegate : arDelegate?
     @IBAction func goToARView(_ sender: Any) {
-        delegate?.goToAR()
+    
+        if let currentAR = currentAR {
+            delegate?.goToAR(arid: currentAR)
+        } else {
+            print("AR 셀 내부에 저장된 콘텐츠 없음")
+        }
+        
+    
+      
     }
     
 }

@@ -120,6 +120,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         else if target.type == .ar{
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "arTableViewCell", for: indexPath) as! ARTableViewCell
             cell.delegate = self
+            if let arContent = target.optionalOption?.arContent {
+                cell.currentAR = arContent
+            }
+            
             return cell
         }
         else if (target.type == .endGodChat || target.type == .startGodChat)
@@ -220,11 +224,17 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         closeChoiceBar()
         if isStartOfEpisode {
+            if let previousEpisodeID = previousEpisodeID {
+                player.currentEpisodes[strToIndex(str: previousEpisodeID)].chatHistory = player.currentChatArray
+            }
+           
+            player.currentChatArray.removeAll()
             isStartOfEpisode = false
             blackView.bounds = self.view.bounds
             blackView.center = self.view.center
             self.view.addSubview(blackView)
             blackView.alpha = 1
+            
             UIView.animate(withDuration: 1.0) {
                 self.blackView.alpha = 0
             } completion: { (Bool) in
@@ -457,11 +467,11 @@ func popupViewDesign(popupView: UIView) {
 
 
 extension mainGameViewController : arDelegate {
-    func goToAR() {
+    func goToAR(arid: ARID) {
         print("buttonClicked")
         let dataToSend: ARID
-        // dataToSend = 현재 Chat의 ARID
-        performSegue(withIdentifier: "goToARView", sender: nil)
+        dataToSend = arid
+        performSegue(withIdentifier: "goToARView", sender: dataToSend)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -18,7 +18,7 @@ class MaingameARViewController: UIViewController {
     let rocksAnchor = try! HidePocketBetweenRocks.loadRock()
     
     var recievedAR: ARID?
-//let rockAnchor = try! OpenRock.load장면()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,8 @@ class MaingameARViewController: UIViewController {
                 arView.scene.anchors.append(rocksAnchor)
           
             }
+        } else {
+            print("**AR 콘텐츠 존재하지 않음**")
         }
        
         
@@ -51,9 +53,9 @@ class MaingameARViewController: UIViewController {
 
     @IBAction func finishARButtonAction(_ sender: Any) {
 
-     //  arView.session.pause()
+     arView.session.pause()
 
-        self.navigationController?.popViewController(animated: true)
+    self.navigationController?.popViewController(animated: true)
     }
 }
 

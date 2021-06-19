@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     @IBOutlet var buttonViews: [UIView]!
     override func viewDidLoad() {
         super.viewDidLoad()
-        player.dayId = prologueChapter.episodeID
+        
         episodeYearLabel.text = "\(currentEpisode().episodeYear)년"
         episodeNameLabel.text = currentEpisode().episodePlace
         episodeDescriptionLabel.text = currentEpisode().episodeDesciption
@@ -43,6 +43,9 @@ class HomeViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
     @IBAction func noteButtonAction(_ sender: Any) {
         pushMenuViewsAnimation()
     }

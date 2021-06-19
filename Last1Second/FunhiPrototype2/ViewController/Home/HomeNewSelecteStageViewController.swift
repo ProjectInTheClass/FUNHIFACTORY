@@ -7,6 +7,8 @@
 
 import UIKit
 
+var previousEpisodeID: String?
+
 class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
 
   
@@ -111,12 +113,14 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
     
     @IBAction func selectedPopupStartButton(_ sender: Any) {
         
+        previousEpisodeID = player.dayId
         player.dayId = selectedEP.episodeID
-        
+        player.indexNumber = 0
         player.currentEpisodes[strToIndex(str: selectedEP.episodeID)].isStarted = true
         performSegue(withIdentifier: "goToChapterCoverSegue", sender: nil)
         
     }
+    
     @IBAction func selectedPopupExitButton(_ sender: Any) {
         selectedPopup.removeFromSuperview()
     }
@@ -153,6 +157,7 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
     
     //초기화 시키느라 이래 됨
     var selectedEP = Episode(episodeID: "", episodePlace: "", episodeYear: 0, episodeKingYear: "", episodeShortDesciption: "", episodeDesciption: "", episodePlaceImage: "", episodeCoverImage: "", isCleared: true, chatHistory: [], storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "")
+    
     func openStagePopup(indexPath: IndexPath) {
      
         selectedEP = player.currentEpisodes[indexPath.row]

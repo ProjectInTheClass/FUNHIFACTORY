@@ -52,9 +52,8 @@ var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
 
 var chapter1 = Episode(episodeID: "1592", episodePlace: "인정전", episodeYear: 1592, episodeKingYear: "선조 25년", episodeShortDesciption: "우리나라의 뼈아픈 역사 중 하나다. ",episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "Donhwamun image", episodeCoverImage: "changdeokgung image sample", isCleared: true, chatHistory: [], storyBlocks: [:],
-currentCharacterNote: [
-    GameCharacter(name: "단희",profileImage: "heeryeongBackgroundImage",backGroundImage: "",description: "인물 설명",infomation: [Infomation(infomationID: .hwiryeong1, isLocked: false, text: "휘령 정보 1"),Infomation(infomationID: .hwiryeong2, isLocked: false, text: "휘령 정보 2"),Infomation(infomationID: .hwiryeong3, isLocked: false, text: "휘령 정보 3"),Infomation(infomationID: .hwiryeong4, isLocked: false, text: "휘령 정보 4"),Infomation(infomationID: .hwiryeong5, isLocked: false, text: "휘령 정보 5 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화")], isLocked: false)],
-currentCaseNote: [NoteCase(id: .case101, title: "[인조반정]", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "1623년 4월 11일에 일어난 사건이다. 조선의 3대 반정 중 하나로, 서인 세력이 광해군과 대북파를 몰아내고 인조인 능양군을 왕위에 앉혔다.", isLocked: false)], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "002")
+currentCharacterNote: [],
+currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "002")
 
 
 var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear: 1623, episodeKingYear: "광해 15년", episodeShortDesciption: "반란으로 왕이 바뀐 사건이다.\n인조가 광해를 끌어내리고 왕 위에\n오르던 과정에서 인정전을 제외한\n모든 건물이 불에 타 버렸다.\n반란이 성공하지 못하도록 하는 것이\n이 사건의 실마리가 될 것이다.", episodeDesciption: "나는 현실로 돌아가야만 하는 사람이다.\n그런데 왜 자꾸 다른 마음을 품게 되는 거냐고!\n역사가 똑같이 흘러가게 냅두어서는 안 돼.\n안 되는 걸 너무 잘 아는데...\n정신 차리자.\n내가 할 선택은.....", episodePlaceImage: "Seonjeongjeon image", episodeCoverImage: "changdeokgung image sample", isCleared: true, chatHistory: [],storyBlocks: [:], currentCharacterNote: [

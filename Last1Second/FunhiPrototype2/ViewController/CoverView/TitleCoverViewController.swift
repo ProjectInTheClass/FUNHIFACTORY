@@ -44,7 +44,7 @@ class TitleCoverViewController: UIViewController {
         if didntStartEpisode && didntStartPrologue {
                 player.dayId = player.currentEpisodes[0].episodeID
                 player.indexNumber = 0
-                player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = "014"
+                //player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = "014"
                 performSegue(withIdentifier: "fromCoverToChapterCover", sender: nil)
         }
         

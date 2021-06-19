@@ -8,95 +8,10 @@
 import UIKit
 
 
-class TLsectionTableViewCell: UITableViewCell {
-
-    @IBOutlet var sectionText: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-         // Configure the view for the selected state
-    }
-    func sectionUpdate(text : String){
-        sectionText.text = text
-    }
-}
-
-
-class TLopTextTableViewCell: UITableViewCell {
-    @IBOutlet var profileImage: UIImageView!
-    @IBOutlet var profileNickname: UILabel!
-    @IBOutlet var chatText: UITextView!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    func opTextCellUpdate(name:String,chat:String,profile:String){
-        profileNickname.text = name
-               chatText.text = chat
-               profileImage.image = UIImage(named: profile)
-    }
-
-}
-
-class TLmyTextTableViewCell: UITableViewCell {
-    @IBOutlet var profileImage: UIImageView!
-    @IBOutlet var profileNickname: UILabel!
-    @IBOutlet var chatText: UITextView!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    func myTextCellUpdate(name:String,chat:String,profile:String){
-        profileImage.image = UIImage(named: profile)
-        profileNickname.text = name
-        chatText.text = chat
-    }
-}
-
-class TLmonologueTableViewCell: UITableViewCell {
-    @IBOutlet var monologueText: UILabel!
-    @IBOutlet var monologueCell: UIView!
-    @IBOutlet var monologueCircle: UIView!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        monologueUI(cell: monologueCell)
-        monologueUI(cell: monologueCircle)
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-}
-
-class TLImageTableViewCell: UITableViewCell {
-
-    @IBOutlet var unTouchableImage: UIImageView!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    func imageUpdate(mainImage:String){
-        print("<현재 출력될 이미지 : \(mainImage)>")
-        guard mainImage != "" else {return}
-           unTouchableImage.image = UIImage(named: mainImage)
-       }
-}
 
 
 class EPHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+  
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let recieved = recieved else {
@@ -109,56 +24,64 @@ class EPHistoryViewController: UIViewController, UITableViewDelegate, UITableVie
         guard let recieved = recieved else {
             return UITableViewCell()
         }
-        
+        let target = recieved[indexPath.row]
         let chatText = recieved[indexPath.row].text
-        let chatType = recieved[indexPath.row].type
-        let chatPerson = recieved[indexPath.row].who.info()
-        print("cellForRowAt")
-        
         //텍스트 채팅이 나올 때
-            //자신이 보냈을 때
-        if chatType == .onlyText && recieved[indexPath.row].who.info().name == "이단희"{
-            print("자신 텍스트 출력")
-            let cell = chatTableView.dequeueReusableCell(withIdentifier: "timelinemyTextCell", for: indexPath) as! TLmyTextTableViewCell
-            cell.myTextCellUpdate(name: chatPerson.name, chat: chatText, profile: chatPerson.profileImage)
-                    return cell
+        //자신이 보냈을 때
+        if target.type == .onlyText && target.who.info().name == "이단희"{
+            print("메인게임 - 자신 텍스트 출력")
+            let cell = chatHistoryTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
+            cell.myTextCellUpdate(name: target.who.info().name, chat: chatText, profile: target.characterFace, godchat: target.isGodChat)
+            return cell
         }
-            //상대가 보냈을 때
-        else if chatType == .onlyText {
-                print("상대 텍스트 출력")
-                let cell = chatTableView.dequeueReusableCell(withIdentifier: "timelineopTextCell", for: indexPath) as! TLopTextTableViewCell
-                cell.opTextCellUpdate(name: chatPerson.name, chat: chatText, profile: chatPerson.profileImage)
-                return cell
-            }
+        //상대가 보냈을 때
+        else if target.type == .onlyText {
+            print("메인게임 - 상대 텍스트 출력")
+            let cell = chatHistoryTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
+            cell.profileNickname.textColor = .white
+            cell.opTextCellUpdate(name: target.who.info().name, chat: chatText,normalProfile: target.who.info().profileImage, mainProfile: target.characterFace, isLocked: target.who.info().isLocked, godchat: target.isGodChat)
+            cell.contentView.setNeedsDisplay()
+            return cell
+        }
         //터치할 수 없는 이미지
-        else if chatType == .untouchableImage {
-            print("이미지 출력")
-            let cell = chatTableView.dequeueReusableCell(withIdentifier: "timelineimageCell", for: indexPath) as! TLImageTableViewCell
+        else if target.type == .untouchableImage {
+            print("메인게임 - 이미지 출력")
+            let cell = chatHistoryTableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! ImageTableViewCell
 
-            cell.imageUpdate(mainImage: recieved[indexPath.row].image)
+            cell.imageUpdate(mainImage: target.image, godchat: target.isGodChat)
             return cell
         }
         //행동 표시글 셀
-        else if chatType == .sectionHeader{
-            print("섹션헤더 출력")
-            let cell = chatTableView.dequeueReusableCell(withIdentifier: "timelinesectionCell", for: indexPath) as! TLsectionTableViewCell
-            cell.sectionUpdate(text:chatText)
+        else if target.type == .sectionHeader{
+            print("메인게임 - 섹션헤더 출력")
+            let cell = chatHistoryTableView.dequeueReusableCell(withIdentifier: "sectionCell", for: indexPath) as! sectionTableViewCell
+            cell.sectionUpdate(text:chatText, godchat: target.isGodChat)
             return cell
-            
         }
-        
-        else if chatType == .monologue{
-            print("속마음 채팅 출력")
-            let cell = chatTableView.dequeueReusableCell(withIdentifier: "timelinemonologue", for: indexPath) as! TLmonologueTableViewCell
+        else if target.type == .monologue{
+            print("메인게임 - 속마음 채팅 출력")
+                    
+            let cell = chatHistoryTableView.dequeueReusableCell(withIdentifier: "monologue", for: indexPath) as! monologueTableViewCell
             cell.monologueText.text = chatText
+            cell.name.textColor = .white
+            cell.chatUpdate(nickname: target.who.info().name, profile: target.characterFace, godchat: target.isGodChat)
             return cell
         }
-        
-        else {
-            print("그 외")
-            let cell = chatTableView.dequeueReusableCell(withIdentifier: "timelinemyTextCell", for: indexPath) as! TLmyTextTableViewCell
-            cell.myTextCellUpdate(name: chatPerson.name, chat: chatText, profile: chatPerson.profileImage)
+        else if target.type == .ar{
+            let cell = chatHistoryTableView.dequeueReusableCell(withIdentifier: "arTableViewCell", for: indexPath) as! ARTableViewCell
+            cell.delegate = self
             return cell
+        }
+        else if (target.type == .endGodChat || target.type == .startGodChat)
+        {
+            print("메인게임 - 구분자 채팅 출력")
+            let cell = chatHistoryTableView.dequeueReusableCell(withIdentifier: "separatorCell", for: indexPath) as! SeparatorTableViewCell
+            cell.separatorUpdate(chatType: target.type)
+            return cell
+        }
+        else {
+            print("메인게임 - 오류 발생1")
+            return UITableViewCell()
         }
     }
     
@@ -167,8 +90,8 @@ class EPHistoryViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.chatTableView.delegate = self
-        self.chatTableView.dataSource = self
+        self.chatHistoryTableView.delegate = self
+        self.chatHistoryTableView.dataSource = self
         // Do any additional setup after loading the view.
     }
     @IBAction func backAction(_ sender: Any) {
@@ -176,7 +99,7 @@ class EPHistoryViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     
-    @IBOutlet weak var chatTableView: UITableView!
+    @IBOutlet weak var chatHistoryTableView: UITableView!
     
     /*
     // MARK: - Navigation
@@ -188,4 +111,23 @@ class EPHistoryViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     */
 
+}
+extension EPHistoryViewController : arDelegate {
+
+    
+    func goToAR(arid: ARID) {
+        print("buttonClicked")
+        let dataToSend: ARID
+        // dataToSend = 현재 Chat의 ARID
+        performSegue(withIdentifier: "goToARView", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToARView" {
+            let destination = segue.destination as! MaingameARViewController
+            if let arContent = sender as? ARID {
+                destination.recievedAR = arContent
+            }
+        }
+    }
 }
