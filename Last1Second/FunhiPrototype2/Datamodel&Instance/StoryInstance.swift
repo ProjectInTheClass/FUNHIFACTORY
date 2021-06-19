@@ -43,9 +43,9 @@ var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현
                      AlbumImage(id: .prolog_hwiryeong, image: "prolog_hwiryeong", title: "휘령", description: "너를 줄곧 기다리고 있었어!\n네가 내 유일한 희망이야.\n부디 나를 도와줘.", isLocked: false)],
     timelineCheckPoint: [
         
-        [CheckPoint(id: .id201, name: "처음부터", storyBlockIndex: "001", isLocked: false),
-         CheckPoint(id: .id202, name: "휘령과의 만남", storyBlockIndex: "016", isLocked: false),
-         CheckPoint(id: .id203, name: "소원", storyBlockIndex: "042", isLocked: false)]
+        [CheckPoint(id: .checkPoint_0_0_1, name: "처음부터", storyBlockIndex: "001", isLocked: false),
+         CheckPoint(id: .checkPoint_0_0_2, name: "휘령과의 만남", storyBlockIndex: "016", isLocked: false),
+         CheckPoint(id: .checkPoint_0_0_3, name: "소원", storyBlockIndex: "042", isLocked: false)]
         
         ], currentStoryBlockIndex: "014")
 
@@ -54,7 +54,7 @@ var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현
 var chapter1 = Episode(episodeID: "1592", episodePlace: "인정전", episodeYear: 1592, episodeKingYear: "선조 25년", episodeShortDesciption: "우리나라의 뼈아픈 역사 중 하나다. ",episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "Donhwamun image", episodeCoverImage: "changdeokgung image sample", isCleared: true, chatHistory: [], storyBlocks: [:],
 currentCharacterNote: [
     GameCharacter(name: "단희",profileImage: "heeryeongBackgroundImage",backGroundImage: "",description: "인물 설명",infomation: [Infomation(infomationID: .hwiryeong1, isLocked: false, text: "휘령 정보 1"),Infomation(infomationID: .hwiryeong2, isLocked: false, text: "휘령 정보 2"),Infomation(infomationID: .hwiryeong3, isLocked: false, text: "휘령 정보 3"),Infomation(infomationID: .hwiryeong4, isLocked: false, text: "휘령 정보 4"),Infomation(infomationID: .hwiryeong5, isLocked: false, text: "휘령 정보 5 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화")], isLocked: false)],
-currentCaseNote: [NoteCase(id: .case201, title: "[인조반정]", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "1623년 4월 11일에 일어난 사건이다. 조선의 3대 반정 중 하나로, 서인 세력이 광해군과 대북파를 몰아내고 인조인 능양군을 왕위에 앉혔다.", isLocked: false)], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "002")
+currentCaseNote: [NoteCase(id: .case101, title: "[인조반정]", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "1623년 4월 11일에 일어난 사건이다. 조선의 3대 반정 중 하나로, 서인 세력이 광해군과 대북파를 몰아내고 인조인 능양군을 왕위에 앉혔다.", isLocked: false)], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "002")
 
 
 var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear: 1623, episodeKingYear: "광해 15년", episodeShortDesciption: "반란으로 왕이 바뀐 사건이다.\n인조가 광해를 끌어내리고 왕 위에\n오르던 과정에서 인정전을 제외한\n모든 건물이 불에 타 버렸다.\n반란이 성공하지 못하도록 하는 것이\n이 사건의 실마리가 될 것이다.", episodeDesciption: "나는 현실로 돌아가야만 하는 사람이다.\n그런데 왜 자꾸 다른 마음을 품게 되는 거냐고!\n역사가 똑같이 흘러가게 냅두어서는 안 돼.\n안 되는 걸 너무 잘 아는데...\n정신 차리자.\n내가 할 선택은.....", episodePlaceImage: "Seonjeongjeon image", episodeCoverImage: "changdeokgung image sample", isCleared: true, chatHistory: [],storyBlocks: [:], currentCharacterNote: [
@@ -72,34 +72,33 @@ var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear
         Infomation(infomationID: .kimjajeom3, isLocked: false, text: "김상궁에게 뇌물을 주며 반역의 소문을 잠재우려 했다.")
     ],isLocked: false),
     
-    GameCharacter(name: "능양군", profileImage: "commoner", backGroundImage: "", description: "내가.. 내가 곧 이 나라의 왕이 될 것이다!", infomation: [
-        Infomation(infomationID: .kimjajeom1, isLocked: false, text: "집안의 풍비박산으로 복수심을 다졌다."),
-        Infomation(infomationID: .kimjajeom2, isLocked: false, text: "인조반정을 일으켜 훗날 조선시대 제16대 왕 인조가 된다.")
-    ],isLocked: false),
-    
-    GameCharacter(name: "가난한 평민", profileImage: "commoner", backGroundImage: "", description: "거기 누구요?!\n이곳엔 더 이상 가져갈 것도 없으니\n썩 물러가시오!", infomation: [
-        Infomation(infomationID: .kimjajeom2, isLocked: false, text: "마을 끝자락에 위치한 가난한 사람들끼리 뭉쳐있는 곳에 살고 있는 사람이다."),
-        Infomation(infomationID: .kimjajeom2, isLocked: false, text: "생각보다 경계심이 있네.")
-        
-    ],isLocked: false),
-    
     GameCharacter(name: "김상궁", profileImage: "a court lady2", backGroundImage: "", description: "돈이 최고지~\n왕은 나를 제일 사랑하신다고.\n내가 없으면 이 나라는 돌아가지 않아.", infomation: [
         Infomation(infomationID: .kimsanggung1, isLocked: false, text: "조선 중기 광해군 시절의 상궁이다."),
         Infomation(infomationID: .kimsanggung2, isLocked: false, text: "광해군의 아내인 중전 유씨의 신임을 얻어 왕의 곁에서 모실 수 있는 기회를 얻었다."),
         Infomation(infomationID: .kimsanggung3, isLocked: false, text: "뛰어난 미모를 가지고 있지는 않았다."),
         Infomation(infomationID: .kimsanggung4, isLocked: false, text: "그녀의 총명함에 사로잡혀 광해군이 그녀를 매우 아꼈다."),
         Infomation(infomationID: .kimsanggung5, isLocked: false, text: "후궁이 되는 것을 거부하여 계속 상궁의 신분을 유지하였다. 그 덕에 자유롭게 궐 밖으로 돌아다닐 수 있어 다양한 정보를 확보할 수 있었다."),
-        Infomation(infomationID: .kimsanggung6, isLocked: false, text: "광해군이 그녀를 아끼고 신뢰를 하면서 후궁보다 권세가 더 높았다.")
+        Infomation(infomationID: .kimsanggung6, isLocked: false, text: "광해군이 그녀를 아끼고 신뢰를 하면서 후궁보다 권세가 더 높았다."),],isLocked: false),
+    
+    GameCharacter(name: "가난한 평민", profileImage: "commoner", backGroundImage: "", description: "거기 누구요?!\n이곳엔 더 이상 가져갈 것도 없으니\n썩 물러가시오!", infomation: [
+        Infomation(infomationID: .kimjajeom2, isLocked: false, text: "마을 끝자락에 위치한 가난한 사람들끼리 뭉쳐있는 곳에 살고 있는 사람이다."),
+        Infomation(infomationID: .kimjajeom2, isLocked: false, text: "생각보다 경계심이 있네.")],isLocked: false),
+        
+    GameCharacter(name: "능양군", profileImage: "", backGroundImage: "", description: "내가.. 내가 곧 이 나라의 왕이 될 것이다!", infomation: [
+        Infomation(infomationID: .kimjajeom1, isLocked: false, text: "집안의 풍비박산으로 복수심을 다졌다."),
+        Infomation(infomationID: .kimjajeom2, isLocked: false, text: "인조반정을 일으켜 훗날 조선시대 제16대 왕 인조가 된다.")
     ],isLocked: false)
+    
+   
 
 ], currentCaseNote: [
-    NoteCase(id: .case201, title: "광해군", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "조선의 제15대 왕이다.광해군이 서자이며 둘째 아들이라는 이유로 영창대군을 후사로 삼을 것을 주장하는 소북과 광해군을 지지하는 대북 사이에 분쟁이 확대되었다. 광해군이 왕위로 있던 15년간 대북파가 정권을 잡게 되었다. 이에 불만을 품은 자들이 반란을 일으켰다. 인조반정 당일 광해군은 후원에서 술을 마시고 있었다고 하니… 대범한 건지 매우 놀랍네.", isLocked: false),
+    NoteCase(id: .gwanghae, title: "광해군", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "조선의 제15대 왕이다.광해군이 서자이며 둘째 아들이라는 이유로 영창대군을 후사로 삼을 것을 주장하는 소북과 광해군을 지지하는 대북 사이에 분쟁이 확대되었다. 광해군이 왕위로 있던 15년간 대북파가 정권을 잡게 되었다. 이에 불만을 품은 자들이 반란을 일으켰다. 인조반정 당일 광해군은 후원에서 술을 마시고 있었다고 하니… 대범한 건지 매우 놀랍네.", isLocked: false),
     
-    NoteCase(id: .case201, title: "인조반정의 배경", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "광해군은 즉위 이후 자신의 왕위를 위협할 수 있는 형 임해군과 유일한 적통인 영창대군을 경계하였다. 형 임해군이 법을 어겼다는 죄목으로 귀양을 보냈고, 그곳에서 그는 살해당했다. 광해군을 따르던 대북파가 영창대군과 그의 세력들을 제거하기 위해 계축옥사라는 사건을 일으켜 영창대군을 강화에 가두었다고 한다. 그리고 영창대군마저 살해당했다니..그러고는 영창대군의 어머니인 대비 김씨의 존호를 폐하기도 하며 명예를 실추시켰다. 이런 광해군의 사건들이 그의 반대 세력들에게 반역의 구실을 주게 된 것이다.", isLocked: false),
+    NoteCase(id: .injo_revolt_background, title: "인조반정의 배경", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "광해군은 즉위 이후 자신의 왕위를 위협할 수 있는 형 임해군과 유일한 적통인 영창대군을 경계하였다. 형 임해군이 법을 어겼다는 죄목으로 귀양을 보냈고, 그곳에서 그는 살해당했다. 광해군을 따르던 대북파가 영창대군과 그의 세력들을 제거하기 위해 계축옥사라는 사건을 일으켜 영창대군을 강화에 가두었다고 한다. 그리고 영창대군마저 살해당했다니..그러고는 영창대군의 어머니인 대비 김씨의 존호를 폐하기도 하며 명예를 실추시켰다. 이런 광해군의 사건들이 그의 반대 세력들에게 반역의 구실을 주게 된 것이다.", isLocked: false),
     
-    NoteCase(id: .case201, title: "인조반정 당일", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "1623년 4월 11일에 일어난 사건이다. 조선의 3대 반정 중 하나로, 서인 세력이 광해군과 대북파를 몰아내고 능양군을 왕위에 앉혔다.인조반정 당일 창덕궁 후원에서 연회를 벌이던 광해군은 뒤늦게 도망쳤지만 곧 체포되었다.", isLocked: false),
+    NoteCase(id: .injo_revolt_day, title: "인조반정 당일", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "1623년 4월 11일에 일어난 사건이다. 조선의 3대 반정 중 하나로, 서인 세력이 광해군과 대북파를 몰아내고 능양군을 왕위에 앉혔다.인조반정 당일 창덕궁 후원에서 연회를 벌이던 광해군은 뒤늦게 도망쳤지만 곧 체포되었다.", isLocked: false),
     
-    NoteCase(id: .case201, title: "인조반정 그 후", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "그 후 광해군은 왕위를 박탈당하고, 강화로 귀양보내졌다. 그를 따르던 세력들은 모두 죽거나 귀양보내졌다고 한다. 반면에, 반정에 공을 세운 사람들은 벼슬을 얻었다고 한다. 벼슬을 위해 반정을 일으킨 건가...", isLocked: false),],
+    NoteCase(id: .injo_revolt_after, title: "인조반정 그 후", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "그 후 광해군은 왕위를 박탈당하고, 강화로 귀양보내졌다. 그를 따르던 세력들은 모두 죽거나 귀양보내졌다고 한다. 반면에, 반정에 공을 세운 사람들은 벼슬을 얻었다고 한다. 벼슬을 위해 반정을 일으킨 건가...", isLocked: false),],
 
 currentAlbumImages: [
     
@@ -110,11 +109,17 @@ currentAlbumImages: [
         AlbumImage(id: .revolt_image, image: "revolt_image", title: "반란의 시작점", description: "내 옆에는 많은 군사들이 있고,\n나는 지금 돈화문 앞이다.\n\n“다들 정신 똑바로 차리거라!!\n이 문만 지나가면 우리의 세상이 오는 것이니!”\n\n무섭게도 소리 지르는 군사들을 보니\n등골이 서름해지면서 실감이 났다.\n\n아, 내가 인조반정 날에 왔구나.", isLocked: false)],
 
 timelineCheckPoint: [
-        [CheckPoint(id: .id201, name: "처음부터", storyBlockIndex: "000", isLocked: false),
-         CheckPoint(id: .id202, name: "반란의 회의장", storyBlockIndex: "000", isLocked: false),
-         CheckPoint(id: .id203, name: "김상궁과의 만남", storyBlockIndex: "000", isLocked: false)],
-        [CheckPoint(id: .id211, name: "거짓말", storyBlockIndex: "000", isLocked: false)],
-        [CheckPoint(id: .id221, name: "휘령과의 대화", storyBlockIndex: "000", isLocked: false)]
+        [CheckPoint(id: .checkPoint_2_0_1, name: "처음부터", storyBlockIndex: "001", isLocked: false),
+         CheckPoint(id: .checkPoint_2_0_2, name: "반란을 도모하는 회의장", storyBlockIndex: "046", isLocked: false),
+         CheckPoint(id: .checkPoint_2_0_3, name: "김상궁과의 만남", storyBlockIndex: "104", isLocked: false)],
+    
+        [CheckPoint(id: .checkPoint_2_1_1, name: "첫 번째 거짓말", storyBlockIndex: "132", isLocked: false),
+         CheckPoint(id: .checkPoint_2_1_2, name: "두 번째 거짓말", storyBlockIndex: "137", isLocked: false),
+         CheckPoint(id: .checkPoint_2_1_3, name: "세 번째 거짓말", storyBlockIndex: "149", isLocked: false)],
+    
+        [CheckPoint(id: .checkPoint_2_2_1, name: "휘령의 호통", storyBlockIndex: "219", isLocked: false),
+         CheckPoint(id: .checkPoint_2_2_2, name: "백문이 불여일견", storyBlockIndex: "239", isLocked: false),
+         CheckPoint(id: .checkPoint_2_2_3, name: "또 한 번의 기회", storyBlockIndex: "254", isLocked: false)]
         ], currentStoryBlockIndex: "001")
 
 

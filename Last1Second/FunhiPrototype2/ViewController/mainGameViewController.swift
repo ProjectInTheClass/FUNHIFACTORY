@@ -454,7 +454,7 @@ extension mainGameViewController : arDelegate {
         print("buttonClicked")
         let dataToSend: ARID
         // dataToSend = 현재 Chat의 ARID
-        performSegue(withIdentifier: "goToARView", sender: dataToSend)
+        performSegue(withIdentifier: "goToARView", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
