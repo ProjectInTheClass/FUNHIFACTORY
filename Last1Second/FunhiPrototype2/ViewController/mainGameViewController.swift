@@ -439,7 +439,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func unwindToMainGame(_ unwindSegue: UIStoryboardSegue) {
-        let sourceViewController = unwindSegue.source
+        _ = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
     }
 }
@@ -459,7 +459,7 @@ func popupViewDesign(popupView: UIView) {
 extension mainGameViewController : arDelegate {
     func goToAR() {
         print("buttonClicked")
-        let dataToSend: ARID
+//        let dataToSend: ARID
         // dataToSend = 현재 Chat의 ARID
         performSegue(withIdentifier: "goToARView", sender: nil)
     }

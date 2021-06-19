@@ -11,7 +11,7 @@ import UIKit
 let jsonEncoder = JSONEncoder()
 let jsonDecoder = JSONDecoder()
 
-let prologueJsonURL = "https://raw.githubusercontent.com/ProjectInTheClass/FUNHIFACTORYGameData/master/storyInstance.json"
+
 
 func parse(jsonData : Data, targetEpisode : Int){
     do{
@@ -71,4 +71,26 @@ func loadJson(fromURLString urlString: String,
         }
         urlSession.resume()
     }
+}
+
+
+
+func downloadData(targetURL : String, targetEpisodeIndex : Int)
+{
+    loadJson(fromURLString: targetURL) { (result) in
+          switch result {
+          case .success(let data):
+            parse(jsonData: data, targetEpisode: targetEpisodeIndex)
+          case .failure(let error):
+              print(error)
+          }
+        if (player.currentEpisodes[targetEpisodeIndex].storyBlocks.isEmpty)
+        {
+            print("\(player.currentEpisodes[targetEpisodeIndex].episodeID) 챕터가 비었습니다")
+        }
+        else
+        {
+            print("\(player.currentEpisodes[targetEpisodeIndex].episodeID) 챕터가 들어있습니다")
+        }
+      }
 }

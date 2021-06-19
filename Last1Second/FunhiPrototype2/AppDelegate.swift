@@ -16,23 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         loadFromFile()
-        loadJson(fromURLString: prologueJsonURL) { (result) in
-              switch result {
-              case .success(let data):
-                parse(jsonData: data, targetEpisode: 0)
-              case .failure(let error):
-                  print(error)
-              }
-            if (player.currentEpisodes[0].storyBlocks.isEmpty)
-            {
-                print("프롤로그 챕터가 비었습니다")
-            }
-            else
-            {
-                print("프롤로그 챕터가 들어있습니다")
-            }
-          }
-
+        downloadData(targetURL: "https://raw.githubusercontent.com/ProjectInTheClass/FUNHIFACTORYGameData/master/prologue_story.json", targetEpisodeIndex: 0)
+        downloadData(targetURL: "https://raw.githubusercontent.com/ProjectInTheClass/FUNHIFACTORYGameData/master/case2_story.json", targetEpisodeIndex: 2)
         return true
     }
 
