@@ -53,9 +53,17 @@ var currentEpIndex: Int {
 //수첩 사건
 
 enum NoteCaseID: String,Codable{
+    case case001
+    
     case case101
-    case case201
+    
+    case gwanghae
+    case injo_revolt_background
+    case injo_revolt_day
+    case injo_revolt_after
+    
     case case301
+    
     case case401
 }
 class NoteCase: Codable{
@@ -214,6 +222,11 @@ enum GameCharacterID: String,Codable {
             return chapter2.currentCharacterNote[2]
         case .kimwoman:
             return chapter2.currentCharacterNote[3]
+        case .poorman:
+            return chapter2.currentCharacterNote[4]
+        case .injo:
+            return chapter2.currentCharacterNote[5]
+        
         default :
             return GameCharacter(name: "엑스트라", profileImage: "", backGroundImage: "", description: "", infomation: [], isLocked: true)
         }
@@ -485,7 +498,19 @@ struct Episode: Codable {
 
 //MARK: 체크포인트드ㅏㄹ
 enum CheckPointID: String, Codable {
-    case id201, id202, id203, id211, id221
+    case checkPoint_0_0_1
+    case checkPoint_0_0_2
+    case checkPoint_0_0_3
+    
+    case checkPoint_2_0_1
+    case checkPoint_2_0_2
+    case checkPoint_2_0_3
+    case checkPoint_2_1_1
+    case checkPoint_2_1_2
+    case checkPoint_2_1_3
+    case checkPoint_2_2_1
+    case checkPoint_2_2_2
+    case checkPoint_2_2_3
 }
 struct CheckPoint: Codable {
     //아이디
