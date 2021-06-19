@@ -40,7 +40,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet var floatingButtons: [UIView]!
     
-    
+ 
     
     
 //    //노트 팝업 켜고 꺼질 때 애니메이션 담당하는 변수
@@ -233,6 +233,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
           }
     }
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mainGameTableView.delegate = self
@@ -250,6 +251,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         //지우지 말아주세요
         maingameNotepopupViewDesign(popupView: notePopupView, parentView: self.view!)
     }
+    
     
     @IBAction func notePushAction(_ sender: Any) {
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
@@ -436,6 +438,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
 }
 
 
+
 func popupViewDesign(popupView: UIView) {
 
     popupView.layer.cornerRadius = 4
@@ -449,6 +452,17 @@ func popupViewDesign(popupView: UIView) {
 extension mainGameViewController : arDelegate {
     func goToAR() {
         print("buttonClicked")
-        performSegue(withIdentifier: "goToARView", sender: nil)
+        let dataToSend: ARID
+        // dataToSend = 현재 Chat의 ARID
+        performSegue(withIdentifier: "goToARView", sender: dataToSend)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToARView" {
+            let destination = segue.destination as! MaingameARViewController
+            if let arContent = sender as? ARID {
+                destination.recievedAR = arContent
+            }
+        }
     }
 }
