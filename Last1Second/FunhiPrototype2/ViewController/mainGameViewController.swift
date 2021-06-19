@@ -90,6 +90,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
             cell.profileNickname.textColor = .white
             cell.opTextCellUpdate(name: target.who.info().name, chat: chatText,normalProfile: target.who.info().profileImage, mainProfile: target.characterFace, isLocked: target.who.info().isLocked)
+            cell.contentView.setNeedsDisplay()
             return cell
         }
         //터치할 수 없는 이미지
@@ -119,6 +120,12 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         else if target.type == .ar{
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "arTableViewCell", for: indexPath) as! ARTableViewCell
             cell.delegate = self
+            return cell
+        }
+        else if (target.type == .endGodChat || target.type == .startGodChat)
+        {
+            let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "separatorCell", for: indexPath) as! SeparatorTableViewCell
+            cell.separatorUpdate(chatType: target.type)
             return cell
         }
         else {
@@ -157,6 +164,18 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             player.currentChatArray.append(Chat(text_: currentBlockOfDay().choices[indexPath.row].text, image_: "", type_: currentBlockOfDay().choices[indexPath.row].chatType, who_: .danhee, characterFace_: currentBlockOfDay().choices[indexPath.row].characterFace, optionalOption_: currentBlockOfDay().choices[indexPath.row].optionalOption, animationOption_: .none))
 
                 mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
+            if (currentBlockOfDay().isGodChat != currentEpisode().storyBlocks[currentBlockOfDay().choices[indexPath.row].nextTextIndex]?.isGodChat)
+            {
+                if (currentBlockOfDay().isGodChat == true)
+                {
+                    player.currentChatArray.append(Chat(text_: "", image_: "", type_: .endGodChat, who_: .danhee, characterFace_: .none, optionalOption_: nil, animationOption_: .none))
+                }
+                else
+                {
+                    player.currentChatArray.append(Chat(text_: "", image_: "", type_: .startGodChat, who_: .danhee, characterFace_: .none, optionalOption_: nil, animationOption_: .none))
+                }
+                mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
+            }
             print("현재 ChatId : \(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex), 선택한 선택지 : \(currentBlockOfDay().choices[indexPath.row])")
             checkAlbumImageInChoice(choiceIndex: indexPath.row)
 
@@ -169,20 +188,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             player.indexNumber = 0
             closeChoiceBar()
             chatUpdateTimer()
-            //다음 페이지가 신 채팅일 경우
-//            if isGodChatOn == false && player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[currentBlockOfDay().choices[indexPath.row].nextTextIndex]?.isGodChat == true
-//            {
-//                //진동 울리기 및 색 변경이나 알림(아이템 뱃지와 같은) 등이 떠야 함.
-////                if timer != nil{
-////                    timer.invalidate()
-////                }
-////                vibrate(vibrateIsOn: playerSetting.vibration)
-//                chatUpdateTimer()
-//            }
-//            //다음 페이지가 신 채팅이 아닐 경우
-//            else{
-//                chatUpdateTimer()
-//            }
         }
     
     override func viewDidAppear(_ animated: Bool) {
