@@ -165,10 +165,16 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
     
     @IBAction func selectedPopupStartButton(_ sender: Any) {
         
-        player.dayId = selectedEP.episodeID
-        player.currentEpisodes[strToIndex(str: selectedEP.episodeID)].isStarted = true
+        updateCurrentEpisode()
         performSegue(withIdentifier: "goToChapterCoverSegue", sender: nil)
         
+    }
+    func updateCurrentEpisode() {
+        previousEpisodeID = player.dayId
+        player.dayId = selectedEP.episodeID
+        player.indexNumber = 0
+        player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = "001"
+        player.currentEpisodes[strToIndex(str: selectedEP.episodeID)].isStarted = true
     }
     @IBAction func selectedPopupExitButton(_ sender: Any) {
         selectedPopup.removeFromSuperview()

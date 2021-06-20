@@ -350,8 +350,9 @@ struct Chat: Codable {
 
 enum ARID: String, Codable {
     case hidePocketInGround
-    case hidePocketInRocks
+    case hidePocketBetweenRocks
 }
+
 
 struct OptionalOption: Codable {
     let achievementToUnlock: AchievementID?

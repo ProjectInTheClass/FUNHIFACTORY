@@ -84,6 +84,7 @@ var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear
         Infomation(infomationID: .kimjajeom2, isLocked: false, text: "생각보다 경계심이 있네.")],isLocked: false),
         
     GameCharacter(name: "능양군", profileImage: "", backGroundImage: "", description: "내가.. 내가 곧 이 나라의 왕이 될 것이다!", infomation: [
+        Infomation(infomationID: .kimjajeom1, isLocked: false, text: "그의 본명은 이종이다."),
         Infomation(infomationID: .kimjajeom1, isLocked: false, text: "집안의 풍비박산으로 복수심을 다졌다."),
         Infomation(infomationID: .kimjajeom2, isLocked: false, text: "인조반정을 일으켜 훗날 조선시대 제16대 왕 인조가 된다.")
     ],isLocked: false)

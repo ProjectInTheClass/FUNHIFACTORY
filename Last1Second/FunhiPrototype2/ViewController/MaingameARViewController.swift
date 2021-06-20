@@ -30,7 +30,7 @@ class MaingameARViewController: UIViewController {
             switch recievedAR {
             case .hidePocketInGround:
                 arView.scene.anchors.append(groundAnchor)
-            case .hidePocketInRocks:
+            case .hidePocketBetweenRocks:
                 arView.scene.anchors.append(rocksAnchor)
           
             }

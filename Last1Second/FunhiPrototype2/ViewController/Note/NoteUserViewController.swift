@@ -184,6 +184,17 @@ class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollec
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        noteCollectionView.reloadData()
+        if let receivedCharacter = recievedGameCharacter {
+            updateView(gameCharacter: receivedCharacter)
+        }
+       
+    }
+    
+    func updateView(gameCharacter: GameCharacter) {
+        nameLabel.text = gameCharacter.name
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
 
         // Get the view for the first header
