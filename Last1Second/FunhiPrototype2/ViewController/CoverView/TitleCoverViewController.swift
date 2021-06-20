@@ -68,6 +68,7 @@ class TitleCoverViewController: UIViewController {
         startButton.layer.shadowOpacity = 1
         startButton.layer.shadowRadius = 0
         startButton.layer.shadowOffset = CGSize(width: 7, height: 7)
+        testLabel.setShadow(color: UIColor(red: 0, green: 0, blue: 0, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 5)
     }
 
     func light() {
