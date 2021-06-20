@@ -157,7 +157,8 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
                 if let currentStoryBlockIndex = Int(player.currentEpisodes[timelineIndex].currentStoryBlockIndex) {
                     print("currentStoryBlockIndex: \(currentStoryBlockIndex)")
                     
-                    let progressValue = (Double(currentStoryBlockIndex)/Double(currentEpisodeTotalStoryBlockCount))
+                    let progressValue: Double
+                    player.currentEpisodes[timelineIndex].isCleared ? (progressValue = 1.0) : (progressValue = (Double(currentStoryBlockIndex)/Double(currentEpisodeTotalStoryBlockCount)))
                     //에피소드 스토리 블럭 안 비어있다면
                     if currentEpisodeTotalStoryBlockCount != 0 {
                         //프로그레스원 값 업뎃하기
@@ -413,6 +414,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         
         //챗 인덱스 0으로 바꾸기, 초이스바 끄기
         player.indexNumber = 0
+        player.currentEpisodes[strToIndex(str: selectedEpisode.episodeID)].isCleared = false
         isChoiceOn = false
         //현제 에피소드 id 바꾸기
         player.dayId = selectedEpisode.episodeID
