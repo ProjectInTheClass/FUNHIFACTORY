@@ -421,6 +421,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     func mainGameDesign() {
         for button in floatingButtons {
             button.layer.borderWidth = 3
+            button.layer.cornerRadius = button.frame.size.width / 2.0
+            button.clipsToBounds = true
             button.layer.borderColor = UIColor(red: 0.524, green: 0.646, blue: 0.75, alpha: 1).cgColor
             button.layer.backgroundColor = UIColor(red: 0.743, green: 0.817, blue: 0.879, alpha: 1).cgColor
             myChoiceText.font = UIFont(name: "NanumSquareEB", size: 16)
