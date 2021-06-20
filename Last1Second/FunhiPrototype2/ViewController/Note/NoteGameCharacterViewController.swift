@@ -176,13 +176,16 @@ class NoteGameCharacterViewController: UIViewController,UITableViewDelegate, UIT
     }
     override func viewWillAppear(_ animated: Bool) {
         if let recievedGameCharacter = recievedGameCharacter {
-            gameCharacterImageView.image = UIImage(named: recievedGameCharacter.profileImage)
-            gameCharacterDescriptionLabel.text = recievedGameCharacter.description
-            gameCharacterIsLabel.text = postPositionText(recievedGameCharacter.name)
+           updateView(gameCharacter: recievedGameCharacter)
         }
     }
     
-   
+    func updateView(gameCharacter: GameCharacter) {
+        nameLabel.text = gameCharacter.name
+        gameCharacterImageView.image = UIImage(named: gameCharacter.profileImage)
+        gameCharacterDescriptionLabel.text = gameCharacter.description
+        gameCharacterIsLabel.text = postPositionText(gameCharacter.name)
+    }
     
     @IBAction func exitButton(_ sender: Any) {
     

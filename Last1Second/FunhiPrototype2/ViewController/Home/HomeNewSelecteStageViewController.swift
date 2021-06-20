@@ -39,13 +39,15 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
         }
         
         
+        
         //현재 스토리블럭 인덱스 int로 변환 잘 되었다면
         if let currentStoryBlockIndex = Int(player.currentEpisodes[indexPath.row].currentStoryBlockIndex) {
             print("currentStoryBlockIndex: \(currentStoryBlockIndex)")
             
             let currentEpisodeTotalStoryBlockCount = player.currentEpisodes[indexPath.row].storyBlocks.count
             
-            let progressValue = (Double(currentStoryBlockIndex)/Double(currentEpisodeTotalStoryBlockCount))
+            let progressValue: Double
+            player.currentEpisodes[indexPath.row].isCleared ? (progressValue = 1.0) : (progressValue = (Double(currentStoryBlockIndex)/Double(currentEpisodeTotalStoryBlockCount)))
             //에피소드 스토리 블럭 안 비어있다면
             if currentEpisodeTotalStoryBlockCount != 0 {
                 //프로그레스원 값 업뎃하기
@@ -118,12 +120,18 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
     
     @IBAction func selectedPopupStartButton(_ sender: Any) {
         
+        updateCurrentEpisode()
+        performSegue(withIdentifier: "goToChapterCoverSegue", sender: nil)
+        
+    }
+    
+    func updateCurrentEpisode() {
         previousEpisodeID = player.dayId
         player.dayId = selectedEP.episodeID
         player.indexNumber = 0
+        player.currentEpisodes[strToIndex(str: player.dayId)].isCleared = false
+        player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = "001"
         player.currentEpisodes[strToIndex(str: selectedEP.episodeID)].isStarted = true
-        performSegue(withIdentifier: "goToChapterCoverSegue", sender: nil)
-        
     }
     
     @IBAction func selectedPopupExitButton(_ sender: Any) {
@@ -232,3 +240,4 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
     
 
 }
+
