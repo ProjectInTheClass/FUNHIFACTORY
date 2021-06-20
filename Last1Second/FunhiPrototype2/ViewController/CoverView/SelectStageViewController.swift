@@ -123,12 +123,16 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         let dataToSend: Episode
         dataToSend = player.currentEpisodes[indexPath.row]
         player.dayIndex = indexPath.row
-        
-        
-        if dataToSend.episodeID != "ending" {
+        let epID = dataToSend.episodeID
+    
+        if epID == "ending" {
+            openLockedPopup(isEpiloguePopup: true)
+        }
+        else if epID == "1592" || epID == "1803" || epID == "1918"{
+            openLockedPopup(isEpiloguePopup: false)
+        }
+        else {
             openStagePopup(indexPath: indexPath)
-        } else {
-            openLockedPopup()
         }
     }
    
@@ -247,9 +251,17 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     //얼러트 팝업 여는 함수
-    func openLockedPopup() {
+    func openLockedPopup(isEpiloguePopup: Bool) {
         self.view.addSubview(lockedPopup)
-        lockedPopupLabel.text = "이 에피소드는 모든 사건을 해결한 후에 진행할 수 있습니다."
+        let popupText: String
+        switch isEpiloguePopup {
+        case true:
+            popupText = "이 에피소드는 모든 사건을 해결한 후에 진행할 수 있습니다."
+        case false:
+            popupText = "이 사건은 아직 제작 중입니다.\n다음 업데이트 때 만나요!"
+        }
+       
+        lockedPopupLabel.text = popupText
     }
     
     

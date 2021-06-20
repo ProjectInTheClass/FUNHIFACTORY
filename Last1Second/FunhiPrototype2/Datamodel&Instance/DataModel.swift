@@ -546,9 +546,9 @@ func strToIndex(str : String) -> Int
         return 1
     case "1623":
         return 2
-    case "1919":
+    case "1803":
         return 3
-    case "2003":
+    case "1918":
         return 4
     case "ending":
         return 5
