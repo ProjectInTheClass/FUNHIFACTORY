@@ -26,10 +26,10 @@ class monologueTableViewCell: UITableViewCell {
     func chatUpdate(nickname:String, profile:CharacterFace, godchat : Bool){
         switch godchat {
         case true:
-            monologueText.textColor = .black
+            name.textColor = .black
             backgroundColor = UIColor(red: 0.545, green: 0.631, blue: 0.71, alpha: 1)
         case false:
-            monologueText.textColor = .white
+            name.textColor = .white
             backgroundColor =  UIColor(red: 0.07, green: 0.15, blue: 0.22, alpha: 1)
         }
         name.text = nickname
