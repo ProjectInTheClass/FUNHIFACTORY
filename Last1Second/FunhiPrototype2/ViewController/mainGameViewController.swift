@@ -223,6 +223,17 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     override func viewWillAppear(_ animated: Bool) {
         closeChoiceBar()
+        if let story = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]?.isGodChat
+        {
+            if story == true
+            {
+                mainGameTableView.backgroundColor = UIColor(red: 0.545, green: 0.631, blue: 0.71, alpha: 1)
+            }
+            else
+            {
+                mainGameTableView.backgroundColor =  UIColor(red: 0.07, green: 0.15, blue: 0.22, alpha: 1)
+            }
+        }
         if isStartOfEpisode {
             if let previousEpisodeID = previousEpisodeID {
                 player.currentEpisodes[strToIndex(str: previousEpisodeID)].chatHistory = player.currentChatArray
