@@ -55,7 +55,7 @@ extension mainGameViewController{
 //            let selectStageStoryBoard = storyboard?.instantiateViewController(withIdentifier: "selectStage")
 //            selectStageStoryBoard?.modalPresentationStyle = .fullScreen
 //            present(selectStageStoryBoard!, animated: true, completion: nil)
-            performSegue(withIdentifier: "unwindSelectStage", sender: nil)
+            performSegue(withIdentifier: "performSelect", sender: nil)
             return
         }
         else if player.indexNumber < currentChatAmount() && currentBlockOfDay().chats[player.indexNumber].type != .ar{

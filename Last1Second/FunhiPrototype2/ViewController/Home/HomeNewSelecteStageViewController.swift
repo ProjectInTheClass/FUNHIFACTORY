@@ -232,10 +232,9 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
     }
     
     @IBAction func unwindToSelectStage(_ unwindSegue: UIStoryboardSegue) {
-        _ = unwindSegue.source
+        let sourceViewController = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
     }
-    
     //얼러트 팝업 여는 함수
     
 
