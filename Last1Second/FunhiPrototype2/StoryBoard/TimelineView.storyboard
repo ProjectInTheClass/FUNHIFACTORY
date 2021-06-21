@@ -826,6 +826,9 @@
                                         <state key="normal">
                                             <imageReference key="image" image="white map icon" symbolScale="large" renderingMode="original"/>
                                         </state>
+                                        <connections>
+                                            <action selector="openMap:" destination="XCC-4t-YVu" eventType="touchUpInside" id="026-ne-SCo"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y7m-Aa-f0O" userLabel="mapButton">
                                         <rect key="frame" x="20.5" y="23" width="17" height="24"/>
@@ -1337,19 +1340,116 @@
                     <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="chatHistoryTableView" destination="X3J-I6-dCl" id="OLn-RF-VIA"/>
+                        <outlet property="mapImageView" destination="H16-m7-zyH" id="aIP-io-EXp"/>
+                        <outlet property="mapPopupBoxView" destination="chz-wJ-EUx" id="JP6-fl-GBm"/>
+                        <outlet property="mapPopupView" destination="6uN-Yh-39v" id="F3u-8b-GVR"/>
+                        <outlet property="yearLabel" destination="euB-en-Irs" id="SvN-Jc-wtm"/>
+                        <segue destination="fNF-et-edp" kind="show" identifier="goToARView" id="dBK-AR-pcZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hMA-ge-5kT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="6uN-Yh-39v">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chz-wJ-EUx">
+                            <rect key="frame" x="20" y="98.5" width="374" height="699"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tOu-Zn-NWM">
+                                    <rect key="frame" x="0.0" y="58" width="374" height="641"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H16-m7-zyH">
+                                            <rect key="frame" x="12" y="19" width="350" height="610"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="H16-m7-zyH" secondAttribute="height" multiplier="742:1294" id="kXA-KU-hes"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="H16-m7-zyH" firstAttribute="top" secondItem="tOu-Zn-NWM" secondAttribute="top" constant="19" id="2TF-kC-Lq7"/>
+                                        <constraint firstAttribute="bottom" secondItem="H16-m7-zyH" secondAttribute="bottom" constant="12" id="SN2-HB-QBj"/>
+                                        <constraint firstAttribute="trailing" secondItem="H16-m7-zyH" secondAttribute="trailing" constant="12" id="jM3-Jp-iah"/>
+                                        <constraint firstItem="H16-m7-zyH" firstAttribute="leading" secondItem="tOu-Zn-NWM" secondAttribute="leading" constant="12" id="p9H-1W-1iQ"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyu-ct-OyN">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="58"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지도" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5p-n8-xom">
+                                            <rect key="frame" x="165" y="15.5" width="44" height="27"/>
+                                            <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="24"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BtH-es-GN9">
+                                            <rect key="frame" x="331" y="18" width="22" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="22" id="E64-mV-pPY"/>
+                                                <constraint firstAttribute="height" constant="22" id="WzT-xN-qGI"/>
+                                            </constraints>
+                                            <state key="normal">
+                                                <imageReference key="image" image="thin X icon" symbolScale="large" renderingMode="original"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="mapPopupExitButton:" destination="XCC-4t-YVu" eventType="touchUpInside" id="KAq-qq-F7V"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.070588235289999995" green="0.14901960780000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="BtH-es-GN9" firstAttribute="centerY" secondItem="hyu-ct-OyN" secondAttribute="centerY" id="4Zq-x2-LLM"/>
+                                        <constraint firstItem="f5p-n8-xom" firstAttribute="centerX" secondItem="hyu-ct-OyN" secondAttribute="centerX" id="PUy-wH-8RY"/>
+                                        <constraint firstAttribute="height" constant="58" id="T7s-hL-FRd"/>
+                                        <constraint firstItem="f5p-n8-xom" firstAttribute="centerY" secondItem="hyu-ct-OyN" secondAttribute="centerY" id="W4u-t4-6ng"/>
+                                        <constraint firstAttribute="trailing" secondItem="BtH-es-GN9" secondAttribute="trailing" constant="21" id="YmN-bk-Xt9"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <viewLayoutGuide key="safeArea" id="UMg-ev-0DQ"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="hyu-ct-OyN" firstAttribute="top" secondItem="UMg-ev-0DQ" secondAttribute="top" id="0DO-uc-GzC"/>
+                                <constraint firstItem="hyu-ct-OyN" firstAttribute="leading" secondItem="UMg-ev-0DQ" secondAttribute="leading" id="DVK-fU-4x6"/>
+                                <constraint firstItem="tOu-Zn-NWM" firstAttribute="leading" secondItem="chz-wJ-EUx" secondAttribute="leading" id="RD2-J5-d8z"/>
+                                <constraint firstItem="UMg-ev-0DQ" firstAttribute="trailing" secondItem="hyu-ct-OyN" secondAttribute="trailing" id="chx-tG-XVX"/>
+                                <constraint firstItem="tOu-Zn-NWM" firstAttribute="top" secondItem="hyu-ct-OyN" secondAttribute="bottom" id="kGU-Tg-81k"/>
+                                <constraint firstAttribute="trailing" secondItem="tOu-Zn-NWM" secondAttribute="trailing" id="ldS-be-mgJ"/>
+                                <constraint firstAttribute="bottom" secondItem="tOu-Zn-NWM" secondAttribute="bottom" id="whn-kf-weS"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="1uB-J8-yAV"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="chz-wJ-EUx" firstAttribute="centerY" secondItem="6uN-Yh-39v" secondAttribute="centerY" id="qGn-xe-yZg"/>
+                        <constraint firstItem="1uB-J8-yAV" firstAttribute="trailing" secondItem="chz-wJ-EUx" secondAttribute="trailing" constant="20" id="ru0-Uu-r2h"/>
+                        <constraint firstItem="chz-wJ-EUx" firstAttribute="leading" secondItem="1uB-J8-yAV" secondAttribute="leading" constant="20" id="sWT-Y1-wSf"/>
+                    </constraints>
+                </view>
             </objects>
-            <point key="canvasLocation" x="5624.6376811594209" y="660.9375"/>
+            <point key="canvasLocation" x="6009" y="661"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--ARView-->
         <scene sceneID="Aua-1h-CdR">
             <objects>
-                <viewControllerPlaceholder id="fNF-et-edp" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="ARView" id="fNF-et-edp" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8rx-LJ-XJH"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1k-vq-g2d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6415" y="567"/>
+            <point key="canvasLocation" x="6698" y="585"/>
         </scene>
     </scenes>
     <resources>

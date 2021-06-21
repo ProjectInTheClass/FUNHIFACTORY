@@ -14,18 +14,18 @@ class EPHistoryViewController: UIViewController, UITableViewDelegate, UITableVie
   
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let recieved = recieved else {
+        guard let currentChat = currentEpisode?.chatHistory else {
             return 0
         }
-        return recieved.count
+        return currentChat.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let recieved = recieved else {
+        guard let currentChat = currentEpisode?.chatHistory else {
             return UITableViewCell()
         }
-        let target = recieved[indexPath.row]
-        let chatText = recieved[indexPath.row].text
+        let target = currentChat[indexPath.row]
+        let chatText = currentChat[indexPath.row].text
         //텍스트 채팅이 나올 때
         //자신이 보냈을 때
         if target.type == .onlyText && target.who.info().name == "이단희"{
@@ -86,7 +86,7 @@ class EPHistoryViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
 
-    var recieved: [Chat]?
+    var currentEpisode: Episode?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +100,35 @@ class EPHistoryViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     @IBOutlet weak var chatHistoryTableView: UITableView!
+    @IBOutlet var yearLabel: UILabel!
+    //------------지도 팝업-------
     
+    @IBAction func openMap(_ sender: Any) {
+        openMapPopup()
+        updateMapImage()
+    }
+    @IBOutlet var mapPopupView: UIView!
+    @IBOutlet var mapPopupBoxView: UIView!
+    @IBOutlet var mapImageView: UIImageView!
+    @IBAction func mapPopupExitButton(_ sender: Any) {
+        mapPopupView.removeFromSuperview()
+    }
+    
+    func openMapPopup() {
+        mapPopupView.center = self.view.center
+        mapPopupView.bounds = self.view.bounds
+        self.view.addSubview(mapPopupView)
+        mapPopupBoxView.setBolder(color: .white, width: 4)
+        
+    }
+    func updateMapImage() {
+        guard let currentEpisode = currentEpisode else {
+            return }
+        mapImageView.image = UIImage(named:"\(currentEpisode.episodeID)map")
+        if currentEpisode.episodeID == "1623" || currentEpisode.episodeID == "prologue" {
+            mapImageView.image = UIImage(named:"2020map")
+        }
+    }
     /*
     // MARK: - Navigation
 

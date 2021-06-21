@@ -340,8 +340,8 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         //이전 기록 보기
         if segue.identifier == "textSegue" {
             let destination = segue.destination as! EPHistoryViewController
-            if let sender = sender as? [Chat] {
-                destination.recieved = sender
+            if let sender = sender as? Episode {
+                destination.currentEpisode = sender
             }
         }
     }
@@ -369,7 +369,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     //이전 기록 보기 버튼
     @IBAction func openEpisodeHistoryAction(_ sender: Any) {
         guard let currentEpisode = selectedEpisode else { return }
-        let dataToSend = currentEpisode.chatHistory
+        let dataToSend = currentEpisode
         performSegue(withIdentifier: "textSegue", sender: dataToSend)
     }
     
