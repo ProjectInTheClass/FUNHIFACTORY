@@ -19,6 +19,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var normalChoiceCollectionViewLayout: UICollectionViewFlowLayout!
     @IBOutlet var currentYear: UILabel!
     @IBOutlet var wholeView: UIView!
+    
     @IBOutlet var choiceHeight: NSLayoutConstraint!
     @IBOutlet var mainGameTableView: UITableView!
     @IBOutlet var choiceBar: UIView!
@@ -33,6 +34,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var choiceCollectionView: UICollectionView!
     @IBOutlet var myChoiceText: UILabel!
+    @IBOutlet var mapImage: UIImageView!
     @IBAction func notePopupViewXButton(_ sender: Any) {
        
         globalPopupOpen = false
@@ -222,7 +224,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     override func viewWillAppear(_ animated: Bool) {
-        closeChoiceBar()
+//        closeChoiceBar()
         if let story = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]?.isGodChat
         {
             if story == true
@@ -343,23 +345,25 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             print("map : timer invalidate")
             timer.invalidate()
         }
-        blackView.bounds = self.view.bounds
-        blackView.center = self.view.center
         self.view.addSubview(blackView)
+        blackView.fullScreen(to: self.view)
         blackView.alpha = 1
         UIView.animate(withDuration: 0.2) {
             self.blackView.alpha = 0.7
         }
+        let name = player.currentEpisodes[strToIndex(str: player.dayId)].episodeYear
+        let imageName = "\(name)map"
+        
+        mapImage.image = UIImage(named: imageName)
         wholeView.addSubview(map)
-        map.transform = CGAffineTransform(scaleX: 0, y: 0)
-        map.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 77).isActive = true
-        map.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20).isActive = true
-        map.center = self.view.center
-        map.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        map.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
-                                                                    let scaleDown = CGAffineTransform(scaleX: 1, y: 1)
-                                                                    self.map.transform = scaleDown})
+//        map.transform = CGAffineTransform(scaleX: 0, y: 0)
+//        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
+//                                                                    let scaleDown = CGAffineTransform(scaleX: 1, y: 1)
+//                                                                    self.map.transform = scaleDown})
+        map.topAnchor.constraint(equalTo: wholeView.topAnchor, constant: 77).isActive = true
+        map.bottomAnchor.constraint(equalTo: wholeView.bottomAnchor, constant: 98).isActive = true
+        map.leftAnchor.constraint(equalTo: wholeView.leftAnchor, constant: 17).isActive = true
+        map.rightAnchor.constraint(equalTo: wholeView.rightAnchor, constant: 18).isActive = true
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     @IBAction func closeMap(_ sender: Any) {
