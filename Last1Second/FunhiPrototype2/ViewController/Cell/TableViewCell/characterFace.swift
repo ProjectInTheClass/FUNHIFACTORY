@@ -14,6 +14,7 @@ func findFaceImage(nickname:String, profile:CharacterFace, normalProfile : Strin
         case .angry1: return "prolog danhee angry 1"
         case .angry2: return "prolog danhee angry 2"
         case .basic:   return "prolog danhee basic"
+        case .basictalk: return "prolog danhee basic talk"
         case .cry1: return "prolog danhee cry 1"
         case .cry2: return "prolog danhee cry 2"
         case .happy1:  return "prolog danhee happy 1"
