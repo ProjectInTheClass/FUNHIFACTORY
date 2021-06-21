@@ -60,7 +60,7 @@ var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear
     
     GameCharacter(name: "이단희", profileImage: "danhee2", backGroundImage: "case 2 danhee_background", description: "내가 부잣집 양반의 개인 사병이라고?\n내가 모시는 양반이 반역의 주요 인물이라니...\n들키지 않고 방해할 수 있을까?", infomation: [], isLocked: false),
     
-    GameCharacter(name: "이귀", profileImage: "", backGroundImage: "", description: "내가 전하를 직접 만나 설득해봐야겠어.", infomation: [
+    GameCharacter(name: "이귀", profileImage: "igwi", backGroundImage: "", description: "내가 전하를 직접 만나 설득해봐야겠어.", infomation: [
         Infomation(infomationID: .leegyi1, isLocked: false, text: "1616년에 역모 사건에 관련되어 이천에 유배되었다가 1619년 유배에서 풀려났다."),
         Infomation(infomationID: .leegyi2, isLocked: false, text: "이런 상황에서 반역이 먼저 계획되고 있었고, 이후 이 계획에 참여하게 되었다.")
     ],isLocked: false),
