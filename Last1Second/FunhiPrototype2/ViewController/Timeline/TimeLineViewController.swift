@@ -78,7 +78,7 @@ class TimelineTableViewCell: UITableViewCell {
         progressView.finishImageView.layer.cornerRadius = 3
         progressView.finishImageView.setShadow(color: UIColor(red: 1, green: 1, blue: 1, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 5)
         progressView.progressNumberString.font = UIFont(name: "NanumSquareEB", size: 10)
-        progressView.finishImage = "finish stamp"
+    
         progressBackgroundView.setShadow(color: UIColor(red: 0.325, green: 0.455, blue: 0.584, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 4)
     }
 }
