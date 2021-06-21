@@ -146,8 +146,8 @@ extension EPHistoryViewController : arDelegate {
     func goToAR(arid: ARID) {
         print("buttonClicked")
         let dataToSend: ARID
-        // dataToSend = 현재 Chat의 ARID
-        performSegue(withIdentifier: "goToARView", sender: nil)
+        dataToSend = arid
+        performSegue(withIdentifier: "goToARView", sender: dataToSend)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
