@@ -56,6 +56,7 @@ extension mainGameViewController{
 //            selectStageStoryBoard?.modalPresentationStyle = .fullScreen
 //            present(selectStageStoryBoard!, animated: true, completion: nil)
             performSegue(withIdentifier: "performSelect", sender: nil)
+            print("-------------------------maingameend----------------------")
             return
         }
         else if player.indexNumber < currentChatAmount() && currentBlockOfDay().chats[player.indexNumber].type != .ar{

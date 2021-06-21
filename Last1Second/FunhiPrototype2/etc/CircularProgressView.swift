@@ -47,7 +47,7 @@ class CircularProgressView: UIView {
         }
     }
     
-    var finishImage = String() {
+    var finishImage: String = "finish stamp" {
         didSet {
             finishImageView.image = UIImage(named: finishImage)
         }
