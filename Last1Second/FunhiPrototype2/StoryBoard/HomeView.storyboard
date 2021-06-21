@@ -73,7 +73,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CuM-sB-YQH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1933" y="369"/>
+            <point key="canvasLocation" x="1509" y="283"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="yiT-F8-Gf9">
@@ -142,7 +142,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
-                                                    <segue destination="ZhZ-Lb-Gty" kind="show" id="1JM-PH-q2Y"/>
+                                                    <action selector="goToMainGameButtonAction:" destination="rM4-tY-Ehg" eventType="touchUpInside" id="7cI-kS-F8y"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -184,7 +184,7 @@
                                                     <constraint firstAttribute="width" constant="218" id="bpD-7W-yPE"/>
                                                 </constraints>
                                                 <connections>
-                                                    <segue destination="1K7-Pz-Rnj" kind="show" id="pFj-pU-86S"/>
+                                                    <action selector="goToSelectStageButtonAction:" destination="rM4-tY-Ehg" eventType="touchUpInside" id="b6L-3D-JgT"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -396,6 +396,8 @@
                         <outletCollection property="buttonViews" destination="yEY-55-jeW" collectionClass="NSMutableArray" id="8bW-ek-iBB"/>
                         <outletCollection property="buttonViews" destination="jA3-yQ-pu2" collectionClass="NSMutableArray" id="Js5-zQ-jzw"/>
                         <outletCollection property="buttonViews" destination="N0G-no-Wbr" collectionClass="NSMutableArray" id="2iN-zx-KpI"/>
+                        <segue destination="1K7-Pz-Rnj" kind="show" identifier="goToSelectNewStageSegue" id="KSf-me-lHN"/>
+                        <segue destination="ZhZ-Lb-Gty" kind="show" identifier="goToMainGameSegue" id="Nnh-cQ-KgH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZPx-tM-ZlI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -594,11 +596,6 @@
                                                             <integer key="value" value="14"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
-                                                    <variation key="default">
-                                                        <mask key="subviews">
-                                                            <exclude reference="nXw-Jc-eg9"/>
-                                                        </mask>
-                                                    </variation>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -628,9 +625,12 @@
                                     <constraint firstAttribute="height" constant="33.5" id="n6t-Od-39F"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gsg-hb-yBk">
-                                <rect key="frame" x="-991" y="64" width="218.5" height="27.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gsg-hb-yBk">
+                                <rect key="frame" x="20" y="64" width="19.5" height="27.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27.5" id="XyJ-YB-vC3"/>
+                                    <constraint firstAttribute="width" constant="19.300000000000001" id="tfy-fj-lr5"/>
+                                </constraints>
                                 <state key="normal" image="color clamp icon"/>
                                 <connections>
                                     <action selector="backButtonAction:" destination="1K7-Pz-Rnj" eventType="touchUpInside" id="zlk-xh-YlV"/>
@@ -641,8 +641,10 @@
                         <color key="backgroundColor" red="0.84313725490000002" green="0.88235294119999996" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="xBl-66-RcL" firstAttribute="top" secondItem="hJB-0B-5Nh" secondAttribute="bottom" constant="12.5" id="2Tn-1l-02N"/>
+                            <constraint firstItem="gsg-hb-yBk" firstAttribute="leading" secondItem="3Qy-6Q-cgg" secondAttribute="leading" constant="20" id="5br-cG-Mqg"/>
                             <constraint firstItem="pel-UJ-quP" firstAttribute="leading" secondItem="3Qy-6Q-cgg" secondAttribute="leading" constant="40" id="8EE-O8-PtS"/>
                             <constraint firstAttribute="bottom" secondItem="pel-UJ-quP" secondAttribute="bottom" id="8sR-kB-nHt"/>
+                            <constraint firstItem="gsg-hb-yBk" firstAttribute="centerY" secondItem="hJB-0B-5Nh" secondAttribute="centerY" id="G0q-Ec-Fgy"/>
                             <constraint firstItem="hJB-0B-5Nh" firstAttribute="top" secondItem="3Qy-6Q-cgg" secondAttribute="top" constant="17" id="LAd-ym-8dg"/>
                             <constraint firstItem="3Qy-6Q-cgg" firstAttribute="trailing" secondItem="pel-UJ-quP" secondAttribute="trailing" constant="40" id="Pmb-HD-iVb"/>
                             <constraint firstItem="3Qy-6Q-cgg" firstAttribute="trailing" secondItem="hJB-0B-5Nh" secondAttribute="trailing" constant="80.5" id="duT-y1-fL6"/>

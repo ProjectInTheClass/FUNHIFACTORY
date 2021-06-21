@@ -13,19 +13,29 @@ class TitleCoverViewController: UIViewController {
     @IBOutlet weak var testLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        for family: String in UIFont.familyNames
-//             {
-//                 print(family)
-//                 for names: String in UIFont.fontNames(forFamilyName: family)
-//                 {
-//                     print("== \(names)")
-//                 }
-//             }
+        initializePlayer(paraPlayer: &player)
         testLabel.setCharacterSpacing(characterSpacing: 5)
-        light()
+        alertPopupLabel.text = "게임 데이터를 불러오지 못했습니다.\n네트워크 상태를 확인해주세요."
         
-        
+        checkForSuccessfulDownloadOfJson()
+    
     }
+    
+    func checkForSuccessfulDownloadOfJson() {
+        
+        let successDownload = !player.currentEpisodes[0].storyBlocks.isEmpty && !player.currentEpisodes[2].storyBlocks.isEmpty
+        
+        if successDownload {
+            print("**0, 2챕터 들어옴**")
+            light()
+            startButton.isHidden = false
+        } else {
+            print("**0, 2챕터 들어오지 않음, 재시도 필요**")
+            startButton.isHidden = true
+            openAlertPopupView()
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         audioConfigure(bgmName: "coverBGM", isBGM: true, ofType: "mp3")
         print("현재 currentChatArray: \(player.currentChatArray)")
@@ -34,6 +44,12 @@ class TitleCoverViewController: UIViewController {
         print("현재 dayIndex: \(player.dayIndex)")
         
     }
+    
+    @IBOutlet var alertPopupView: UIView!
+    @IBOutlet var elertPopupBoxView: UIView!
+    @IBOutlet var alertPopupLabel: UILabel!
+    
+    
     @IBAction func startAction(_ sender: Any) {
         
         testLabel.layer.removeAllAnimations()
@@ -57,6 +73,18 @@ class TitleCoverViewController: UIViewController {
         }
     }
     
+    func openAlertPopupView() {
+        alertPopupView.center = self.view.center
+        alertPopupView.bounds = self.view.bounds
+        self.view.addSubview(alertPopupView)
+    }
+    @IBAction func exitPopupView(_ sender: Any) {
+        
+        downloadData(targetURL: "https://raw.githubusercontent.com/ProjectInTheClass/FUNHIFACTORYGameData/master/prologue_story.json", targetEpisodeIndex: 0)
+        downloadData(targetURL: "https://raw.githubusercontent.com/ProjectInTheClass/FUNHIFACTORYGameData/master/case2_story.json", targetEpisodeIndex: 2)
+        alertPopupView.removeFromSuperview()
+        checkForSuccessfulDownloadOfJson()
+    }
     
     func designButton() {
         startButton.layer.cornerRadius = 3
@@ -71,6 +99,7 @@ class TitleCoverViewController: UIViewController {
         testLabel.setShadow(color: UIColor(red: 0, green: 0, blue: 0, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 5)
     }
 
+    
     func light() {
         UILabel.animate(withDuration: 0.7, delay: 0.5, options: [.repeat, .autoreverse], animations: {[self]  in
                 testLabel.alpha = 0.1
@@ -81,4 +110,5 @@ class TitleCoverViewController: UIViewController {
         _ = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
     }
+    
 }

@@ -106,17 +106,16 @@ class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollec
         let currentAchievement = player.currentAchievementInfo[indexPath.row]
         if Int(indexPath.row) % 2 == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "achievementLeftCell", for: indexPath) as! NoteCollectionViewLeftCell
-            cell.achievementImageView.image = UIImage(named: currentAchievement.image)
-            cell.achievementTitleLabel.text = currentAchievement.name
-            if currentAchievement.isLocked {
+            cell.achievementImageView.image = UIImage(named: player.currentAchievementInfo[indexPath.row].image)
+            if player.currentAchievementInfo[indexPath.row].isLocked {
                 cell.lockedView.isHidden = false
                 cell.achievementTitleLabel.text = "???"
+                
             } else {
                 cell.lockedView.isHidden = true
-                cell.achievementTitleLabel.text = currentAchievement.name
-            
-                currentAchievement.isLocked ? cell.changeShadowAndBorder(view: cell.cellBackground, shadowColor: UIColor(red: 0.404, green: 0.561, blue: 0.694, alpha: 1), borderColor: UIColor(red: 0.587, green: 0.7, blue: 0.796, alpha: 1)) : cell.changeShadowAndBorder(view: cell.cellBackground, shadowColor: UIColor(red: 0.404, green: 0.561, blue: 0.694, alpha: 1), borderColor: UIColor(red: 0.588, green: 0.698, blue: 0.796, alpha: 1))
+                cell.achievementTitleLabel.text = player.currentAchievementInfo[indexPath.row].name
             }
+            currentAchievement.isLocked ? cell.changeShadowAndBorder(view: cell.cellBackground, shadowColor: UIColor(red: 0.404, green: 0.561, blue: 0.694, alpha: 1), borderColor: UIColor(red: 0.587, green: 0.7, blue: 0.796, alpha: 1)) : cell.changeShadowAndBorder(view: cell.cellBackground, shadowColor: UIColor(red: 0.404, green: 0.561, blue: 0.694, alpha: 1), borderColor: UIColor(red: 0.588, green: 0.698, blue: 0.796, alpha: 1))
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "achievementRightCell", for: indexPath) as! NoteCollectionViewRightCell

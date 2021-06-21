@@ -25,16 +25,13 @@ class HomeViewController: UIViewController {
         episodeDescriptionLabel.setLineSpacing(lineSpacing: 16)
         episodeDescriptionLabel.textAlignment = .center
         
-        
-        
         startGameButtonView.layer.cornerRadius = startGameButtonView.frame.height/2
         selectNewEPButtonView.layer.cornerRadius = selectNewEPButtonView.frame.height/2
         startGameButtonView.setShadow(color: UIColor(red: 0.784, green: 0.871, blue: 0.941, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 10)
         selectNewEPButtonView.setShadow(color: UIColor(red: 0.592, green: 0.706, blue: 0.82, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 10)
         
         for view in buttonViews {
-            view.layer.borderWidth = 3
-            view.layer.borderColor = UIColor(red: 0.524, green: 0.646, blue: 0.75, alpha: 1).cgColor
+            view.setBolder(color: UIColor(red: 0.524, green: 0.646, blue: 0.75, alpha: 1), width: 3)
             view.layer.backgroundColor = UIColor.white.cgColor
         }
         
@@ -44,20 +41,33 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
     }
+    
     @IBAction func noteButtonAction(_ sender: Any) {
         pushMenuViewsAnimation()
     }
+    
     @IBAction func albumButtonAction(_ sender: Any) {
         pushMenuViewsAnimation()
     }
+    
     @IBAction func timelineButtonAction(_ sender: Any) {
         pushMenuViewsAnimation()
     }
+    
     @IBAction func settingButtonAction(_ sender: Any) {
         pushMenuViewsAnimation()
     }
+    
+    @IBAction func goToMainGameButtonAction(_ sender: Any) {
+        performSegue(withIdentifier: "goToMainGameSegue", sender: nil)
+    }
+    
+    @IBAction func goToSelectStageButtonAction(_ sender: Any) {
+        performSegue(withIdentifier: "goToSelectNewStageSegue", sender: nil)
+    }
+    
+    
     
     func pushMenuViewsAnimation() {
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
