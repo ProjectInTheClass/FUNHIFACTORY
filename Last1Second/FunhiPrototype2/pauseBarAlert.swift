@@ -17,7 +17,7 @@ extension mainGameViewController{
         redCircle.image = UIImage(named: "red_emergency")
         target.addSubview(redCircle)
         redCircle.tag = 1
-        //더 안에 집어넣어야 할 듯? 그냥 바로 넣으면 삭제할 때 힘듦
+        redCircle.clipsToBounds = false
         redCircle.translatesAutoresizingMaskIntoConstraints = false
         redCircle.widthAnchor.constraint(equalToConstant: 16).isActive = true
         redCircle.heightAnchor.constraint(equalToConstant: 16).isActive = true

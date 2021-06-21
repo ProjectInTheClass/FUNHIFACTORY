@@ -356,14 +356,16 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         
         mapImage.image = UIImage(named: imageName)
         wholeView.addSubview(map)
-//        map.transform = CGAffineTransform(scaleX: 0, y: 0)
-//        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
-//                                                                    let scaleDown = CGAffineTransform(scaleX: 1, y: 1)
-//                                                                    self.map.transform = scaleDown})
-        map.topAnchor.constraint(equalTo: wholeView.topAnchor, constant: 77).isActive = true
-        map.bottomAnchor.constraint(equalTo: wholeView.bottomAnchor, constant: 98).isActive = true
-        map.leftAnchor.constraint(equalTo: wholeView.leftAnchor, constant: 17).isActive = true
-        map.rightAnchor.constraint(equalTo: wholeView.rightAnchor, constant: 18).isActive = true
+        map.transform = CGAffineTransform(scaleX: 0, y: 0)
+        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
+                                                                    let scaleDown = CGAffineTransform(scaleX: 1, y: 1)
+                                                                    self.map.transform = scaleDown})
+        map.translatesAutoresizingMaskIntoConstraints = false
+        map.widthAnchor.constraint(equalToConstant: self.view.bounds.width - 36).isActive = true
+        map.heightAnchor.constraint(equalToConstant: self.view.bounds.height - 100).isActive = true
+        map.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        map.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     @IBAction func closeMap(_ sender: Any) {
