@@ -65,7 +65,7 @@ var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear
         Infomation(infomationID: .leegyi2, isLocked: false, text: "이런 상황에서 반역이 먼저 계획되고 있었고, 이후 이 계획에 참여하게 되었다.")
     ],isLocked: false),
     
-    GameCharacter(name: "김자점", profileImage: "nobleman", backGroundImage: "", description: "반역이 절대 들켜서는 안 돼.\n전하의 눈과 귀를 막아야겠어.", infomation: [
+    GameCharacter(name: "김자점", profileImage: "kimman", backGroundImage: "", description: "반역이 절대 들켜서는 안 돼.\n전하의 눈과 귀를 막아야겠어.", infomation: [
         Infomation(infomationID: .kimjajeom1, isLocked: false, text: "개인 사병을 지니고 있고, 그 중 한 명이 주인공이다."),
         Infomation(infomationID: .kimjajeom2, isLocked: false, text: "이귀와 함께 역모 사건에 연루되어 곤경에 처했었다."),
         Infomation(infomationID: .kimjajeom3, isLocked: false, text: "김상궁에게 뇌물을 주며 반역의 소문을 잠재우려 했다.")
@@ -79,7 +79,7 @@ var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear
         Infomation(infomationID: .kimsanggung5, isLocked: false, text: "후궁이 되는 것을 거부하여 계속 상궁의 신분을 유지하였다. 그 덕에 자유롭게 궐 밖으로 돌아다닐 수 있어 다양한 정보를 확보할 수 있었다."),
         Infomation(infomationID: .kimsanggung6, isLocked: false, text: "광해군이 그녀를 아끼고 신뢰를 하면서 후궁보다 권세가 더 높았다."),],isLocked: false),
     
-    GameCharacter(name: "가난한 평민", profileImage: "commoner", backGroundImage: "", description: "거기 누구요?!\n이곳엔 더 이상 가져갈 것도 없으니\n썩 물러가시오!", infomation: [
+    GameCharacter(name: "가난한 평민", profileImage: "poorman", backGroundImage: "", description: "거기 누구요?!\n이곳엔 더 이상 가져갈 것도 없으니\n썩 물러가시오!", infomation: [
         Infomation(infomationID: .kimjajeom2, isLocked: false, text: "마을 끝자락에 위치한 가난한 사람들끼리 뭉쳐있는 곳에 살고 있는 사람이다."),
         Infomation(infomationID: .kimjajeom2, isLocked: false, text: "생각보다 경계심이 있네.")],isLocked: false),
         
