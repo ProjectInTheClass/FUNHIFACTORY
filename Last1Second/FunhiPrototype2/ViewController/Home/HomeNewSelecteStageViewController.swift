@@ -68,9 +68,7 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 143
-    }
+
     var selectedRowIndex: Int?
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
