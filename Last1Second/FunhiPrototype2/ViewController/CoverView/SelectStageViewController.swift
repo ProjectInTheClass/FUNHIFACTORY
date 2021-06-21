@@ -276,7 +276,11 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         lockedPopupLabel.text = popupText
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
    
+        return UITableView.automaticDimension
+                
+    }
     
     
     
