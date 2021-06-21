@@ -205,13 +205,9 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //타임라인 테이블 뷰
-        if tableView == timelineTableView {
+       
            return UITableView.automaticDimension
-        } else {
-            //체크포인트 테이블 뷰
-            return 49
-        }
+       
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

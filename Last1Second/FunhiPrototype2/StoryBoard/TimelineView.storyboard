@@ -129,9 +129,6 @@
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="album icon" translatesAutoresizingMaskIntoConstraints="NO" id="LD6-U8-btB">
                                                                     <rect key="frame" x="137" y="15" width="173" height="81.5"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="100" id="BpC-HX-FY4"/>
-                                                                    </constraints>
                                                                 </imageView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eSJ-Km-9KB">
                                                                     <rect key="frame" x="0.0" y="0.0" width="24" height="115"/>
@@ -172,12 +169,6 @@
                                                                         <constraint firstItem="c1p-Ah-jl9" firstAttribute="centerY" secondItem="eSJ-Km-9KB" secondAttribute="centerY" id="zvf-jD-Er7"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전각 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G2X-3n-ZYo">
-                                                                    <rect key="frame" x="49" y="44" width="47" height="13"/>
-                                                                    <fontDescription key="fontDescription" name="EBSHunminjeongeumSB" family="EBS Hunminjeongeum SB" pointSize="11"/>
-                                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jSM-3g-vbf">
                                                                     <rect key="frame" x="58" y="68" width="36" height="36"/>
                                                                     <color key="backgroundColor" red="0.33333333333333331" green="0.42745098039215684" blue="0.52941176470588236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -191,40 +182,49 @@
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1592년" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mb-Y5-okC">
-                                                                    <rect key="frame" x="48" y="21" width="59" height="21"/>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="9Ah-Ss-t1H">
+                                                                    <rect key="frame" x="48" y="21" width="60" height="35"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1592년" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mb-Y5-okC">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="58.5" height="20.5"/>
+                                                                            <fontDescription key="fontDescription" name="EBSHunminjeongeumSB" family="EBS Hunminjeongeum SB" pointSize="18"/>
+                                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전각 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G2X-3n-ZYo">
+                                                                            <rect key="frame" x="0.0" y="22.5" width="47" height="12.5"/>
+                                                                            <fontDescription key="fontDescription" name="EBSHunminjeongeumSB" family="EBS Hunminjeongeum SB" pointSize="11"/>
+                                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="59" id="SUx-SR-JFo"/>
+                                                                        <constraint firstAttribute="width" constant="60" id="ikF-FP-HLc"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="EBSHunminjeongeumSB" family="EBS Hunminjeongeum SB" pointSize="18"/>
-                                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
+                                                                </stackView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E5z-eO-JEX" customClass="CircularProgressView" customModule="FunhiPrototype2" customModuleProvider="target">
-                                                                    <rect key="frame" x="60.5" y="70" width="31.5" height="32"/>
+                                                                    <rect key="frame" x="60" y="70" width="32" height="32"/>
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="E5z-eO-JEX" secondAttribute="height" multiplier="1:1" id="Hmc-rC-ODp"/>
-                                                                        <constraint firstAttribute="height" constant="31.82" id="ogC-tA-SPW"/>
+                                                                        <constraint firstAttribute="height" constant="32" id="ogC-tA-SPW"/>
                                                                     </constraints>
                                                                 </view>
                                                             </subviews>
                                                             <color key="backgroundColor" red="0.70980392156862748" green="0.77647058823529413" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
-                                                                <constraint firstItem="G2X-3n-ZYo" firstAttribute="top" secondItem="6mb-Y5-okC" secondAttribute="bottom" constant="2.02" id="1d1-DU-wbd"/>
+                                                                <constraint firstItem="9Ah-Ss-t1H" firstAttribute="leading" secondItem="eSJ-Km-9KB" secondAttribute="trailing" constant="24" id="0Zv-dQ-2h4"/>
+                                                                <constraint firstItem="9Ah-Ss-t1H" firstAttribute="top" secondItem="gRN-Hl-ZUH" secondAttribute="top" constant="21" id="2vG-36-sOx"/>
                                                                 <constraint firstItem="jSM-3g-vbf" firstAttribute="leading" secondItem="eSJ-Km-9KB" secondAttribute="trailing" constant="34.18" id="5sd-RU-5yF"/>
-                                                                <constraint firstItem="G2X-3n-ZYo" firstAttribute="leading" secondItem="eSJ-Km-9KB" secondAttribute="trailing" constant="25.18" id="8eP-yi-c0Q"/>
-                                                                <constraint firstItem="jSM-3g-vbf" firstAttribute="top" secondItem="G2X-3n-ZYo" secondAttribute="bottom" constant="11" id="Avr-C3-R8a"/>
+                                                                <constraint firstItem="jSM-3g-vbf" firstAttribute="top" secondItem="9Ah-Ss-t1H" secondAttribute="bottom" constant="12" id="8OT-9S-04O"/>
+                                                                <constraint firstItem="E5z-eO-JEX" firstAttribute="centerX" secondItem="jSM-3g-vbf" secondAttribute="centerX" id="D8N-6w-kKw"/>
                                                                 <constraint firstAttribute="trailing" secondItem="LD6-U8-btB" secondAttribute="trailing" constant="14.24" id="Dbu-wM-ZK1"/>
                                                                 <constraint firstItem="eSJ-Km-9KB" firstAttribute="top" secondItem="gRN-Hl-ZUH" secondAttribute="top" id="J29-oo-PuM"/>
                                                                 <constraint firstAttribute="bottom" secondItem="eSJ-Km-9KB" secondAttribute="bottom" id="Oim-wk-F8E"/>
                                                                 <constraint firstItem="LD6-U8-btB" firstAttribute="top" secondItem="gRN-Hl-ZUH" secondAttribute="top" constant="15" id="STz-Yg-Lm1"/>
-                                                                <constraint firstItem="6mb-Y5-okC" firstAttribute="leading" secondItem="eSJ-Km-9KB" secondAttribute="trailing" constant="24.16" id="TU8-AX-JvD"/>
-                                                                <constraint firstItem="6mb-Y5-okC" firstAttribute="top" secondItem="gRN-Hl-ZUH" secondAttribute="top" constant="21.02" id="XTX-vk-Ykw"/>
-                                                                <constraint firstItem="LD6-U8-btB" firstAttribute="leading" secondItem="6mb-Y5-okC" secondAttribute="trailing" constant="29.640000000000001" id="htP-sT-Ghz"/>
-                                                                <constraint firstItem="E5z-eO-JEX" firstAttribute="leading" secondItem="eSJ-Km-9KB" secondAttribute="trailing" constant="36.270000000000003" id="rhR-Dt-9tB"/>
                                                                 <constraint firstAttribute="bottom" secondItem="LD6-U8-btB" secondAttribute="bottom" constant="18.600000000000001" id="tfd-96-c4H"/>
                                                                 <constraint firstItem="eSJ-Km-9KB" firstAttribute="leading" secondItem="gRN-Hl-ZUH" secondAttribute="leading" id="wVA-jV-X6V"/>
+                                                                <constraint firstItem="LD6-U8-btB" firstAttribute="leading" secondItem="9Ah-Ss-t1H" secondAttribute="trailing" constant="29" id="xSO-pb-tee"/>
                                                                 <constraint firstItem="E5z-eO-JEX" firstAttribute="centerY" secondItem="jSM-3g-vbf" secondAttribute="centerY" id="xbc-Ot-LJe"/>
                                                             </constraints>
                                                         </view>
@@ -490,6 +490,7 @@
                                                                     <constraint firstAttribute="bottom" secondItem="QGL-US-xOP" secondAttribute="bottom" constant="3.7999999999999998" id="88K-G5-1VU"/>
                                                                     <constraint firstItem="QGL-US-xOP" firstAttribute="leading" secondItem="CCP-Fa-Hpi" secondAttribute="leading" constant="2" id="bao-lD-nYM"/>
                                                                     <constraint firstAttribute="trailing" secondItem="QGL-US-xOP" secondAttribute="trailing" constant="2" id="hnz-PP-Cyl"/>
+                                                                    <constraint firstAttribute="height" constant="41" id="wLd-gZ-2VE"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

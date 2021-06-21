@@ -13,7 +13,7 @@ class TitleCoverViewController: UIViewController {
     @IBOutlet weak var testLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        initializePlayer(paraPlayer: &player)
+       
         testLabel.setCharacterSpacing(characterSpacing: 5)
         alertPopupLabel.text = "게임 데이터를 불러오지 못했습니다.\n네트워크 상태를 확인해주세요."
         

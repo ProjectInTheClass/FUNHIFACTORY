@@ -13,12 +13,14 @@ var player = User(
     setting: playerSetting,
     currentEpisodes: [prologueChapter,chapter1,chapter2,chapter3,chapter4,endingChapter],
     currentAchievementInfo: [
+        //프롤
         Achievement(name: "돈화문", image: "donhwamun", id: .donhwamun , isLocked: false),
         Achievement(name: "금천교", image: "geumcheongyo", id: .geumcheongyo , isLocked: false),
         Achievement(name: "인정전", image: "injeongjeon", id:  .injeongjeon, isLocked: false),
         Achievement(name: "루스", image: "cat", id: .cat , isLocked: false),
         Achievement(name: "휘령의 목걸이", image: "necklace_0", id: .necklace_0 , isLocked: false),
         Achievement(name: "기억 속의 부모님", image: "Parents", id: .parents , isLocked: false),
+        //사건 2
         Achievement(name: "거짓말쟁이", image: "liar", id: .liar , isLocked: false),
         Achievement(name: "희정당", image: "huijeongdang", id: .huijeongdang , isLocked: false),
         Achievement(name: "후원", image: "huwon_garden", id: .huwon_garden , isLocked: false),

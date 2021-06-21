@@ -425,6 +425,35 @@
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aRZ-c7-cFp">
+                                                                            <rect key="frame" x="203" y="9" width="37" height="19"/>
+                                                                            <subviews>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="더 보기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76J-rL-JKJ">
+                                                                                    <rect key="frame" x="5" y="4.5" width="27" height="10"/>
+                                                                                    <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="9"/>
+                                                                                    <color key="textColor" red="0.61568627450980395" green="0.70980392156862748" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                            </subviews>
+                                                                            <color key="backgroundColor" red="0.83137254901960778" green="0.88627450980392153" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="19" id="L4B-Jz-Ngs"/>
+                                                                                <constraint firstItem="76J-rL-JKJ" firstAttribute="centerX" secondItem="aRZ-c7-cFp" secondAttribute="centerX" id="bgN-Uw-Wws"/>
+                                                                                <constraint firstItem="76J-rL-JKJ" firstAttribute="centerY" secondItem="aRZ-c7-cFp" secondAttribute="centerY" id="eQP-ww-Xus"/>
+                                                                                <constraint firstAttribute="width" constant="37" id="hL9-pY-fd5"/>
+                                                                            </constraints>
+                                                                            <userDefinedRuntimeAttributes>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                    <real key="value" value="9.5"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                                                                    <color key="value" red="0.61568627450980395" green="0.70980392156862748" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                                                    <integer key="value" value="1"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                            </userDefinedRuntimeAttributes>
+                                                                        </view>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kta-ra-YNg">
                                                                             <rect key="frame" x="0.0" y="0.0" width="250" height="225"/>
                                                                             <subviews>
@@ -457,7 +486,9 @@
                                                                         <constraint firstAttribute="trailing" secondItem="7Nq-Ut-ZHv" secondAttribute="trailing" constant="24" id="UHS-lA-KI0"/>
                                                                         <constraint firstItem="6Sw-ux-6qi" firstAttribute="top" secondItem="7Nq-Ut-ZHv" secondAttribute="bottom" constant="15" id="fHK-UL-47p"/>
                                                                         <constraint firstAttribute="bottom" secondItem="6Sw-ux-6qi" secondAttribute="bottom" constant="14" id="m6s-Dh-Mv0"/>
+                                                                        <constraint firstItem="aRZ-c7-cFp" firstAttribute="top" secondItem="Fxf-d9-gcs" secondAttribute="top" constant="9" id="ntj-RA-Egi"/>
                                                                         <constraint firstItem="6Sw-ux-6qi" firstAttribute="centerX" secondItem="Fxf-d9-gcs" secondAttribute="centerX" id="oia-iz-CuU"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="aRZ-c7-cFp" secondAttribute="trailing" constant="10" id="yVD-0W-8NX"/>
                                                                         <constraint firstItem="7Nq-Ut-ZHv" firstAttribute="top" secondItem="Nbi-ly-7iH" secondAttribute="bottom" constant="12" id="yeT-9a-05x"/>
                                                                     </constraints>
                                                                 </view>
@@ -499,6 +530,7 @@
                                                     <outlet property="lockedView" destination="Kta-ra-YNg" id="iAe-qm-Vro"/>
                                                     <outlet property="nameLabel" destination="Nbi-ly-7iH" id="oXQ-kl-95C"/>
                                                     <outlet property="profileImage" destination="Qq5-44-dft" id="eJj-88-GgG"/>
+                                                    <outlet property="viewMoreView" destination="aRZ-c7-cFp" id="z9g-SV-kCe"/>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="smallGameCharacterCell" rowHeight="200" id="TcM-Cw-sDI" customClass="NoteSmallGameCharacterTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
@@ -524,6 +556,35 @@
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQK-95-ZgG">
+                                                                    <rect key="frame" x="203" y="9" width="37" height="19"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="더 보기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Br-Uu-vRF">
+                                                                            <rect key="frame" x="5" y="4.5" width="27" height="10"/>
+                                                                            <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="9"/>
+                                                                            <color key="textColor" red="0.61568627450000002" green="0.70980392160000005" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" red="0.83137254900000002" green="0.8862745098" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <constraints>
+                                                                        <constraint firstItem="5Br-Uu-vRF" firstAttribute="centerX" secondItem="pQK-95-ZgG" secondAttribute="centerX" id="3Hc-Cb-Zrc"/>
+                                                                        <constraint firstAttribute="height" constant="19" id="Mx9-KH-9H0"/>
+                                                                        <constraint firstAttribute="width" constant="37" id="Wb4-UF-Ekr"/>
+                                                                        <constraint firstItem="5Br-Uu-vRF" firstAttribute="centerY" secondItem="pQK-95-ZgG" secondAttribute="centerY" id="wpl-Ml-m89"/>
+                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                            <real key="value" value="9.5"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                                                            <color key="value" red="0.61568627450000002" green="0.70980392160000005" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                                            <integer key="value" value="1"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wco-Mz-5Ji">
                                                                     <rect key="frame" x="0.0" y="0.0" width="250" height="158"/>
                                                                     <subviews>
@@ -549,10 +610,12 @@
                                                                 <constraint firstAttribute="trailing" secondItem="Wco-Mz-5Ji" secondAttribute="trailing" id="J3W-qI-Shc"/>
                                                                 <constraint firstItem="Wco-Mz-5Ji" firstAttribute="top" secondItem="H0q-Ef-0ov" secondAttribute="top" id="MF7-Pn-qLy"/>
                                                                 <constraint firstItem="kTK-kO-6xl" firstAttribute="top" secondItem="H0q-Ef-0ov" secondAttribute="top" constant="17" id="T0a-UY-wSL"/>
+                                                                <constraint firstItem="pQK-95-ZgG" firstAttribute="top" secondItem="H0q-Ef-0ov" secondAttribute="top" constant="9" id="byT-4h-BRK"/>
                                                                 <constraint firstItem="n5G-O6-z0I" firstAttribute="centerX" secondItem="kTK-kO-6xl" secondAttribute="centerX" id="ewM-Bp-ctj"/>
                                                                 <constraint firstAttribute="bottom" secondItem="Wco-Mz-5Ji" secondAttribute="bottom" id="htx-mx-dwK"/>
                                                                 <constraint firstItem="n5G-O6-z0I" firstAttribute="top" secondItem="kTK-kO-6xl" secondAttribute="bottom" constant="7" id="pwN-Mb-OzE"/>
                                                                 <constraint firstItem="Wco-Mz-5Ji" firstAttribute="leading" secondItem="H0q-Ef-0ov" secondAttribute="leading" id="rEr-qt-rMq"/>
+                                                                <constraint firstAttribute="trailing" secondItem="pQK-95-ZgG" secondAttribute="trailing" constant="10" id="y51-c8-Q6e"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -570,6 +633,7 @@
                                                     <outlet property="lockedView" destination="Wco-Mz-5Ji" id="Edd-uh-pAM"/>
                                                     <outlet property="nameLabel" destination="n5G-O6-z0I" id="udi-C9-vPI"/>
                                                     <outlet property="profileImageView" destination="kTK-kO-6xl" id="RDU-bS-tvJ"/>
+                                                    <outlet property="viewMoreView" destination="pQK-95-ZgG" id="jwh-sh-ACy"/>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="caseCell" rowHeight="121" id="esj-11-0K1" customClass="NoteCaseTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">

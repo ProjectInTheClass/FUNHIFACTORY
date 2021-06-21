@@ -15,6 +15,7 @@ class NoteSmallGameCharacterTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lockedView: UIView!
 
+    @IBOutlet var viewMoreView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         designCell()
@@ -25,6 +26,7 @@ class NoteSmallGameCharacterTableViewCell: UITableViewCell {
     }
     
     func designCell() {
+        viewMoreView.setShadow(color: UIColor(red: 0.616, green: 0.71, blue: 0.796, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 5)
         lockedView.layer.cornerRadius = 7
         lockedView.layer.borderWidth = 3
         lockedView.layer.borderColor = UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1).cgColor
@@ -50,6 +52,7 @@ class NoteGameCharacterTableViewCell: UITableViewCell {
     @IBOutlet weak var lockedView: UIView!
     
     @IBOutlet var cellBorderAndShadowView: UIView!
+    @IBOutlet var viewMoreView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         designCell()
@@ -61,6 +64,7 @@ class NoteGameCharacterTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func designCell() {
+        viewMoreView.setShadow(color: UIColor(red: 0.616, green: 0.71, blue: 0.796, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 5)
         descriptionLabel.setLineSpacing(lineSpacing: 5.0)
         descriptionLabel.textAlignment = .center
         lockedView.layer.cornerRadius = 7
