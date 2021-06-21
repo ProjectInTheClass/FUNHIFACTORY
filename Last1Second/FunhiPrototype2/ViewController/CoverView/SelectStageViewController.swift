@@ -84,26 +84,29 @@ class SelectStageTableViewCell: UITableViewCell {
 
 class SelectStageViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return player.currentEpisodes.count
+        return player.currentEpisodes.count - 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let selectedStageIndex = indexPath.row + 1
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "selectStageTableViewCell", for: indexPath) as! SelectStageTableViewCell
-        cell.episodePlace.text = player.currentEpisodes[indexPath.row].episodePlace
-        cell.episodeYear.text = "\(player.currentEpisodes[indexPath.row].episodeYear)년"
-        cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[indexPath.row].episodePlaceImage)
+        cell.episodePlace.text = player.currentEpisodes[selectedStageIndex].episodePlace
+        cell.episodeYear.text = "\(player.currentEpisodes[selectedStageIndex].episodeYear)년"
+        cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[selectedStageIndex].episodePlaceImage)
         // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
        
-        if player.currentEpisodes[indexPath.row].episodeID == "ending" {
+        if player.currentEpisodes[selectedStageIndex].episodeID == "ending" {
             cell.lockedView.isHidden = checkEndingOpenTiming(playerEpisodes: player.currentEpisodes)
         } else {
             cell.lockedView.isHidden = true
         }
-        if selectedRowIndex != nil && selectedRowIndex == indexPath.row{
+        if selectedRowIndex != nil && selectedRowIndex == selectedStageIndex{
             cell.cellBackground.backgroundColor = .darkGray
                   }else{
                      
@@ -119,10 +122,11 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
     var selectedRowIndex: Int?
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      
+        let selectedStageIndex = indexPath.row + 1
+        
         let dataToSend: Episode
-        dataToSend = player.currentEpisodes[indexPath.row]
-        player.dayIndex = indexPath.row
+        dataToSend = player.currentEpisodes[selectedStageIndex]
+        player.dayIndex = selectedStageIndex
         let epID = dataToSend.episodeID
     
         if epID == "ending" {
@@ -182,7 +186,8 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     func updatePopup(indexPath: IndexPath) {
-        selectedPopupYearLabel.text = "\(player.currentEpisodes[indexPath.row].episodeYear)년"
+        let selectedStageIndex = indexPath.row + 1
+        selectedPopupYearLabel.text = "\(player.currentEpisodes[selectedStageIndex].episodeYear)년"
     }
     
     func designPopup() {
@@ -216,8 +221,8 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
     var selectedEP = Episode(episodeID: "", episodePlace: "", episodeYear: 0, episodeKingYear: "", episodeShortDesciption: "", episodeDesciption: "", episodePlaceImage: "", episodeCoverImage: "", isCleared: true, chatHistory: [], storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "")
     
     func openStagePopup(indexPath: IndexPath) {
-     
-        selectedEP = player.currentEpisodes[indexPath.row]
+        let selectedStageIndex = indexPath.row + 1
+        selectedEP = player.currentEpisodes[selectedStageIndex]
         //print(selectedEP)
         selectedPopupYearLabel.text = "\(selectedEP.episodeYear)년"
         selectedPopupPlaceImage.image = UIImage(named: selectedEP.episodePlaceImage)
@@ -228,7 +233,7 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         selectedPopupStartButtonOutlet.isEnabled = true
         
         
-        if player.currentEpisodes[indexPath.row].storyBlocks.isEmpty {
+        if player.currentEpisodes[selectedStageIndex].storyBlocks.isEmpty {
             selectedPopupStartButtonOutlet.isEnabled = false
             selectedPopupStartButtonOutlet.setTitle("준비 중입니다.", for: .normal)
         }
@@ -259,6 +264,8 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
     
     //얼러트 팝업 여는 함수
     func openLockedPopup(isEpiloguePopup: Bool) {
+        lockedPopup.center = self.view.center
+        lockedPopup.bounds = self.view.bounds
         self.view.addSubview(lockedPopup)
         let popupText: String
         switch isEpiloguePopup {
