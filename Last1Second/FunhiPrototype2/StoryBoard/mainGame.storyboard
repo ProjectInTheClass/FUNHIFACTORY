@@ -240,7 +240,7 @@
                                                                             <color key="value" red="0.78431372549019607" green="0.87058823529411766" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                            <real key="value" value="22.5"/>
+                                                                            <integer key="value" value="25"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                                                             <real key="value" value="1.5"/>
@@ -261,7 +261,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="53G-ZR-hGZ">
-                                                    <rect key="frame" x="334" y="24" width="64" height="49"/>
+                                                    <rect key="frame" x="334" y="24" width="64" height="64"/>
                                                     <color key="backgroundColor" red="0.86277425289999998" green="0.86665415759999997" blue="0.86666733029999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="64" id="KR9-nG-AU0"/>
@@ -279,7 +279,6 @@
                                                 <constraint firstItem="53G-ZR-hGZ" firstAttribute="top" secondItem="Syf-va-gW4" secondAttribute="top" constant="24" id="75a-98-8Fj"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="53G-ZR-hGZ" secondAttribute="trailing" constant="-4" id="LPC-Gh-CEn"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="6Z1-sQ-SGr" secondAttribute="trailing" constant="76" id="Nrf-24-cyO"/>
-                                                <constraint firstAttribute="bottom" secondItem="53G-ZR-hGZ" secondAttribute="bottom" constant="40" id="bdv-MU-DOc"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="6Z1-sQ-SGr" secondAttribute="bottom" constant="-11" id="h3Q-Ss-fIf"/>
                                                 <constraint firstAttribute="trailing" secondItem="53G-ZR-hGZ" secondAttribute="trailing" constant="16" id="y1l-Rg-iXh"/>
                                             </constraints>
@@ -303,6 +302,9 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="startGodChat" translatesAutoresizingMaskIntoConstraints="NO" id="F65-xf-3az">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="83"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="83" id="Q46-6q-hLC"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -316,11 +318,11 @@
                                             <outlet property="separatorImage" destination="F65-xf-3az" id="Xtu-kR-Q5Y"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="opTextCell" rowHeight="118" id="Nov-1r-Adf" customClass="opTextTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="220.5" width="414" height="118"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="opTextCell" rowHeight="104" id="Nov-1r-Adf" customClass="opTextTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="220.5" width="414" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nov-1r-Adf" id="b24-r2-tta">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="118"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9nd-mS-qwa">
@@ -337,7 +339,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="i0G-RK-l4p">
-                                                    <rect key="frame" x="97" y="31" width="221.5" height="87"/>
+                                                    <rect key="frame" x="97" y="17" width="221.5" height="87"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vep-Zh-itH">
                                                             <rect key="frame" x="0.0" y="0.0" width="46.5" height="19"/>
@@ -389,7 +391,7 @@
                                             <constraints>
                                                 <constraint firstItem="9nd-mS-qwa" firstAttribute="top" secondItem="b24-r2-tta" secondAttribute="top" constant="24" id="AlQ-aN-0RX"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="i0G-RK-l4p" secondAttribute="bottom" constant="-11" id="EKA-dO-Re3"/>
-                                                <constraint firstItem="i0G-RK-l4p" firstAttribute="top" secondItem="b24-r2-tta" secondAttribute="topMargin" constant="20" id="EWm-gy-ENT"/>
+                                                <constraint firstItem="i0G-RK-l4p" firstAttribute="top" secondItem="b24-r2-tta" secondAttribute="topMargin" constant="6" id="EWm-gy-ENT"/>
                                                 <constraint firstItem="9nd-mS-qwa" firstAttribute="leading" secondItem="b24-r2-tta" secondAttribute="leading" constant="16" id="bZX-D9-3dm"/>
                                                 <constraint firstItem="i0G-RK-l4p" firstAttribute="leading" secondItem="b24-r2-tta" secondAttribute="leadingMargin" constant="77" id="y0x-mX-XeE"/>
                                             </constraints>
@@ -402,15 +404,15 @@
                                             <outlet property="profileNickname" destination="vep-Zh-itH" id="k0d-E4-v0D"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myTextCell" rowHeight="118" id="kt2-Sg-BDC" customClass="myTextTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="338.5" width="414" height="118"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myTextCell" rowHeight="104" id="kt2-Sg-BDC" customClass="myTextTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="324.5" width="414" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kt2-Sg-BDC" id="6Hh-cW-zfM">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="118"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="fwj-go-daM">
-                                                    <rect key="frame" x="52" y="31" width="266" height="87"/>
+                                                    <rect key="frame" x="52" y="17" width="266" height="87"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tyh-sK-xPZ">
                                                             <rect key="frame" x="219.5" y="0.0" width="46.5" height="19"/>
@@ -474,7 +476,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="fwj-go-daM" secondAttribute="bottom" constant="-11" id="8xt-Lb-Wei"/>
-                                                <constraint firstItem="fwj-go-daM" firstAttribute="top" secondItem="6Hh-cW-zfM" secondAttribute="top" constant="31" id="9KU-2N-4la"/>
+                                                <constraint firstItem="fwj-go-daM" firstAttribute="top" secondItem="6Hh-cW-zfM" secondAttribute="top" constant="17" id="9KU-2N-4la"/>
                                                 <constraint firstItem="ypp-tm-AJ0" firstAttribute="top" secondItem="6Hh-cW-zfM" secondAttribute="top" constant="24" id="HLh-64-2jG"/>
                                                 <constraint firstAttribute="trailing" secondItem="fwj-go-daM" secondAttribute="trailing" constant="96" id="fFu-yw-iGF"/>
                                                 <constraint firstAttribute="trailing" secondItem="ypp-tm-AJ0" secondAttribute="trailing" constant="16" id="fKP-r3-x6h"/>
@@ -489,7 +491,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="arTableViewCell" rowHeight="59" id="daJ-Ci-VFo" customClass="ARTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="456.5" width="414" height="59"/>
+                                        <rect key="frame" x="0.0" y="428.5" width="414" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="daJ-Ci-VFo" id="vXh-7m-aMd">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
@@ -552,7 +554,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sectionCell" rowHeight="63" id="Jfh-0f-HBh" customClass="sectionTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="515.5" width="414" height="63"/>
+                                        <rect key="frame" x="0.0" y="487.5" width="414" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jfh-0f-HBh" id="yQW-Pn-ft0">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
@@ -595,7 +597,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="295" id="Hw8-Vw-pVe" customClass="ImageTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="578.5" width="414" height="295"/>
+                                        <rect key="frame" x="0.0" y="550.5" width="414" height="295"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hw8-Vw-pVe" id="szc-Qo-WDf">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="295"/>
