@@ -37,7 +37,7 @@ class endingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        popupView.translatesAutoresizingMaskIntoConstraints = false
         endingDesign()
     }
     
@@ -51,6 +51,9 @@ class endingViewController: UIViewController {
         firstButtonImageView.image = UIImage(named: "\(currentEpisode().currentStoryBlockIndex)1stButton")
         secondButtonImageView.image = UIImage(named: "\(currentEpisode().currentStoryBlockIndex)2ndButton")
         thirdButtonImageView.image = UIImage(named: "\(currentEpisode().currentStoryBlockIndex)3rdButton")
+        yearLabel.adjustsFontSizeToFitWidth = true
+        descriptionLabel.adjustsFontSizeToFitWidth = true
+        scriptLabel.adjustsFontSizeToFitWidth = true
         yearLabel.text = "\(currentEpisode().episodeYear)년"
         descriptionLabel.text = ending.name
         scriptLabel.text = ending.comment
