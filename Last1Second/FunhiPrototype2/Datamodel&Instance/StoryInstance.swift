@@ -48,7 +48,7 @@ var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현
          CheckPoint(id: .checkPoint_0_0_3, name: "소원", storyBlockIndex: "042", isLocked: false),
          CheckPoint(id: .checkPoint_0_0_3, name: "맨 뒤로", storyBlockIndex: "087", isLocked: false)]
         
-        ], currentStoryBlockIndex: "001")
+        ], currentStoryBlockIndex: "015")
 
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
 
