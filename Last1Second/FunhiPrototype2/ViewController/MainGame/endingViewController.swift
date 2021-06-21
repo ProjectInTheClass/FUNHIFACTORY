@@ -21,6 +21,7 @@ class endingViewController: UIViewController {
     @IBOutlet var secondButtonImageView: UIImageView!
     @IBOutlet var thirdButtonImageView: UIImageView!
     
+    @IBOutlet var circleBorders: [UIView]!
     @IBOutlet var insideButtonViews: [UIView]!
     @IBOutlet var floatingButtons: [UIButton]!
     
@@ -71,6 +72,12 @@ class endingViewController: UIViewController {
         }
         for target in popupButtonShadows {
             target.backgroundColor = ending.buttonUIColor[1]
+        }
+        for target in circleBorders {
+            target.backgroundColor = ending.buttonUIColor[1]
+            target.layer.borderWidth = 2
+            target.layer.borderColor = ending.buttonUIColor[2].cgColor
+            target.layer.cornerRadius = target.bounds.width / 2
         }
     }
     
