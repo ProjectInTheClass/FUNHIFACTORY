@@ -15,9 +15,9 @@ class TitleCoverViewController: UIViewController {
         super.viewDidLoad()
        
         testLabel.setCharacterSpacing(characterSpacing: 5)
-        alertPopupLabel.text = "게임 데이터를 불러오지 못했습니다.\n네트워크 상태를 확인해주세요."
+        alertPopupLabel.text = "게임 데이터를 아직 전부 불러오지 못했습니다.\n.\n 상태가 지속된다면 네트워크 상태를 확인해주세요."
         
-        checkForSuccessfulDownloadOfJson()
+        
     
     }
     
@@ -36,12 +36,14 @@ class TitleCoverViewController: UIViewController {
         }
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
         audioConfigure(bgmName: "coverBGM", isBGM: true, ofType: "mp3")
         print("현재 currentChatArray: \(player.currentChatArray)")
         print("현재 dayId: \(player.dayId)")
         print("현재 currentChatId: \(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)")
         print("현재 dayIndex: \(player.dayIndex)")
+        checkForSuccessfulDownloadOfJson()
         
     }
     
