@@ -87,7 +87,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             print("메인게임 - 자신 텍스트 출력")
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
             cell.myTextCellUpdate(name: target.who, chat: chatText, profile: target.characterFace, godchat: target.isGodChat)
-            cell.layoutIfNeeded()
+//            cell.layoutIfNeeded()
             return cell
         }
         //상대가 보냈을 때

@@ -37,7 +37,7 @@ class myTextTableViewCell: UITableViewCell {
         
         switch profile {
         case .none:
-            nameAndChat.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 17).isActive = true
+//            nameAndChat.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 17).isActive = true
             profileImage.isHidden = true
             profileNickname.isHidden = true
         default:
