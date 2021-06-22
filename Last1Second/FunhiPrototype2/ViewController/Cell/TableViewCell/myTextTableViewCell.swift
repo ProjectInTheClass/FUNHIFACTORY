@@ -40,7 +40,6 @@ class myTextTableViewCell: UITableViewCell {
             nameAndChat.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 17).isActive = true
             profileImage.isHidden = true
             profileNickname.isHidden = true
-            nameAndChat.setNeedsLayout()
         default:
             profileImage.isHidden = false
             profileNickname.isHidden = false
