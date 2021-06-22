@@ -109,6 +109,7 @@ extension mainGameViewController{
     func choiceUpdate(){
         isChoiceOn = true
         myChoiceText.isHidden = false
+        choiceBarLine.isHidden = false
         if timer != nil{
             timer.invalidate()
         }
@@ -125,6 +126,7 @@ extension mainGameViewController{
     }
     func closeChoiceBar(){
         myChoiceText.isHidden = true
+        choiceBarLine.isHidden = true
         isChoiceOn = false
             choiceHeight.constant = 0
             choiceBar.isHidden = true

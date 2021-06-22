@@ -16,6 +16,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     var isStartOfEpisode: Bool = false
     var indexOfCellBeforeDragging = 0
     
+    @IBOutlet var choiceBarLine: UIView!
     @IBOutlet var normalChoiceCollectionViewLayout: UICollectionViewFlowLayout!
     @IBOutlet var currentYear: UILabel!
     @IBOutlet var wholeView: UIView!
@@ -187,13 +188,15 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                 {
                     player.currentChatArray.append(Chat(text_: "", image_: "", type_: .endGodChat, who_: .danhee, characterFace_: .none, optionalOption_: nil, animationOption_: .none, isGodChat_: false))
                     mainGameTableView.backgroundColor =  UIColor(red: 0.07, green: 0.15, blue: 0.22, alpha: 1)
-                    myChoiceText.textColor = .white
+                    myChoiceText.textColor = .black
+                    choiceBarLine.backgroundColor = UIColor(red: 0.243, green: 0.357, blue: 0.459, alpha: 1)
                 }
                 else
                 {
                     player.currentChatArray.append(Chat(text_: "", image_: "", type_: .startGodChat, who_: .danhee, characterFace_: .none, optionalOption_: nil, animationOption_: .none, isGodChat_: true))
                     mainGameTableView.backgroundColor = UIColor(red: 0.545, green: 0.631, blue: 0.71, alpha: 1)
-                    myChoiceText.textColor = .black
+                    myChoiceText.textColor = .white
+                    choiceBarLine.backgroundColor = UIColor(red: 0.484, green: 0.581, blue: 0.671, alpha: 1)
                 }
                 mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count-1, section: 0)], with: .none)
             }
@@ -232,11 +235,13 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             if story == true
             {
                 myChoiceText.textColor = .black
+                choiceBarLine.backgroundColor = UIColor(red: 0.243, green: 0.357, blue: 0.459, alpha: 1)
                 mainGameTableView.backgroundColor = UIColor(red: 0.545, green: 0.631, blue: 0.71, alpha: 1)
             }
             else
             {
                 myChoiceText.textColor = .white
+                choiceBarLine.backgroundColor = UIColor(red: 0.484, green: 0.581, blue: 0.671, alpha: 1)
                 mainGameTableView.backgroundColor =  UIColor(red: 0.07, green: 0.15, blue: 0.22, alpha: 1)
             }
         }
