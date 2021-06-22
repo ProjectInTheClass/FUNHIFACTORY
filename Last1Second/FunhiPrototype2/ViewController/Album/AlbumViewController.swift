@@ -108,6 +108,8 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.designTableView.delegate = self
         self.designTableView.dataSource = self
         
+        
+        albumBackgroundView.backgroundColor = UIColor(red: 157/255, green: 181/255, blue: 203/255, alpha: 1)
         albumBackgroundView.layer.cornerRadius = 24
         albumBackgroundView.setShadow(color: UIColor(red: 0.174, green: 0.292, blue: 0.404, alpha: 1), offsetX: 24, offsetY: -15, opacity: 1, radius: 0)
         albumBackgroundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
@@ -141,7 +143,7 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
         albumPopupDescriptionLabel.setLineSpacing(lineSpacing: 6)
         albumPopupDescriptionLabel.textAlignment = .center
         albumPopupBoxTopBarView.layer.cornerRadius = 16
-        albumPopupBoxTopBarView.backgroundColor =  UIColor(red: 0.616, green: 0.71, blue: 0.796, alpha: 1)
+        
         albumPopupBoxTopBarView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         albumPopupBoxView.layer.cornerRadius = 16
         albumPopupBoxView.setBolder(color: UIColor(red: 0.616, green: 0.71, blue: 0.796, alpha: 1), width: 4)

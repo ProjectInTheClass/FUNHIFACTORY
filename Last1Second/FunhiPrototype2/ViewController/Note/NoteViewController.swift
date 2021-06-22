@@ -380,7 +380,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         }
         for button in titleButtons.enumerated() {
             
-            let titles = ["인물", "사건"]
+            let titles = ["인물", "역사"]
             let currentTitle = titles[button.offset]
             
             button.element.setTitle(String(currentTitle), for: .normal)
@@ -433,12 +433,13 @@ extension NoteViewController {
      
     //--------------수첩 --------------
     
+        noteBackgroundView.backgroundColor = UIColor(red: 157/255, green: 181/255, blue: 203/255, alpha: 1)
         titleLabel.font = UIFont(name: "NanumSquareEB", size: 29)
-        noteBackgroundView.layer.cornerRadius = 5
-        noteBackgroundView.layer.shadowColor = UIColor(red: 0.174, green: 0.292, blue: 0.404, alpha: 1).cgColor
-        noteBackgroundView.layer.shadowOffset = CGSize(width: 26, height: -17)
-        noteBackgroundView.layer.shadowOpacity = 1
-        noteBackgroundView.layer.shadowRadius = 0
+        
+        noteBackgroundView.layer.cornerRadius = 24
+        noteBackgroundView.setShadow(color: UIColor(red: 0.174, green: 0.292, blue: 0.404, alpha: 1), offsetX: 24, offsetY: -15, opacity: 1, radius: 0)
+        noteBackgroundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        
         caseLongDescriptionLabel.setLineSpacing(lineSpacing: 6)
         caseLongDescriptionLabel.textAlignment = .center
   

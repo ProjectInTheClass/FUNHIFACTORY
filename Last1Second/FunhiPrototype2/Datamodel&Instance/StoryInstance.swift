@@ -13,11 +13,11 @@ import UIKit
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
 
 
-var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현재", episodeYear: 2039, episodeKingYear: "현재 2039년", episodeShortDesciption: "누군가 나에게 내 하루를 바꿀 수 있는, 내 인생을 바꿀 수 있는 구원의 손길을 내밀어 준다면, 나는 그 손을....잡을 수 있을까?", episodeDesciption: "지루하고 따분한, 그저 우울하기만 한 내 인생은 변하긴 할까?\n이런 삶은 이제 그만하고 싶다.\n누군가 나에게 내 하루를 바꿀 수 있는, 내 인생을 바꿀 수 있는 구원의 손길을 내밀어 준다면,\n 나는 그 손을....잡을 수 있을까?", episodePlaceImage: "Donhwamun image", episodeCoverImage: "donhwamun background image", chatHistory: [], storyBlocks: [:], currentCharacterNote:
+var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현재", episodeYear: 2039, episodeKingYear: "현재 2039년", episodeShortDesciption: "누군가 나에게 내 하루를 바꿀 수 있는, 내 인생을 바꿀 수 있는 구원의 손길을 내밀어 준다면, 나는 그 손을....잡을 수 있을까?", episodeDesciption: "지루하고 따분한, 그저 우울하기만 한\n내 인생은 변하긴 할까?\n\n이런 삶은 이제 그만하고 싶다.\n\n누군가 나에게 내 하루를 바꿀 수 있는,\n내 인생을 바꿀 수 있는\n구원의 손길을 내밀어 준다면,\n\n나는 그 손을…. 잡을 수 있을까?", episodePlaceImage: "Donhwamun image", episodeCoverImage: "donhwamun background image", chatHistory: [], storyBlocks: [:], currentCharacterNote:
                                         
-    [GameCharacter(name: "이단희", profileImage: "prolog danhee", backGroundImage: "prolog danhee_background", description: "내 곁에 아무도 없다는 게 이젠 익숙해. 이런 내 삶이 바뀔 수 있을까?", infomation: [],isLocked: false),
+    [GameCharacter(name: "이단희", profileImage: "prolog danhee", backGroundImage: "prolog danhee_background", description: "내 곁에 아무도 없다는 게 이젠 익숙해.\n이런 내 삶이 바뀔 수 있을까?", infomation: [],isLocked: false),
      
-     GameCharacter(name: "휘령", profileImage: "hwiryeong", backGroundImage: "prolog hwiryeong_background", description: "네가 나의 마지막 희망이다. 네가 가진 그 1초가 나를, 이 세상을 바꾸는 법. 부디 이번엔 꼭 성공하길...", infomation: [
+     GameCharacter(name: "휘령", profileImage: "hwiryeong", backGroundImage: "prolog hwiryeong_background", description: "네가 나의 마지막 희망이다.\n네가 가진 그 1초가 나를, 이 세상을 바꾸는 법.\n부디 이번엔 꼭 성공하길...", infomation: [
                     Infomation(infomationID: .hwiryeong1, isLocked: false, text: "조선이 생겨났을 때부터 존재했다고 한다. "),
                     Infomation(infomationID: .hwiryeong2, isLocked: false, text: "휘령이 곧 조선. 하지만 큰 사건들을 겪고 나서 그는 힘을 잃게 되었다. 그 힘을 찾기 위해서는 내가 필요하다고 하는데… "),
                     Infomation(infomationID: .hwiryeong3, isLocked: false, text: "그 대가로 내 소원을 들어주겠다고 하니.. 어떻게 해야 할까?")
@@ -56,7 +56,7 @@ currentCharacterNote: [],
 currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "002")
 
 
-var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear: 1623, episodeKingYear: "광해 15년", episodeShortDesciption: "반란으로 왕이 바뀐 사건이다.\n인조가 광해를 끌어내리고 왕 위에\n오르던 과정에서 인정전을 제외한\n모든 건물이 불에 타 버렸다.\n반란이 성공하지 못하도록 하는 것이\n이 사건의 실마리가 될 것이다.", episodeDesciption: "나는 현실로 돌아가야만 하는 사람이다.\n그런데 왜 자꾸 다른 마음을 품게 되는 거냐고!\n역사가 똑같이 흘러가게 냅두어서는 안 돼.\n안 되는 걸 너무 잘 아는데...\n정신 차리자.\n내가 할 선택은.....", episodePlaceImage: "Seonjeongjeon image", episodeCoverImage: "donhwamun background image", chatHistory: [],storyBlocks: [:], currentCharacterNote: [
+var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear: 1623, episodeKingYear: "광해 15년", episodeShortDesciption: "반란으로 왕이 바뀐 사건이다.\n인조가 광해를 끌어내리고 왕 위에\n오르던 과정에서 인정전을 제외한\n모든 건물이 불에 타 버렸다.\n반란이 성공하지 못하도록 하는 것이\n이 사건의 실마리가 될 것이다.", episodeDesciption: "나는 현실로 돌아가야만 하는 사람이다.\n\n그런데 왜 자꾸 다른 마음을 품게 되는 거냐고!\n\n역사가 똑같이 흘러가게 내버려 두어서는 안 돼.\n\n그러면 안 되는 걸 너무 잘 아는데...\n\n정신 차리자 단희야!!\n\n내가 할 선택은.....", episodePlaceImage: "Seonjeongjeon image", episodeCoverImage: "donhwamun background image", chatHistory: [],storyBlocks: [:], currentCharacterNote: [
     
     GameCharacter(name: "이단희", profileImage: "danhee2", backGroundImage: "case 2 danhee_background", description: "내가 부잣집 양반의 개인 사병이라고?\n내가 모시는 양반이 반역의 주요 인물이라니...\n들키지 않고 방해할 수 있을까?", infomation: [], isLocked: false),
     
