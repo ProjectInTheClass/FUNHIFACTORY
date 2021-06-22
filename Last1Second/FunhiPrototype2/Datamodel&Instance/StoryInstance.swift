@@ -47,7 +47,7 @@ var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현
          CheckPoint(id: .checkPoint_0_0_2, name: "휘령과의 만남", storyBlockIndex: "016", isLocked: false),
          CheckPoint(id: .checkPoint_0_0_3, name: "소원", storyBlockIndex: "042", isLocked: false)]
         
-        ], currentStoryBlockIndex: "024")
+        ], currentStoryBlockIndex: "014")
 
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
 
@@ -120,7 +120,7 @@ timelineCheckPoint: [
         [CheckPoint(id: .checkPoint_2_2_1, name: "휘령의 호통", storyBlockIndex: "219", isLocked: false),
          CheckPoint(id: .checkPoint_2_2_2, name: "백문이 불여일견", storyBlockIndex: "239", isLocked: false),
          CheckPoint(id: .checkPoint_2_2_3, name: "또 한 번의 기회", storyBlockIndex: "254", isLocked: false)]
-        ], currentStoryBlockIndex: "140")
+        ], currentStoryBlockIndex: "086")
 
 
 var chapter3 = Episode(episodeID: "1803", episodePlace: "선정전", episodeYear: 1803, episodeKingYear: "순조 3년", episodeShortDesciption: "왕의 나이가 너무 어려 대비가 대신 정치를 했다. 그 과정에서 한쪽 세력에만 힘을 실게 되고, 종교의 자유를 억압하게 되었다. 복수심을 가지고 있는 자가 이번 사건의 범인일지도.", episodeDesciption: "대한독립 만세",episodePlaceImage: "Daejojeon image", episodeCoverImage: "changdeokgung image sample",  chatHistory: [],storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "")
@@ -128,3 +128,10 @@ var chapter3 = Episode(episodeID: "1803", episodePlace: "선정전", episodeYear
 var chapter4 = Episode(episodeID: "1918", episodePlace: "대조전", episodeYear: 1918, episodeKingYear: "순종 11년", episodeShortDesciption: "", episodeDesciption: "7월 28일임",episodePlaceImage: "Injeongjeon image", episodeCoverImage: "changdeokgung image sample", chatHistory: [], storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "")
 
 var endingChapter = Episode(episodeID: "ending", episodePlace: "엔딩", episodeYear: 2020, episodeKingYear: "엔딩 에피소드입니다.\n\n(샘플 텍스트입니다)", episodeShortDesciption: "", episodeDesciption: "", episodePlaceImage: "", episodeCoverImage: "", chatHistory: [], storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "" )
+
+let extraCharacters : [GameCharacter] = [
+    GameCharacter(name: "모두", profileImage: "everyone", backGroundImage: "", description: "", infomation: [], isLocked: false),
+    GameCharacter(name: "반란군 1", profileImage: "extra1", backGroundImage: "", description: "", infomation: [], isLocked: false),
+    GameCharacter(name: "반란군 2", profileImage: "extra2", backGroundImage: "", description: "", infomation: [], isLocked: false),
+    GameCharacter(name: "반란군 3", profileImage: "extra3", backGroundImage: "", description: "", infomation: [], isLocked: false),
+    GameCharacter(name: "군사 대장", profileImage: "extra4", backGroundImage: "", description: "", infomation: [], isLocked: false)]
