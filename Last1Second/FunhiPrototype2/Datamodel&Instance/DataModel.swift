@@ -202,7 +202,7 @@ class Infomation: Codable {
 //인물
 
 enum GameCharacterID: String,Codable {
-    case danhee, hwiryeong, tourguide, teacher, danhee2, extra1, extra2, extra3, igwi, kimman, kimwoman, poorman, everyone, injo
+    case danhee, hwiryeong, tourguide, teacher, danhee2, extra1, extra2, extra3, extra4, igwi, kimman, kimwoman, poorman, everyone, injo
     
     func info() -> GameCharacter{
         switch self {
@@ -226,9 +226,16 @@ enum GameCharacterID: String,Codable {
             return chapter2.currentCharacterNote[4]
         case .injo:
             return chapter2.currentCharacterNote[5]
-        
-        default :
-            return GameCharacter(name: "엑스트라", profileImage: "", backGroundImage: "", description: "", infomation: [], isLocked: true)
+        case .everyone:
+            return extraCharacters[0]
+        case .extra1:
+            return extraCharacters[1]
+        case .extra2:
+            return extraCharacters[2]
+        case .extra3:
+            return extraCharacters[3]
+        case .extra4:
+            return extraCharacters[4]
         }
     }
 }
