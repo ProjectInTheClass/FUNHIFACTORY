@@ -20,6 +20,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var currentYear: UILabel!
     @IBOutlet var wholeView: UIView!
     
+    @IBOutlet var safeAreaBottom: UIView!
+    @IBOutlet var safeAreaTop: UIView!
     @IBOutlet var choiceHeight: NSLayoutConstraint!
     @IBOutlet var mainGameTableView: UITableView!
     @IBOutlet var choiceBar: UIView!
@@ -229,10 +231,12 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         {
             if story == true
             {
+                myChoiceText.textColor = .black
                 mainGameTableView.backgroundColor = UIColor(red: 0.545, green: 0.631, blue: 0.71, alpha: 1)
             }
             else
             {
+                myChoiceText.textColor = .white
                 mainGameTableView.backgroundColor =  UIColor(red: 0.07, green: 0.15, blue: 0.22, alpha: 1)
             }
         }
@@ -386,6 +390,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     @IBAction func pauseTapped(_ sender: Any) {
         pauseBar.isHidden = false
+        safeAreaTop.isHidden = false
         if timer != nil{
             timer.invalidate()
         }
@@ -393,6 +398,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     @IBAction func resumeTapped(_ sender: Any) {
         pauseBar.isHidden = true
+        safeAreaTop.isHidden = true
         if timer == nil {
             chatUpdateTimer()
         }
