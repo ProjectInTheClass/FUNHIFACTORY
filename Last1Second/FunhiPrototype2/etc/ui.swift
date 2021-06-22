@@ -20,7 +20,9 @@ func maingameNotepopupViewDesign(popupView: UIView, parentView: UIView) {
     popupView.layer.cornerRadius = 7
     
     popupView.setBolder(color: UIColor(red: 0.788, green: 0.502, blue: 0.502, alpha: 1), width: 5)
-    popupView.setShadow(color: UIColor(red: 1, green: 1, blue: 1, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 10)
+//    popupView.layer.shadowPath = UIBezierPath(rect: CGRect(x: -4, y: -4, width: popupView.bounds.width, height: popupView.bounds.height)).cgPath
+ 
+    popupView.setShadow(color: UIColor(red: 1, green: 1, blue: 1, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 4)
 }
 
 func monologueUI(cell : UIView){

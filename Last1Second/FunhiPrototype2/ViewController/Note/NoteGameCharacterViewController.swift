@@ -182,7 +182,7 @@ class NoteGameCharacterViewController: UIViewController,UITableViewDelegate, UIT
     
     func updateView(gameCharacter: GameCharacter) {
         nameLabel.text = gameCharacter.name
-        gameCharacterImageView.image = UIImage(named: gameCharacter.profileImage)
+        gameCharacterImageView.image = UIImage(named: "\(gameCharacter.profileImage)_noteLarge")
         gameCharacterDescriptionLabel.text = gameCharacter.description
         gameCharacterIsLabel.text = postPositionText(gameCharacter.name)
     }
