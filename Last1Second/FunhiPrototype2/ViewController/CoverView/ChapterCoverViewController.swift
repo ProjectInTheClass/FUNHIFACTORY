@@ -14,6 +14,7 @@ class ChapterCoverViewController: UIViewController {
     @IBOutlet weak var chapterNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    @IBOutlet var tapStackView: UIStackView!
     @IBOutlet weak var sandGlassImageView: UIImageView!
     @IBOutlet weak var closeCoverButton: UIButton!
     @IBOutlet weak var tapAndContinueLabel: UILabel!
@@ -71,8 +72,8 @@ class ChapterCoverViewController: UIViewController {
         yearLabel.alpha = 0
         chapterNameLabel.alpha = 0
         descriptionLabel.alpha = 0
-        sandGlassImageView.isHidden = true
-        tapAndContinueLabel.isHidden = true
+      
+        tapStackView.isHidden = true
         
         buttonIsOn = false
       
@@ -90,11 +91,12 @@ class ChapterCoverViewController: UIViewController {
                         
                         self.chapterNameLabel.alpha = 1
                     } completion: { (Bool) in
-                        self.tapAndContinueLabel.isHidden = false
-                        self.closeCoverButton.isHidden = false
-                        UIView.animate(withDuration: 1.0) {
+                        self.tapStackView.isHidden = false
+//                        self.tapAndContinueLabel.isHidden = false
+//                        self.closeCoverButton.isHidden = false
+                        UIView.animate(withDuration: 0.1) {
                             
-                            
+                           
                         }
                     }
                 }
