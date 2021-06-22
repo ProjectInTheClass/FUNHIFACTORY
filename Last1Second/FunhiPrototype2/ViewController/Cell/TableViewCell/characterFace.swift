@@ -34,7 +34,7 @@ func findFaceImage(nickname:GameCharacterID, profile:CharacterFace, normalProfil
     case .danhee2 :
         switch profile {
         case .angry1: return "danhee2 angry"
-        case .basic:   return "prolog danhee basic"
+        case .basic:   return "danhee2 basic"
         case .basictalk: return "danhee2 basic talk"
         case .cry1: return "danhee2 cry"
         case .happy1:  return "danhee2 happy"
@@ -114,8 +114,8 @@ func findFaceImage(nickname:GameCharacterID, profile:CharacterFace, normalProfil
     case .poorman:
         switch profile {
         case .danger: return "poorman danger"
-        case .surprise1: return "poorman danger"
-            
+        case .surprise1: return "poorman surprise"
+        case .thanks: return "poorman thanks"
         default:
             return "none"
         }

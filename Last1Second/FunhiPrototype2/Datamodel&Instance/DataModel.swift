@@ -535,6 +535,15 @@ struct GameData {
 enum CharacterFace: String, Codable{
     case none,angry1,angry2,angry3, angry4,basic,cry1,cry2,happy1,happy2,happy3,sad1,scared,straight,surprise1,surprise2,basictalk,cryangry1,cryangry2,thanks,danger,happytalk
 }
+func currentDanhee() -> GameCharacterID
+{
+    switch currentEpisode().episodeID {
+    case "prologue": return .danhee
+    case "1623": return .danhee2
+    default:
+        return .danhee
+    }
+}
 
 var globalPopupOpen: Bool = false
 
