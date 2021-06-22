@@ -7,9 +7,9 @@
 
 import Foundation
 
-func findFaceImage(nickname:String, profile:CharacterFace, normalProfile : String) -> String
+func findFaceImage(nickname:GameCharacterID, profile:CharacterFace, normalProfile : String) -> String
 {
-    if nickname == "이단희"{
+    if nickname == .danhee{
         switch profile {
         case .angry1: return "prolog danhee angry 1"
         case .angry2: return "prolog danhee angry 2"
@@ -31,7 +31,7 @@ func findFaceImage(nickname:String, profile:CharacterFace, normalProfile : Strin
             return "none"
         }
     }
-    else if nickname == "휘령"{
+    else if nickname == .hwiryeong{
             switch profile {
             case .angry1: return "hwiryeong angry 1"
             case .angry2: return "hwiryeong angry 2"
@@ -49,7 +49,7 @@ func findFaceImage(nickname:String, profile:CharacterFace, normalProfile : Strin
             default : return "none"
             }
     }
-    else if nickname == "투어 가이드"{
+    else if nickname == .tourguide{
             switch profile {
             case .basictalk: return "guide basic talk"
             case .basic: return "guide basic"
@@ -58,7 +58,7 @@ func findFaceImage(nickname:String, profile:CharacterFace, normalProfile : Strin
             default : return "none"
         }
     }
-    else if nickname == "선생님"{
+    else if nickname == .teacher{
         switch profile {
         case .angry1: return "teacher angry 1"
         case .angry2: return "teacher angry 2"

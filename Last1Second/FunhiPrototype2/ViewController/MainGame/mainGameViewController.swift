@@ -83,7 +83,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         if target.type == .onlyText && target.who.info().name == "이단희"{
             print("메인게임 - 자신 텍스트 출력")
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
-            cell.myTextCellUpdate(name: target.who.info().name, chat: chatText, profile: target.characterFace, godchat: target.isGodChat)
+            cell.myTextCellUpdate(name: target.who, chat: chatText, profile: target.characterFace, godchat: target.isGodChat)
             return cell
         }
         //상대가 보냈을 때
@@ -91,7 +91,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             print("메인게임 - 상대 텍스트 출력")
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
             cell.profileNickname.textColor = .white
-            cell.opTextCellUpdate(name: target.who.info().name, chat: chatText,normalProfile: target.who.info().profileImage, mainProfile: target.characterFace, isLocked: target.who.info().isLocked, godchat: target.isGodChat)
+            cell.opTextCellUpdate(name: target.who, chat: chatText,normalProfile: target.who.info().profileImage, mainProfile: target.characterFace, isLocked: target.who.info().isLocked, godchat: target.isGodChat)
             cell.contentView.setNeedsDisplay()
             return cell
         }
@@ -116,7 +116,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "monologue", for: indexPath) as! monologueTableViewCell
             cell.monologueText.text = chatText
             cell.name.textColor = .white
-            cell.chatUpdate(nickname: target.who.info().name, profile: target.characterFace, godchat: target.isGodChat)
+            cell.chatUpdate(nickname: target.who, profile: target.characterFace, godchat: target.isGodChat)
             return cell
         }
         else if target.type == .ar{

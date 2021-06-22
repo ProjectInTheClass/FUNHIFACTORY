@@ -30,8 +30,8 @@ class myTextTableViewCell: UITableViewCell {
         chatView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner, .layerMaxXMaxYCorner]
     }
     
-    func myTextCellUpdate(name:String,chat:String,profile:CharacterFace, godchat : Bool){
-        profileNickname.text = name
+    func myTextCellUpdate(name:GameCharacterID,chat:String,profile:CharacterFace, godchat : Bool){
+        profileNickname.text = name.info().name
         chatText.text = chat
         
         switch profile {

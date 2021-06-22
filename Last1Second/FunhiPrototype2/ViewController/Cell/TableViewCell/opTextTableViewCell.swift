@@ -30,8 +30,8 @@ class opTextTableViewCell: UITableViewCell {
         chatView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner]
     }
    
-    func opTextCellUpdate(name:String,chat:String, normalProfile:String, mainProfile:CharacterFace, isLocked : Bool, godchat : Bool){
-        profileNickname.text = name
+    func opTextCellUpdate(name:GameCharacterID,chat:String, normalProfile:String, mainProfile:CharacterFace, isLocked : Bool, godchat : Bool){
+        profileNickname.text = name.info().name
                 if isLocked == true{
                     profileNickname.text = "???"
                 }
