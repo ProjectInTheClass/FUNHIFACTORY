@@ -211,7 +211,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidAppear(_ animated: Bool) {
         print("퍼즈바 꺼졌는가? :\(pauseBar.isHidden), 초이스 켜졌는가? :\(isChoiceOn), 타이머 꺼졌는가? :\(timer==nil)")
-        if isChoiceOn == false && timer == nil{
+        if timer == nil{
             guard pauseBar.isHidden == true else {return}
             print("chatupdatetimer is executed")
             chatUpdateTimer()
@@ -224,7 +224,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     override func viewWillAppear(_ animated: Bool) {
-//        closeChoiceBar()
+        closeChoiceBar()
         if let story = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]?.isGodChat
         {
             if story == true

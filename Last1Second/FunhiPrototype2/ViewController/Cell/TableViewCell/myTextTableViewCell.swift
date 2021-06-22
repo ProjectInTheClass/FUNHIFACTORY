@@ -12,6 +12,7 @@ class myTextTableViewCell: UITableViewCell {
     @IBOutlet var profileNickname: UILabel!
     @IBOutlet var chatText: UILabel!
     @IBOutlet var chatView: UIView!
+    @IBOutlet var nameAndChat: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,8 +37,10 @@ class myTextTableViewCell: UITableViewCell {
         
         switch profile {
         case .none:
+            nameAndChat.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 17).isActive = true
             profileImage.isHidden = true
             profileNickname.isHidden = true
+            nameAndChat.setNeedsLayout()
         default:
             profileImage.isHidden = false
             profileNickname.isHidden = false
@@ -46,6 +49,7 @@ class myTextTableViewCell: UITableViewCell {
         case true:
             profileNickname.textColor = .black
             backgroundColor = UIColor(red: 0.545, green: 0.631, blue: 0.71, alpha: 1)
+            chatView.layer.borderColor = UIColor(red: 0.408, green: 0.522, blue: 0.617, alpha: 1).cgColor
         case false:
             profileNickname.textColor = .white
             backgroundColor =  UIColor(red: 0.07, green: 0.15, blue: 0.22, alpha: 1)

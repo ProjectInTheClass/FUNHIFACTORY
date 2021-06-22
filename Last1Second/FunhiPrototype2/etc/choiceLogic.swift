@@ -8,7 +8,6 @@
 import UIKit
 
 var isChoiceOn = false
-var isGodChatOn = false
 
 extension mainGameViewController{
     func chatUpdateTimer()
@@ -124,13 +123,11 @@ extension mainGameViewController{
     }
     func closeChoiceBar(){
         isChoiceOn = false
-        if isGodChatOn == false{
             choiceHeight.constant = 0
             choiceBar.isHidden = true
             choiceBar.setNeedsUpdateConstraints()
             mainGameTableView.layoutIfNeeded()
             //scrollToBottom(input: 0)
-        }
     }
     
     
