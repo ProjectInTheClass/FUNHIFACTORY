@@ -38,6 +38,7 @@ class endingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        audioConfigure(bgmName: "badending", isBGM: true, ofType: "mp3")
         popupView.translatesAutoresizingMaskIntoConstraints = false
         endingDesign()
     }

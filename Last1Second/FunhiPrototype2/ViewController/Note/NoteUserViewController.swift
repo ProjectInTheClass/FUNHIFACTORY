@@ -64,7 +64,7 @@ class NoteCollectionViewLeftCell: UICollectionViewCell {
     }
     
     func changeShadowAndBorder(view: UIView, shadowColor: UIColor, borderColor: UIColor) {
-        view.setShadow(color: shadowColor, offsetX: 0, offsetY: 0, opacity: 1, radius: 9)
+        view.setShadow(color: shadowColor, offsetX: 0, offsetY: 0, opacity: 1, radius: 5)
         view.setBolder(color: borderColor, width: 4)
     }
 }
@@ -89,7 +89,7 @@ class NoteCollectionViewRightCell: UICollectionViewCell {
     }
     
     func changeShadowAndBorder(view: UIView, shadowColor: UIColor, borderColor: UIColor) {
-        view.setShadow(color: shadowColor, offsetX: 0, offsetY: 0, opacity: 1, radius: 9)
+        view.setShadow(color: shadowColor, offsetX: 0, offsetY: 0, opacity: 1, radius: 5)
         view.setBolder(color: borderColor, width: 4)
     }
 }

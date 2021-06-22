@@ -8,7 +8,6 @@
 import UIKit
 
 var isChoiceOn = false
-var isGodChatOn = false
 
 extension mainGameViewController{
     func chatUpdateTimer()
@@ -109,28 +108,32 @@ extension mainGameViewController{
     
     func choiceUpdate(){
         isChoiceOn = true
+        myChoiceText.isHidden = false
+        choiceBarLine.isHidden = false
         if timer != nil{
             timer.invalidate()
         }
         self.choiceCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
         pageControl.currentPage = 0
-        choiceHeight.constant = 149
+        choiceHeight.constant = 150
         choiceBar.setNeedsUpdateConstraints()
         choiceBar.isHidden = false
+        safeAreaBottom.isHidden = false
         choiceCollectionView.reloadData()
         mainGameTableView.layoutIfNeeded()
         mainGameTableView.contentOffset.y += 149
         scrollToBottom()
     }
     func closeChoiceBar(){
+        myChoiceText.isHidden = true
+        choiceBarLine.isHidden = true
         isChoiceOn = false
-        if isGodChatOn == false{
             choiceHeight.constant = 0
             choiceBar.isHidden = true
+            safeAreaBottom.isHidden = true
             choiceBar.setNeedsUpdateConstraints()
             mainGameTableView.layoutIfNeeded()
             //scrollToBottom(input: 0)
-        }
     }
     
     

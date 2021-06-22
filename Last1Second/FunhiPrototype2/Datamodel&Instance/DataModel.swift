@@ -202,7 +202,7 @@ class Infomation: Codable {
 //인물
 
 enum GameCharacterID: String,Codable {
-    case danhee, hwiryeong, tourguide, teacher, danhee2, extra1, extra2, extra3, igwi, kimman, kimwoman, poorman, everyone, injo
+    case danhee, hwiryeong, tourguide, teacher, danhee2, extra1, extra2, extra3, extra4, igwi, kimman, kimwoman, poorman, everyone, injo
     
     func info() -> GameCharacter{
         switch self {
@@ -226,9 +226,16 @@ enum GameCharacterID: String,Codable {
             return chapter2.currentCharacterNote[4]
         case .injo:
             return chapter2.currentCharacterNote[5]
-        
-        default :
-            return GameCharacter(name: "엑스트라", profileImage: "", backGroundImage: "", description: "", infomation: [], isLocked: true)
+        case .everyone:
+            return extraCharacters[0]
+        case .extra1:
+            return extraCharacters[1]
+        case .extra2:
+            return extraCharacters[2]
+        case .extra3:
+            return extraCharacters[3]
+        case .extra4:
+            return extraCharacters[4]
         }
     }
 }
@@ -432,14 +439,19 @@ enum  screenAnimation: String, Codable {
     case fadeOut
 }
 enum bgm : String, Codable{
-    case none
-    case normal
+    case none, normal, badending, cover1, cover2, bright, nervous1, nervous2, highlyElated
+    
     func info() -> String{
         switch self {
-        case .none:
-            return ""
-        case .normal:
-            return "mainGameBGM"
+        case .none: return ""
+        case .normal: return "normal"
+        case .badending: return "badending"
+        case .cover1: return "cover1"
+        case .cover2: return "cover2"
+        case .bright: return "bright"
+        case .nervous1: return "nervous1"
+        case .nervous2: return "nervous2"
+        case .highlyElated: return "highlyElated"
         }
     }
 }
@@ -533,7 +545,7 @@ struct GameData {
 }
 
 enum CharacterFace: String, Codable{
-    case none,angry1,angry2,angry3, angry4,basic,cry1,cry2,happy1,happy2,happy3,sad1,scared,straight,surprise1,surprise2,basictalk,cryangry1,cryangry2,thanks,danger,happytalk
+    case none,angry1,angry2,angry3, angry4,basic,cry1,cry2,happy1,happy2,happy3,sad,scared,straight,surprise1,surprise2,basictalk,cryangry1,cryangry2,thanks,danger,happytalk
 }
 func currentDanhee() -> GameCharacterID
 {
