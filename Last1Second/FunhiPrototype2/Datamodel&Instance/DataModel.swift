@@ -439,14 +439,19 @@ enum  screenAnimation: String, Codable {
     case fadeOut
 }
 enum bgm : String, Codable{
-    case none
-    case normal
+    case none, normal, badending, cover1, cover2, bright, nervous1, nervous2, highlyElated
+    
     func info() -> String{
         switch self {
-        case .none:
-            return ""
-        case .normal:
-            return "mainGameBGM"
+        case .none: return ""
+        case .normal: return "normal"
+        case .badending: return "badending"
+        case .cover1: return "cover1"
+        case .cover2: return "cover2"
+        case .bright: return "bright"
+        case .nervous1: return "nervous1"
+        case .nervous2: return "nervous2"
+        case .highlyElated: return "highlyElated"
         }
     }
 }
