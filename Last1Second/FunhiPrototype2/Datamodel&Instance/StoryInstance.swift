@@ -51,7 +51,7 @@ var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현
 
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
 
-var chapter1 = Episode(episodeID: "1592", episodePlace: "인정전", episodeYear: 1592, episodeKingYear: "선조 25년", episodeShortDesciption: "우리나라의 뼈아픈 역사 중 하나다. ",episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "Donhwamun image", episodeCoverImage: "changdeokgung image sample", chatHistory: [], storyBlocks: [:],
+var chapter1 = Episode(episodeID: "1592", episodePlace: "선정전", episodeYear: 1592, episodeKingYear: "선조 25년", episodeShortDesciption: "우리나라의 뼈아픈 역사 중 하나다. ",episodeDesciption: "임진왜란 때 대부분의 궁궐이 화재로 인해 소실되었다.", episodePlaceImage: "Donhwamun image", episodeCoverImage: "changdeokgung image sample", chatHistory: [], storyBlocks: [:],
 currentCharacterNote: [],
 currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "002")
 
@@ -127,7 +127,7 @@ timelineCheckPoint: [
         ], currentStoryBlockIndex: "056")
 
 
-var chapter3 = Episode(episodeID: "1803", episodePlace: "선정전", episodeYear: 1803, episodeKingYear: "순조 3년", episodeShortDesciption: "왕의 나이가 너무 어려 대비가 대신 정치를 했다. 그 과정에서 한쪽 세력에만 힘을 실게 되고, 종교의 자유를 억압하게 되었다. 복수심을 가지고 있는 자가 이번 사건의 범인일지도.", episodeDesciption: "대한독립 만세",episodePlaceImage: "Daejojeon image", episodeCoverImage: "changdeokgung image sample",  chatHistory: [],storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "")
+var chapter3 = Episode(episodeID: "1803", episodePlace: "인정전", episodeYear: 1803, episodeKingYear: "순조 3년", episodeShortDesciption: "왕의 나이가 너무 어려 대비가 대신 정치를 했다. 그 과정에서 한쪽 세력에만 힘을 실게 되고, 종교의 자유를 억압하게 되었다. 복수심을 가지고 있는 자가 이번 사건의 범인일지도.", episodeDesciption: "대한독립 만세",episodePlaceImage: "Daejojeon image", episodeCoverImage: "changdeokgung image sample",  chatHistory: [],storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "")
 
 var chapter4 = Episode(episodeID: "1918", episodePlace: "대조전", episodeYear: 1918, episodeKingYear: "순종 11년", episodeShortDesciption: "", episodeDesciption: "7월 28일임",episodePlaceImage: "Injeongjeon image", episodeCoverImage: "changdeokgung image sample", chatHistory: [], storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "")
 
