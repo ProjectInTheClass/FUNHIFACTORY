@@ -409,16 +409,18 @@ struct ChoiceLikeability: Codable {
 struct Choice: Codable {
     let text: String
     let chatType: ChatType
+    let who: GameCharacterID
     let characterFace : CharacterFace
     let nextTextIndex: String
     let optionalOption: OptionalOption?
 
-    init(text_ : String, chatType_ : ChatType, characterFace_ : CharacterFace, nextTextIndex_ : String,optionalOption_ : OptionalOption?) {
+    init(text_ : String, who_: GameCharacterID, chatType_ : ChatType, characterFace_ : CharacterFace, nextTextIndex_ : String,optionalOption_ : OptionalOption?) {
         text = text_
         chatType = chatType_
         characterFace = characterFace_
         optionalOption = optionalOption_
         nextTextIndex = nextTextIndex_
+        who = who_
     }
     
     init(from decoder: Decoder) throws {
@@ -429,6 +431,7 @@ struct Choice: Codable {
         characterFace = (try? values.decode(CharacterFace.self, forKey: .characterFace)) ?? .basic
         nextTextIndex = (try? values.decode(String.self, forKey: .nextTextIndex)) ?? "001"
         optionalOption = (try? values.decode(OptionalOption.self, forKey: .optionalOption))
+        who = (try? values.decode(GameCharacterID.self, forKey: .who)) ?? currentDanhee()
     }
     
 
