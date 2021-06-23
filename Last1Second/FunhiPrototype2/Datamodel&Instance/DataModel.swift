@@ -58,6 +58,8 @@ enum NoteCaseID: String,Codable{
     case case101
     
     case gwanghae
+    case king_gwanghae
+    case badguy_gwanghae
     case injo_revolt_background
     case injo_revolt_day
     case injo_revolt_after

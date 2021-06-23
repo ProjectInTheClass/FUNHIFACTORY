@@ -133,7 +133,7 @@ class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITable
         hwiryeongProfileImageView.image = UIImage(named: "\(recievedGameCharacter.profileImage)_noteLarge")
         hwiryeongBackgroundImageView.image = UIImage(named: recievedGameCharacter.backGroundImage)
       
-        hwiryeongDescriptionLabel.text = recievedGameCharacter.description
+        hwiryeongDescriptionLabel.text = "네가 나의 마지막 희망이다.\n네가 가진 그 1초가 나를, 이 세상을 바꾸는 법.\n부디 이번엔 꼭 성공하길..."
         hwiryeongInfomationTableView.reloadData()
        
     }
