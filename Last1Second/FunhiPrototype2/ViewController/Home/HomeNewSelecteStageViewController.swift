@@ -132,7 +132,7 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
         player.dayId = selectedEP.episodeID
         player.indexNumber = 0
         player.currentEpisodes[strToIndex(str: player.dayId)].isCleared = false
-        player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = "001"
+//        player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = "001"
         player.currentEpisodes[strToIndex(str: selectedEP.episodeID)].isStarted = true
     }
     

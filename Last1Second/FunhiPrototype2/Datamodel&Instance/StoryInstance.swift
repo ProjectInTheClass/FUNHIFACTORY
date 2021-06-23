@@ -124,7 +124,7 @@ timelineCheckPoint: [
         [CheckPoint(id: .checkPoint_2_2_1, name: "휘령의 호통", storyBlockIndex: "219", isLocked: false),
          CheckPoint(id: .checkPoint_2_2_2, name: "백문이 불여일견", storyBlockIndex: "239", isLocked: false),
          CheckPoint(id: .checkPoint_2_2_3, name: "또 한 번의 기회", storyBlockIndex: "254", isLocked: false)]
-        ], currentStoryBlockIndex: "086")
+        ], currentStoryBlockIndex: "056")
 
 
 var chapter3 = Episode(episodeID: "1803", episodePlace: "선정전", episodeYear: 1803, episodeKingYear: "순조 3년", episodeShortDesciption: "왕의 나이가 너무 어려 대비가 대신 정치를 했다. 그 과정에서 한쪽 세력에만 힘을 실게 되고, 종교의 자유를 억압하게 되었다. 복수심을 가지고 있는 자가 이번 사건의 범인일지도.", episodeDesciption: "대한독립 만세",episodePlaceImage: "Daejojeon image", episodeCoverImage: "changdeokgung image sample",  chatHistory: [],storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "")
