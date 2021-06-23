@@ -26,8 +26,12 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeVc();
+        bgmSlider.setThumbImage(UIImage(named: "handle2"), for: .normal)
+        textSpeedSlider.setThumbImage(UIImage(named: "handle2"), for: .normal)
+        effectMusicSlider.setThumbImage(UIImage(named: "handle2"), for: .normal)
         self.transitioningDelegate = self
     }
+    
     
     func initializeVc()
     {
@@ -140,7 +144,6 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
                 present(emailVC, animated: true, completion: nil)
     }
 }
-
 class CustomSlider : UISlider {
     override func trackRect(forBounds bounds: CGRect) -> CGRect {
         var rect = super.trackRect(forBounds: bounds)
