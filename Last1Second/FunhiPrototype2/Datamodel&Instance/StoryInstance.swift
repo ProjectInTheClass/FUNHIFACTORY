@@ -17,7 +17,7 @@ var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현
                                         
     [GameCharacter(name: "이단희", profileImage: "prolog danhee", backGroundImage: "prolog danhee_background", description: "내 곁에 아무도 없다는 게 이젠 익숙해.\n이런 내 삶이 바뀔 수 있을까?", infomation: [],isLocked: false),
      
-     GameCharacter(name: "휘령", profileImage: "hwiryeong", backGroundImage: "prolog hwiryeong_background", description: "네가 나의 마지막 희망이다.\n네가 가진 그 1초가 나를, 이 세상을 바꾸는 법.\n부디 이번엔 꼭 성공하길...", infomation: [
+     GameCharacter(name: "휘령", profileImage: "hwiryeong", backGroundImage: "prolog hwiryeong_background", description: "네가 나의 마지막 희망이다.\n네가 가진 그 1초가 나를,\n이 세상을 바꾸는 법.\n부디 이번엔 꼭 성공하길...", infomation: [
                     Infomation(infomationID: .hwiryeong1, isLocked: false, text: "조선이 생겨났을 때부터 존재했다고 한다. "),
                     Infomation(infomationID: .hwiryeong2, isLocked: false, text: "휘령이 곧 조선. 하지만 큰 사건들을 겪고 나서 그는 힘을 잃게 되었다. 그 힘을 찾기 위해서는 내가 필요하다고 하는데… "),
                     Infomation(infomationID: .hwiryeong3, isLocked: false, text: "그 대가로 내 소원을 들어주겠다고 하니.. 어떻게 해야 할까?")
@@ -92,7 +92,11 @@ var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear
    
 
 ], currentCaseNote: [
-    NoteCase(id: .gwanghae, title: "광해군", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "조선의 제15대 왕이다.\n\n광해군이 서자이며 둘째 아들이라는 이유로 영창대군을 후사로 삼을 것을 주장하는 소북파과 광해군을 지지하는 대북파 사이에 분쟁이 확대되었다.\n\n가시밭길 같은 그 시간동안, 임진왜란 때 의병을 이끌기도 하고, 적극적으로 임진왜란에 참여했다. 그러던 와중 선조가 죽고, 광해군이 즉위했다.\n광해군이 왕위로 있던 15년간 대북파가 정권을 잡게 되었다.\n\n즉위 후 임진왜란 전후 복구에 힘을 쓰고, 후금과 명나라 사이에서 중립외교를 실시하는 외교 정책, 대동법 실시 등 다양한 정책을 실시했다.\n\n그러나 그의 형인 임해군과 이복 동생인 영창대군을 죽이고, 영창대군의 어머니인 인목왕후를 폐위시키는 등의 사건들로 인해 그의 반대 세력에 의해 폐위당했다고 한다.\n\n인조반정 당일 광해군은 후원에서 술을 마시고 있었다고 하니… 대범한 건지 매우 놀랍네.", isLocked: false),
+    NoteCase(id: .gwanghae, title: "광해군", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "조선의 제15대 왕이다.\n\n광해군이 서자이며 둘째 아들이라는 이유로 영창대군을 후사로 삼을 것을 주장하는 소북파과 광해군을 지지하는 대북파 사이에 분쟁이 확대되었다.", isLocked: false),
+    
+    NoteCase(id: .king_gwanghae, title: "‘왕’ 광해군", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "광해군은 임진왜란 때 의병을 이끌기도 하고, 적극적으로 임진왜란에 참여했다.\n\n그러던 와중 선조가 죽고, 광해군이 즉위했다.광해군이 왕위로 있던 15년간 대북파가 정권을 잡게 되었다.\n즉위 후 임진왜란 전후 복구에 힘을 쓰고, 후금과 명나라 사이에서 중립외교를 실시하는 외교 정책, 대동법 실시 등 다양한 정책을 실시했다고 한다.", isLocked: false),
+    
+    NoteCase(id: .gwanghae, title: "'폭군’ 광해군", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "광해군은 그의 형인 임해군과 이복 동생인 영창대군을 죽이고, 영창대군의 어머니인 인목왕후를 폐위시키는 등의 사건들로 인해 그의 반대 세력에 의해 폐위당했다고 한다.\n\n인조반정 당일 광해군은 후원에서 술을 마시고 있었다고 하니… 대범한 건지 매우 놀랍네.", isLocked: false),
     
     NoteCase(id: .injo_revolt_background, title: "인조반정의 배경", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "광해군은 즉위 이후 자신의 왕위를 위협할 수 있는 형 임해군과 유일한 적통인 영창대군을 경계하였다.\n\n형 임해군이 법을 어겼다는 죄목으로 귀양을 보냈고, 그곳에서 그는 살해당했다.\n광해군을 따르던 대북파가 영창대군과 그의 세력들을 제거하기 위해 계축옥사라는 사건을 일으켜 영창대군을 강화에 가두었다고 한다. 그리고 영창대군마저 살해당했다니..\n그러고는 영창대군의 어머니인 대비 김씨의 존호를 폐하기도 하며 명예를 실추시켰다.\n\n이런 광해군의 사건들이 그의 반대 세력들에게 반역의 구실을 주게 된 것이다.", isLocked: false),
     
