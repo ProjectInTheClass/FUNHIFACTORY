@@ -13,7 +13,7 @@ import UIKit
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
 
 
-var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현재", episodeYear: 2039, episodeKingYear: "현재 2039년", episodeShortDesciption: "누군가 나에게 내 하루를 바꿀 수 있는, 내 인생을 바꿀 수 있는 구원의 손길을 내밀어 준다면, 나는 그 손을....잡을 수 있을까?", episodeDesciption: "지루하고 따분한, 그저 우울하기만 한\n이런 삶은 이제 그만하고 싶다.\n\n누군가 나에게 내 하루를 바꿀 수 있는,\n내 인생을 바꿀 수 있는\n구원의 손길을 내밀어 준다면,\n나는 그 손을.... 잡을 수 있을까?", episodePlaceImage: "Donhwamun image", episodeCoverImage: "donhwamun background image", chatHistory: [], storyBlocks: [:], currentCharacterNote:
+var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현재", episodeYear: 2039, episodeKingYear: "현재 2039년", episodeShortDesciption: "지루하고 따분한, 그저 우울하기만 한\n이런 삶은 이제 그만하고 싶다.\n누군가 나에게 내 하루를 바꿀 수 있는, 내 인생을 바꿀 수 있는\n구원의 손길을 내밀어 준다면,\n나는 그 손을....잡을 수 있을까?", episodeDesciption: "지루하고 따분한, 그저 우울하기만 한\n이런 삶은 이제 그만하고 싶다.\n\n누군가 나에게 내 하루를 바꿀 수 있는,\n내 인생을 바꿀 수 있는\n구원의 손길을 내밀어 준다면,\n나는 그 손을.... 잡을 수 있을까?", episodePlaceImage: "Donhwamun image", episodeCoverImage: "donhwamun background image", chatHistory: [], storyBlocks: [:], currentCharacterNote:
                                         
     [GameCharacter(name: "이단희", profileImage: "prolog danhee", backGroundImage: "prolog danhee_background", description: "내 곁에 아무도 없다는 게 이젠 익숙해.\n이런 내 삶이 바뀔 수 있을까?", infomation: [],isLocked: false),
      
