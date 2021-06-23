@@ -15,7 +15,7 @@ class choiceCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         choiceCellUIUpdate(target: choiceInCell)
         choiceInCell.bringSubviewToFront(choiceLabel)
-        choiceCellShadowView.layer.cornerRadius = 20
+        choiceCellShadowView.layer.cornerRadius = 22.41
         choiceLabel.font = UIFont(name: "NanumSquareB", size: 16)
         
     }
