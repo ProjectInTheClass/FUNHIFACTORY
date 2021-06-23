@@ -38,6 +38,11 @@ class endingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if self.view.bounds.height >= 896
+        {
+            gameOverImageView.heightAnchor.constraint(equalToConstant: 238).isActive = true
+            gameOverImageView.setNeedsLayout()
+        }
         audioConfigure(bgmName: "badending", isBGM: true, ofType: "mp3")
         popupView.translatesAutoresizingMaskIntoConstraints = false
         endingDesign()

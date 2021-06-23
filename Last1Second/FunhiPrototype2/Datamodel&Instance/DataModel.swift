@@ -409,16 +409,18 @@ struct ChoiceLikeability: Codable {
 struct Choice: Codable {
     let text: String
     let chatType: ChatType
+    let who: GameCharacterID
     let characterFace : CharacterFace
     let nextTextIndex: String
     let optionalOption: OptionalOption?
 
-    init(text_ : String, chatType_ : ChatType, characterFace_ : CharacterFace, nextTextIndex_ : String,optionalOption_ : OptionalOption?) {
+    init(text_ : String, who_: GameCharacterID, chatType_ : ChatType, characterFace_ : CharacterFace, nextTextIndex_ : String,optionalOption_ : OptionalOption?) {
         text = text_
         chatType = chatType_
         characterFace = characterFace_
         optionalOption = optionalOption_
         nextTextIndex = nextTextIndex_
+        who = who_
     }
     
     init(from decoder: Decoder) throws {
@@ -429,6 +431,7 @@ struct Choice: Codable {
         characterFace = (try? values.decode(CharacterFace.self, forKey: .characterFace)) ?? .basic
         nextTextIndex = (try? values.decode(String.self, forKey: .nextTextIndex)) ?? "001"
         optionalOption = (try? values.decode(OptionalOption.self, forKey: .optionalOption))
+        who = (try? values.decode(GameCharacterID.self, forKey: .who)) ?? currentDanhee()
     }
     
 
@@ -612,7 +615,7 @@ func checkEnding(id : String) -> Ending
                                 UIColor(red: 0.769, green: 0.769, blue: 0.769, alpha: 1),
                                 UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.25)])
         case "endingReturn" :
-            return Ending(name: "당신은 현실로 돌아왔습니다.", comment: "한 번만 기회가 있다면..\n잘 할 수 있을 텐데...", buttonUIColor: [
+            return Ending(name: "당신은 현실로 돌아왔습니다.", comment: "한 번만 기회를 더 주면 잘 할 텐데...", buttonUIColor: [
                                 UIColor(red: 0.698, green: 0.588, blue: 0.376, alpha: 1),
                                 UIColor(red: 0.514, green: 0.404, blue: 0.204, alpha: 1),
                                 UIColor(red: 0.429, green: 0.33, blue: 0.151, alpha: 1),
