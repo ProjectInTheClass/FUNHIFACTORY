@@ -282,6 +282,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.choiceCollectionView.dataSource = self
         mainGameDesign()
         mainGameTableView.reloadData()
+        let TVCtouchGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(instantChatUpdate(_:)))
+        mainGameTableView.addGestureRecognizer(TVCtouchGesture)
         if let page = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]?.choices.count{
             initializePageControl(collectionView : choiceCollectionView, choiceBar : choiceBar, numberOfPages:page)
         }
@@ -482,6 +484,11 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func unwindToMainGame(_ unwindSegue: UIStoryboardSegue) {
         _ = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
+    }
+    
+    @objc func instantChatUpdate(_ gesture : UITapGestureRecognizer)
+    {
+        chatUpdate()
     }
 }
 
