@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
         episodeYearLabel.text = "\(currentEpisode().episodeYear)년"
         episodeNameLabel.text = currentEpisode().episodePlace
         episodeDescriptionLabel.text = currentEpisode().episodeDesciption
-        episodeDescriptionLabel.setLineSpacing(lineSpacing: 0
+        episodeDescriptionLabel.setLineSpacing(lineSpacing: 10
         )
         episodeDescriptionLabel.textAlignment = .center
         

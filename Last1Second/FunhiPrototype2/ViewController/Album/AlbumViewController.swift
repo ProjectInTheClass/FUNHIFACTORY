@@ -57,7 +57,8 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "albumCell", for: indexPath) as! AlbumTableViewCell
         cell.albumImageView.image = UIImage(named: player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].image)
-        cell.albumImageNameLabel.text = player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].title
+        
+        player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].isLocked ? (cell.albumImageNameLabel.text = "????") : (cell.albumImageNameLabel.text = player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].title)
         player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].isLocked ? (cell.lockedView.isHidden = false) : (cell.lockedView.isHidden = true)
         player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].isLocked ? cell.changeShadowAndBorder(view: cell.albumImageViewBorderView, shadowColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1), borderColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1)) : cell.changeShadowAndBorder(view: cell.albumImageViewBorderView, shadowColor: .white, borderColor: .white)
         
