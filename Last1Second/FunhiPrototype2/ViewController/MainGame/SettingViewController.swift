@@ -141,6 +141,14 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     }
 }
 
+class CustomSlider : UISlider {
+    override func trackRect(forBounds bounds: CGRect) -> CGRect {
+        var rect = super.trackRect(forBounds: bounds)
+        rect.size.height = 3
+        return rect
+    }
+}
+
 extension SettingViewController : UIViewControllerTransitioningDelegate{
     func animationController(forPresented presented: UIViewController,
                              presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
