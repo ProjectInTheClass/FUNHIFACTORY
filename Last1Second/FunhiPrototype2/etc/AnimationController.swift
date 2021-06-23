@@ -13,7 +13,7 @@ class AnimationController : NSObject{
     var animator : UIViewPropertyAnimator?
     
     enum AnimationType {
-        case present, dismiss
+        case GoDownPresent, GoUpDismiss, GoRightPresent, GoLeftDismiss
     }
     init(animationDuration : Double, animationType : AnimationType) {
         self.animatonDuration = animationDuration
@@ -35,18 +35,59 @@ extension AnimationController : UIViewControllerAnimatedTransitioning{
             return
         }
         switch animationType{
-        case .present:
+        case .GoDownPresent:
             //transitionContext의 컨테이너뷰는 발신 뷰를 말한다. 여기서 addSubview로 도착할 뷰를 미리 보여주고, 여기서 애니메이션을 시킨 뒤, 그 후 넘어가는 것.
             //여기서는 도착 뷰를 미리 더해준다.
             transitionContext.containerView.addSubview(toViewController.view)
             presentAnimation(with: transitionContext, viewToAnimate: toViewController.view)
-        case .dismiss:
+        case .GoUpDismiss:
             //dismiss를 하는데, 도착할 뷰컨의 뷰를 왜 추가하냐면, 이걸 설정하지 않으면, 도착할 뷰가 까맣게 보인다. 그래서 부자연스럽게 보일 수 있음.
             transitionContext.containerView.addSubview(toViewController.view) //1
             transitionContext.containerView.addSubview(fromViewController.view) //2
             dismissAnimation(with: transitionContext, viewToAnimate: fromViewController.view)
+        case .GoRightPresent:
+            transitionContext.containerView.addSubview(toViewController.view)
+            goRightAnimation(with: transitionContext, viewToAnimate: toViewController.view)
+        case .GoLeftDismiss:
+            transitionContext.containerView.addSubview(toViewController.view)
+            transitionContext.containerView.addSubview(fromViewController.view)
+            goLeftAnimation(with: transitionContext, viewToAnimate: fromViewController.view)
         }
     }
+    
+    func goRightAnimation(with transitionContext: UIViewControllerContextTransitioning, viewToAnimate: UIView)
+    {
+        let duration = transitionDuration(using: transitionContext)
+        let size = viewToAnimate.bounds.size
+        
+        viewToAnimate.clipsToBounds = true
+        viewToAnimate.frame = CGRect(x: size.width, y: 0, width: size.width, height: size.height)
+        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: duration, delay: 0, options: [], animations:
+        {
+            viewToAnimate.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        }, completion:
+            { _ in
+                transitionContext.completeTransition(true)
+            })
+    }
+    
+    func goLeftAnimation(with transitionContext: UIViewControllerContextTransitioning, viewToAnimate: UIView)
+    {
+        let duration = transitionDuration(using: transitionContext)
+        let size = viewToAnimate.bounds.size
+        
+        viewToAnimate.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: duration, delay: 0, options: [], animations:
+            {
+                viewToAnimate.frame = CGRect(x: size.width, y: 0, width: size.width, height: size.height)
+            }, completion:
+                { _ in
+                    transitionContext.completeTransition(true)
+                }
+        )
+        
+    }
+    
     func dismissAnimation(with transitionContext: UIViewControllerContextTransitioning, viewToAnimate: UIView){
         let duration = transitionDuration(using: transitionContext)
         let size = viewToAnimate.bounds.size
