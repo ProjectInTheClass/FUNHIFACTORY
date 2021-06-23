@@ -25,7 +25,7 @@ var player = User(
         Achievement(name: "희정당", image: "huijeongdang", id: .huijeongdang , isLocked: false),
         Achievement(name: "후원", image: "huwon_garden", id: .huwon_garden , isLocked: false),
         Achievement(name: "반란군", image: "revolt", id: .revolt , isLocked: false)],
-    dayIndex: 0, dayId: "prologue", currentChatId: "234", currentChatArray: [])
+    dayIndex: 0, dayId: "prologue", currentChatId: "056", currentChatArray: [])
 
 var playerSetting = Setting(bgmVolume: 0.0, effectVolume: 0.5, textSpeed: 1.0, darkmode: false, vibration: true)
 

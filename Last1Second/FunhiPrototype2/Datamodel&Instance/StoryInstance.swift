@@ -13,13 +13,13 @@ import UIKit
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
 
 
-var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현재", episodeYear: 2039, episodeKingYear: "현재 2039년", episodeShortDesciption: "누군가 나에게 내 하루를 바꿀 수 있는, 내 인생을 바꿀 수 있는 구원의 손길을 내밀어 준다면, 나는 그 손을....잡을 수 있을까?", episodeDesciption: "지루하고 따분한, 그저 우울하기만 한\n이런 삶은 이제 그만하고 싶다.\n\n누군가 나에게 내 하루를 바꿀 수 있는,\n내 인생을 바꿀 수 있는\n구원의 손길을 내밀어 준다면,\n나는 그 손을…. 잡을 수 있을까?", episodePlaceImage: "Donhwamun image", episodeCoverImage: "donhwamun background image", chatHistory: [], storyBlocks: [:], currentCharacterNote:
+var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현재", episodeYear: 2039, episodeKingYear: "현재 2039년", episodeShortDesciption: "지루하고 따분한, 그저 우울하기만 한\n이런 삶은 이제 그만하고 싶다.\n누군가 나에게 내 하루를 바꿀 수 있는, 내 인생을 바꿀 수 있는\n구원의 손길을 내밀어 준다면,\n나는 그 손을....잡을 수 있을까?", episodeDesciption: "지루하고 따분한, 그저 우울하기만 한\n이런 삶은 이제 그만하고 싶다.\n\n누군가 나에게 내 하루를 바꿀 수 있는,\n내 인생을 바꿀 수 있는\n구원의 손길을 내밀어 준다면,\n나는 그 손을.... 잡을 수 있을까?", episodePlaceImage: "Donhwamun image", episodeCoverImage: "donhwamun background image", chatHistory: [], storyBlocks: [:], currentCharacterNote:
                                         
     [GameCharacter(name: "이단희", profileImage: "prolog danhee", backGroundImage: "prolog danhee_background", description: "내 곁에 아무도 없다는 게 이젠 익숙해.\n이런 내 삶이 바뀔 수 있을까?", infomation: [],isLocked: false),
      
      GameCharacter(name: "휘령", profileImage: "hwiryeong", backGroundImage: "prolog hwiryeong_background", description: "네가 나의 마지막 희망이다.\n네가 가진 그 1초가 나를,\n이 세상을 바꾸는 법.\n부디 이번엔 꼭 성공하길...", infomation: [
                     Infomation(infomationID: .hwiryeong1, isLocked: false, text: "조선이 생겨났을 때부터 존재했다고 한다. "),
-                    Infomation(infomationID: .hwiryeong2, isLocked: false, text: "휘령이 곧 조선. 하지만 큰 사건들을 겪고 나서 그는 힘을 잃게 되었다. 그 힘을 찾기 위해서는 내가 필요하다고 하는데… "),
+                    Infomation(infomationID: .hwiryeong2, isLocked: false, text: "휘령이 곧 조선. 하지만 큰 사건들을 겪고 나서 그는 힘을 잃게 되었다. 그 힘을 찾기 위해서는 내가 필요하다고 하는데... "),
                     Infomation(infomationID: .hwiryeong3, isLocked: false, text: "그 대가로 내 소원을 들어주겠다고 하니.. 어떻게 해야 할까?")
         
                    ],isLocked: false),
@@ -96,7 +96,7 @@ var chapter2 = Episode(episodeID: "1623", episodePlace: "돈화문", episodeYear
     
     NoteCase(id: .king_gwanghae, title: "‘왕’ 광해군", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "광해군은 임진왜란 때 의병을 이끌기도 하고, 적극적으로 임진왜란에 참여했다.\n\n그러던 와중 선조가 죽고, 광해군이 즉위했다.광해군이 왕위로 있던 15년간 대북파가 정권을 잡게 되었다.\n즉위 후 임진왜란 전후 복구에 힘을 쓰고, 후금과 명나라 사이에서 중립외교를 실시하는 외교 정책, 대동법 실시 등 다양한 정책을 실시했다고 한다.", isLocked: false),
     
-    NoteCase(id: .gwanghae, title: "'폭군’ 광해군", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "광해군은 그의 형인 임해군과 이복 동생인 영창대군을 죽이고, 영창대군의 어머니인 인목왕후를 폐위시키는 등의 사건들로 인해 그의 반대 세력에 의해 폐위당했다고 한다.\n\n인조반정 당일 광해군은 후원에서 술을 마시고 있었다고 하니… 대범한 건지 매우 놀랍네.", isLocked: false),
+    NoteCase(id: .gwanghae, title: "'폭군’ 광해군", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "광해군은 그의 형인 임해군과 이복 동생인 영창대군을 죽이고, 영창대군의 어머니인 인목왕후를 폐위시키는 등의 사건들로 인해 그의 반대 세력에 의해 폐위당했다고 한다.\n\n인조반정 당일 광해군은 후원에서 술을 마시고 있었다고 하니... 대범한 건지 매우 놀랍네.", isLocked: false),
     
     NoteCase(id: .injo_revolt_background, title: "인조반정의 배경", shortDescription: "1623년 4월 11일에 일어난 사건이다.", longDescription: "광해군은 즉위 이후 자신의 왕위를 위협할 수 있는 형 임해군과 유일한 적통인 영창대군을 경계하였다.\n\n형 임해군이 법을 어겼다는 죄목으로 귀양을 보냈고, 그곳에서 그는 살해당했다.\n광해군을 따르던 대북파가 영창대군과 그의 세력들을 제거하기 위해 계축옥사라는 사건을 일으켜 영창대군을 강화에 가두었다고 한다. 그리고 영창대군마저 살해당했다니..\n그러고는 영창대군의 어머니인 대비 김씨의 존호를 폐하기도 하며 명예를 실추시켰다.\n\n이런 광해군의 사건들이 그의 반대 세력들에게 반역의 구실을 주게 된 것이다.", isLocked: false),
     
@@ -108,8 +108,8 @@ currentAlbumImages: [
     
         AlbumImage(id: .conference_hall, image: "conference_hall", title: "반란의 회의장", description: "내 앞에 있는 사람들은\n회의를 하는 것처럼 보인다.\n\n그런데 그 내용이...\n반정을 일으킨다는 것이라니.\n\n내가 반역자의 한 명이 될 수도 있다는 건가?", isLocked: false),
         AlbumImage(id: .bribe, image: "bribe", title: "뇌물", description: "나도 모르게 뇌물을 전해버렸어...\n이걸 전해주면 이번 사건은\n틀림없이 실패할 텐데.", isLocked: false),
-        AlbumImage(id: .huijeongdang_fire, image: "huijeongdang_fire", title: "불타는 희정당", description: "불길이 건물을 덮치고 그에도 부족했는지\n하늘까지 온통 검게 변했다.\n\n내가…. 내가 막았으면 됐는데...\n도대체 내가 무슨 짓을 한 거야?", isLocked: false),
-        AlbumImage(id: .huwon_garden_fire, image: "huwon_garden_fire", title: "후원의 화재", description: "분명… 분명 좀 전까지만 해도\n황홀한 풍경이었는데….\n\n이 모습도 어떻게 보면\n황홀한 광경이라고 할 수 있을까..\n\n다시 시간을 돌려서 이 모습을 구하고 싶어.", isLocked: false),
+        AlbumImage(id: .huijeongdang_fire, image: "huijeongdang_fire", title: "불타는 희정당", description: "불길이 건물을 덮치고 그에도 부족했는지\n하늘까지 온통 검게 변했다.\n\n내가.... 내가 막았으면 됐는데...\n도대체 내가 무슨 짓을 한 거야?", isLocked: false),
+        AlbumImage(id: .huwon_garden_fire, image: "huwon_garden_fire", title: "후원의 화재", description: "분명... 분명 좀 전까지만 해도\n황홀한 풍경이었는데....\n\n이 모습도 어떻게 보면\n황홀한 광경이라고 할 수 있을까..\n\n다시 시간을 돌려서 이 모습을 구하고 싶어.", isLocked: false),
         AlbumImage(id: .revolt_image, image: "revolt_image", title: "반란의 시작점", description: "내 옆에는 많은 군사들이 있고,\n나는 지금 돈화문 앞이다.\n\n“다들 정신 똑바로 차리거라!!\n이 문만 지나가면 우리의 세상이 오는 것이니!”\n\n무섭게도 소리 지르는 군사들을 보니\n등골이 서름해지면서 실감이 났다.\n\n아, 내가 인조반정 날에 왔구나.", isLocked: false)],
 
 timelineCheckPoint: [
@@ -124,7 +124,7 @@ timelineCheckPoint: [
         [CheckPoint(id: .checkPoint_2_2_1, name: "휘령의 호통", storyBlockIndex: "219", isLocked: false),
          CheckPoint(id: .checkPoint_2_2_2, name: "백문이 불여일견", storyBlockIndex: "239", isLocked: false),
          CheckPoint(id: .checkPoint_2_2_3, name: "또 한 번의 기회", storyBlockIndex: "254", isLocked: false)]
-        ], currentStoryBlockIndex: "086")
+        ], currentStoryBlockIndex: "056")
 
 
 var chapter3 = Episode(episodeID: "1803", episodePlace: "선정전", episodeYear: 1803, episodeKingYear: "순조 3년", episodeShortDesciption: "왕의 나이가 너무 어려 대비가 대신 정치를 했다. 그 과정에서 한쪽 세력에만 힘을 실게 되고, 종교의 자유를 억압하게 되었다. 복수심을 가지고 있는 자가 이번 사건의 범인일지도.", episodeDesciption: "대한독립 만세",episodePlaceImage: "Daejojeon image", episodeCoverImage: "changdeokgung image sample",  chatHistory: [],storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "")

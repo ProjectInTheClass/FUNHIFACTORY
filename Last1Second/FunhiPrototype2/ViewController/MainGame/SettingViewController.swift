@@ -71,10 +71,10 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
    
 
     @IBAction func creditTapped(_ sender: Any) {
-        performSegue(withIdentifier: "o", sender: nil)
-//        let vc = storyboard?.instantiateViewController(identifier: "o")
-//        vc?.modalPresentationStyle = .fullScreen
-//        present(vc!, animated: true, completion: nil)
+        guard let VC = storyboard?.instantiateViewController(identifier: "credit") else {return}
+        VC.modalPresentationStyle = .fullScreen
+        present(VC, animated: true, completion: nil)
+        audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     
     @IBAction func vibrateSwitchTapped(_ sender: Any) {
@@ -144,9 +144,9 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
 extension SettingViewController : UIViewControllerTransitioningDelegate{
     func animationController(forPresented presented: UIViewController,
                              presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AnimationController(animationDuration: 0.4, animationType: .present)
+        return AnimationController(animationDuration: 0.4, animationType: .GoDownPresent)
     }
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AnimationController(animationDuration: 0.4, animationType: .dismiss)
+        return AnimationController(animationDuration: 0.4, animationType: .GoUpDismiss)
     }
 }

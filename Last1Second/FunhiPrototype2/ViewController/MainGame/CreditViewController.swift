@@ -12,6 +12,7 @@ class CreditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        transitioningDelegate = self
         creditLabel.font = UIFont(name: "NanumSquareEB", size: 29)
     }
     
@@ -31,3 +32,14 @@ class CreditViewController: UIViewController {
         }
     }
 }
+
+extension CreditViewController : UIViewControllerTransitioningDelegate{
+    func animationController(forPresented presented: UIViewController,
+                             presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return AnimationController(animationDuration: 0.4, animationType: .GoRightPresent)
+    }
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return AnimationController(animationDuration: 0.4, animationType: .GoLeftDismiss)
+    }
+}
+
