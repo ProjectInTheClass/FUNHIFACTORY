@@ -14,11 +14,11 @@ class TitleCoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        testLabel.setCharacterSpacing(characterSpacing: 5)
+       
         alertPopupLabel.text = "게임 데이터를 다운로드합니다.\n 아래 버튼을 눌러주세요!\n\n네트워크 연결이 필요합니다."
         alertPopupLabel.setLineSpacing(lineSpacing: 6)
         alertPopupLabel.textAlignment = .center
-        
+      
     
     }
     
@@ -38,16 +38,26 @@ class TitleCoverViewController: UIViewController {
     }
     
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tapLabel.removeFromSuperview()
+        self.view.layoutIfNeeded()
+    }
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         audioConfigure(bgmName: "coverBGM", isBGM: true, ofType: "mp3")
         print("현재 currentChatArray: \(player.currentChatArray)")
         print("현재 dayId: \(player.dayId)")
         print("현재 currentChatId: \(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)")
         print("현재 dayIndex: \(player.dayIndex)")
+        checkForSuccessfulDownloadOfJson()
        
-        
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+       
+    }
     @IBOutlet var alertPopupView: UIView!
     @IBOutlet var elertPopupBoxView: UIView!
     @IBOutlet var alertPopupLabel: UILabel!
@@ -55,23 +65,24 @@ class TitleCoverViewController: UIViewController {
     
     @IBAction func startAction(_ sender: Any) {
         
-       // testLabel.layer.removeAllAnimations()
+      
         
-        let didntStartEpisode = player.currentChatArray.isEmpty
-        let didntStartPrologue = !player.currentEpisodes[0].isStarted
+        let startedCurrentEpisode = player.currentEpisodes[strToIndex(str: player.dayId)].isStarted
+        let isPrologue = strToIndex(str: player.dayId) == 0
+        let cleardCurrentEpisode = player.currentEpisodes[strToIndex(str: player.dayId)].isCleared
         
-        if didntStartEpisode && didntStartPrologue {
+        if !startedCurrentEpisode && isPrologue {
                 player.dayId = player.currentEpisodes[0].episodeID
                 player.indexNumber = 0
                 //player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = "014"
                 performSegue(withIdentifier: "fromCoverToChapterCover", sender: nil)
         }
         
-        if didntStartEpisode && !didntStartPrologue {
+        if cleardCurrentEpisode || (!cleardCurrentEpisode && !startedCurrentEpisode && !isPrologue) {
             performSegue(withIdentifier: "goToSelectSelectSegue", sender: nil)
         }
     
-        if !didntStartEpisode {
+        if !cleardCurrentEpisode && startedCurrentEpisode {
             performSegue(withIdentifier: "fromCoverToHomeSegue", sender: nil)
         }
     }
@@ -89,9 +100,11 @@ class TitleCoverViewController: UIViewController {
         checkForSuccessfulDownloadOfJson()
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
-        checkForSuccessfulDownloadOfJson()
+       
     }
+    
     func designButton() {
         elertPopupBoxView.setBolder(color: UIColor(red: 0.647, green: 0.737, blue: 0.812, alpha: 1), width: 6)
         startButton.layer.cornerRadius = 3
@@ -103,13 +116,29 @@ class TitleCoverViewController: UIViewController {
         startButton.layer.shadowOpacity = 1
         startButton.layer.shadowRadius = 0
         startButton.layer.shadowOffset = CGSize(width: 7, height: 7)
-        testLabel.setShadow(color: UIColor(red: 0, green: 0, blue: 0, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 5)
+       
     }
-
+    
+    var tapLabel = UILabel()
     
     func light() {
+        
+        tapLabel = UILabel()
+        tapLabel.text = "탭하여 시작하기"
+        tapLabel.font = UIFont(name: "NanumSquareR", size: 15)
+        tapLabel.setCharacterSpacing(characterSpacing: 5)
+        tapLabel.setShadow(color: UIColor(red: 0, green: 0, blue: 0, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 5)
+        
+        tapLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(tapLabel)
+        tapLabel.textAlignment = .center
+        tapLabel.textColor = .white
+        tapLabel.lineBreakMode = .byWordWrapping
+        tapLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        tapLabel.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -64).isActive = true
+        
         UILabel.animate(withDuration: 0.7, delay: 0.5, options: [.repeat, .autoreverse], animations: {[self]  in
-                testLabel.alpha = 0.1
+                tapLabel.alpha = 0.1
 
             }, completion: nil)
     }
