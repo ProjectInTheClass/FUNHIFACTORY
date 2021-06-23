@@ -44,7 +44,7 @@ class TitleCoverViewController: UIViewController {
         print("현재 dayId: \(player.dayId)")
         print("현재 currentChatId: \(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)")
         print("현재 dayIndex: \(player.dayIndex)")
-        checkForSuccessfulDownloadOfJson()
+       
         
     }
     
@@ -55,7 +55,7 @@ class TitleCoverViewController: UIViewController {
     
     @IBAction func startAction(_ sender: Any) {
         
-        testLabel.layer.removeAllAnimations()
+       // testLabel.layer.removeAllAnimations()
         
         let didntStartEpisode = player.currentChatArray.isEmpty
         let didntStartPrologue = !player.currentEpisodes[0].isStarted
@@ -89,7 +89,11 @@ class TitleCoverViewController: UIViewController {
         checkForSuccessfulDownloadOfJson()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        checkForSuccessfulDownloadOfJson()
+    }
     func designButton() {
+        elertPopupBoxView.setBolder(color: UIColor(red: 0.647, green: 0.737, blue: 0.812, alpha: 1), width: 6)
         startButton.layer.cornerRadius = 3
         startButton.layer.borderWidth = 1.5
         startButton.layer.borderColor = UIColor(red: 0.106, green: 0.157, blue: 0.22, alpha: 1).cgColor

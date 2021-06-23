@@ -130,8 +130,8 @@ class ChapterCoverViewController: UIViewController {
 
             }, completion: nil)
         } else {
-            sandGlassImageView.layer.removeAllAnimations()
-            tapAndContinueLabel.layer.removeAllAnimations()
+//            sandGlassImageView.layer.removeAllAnimations()
+//            tapAndContinueLabel.layer.removeAllAnimations()
         }
     }
 

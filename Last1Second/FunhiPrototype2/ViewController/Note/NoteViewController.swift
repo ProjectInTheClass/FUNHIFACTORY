@@ -279,18 +279,13 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
 
 
     @IBAction func backAction(_ sender: Any) {
-        if self.parent == mainGameViewController() {
-            let transition:CATransition = CATransition()
-              transition.duration = 0.35
-              transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-            transition.type = CATransitionType.moveIn
-            transition.subtype = CATransitionSubtype.fromTop
-              self.navigationController!.view.layer.add(transition, forKey: kCATransition)
-            self.navigationController?.popViewController(animated: false)
-           
-        } else {
-            self.navigationController?.popViewController(animated: true)
-        }
+        let transition:CATransition = CATransition()
+          transition.duration = 0.35
+          transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.moveIn
+        transition.subtype = CATransitionSubtype.fromTop
+          self.navigationController!.view.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.popViewController(animated: false)
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
        
     }

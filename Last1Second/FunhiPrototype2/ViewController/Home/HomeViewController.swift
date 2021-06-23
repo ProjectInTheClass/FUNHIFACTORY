@@ -22,7 +22,8 @@ class HomeViewController: UIViewController {
         episodeYearLabel.text = "\(currentEpisode().episodeYear)년"
         episodeNameLabel.text = currentEpisode().episodePlace
         episodeDescriptionLabel.text = currentEpisode().episodeDesciption
-        episodeDescriptionLabel.setLineSpacing(lineSpacing: 16)
+        episodeDescriptionLabel.setLineSpacing(lineSpacing: 0
+        )
         episodeDescriptionLabel.textAlignment = .center
         
         startGameButtonView.layer.cornerRadius = startGameButtonView.frame.height/2
