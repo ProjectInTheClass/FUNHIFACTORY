@@ -615,7 +615,7 @@ func checkEnding(id : String) -> Ending
                                 UIColor(red: 0.769, green: 0.769, blue: 0.769, alpha: 1),
                                 UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.25)])
         case "endingReturn" :
-            return Ending(name: "당신은 현실로 돌아왔습니다.", comment: "나는 이렇게 끝낼 순 없어.", buttonUIColor: [
+            return Ending(name: "당신은 현실로 돌아왔습니다.", comment: "한 번만 기회를 더 주면 잘 할 텐데...", buttonUIColor: [
                                 UIColor(red: 0.698, green: 0.588, blue: 0.376, alpha: 1),
                                 UIColor(red: 0.514, green: 0.404, blue: 0.204, alpha: 1),
                                 UIColor(red: 0.429, green: 0.33, blue: 0.151, alpha: 1),
