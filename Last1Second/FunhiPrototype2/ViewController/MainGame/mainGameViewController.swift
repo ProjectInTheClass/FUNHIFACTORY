@@ -405,9 +405,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func resumeTapped(_ sender: Any) {
         pauseBar.isHidden = true
         safeAreaTop.isHidden = true
-        if timer == nil {
+//        if timer == nil {
             chatUpdateTimer()
-        }
+//        }
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     func just(){

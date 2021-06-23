@@ -93,7 +93,7 @@ class ChapterCoverViewController: UIViewController {
                     } completion: { (Bool) in
                         self.tapStackView.isHidden = false
 //                        self.tapAndContinueLabel.isHidden = false
-//                        self.closeCoverButton.isHidden = false
+                        self.closeCoverButton.isHidden = false
                         UIView.animate(withDuration: 0.1) {
                             
                            
