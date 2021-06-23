@@ -26,7 +26,7 @@ class myTextTableViewCell: UITableViewCell {
         chatText.setLineSpacing(lineSpacing: 6)
         chatView.layer.borderWidth = 1.7
         chatView.layer.borderColor = UIColor(red: 0.319, green: 0.457, blue: 0.575, alpha: 1).cgColor
-        chatView.layer.cornerRadius = 25
+        chatView.layer.cornerRadius = 22.41
         // 뷰의 세 모서리만 cornerRadus 값 적용되게 하는 코드
         chatView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner, .layerMaxXMaxYCorner]
     }

@@ -26,7 +26,7 @@ class opTextTableViewCell: UITableViewCell {
         chatText.font = UIFont(name: "NanumSquareB", size: 17)
         chatView.layer.borderWidth = 1.7
         chatView.layer.borderColor = UIColor(red: 0.707, green: 0.76, blue: 0.804, alpha: 1).cgColor
-        chatView.layer.cornerRadius = 25
+        chatView.layer.cornerRadius = 22.41
         chatView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner]
     }
    

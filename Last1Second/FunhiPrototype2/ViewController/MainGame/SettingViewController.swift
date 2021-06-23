@@ -141,12 +141,20 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     }
 }
 
+class CustomSlider : UISlider {
+    override func trackRect(forBounds bounds: CGRect) -> CGRect {
+        var rect = super.trackRect(forBounds: bounds)
+        rect.size.height = 3
+        return rect
+    }
+}
+
 extension SettingViewController : UIViewControllerTransitioningDelegate{
     func animationController(forPresented presented: UIViewController,
                              presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AnimationController(animationDuration: 0.4, animationType: .GoDownPresent)
+        return AnimationController(animationDuration: 0.3, animationType: .GoDownPresent)
     }
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AnimationController(animationDuration: 0.4, animationType: .GoUpDismiss)
+        return AnimationController(animationDuration: 0.35, animationType: .GoUpDismiss)
     }
 }
