@@ -57,7 +57,10 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func settingButtonAction(_ sender: Any) {
-        pushMenuViewsAnimation()
+//        pushMenuViewsAnimation()
+        guard let settingVC = storyboard?.instantiateViewController(identifier: "settings") else {return}
+        settingVC.modalPresentationStyle = .fullScreen
+        present(settingVC, animated: true, completion: nil)
     }
     
     @IBAction func goToMainGameButtonAction(_ sender: Any) {

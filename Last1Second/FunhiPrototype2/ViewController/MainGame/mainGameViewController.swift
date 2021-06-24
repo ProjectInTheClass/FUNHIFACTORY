@@ -378,7 +378,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                                                                     self.map.transform = scaleDown})
         map.translatesAutoresizingMaskIntoConstraints = false
         map.widthAnchor.constraint(equalToConstant: self.view.bounds.width - 36).isActive = true
-        map.heightAnchor.constraint(equalToConstant: self.view.bounds.height - 100).isActive = true
         map.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         map.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
 
