@@ -568,13 +568,20 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apw-hX-SQ4">
                                                     <rect key="frame" x="0.0" y="22" width="414" height="41"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="캐릭터의 행동이 들어갈 자리" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oX6-rE-Tks">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oX6-rE-Tks">
                                                             <rect key="frame" x="24" y="11.5" width="366" height="18"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="YgJ-7V-poo"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="15.5"/>
-                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <attributedString key="attributedText">
+                                                                <fragment content="캐릭터의 행동이 들어갈 자리">
+                                                                    <attributes>
+                                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <font key="NSFont" size="15.5" name="NanumSquareEB"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -2143,7 +2150,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yh-QR-vQ5">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="yIQ-pY-Fyq">
@@ -2416,7 +2423,7 @@
                             <constraint firstItem="N0R-1b-A4i" firstAttribute="trailing" secondItem="qGf-6m-aJe" secondAttribute="trailing" constant="25" id="AkN-YI-0gN"/>
                             <constraint firstItem="N0R-1b-A4i" firstAttribute="trailing" secondItem="6yh-QR-vQ5" secondAttribute="trailing" id="GMe-ZE-ufA"/>
                             <constraint firstItem="qGf-6m-aJe" firstAttribute="top" relation="greaterThanOrEqual" secondItem="DkA-ui-Szy" secondAttribute="bottom" priority="999" constant="25" id="OIQ-G3-Cde"/>
-                            <constraint firstItem="6yh-QR-vQ5" firstAttribute="top" secondItem="N0R-1b-A4i" secondAttribute="top" id="OgF-Ac-iVb"/>
+                            <constraint firstItem="6yh-QR-vQ5" firstAttribute="top" secondItem="N0R-1b-A4i" secondAttribute="top" constant="-44" id="OgF-Ac-iVb"/>
                             <constraint firstItem="uVY-GU-VE1" firstAttribute="top" relation="lessThanOrEqual" secondItem="N0R-1b-A4i" secondAttribute="top" priority="750" constant="54" id="RWU-rs-4Wh"/>
                             <constraint firstItem="yIQ-pY-Fyq" firstAttribute="top" secondItem="uVY-GU-VE1" secondAttribute="bottom" priority="750" constant="29" id="UXB-15-EjW"/>
                             <constraint firstItem="wRG-nK-qnB" firstAttribute="top" secondItem="R5U-gN-pUY" secondAttribute="top" id="UZe-6g-VME"/>
@@ -2426,7 +2433,7 @@
                             <constraint firstItem="uVY-GU-VE1" firstAttribute="centerX" secondItem="R5U-gN-pUY" secondAttribute="centerX" id="cEE-uK-gQK"/>
                             <constraint firstItem="6yh-QR-vQ5" firstAttribute="leading" secondItem="N0R-1b-A4i" secondAttribute="leading" id="dOU-Ed-nAJ"/>
                             <constraint firstItem="uVY-GU-VE1" firstAttribute="top" relation="greaterThanOrEqual" secondItem="N0R-1b-A4i" secondAttribute="top" priority="750" constant="25" id="gGn-j2-BYA"/>
-                            <constraint firstItem="N0R-1b-A4i" firstAttribute="bottom" secondItem="6yh-QR-vQ5" secondAttribute="bottom" id="gXS-FD-i16"/>
+                            <constraint firstItem="N0R-1b-A4i" firstAttribute="bottom" secondItem="6yh-QR-vQ5" secondAttribute="bottom" constant="-34" id="gXS-FD-i16"/>
                             <constraint firstItem="qGf-6m-aJe" firstAttribute="top" relation="lessThanOrEqual" secondItem="DkA-ui-Szy" secondAttribute="bottom" constant="73" id="h9F-yJ-s00"/>
                             <constraint firstItem="w3W-4u-IN5" firstAttribute="centerX" secondItem="R5U-gN-pUY" secondAttribute="centerX" id="jFa-Y9-eLt"/>
                             <constraint firstItem="w3W-4u-IN5" firstAttribute="top" secondItem="yIQ-pY-Fyq" secondAttribute="bottom" priority="750" constant="32" id="kuB-ij-Jhj"/>
@@ -2644,7 +2651,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ka3-Pt-7qY"/>
+        <segue reference="USe-dh-gZr"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="album icon" width="441" height="355"/>
