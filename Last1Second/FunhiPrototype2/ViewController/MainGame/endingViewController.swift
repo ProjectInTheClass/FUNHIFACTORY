@@ -10,6 +10,7 @@ import UIKit
 class endingViewController: UIViewController {
 
     // MARK: 게임오버 뷰 OUTLET
+    @IBOutlet var yearReasonStackView: UIStackView!
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet var gameOverImageView: UIImageView!
     @IBOutlet var yearLabel: UILabel!
@@ -38,27 +39,45 @@ class endingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let ending = checkEnding(id: currentEpisode().currentStoryBlockIndex)
         let blackView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
-        blackView.backgroundColor = .black
-        self.view.addSubview(blackView)
-        blackView.alpha = 1
-        UIView.animate(withDuration: 2.0) {
-            blackView.alpha = 0
-        } completion: { _ in blackView.removeFromSuperview() } 
+        let chatTypeDelay = 0.12
+        
         if self.view.bounds.height >= 896
         {
             gameOverImageView.heightAnchor.constraint(equalToConstant: 238).isActive = true
+            yearReasonStackView.widthAnchor.constraint(equalToConstant: 236).isActive = true
+            yearReasonStackView.setNeedsLayout()
             gameOverImageView.setNeedsLayout()
         }
         audioConfigure(bgmName: "badending", isBGM: true, ofType: "mp3")
         popupView.translatesAutoresizingMaskIntoConstraints = false
-        endingDesign()
+        endingDesign(ending: ending)
+        blackView.backgroundColor = .black
+        self.view.addSubview(blackView)
+        blackView.alpha = 1
+        player.currentChatId = "001"
+        UIView.animate(withDuration: 2.0) {
+            blackView.alpha = 0
+        } completion: { _ in blackView.removeFromSuperview()
+            UIImageView.animate(withDuration: 0.8, delay: 0.5, options: [.repeat], animations: { [self]  in sandglassImageView.transform = CGAffineTransform(rotationAngle: .pi) }, completion: nil)
+            UILabel.animate(withDuration: chatTypeDelay * 5, delay: 0.5, animations: { [self] in
+                                typingEffect(label: yearLabel, str: "\(currentEpisode().episodeYear)년", loopTime: chatTypeDelay)}, completion: {(Bool) in
+                                    UILabel.animate(withDuration: Double(ending.name.count) * chatTypeDelay, delay: 0.5, animations: {[self] in
+                                    typingEffect(label: descriptionLabel, str: ending.name, loopTime: chatTypeDelay)}, completion: {(Bool) in
+                                        UILabel.animate(withDuration: Double(ending.comment.count) * chatTypeDelay, delay: 0.5,animations: {[self] in
+                                            typingEffect(label: scriptLabel, str: ending.comment, loopTime: chatTypeDelay)
+                                        }, completion: {(Bool) in self.sandglassImageView.layer.removeAllAnimations()})
+                                    })
+            })
+        }
+//        yearLabel.text = "\(currentEpisode().episodeYear)년"
+//        descriptionLabel.text = ending.name
+//        scriptLabel.text = ending.comment
     }
     
-    func endingDesign()
+    func endingDesign(ending : Ending)
     {
-        let ending = checkEnding(id: currentEpisode().currentStoryBlockIndex)
-        
         backgroundImageView.image = UIImage(named: "\(currentEpisode().currentStoryBlockIndex)Background")
         gameOverImageView.image = UIImage(named: "\(currentEpisode().currentStoryBlockIndex)GameOver")
         sandglassImageView.image = UIImage(named: "\(currentEpisode().currentStoryBlockIndex)Sandglass")
@@ -68,9 +87,6 @@ class endingViewController: UIViewController {
         yearLabel.adjustsFontSizeToFitWidth = true
         descriptionLabel.adjustsFontSizeToFitWidth = true
         scriptLabel.adjustsFontSizeToFitWidth = true
-        yearLabel.text = "\(currentEpisode().episodeYear)년"
-        descriptionLabel.text = ending.name
-        scriptLabel.text = ending.comment
         for target in insideButtonViews {
             target.backgroundColor = ending.buttonUIColor[1]
         }

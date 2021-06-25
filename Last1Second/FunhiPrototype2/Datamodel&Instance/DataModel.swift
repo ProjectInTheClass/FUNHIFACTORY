@@ -844,3 +844,10 @@ extension UIView {
     }
 }
 
+func typingEffect(label : UILabel, str : String, loopTime : Double)
+{
+    for i in str{
+        label.text! += "\(i)"
+        RunLoop.current.run(until: Date() + loopTime)
+    }
+}
