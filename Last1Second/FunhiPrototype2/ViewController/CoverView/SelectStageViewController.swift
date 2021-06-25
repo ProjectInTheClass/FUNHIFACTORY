@@ -207,9 +207,9 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         lockedPopupLabel.setLineSpacing(lineSpacing: 6)
         lockedPopupLabel.textAlignment = .center
         lockedPopupBox.layer.cornerRadius = 20
-        lockedPopupBox.layer.borderWidth = 6
-        lockedPopupBox.layer.borderColor = UIColor(red:0.647, green: 0.737, blue: 0.812, alpha: 1).cgColor
+ 
         
+        lockedPopupBox.setBolder(color: UIColor(red:0.647, green: 0.737, blue: 0.812, alpha: 1), width: 6)
         
         lockedPopupLabel.setLineSpacing(lineSpacing: 6)
         lockedPopupLabel.textAlignment = .center

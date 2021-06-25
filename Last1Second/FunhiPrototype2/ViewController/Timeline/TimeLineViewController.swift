@@ -344,7 +344,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     
     @IBAction func backAction(_ sender: Any) {
         let transition:CATransition = CATransition()
-          transition.duration = 0.35
+          transition.duration = 0.4
           transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         transition.type = CATransitionType.reveal
         transition.subtype = CATransitionSubtype.fromTop
@@ -453,7 +453,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         selectedEpisodeYearLabel.text = "\(currentEpisode.episodeYear)년 \(currentEpisode.episodePlace)"
         selectedEpisodeDescriptionLabel.text = currentEpisode.episodeShortDesciption
         if currentEpisode.episodeID == "prologue" {
-            selectedEpisodeDescriptionLabel.text = "\(currentEpisode.episodeShortDesciption)\n\n\n\n\n"
+            selectedEpisodeDescriptionLabel.text = "\(currentEpisode.episodeShortDesciption)\n\n"
         }
 
     }
@@ -465,7 +465,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
             thirdPopupLabel.text = "이 에피소드는 모든 사건을 해결한 후에 진행할 수 있습니다."
         }
         else {
-            thirdPopupLabel.text = "아직 진행하지 않은 사건입니다. 현재 진행하고 있는 사건을 완료한 후 계속할 수 있습니다."
+            thirdPopupLabel.text = "아직 진행하지 않은 사건입니다.\n현재 진행하고 있는 사건을 완료한 후\n계속할 수 있습니다."
         }
     }
     
