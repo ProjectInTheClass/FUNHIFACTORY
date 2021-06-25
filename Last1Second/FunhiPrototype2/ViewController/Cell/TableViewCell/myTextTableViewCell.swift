@@ -21,9 +21,6 @@ class myTextTableViewCell: UITableViewCell {
         // Initialization code
     }
     func designCell() {
-        profileNickname.font = UIFont(name: "NanumSquareEB", size: 18)
-        chatText.font = UIFont(name: "NanumSquareB", size: 17)
-        chatText.setLineSpacing(lineSpacing: 6)
         chatView.layer.borderWidth = 1.7
         chatView.layer.borderColor = UIColor(red: 0.319, green: 0.457, blue: 0.575, alpha: 1).cgColor
         chatView.layer.cornerRadius = 22.41
@@ -37,7 +34,6 @@ class myTextTableViewCell: UITableViewCell {
         
         switch profile {
         case .none:
-//            nameAndChat.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 17).isActive = true
             profileImage.isHidden = true
             profileNickname.isHidden = true
         default:

@@ -555,10 +555,10 @@ enum CharacterFace: String, Codable{
 func currentDanhee() -> GameCharacterID
 {
     switch currentEpisode().episodeID {
-    case "prologue": return .danhee
-    case "1623": return .danhee2
-    default:
-        return .danhee
+        case "prologue": return .danhee
+        case "1623": return .danhee2
+        default:
+            return .danhee
     }
 }
 

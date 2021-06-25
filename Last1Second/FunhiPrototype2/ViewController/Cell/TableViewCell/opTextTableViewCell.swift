@@ -19,11 +19,7 @@ class opTextTableViewCell: UITableViewCell {
         // Initialization code
     }
     func designCell() {
-       
-      
-        chatText.setLineSpacing(lineSpacing: 6)
-        profileNickname.font = UIFont(name: "NanumSquareEB", size: 18)
-        chatText.font = UIFont(name: "NanumSquareB", size: 17)
+
         chatView.layer.borderWidth = 1.7
         chatView.layer.borderColor = UIColor(red: 0.707, green: 0.76, blue: 0.804, alpha: 1).cgColor
         chatView.layer.cornerRadius = 22.41
@@ -39,7 +35,6 @@ class opTextTableViewCell: UITableViewCell {
 
         switch mainProfile {
         case .none:
-            //chatView.removeConstraint(chatView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 64))
             profileImage.isHidden = true
             profileNickname.isHidden = true
         default:
