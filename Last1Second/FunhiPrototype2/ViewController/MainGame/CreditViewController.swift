@@ -22,7 +22,7 @@ class CreditViewController: UIViewController {
     }
     
     @IBAction func instaButtonTapped(_ sender: Any) {
-        if let url = URL(string: "https://www.instagram.com") {
+        if let url = URL(string: "https://www.instagram.com/funhifactory/") {
             UIApplication.shared.open(url, options: [:])
         }
     }

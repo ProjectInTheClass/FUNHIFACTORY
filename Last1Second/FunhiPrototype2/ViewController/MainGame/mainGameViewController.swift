@@ -9,7 +9,7 @@ import UIKit
 import AVFoundation
 import AudioToolbox
 
-class mainGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+class mainGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     //Outlet
     
     var alertTimer = Timer()
@@ -74,8 +74,13 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         player.currentChatArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,7 +89,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         //텍스트 채팅이 나올 때
         //자신이 보냈을 때
         if target.type == .onlyText && target.who.info().name == "이단희"{
-            print("메인게임 - 자신 텍스트 출력")
+            print("자신텍스트 : \(player.currentChatArray[indexPath.row].text)")
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
             cell.myTextCellUpdate(name: target.who, chat: chatText, profile: target.characterFace, godchat: target.isGodChat)
 //            cell.layoutIfNeeded()
@@ -92,7 +97,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         }
         //상대가 보냈을 때
         else if target.type == .onlyText {
-            print("메인게임 - 상대 텍스트 출력")
+            print("상대텍스트 : \(player.currentChatArray[indexPath.row].text)")
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
             cell.profileNickname.textColor = .white
             cell.opTextCellUpdate(name: target.who, chat: chatText,normalProfile: target.who.info().profileImage, mainProfile: target.characterFace, isLocked: target.who.info().isLocked, godchat: target.isGodChat)
@@ -115,7 +120,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             return cell
         }
         else if target.type == .monologue{
-            print("메인게임 - 속마음 채팅 출력")
+            print("속마음채팅 - \(player.currentChatArray[indexPath.row].text)")
                     
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "monologue", for: indexPath) as! monologueTableViewCell
             cell.monologueText.text = chatText
@@ -149,7 +154,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices.count
         }
-    
+        
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: self.view.bounds.width, height: 99)
+//    }
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             if collectionView == choiceCollectionView{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "choiceCell", for: indexPath) as! choiceCollectionViewCell
@@ -167,7 +175,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             collectionView.showsHorizontalScrollIndicator = false
             pageControl.currentPageIndicatorTintColor = UIColor.white
         }
-
+        
     
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
@@ -219,6 +227,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidAppear(_ animated: Bool) {
         print("퍼즈바 꺼졌는가? :\(pauseBar.isHidden), 초이스 켜졌는가? :\(isChoiceOn), 타이머 꺼졌는가? :\(timer==nil)")
+//        if !player.currentChatArray.isEmpty
+//        {
+//            scrollToBottom()
+//        }
         if timer == nil{
             guard pauseBar.isHidden == true else {return}
             print("chatupdatetimer is executed")
@@ -229,6 +241,12 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             print("chatupdatetimer isn't executed")
             audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: "mp3")
           return
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        while timer != nil {
+            timer.invalidate()
         }
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -286,8 +304,10 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.choiceCollectionView.dataSource = self
         mainGameDesign()
         mainGameTableView.reloadData()
+        mainGameTableView.estimatedRowHeight = 2.0;
         let TVCtouchGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(instantChatUpdate(_:)))
         mainGameTableView.addGestureRecognizer(TVCtouchGesture)
+        choiceCollectionView.isPagingEnabled = true
         if let page = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]?.choices.count{
             initializePageControl(collectionView : choiceCollectionView, choiceBar : choiceBar, numberOfPages:page)
         }
@@ -362,7 +382,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             timer.invalidate()
         }
         self.view.addSubview(blackView)
-        blackView.fullScreen(to: self.view)
+        blackView.translatesAutoresizingMaskIntoConstraints = false
+        blackView.fullScreen(to: wholeView)
         blackView.alpha = 1
         UIView.animate(withDuration: 0.2) {
             self.blackView.alpha = 0.7

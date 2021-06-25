@@ -81,10 +81,10 @@ extension UIView {
     }
     
     func fullScreen(to other: UIView) {
-        leadingAnchor.constraint(equalTo: other.leadingAnchor).isActive = true
-        trailingAnchor.constraint(equalTo: other.trailingAnchor).isActive = true
-        topAnchor.constraint(equalTo: other.topAnchor).isActive = true
-        bottomAnchor.constraint(equalTo: other.bottomAnchor).isActive = true
+        leadingAnchor.constraint(equalTo: other.leadingAnchor, constant: 0).isActive = true
+        trailingAnchor.constraint(equalTo: other.trailingAnchor, constant: 0).isActive = true
+        topAnchor.constraint(equalTo: other.topAnchor, constant: 0).isActive = true
+        bottomAnchor.constraint(equalTo: other.bottomAnchor, constant: 0).isActive = true
     }
 }
 
