@@ -16,7 +16,6 @@ class choiceCollectionViewCell: UICollectionViewCell {
         choiceCellUIUpdate(target: choiceInCell)
         choiceInCell.bringSubviewToFront(choiceLabel)
         choiceCellShadowView.layer.cornerRadius = 22.41
-        choiceLabel.font = UIFont(name: "NanumSquareB", size: 16)
         
     }
     
