@@ -42,7 +42,13 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        let number = Int.random(in: 0..<1)
+        if number == 1{
+            playBgm(put: "cover1")
+        }
+        else{
+            playBgm(put: "cover2")
+        }
     }
     
     override func viewWillLayoutSubviews() {
