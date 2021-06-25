@@ -26,8 +26,8 @@ class HomeViewController: UIViewController {
         )
         episodeDescriptionLabel.textAlignment = .center
         
-        startGameButtonView.layer.cornerRadius = startGameButtonView.frame.height/2
-        selectNewEPButtonView.layer.cornerRadius = selectNewEPButtonView.frame.height/2
+      //  startGameButtonView.layer.cornerRadius = startGameButtonView.frame.height/2
+      //  selectNewEPButtonView.layer.cornerRadius = selectNewEPButtonView.frame.height/2
         startGameButtonView.setShadow(color: UIColor(red: 0.784, green: 0.871, blue: 0.941, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 10)
         selectNewEPButtonView.setShadow(color: UIColor(red: 0.592, green: 0.706, blue: 0.82, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 10)
         
@@ -42,8 +42,14 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        startGameButtonView.layer.cornerRadius = startGameButtonView.frame.size.height/CGFloat(2.0)
+        selectNewEPButtonView.layer.cornerRadius = selectNewEPButtonView.frame.height/2
+    }
     @IBAction func noteButtonAction(_ sender: Any) {
         pushMenuViewsAnimation()
     }
