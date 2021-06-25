@@ -21,7 +21,7 @@ extension mainGameViewController{
     }
     func chatUpdate(){
         print("스토리 \(player.indexNumber)/\(currentChatAmount())")
-        bgm()
+        playBgm(put: currentBlockOfDay().backGroundMusic.info())
         if (player.indexNumber != currentChatAmount())
         {
             checkEnterAnimation()
@@ -35,10 +35,18 @@ extension mainGameViewController{
                 timer!.invalidate()
                 timer = nil
               }
-            player.indexNumber = 0
-            player.currentChatArray.removeAll()
-            mainGameTableView.reloadData()
-            performSegue(withIdentifier: "badEnding", sender: nil)
+            blackView.bounds = self.view.bounds
+            blackView.center = self.view.center
+            self.view.addSubview(blackView)
+            blackView.alpha = 0
+            UIView.animate(withDuration: 2.0) {
+                self.blackView.alpha = 1
+            } completion: { _ in
+                player.indexNumber = 0
+                player.currentChatArray.removeAll()
+                self.mainGameTableView.reloadData()
+                self.performSegue(withIdentifier: "badEnding", sender: nil)
+            }
             return
         }
         //에피소드를 깼을 때
@@ -156,22 +164,6 @@ extension mainGameViewController{
             //scrollToBottom(input: 0)
     }
     
-    
-    func bgm(){
-        let bgm = currentBlockOfDay().backGroundMusic.info()
-        guard bgm != currentBGM else {return}
-        if bgm == ""    //bgm을 멈춰야 할 때
-        {
-            bgmPlayer?.stop()
-            currentBGM = bgm
-            return
-        }
-        else    //새로운 bgm이 들어왔을 때
-        {
-            audioConfigure(bgmName: bgm, isBGM: true, ofType: "mp3")
-        }
-    }
-    
     func checkEnterAnimation(){
         if let animation = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]?.chats[player.indexNumber].animationOption
         {
@@ -216,5 +208,20 @@ extension mainGameViewController{
                 targetView.backgroundColor = firstColor
             }
         })
+    }
+}
+
+func playBgm(put bgm : String){
+    //currentBlockOfDay().backGroundMusic.info()
+    guard bgm != currentBGM else {return}
+    if bgm == ""    //bgm을 멈춰야 할 때
+    {
+        bgmPlayer?.stop()
+        currentBGM = bgm
+        return
+    }
+    else    //새로운 bgm이 들어왔을 때
+    {
+        audioConfigure(bgmName: bgm, isBGM: true, ofType: "mp3")
     }
 }

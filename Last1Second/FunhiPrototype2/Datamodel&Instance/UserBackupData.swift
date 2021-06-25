@@ -27,6 +27,42 @@ func initializePlayer(paraPlayer : inout User)
     
 }
 
+func initializePlayerFromEnding(paraPlayer : inout User)
+{
+    for index in paraPlayer.currentEpisodes.indices {
+        initializeEpisode(target: &paraPlayer.currentEpisodes[index])
+    }
+    for index in paraPlayer.currentAchievementInfo.indices {
+        paraPlayer.currentAchievementInfo[index].isLocked = true
+    }
+    paraPlayer.currentEpisodes[0].isStarted = false
+    paraPlayer.currentEpisodes[0].currentCharacterNote[0].isLocked = false
+    paraPlayer.currentEpisodes[0].currentCharacterNote[2].isLocked = false
+    paraPlayer.dayIndex = 0
+    paraPlayer.dayId = "prologue"
+    paraPlayer.currentChatId = "001"
+    paraPlayer.currentChatArray.removeAll()
+    
+}
+
+func initializeEpisodeWithoutCaseNote(target : inout Episode){
+    target.isCleared = false
+    target.isStarted = false
+    target.chatHistory = []
+    target.currentStoryBlockIndex = "001"
+    for index in target.currentCharacterNote.indices {
+        target.currentCharacterNote[index].isLocked = true
+    }
+    for index in target.currentAlbumImages.indices {
+        target.currentAlbumImages[index].isLocked = true
+    }
+    for index in target.timelineCheckPoint.indices {
+        for j in target.timelineCheckPoint[index].indices {
+            target.timelineCheckPoint[index][j].isLocked = true
+        }
+    }
+}
+
 func initializeEpisode(target : inout Episode){
     target.isCleared = false
     target.isStarted = false

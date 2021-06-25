@@ -108,7 +108,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         else if target.type == .untouchableImage {
             print("메인게임 - 이미지 출력")
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! ImageTableViewCell
-
             cell.imageUpdate(mainImage: target.image, godchat: target.isGodChat)
             return cell
         }
@@ -155,9 +154,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices.count
         }
         
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: self.view.bounds.width, height: 99)
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.view.bounds.width, height: 99)
+    }
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             if collectionView == choiceCollectionView{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "choiceCell", for: indexPath) as! choiceCollectionViewCell

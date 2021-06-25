@@ -38,6 +38,13 @@ class endingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let blackView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
+        blackView.backgroundColor = .black
+        self.view.addSubview(blackView)
+        blackView.alpha = 1
+        UIView.animate(withDuration: 2.0) {
+            blackView.alpha = 0
+        } completion: { _ in blackView.removeFromSuperview() } 
         if self.view.bounds.height >= 896
         {
             gameOverImageView.heightAnchor.constraint(equalToConstant: 238).isActive = true
@@ -112,7 +119,7 @@ class endingViewController: UIViewController {
             performSegue(withIdentifier: "unwindToMain", sender: nil)
         case 1:
             player.dayId = "prologue"
-            initializePlayer(paraPlayer: &player)
+            initializePlayerFromEnding(paraPlayer: &player)
             performSegue(withIdentifier: "unwindToMain", sender: nil)
         case 2:
             popupView.removeFromSuperview()
