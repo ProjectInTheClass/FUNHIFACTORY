@@ -92,7 +92,7 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBAction func backAction(_ sender: Any) {
         let transition:CATransition = CATransition()
-          transition.duration = 0.35
+          transition.duration = 0.4
           transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         transition.type = CATransitionType.reveal
         transition.subtype = CATransitionSubtype.fromTop

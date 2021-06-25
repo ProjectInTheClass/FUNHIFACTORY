@@ -26,8 +26,11 @@ class HomeViewController: UIViewController {
         )
         episodeDescriptionLabel.textAlignment = .center
         
-      //  startGameButtonView.layer.cornerRadius = startGameButtonView.frame.height/2
-      //  selectNewEPButtonView.layer.cornerRadius = selectNewEPButtonView.frame.height/2
+        designObjects()
+        
+    }
+    
+    func designObjects() {
         startGameButtonView.setShadow(color: UIColor(red: 0.784, green: 0.871, blue: 0.941, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 10)
         selectNewEPButtonView.setShadow(color: UIColor(red: 0.592, green: 0.706, blue: 0.82, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 10)
         
@@ -35,12 +38,15 @@ class HomeViewController: UIViewController {
             view.setBolder(color: UIColor(red: 0.524, green: 0.646, blue: 0.75, alpha: 1), width: 3)
             view.layer.backgroundColor = UIColor.white.cgColor
         }
-        
-        
-        
+        //-----팝업------------
+        alertPopupView.bounds = self.view.bounds
+        alertPopupView.center = self.view.center
+        alertPopupBoxView.setBolder(color: UIColor(red:0.647, green: 0.737, blue: 0.812, alpha: 1), width: 6)
+        alertPopupLabel.text = "아직 다른 사건들을 열 수 없습니다.\n프롤로그를 먼저 해결해주세요."
+        alertPopupLabel.setLineSpacing(lineSpacing: 6)
+        alertPopupLabel.textAlignment = .center
         
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         
     }
@@ -74,7 +80,9 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func goToSelectStageButtonAction(_ sender: Any) {
-        performSegue(withIdentifier: "goToSelectNewStageSegue", sender: nil)
+        
+        player.currentEpisodes[0].isCleared ?
+            performSegue(withIdentifier: "goToSelectNewStageSegue", sender: nil) : openAlertPopup()
     }
     
     
@@ -87,5 +95,16 @@ class HomeViewController: UIViewController {
         transition.type = CATransitionType.moveIn
           transition.subtype = CATransitionSubtype.fromBottom
           self.navigationController!.view.layer.add(transition, forKey: kCATransition)
+    }
+    //---------------새로운 사건 보기 팝업쓰----------------
+    @IBOutlet var alertPopupView: UIView!
+    @IBOutlet var alertPopupBoxView: UIView!
+    @IBOutlet var alertPopupLabel: UILabel!
+    @IBAction func alertPopupExitButtonAction(_ sender: Any) {
+        alertPopupView.removeFromSuperview()
+    }
+    
+    func openAlertPopup() {
+        self.view.addSubview(alertPopupView)
     }
 }

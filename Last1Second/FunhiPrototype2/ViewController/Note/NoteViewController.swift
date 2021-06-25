@@ -280,8 +280,8 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
 
     @IBAction func backAction(_ sender: Any) {
         let transition:CATransition = CATransition()
-          transition.duration = 0.35
-        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
+          transition.duration = 0.4
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         transition.type = CATransitionType.reveal
         transition.subtype = CATransitionSubtype.fromTop
         self.navigationController!.view.layer.add(transition, forKey: kCATransition)
