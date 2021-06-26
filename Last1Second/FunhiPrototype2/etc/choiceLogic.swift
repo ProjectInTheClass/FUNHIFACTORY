@@ -58,12 +58,15 @@ extension mainGameViewController{
             print("\(player.currentEpisodes[player.dayIndex].episodeID) 클리어")
             //currentChatArray를 저장해야 함.
             player.currentChatArray.removeAll()
-            
-//            let selectStageStoryBoard = storyboard?.instantiateViewController(withIdentifier: "selectStage")
-//            selectStageStoryBoard?.modalPresentationStyle = .fullScreen
-//            present(selectStageStoryBoard!, animated: true, completion: nil)
-            performSegue(withIdentifier: "performSelect", sender: nil)
             print("-------------------------maingameend----------------------")
+            if player.dayId == "prologue"
+            {
+                performSegue(withIdentifier: "performSelect", sender: nil)
+            }
+            else
+            {
+                performSegue(withIdentifier: "mainToHome", sender: nil)
+            }
             return
         }
         else if player.indexNumber < currentChatAmount() && currentBlockOfDay().chats[player.indexNumber].type != .ar{

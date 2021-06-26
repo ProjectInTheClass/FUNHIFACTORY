@@ -47,7 +47,7 @@ var prologueChapter: Episode = Episode(episodeID: "prologue", episodePlace: "현
          CheckPoint(id: .checkPoint_0_0_2, name: "휘령과의 만남", storyBlockIndex: "016", isLocked: false),
          CheckPoint(id: .checkPoint_0_0_3, name: "소원", storyBlockIndex: "042", isLocked: false)]
         
-        ], currentStoryBlockIndex: "014")
+        ], currentStoryBlockIndex: "087")
 
 //selectStageVC 테이블뷰 테스트 하드코딩용 데이터. 나중에 삭제 혹은 위치 변경 예정
 
@@ -124,7 +124,7 @@ timelineCheckPoint: [
         [CheckPoint(id: .checkPoint_2_2_1, name: "휘령의 호통", storyBlockIndex: "219", isLocked: false),
          CheckPoint(id: .checkPoint_2_2_2, name: "백문이 불여일견", storyBlockIndex: "239", isLocked: false),
          CheckPoint(id: .checkPoint_2_2_3, name: "또 한 번의 기회", storyBlockIndex: "254", isLocked: false)]
-        ], currentStoryBlockIndex: "056")
+        ], currentStoryBlockIndex: "001")
 
 
 var chapter3 = Episode(episodeID: "1803", episodePlace: "인정전", episodeYear: 1803, episodeKingYear: "순조 3년", episodeShortDesciption: "왕의 나이가 너무 어려 대비가 대신 정치를 했다. 그 과정에서 한쪽 세력에만 힘을 실게 되고, 종교의 자유를 억압하게 되었다. 복수심을 가지고 있는 자가 이번 사건의 범인일지도.", episodeDesciption: "대한독립 만세",episodePlaceImage: "injeongjeon illust", episodeCoverImage: "changdeokgung image sample",  chatHistory: [],storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "")

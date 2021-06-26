@@ -16,6 +16,7 @@ class endingViewController: UIViewController {
     @IBOutlet var yearLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var scriptLabel: UILabel!
+    @IBOutlet var buttonStackView: UIStackView!
     @IBOutlet var sandglassImageView: UIImageView!
     
     @IBOutlet var firstButtonImageView: UIImageView!
@@ -43,6 +44,7 @@ class endingViewController: UIViewController {
         let blackView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
         let chatTypeDelay = 0.12
         
+        buttonStackView.alpha = 0
         if self.view.bounds.height >= 896
         {
             gameOverImageView.heightAnchor.constraint(equalToConstant: 238).isActive = true
@@ -67,7 +69,9 @@ class endingViewController: UIViewController {
                                     typingEffect(label: descriptionLabel, str: ending.name, loopTime: chatTypeDelay)}, completion: {(Bool) in
                                         UILabel.animate(withDuration: Double(ending.comment.count) * chatTypeDelay, delay: 0.5,animations: {[self] in
                                             typingEffect(label: scriptLabel, str: ending.comment, loopTime: chatTypeDelay)
-                                        }, completion: {(Bool) in self.sandglassImageView.layer.removeAllAnimations()})
+                                        }, completion: {(Bool) in self.sandglassImageView.layer.removeAllAnimations()
+                                            self.buttonStackView.alpha = 1
+                                        })
                                     })
             })
         }
