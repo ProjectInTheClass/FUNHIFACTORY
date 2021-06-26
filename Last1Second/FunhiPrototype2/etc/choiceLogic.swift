@@ -41,11 +41,12 @@ extension mainGameViewController{
             blackView.alpha = 0
             UIView.animate(withDuration: 2.0) {
                 self.blackView.alpha = 1
-            } completion: { _ in
+            } completion: { [self] _ in
                 player.indexNumber = 0
                 player.currentChatArray.removeAll()
                 self.mainGameTableView.reloadData()
                 self.performSegue(withIdentifier: "badEnding", sender: nil)
+                blackView.removeFromSuperview()
             }
             return
         }

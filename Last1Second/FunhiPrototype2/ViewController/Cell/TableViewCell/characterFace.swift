@@ -53,7 +53,7 @@ func findFaceImage(nickname:GameCharacterID, profile:CharacterFace, normalProfil
         case .angry4: return "hwiryeong angry 4"
         case .basic:   return "hwiryeong basic"
         case .basictalk: return "hwiryeong basic talk"
-        case .cry1: return " hwiryeong cry"
+        case .cry1: return "hwiryeong cry"
         case .happy1:  return "hwiryeong happy 1"
         case .happy2:   return "hwiryeong happy 2"
         case .sad:  return "hwiryeong sad"
