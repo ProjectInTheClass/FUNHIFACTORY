@@ -175,8 +175,12 @@ class SelectStageViewController: UIViewController,UITableViewDelegate,UITableVie
         previousEpisodeID = player.dayId
         player.dayId = selectedEP.episodeID
         player.indexNumber = 0
-        player.currentEpisodes[strToIndex(str: player.dayId)].isCleared = false
-//        player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = "001"
+        
+        if player.currentEpisodes[strToIndex(str: player.dayId)].isCleared {
+            player.currentEpisodes[strToIndex(str: player.dayId)].isCleared = false
+            player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = "001"
+        }
+        
         player.currentEpisodes[strToIndex(str: selectedEP.episodeID)].isStarted = true
     }
     @IBAction func selectedPopupExitButton(_ sender: Any) {

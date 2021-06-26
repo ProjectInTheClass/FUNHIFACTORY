@@ -74,7 +74,7 @@ class NoteCase: Codable{
     let title: String
     let shortDescription: String
     let longDescription: String
-    var isLocked: Bool
+    var isLocked: Bool = true
     
     init(id: NoteCaseID, title: String, shortDescription: String, longDescription: String, isLocked: Bool) {
         self.id = id
@@ -98,7 +98,7 @@ struct Achievement: Codable {
     let name: String
     let image: String
     let id: AchievementID
-    var isLocked: Bool
+    var isLocked: Bool = true
 }
 
 //------------------------------------앨범 이미지------------------------------------
@@ -151,7 +151,7 @@ class AlbumImage: Codable {
     let image: String
     let title: String
     let description: String
-    var isLocked: Bool
+    var isLocked: Bool = true
     
     init(id: AlbumImageID, image: String, title: String, description: String, isLocked: Bool) {
         self.id = id
@@ -189,7 +189,7 @@ enum InfomationID: String, Codable {
 // id(정보 획득 로직에서 사용), 업적 잠금 여부, 정보 텍스트
 class Infomation: Codable {
     var infomationID: InfomationID
-    var isLocked: Bool
+    var isLocked: Bool = false
     var text: String
     
     init(infomationID: InfomationID, isLocked: Bool, text: String) {
@@ -397,12 +397,7 @@ struct OptionalOption: Codable {
     }
 }
 
-//선택지 누르면 변경될 호감도
-// 프라퍼티 설명:  해당 인물, 변경될 호감도 수치
-struct ChoiceLikeability: Codable {
-    let who: GameCharacterID
-    let number: Int
-}
+
 
 //선택지
 // 프라퍼티 설명: 선택지 텍스트, 변경될 호감도
@@ -584,7 +579,7 @@ func strToIndex(str : String) -> Int
     }
 }
 
-struct Ending{
+struct Ending {
     let name : String
     let comment : String
     let buttonUIColor : [UIColor]
