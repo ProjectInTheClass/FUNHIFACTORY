@@ -27,10 +27,12 @@ class opTextTableViewCell: UITableViewCell {
     }
    
     func opTextCellUpdate(name:GameCharacterID,chat:String, normalProfile:String, mainProfile:CharacterFace, isLocked : Bool, godchat : Bool){
-        profileNickname.text = name.info().name
-                if isLocked == true{
-                    profileNickname.text = "???"
-                }
+        switch isLocked {
+        case true:
+            profileNickname.text = "???"
+        case false:
+            profileNickname.text = name.info().name
+        }
         chatText.text = chat
 
         switch mainProfile {

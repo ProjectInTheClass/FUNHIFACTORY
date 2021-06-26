@@ -204,10 +204,12 @@ class Infomation: Codable {
 //인물
 
 enum GameCharacterID: String,Codable {
-    case danhee, hwiryeong, tourguide, teacher, danhee2, extra1, extra2, extra3, extra4, igwi, kimman, kimwoman, poorman, everyone, injo
+    case danhee, hwiryeong, tourguide, teacher, danhee2, extra1, extra2, extra3, extra4, igwi, kimman, kimwoman, poorman, everyone, injo, currentEpDanhee
     
     func info() -> GameCharacter{
         switch self {
+        case .currentEpDanhee:
+            return currentDanhee().info()
         case .danhee:
             return prologueChapter.currentCharacterNote[0]
         case .hwiryeong:
@@ -426,7 +428,7 @@ struct Choice: Codable {
         characterFace = (try? values.decode(CharacterFace.self, forKey: .characterFace)) ?? .basic
         nextTextIndex = (try? values.decode(String.self, forKey: .nextTextIndex)) ?? "001"
         optionalOption = (try? values.decode(OptionalOption.self, forKey: .optionalOption))
-        who = (try? values.decode(GameCharacterID.self, forKey: .who)) ?? currentDanhee()
+        who = (try? values.decode(GameCharacterID.self, forKey: .who)) ?? .currentEpDanhee
     }
     
 
