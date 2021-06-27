@@ -57,7 +57,7 @@ extension mainGameViewController{
             }
             player.currentEpisodes[player.dayIndex].isCleared = true
             print("\(player.currentEpisodes[player.dayIndex].episodeID) 클리어")
-            //currentChatArray를 저장해야 함.
+            player.currentEpisodes[strToIndex(str: player.dayId)].chatHistory = player.currentChatArray
             player.currentChatArray.removeAll()
             print("-------------------------maingameend----------------------")
             if player.dayId == "prologue"
