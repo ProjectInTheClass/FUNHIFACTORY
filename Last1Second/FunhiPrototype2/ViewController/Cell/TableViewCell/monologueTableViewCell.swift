@@ -18,8 +18,6 @@ class monologueTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        name.font = UIFont(name: "NanumSquareEB", size: 18)
-        monologueText.font = UIFont(name: "NanumSquareB", size: 17)
         monologueUI(cell: monologueCell)
         monologueUI(cell: monologueCircle)
     }

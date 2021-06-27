@@ -197,7 +197,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
                     myChoiceText.textColor = .white
                     mainGameTableView.backgroundColor =  UIColor(red: 0.07, green: 0.15, blue: 0.22, alpha: 1)
                     choiceBarLine.backgroundColor = UIColor(red: 0.484, green: 0.581, blue: 0.671, alpha: 1)
-                    self.view.backgroundColor = UIColor(red: 0.484, green: 0.581, blue: 0.671, alpha: 1)
+                    self.view.backgroundColor = UIColor(red: 0.07, green: 0.15, blue: 0.22, alpha: 1)
                     player.currentChatArray.append(Chat(text_: "", image_: "", type_: .endGodChat, who_: .danhee, characterFace_: .none, optionalOption_: nil, animationOption_: .none, isGodChat_: false))
                 }
                 else
