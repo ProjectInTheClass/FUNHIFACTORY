@@ -439,8 +439,8 @@ extension NoteViewController {
   
     //--------사건 팝업------------------
         casePopupBoxView.layer.cornerRadius = 14
-        casePopupBoxView.setBolder(color: UIColor(red: 0.616, green: 0.71, blue: 0.796, alpha: 1), width: 4)
-        
+        casePopupBoxView.setBolder(color: UIColor(red: 157/255, green: 181/255, blue: 203/255, alpha: 1), width: 4)
+        casePopopBackgroundViewTopBar.backgroundColor = UIColor(red: 157/255, green: 181/255, blue: 203/255, alpha: 1)
         casePopopBackgroundViewTopBar.layer.cornerRadius = 14
         casePopopBackgroundViewTopBar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
 }
