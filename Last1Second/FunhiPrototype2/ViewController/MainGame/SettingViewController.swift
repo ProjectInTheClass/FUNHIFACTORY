@@ -50,15 +50,6 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         bgmSlider.value = player.setting.bgmVolume
         effectMusicSlider.value = player.setting.effectVolume
         textSpeedSlider.value = Float(3.5 - player.setting.textSpeed + 0.8)
-        // Do any additional setup after loading the view.
-        yesButton.layer.borderColor = UIColor(red: 0.396, green: 0.396, blue: 0.396, alpha: 1).cgColor
-        noButton.layer.borderColor = UIColor(red: 0.396, green: 0.396, blue: 0.396, alpha: 1).cgColor
-        for button in initializeAlertButtons {
-            button.layer.shadowColor = UIColor(red: 0.38, green: 0.457, blue: 0.521, alpha: 1).cgColor
-            button.layer.shadowOpacity = 1
-            button.layer.shadowRadius = 0
-            button.layer.shadowOffset = CGSize(width: 0, height: 4)
-        }
         settingLabel.font = UIFont(name: "NanumSquareEB", size: 29)
         
         for label in settingPropertyLabels

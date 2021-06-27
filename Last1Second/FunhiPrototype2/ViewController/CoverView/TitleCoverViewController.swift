@@ -45,7 +45,13 @@ class TitleCoverViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        audioConfigure(bgmName: "coverBGM", isBGM: true, ofType: "mp3")
+        let number = Int.random(in: 0..<1)
+        if number == 1{
+            playBgm(put: "cover1")
+        }
+        else{
+            playBgm(put: "cover2")
+        }
         print("현재 currentChatArray: \(player.currentChatArray)")
         print("현재 dayId: \(player.dayId)")
         print("현재 currentChatId: \(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)")
