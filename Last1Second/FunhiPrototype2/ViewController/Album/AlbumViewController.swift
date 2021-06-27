@@ -17,8 +17,7 @@ class AlbumTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         albumImageNameLabel.font = UIFont(name: "NanumSquareEB", size: 15)
-        albumImageView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
-        albumImageView.layer.borderWidth = 4
+       
         albumImageView.layer.cornerRadius = 7
         
         lockedView.layer.cornerRadius = 7

@@ -16,8 +16,8 @@ var player = User(
     [GameCharacter(name: "이단희", profileImage: "prolog danhee", backGroundImage: "prolog danhee_background", description: "내 곁에 아무도 없다는 게 이젠 익숙해.\n이런 내 삶이 바뀔 수 있을까?", infomation: [],isLocked: false),
      
      GameCharacter(name: "휘령", profileImage: "hwiryeong", backGroundImage: "prolog hwiryeong_background", description: "네가 나의 마지막 희망이다.\n네가 가진 그 1초가 나를,\n이 세상을 바꾸는 법.\n부디 이번엔 꼭 성공하길...", infomation: [
-                    Infomation(infomationID: .hwiryeong1, isLocked: false, text: "조선이 생겨났을 때부터 존재했다고 한다. "),
-                    Infomation(infomationID: .hwiryeong2, isLocked: false, text: "휘령이 곧 조선. 하지만 큰 사건들을 겪고 나서 그는 힘을 잃게 되었다. 그 힘을 찾기 위해서는 내가 필요하다고 하는데... "),
+                    Infomation(infomationID: .hwiryeong1, isLocked: false, text: "조선이 생겨났을 때부터 존재했다고 한다."),
+                    Infomation(infomationID: .hwiryeong2, isLocked: false, text: "휘령이 곧 조선. 하지만 큰 사건들을 겪고 나서 그는 힘을 잃게 되었다. 그 힘을 찾기 위해서는 내가 필요하다고 하는데..."),
                     Infomation(infomationID: .hwiryeong3, isLocked: false, text: "그 대가로 내 소원을 들어주겠다고 하니.. 어떻게 해야 할까?")
         
                    ],isLocked: true),
@@ -59,9 +59,9 @@ currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStor
     ],isLocked: true),
     
     GameCharacter(name: "김자점", profileImage: "kimman", backGroundImage: "", description: "반역이 절대 들켜서는 안 돼.\n전하의 눈과 귀를 막아야겠어.", infomation: [
-        Infomation(infomationID: .kimjajeom1, isLocked: false, text: "개인 사병을 지니고 있고, 그 중 한 명이 주인공이다."),
+        Infomation(infomationID: .kimjajeom1, isLocked: false, text: "개인 사병을 지니고 있고, 그중 한 명이 나다."),
         Infomation(infomationID: .kimjajeom2, isLocked: false, text: "이귀와 함께 역모 사건에 연루되어 곤경에 처했었다."),
-        Infomation(infomationID: .kimjajeom3, isLocked: false, text: "김상궁에게 뇌물을 주며 반역의 소문을 잠재우려 했다.")
+        Infomation(infomationID: .kimjajeom3, isLocked: false, text: "김상궁에게 뇌물을 주며 반역의 소문을 잠재우려고 한다.")
     ],isLocked: true),
     
     GameCharacter(name: "김상궁", profileImage: "kimwoman", backGroundImage: "", description: "돈이 최고지~\n왕은 나를 제일 사랑하신다고.\n내가 없으면 이 나라는 돌아가지 않아.", infomation: [
@@ -70,7 +70,7 @@ currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStor
         Infomation(infomationID: .kimsanggung3, isLocked: false, text: "뛰어난 미모를 가지고 있지는 않았다."),
         Infomation(infomationID: .kimsanggung4, isLocked: false, text: "그녀의 총명함에 사로잡혀 광해군이 그녀를 매우 아꼈다."),
         Infomation(infomationID: .kimsanggung5, isLocked: false, text: "후궁이 되는 것을 거부하여 계속 상궁의 신분을 유지하였다. 그 덕에 자유롭게 궐 밖으로 돌아다닐 수 있어 다양한 정보를 확보할 수 있었다."),
-        Infomation(infomationID: .kimsanggung6, isLocked: false, text: "광해군이 그녀를 아끼고 신뢰를 하면서 후궁보다 권세가 더 높았다."),],isLocked: true),
+        Infomation(infomationID: .kimsanggung6, isLocked: false, text: "광해군이 그녀를 아끼고 신뢰를 하면서 후궁보다 권세가 더 높았다고 하니...대단한걸."),],isLocked: true),
     
     GameCharacter(name: "가난한 평민", profileImage: "poorman", backGroundImage: "", description: "거기 누구요?!\n이곳엔 더 이상 가져갈 것도 없으니\n썩 물러가시오!", infomation: [
         Infomation(infomationID: .kimjajeom2, isLocked: false, text: "마을 끝자락에 위치한 가난한 사람들끼리 뭉쳐있는 곳에 살고 있는 사람이다."),
