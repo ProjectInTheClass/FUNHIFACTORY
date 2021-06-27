@@ -13,6 +13,16 @@ import UIKit
 class EPHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
     
+    func currentHistoryDanhee() -> GameCharacterID {
+        switch currentEpisode?.episodeID {
+        case "prologue":
+            return .danhee
+        case "1623":
+            return .danhee2
+        default:
+            return .danhee
+        }
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let currentChat = currentEpisode?.chatHistory else {
             return 0
@@ -31,7 +41,7 @@ class EPHistoryViewController: UIViewController, UITableViewDelegate, UITableVie
         if target.type == .onlyText && target.who.info().name == "이단희"{
             print("메인게임 - 자신 텍스트 출력")
             let cell = chatHistoryTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
-            cell.myTextCellUpdate(name: target.who, chat: chatText, profile: target.characterFace, godchat: target.isGodChat)
+            cell.myTextCellUpdate(name: target.who, chat: chatText, profile: target.characterFace, godchat: target.isGodChat, currentDanhee: currentHistoryDanhee())
             return cell
         }
         //상대가 보냈을 때
@@ -64,7 +74,7 @@ class EPHistoryViewController: UIViewController, UITableViewDelegate, UITableVie
             let cell = chatHistoryTableView.dequeueReusableCell(withIdentifier: "monologue", for: indexPath) as! monologueTableViewCell
             cell.monologueText.text = chatText
             cell.name.textColor = .white
-            cell.chatUpdate(nickname: target.who, profile: target.characterFace, godchat: target.isGodChat)
+            cell.chatUpdate(nickname: target.who, profile: target.characterFace, godchat: target.isGodChat, currentDanhee: currentHistoryDanhee())
             return cell
         }
         else if target.type == .ar{
@@ -129,8 +139,8 @@ class EPHistoryViewController: UIViewController, UITableViewDelegate, UITableVie
         guard let currentEpisode = currentEpisode else {
             return }
         mapImageView.image = UIImage(named:"\(currentEpisode.episodeID)map")
-        if currentEpisode.episodeID == "1623" || currentEpisode.episodeID == "prologue" {
-            mapImageView.image = UIImage(named:"2020map")
+        if currentEpisode.episodeID == "prologue" {
+            mapImageView.image = UIImage(named:"2039map")
         }
     }
     /*

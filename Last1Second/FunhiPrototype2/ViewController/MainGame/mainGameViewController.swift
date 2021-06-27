@@ -91,7 +91,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         if target.type == .onlyText && target.who.info().name == "이단희"{
             print("자신텍스트 : \(player.currentChatArray[indexPath.row].text)")
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
-            cell.myTextCellUpdate(name: target.who, chat: chatText, profile: target.characterFace, godchat: target.isGodChat)
+            cell.myTextCellUpdate(name: target.who, chat: chatText, profile: target.characterFace, godchat: target.isGodChat, currentDanhee: currentMainGameDanhee())
 //            cell.layoutIfNeeded()
             return cell
         }
@@ -124,7 +124,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "monologue", for: indexPath) as! monologueTableViewCell
             cell.monologueText.text = chatText
             cell.name.textColor = .white
-            cell.chatUpdate(nickname: target.who, profile: target.characterFace, godchat: target.isGodChat)
+            cell.chatUpdate(nickname: target.who, profile: target.characterFace, godchat: target.isGodChat, currentDanhee: currentMainGameDanhee())
             return cell
         }
         else if target.type == .ar{

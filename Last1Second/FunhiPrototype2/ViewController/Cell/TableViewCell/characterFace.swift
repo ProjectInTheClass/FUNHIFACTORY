@@ -7,11 +7,11 @@
 
 import Foundation
 
-func findFaceImage(nickname:GameCharacterID, profile:CharacterFace, normalProfile : String) -> String
+func findFaceImage(nickname:GameCharacterID, profile:CharacterFace, normalProfile : String, currentDanhee: GameCharacterID) -> String
 {
     switch nickname {
     case .currentEpDanhee:
-        return findFaceImage(nickname: currentDanhee(), profile: profile, normalProfile: normalProfile)
+        return findFaceImage(nickname: currentDanhee, profile: profile, normalProfile: normalProfile, currentDanhee: currentDanhee)
     case .danhee:
         switch profile {
         case .angry1: return "prolog danhee angry 1"

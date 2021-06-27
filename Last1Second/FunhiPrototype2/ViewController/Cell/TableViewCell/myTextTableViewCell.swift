@@ -28,7 +28,7 @@ class myTextTableViewCell: UITableViewCell {
         chatView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner, .layerMaxXMaxYCorner]
     }
     
-    func myTextCellUpdate(name:GameCharacterID,chat:String,profile:CharacterFace, godchat : Bool){
+    func myTextCellUpdate(name:GameCharacterID,chat:String,profile:CharacterFace, godchat : Bool, currentDanhee: GameCharacterID){
         profileNickname.text = name.info().name
         chatText.text = chat
         
@@ -49,7 +49,7 @@ class myTextTableViewCell: UITableViewCell {
             profileNickname.textColor = .white
             backgroundColor =  UIColor(red: 0.07, green: 0.15, blue: 0.22, alpha: 1)
         }
-        let face = findFaceImage(nickname: name, profile: profile, normalProfile: "none")
+        let face = findFaceImage(nickname: name, profile: profile, normalProfile: "none", currentDanhee: currentDanhee)
         profileImage.image = UIImage(named: face)
     }
 }

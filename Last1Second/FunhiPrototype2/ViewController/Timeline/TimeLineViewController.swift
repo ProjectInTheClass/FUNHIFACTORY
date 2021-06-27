@@ -367,7 +367,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         guard let currentEpisode = selectedEpisode else { return }
         if currentEpisode.chatHistory.count != 0 {
             let dataToSend = currentEpisode
-            player.dayId = currentEpisode.episodeID
+          //  player.dayId = currentEpisode.episodeID
             performSegue(withIdentifier: "textSegue", sender: dataToSend)
         } else {
             self.view.addSubview(thirdPopup)
@@ -403,7 +403,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var exitButton: UIButton!
     
-    //예 버튼 눌렀을 때
+    //예 버튼 눌렀을 때 : 체크포인트부터 다시 시작
     @IBAction func continueButtonAction(_ sender: Any) {
         guard let selectedEpisode = selectedEpisode else { return }
         

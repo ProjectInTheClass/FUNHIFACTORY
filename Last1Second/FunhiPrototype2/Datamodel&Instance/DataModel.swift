@@ -209,7 +209,7 @@ enum GameCharacterID: String,Codable {
     func info() -> GameCharacter{
         switch self {
         case .currentEpDanhee:
-            return currentDanhee().info()
+            return currentMainGameDanhee().info()
         case .danhee:
             return player.currentEpisodes[0].currentCharacterNote[0]
         case .hwiryeong:
@@ -288,7 +288,11 @@ struct User: Codable {
    
     //이 아래 두 개 역할이 어떻게 되고 어떤 차이점이 있는지 주석으로 설명 부탁합니다 궁금22
     var dayIndex:Int
-    var dayId:String
+    var dayId:String {
+        didSet {
+            print("dayID 바뀜: \(self.dayId)")
+        }
+    }
     var currentChatId: String
     var currentChatArray: [Chat]
     var indexNumber = 0 
@@ -558,11 +562,13 @@ struct GameData {
 enum CharacterFace: String, Codable{
     case none,angry1,angry2,angry3, angry4,basic,cry1,cry2,happy1,happy2,happy3,sad,scared,straight,surprise1,surprise2,basictalk,cryangry1,cryangry2,thanks,danger,happytalk
 }
-func currentDanhee() -> GameCharacterID
+func currentMainGameDanhee() -> GameCharacterID
 {
     switch currentEpisode().episodeID {
-        case "prologue": return .danhee
-        case "1623": return .danhee2
+        case "prologue":
+            return .danhee
+        case "1623":
+            return .danhee2
         default:
             return .danhee
     }

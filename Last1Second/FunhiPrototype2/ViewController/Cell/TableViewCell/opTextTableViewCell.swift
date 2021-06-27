@@ -52,7 +52,7 @@ class opTextTableViewCell: UITableViewCell {
             profileNickname.textColor = .white
             backgroundColor =  UIColor(red: 0.07, green: 0.15, blue: 0.22, alpha: 1)
         }
-        let face = findFaceImage(nickname: name, profile: mainProfile, normalProfile: normalProfile)
+        let face = findFaceImage(nickname: name, profile: mainProfile, normalProfile: normalProfile, currentDanhee: currentMainGameDanhee())
         profileImage.image = UIImage(named: face)
     }
 }
