@@ -211,25 +211,25 @@ enum GameCharacterID: String,Codable {
         case .currentEpDanhee:
             return currentDanhee().info()
         case .danhee:
-            return prologueChapter.currentCharacterNote[0]
+            return player.currentEpisodes[0].currentCharacterNote[0]
         case .hwiryeong:
-            return prologueChapter.currentCharacterNote[1]
+            return player.currentEpisodes[0].currentCharacterNote[1]
         case .tourguide:
-            return prologueChapter.currentCharacterNote[2]
+            return player.currentEpisodes[0].currentCharacterNote[2]
         case .teacher:
-            return prologueChapter.currentCharacterNote[3]
+            return player.currentEpisodes[0].currentCharacterNote[3]
         case .danhee2:
-            return chapter2.currentCharacterNote[0]
+            return player.currentEpisodes[2].currentCharacterNote[0]
         case .igwi:
-            return  chapter2.currentCharacterNote[1]
+            return  player.currentEpisodes[2].currentCharacterNote[1]
         case .kimman:
-            return chapter2.currentCharacterNote[2]
+            return player.currentEpisodes[2].currentCharacterNote[2]
         case .kimwoman:
-            return chapter2.currentCharacterNote[3]
+            return player.currentEpisodes[2].currentCharacterNote[3]
         case .poorman:
-            return chapter2.currentCharacterNote[4]
+            return player.currentEpisodes[2].currentCharacterNote[4]
         case .injo:
-            return chapter2.currentCharacterNote[5]
+            return player.currentEpisodes[2].currentCharacterNote[5]
         case .everyone:
             return extraCharacters[0]
         case .extra1:
