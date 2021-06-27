@@ -10,7 +10,7 @@ import AVFoundation
 
 
 var player = User(
-    setting: Setting(bgmVolume: 0.5, effectVolume: 0.5, textSpeed: 0.5, darkmode: false, vibration: true),
+    setting: Setting(bgmVolume: 0.5, effectVolume: 0.5, textSpeed: 2.15, darkmode: false, vibration: true),
     currentEpisodes: [Episode(episodeID: "prologue", episodePlace: "현재", episodeYear: 2039, episodeKingYear: "현재 2039년", episodeShortDesciption: "지루하고 따분한, 그저 우울하기만 한\n이런 삶은 이제 그만하고 싶다.\n누군가 나에게 내 하루를 바꿀 수 있는, 내 인생을 바꿀 수 있는\n구원의 손길을 내밀어 준다면,\n나는 그 손을....잡을 수 있을까?", episodeDesciption: "지루하고 따분한, 그저 우울하기만 한\n이런 삶은 이제 그만하고 싶다.\n\n누군가 나에게 내 하루를 바꿀 수 있는,\n내 인생을 바꿀 수 있는\n구원의 손길을 내밀어 준다면,\n나는 그 손을.... 잡을 수 있을까?", episodePlaceImage: "donhwamun illust", episodeCoverImage: "donhwamun background image", chatHistory: [], storyBlocks: [:], currentCharacterNote:
     
     [GameCharacter(name: "이단희", profileImage: "prolog danhee", backGroundImage: "prolog danhee_background", description: "내 곁에 아무도 없다는 게 이젠 익숙해.\n이런 내 삶이 바뀔 수 있을까?", infomation: [],isLocked: false),
@@ -65,7 +65,7 @@ currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStor
     ],isLocked: true),
     
     GameCharacter(name: "김상궁", profileImage: "kimwoman", backGroundImage: "", description: "돈이 최고지~\n왕은 나를 제일 사랑하신다고.\n내가 없으면 이 나라는 돌아가지 않아.", infomation: [
-                    Infomation(infomationID: .kimsanggung1, isLocked: false, text: "내가 뇌물을 전해줘야 하는 사람이다."),
+        Infomation(infomationID: .kimsanggung1, isLocked: false, text: "내가 뇌물을 전해줘야 하는 사람이다."),
         Infomation(infomationID: .kimsanggung1, isLocked: false, text: "조선 중기 광해군 시절의 상궁이다."),
         Infomation(infomationID: .kimsanggung2, isLocked: false, text: "광해군의 아내인 중전 유씨의 신임을 얻어 왕의 곁에서 모실 수 있는 기회를 얻었다."),
         Infomation(infomationID: .kimsanggung3, isLocked: false, text: "뛰어난 미모를 가지고 있지는 않았다."),
