@@ -269,7 +269,9 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         }
         if isStartOfEpisode {
             if let previousEpisodeID = previousEpisodeID {
-                player.currentEpisodes[strToIndex(str: previousEpisodeID)].chatHistory = player.currentChatArray
+                if player.currentChatArray.count != 0 {
+                    player.currentEpisodes[strToIndex(str: previousEpisodeID)].chatHistory = player.currentChatArray
+                }
             }
            
             player.currentChatArray.removeAll()

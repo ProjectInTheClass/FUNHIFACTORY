@@ -496,7 +496,16 @@ struct Episode: Codable {
     // 에피소드 첫 진입 했는지 안 했는지 여부. 수첩/앨범 에피소드 이름 표시 여부 식별 위함
     var isStarted: Bool = false
     // 에피소드 완료시, 해당 에피소드 대화 내용이 저장되는 곳. 추후 타임라인에서 '이전 기록 보기'기능 할 때 사용될 예정임.
-    var chatHistory: [Chat]
+    var chatHistory: [Chat] {
+        didSet {
+            if chatHistory.count == 0 {
+                print("값 없음")
+            } else {
+                print("값 있음")
+            }
+            
+        }
+    }
     //(예시 : 대사)
     var storyBlocks: [String:BlockOfDayEpisode]
     // 해당 사건의 수첩에 적힐 캐릭터들

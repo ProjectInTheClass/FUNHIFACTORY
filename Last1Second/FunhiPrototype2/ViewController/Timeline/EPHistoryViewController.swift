@@ -98,7 +98,11 @@ class EPHistoryViewController: UIViewController, UITableViewDelegate, UITableVie
         navigationController?.popViewController(animated: true)
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let currentEpisode = currentEpisode else {return}
+        chatHistoryTableView.reloadData()
+        yearLabel.text = "\(currentEpisode.episodeYear)년"
+    }
     @IBOutlet weak var chatHistoryTableView: UITableView!
     @IBOutlet var yearLabel: UILabel!
     //------------지도 팝업-------

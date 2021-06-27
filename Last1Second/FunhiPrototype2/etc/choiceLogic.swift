@@ -59,6 +59,7 @@ extension mainGameViewController{
             print("\(player.currentEpisodes[player.dayIndex].episodeID) 클리어")
             player.currentEpisodes[strToIndex(str: player.dayId)].chatHistory = player.currentChatArray
             player.currentChatArray.removeAll()
+            
             print("-------------------------maingameend----------------------")
             if player.dayId == "prologue"
             {

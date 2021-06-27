@@ -365,8 +365,14 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
     //이전 기록 보기 버튼
     @IBAction func openEpisodeHistoryAction(_ sender: Any) {
         guard let currentEpisode = selectedEpisode else { return }
-        let dataToSend = currentEpisode
-        performSegue(withIdentifier: "textSegue", sender: dataToSend)
+        if currentEpisode.chatHistory.count != 0 {
+            let dataToSend = currentEpisode
+            performSegue(withIdentifier: "textSegue", sender: dataToSend)
+        } else {
+            self.view.addSubview(thirdPopup)
+            thirdPopupLabel.text = "아직 기록된 내용이 없습니다.\n조금 더 플레이 후 눌러주세요!"
+        }
+       
     }
     
     @IBAction func selectedEpisodePopupExitButtonAction(_ sender: Any) {

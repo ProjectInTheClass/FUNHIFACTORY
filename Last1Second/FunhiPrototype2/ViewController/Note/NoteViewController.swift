@@ -261,14 +261,18 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         self.designTableView.dataSource = self
         designObjects()
         designButtons()
-        
+        updateTitle(newTitleNumber: 0)
+        updatePage(newPageNumber: 0)
         
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        updateTitle(newTitleNumber: 0)
+        
         designButtons()
         
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+       
     }
   
 //----------------------일반----------------------
@@ -286,6 +290,8 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         transition.subtype = CATransitionSubtype.fromTop
         self.navigationController!.view.layer.add(transition, forKey: kCATransition)
         self.navigationController?.popViewController(animated: false)
+        updateTitle(newTitleNumber: 0)
+        updatePage(newPageNumber: 0)
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
  
@@ -366,7 +372,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         for button in pageButtons.enumerated() {
             
             let currentEpisode = player.currentEpisodes[button.offset]
-            
+        
             currentEpisode.isStarted ? button.element.setTitle(String(currentEpisode.episodeYear), for: .normal) : button.element.setTitle("????", for: .normal)
             button.element.layer.cornerRadius = 10
             button.element.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
