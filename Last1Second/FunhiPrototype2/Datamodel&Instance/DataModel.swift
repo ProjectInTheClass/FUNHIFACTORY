@@ -20,7 +20,7 @@ struct Setting : Codable{
     var vibration : Bool
 }
 var xImage: String {
-    if playerSetting.darkmode {
+    if player.setting.darkmode {
         return "black x"
     } else {
         return "white x"
@@ -120,27 +120,27 @@ enum AlbumImageID: String,Codable{
     func info() -> AlbumImage{
         switch self {
         case .donhwamun_with_danhee:
-                return prologueChapter.currentAlbumImages[0]
+                return player.currentEpisodes[0].currentAlbumImages[0]
         case .drawing_geumcheongyo:
-                return prologueChapter.currentAlbumImages[1]
+                return player.currentEpisodes[0].currentAlbumImages[1]
         case .drawing_injeongjeon:
-                return prologueChapter.currentAlbumImages[2]
+                return player.currentEpisodes[0].currentAlbumImages[2]
         case .necklace_in_hand:
-                return prologueChapter.currentAlbumImages[3]
+                return player.currentEpisodes[0].currentAlbumImages[3]
         case .prolog_danhee :
-                return prologueChapter.currentAlbumImages[4]
+                return player.currentEpisodes[0].currentAlbumImages[4]
         case .prolog_hwiryeong :
-                return prologueChapter.currentAlbumImages[5]
+                return player.currentEpisodes[0].currentAlbumImages[5]
         case .conference_hall:
-                return chapter2.currentAlbumImages[0]
+                return player.currentEpisodes[2].currentAlbumImages[0]
         case .bribe:
-                return chapter2.currentAlbumImages[1]
+                return player.currentEpisodes[2].currentAlbumImages[1]
         case .huijeongdang_fire:
-                return chapter2.currentAlbumImages[2]
+                return player.currentEpisodes[2].currentAlbumImages[2]
         case .huwon_garden_fire:
-            return chapter2.currentAlbumImages[3]
+            return player.currentEpisodes[2].currentAlbumImages[3]
         case .revolt_image:
-            return chapter3.currentAlbumImages[4]
+            return player.currentEpisodes[3].currentAlbumImages[4]
         }
         
     }
