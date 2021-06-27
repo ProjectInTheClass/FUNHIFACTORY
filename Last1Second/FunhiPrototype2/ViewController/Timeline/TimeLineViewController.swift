@@ -367,6 +367,7 @@ class TimeLineViewController: UIViewController,UITableViewDelegate, UITableViewD
         guard let currentEpisode = selectedEpisode else { return }
         if currentEpisode.chatHistory.count != 0 {
             let dataToSend = currentEpisode
+            player.dayId = currentEpisode.episodeID
             performSegue(withIdentifier: "textSegue", sender: dataToSend)
         } else {
             self.view.addSubview(thirdPopup)
