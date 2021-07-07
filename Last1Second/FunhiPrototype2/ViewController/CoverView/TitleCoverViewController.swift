@@ -15,7 +15,7 @@ class TitleCoverViewController: UIViewController {
         super.viewDidLoad()
         designButton()
        
-        alertPopupLabel.text = "게임 데이터를 다운로드합니다.\n 아래 버튼을 눌러주세요!\n\n네트워크 연결이 필요합니다."
+        alertPopupLabel.text = "게임 데이터를 다운로드합니다.\n 아래 버튼을 눌러주세요!\n\n네트워크 연결이 필요합니다. \n1.6 MB"
         alertPopupLabel.setLineSpacing(lineSpacing: 6)
         alertPopupLabel.textAlignment = .center
       

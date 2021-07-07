@@ -16,8 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
       
         loadFromFile()
-        downloadData(targetURL: "https://raw.githubusercontent.com/ProjectInTheClass/FUNHIFACTORYGameData/master/prologue_story.json", targetEpisodeIndex: 0)
-        downloadData(targetURL: "https://raw.githubusercontent.com/ProjectInTheClass/FUNHIFACTORYGameData/master/case2_story.json", targetEpisodeIndex: 2)
         return true
     }
 
