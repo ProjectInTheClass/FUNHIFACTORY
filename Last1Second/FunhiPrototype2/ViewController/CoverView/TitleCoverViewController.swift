@@ -11,6 +11,7 @@ class TitleCoverViewController: UIViewController {
 
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var testLabel: UILabel!
+    var downloadAccept = false;
     override func viewDidLoad() {
         super.viewDidLoad()
         designButton()
@@ -29,10 +30,8 @@ class TitleCoverViewController: UIViewController {
         if successDownload {
             print("**0, 2챕터 들어옴**")
             light()
-            startButton.isHidden = false
         } else {
             print("**0, 2챕터 들어오지 않음, 재시도 필요**")
-            startButton.isHidden = true
             openAlertPopupView()
         }
     }
@@ -71,25 +70,32 @@ class TitleCoverViewController: UIViewController {
     
     @IBAction func startAction(_ sender: Any) {
         
-      
+        let successDownload = !player.currentEpisodes[0].storyBlocks.isEmpty && !player.currentEpisodes[2].storyBlocks.isEmpty
         
-        let startedCurrentEpisode = player.currentEpisodes[strToIndex(str: player.dayId)].isStarted
-        let isPrologue = strToIndex(str: player.dayId) == 0
-        let cleardCurrentEpisode = player.currentEpisodes[strToIndex(str: player.dayId)].isCleared
+        if (successDownload)
+        {
+            let startedCurrentEpisode = player.currentEpisodes[strToIndex(str: player.dayId)].isStarted
+            let isPrologue = strToIndex(str: player.dayId) == 0
+            let cleardCurrentEpisode = player.currentEpisodes[strToIndex(str: player.dayId)].isCleared
+            
+            if !startedCurrentEpisode && isPrologue {
+                    player.dayId = player.currentEpisodes[0].episodeID
+                    player.indexNumber = 0
+                    //player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = "014"
+                    performSegue(withIdentifier: "fromCoverToChapterCover", sender: nil)
+            }
+            
+            if cleardCurrentEpisode || (!cleardCurrentEpisode && !startedCurrentEpisode && !isPrologue) {
+                performSegue(withIdentifier: "goToSelectSelectSegue", sender: nil)
+            }
         
-        if !startedCurrentEpisode && isPrologue {
-                player.dayId = player.currentEpisodes[0].episodeID
-                player.indexNumber = 0
-                //player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = "014"
-                performSegue(withIdentifier: "fromCoverToChapterCover", sender: nil)
+            if !cleardCurrentEpisode && startedCurrentEpisode {
+                performSegue(withIdentifier: "fromCoverToHomeSegue", sender: nil)
+            }
         }
-        
-        if cleardCurrentEpisode || (!cleardCurrentEpisode && !startedCurrentEpisode && !isPrologue) {
-            performSegue(withIdentifier: "goToSelectSelectSegue", sender: nil)
-        }
-    
-        if !cleardCurrentEpisode && startedCurrentEpisode {
-            performSegue(withIdentifier: "fromCoverToHomeSegue", sender: nil)
+        else
+        {
+            openAlertPopupView()
         }
     }
     
@@ -104,6 +110,9 @@ class TitleCoverViewController: UIViewController {
         downloadData(targetURL: "https://raw.githubusercontent.com/ProjectInTheClass/FUNHIFACTORYGameData/master/case2_story.json", targetEpisodeIndex: 2)
         alertPopupView.removeFromSuperview()
         checkForSuccessfulDownloadOfJson()
+    }
+    @IBAction func cancelDownload(_ sender: Any) {
+        alertPopupView.removeFromSuperview()
     }
     
     

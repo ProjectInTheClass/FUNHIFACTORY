@@ -101,41 +101,6 @@
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tNG-fd-F5Z">
-                                    <rect key="frame" x="23" y="147" width="297" height="44"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="INB-OJ-KHz">
-                                            <rect key="frame" x="2" y="-2" width="293" height="41"/>
-                                            <color key="backgroundColor" red="0.79215686269999996" green="0.85882352939999995" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="17"/>
-                                            <state key="normal" title="확인">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="10"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="exitPopupView:" destination="kJc-iQ-Szc" eventType="touchUpInside" id="tk7-Zg-YcZ"/>
-                                                <action selector="thirdPopupOkayButtonTouched:" destination="LDT-1T-9Vm" eventType="touchUpInside" id="dVA-38-Dh7"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.4431372549" green="0.56078431370000004" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="INB-OJ-KHz" secondAttribute="bottom" constant="5" id="4wm-bf-Pjk"/>
-                                        <constraint firstAttribute="height" constant="44" id="RI5-OJ-7dg"/>
-                                        <constraint firstItem="INB-OJ-KHz" firstAttribute="top" secondItem="tNG-fd-F5Z" secondAttribute="top" constant="-2" id="go1-Wy-hjy"/>
-                                        <constraint firstItem="INB-OJ-KHz" firstAttribute="leading" secondItem="tNG-fd-F5Z" secondAttribute="leading" constant="2" id="m5J-Ua-z6b"/>
-                                        <constraint firstAttribute="trailing" secondItem="INB-OJ-KHz" secondAttribute="trailing" constant="2" id="rrq-eD-ErG"/>
-                                    </constraints>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="12"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </view>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blue emergency" translatesAutoresizingMaskIntoConstraints="NO" id="H3O-oj-qSD">
                                     <rect key="frame" x="149" y="21" width="45" height="45"/>
                                     <constraints>
@@ -149,17 +114,90 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="WLe-Wz-4g8">
+                                    <rect key="frame" x="23" y="147" width="297" height="44"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tNG-fd-F5Z" userLabel="confirmButton">
+                                            <rect key="frame" x="0.0" y="0.0" width="141" height="44"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="INB-OJ-KHz">
+                                                    <rect key="frame" x="2" y="-2" width="137" height="41"/>
+                                                    <color key="backgroundColor" red="0.79215686269999996" green="0.85882352939999995" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="17"/>
+                                                    <state key="normal" title="확인">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="exitPopupView:" destination="kJc-iQ-Szc" eventType="touchUpInside" id="tk7-Zg-YcZ"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.4431372549" green="0.56078431370000004" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="INB-OJ-KHz" secondAttribute="bottom" constant="5" id="4wm-bf-Pjk"/>
+                                                <constraint firstAttribute="height" constant="44" id="RI5-OJ-7dg"/>
+                                                <constraint firstItem="INB-OJ-KHz" firstAttribute="top" secondItem="tNG-fd-F5Z" secondAttribute="top" constant="-2" id="go1-Wy-hjy"/>
+                                                <constraint firstItem="INB-OJ-KHz" firstAttribute="leading" secondItem="tNG-fd-F5Z" secondAttribute="leading" constant="2" id="m5J-Ua-z6b"/>
+                                                <constraint firstAttribute="trailing" secondItem="INB-OJ-KHz" secondAttribute="trailing" constant="2" id="rrq-eD-ErG"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="12"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F9Z-Cd-s3M" userLabel="cancelButton">
+                                            <rect key="frame" x="156" y="0.0" width="141" height="44"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMU-GO-cC4">
+                                                    <rect key="frame" x="2" y="-2" width="137" height="41"/>
+                                                    <color key="backgroundColor" red="0.79215686269999996" green="0.85882352939999995" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="17"/>
+                                                    <state key="normal" title="취소">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="cancelDownload:" destination="kJc-iQ-Szc" eventType="touchUpInside" id="KlK-cj-bSe"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.4431372549" green="0.56078431370000004" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="yMU-GO-cC4" firstAttribute="top" secondItem="F9Z-Cd-s3M" secondAttribute="top" constant="-2" id="KHT-JQ-bm1"/>
+                                                <constraint firstAttribute="trailing" secondItem="yMU-GO-cC4" secondAttribute="trailing" constant="2" id="SrE-KZ-KjG"/>
+                                                <constraint firstAttribute="bottom" secondItem="yMU-GO-cC4" secondAttribute="bottom" constant="5" id="e52-rK-2D0"/>
+                                                <constraint firstAttribute="height" constant="44" id="lo3-8c-sVr"/>
+                                                <constraint firstItem="yMU-GO-cC4" firstAttribute="leading" secondItem="F9Z-Cd-s3M" secondAttribute="leading" constant="2" id="r5U-uF-LKd"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="12"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                </stackView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="f7q-zO-5GQ" firstAttribute="top" secondItem="H3O-oj-qSD" secondAttribute="bottom" constant="24" id="0EE-NC-NYs"/>
-                                <constraint firstAttribute="bottom" secondItem="tNG-fd-F5Z" secondAttribute="bottom" constant="29" id="2us-aP-YAT"/>
                                 <constraint firstItem="f7q-zO-5GQ" firstAttribute="leading" secondItem="ann-ig-Jvp" secondAttribute="leading" constant="15" id="62O-MD-YZl"/>
-                                <constraint firstItem="tNG-fd-F5Z" firstAttribute="leading" secondItem="ann-ig-Jvp" secondAttribute="leading" constant="23" id="Ceu-En-ON9"/>
+                                <constraint firstItem="WLe-Wz-4g8" firstAttribute="leading" secondItem="ann-ig-Jvp" secondAttribute="leading" constant="23" id="Apj-Sm-eZn"/>
+                                <constraint firstItem="WLe-Wz-4g8" firstAttribute="top" secondItem="f7q-zO-5GQ" secondAttribute="bottom" constant="39" id="Nsj-dH-fVm"/>
+                                <constraint firstAttribute="bottom" secondItem="WLe-Wz-4g8" secondAttribute="bottom" constant="29" id="NyV-b2-8gJ"/>
+                                <constraint firstAttribute="trailing" secondItem="WLe-Wz-4g8" secondAttribute="trailing" constant="23" id="Osy-OR-j2p"/>
                                 <constraint firstItem="H3O-oj-qSD" firstAttribute="centerX" secondItem="ann-ig-Jvp" secondAttribute="centerX" id="UI2-Yc-EsP"/>
-                                <constraint firstItem="tNG-fd-F5Z" firstAttribute="top" secondItem="f7q-zO-5GQ" secondAttribute="bottom" constant="39" id="d8x-mv-3QY"/>
                                 <constraint firstItem="H3O-oj-qSD" firstAttribute="top" secondItem="ann-ig-Jvp" secondAttribute="top" constant="21" id="eSi-QF-SVI"/>
-                                <constraint firstAttribute="trailing" secondItem="tNG-fd-F5Z" secondAttribute="trailing" constant="23" id="mfZ-tb-IpF"/>
                                 <constraint firstAttribute="trailing" secondItem="f7q-zO-5GQ" secondAttribute="trailing" constant="15" id="nvp-1l-BNo"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
