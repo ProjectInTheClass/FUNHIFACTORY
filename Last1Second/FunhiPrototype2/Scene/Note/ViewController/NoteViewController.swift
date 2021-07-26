@@ -12,10 +12,10 @@ class NoteSmallGameCharacterTableViewCell: UITableViewCell {
     @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-
     @IBOutlet weak var lockedView: UIView!
-
     @IBOutlet var viewMoreView: UIView!
+  
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         designCell()

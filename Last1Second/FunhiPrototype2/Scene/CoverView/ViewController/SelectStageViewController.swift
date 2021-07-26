@@ -14,49 +14,18 @@ class SelectStageTableViewCell: UITableViewCell {
     @IBOutlet weak var episodeYear: UILabel!
     @IBOutlet weak var episodePlace: UILabel!
     @IBOutlet weak var episodePlaceImage: UIImageView!
-
     @IBOutlet weak var leftBox: UIView!
-
     @IBOutlet weak var lockedView: UIView!
-
-    
-    
     @IBOutlet var progressBackgroundView: UIView!
     @IBOutlet var progressView: CircularProgressView!
-    var touched: Bool = false
+  
+    
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         designButton()
      
-//        let tap = UILongPressGestureRecognizer(target: self, action: #selector(changeColorObjc))
-//                tap.minimumPressDuration = 0
-//        cellBackground.addGestureRecognizer(tap)
-    }
-//    @objc func changeColorObjc(gesture: UITapGestureRecognizer) {
-//        if gesture.state == .began {
-//            cellBackground.backgroundColor = UIColor.darkGray
-//                return
-//            }
-//
-//            if gesture.state == .changed {
-//                print("very likely, just that the finger wiggled around while the user was holding down the button. generally, just ignore this")
-//                return
-//            }
-//
-//            if gesture.state == .possible || gesture.state == .recognized {
-//                print("in almost all cases, simply ignore these two, unless you are creating very unusual custom subclasses")
-//                cellBackground.backgroundColor = UIColor.lightGray
-//                //popup open
-//                return
-//            }
-//        }
-//
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     func designButton() {
         
@@ -75,9 +44,6 @@ class SelectStageTableViewCell: UITableViewCell {
       
         progressBackgroundView.setShadow(color: UIColor(red: 0.325, green: 0.455, blue: 0.584, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 4)
     }
-    
- 
-
 }
   
 

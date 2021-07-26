@@ -17,13 +17,8 @@ class AlbumTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         albumImageNameLabel.font = UIFont(name: "NanumSquareEB", size: 15)
-       
         albumImageView.layer.cornerRadius = 7
-        
         lockedView.layer.cornerRadius = 7
-     
-     
-        
         
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
