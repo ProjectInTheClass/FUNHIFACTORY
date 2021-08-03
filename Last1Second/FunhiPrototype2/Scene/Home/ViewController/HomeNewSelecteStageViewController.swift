@@ -222,7 +222,7 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
         case true:
             popupText = "이 에피소드는 모든 사건을 해결한 후에 진행할 수 있습니다."
         case false:
-            popupText = "10월 공개 예정입니다.\n그때까지 조금만 기다려주세요!"
+            popupText = "2022년 1월 공개 예정입니다.\n그때까지 조금만 기다려주세요!"
         }
        
         lockedPopupLabel.text = popupText
