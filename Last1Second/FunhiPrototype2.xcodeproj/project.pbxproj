@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,12 @@
 		4548735C25F758C800D61F6B /* 경기천년바탕_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4548734D25F758C700D61F6B /* 경기천년바탕_Bold.ttf */; };
 		4548735D25F758C800D61F6B /* NanumSquareRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4548734E25F758C700D61F6B /* NanumSquareRegular.ttf */; };
 		4548735E25F758C800D61F6B /* NanumSquareExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4548734F25F758C700D61F6B /* NanumSquareExtraBold.ttf */; };
+		456BA65C26BD8177003F89D5 /* EpisodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 456BA65B26BD8177003F89D5 /* EpisodeCell.xib */; };
+		456BA65E26BD8185003F89D5 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456BA65D26BD8185003F89D5 /* EpisodeCell.swift */; };
+		456BA66026BE5DB4003F89D5 /* CheckPointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456BA65F26BE5DB4003F89D5 /* CheckPointCell.swift */; };
+		456BA66226BE8A79003F89D5 /* EpisodeCurrentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 456BA66126BE8A79003F89D5 /* EpisodeCurrentCell.xib */; };
+		456BA66426BE8AA7003F89D5 /* EpisodeCurrentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456BA66326BE8AA6003F89D5 /* EpisodeCurrentCell.swift */; };
+		456BA66726BE9F0B003F89D5 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456BA66626BE9F0B003F89D5 /* IntExtension.swift */; };
 		459561CF267E3DE100DA3A3A /* HidePocketInGround.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 459561CD267E3DE100DA3A3A /* HidePocketInGround.rcproject */; };
 		459B3726265DECB500808FD6 /* notePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459B3725265DECB400808FD6 /* notePopupView.swift */; };
 		45AA92BE25E7D76F00064E62 /* scrollingEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA92BA25E7D76F00064E62 /* scrollingEffect.swift */; };
@@ -115,6 +121,12 @@
 		4548734D25F758C700D61F6B /* 경기천년바탕_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "경기천년바탕_Bold.ttf"; path = "fontFile/경기천년바탕_Bold.ttf"; sourceTree = SOURCE_ROOT; };
 		4548734E25F758C700D61F6B /* NanumSquareRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRegular.ttf; path = fontFile/NanumSquareRegular.ttf; sourceTree = SOURCE_ROOT; };
 		4548734F25F758C700D61F6B /* NanumSquareExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareExtraBold.ttf; path = fontFile/NanumSquareExtraBold.ttf; sourceTree = SOURCE_ROOT; };
+		456BA65B26BD8177003F89D5 /* EpisodeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeCell.xib; sourceTree = "<group>"; };
+		456BA65D26BD8185003F89D5 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
+		456BA65F26BE5DB4003F89D5 /* CheckPointCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPointCell.swift; sourceTree = "<group>"; };
+		456BA66126BE8A79003F89D5 /* EpisodeCurrentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeCurrentCell.xib; sourceTree = "<group>"; };
+		456BA66326BE8AA6003F89D5 /* EpisodeCurrentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCurrentCell.swift; sourceTree = "<group>"; };
+		456BA66626BE9F0B003F89D5 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		459561CC267E3DE100DA3A3A /* HidePocketBetweenRocks.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = HidePocketBetweenRocks.rcproject; sourceTree = "<group>"; };
 		459561CD267E3DE100DA3A3A /* HidePocketInGround.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = HidePocketInGround.rcproject; sourceTree = "<group>"; };
 		459B3725265DECB400808FD6 /* notePopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = notePopupView.swift; sourceTree = "<group>"; };
@@ -241,7 +253,6 @@
 				F8BC5DD483A7F20F43F67948 /* Pods-FunhiPrototype2Tests.debug.xcconfig */,
 				C30351761D6243F77A701268 /* Pods-FunhiPrototype2Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -328,8 +339,9 @@
 		45181CB226AF0378007F8DF5 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				BA3C46E225A9EA5E00A3334A /* EPHistoryViewController.swift */,
+				BA80056625A6EDF5001799D1 /* TimelineView.storyboard */,
 				BA80058825A849C7001799D1 /* TimeLineViewController.swift */,
+				BA3C46E225A9EA5E00A3334A /* EPHistoryViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -410,6 +422,34 @@
 			path = mp3;
 			sourceTree = "<group>";
 		};
+		456BA65926BD80E8003F89D5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				456BA65B26BD8177003F89D5 /* EpisodeCell.xib */,
+				456BA65D26BD8185003F89D5 /* EpisodeCell.swift */,
+				456BA66126BE8A79003F89D5 /* EpisodeCurrentCell.xib */,
+				456BA66326BE8AA6003F89D5 /* EpisodeCurrentCell.swift */,
+				456BA65F26BE5DB4003F89D5 /* CheckPointCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		456BA65A26BD813B003F89D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				45F6D4672671EE3D001E92BE /* CircularProgressView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		456BA66526BE9EE4003F89D5 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				456BA66626BE9F0B003F89D5 /* IntExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		45B1D01426034295006CB48C /* headerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -432,6 +472,7 @@
 		45F6D4662671EDF5001E92BE /* etc */ = {
 			isa = PBXGroup;
 			children = (
+				BA663FA225917ECF0031ACFE /* LaunchScreen.storyboard */,
 				BA900E62261720A0009D6380 /* AnimationController.swift */,
 				BAB58EC525BFF3030078AADC /* codableColor.swift */,
 				BA80050B25A602CD001799D1 /* jsonParsing.swift */,
@@ -492,7 +533,7 @@
 				45F6D46926726A25001E92BE /* Model */,
 				45F6D4662671EDF5001E92BE /* etc */,
 				45181CB526AF053E007F8DF5 /* Source */,
-				BA663FA225917ECF0031ACFE /* LaunchScreen.storyboard */,
+				456BA66526BE9EE4003F89D5 /* Extension */,
 			);
 			path = FunhiPrototype2;
 			sourceTree = "<group>";
@@ -527,10 +568,10 @@
 		BA80058725A849C7001799D1 /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
-				45F6D4672671EE3D001E92BE /* CircularProgressView.swift */,
-				BA80056625A6EDF5001799D1 /* TimelineView.storyboard */,
-				45B1D01426034295006CB48C /* headerView */,
 				45181CB226AF0378007F8DF5 /* ViewController */,
+				456BA65A26BD813B003F89D5 /* View */,
+				456BA65926BD80E8003F89D5 /* Cell */,
+				45B1D01426034295006CB48C /* headerView */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -693,6 +734,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA80056225A6EC6C001799D1 /* CoverView.storyboard in Resources */,
+				456BA65C26BD8177003F89D5 /* EpisodeCell.xib in Resources */,
 				4548735E25F758C800D61F6B /* NanumSquareExtraBold.ttf in Resources */,
 				BA663FD32591CAC70031ACFE /* mainGame.storyboard in Resources */,
 				85B597FA26B8F5D100BDB67D /* normal.mp3 in Resources */,
@@ -716,6 +758,7 @@
 				4548735A25F758C800D61F6B /* 나눔손글씨 할아버지의나눔.ttf in Resources */,
 				4548735C25F758C800D61F6B /* 경기천년바탕_Bold.ttf in Resources */,
 				85B597F826B8F5D100BDB67D /* nervous2.mp3 in Resources */,
+				456BA66226BE8A79003F89D5 /* EpisodeCurrentCell.xib in Resources */,
 				BAC29E7025AD66CF00D117D4 /* ARView.storyboard in Resources */,
 				45B1D01626034302006CB48C /* CheckPointHeaderView.xib in Resources */,
 				45F6D46A2673DFFE001E92BE /* AlbumView.storyboard in Resources */,
@@ -862,12 +905,15 @@
 				BAADA9FC25A3E7AA00ED23A9 /* NoteGameCharacterViewController.swift in Sources */,
 				BA900E63261720A0009D6380 /* AnimationController.swift in Sources */,
 				45AA92BE25E7D76F00064E62 /* scrollingEffect.swift in Sources */,
+				456BA66426BE8AA7003F89D5 /* EpisodeCurrentCell.swift in Sources */,
 				BA80050C25A602CD001799D1 /* jsonParsing.swift in Sources */,
 				45AA92C625E7D79800064E62 /* godChatCollectionViewCell.swift in Sources */,
 				BA80058A25A849C7001799D1 /* TimeLineViewController.swift in Sources */,
 				45181CBE26AF12E8007F8DF5 /* AlbumViewController.swift in Sources */,
 				BA3C46E325A9EA5E00A3334A /* EPHistoryViewController.swift in Sources */,
 				45F105CA266E175800F77543 /* HomeNewSelecteStageViewController.swift in Sources */,
+				456BA65E26BD8185003F89D5 /* EpisodeCell.swift in Sources */,
+				456BA66726BE9F0B003F89D5 /* IntExtension.swift in Sources */,
 				BAB2A567259B0DDB0062ED21 /* myTextTableViewCell.swift in Sources */,
 				BAD4E3432679E12A008FECAA /* characterFace.swift in Sources */,
 				BAADA9FD25A3E7AA00ED23A9 /* NoteUserViewController.swift in Sources */,
@@ -883,6 +929,7 @@
 				45F6D4682671EE3E001E92BE /* CircularProgressView.swift in Sources */,
 				45B64FB2259B5EF300D6C729 /* MaingameARViewController.swift in Sources */,
 				BA663F9825917ECC0031ACFE /* AppDelegate.swift in Sources */,
+				456BA66026BE5DB4003F89D5 /* CheckPointCell.swift in Sources */,
 				BA3B48E7266E14F500E92D9B /* pauseBarAlert.swift in Sources */,
 				BA06931825C128FF0046B647 /* endingViewController.swift in Sources */,
 				BAB2A552259B0C750062ED21 /* mainGameViewController.swift in Sources */,
