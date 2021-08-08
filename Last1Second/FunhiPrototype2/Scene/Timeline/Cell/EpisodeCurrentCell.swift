@@ -43,7 +43,7 @@ class EpisodeCurrentCell: UITableViewCell {
       cellBackground.layer.cornerRadius = 12
       cellBackground.layer.borderWidth = 4
       cellBackground.layer.borderColor = UIColor(red: 0.817, green: 0.87, blue: 0.933, alpha: 1).cgColor
-      cellBackground.setShadow(color: UIColor(red: 0.478, green: 0.569, blue: 0.659, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 6)
+      cellBackground.setShadow(color: UIColor.white, offsetX: 0, offsetY: 0, opacity: 1, radius: 6)
        
       progressView.trackColor = UIColor(red: 0.333, green: 0.429, blue: 0.529, alpha: 1)
       progressView.progressColor = UIColor(red: 0.78, green: 0.89, blue: 1, alpha: 1)
