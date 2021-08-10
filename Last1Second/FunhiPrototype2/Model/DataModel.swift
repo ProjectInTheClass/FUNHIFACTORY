@@ -75,13 +75,13 @@ class NoteCase: Codable{
     let shortDescription: String
     let longDescription: String
     var isLocked: Bool = true
+    var isChecked: Bool = false
     
-    init(id: NoteCaseID, title: String, shortDescription: String, longDescription: String, isLocked: Bool) {
+    init(id: NoteCaseID, title: String, shortDescription: String, longDescription: String) {
         self.id = id
         self.title = title
         self.shortDescription = shortDescription
         self.longDescription = longDescription
-        self.isLocked = isLocked
     }
 }
 
@@ -461,18 +461,14 @@ enum bgm : String, Codable{
         }
     }
 }
-//n일차를 쪼갠 조각의 단위 : 일반 대화들 ~ 키렐 선택지가 마지막.
-// 에피소드를 어떤 단위대로 쪼개야 할지 고민했음. 이거 게임 구조가 이랬음.[ 캐릭터들 대사가 자동으로 나옴 -> 키렐 선택지 나옴 -> 자동으로 나오던 대사는 멈춤 -> 키렐 선택지 결정하면 그 다음 대사들이 결정되고 또 자동으로 나옴] -> 그러니까 키렐 대사 선택지가 나오면 게임 진행이 멈춤. 그리고 이 선택을 기점으로 다음 내용이 결정되고, 진행이 되는 거임. 그러려면 키렐 대사 선택지는 하나하나 쪼개야 하나하나 쪼개야 했음. 그래서 본문을 이렇게 나눔.[키렐 대사 선택 직후 시작되는 인물들 대사부터 선택지 나오기 직전까지의 대화 내용 + 키렐 선택지]. 이 단위가 여러 개 이어지면 [대사-> 선택지-> 대사-> 선택지...]인 거고 이러면 괜찮지 않을까 싶었음.
 // 프라퍼티 설명: 순차적으로 나오는 텍스트 블록, 선택지, 이거 깨면 달성되는 업적
 struct BlockOfDayEpisode: Codable {
     let chats: [Chat]
-    //다음 페이지(?)블럭(?)을 선택하는 로직을 좀 더 간결하게 할 수 있을지 고민하다 딕셔너리 어떨까 생각함. 원래는 다음 페이지를 nextIndexPage값으로 했다면, 이번에는 key값을 이용해보는 거? 만약 key 값이 각가 1, 2를 가진 선택지가 있따면, 현재 페이지 번호에 선택지 key 값인 1, 2를 더한 수를 가진 페이지가 다음 페이지가 됨. 예를 들어서 3번 페이지에서 1번 선택지를 고르면 1+1= 2번 페이지로 가게 되고, 2번을 고르면 1+2 = 3번 페이지로 가게 됨.
-        // 그런데 json을 읽어올 때 데이터를 dictionary화 시키는 작업이 번거로워서 코드가 복잡해질 거 같음 (디코드 과정 중)
-    // choices: [[다음페이지 결정짓는 key값 : 선택지 텍스트]]
     let choices: [Choice]
     let choiceSkip : Bool
     let isGodChat : Bool   //현재 신 채팅인지 구분
     let backGroundMusic : bgm
+    let currentRoute : Route
 }
 
 //n일차
@@ -648,17 +644,20 @@ func checkEnding(id : String) -> Ending
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //일단 만들어놓은 인물들 샘플 정보 변수입니다.
 
+enum Route : String, Codable{
+    case normal,first,second
+}
+
 //json 파싱 전용 파일
 struct BlockOfDayEpisodeForJson :Codable{
     let id : String
     let chats: [Chat]
-    
-    //다음 페이지(?)블럭(?)을 선택하는 로직을 좀 더 간결하게 할 수 있을지 고민하다 딕셔너리 어떨까 생각함. 원래는 다음 페이지를 nextIndexPage값으로 했다면, 이번에는 key값을 이용해보는 거? 만약 key 값이 각가 1, 2를 가진 선택지가 있따면, 현재 페이지 번호에 선택지 key 값인 1, 2를 더한 수를 가진 페이지가 다음 페이지가 됨. 예를 들어서 3번 페이지에서 1번 선택지를 고르면 1+1= 2번 페이지로 가게 되고, 2번을 고르면 1+2 = 3번 페이지로 가게 됨.
-    // choices: [[다음페이지 결정짓는 key값 : 선택지 텍스트]]
     let choices: [Choice]
     let choiceSkip : Bool
     let isGodChat : Bool
     let backGroundMusic : bgm
+    let currentRoute : Route
+    
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -669,6 +668,7 @@ struct BlockOfDayEpisodeForJson :Codable{
         choiceSkip = (try? values.decode(Bool.self, forKey: .choiceSkip)) ?? false
         isGodChat = (try? values.decode(Bool.self, forKey: .isGodChat)) ?? false
         backGroundMusic = (try? values.decode(bgm.self, forKey: .backGroundMusic)) ?? .none
+        currentRoute   = (try? values.decode(Route.self, forKey: .currentRoute)) ?? .normal
     }
 }
 

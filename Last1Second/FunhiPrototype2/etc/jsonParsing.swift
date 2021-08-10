@@ -49,7 +49,7 @@ func dataToTargetEpisode(storyData : [BlockOfDayEpisodeForJson], target : inout 
     var storyBlock : [String : BlockOfDayEpisode] = [:]
     for ex in storyData{
         let storyId = ex.id
-        let story = BlockOfDayEpisode(chats: ex.chats, choices: ex.choices, choiceSkip: ex.choiceSkip, isGodChat: ex.isGodChat, backGroundMusic: ex.backGroundMusic)
+        let story = BlockOfDayEpisode(chats: ex.chats, choices: ex.choices, choiceSkip: ex.choiceSkip, isGodChat: ex.isGodChat, backGroundMusic: ex.backGroundMusic, currentRoute: ex.currentRoute)
         storyBlock[storyId] = story
     }
     target = storyBlock
