@@ -27,16 +27,16 @@ class TutorialVC: UIViewController {
   }
 }
 
-extension TutorialVC: UICollectionViewDelegate, UICollectionViewDataSource {
-  
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    <#code#>
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    <#code#>
-  }
-  
-  
-  
-}
+//extension TutorialVC: UICollectionViewDelegate, UICollectionViewDataSource {
+//  
+//  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//    <#code#>
+//  }
+//  
+//  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//    <#code#>
+//  }
+//  
+//  
+//  
+//}

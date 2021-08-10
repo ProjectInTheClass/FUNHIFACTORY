@@ -47,12 +47,9 @@ class NoteGameCharacterTableViewCell: UITableViewCell {
     @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var achievementLabel: UILabel!
     @IBOutlet weak var lockedView: UIView!
     
     @IBOutlet var cellBorderAndShadowView: UIView!
-    @IBOutlet var viewMoreView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         designCell()
@@ -64,18 +61,15 @@ class NoteGameCharacterTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func designCell() {
-        viewMoreView.setShadow(color: UIColor(red: 0.616, green: 0.71, blue: 0.796, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 5)
-        descriptionLabel.setLineSpacing(lineSpacing: 5.0)
-        descriptionLabel.textAlignment = .center
-        lockedView.layer.cornerRadius = 7
-        cellBackgroundView.layer.cornerRadius = 10
+        lockedView.layer.cornerRadius = 37
+        cellBackgroundView.layer.cornerRadius = 40
         profileImage.layer.cornerRadius = profileImage.frame.width/2
-        cellBorderAndShadowView.layer.cornerRadius = 10
+        cellBorderAndShadowView.layer.cornerRadius = 40
     }
     
     func changeShadowAndBorder(view: UIView, shadowColor: UIColor, borderColor: UIColor) {
         view.setShadow(color: shadowColor, offsetX: 0, offsetY: 0, opacity: 1, radius: 5)
-        view.setBolder(color: borderColor, width: 4)
+        view.T(color: borderColor, width: 4)
     }
 }
 
@@ -178,19 +172,13 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 
                 cell.selectionStyle = .none
                 cell.nameLabel.text = currentCharacter.name
-                cell.descriptionLabel.text = currentCharacter.description
                 cell.profileImage.image = UIImage(named: "\(currentCharacter.profileImage)_noteLarge")
-                cell.achievementLabel.text = "업적 \(player.clearedAchievementCount)/\(player.currentAchievementInfo.count)"
                 
                 print("\(currentCharacter.name) 잠김: \(currentEpisode.currentCharacterNote[indexPath.row].isLocked)")
                 
                 currentCharacter.isLocked ? (cell.lockedView.isHidden = false) : (cell.lockedView.isHidden = true)
              
-                currentCharacter.isLocked ? cell.changeShadowAndBorder(view: cell.cellBorderAndShadowView, shadowColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1), borderColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1)) : cell.changeShadowAndBorder(view: cell.cellBorderAndShadowView, shadowColor: .white, borderColor: .white)
-                
-                if cell.nameLabel.text != "이단희" {
-                   cell.achievementLabel.text = ""
-                }
+                currentCharacter.isLocked ? cell.changeShadowAndBorder(view: cell.cellBorderAndShadowView, shadowColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1), borderColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1)) : cell.changeShadowAndBorder(view: cell.cellBorderAndShadowView, shadowColor: UIColor(red: 0.749, green: 0.824, blue: 0.894, alpha: 1), borderColor: UIColor(red: 0.749, green: 0.824, blue: 0.894, alpha: 1))
                 return cell
             // 작은 인물 셀
             } else {
@@ -201,7 +189,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 cell.nameLabel.text = currentCharacter.name
                 cell.profileImageView.image = UIImage(named: "\(currentCharacter.profileImage)_noteLarge")
                 
-                currentCharacter.isLocked ? cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1), borderColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1)) : cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: .white, borderColor: .white)
+                currentCharacter.isLocked ? cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1), borderColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1)) : cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: UIColor(red: 0.749, green: 0.824, blue: 0.894, alpha: 1), borderColor: UIColor(red: 0.749, green: 0.824, blue: 0.894, alpha: 1))
                 
                 currentCharacter.isLocked ? (cell.lockedView.isHidden = false) : (cell.lockedView.isHidden = true)
                 
@@ -217,7 +205,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             cell.selectionStyle = .none
             cell.caseNameLabel.text = currentCase.title
             
-            currentCase.isLocked ? cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1), borderColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1)) : cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: .white, borderColor: .white)
+            currentCase.isLocked ? cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1), borderColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1)) : cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: UIColor(red: 0.749, green: 0.824, blue: 0.894, alpha: 1), borderColor: UIColor(red: 0.749, green: 0.824, blue: 0.894, alpha: 1))
             currentCase.isLocked ? (cell.lockedView.isHidden = false) : (cell.lockedView.isHidden = true)
           
             return cell
