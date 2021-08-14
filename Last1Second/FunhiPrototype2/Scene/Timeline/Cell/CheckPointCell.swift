@@ -10,8 +10,10 @@ import UIKit
 class CheckPointTableViewCell: UITableViewCell {
     
   @IBOutlet weak var view: UIView!
+  @IBOutlet weak var shadow: UIView!
   @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet var lockedView: UIView!
+  @IBOutlet var lockedShadow: UIView!
+  @IBOutlet var lockedview: UIView!
   
   override func awakeFromNib() {
     super.awakeFromNib()

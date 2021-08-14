@@ -75,7 +75,7 @@ class CircularProgressView: UIView {
     }
     
     
-    fileprivate func createCircularPath() {
+     func createCircularPath() {
         self.backgroundColor = UIColor.clear
         self.layer.cornerRadius = self.frame.size.width/2
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width/2, y: frame.size.height/2), radius: (frame.size.width - 1.5)/2, startAngle: CGFloat(-0.5 * .pi), endAngle: CGFloat(1.5 * .pi), clockwise: true)
@@ -125,10 +125,31 @@ class CircularProgressView: UIView {
         print ("\(Int(round(progressLayer.strokeEnd*100)))")
         progressNumberString.textColor = .black
         progressNumberString.font = UIFont(name: .init(), size: 15)
-        
-        
-        
-        
-        
     }
+  
+  func updateStateColor(subView: UIView) {
+    
+    let state = currentEpisode().currentEpRoute
+    switch state {
+    case .normal:
+      progressColor = .way0ProgressColor
+      trackColor = .way0TrackColor
+      centerCircleColor = .way0CircleColor
+      subView.backgroundColor = .way0TrackColor
+      subView.layer.shadowColor = UIColor.way0TrackColor.cgColor
+    case .first:
+      progressColor = .way1ProgressColor
+      trackColor = .way1TrackColor
+      centerCircleColor = .way1CircleColor
+      subView.backgroundColor = .way1TrackColor
+      subView.layer.shadowColor = UIColor.way1TrackColor.cgColor
+    case .second:
+      progressColor = .way2ProgressColor
+      trackColor = .way2TrackColor
+      centerCircleColor = .way2CircleColor
+      subView.backgroundColor = .way2TrackColor
+      subView.layer.shadowColor = UIColor.way2TrackColor.cgColor
+    }
+    
+  }
 }

@@ -27,8 +27,11 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
         cell.episodePlace.text = player.currentEpisodes[selectedStageIndex].episodePlace
         cell.episodeYear.text = "\(player.currentEpisodes[selectedStageIndex].episodeYear)년"
         cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[selectedStageIndex].episodePlaceImage)
+        cell.progressView.updateStateColor(subView: cell.progressBackgroundView)
         // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
         
+      
+      // 엔딩 잠금
         if player.currentEpisodes[selectedStageIndex].episodeID == "ending" {
             cell.lockedView.isHidden = checkEndingOpenTiming(playerEpisodes: player.currentEpisodes)
         } else {

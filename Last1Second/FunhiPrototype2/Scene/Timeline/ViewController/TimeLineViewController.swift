@@ -21,19 +21,25 @@ class TimeLineViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupTableView() 
+    designObjects(firstPopupView: selectedEpisodePopupBox, secondPopupView: gettingStartPopupBox, secondPopupButton1: continueButton, secondPopupButton2: exitButton)
+  }
+  
+  private func setupTableView() {
     self.timelineTableView.delegate = self
     self.timelineTableView.dataSource = self
     self.checkPointTableView.delegate = self
     self.checkPointTableView.dataSource = self
-      
     
     timelineTableView.register(UINib(nibName: "EpisodeCell", bundle: nil), forCellReuseIdentifier: "EpisodeCell")
     timelineTableView.register(UINib(nibName: "EpisodeCurrentCell", bundle: nil), forCellReuseIdentifier: "EpisodeCurrentCell")
     checkPointTableView.register(UINib(nibName: "CheckPointHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "CheckPointHeaderView")
     checkPointTableView.register(UINib(nibName: "CheckPointHeaderView2", bundle: nil), forHeaderFooterViewReuseIdentifier: "CheckPointHeaderView2")
-    designObjects(firstPopupView: selectedEpisodePopupBox, secondPopupView: gettingStartPopupBox, secondPopupButton1: continueButton, secondPopupButton2: exitButton)
+    
+    checkPointTableView.tableFooterView = UIView()
+    checkPointTableView.tableFooterView?.frame.size.height = 20
+    checkPointTableView.tableFooterView?.backgroundColor = .clear
   }
-  
   override func viewWillAppear(_ animated: Bool) {
       timelineTableView.reloadData()
       
@@ -308,6 +314,7 @@ extension TimeLineViewController: UITableViewDataSource {
           progressValue == 1.0 ?
             (cell.progressBackgroundView.isHidden = true) :
             (cell.progressBackgroundView.isHidden = false)
+          cell.progressView.updateStateColor(subView: cell.progressBackgroundView)
           cell.selectionStyle = .none
           returnCell = cell
         case false:
@@ -322,6 +329,7 @@ extension TimeLineViewController: UITableViewDataSource {
           progressValue == 1.0 ?
             (cell.progressBackgroundView.isHidden = true) :
             (cell.progressBackgroundView.isHidden = false)
+          cell.progressView.updateStateColor(subView: cell.progressBackgroundView)
           cell.selectionStyle = .none
           returnCell = cell
         }
@@ -338,7 +346,40 @@ extension TimeLineViewController: UITableViewDataSource {
       let cell = tableView.dequeueReusableCell(withIdentifier: "checkPointTableViewCell", for: indexPath) as! CheckPointTableViewCell
       let checkPoint = currentEpisode.timelineCheckPoint[indexPath.section][indexPath.row]
       cell.titleLabel.text = checkPoint.name
-      checkPoint.isLocked ? (cell.lockedView.isHidden = false) : (cell.lockedView.isHidden = true)
+      checkPoint.isLocked ? (cell.lockedShadow.isHidden = false) : (cell.lockedShadow.isHidden = true)
+      
+      if checkPoint.isLocked {
+        switch indexPath.section {
+        case 0:
+          cell.lockedview.backgroundColor = .way0LockedBackground
+          cell.lockedShadow.backgroundColor = .way0LockedShadow
+        case 1:
+          cell.lockedview.backgroundColor = .way1LockedBackground
+          cell.lockedShadow.backgroundColor = .way1LockedShadow
+        case 2:
+          cell.lockedview.backgroundColor = .way2LockedBackground
+          cell.lockedShadow.backgroundColor = .way2LockedShadow
+        default:
+          cell.view.backgroundColor = .black
+          cell.shadow.backgroundColor = .black
+        }
+      } else {
+        switch indexPath.section {
+        case 0:
+          cell.view.backgroundColor = .checkWay0Background
+          cell.shadow.backgroundColor = .checkWay0Shadow
+        case 1:
+          cell.view.backgroundColor = .checkWay1Background
+          cell.shadow.backgroundColor = .checkWay1Shadow
+        case 2:
+          cell.view.backgroundColor = .checkWay2Background
+          cell.shadow.backgroundColor = .checkWay2Shadow
+        default:
+          cell.view.backgroundColor = .black
+          cell.shadow.backgroundColor = .black
+        }
+      }
+      
       returnCell = cell
     }
     return returnCell
@@ -377,7 +418,15 @@ extension TimeLineViewController: UITableViewDataSource {
          let headerView = checkPointTableView.dequeueReusableHeaderFooterView(withIdentifier: "CheckPointHeaderView2") as! CheckPointHeaderFooterView2
           headerView.sectionLabel.text = "\(section)번째 길"
 
-          headerView.sectionIconView.backgroundColor = UIColor(red: 0.149, green: 0.231, blue: 0.306, alpha: 1)
+        switch section {
+        case 1:
+          headerView.sectionIconView.backgroundColor = .checkWay1Section
+        case 2:
+          headerView.sectionIconView.backgroundColor = .checkWay2Section
+        default:
+          headerView.sectionIconView.backgroundColor = .way0TrackColor
+        }
+          
 
           return headerView
       }
@@ -440,4 +489,5 @@ extension TimeLineViewController: UITableViewDelegate {
       
       
   }
+
 }

@@ -522,6 +522,13 @@ struct Episode: Codable, Equatable {
     var timelineCheckPoint:[[CheckPoint]]
     // 마지막으로 플레이 한 지점 인덱스
     var currentStoryBlockIndex: String
+  
+//  var currentEpRoute: Route = .second
+    var currentEpRoute: Route {
+      get {
+        return storyBlocks[currentStoryBlockIndex]?.currentRoute ?? .normal
+      }
+    }
 }
 
 //MARK: 체크포인트드ㅏㄹ
