@@ -75,7 +75,7 @@ class NoteCase: Codable{
     let shortDescription: String
     let longDescription: String
     var isLocked: Bool = true
-    var isChecked: Bool = false
+    var isChecked: Bool = Bool()
     
     init(id: NoteCaseID, title: String, shortDescription: String, longDescription: String) {
         self.id = id
@@ -152,7 +152,7 @@ class AlbumImage: Codable {
     let title: String
     let description: String
     var isLocked: Bool = true
-    var isChecked: Bool = false
+    var isChecked: Bool = Bool()
     
     init(id: AlbumImageID, image: String, title: String, description: String, isLocked: Bool) {
         self.id = id
@@ -255,7 +255,7 @@ class GameCharacter: Codable {
     let description: String
     var infomation: [Infomation]
     var isLocked: Bool
-    var isChecked: Bool = false
+    var isChecked: Bool = Bool()
     
     init(name: String, profileImage: String ,backGroundImage: String, description: String, infomation: [Infomation], isLocked: Bool) {
         self.name = name
