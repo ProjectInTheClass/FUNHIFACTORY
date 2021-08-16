@@ -111,10 +111,8 @@ class NoteHeeryeongViewController: UIViewController,UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         designObjects()
-        
         self.hwiryeongInfomationTableView.delegate = self
         self.hwiryeongInfomationTableView.dataSource = self
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         if let recievedGameCharacter = recievedGameCharacter {
