@@ -26,7 +26,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var choiceHeight: NSLayoutConstraint!
     @IBOutlet var mainGameTableView: UITableView!
     @IBOutlet var choiceBar: UIView!
-    @IBOutlet var map: UIView!
     @IBOutlet var topBar: UIView!
     @IBOutlet var notePopupView: UIView!
     @IBOutlet weak var notePopupViewTitle: UILabel!
@@ -37,36 +36,33 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var choiceCollectionView: UICollectionView!
     @IBOutlet var myChoiceText: UILabel!
-    @IBOutlet var mapImage: UIImageView!
-    @IBAction func notePopupViewXButton(_ sender: Any) {
-       
-        globalPopupOpen = false
-    }
-    
-    @IBOutlet var floatingButtons: [UIView]!
-    
- 
-    
-    
-//    //노트 팝업 켜고 꺼질 때 애니메이션 담당하는 변수
-//    var popupOpen: Bool = false {
-//        didSet {
-//            //팝업 켜질 때
-//            if popupOpen {
-//                UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 4, initialSpringVelocity: 5, options: .curveEaseInOut) {
-//
-//                    self.notePopupView.transform = CGAffineTransform(translationX: 0, y: 200)
-//                }
-//            //팝업 꺼질 때
-//            } else {
-//                UIView.animate(withDuration: 0.15) {
-//                    self.notePopupView.transform = CGAffineTransform.identity
-//                } completion: { (Bool) in
-//
-//                }
-//            }
-//        }
-//    }
+
+
+  @IBOutlet weak var home: FloatingButton!
+  @IBOutlet weak var note: FloatingButton!
+  @IBOutlet weak var album: FloatingButton!
+  @IBOutlet weak var timeline: FloatingButton!
+  @IBOutlet weak var setting: FloatingButton!
+  @IBOutlet weak var menu: FloatingButton!
+  @IBOutlet weak var map: FloatingButton!
+  
+
+  private func setupButtons() {
+    home.setImages(nor: "HomeNormal", not: "HomeNormal")
+    note.setImages(nor: "NoteNormal", not: "NoteHighlighted")
+    album.setImages(nor: "AlbumNormal", not: "AlbumHighlighted")
+    timeline.setImages(nor: "TimelineNormal", not: "TimelineNormal")
+    setting.setImages(nor: "SettingNormal", not: "SettingNormal")
+    map.setImages(nor: "MapNormal", not: "MapNormal")
+    menu.setImages(nor: "MenuNormal", not: "MenuHighlighted")
+
+  }
+
+  private func updateButtons() {
+    readAllNotes ? (note.isNormal = true) : (note.isNormal = false)
+    readAllAlbums ? (album.isNormal = true) : (album.isNormal = false)
+    readAllNotification ? (menu.isNormal = true) : (menu.isNormal = false)
+  }
 
     var animator : UIViewPropertyAnimator?
 
@@ -250,6 +246,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     override func viewWillAppear(_ animated: Bool) {
         closeChoiceBar()
+        updateButtons()
         if let story = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]?.isGodChat
         {
             if story == true
@@ -303,7 +300,6 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         self.mainGameTableView.dataSource = self
         self.choiceCollectionView.delegate = self
         self.choiceCollectionView.dataSource = self
-        mainGameDesign()
         mainGameTableView.reloadData()
         mainGameTableView.estimatedRowHeight = 2.0;
         let TVCtouchGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(instantChatUpdate(_:)))
@@ -314,8 +310,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         }
         self.mainGameTableView.contentInset.bottom = 82
         choiceCollectionViewBorder(choiceView: collectionBar)
-        map.layer.borderColor = UIColor.white.cgColor
-        //지우지 말아주세요
+        setupButtons()
         maingameNotepopupViewDesign(popupView: notePopupView, parentView: self.view!)
     }
     
@@ -328,7 +323,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         transition.type = CATransitionType.moveIn
           transition.subtype = CATransitionSubtype.fromBottom
           self.navigationController!.view.layer.add(transition, forKey: kCATransition)
-        buttonAlertOff(input: 0)
+      
         performSegue(withIdentifier: "noteSegue", sender: nil)
     }
     
@@ -340,7 +335,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         transition.type = CATransitionType.moveIn
           transition.subtype = CATransitionSubtype.fromBottom
           self.navigationController!.view.layer.add(transition, forKey: kCATransition)
-        buttonAlertOff(input: 1)
+       
         performSegue(withIdentifier: "albumSegue", sender: nil)
     }
     
@@ -352,7 +347,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         transition.type = CATransitionType.moveIn
           transition.subtype = CATransitionSubtype.fromBottom
           self.navigationController!.view.layer.add(transition, forKey: kCATransition)
-        buttonAlertOff(input: 2)
+       
         performSegue(withIdentifier: "timelineSegue", sender: nil)
     }
     
@@ -393,11 +388,11 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     }
     @IBAction func closeMap(_ sender: Any) {
         animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
-            self.map.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+          
             self.blackView.alpha = 0
         }, completion: {_ in
             print("퍼즈바 :\(self.pauseBar.isHidden), 초이스 :\(isChoiceOn), 타이머 :\(timer==nil)")
-            self.map.removeFromSuperview()
+            
             self.blackView.removeFromSuperview()
             if isChoiceOn == false// && timer == nil
             {
@@ -449,16 +444,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         performSegue(withIdentifier: "mainToHome", sender: nil)
     }
     
-    func mainGameDesign() {
-        for button in floatingButtons {
-            button.layer.borderWidth = 3
-            button.layer.cornerRadius = button.frame.size.width / 2.0
-            button.clipsToBounds = true
-            button.layer.borderColor = UIColor(red: 0.524, green: 0.646, blue: 0.75, alpha: 1).cgColor
-            button.layer.backgroundColor = UIColor(red: 0.743, green: 0.817, blue: 0.879, alpha: 1).cgColor
-            myChoiceText.font = UIFont(name: "NanumSquareEB", size: 16)
-        }
-    }
+
     
     var notePopupItemArray: [(a: String, b: String)] = [] {
         didSet {
