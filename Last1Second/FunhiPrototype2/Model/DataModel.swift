@@ -436,9 +436,6 @@ struct Choice: Codable {
         optionalOption = (try? values.decode(OptionalOption.self, forKey: .optionalOption))
         who = (try? values.decode(GameCharacterID.self, forKey: .who)) ?? .currentEpDanhee
     }
-    
-
-
 }
 
 enum  screenAnimation: String, Codable {
@@ -618,35 +615,12 @@ struct Ending {
      */
 }
 
-func checkEnding(id : String) -> Ending
-{
-    switch id {
-        case "endingDied":
-            return Ending(name: "당신은 죽었습니다.", comment: "나는 이렇게 끝낼 순 없어.", buttonUIColor: [
-                                UIColor(red: 0.737, green: 0.452, blue: 0.452, alpha: 1),
-                                UIColor(red: 0.558, green: 0.286, blue: 0.286, alpha: 1),
-                                UIColor(red: 0.483, green: 0.246, blue: 0.246, alpha: 1),
-                                UIColor(red: 0.843, green: 0.553, blue: 0.553, alpha: 1),
-                                UIColor(red: 0.843, green: 0.553, blue: 0.553, alpha: 1)])
-        case "endingLocked":
-            return Ending(name: "당신은 과거에 갇혔습니다.", comment: "나는 이렇게 끝낼 순 없어.", buttonUIColor: [
-                                UIColor(red: 0.546, green: 0.546, blue: 0.546, alpha: 1),
-                                UIColor(red: 0.412, green: 0.412, blue: 0.412, alpha: 1),
-                                UIColor(red: 0.358, green: 0.358, blue: 0.358, alpha: 1),
-                                UIColor(red: 0.769, green: 0.769, blue: 0.769, alpha: 1),
-                                UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.25)])
-        case "endingReturn" :
-            return Ending(name: "당신은 현실로 돌아왔습니다.", comment: "한 번만 기회를 더 주면 잘 할 텐데...", buttonUIColor: [
-                                UIColor(red: 0.698, green: 0.588, blue: 0.376, alpha: 1),
-                                UIColor(red: 0.514, green: 0.404, blue: 0.204, alpha: 1),
-                                UIColor(red: 0.429, green: 0.33, blue: 0.151, alpha: 1),
-                                UIColor(red: 0.875, green: 0.729, blue: 0.459, alpha: 1),
-                                UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.25)])
-        default :
-            return Ending(name: "Error Occured", comment: "", buttonUIColor: [])
-    }
+//지도 뷰컨에서 사용할 전각 구조체
+struct Spots {
+    let name : String
+    let images : [String]
+    let description : String
 }
-
 //MARK: 함수, Extension
 //-------------------------------------------------------------------------------------------------
 
@@ -854,6 +828,35 @@ func loadFromFile() {
     }
 }
 
+func checkEnding(id : String) -> Ending
+{
+    switch id {
+        case "endingDied":
+            return Ending(name: "당신은 죽었습니다.", comment: "나는 이렇게 끝낼 순 없어.", buttonUIColor: [
+                                UIColor(red: 0.737, green: 0.452, blue: 0.452, alpha: 1),
+                                UIColor(red: 0.558, green: 0.286, blue: 0.286, alpha: 1),
+                                UIColor(red: 0.483, green: 0.246, blue: 0.246, alpha: 1),
+                                UIColor(red: 0.843, green: 0.553, blue: 0.553, alpha: 1),
+                                UIColor(red: 0.843, green: 0.553, blue: 0.553, alpha: 1)])
+        case "endingLocked":
+            return Ending(name: "당신은 과거에 갇혔습니다.", comment: "나는 이렇게 끝낼 순 없어.", buttonUIColor: [
+                                UIColor(red: 0.546, green: 0.546, blue: 0.546, alpha: 1),
+                                UIColor(red: 0.412, green: 0.412, blue: 0.412, alpha: 1),
+                                UIColor(red: 0.358, green: 0.358, blue: 0.358, alpha: 1),
+                                UIColor(red: 0.769, green: 0.769, blue: 0.769, alpha: 1),
+                                UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.25)])
+        case "endingReturn" :
+            return Ending(name: "당신은 현실로 돌아왔습니다.", comment: "한 번만 기회를 더 주면 잘 할 텐데...", buttonUIColor: [
+                                UIColor(red: 0.698, green: 0.588, blue: 0.376, alpha: 1),
+                                UIColor(red: 0.514, green: 0.404, blue: 0.204, alpha: 1),
+                                UIColor(red: 0.429, green: 0.33, blue: 0.151, alpha: 1),
+                                UIColor(red: 0.875, green: 0.729, blue: 0.459, alpha: 1),
+                                UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.25)])
+        default :
+            return Ending(name: "Error Occured", comment: "", buttonUIColor: [])
+    }
+}
+
 extension UIView {
     //뷰 섀도우 주는 코드 간단화한 함수
     func setShadow(color: UIColor, offsetX: Int, offsetY: Int, opacity: Int, radius: Int) {
@@ -901,5 +904,11 @@ var readAllAlbums: Bool {
       }
     }
     return readAll
+  }
+}
+
+var readAllNotification: Bool {
+  get {
+    return readAllNotes && readAllAlbums
   }
 }

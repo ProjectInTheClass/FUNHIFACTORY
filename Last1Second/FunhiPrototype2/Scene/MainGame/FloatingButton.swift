@@ -64,8 +64,8 @@ class FloatingButton: UIButton {
   
   // 이 함수 꼭 버튼 viewDidload할 때 넣을 것! 이미지 등록하는 함수.
   func setImages(nor: String, not: String) {
-    normalImage = UIImage(named: nor)!
-    newThingImage = UIImage(named: not)!
+    normalImage = UIImage(named: nor) ?? UIImage()
+    newThingImage = UIImage(named: not) ?? UIImage()
     updateStyle()
   }
   

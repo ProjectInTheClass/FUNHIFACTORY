@@ -25,7 +25,7 @@ extension mainGameViewController {
           player.currentAchievementInfo[achievement.offset].isLocked = false
           player.currentAchievementInfo[achievement.offset].isLocked = false
           print("업적 '\(player.currentAchievementInfo[achievement.offset].name)' 달성됨")
-          buttonAlertOn(input: 0)
+         
           let achievementPopupInfo = ("업적", player.currentAchievementInfo[achievement.offset].name)
           notePopupItemArray.append(achievementPopupInfo)
         }
@@ -43,7 +43,7 @@ extension mainGameViewController {
         if achievement.element.id == currentChatAchievement {
           player.currentAchievementInfo[achievement.offset].isLocked = false
           print("업적 '\(player.currentAchievementInfo[achievement.offset].name)' 달성됨")
-          buttonAlertOn(input: 0)
+         
           let achievementPopupInfo = ("업적", player.currentAchievementInfo[achievement.offset].name)
           notePopupItemArray.append(achievementPopupInfo)
         }
@@ -66,7 +66,7 @@ extension mainGameViewController {
           currentEpisode().currentCharacterNote[gameCharacter.offset].isLocked = false
           currentEpisode().currentCharacterNote[gameCharacter.offset].isChecked = false
           print("캐릭터 '\(currentEpisode().currentCharacterNote[gameCharacter.offset].isLocked)' 해금됨")
-          buttonAlertOn(input: 0)
+   
           let gameCharacterPopupInfo = ("수첩 - 인물", currentEpisode().currentCharacterNote[gameCharacter.offset].name )
           notePopupItemArray.append(gameCharacterPopupInfo)
         }
@@ -85,7 +85,7 @@ extension mainGameViewController {
           currentEpisode().currentCaseNote[caseNote.offset].isLocked = false
           currentEpisode().currentCaseNote[caseNote.offset].isChecked = false
           print("사건 노트 '\(currentEpisode().currentCaseNote[caseNote.offset].isLocked)' 해금됨")
-          buttonAlertOn(input: 0)
+         
           let casePopupInfo = ("수첩 - 사건", currentEpisode().currentCaseNote[caseNote.offset].title )
           notePopupItemArray.append(casePopupInfo)
         }
@@ -105,7 +105,7 @@ extension mainGameViewController {
           if infomation.element.infomationID == currentChatInfomation {
             currentEpisode().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked = false
             print("'\(currentEpisode().currentCharacterNote[gameCharacter.offset].isLocked)' 정보 해금됨")
-            buttonAlertOn(input: 0)
+          
             let gameCharacterInfomationInfo = ("수첩 - 인물 정보", currentEpisode().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].text )
             notePopupItemArray.append(gameCharacterInfomationInfo)
           }
@@ -125,7 +125,7 @@ extension mainGameViewController {
           currentEpisode().currentCharacterNote[gameCharacter.offset].isLocked = false
           currentEpisode().currentCharacterNote[gameCharacter.offset].isChecked = false
           print("캐릭터 '\(currentEpisode().currentCharacterNote[gameCharacter.offset].isLocked)' 해금됨")
-          buttonAlertOn(input: 0)
+    
           let gameCharacterPopupInfo = ("수첩 - 인물", currentEpisode().currentCharacterNote[gameCharacter.offset].name )
           notePopupItemArray.append(gameCharacterPopupInfo)
         }
@@ -145,7 +145,7 @@ extension mainGameViewController {
           currentEpisode().currentCaseNote[caseNote.offset].isLocked = false
           currentEpisode().currentCaseNote[caseNote.offset].isChecked = false
           print("사건 노트 '\(currentEpisode().currentCaseNote[caseNote.offset].isLocked)' 해금됨")
-          buttonAlertOn(input: 0)
+         
           let casePopupInfo = ("수첩 - 사건", currentEpisode().currentCaseNote[caseNote.offset].title )
           notePopupItemArray.append(casePopupInfo)
         }
@@ -165,7 +165,7 @@ extension mainGameViewController {
           if infomation.element.infomationID == currentChatInfomation {
             currentEpisode().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked = false
             print("'\(currentEpisode().currentCharacterNote[gameCharacter.offset].isLocked)' 정보 해금됨")
-            buttonAlertOn(input: 0)
+          
             let gameCharacterInfomationInfo = ("수첩 - 인물 정보", currentEpisode().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].text )
             notePopupItemArray.append(gameCharacterInfomationInfo)
           }
@@ -189,7 +189,7 @@ extension mainGameViewController {
         if albumImage.element.id == currentChatAlbumImage {
           currentEpisode().currentAlbumImages[albumImage.offset].isLocked = false
           print("'\(currentEpisode().currentAlbumImages[albumImage.offset].isLocked)' 앨범 이미지 해금됨")
-          buttonAlertOn(input: 1)
+        
           let albumImageInfo = ("앨범", currentEpisode().currentAlbumImages[albumImage.offset].title )
           notePopupItemArray.append(albumImageInfo)
         }
@@ -207,7 +207,7 @@ extension mainGameViewController {
           if albumImage.element.id == currentChatAlbumImage {
             currentEpisode().currentAlbumImages[albumImage.offset].isLocked = false
             print("'\(currentEpisode().currentAlbumImages[albumImage.offset].isLocked)' 앨범 이미지 해금됨")
-            buttonAlertOn(input: 1)
+          
             let albumImageInfo = ("앨범", currentEpisode().currentAlbumImages[albumImage.offset].title )
             notePopupItemArray.append(albumImageInfo)
           }

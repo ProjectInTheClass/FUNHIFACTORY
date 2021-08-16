@@ -116,4 +116,7 @@ class HomeViewController: UIViewController {
       func openAlertPopup() {
           self.view.addSubview(alertPopupView)
       }
+  @IBAction func test(_ sender: Any) {
+    self.view.showTutorial(items: sampleData)
   }
+}
