@@ -11,11 +11,15 @@ class HomeViewController: UIViewController {
     @IBOutlet var episodeYearLabel: UILabel!
     @IBOutlet var episodeNameLabel: UILabel!
     @IBOutlet var episodeDescriptionLabel: UILabel!
-    
     @IBOutlet var startGameButtonView: UIView!
     @IBOutlet var selectNewEPButtonView: UIView!
-    
+  
     @IBOutlet var buttonViews: [UIView]!
+  @IBOutlet weak var note: UIButton!
+  @IBOutlet weak var album: UIButton!
+  @IBOutlet weak var timeline: UIButton!
+  @IBOutlet weak var setting: UIButton!
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,10 +38,7 @@ class HomeViewController: UIViewController {
         startGameButtonView.setShadow(color: UIColor(red: 0.784, green: 0.871, blue: 0.941, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 10)
         selectNewEPButtonView.setShadow(color: UIColor(red: 0.592, green: 0.706, blue: 0.82, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 10)
         
-        for view in buttonViews {
-            view.setBolder(color: UIColor(red: 0.524, green: 0.646, blue: 0.75, alpha: 1), width: 3)
-            view.layer.backgroundColor = UIColor.white.cgColor
-        }
+       
         //-----팝업------------
         alertPopupView.bounds = self.view.bounds
         alertPopupView.center = self.view.center
@@ -50,6 +51,10 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
 
     }
+  
+  private func setupButtonStyle() {
+    if 
+  }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()

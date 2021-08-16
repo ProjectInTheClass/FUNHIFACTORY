@@ -152,6 +152,7 @@ class AlbumImage: Codable {
     let title: String
     let description: String
     var isLocked: Bool = true
+    var isChecked: Bool = false
     
     init(id: AlbumImageID, image: String, title: String, description: String, isLocked: Bool) {
         self.id = id
@@ -254,6 +255,7 @@ class GameCharacter: Codable {
     let description: String
     var infomation: [Infomation]
     var isLocked: Bool
+    var isChecked: Bool = false
     
     init(name: String, profileImage: String ,backGroundImage: String, description: String, infomation: [Infomation], isLocked: Bool) {
         self.name = name
@@ -873,4 +875,31 @@ func typingEffect(label : UILabel, str : String, loopTime : Double)
         label.text! += "\(i)"
         RunLoop.current.run(until: Date() + loopTime)
     }
+}
+
+var readAllNotes: Bool {
+  get {
+    var readAll = true
+    player.currentEpisodes.forEach { episode in
+      episode.currentCharacterNote.forEach { note in
+        if !note.isChecked { readAll = false }
+      }
+      episode.currentCaseNote.forEach { note in
+        if !note.isChecked { readAll = false }
+      }
+    }
+    return readAll
+  }
+}
+
+var readAllAlbums: Bool {
+  get {
+    var readAll = true
+    player.currentEpisodes.forEach { episode in
+      episode.currentAlbumImages.forEach { album in
+        if !album.isChecked { readAll = false }
+      }
+    }
+    return readAll
+  }
 }
