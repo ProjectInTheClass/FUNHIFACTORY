@@ -378,32 +378,18 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     @IBAction func mapOpen(_ sender: Any) {
-        if timer != nil{
-            print("map : timer invalidate")
-            timer.invalidate()
-        }
-        self.view.addSubview(blackView)
-        blackView.translatesAutoresizingMaskIntoConstraints = false
-        blackView.fullScreen(to: wholeView)
-        blackView.alpha = 1
-        UIView.animate(withDuration: 0.2) {
-            self.blackView.alpha = 0.7
-        }
-        let name = player.currentEpisodes[strToIndex(str: player.dayId)].episodeYear
-        let imageName = "\(name)map"
-        
-        mapImage.image = UIImage(named: imageName)
-        wholeView.addSubview(map)
-        map.transform = CGAffineTransform(scaleX: 0, y: 0)
-        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
-                                                                    let scaleDown = CGAffineTransform(scaleX: 1, y: 1)
-                                                                    self.map.transform = scaleDown})
-        map.translatesAutoresizingMaskIntoConstraints = false
-        map.widthAnchor.constraint(equalToConstant: self.view.bounds.width - 36).isActive = true
-        map.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        map.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-
+//        map.transform = CGAffineTransform(scaleX: 0, y: 0)
+//        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
+//                                                                    let scaleDown = CGAffineTransform(scaleX: 1, y: 1)
+//                                                                    self.map.transform = scaleDown})
+//        map.translatesAutoresizingMaskIntoConstraints = false
+//        map.widthAnchor.constraint(equalToConstant: self.view.bounds.width - 36).isActive = true
+//        map.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+//        map.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+        guard let mapVC = storyboard?.instantiateViewController(identifier: "MapVC") else {return}
+        mapVC.modalPresentationStyle = .fullScreen
+        present(mapVC, animated: true, completion: nil)
     }
     @IBAction func closeMap(_ sender: Any) {
         animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
