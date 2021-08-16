@@ -188,6 +188,10 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                     cell.cellBorderAndShadowView.backgroundColor = UIColor(red: 0.831, green: 0.886, blue: 0.933, alpha: 1)
                     cell.noticeIcon.isHidden = false
                 }
+                else
+                {
+                    cell.noticeIcon.isHidden = true
+                }
                 return cell
             // 작은 인물 셀
             } else {
@@ -206,6 +210,10 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                     cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: UIColor.white, borderColor: UIColor.white)
                     cell.cellBackgroundView.backgroundColor = UIColor(red: 0.831, green: 0.886, blue: 0.933, alpha: 1)
                     cell.noticeIcon.isHidden = false
+                }
+                else
+                {
+                    cell.noticeIcon.isHidden = true
                 }
                 return cell
             }
@@ -226,6 +234,10 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: UIColor.white, borderColor: UIColor.white)
                 cell.cellBackgroundView.backgroundColor = UIColor(red: 0.831, green: 0.886, blue: 0.933, alpha: 1)
                 cell.noticeIcon.isHidden = false
+            }
+            else
+            {
+                cell.noticeIcon.isHidden = true
             }
             return cell
         }
@@ -272,7 +284,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        
+        noteTableView.reloadData()
         designButtons()
         
     }
