@@ -17,7 +17,12 @@ class TutorialView: UIView {
    //   collectionView.reloadData()
     }
   }
-  
+  var currentIndex: CGFloat = 0 {
+    didSet {
+      setupPageControl()
+    }
+  }
+  var isOneStepPaging = true
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -53,13 +58,15 @@ class TutorialView: UIView {
     if let view = Bundle.main.loadNibNamed("TutorialView", owner: self, options: nil)?.first as? UIView {
       addSubview(view)
       view.pinToEdges(inView: self)
-    
     }
     collectionView.register(UINib(nibName: "TutorialCell1", bundle: nil), forCellWithReuseIdentifier: "TutorialCell1")
     collectionView.register(UINib(nibName: "TutorialCell2", bundle: nil), forCellWithReuseIdentifier: "TutorialCell2")
     collectionView.register(UINib(nibName: "TutorialCell3", bundle: nil), forCellWithReuseIdentifier: "TutorialCell3")
-
-   
+  }
+  
+  private func setupPageControl() {
+    pageView.numberOfPages = items.count
+    pageView.currentPage = Int(currentIndex)
   }
   
   @IBAction func back(_ sender: Any) {

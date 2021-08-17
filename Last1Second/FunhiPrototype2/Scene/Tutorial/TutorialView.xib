@@ -60,10 +60,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1QH-Pa-25o">
-                    <rect key="frame" x="0.0" y="105" width="414" height="657"/>
+                    <rect key="frame" x="0.0" y="105" width="414" height="708"/>
                     <subviews>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="lMd-5O-rD6">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="657"/>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="lMd-5O-rD6">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="708"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Yny-ke-eFv">
                                 <size key="itemSize" width="128" height="128"/>
@@ -81,26 +81,39 @@
                         <constraint firstAttribute="bottom" secondItem="lMd-5O-rD6" secondAttribute="bottom" id="vcN-3C-EAb"/>
                     </constraints>
                 </view>
-                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="gb4-Dn-w5r">
-                    <rect key="frame" x="0.0" y="762" width="414" height="27.5"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1s-ZG-lOe">
+                    <rect key="frame" x="0.0" y="813" width="414" height="28"/>
+                    <subviews>
+                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="gb4-Dn-w5r">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="28"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="pageIndicatorTintColor" red="0.44313725490196076" green="0.44705882352941173" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="currentPageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </pageControl>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <color key="pageIndicatorTintColor" red="0.44313725490196076" green="0.44705882352941173" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="currentPageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </pageControl>
+                    <constraints>
+                        <constraint firstItem="gb4-Dn-w5r" firstAttribute="top" secondItem="V1s-ZG-lOe" secondAttribute="top" id="2uh-wU-EvI"/>
+                        <constraint firstAttribute="trailing" secondItem="gb4-Dn-w5r" secondAttribute="trailing" id="D2u-FP-X6M"/>
+                        <constraint firstAttribute="height" constant="28" id="EgC-8g-hAI"/>
+                        <constraint firstItem="gb4-Dn-w5r" firstAttribute="leading" secondItem="V1s-ZG-lOe" secondAttribute="leading" id="egW-ng-XkV"/>
+                        <constraint firstAttribute="bottom" secondItem="gb4-Dn-w5r" secondAttribute="bottom" id="uUh-2p-7IX"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="0.090196078430000007" green="0.090196078430000007" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="V1s-ZG-lOe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1g8-lY-HcV"/>
                 <constraint firstItem="1QH-Pa-25o" firstAttribute="top" secondItem="bdk-ns-eY0" secondAttribute="bottom" id="3cD-pT-R6d"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="1QH-Pa-25o" secondAttribute="bottom" constant="100" id="BlY-2R-NXI"/>
+                <constraint firstAttribute="bottom" secondItem="V1s-ZG-lOe" secondAttribute="bottom" constant="55" id="6Kw-Uh-rfQ"/>
                 <constraint firstItem="1QH-Pa-25o" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="EIR-24-oTJ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="1QH-Pa-25o" secondAttribute="trailing" id="Gg7-xT-yVv"/>
                 <constraint firstItem="bdk-ns-eY0" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="IBQ-my-1cJ"/>
                 <constraint firstItem="bdk-ns-eY0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="NrH-nA-exV"/>
                 <constraint firstItem="bdk-ns-eY0" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="UHm-Q0-Okj"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gb4-Dn-w5r" secondAttribute="trailing" id="ZQM-Vd-PWA"/>
-                <constraint firstItem="gb4-Dn-w5r" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dZP-m6-Lm8"/>
-                <constraint firstItem="gb4-Dn-w5r" firstAttribute="top" secondItem="1QH-Pa-25o" secondAttribute="bottom" id="ogn-pC-fi3"/>
+                <constraint firstItem="V1s-ZG-lOe" firstAttribute="top" secondItem="1QH-Pa-25o" secondAttribute="bottom" id="oVU-v2-GXx"/>
+                <constraint firstAttribute="trailing" secondItem="V1s-ZG-lOe" secondAttribute="trailing" id="zlQ-D3-NFJ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="63.768115942028992" y="86.383928571428569"/>
