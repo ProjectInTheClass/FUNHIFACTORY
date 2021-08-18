@@ -13,7 +13,7 @@ class AnimationController : NSObject{
     var animator : UIViewPropertyAnimator?
     
     enum AnimationType {
-        case GoDownPresent, GoUpDismiss, GoRightPresent, GoLeftDismiss
+        case GoDownPresent, GoUpDismiss, GoRightPresent, GoLeftDismiss, MiddleScaleUp, fadeOut
     }
     init(animationDuration : Double, animationType : AnimationType) {
         self.animatonDuration = animationDuration
@@ -52,6 +52,13 @@ extension AnimationController : UIViewControllerAnimatedTransitioning{
             transitionContext.containerView.addSubview(toViewController.view)
             transitionContext.containerView.addSubview(fromViewController.view)
             goLeftAnimation(with: transitionContext, viewToAnimate: fromViewController.view)
+        case .MiddleScaleUp:
+            transitionContext.containerView.addSubview(toViewController.view)
+            scaleUpPresent(with: transitionContext, viewToAnimate: toViewController.view)
+        case .fadeOut:
+            transitionContext.containerView.addSubview(toViewController.view)
+            transitionContext.containerView.addSubview(fromViewController.view)
+            fadeOutDismiss(with: transitionContext, viewToAnimate: fromViewController.view)
         }
     }
     
@@ -120,5 +127,27 @@ extension AnimationController : UIViewControllerAnimatedTransitioning{
                 transitionContext.completeTransition(true)
             }
                                                                   )
+    }
+    func scaleUpPresent(with transitionContext: UIViewControllerContextTransitioning, viewToAnimate: UIView){
+        viewToAnimate.clipsToBounds = true
+        
+        let duration = transitionDuration(using: transitionContext)
+        viewToAnimate.transform = CGAffineTransform(scaleX: 0, y: 0)
+        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: duration, delay: 0, options: [], animations: {
+            viewToAnimate.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }, completion: { _ in
+            transitionContext.completeTransition(true)
+        })
+    }
+    func	fadeOutDismiss(with transitionContext: UIViewControllerContextTransitioning, viewToAnimate: UIView){
+        viewToAnimate.clipsToBounds = true
+        
+        let duration = transitionDuration(using: transitionContext)
+        viewToAnimate.alpha = 1
+        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: duration, delay: 0, options: [], animations: {
+            viewToAnimate.alpha = 0
+        }, completion: { _ in
+            transitionContext.completeTransition(true)
+        })
     }
 }

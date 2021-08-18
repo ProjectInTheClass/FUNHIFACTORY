@@ -44,14 +44,14 @@ class MapViewController: UIViewController {
         if let ex = getIndexOf(button: sender){
             buttonIndex = ex
         }
-        performSegue(withIdentifier: "goToImageViewer", sender: nil)
+        guard let vc = storyboard?.instantiateViewController(identifier: "imageViewer") as? ImageViewerViewController else {return}
+        vc.currentSpotData = spotsName[buttonIndex]
+        vc.modalPresentationStyle = .fullScreen
+        
+        present(vc, animated: true, completion: nil)
     }
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let secondVC = segue.destination as? ImageViewerViewController else {return}
-            secondVC.currentSpotData = spotsName[buttonIndex]
     }
     
     let spotsName : [Spots] =

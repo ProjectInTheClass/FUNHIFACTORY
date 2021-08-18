@@ -500,7 +500,6 @@
                         <outletCollection property="spotButtonViews" destination="qq9-4G-I2v" collectionClass="NSMutableArray" id="65X-S8-5ce"/>
                         <outletCollection property="spotButtonViews" destination="2tP-3l-XNt" collectionClass="NSMutableArray" id="krk-KF-TQg"/>
                         <outletCollection property="spotButtonViews" destination="77N-xi-X7A" collectionClass="NSMutableArray" id="rg2-OG-Cu2"/>
-                        <segue destination="QPA-Wi-yaP" kind="show" identifier="goToImageViewer" id="ZYY-Hg-yzp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -510,12 +509,12 @@
         <!--Image Viewer View Controller-->
         <scene sceneID="pwU-U1-YDb">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="QPA-Wi-yaP" customClass="ImageViewerViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="imageViewer" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QPA-Wi-yaP" customClass="ImageViewerViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lKv-Gs-l6b">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wVG-8M-rmd">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wVG-8M-rmd">
                                 <rect key="frame" x="0.0" y="112" width="414" height="784"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="YW9-4T-oKd">

@@ -20,16 +20,42 @@ class ImageViewerViewController: UIViewController {
         imageViewCV.delegate = self
         imageViewCV.dataSource = self
         spotNameLabel.text = "\(currentSpotData.name)"
+        self.transitioningDelegate = self
 //        spotImage.image = UIImage(named: currentSpotData.images[imageIndex])
 //        let descriptionGesture : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showDescription(_:)))
 //        spotImage.addGestureRecognizer(descriptionGesture)
     }
     
     @IBAction func previousImage(_ sender: Any) {
+        imageViewCV.isPagingEnabled = false
+        if imageIndex > 0{
+            imageIndex -= 1
+            let index = IndexPath.init(item: imageIndex, section: 0)
+            imageViewCV.scrollToItem(at: index, at: .left, animated: true)
+        }
+        else{
+            imageIndex = currentSpotData.images.count - 1
+            let index = IndexPath.init(item: imageIndex, section: 0)
+            imageViewCV.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
+        }
+        imageViewCV.isPagingEnabled = true
     }
     @IBAction func nextImage(_ sender: Any) {
+        imageViewCV.isPagingEnabled = false
+        if imageIndex < currentSpotData.images.count - 1{
+            imageIndex += 1
+            let index = IndexPath.init(item: imageIndex, section: 0)
+            imageViewCV.scrollToItem(at: index, at: .right, animated: true)
+        }
+        else{
+            imageIndex = 0
+            let index = IndexPath.init(item: imageIndex, section: 0)
+            imageViewCV.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
+        }
+        imageViewCV.isPagingEnabled = true
     }
     @IBAction func goBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     @objc func showDescription(_ gesture: UITapGestureRecognizer)
     {
@@ -81,4 +107,14 @@ extension   ImageViewerViewController : UICollectionViewDataSource, UICollection
 class	SpotImageCell : UICollectionViewCell{
     
     @IBOutlet weak var spotImage: UIImageView!
+}
+
+extension ImageViewerViewController : UIViewControllerTransitioningDelegate{
+    func animationController(forPresented presented: UIViewController,
+                             presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return AnimationController(animationDuration: 0.4, animationType: .MiddleScaleUp)
+    }
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return AnimationController(animationDuration: 0.01, animationType: .fadeOut)
+    }
 }
