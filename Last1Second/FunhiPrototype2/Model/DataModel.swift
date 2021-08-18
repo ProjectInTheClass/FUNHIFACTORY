@@ -531,6 +531,27 @@ struct Episode: Codable, Equatable {
         return storyBlocks[currentStoryBlockIndex]?.currentRoute ?? .normal
       }
     }
+  
+//  convenience init() {
+//    
+//    self.episodeID
+//    self.episodePlace
+//    self.episodeYear
+//    self.episodeKingYear
+//    self.episodeShortDesciption
+//    self.episodeDesciption
+//    self.episodePlaceImage
+//    self.episodeCoverImage
+//    self.isCleared
+//    self.isStarted
+//    self.storyBlocks
+//    self.currentCharacterNote
+//    self.currentCaseNote
+//    self.currentAlbumImages
+//    self.timelineCheckPoint
+//    self.currentStoryBlockIndex
+//  
+//  }
 }
 
 //MARK: 체크포인트드ㅏㄹ
