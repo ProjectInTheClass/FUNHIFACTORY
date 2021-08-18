@@ -182,7 +182,24 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 currentCharacter.isLocked ? (cell.lockedView.isHidden = false) : (cell.lockedView.isHidden = true)
              
                 currentCharacter.isLocked ? cell.changeShadowAndBorder(view: cell.cellBorderAndShadowView, shadowColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1), borderColor: UIColor(red: 0.416, green: 0.569, blue: 0.698, alpha: 1)) : cell.changeShadowAndBorder(view: cell.cellBorderAndShadowView, shadowColor: UIColor(red: 0.749, green: 0.824, blue: 0.894, alpha: 1), borderColor: UIColor(red: 0.749, green: 0.824, blue: 0.894, alpha: 1))
-                if (!currentCharacter.isChecked && !currentCharacter.isLocked)
+                if (currentCharacter.name == "이단희")
+                {
+                    for achievement in player.currentAchievementInfo {
+                        if !achievement.isChecked
+                        {
+                            cell.changeShadowAndBorder(view: cell.cellBorderAndShadowView, shadowColor: UIColor.white, borderColor: UIColor.white)
+                            cell.cellBorderAndShadowView.backgroundColor = UIColor(red: 0.831, green: 0.886, blue: 0.933, alpha: 1)
+                            cell.noticeIcon.isHidden = false
+                        }
+                    }
+                    if currentCharacter.profileImage.hasPrefix("danhee") && !currentCharacter.isChecked && !currentCharacter.isLocked
+                    {
+                        cell.changeShadowAndBorder(view: cell.cellBorderAndShadowView, shadowColor: UIColor.white, borderColor: UIColor.white)
+                        cell.cellBorderAndShadowView.backgroundColor = UIColor(red: 0.831, green: 0.886, blue: 0.933, alpha: 1)
+                        cell.noticeIcon.isHidden = false
+                    }
+                }
+                else if (!currentCharacter.isLocked && !currentCharacter.isChecked)
                 {
                     cell.changeShadowAndBorder(view: cell.cellBorderAndShadowView, shadowColor: UIColor.white, borderColor: UIColor.white)
                     cell.cellBorderAndShadowView.backgroundColor = UIColor(red: 0.831, green: 0.886, blue: 0.933, alpha: 1)

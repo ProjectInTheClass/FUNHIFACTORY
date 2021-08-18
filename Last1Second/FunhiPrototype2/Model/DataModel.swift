@@ -99,6 +99,7 @@ struct Achievement: Codable {
     let image: String
     let id: AchievementID
     var isLocked: Bool = true
+    var isChecked: Bool = Bool()
 }
 
 //------------------------------------앨범 이미지------------------------------------

@@ -25,7 +25,7 @@ extension mainGameViewController {
           player.currentAchievementInfo[achievement.offset].isLocked = false
           player.currentAchievementInfo[achievement.offset].isLocked = false
           print("업적 '\(player.currentAchievementInfo[achievement.offset].name)' 달성됨")
-         
+            player.currentAchievementInfo[achievement.offset].isChecked = false
           let achievementPopupInfo = ("업적", player.currentAchievementInfo[achievement.offset].name)
           notePopupItemArray.append(achievementPopupInfo)
         }
@@ -42,8 +42,9 @@ extension mainGameViewController {
       for achievement in player.currentAchievementInfo.enumerated() {
         if achievement.element.id == currentChatAchievement {
           player.currentAchievementInfo[achievement.offset].isLocked = false
+            player.currentAchievementInfo[achievement.offset].isChecked = false
           print("업적 '\(player.currentAchievementInfo[achievement.offset].name)' 달성됨")
-         
+            
           let achievementPopupInfo = ("업적", player.currentAchievementInfo[achievement.offset].name)
           notePopupItemArray.append(achievementPopupInfo)
         }
@@ -66,7 +67,6 @@ extension mainGameViewController {
           currentEpisode().currentCharacterNote[gameCharacter.offset].isLocked = false
           currentEpisode().currentCharacterNote[gameCharacter.offset].isChecked = false
           print("캐릭터 '\(currentEpisode().currentCharacterNote[gameCharacter.offset].isLocked)' 해금됨")
-   
           let gameCharacterPopupInfo = ("수첩 - 인물", currentEpisode().currentCharacterNote[gameCharacter.offset].name )
           notePopupItemArray.append(gameCharacterPopupInfo)
         }
@@ -105,7 +105,6 @@ extension mainGameViewController {
           if infomation.element.infomationID == currentChatInfomation {
             currentEpisode().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].isLocked = false
             print("'\(currentEpisode().currentCharacterNote[gameCharacter.offset].isLocked)' 정보 해금됨")
-          
             let gameCharacterInfomationInfo = ("수첩 - 인물 정보", currentEpisode().currentCharacterNote[gameCharacter.offset].infomation[infomation.offset].text )
             notePopupItemArray.append(gameCharacterInfomationInfo)
           }
