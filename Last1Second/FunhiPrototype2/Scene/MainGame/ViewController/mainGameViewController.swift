@@ -58,7 +58,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
 
   }
 
-  private func updateButtons() {
+   func updateButtons() {
     readAllNotes ? (note.isNormal = true) : (note.isNormal = false)
     readAllAlbums ? (album.isNormal = true) : (album.isNormal = false)
     readAllNotification ? (menu.isNormal = true) : (menu.isNormal = false)
@@ -213,6 +213,7 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             checkAchievementInChoice(choiceIndex: indexPath.row)
             checkGameCharacterInChoice(choiceIndex: indexPath.row)
             checkgameCharacterInfomationInChoice(choiceIndex: indexPath.row)
+            updateButtons()
 
             player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = currentBlockOfDay().choices[indexPath.row].nextTextIndex
             player.indexNumber = 0

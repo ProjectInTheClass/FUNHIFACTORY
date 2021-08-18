@@ -32,6 +32,7 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     guard tableView != designTableView else { return }
     guard !player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].isLocked else { return }
+    player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].isChecked = true
     popupViewOn(blackView: albumPopupBackgroundView,popupView: albumPopupBoxView, titleLabel: albumPoopupTitleLabel, descriptionLabel: albumPopupDescriptionLabel, imageView: albumPopupImageView, priviousScale: 0.5, afterScale: 1.0, indexPath: indexPath)
   }
   

@@ -188,6 +188,7 @@ extension mainGameViewController {
       for albumImage in currentEpisode().currentAlbumImages.enumerated() {
         if albumImage.element.id == currentChatAlbumImage {
           currentEpisode().currentAlbumImages[albumImage.offset].isLocked = false
+          currentEpisode().currentAlbumImages[albumImage.offset].isChecked = false
           print("'\(currentEpisode().currentAlbumImages[albumImage.offset].isLocked)' 앨범 이미지 해금됨")
         
           let albumImageInfo = ("앨범", currentEpisode().currentAlbumImages[albumImage.offset].title )
@@ -206,6 +207,7 @@ extension mainGameViewController {
         for albumImage in currentEpisode().currentAlbumImages.enumerated() {
           if albumImage.element.id == currentChatAlbumImage {
             currentEpisode().currentAlbumImages[albumImage.offset].isLocked = false
+            currentEpisode().currentAlbumImages[albumImage.offset].isChecked = false
             print("'\(currentEpisode().currentAlbumImages[albumImage.offset].isLocked)' 앨범 이미지 해금됨")
           
             let albumImageInfo = ("앨범", currentEpisode().currentAlbumImages[albumImage.offset].title )

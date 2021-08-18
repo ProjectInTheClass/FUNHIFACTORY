@@ -75,7 +75,7 @@ class NoteCase: Codable{
     let shortDescription: String
     let longDescription: String
     var isLocked: Bool = true
-    var isChecked: Bool = Bool()
+    var isChecked: Bool = true
     
     init(id: NoteCaseID, title: String, shortDescription: String, longDescription: String) {
         self.id = id
@@ -152,7 +152,7 @@ class AlbumImage: Codable {
     let title: String
     let description: String
     var isLocked: Bool = true
-    var isChecked: Bool = Bool()
+    var isChecked: Bool = true
     
     init(id: AlbumImageID, image: String, title: String, description: String, isLocked: Bool) {
         self.id = id
@@ -248,24 +248,26 @@ enum GameCharacterID: String,Codable {
 // gameCharacter는 참조 기능 필요해서 class임
 // 프라퍼티 설명: 등장인물 이름, 프로필 이미지, 배경 이미지, 등장인물 설명, 등장인물 정보 목록, 호감도, 잠금 여부
 class GameCharacter: Codable {
-    let name: String
-    let profileImage: String
-    let backGroundImage : String
+  var name: String
+  var profileImage: String
+  var backGroundImage : String
     //노트 인물 페이지 셀에 들어갈 주인공 설명
-    let description: String
+  var description: String
     var infomation: [Infomation]
     var isLocked: Bool
-    var isChecked: Bool = Bool()
+    var isChecked: Bool = true
     
-    init(name: String, profileImage: String ,backGroundImage: String, description: String, infomation: [Infomation], isLocked: Bool) {
+  init(name: String, profileImage: String ,backGroundImage: String, description: String, infomation: [Infomation], isLocked: Bool, isChecked: Bool) {
         self.name = name
         self.profileImage = profileImage
         self.backGroundImage = backGroundImage
         self.description = description
         self.infomation = infomation
         self.isLocked = isLocked
-
+        self.isChecked = isChecked
     }
+  
+ 
 }
 //------------------------------------유저------------------------------------
 
