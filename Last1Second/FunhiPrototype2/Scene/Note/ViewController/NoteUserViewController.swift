@@ -179,7 +179,11 @@ class NoteUserViewController: UIViewController,UICollectionViewDelegate,UICollec
         self.noteCollectionView.delegate = self
         self.noteCollectionView.dataSource = self
         designObjects()
-        
+        for index in player.currentAchievementInfo.indices {
+            if !player.currentAchievementInfo[index].isChecked && !player.currentAchievementInfo[index].isLocked{
+                player.currentAchievementInfo[index].isChecked = true
+            }
+        }
         // Do any additional setup after loading the view.
     }
     

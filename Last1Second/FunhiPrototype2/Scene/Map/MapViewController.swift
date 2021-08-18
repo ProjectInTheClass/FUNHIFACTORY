@@ -17,6 +17,7 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.transitioningDelegate = self
+        highLightButton(button: spotButtons[0],target:spotButtonViews[0])
 //        let name = player.currentEpisodes[strToIndex(str: player.dayId)].episodeYear
 //        mapImage.image = UIImage(named: "\(name)map")
         designInit()
@@ -40,6 +41,27 @@ class MapViewController: UIViewController {
             button.titleLabel?.adjustsFontSizeToFitWidth = true
         }
     }
+    
+    func highLightButton(button : UIButton, target : UIView)
+    {
+        let positionIcon = UIImageView()
+
+        positionIcon.image = UIImage(named: "positionIcon")
+        positionIcon.translatesAutoresizingMaskIntoConstraints = false
+        target.addSubview(positionIcon)
+        target.translatesAutoresizingMaskIntoConstraints = false
+        positionIcon.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        positionIcon.widthAnchor.constraint(equalToConstant: 19.5).isActive = true
+        
+        positionIcon.leftAnchor.constraint(equalTo: target.leftAnchor, constant: 8).isActive = true
+        positionIcon.topAnchor.constraint(equalTo: target.topAnchor, constant: -24).isActive = true
+        
+        target.backgroundColor = UIColor(red: 0.791, green: 0.857, blue: 0.912, alpha: 1)
+        target.setBolder(color: UIColor(red: 0.6, green: 0.704, blue: 0.797, alpha: 1), width: Double(button.layer.borderWidth))
+        target.setShadow(color: UIColor(red: 0.6, green: 0.704, blue: 0.797, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 16)
+        button.setTitleColor(UIColor(red: 0.039, green: 0.22, blue: 0.357, alpha: 1), for: .normal)
+    }
+    
     @IBAction func buttonTapped(_ sender: UIButton) {
         if let ex = getIndexOf(button: sender){
             buttonIndex = ex

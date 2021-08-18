@@ -185,7 +185,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 if (currentCharacter.name == "이단희")
                 {
                     for achievement in player.currentAchievementInfo {
-                        if !achievement.isChecked
+                        if !achievement.isChecked && !achievement.isLocked
                         {
                             cell.changeShadowAndBorder(view: cell.cellBorderAndShadowView, shadowColor: UIColor.white, borderColor: UIColor.white)
                             cell.cellBorderAndShadowView.backgroundColor = UIColor(red: 0.831, green: 0.886, blue: 0.933, alpha: 1)

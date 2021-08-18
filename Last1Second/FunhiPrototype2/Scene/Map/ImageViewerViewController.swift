@@ -96,7 +96,7 @@ extension   ImageViewerViewController : UICollectionViewDataSource, UICollection
         attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: style, range: NSMakeRange(0, attrString.length))
         descriptionLabel.attributedText = attrString
         descriptionLabel.textColor = UIColor.white
-        descriptionLabel.font = UIFont(name: "NanumSquareR", size: 17)
+        descriptionLabel.font = UIFont(name: "SpoqaHanSansNeo-Light", size: 17)
         descriptionLabel.numberOfLines = 0
         descriptionLabel.lineBreakMode = .byWordWrapping
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
