@@ -19,7 +19,7 @@ class TutorialView: UIView {
   }
   var currentIndex: CGFloat = 0 {
     didSet {
-      setupPageControl()
+//      setupPageControl()
     }
   }
   var isOneStepPaging = true
@@ -37,6 +37,7 @@ class TutorialView: UIView {
   private func commonInit() {
     setupLayout()
     setupStyle()
+    setupPageControl()
   }
   
   private func setupLayout() {
@@ -65,10 +66,14 @@ class TutorialView: UIView {
   }
   
   private func setupPageControl() {
-    pageView.numberOfPages = items.count
+    pageView.numberOfPages = sampleData.count
     pageView.currentPage = Int(currentIndex)
   }
-  
+    @IBAction func touchPageControl(_ sender: Any) {
+        let rect = collectionView.layoutAttributesForItem(at: IndexPath(item: pageView.currentPage, section: 0))?.frame
+        collectionView.scrollRectToVisible(rect!, animated: true)
+    }
+    
   @IBAction func back(_ sender: Any) {
     removeFromSuperview()
   }
@@ -108,5 +113,4 @@ extension TutorialView: UICollectionViewDelegate, UICollectionViewDataSource, UI
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize(width: self.bounds.width, height: collectionView.bounds.height)
   }
-  
 }
