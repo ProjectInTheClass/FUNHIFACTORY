@@ -29,6 +29,7 @@ class TitleCoverViewController: UIViewController {
         
         if successDownload {
             print("**0, 2챕터 들어옴**")
+          setupAudioLabel()
             light()
         } else {
             print("**0, 2챕터 들어오지 않음, 재시도 필요**")
@@ -129,6 +130,24 @@ class TitleCoverViewController: UIViewController {
     
     var tapLabel = UILabel()
     
+  var audioLabel = UILabel()
+  
+  private func setupAudioLabel() {
+    audioLabel = UILabel()
+    audioLabel.text = "소리를 켜고 플레이해주세요!"
+    audioLabel.font = UIFont(name: "NanumSquareEB", size: 15)
+    audioLabel.setCharacterSpacing(characterSpacing: 5)
+    audioLabel.setShadow(color: UIColor(red: 0, green: 0, blue: 0, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 5)
+    
+    audioLabel.translatesAutoresizingMaskIntoConstraints = false
+    self.view.addSubview(audioLabel)
+    audioLabel.textAlignment = .center
+    audioLabel.textColor = .white
+    audioLabel.lineBreakMode = .byWordWrapping
+    audioLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+    audioLabel.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -108).isActive = true
+    
+  }
     func light() {
         
         tapLabel = UILabel()

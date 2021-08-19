@@ -26,8 +26,7 @@ enum TutorialStyle {
 }
 
 let sampleData: [TutorialStyle] = [
-  .singleImage(image: "", desc: "singleImage"),
-  .doubleImages(image1: "", image2: "", desc: "doubleImages"),
-  .singleFillImage(image: "", desc: "singleFillImage")
-  
+  .singleImage(image: "argument", desc: "singleImage"),
+  .doubleImages(image1: "argument", image2: "argument", desc: "doubleImages"),
+  .singleFillImage(image: "argument", desc: "singleFillImage"),
 ]

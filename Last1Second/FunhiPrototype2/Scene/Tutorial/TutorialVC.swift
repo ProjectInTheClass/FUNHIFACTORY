@@ -77,13 +77,30 @@ class TutorialView: UIView {
 extension TutorialView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return items.count
+    return sampleData.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TutorialCell1", for: indexPath) as! TutorialCell1
-    cell.fillImage.image = UIImage(named: "cover image")
-    cell.desc.text = "테스트"
+    var cell = UICollectionViewCell()
+    switch sampleData[indexPath.row] {
+    case .singleFillImage(let image, let desc):
+      let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "TutorialCell1", for: indexPath) as! TutorialCell1
+      cell1.fillImage.image = UIImage(named: image)
+      cell1.desc.text = desc
+      cell = cell1
+    case .doubleImages(let image1, let image2, let desc):
+      let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "TutorialCell2", for: indexPath) as! TutorialCell2
+      cell2.image1.image = UIImage(named: image1)
+      cell2.image2.image = UIImage(named: image2)
+      cell2.desc.text = desc
+      cell = cell2
+    case .singleImage(let image, let desc):
+      let cell3 = collectionView.dequeueReusableCell(withReuseIdentifier: "TutorialCell3", for: indexPath) as! TutorialCell3
+      cell3.image.image = UIImage(named: image)
+      cell3.desc.text = desc
+      cell = cell3
+    }
+    
     return cell
   }
   

@@ -9,6 +9,9 @@ import UIKit
 
 class TutorialCell3: UICollectionViewCell {
   
+  @IBOutlet weak var image: UIImageView!
+  @IBOutlet weak var desc: UILabel!
+  
   override func awakeFromNib() {
     super.awakeFromNib()
   }
