@@ -57,10 +57,6 @@ class ImageViewerViewController: UIViewController {
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    @objc func showDescription(_ gesture: UITapGestureRecognizer)
-    {
-
-    }
     @objc func touchDescription(_ gesture: UITapGestureRecognizer)
     {
         for tt in self.view.subviews {
@@ -71,7 +67,7 @@ class ImageViewerViewController: UIViewController {
     }
 }
 
-extension   ImageViewerViewController : UICollectionViewDataSource, UICollectionViewDelegate{
+extension   ImageViewerViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return currentSpotData.images.count
     }
