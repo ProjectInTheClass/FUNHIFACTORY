@@ -17,7 +17,14 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.transitioningDelegate = self
-        highLightButton(button: spotButtons[0],target:spotButtonViews[0])
+        switch currentEpisode().episodePlace {
+        case "돈화문":
+            highLightButton(button: spotButtons[0], target: spotButtonViews[0])
+        case "현재" :
+            highLightButton(button: spotButtons[0], target: spotButtonViews[0])
+        default:
+            print("에피소드의 위치를 찾을 수 없음. 오류")
+        }
 //        let name = player.currentEpisodes[strToIndex(str: player.dayId)].episodeYear
 //        mapImage.image = UIImage(named: "\(name)map")
         designInit()
