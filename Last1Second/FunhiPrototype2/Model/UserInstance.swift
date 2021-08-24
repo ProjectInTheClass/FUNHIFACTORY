@@ -13,7 +13,7 @@ var player = User(
     setting: Setting(bgmVolume: 0.5, effectVolume: 0.5, textSpeed: 2.15, darkmode: false, vibration: true),
     currentEpisodes: [Episode(episodeID: "prologue", episodePlace: "현재", episodeYear: 2039, episodeKingYear: "현재 2039년", episodeShortDesciption: "지루하고 따분한, 그저 우울하기만 한\n이런 삶은 이제 그만하고 싶다.\n누군가 나에게 내 하루를 바꿀 수 있는, 내 인생을 바꿀 수 있는\n구원의 손길을 내밀어 준다면,\n나는 그 손을....잡을 수 있을까?", episodeDesciption: "지루하고 따분한, 그저 우울하기만 한\n이런 삶은 이제 그만하고 싶다.\n\n누군가 나에게 내 하루를 바꿀 수 있는,\n내 인생을 바꿀 수 있는\n구원의 손길을 내밀어 준다면,\n나는 그 손을.... 잡을 수 있을까?", episodePlaceImage: "donhwamun illust", episodeCoverImage: "donhwamun background image", chatHistory: [], storyBlocks: [:], currentCharacterNote:
     
-                                [GameCharacter(name: "이단희", profileImage: "prolog danhee", backGroundImage: "prolog danhee_background", description: "내 곁에 아무도 없다는 게 이젠 익숙해.\n이런 내 삶이 바뀔 수 있을까?", infomation: [],isLocked: false, isChecked: false),
+                                [GameCharacter(name: "이단희", profileImage: "prolog danhee", backGroundImage: "prolog danhee_background", description: "내 곁에 아무도 없다는 게 이젠 익숙해.\n이런 내 삶이 바뀔 수 있을까?", infomation: [],isLocked: true, isChecked: false),
      
      GameCharacter(name: "휘령", profileImage: "hwiryeong", backGroundImage: "prolog hwiryeong_background", description: "네가 나의 마지막 희망이다.\n네가 가진 그 1초가 나를,\n이 세상을 바꾸는 법.\n부디 이번엔 꼭 성공하길...", infomation: [
                     Infomation(infomationID: .hwiryeong1, isLocked: false, text: "조선이 생겨났을 때부터 존재했다고 한다."),
@@ -25,7 +25,7 @@ var player = User(
      GameCharacter(name: "투어 가이드", profileImage: "guide", backGroundImage: "", description: "오늘 하루동안 저와 창덕궁 투어를\n함께하게 되어 반가워요!", infomation: [
                     Infomation(infomationID: .teacher1, isLocked: false, text: "우리 반이 현장체험학습으로 간 창덕궁에서 가이드를 맡은 사람이다."),
                     Infomation(infomationID: .teacher1, isLocked: false, text: "창덕궁에 대해 꽤나 애정이 있는 것처럼 보인다.")
-     ],isLocked: false, isChecked: false),
+     ],isLocked: true, isChecked: false),
      
      GameCharacter(name: "선생님", profileImage: "teacher", backGroundImage: "", description: "거기 너! 마음대로 돌아다니지 말랬지!!", infomation: [
                     Infomation(infomationID: .teacher1, isLocked: false, text: "우리 반 담임 선생님이다."),
