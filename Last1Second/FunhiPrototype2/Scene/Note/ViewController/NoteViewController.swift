@@ -207,6 +207,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 }
                 else
                 {
+                    cell.cellBorderAndShadowView.backgroundColor = UIColor(red: 0.831, green: 0.886, blue: 0.933, alpha: 1)
                     cell.noticeIcon.isHidden = true
                 }
                 return cell
@@ -230,6 +231,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 }
                 else
                 {
+                    cell.cellBackgroundView.backgroundColor = UIColor(red: 0.725, green: 0.808, blue: 0.878, alpha: 1)
                     cell.noticeIcon.isHidden = true
                 }
                 return cell
