@@ -87,6 +87,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
         if target.type == .onlyText && target.who.info().name == "이단희"{
             print("자신텍스트 : \(player.currentChatArray[indexPath.row].text)")
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
+            cell.delegate = self
+            cell.inputCharacter = target.who.info()
             cell.myTextCellUpdate(name: target.who, chat: chatText, profile: target.characterFace, godchat: target.isGodChat, currentDanhee: currentMainGameDanhee())
 //            cell.layoutIfNeeded()
             return cell
@@ -96,6 +98,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             print("상대텍스트 : \(player.currentChatArray[indexPath.row].text)")
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
             cell.profileNickname.textColor = .white
+            cell.delegate = self
+            cell.inputCharacter = target.who.info()
             cell.opTextCellUpdate(name: target.who, chat: chatText,normalProfile: target.who.info().profileImage, mainProfile: target.characterFace, isLocked: target.who.info().isLocked, godchat: target.isGodChat)
             cell.contentView.setNeedsDisplay()
             return cell
@@ -118,6 +122,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
             print("속마음채팅 - \(player.currentChatArray[indexPath.row].text)")
                     
             let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "monologue", for: indexPath) as! monologueTableViewCell
+            cell.delegate = self
+            cell.inputCharacter = target.who.info()
             cell.monologueText.text = chatText
             cell.name.textColor = .white
             cell.chatUpdate(nickname: target.who, profile: target.characterFace, godchat: target.isGodChat, currentDanhee: currentMainGameDanhee())
@@ -517,6 +523,44 @@ extension mainGameViewController : arDelegate {
             let destination = segue.destination as! MaingameARViewController
             if let arContent = sender as? ARID {
                 destination.recievedAR = arContent
+            }
+        }
+        else if segue.identifier == "NoteUserVC" || segue.identifier == "NoteHwiryoengVC" || segue.identifier == "NoteGameCharacterVC"{
+            if segue.identifier == "NoteUserVC"{
+                let destintation = segue.destination as! NoteUserViewController
+                if let targetCharacter = sender as? GameCharacter{
+                    destintation.recievedGameCharacter = targetCharacter
+                }
+            }
+            else if segue.identifier == "NoteHwiryoengVC"{
+                let destintation = segue.destination as! NoteHeeryeongViewController
+                if let targetCharacter = sender as? GameCharacter{
+                    destintation.recievedGameCharacter = targetCharacter
+                }
+            }
+            else if segue.identifier == "NoteGameCharacterVC"{
+                let destintation = segue.destination as! NoteGameCharacterViewController
+                if let targetCharacter = sender as? GameCharacter{
+                    destintation.recievedGameCharacter = targetCharacter
+                }
+            }
+        }
+    }
+}
+
+extension mainGameViewController : ProfileImageDelegate{
+    func profileImageTapped(inputCharacter: GameCharacter) {
+        if inputCharacter.name == "이단희" || inputCharacter.name == "휘령"{
+            if inputCharacter.name == "이단희" {
+                performSegue(withIdentifier: "NoteUserVC", sender: inputCharacter)
+            }
+            else{
+                performSegue(withIdentifier: "NoteHwiryoengVC", sender: inputCharacter)
+            }
+        }
+        else{
+            if inputCharacter.description != "" {
+                performSegue(withIdentifier: "NoteGameCharacterVC", sender: inputCharacter)
             }
         }
     }

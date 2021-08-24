@@ -14,11 +14,20 @@ class myTextTableViewCell: UITableViewCell {
     @IBOutlet var chatView: UIView!
     @IBOutlet var nameAndChat: UIStackView!
     
+    var inputCharacter : GameCharacter?
+    var delegate : ProfileImageDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         designCell()
-        
+        let gesture : UIGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileButtonTapped))
+        profileImage.isUserInteractionEnabled = true
+        profileImage.addGestureRecognizer(gesture)
         // Initialization code
+    }
+    @objc func profileButtonTapped(){
+        if let character = inputCharacter{
+            delegate?.profileImageTapped(inputCharacter: character)
+        }
     }
     func designCell() {
         chatView.layer.borderWidth = 1.7

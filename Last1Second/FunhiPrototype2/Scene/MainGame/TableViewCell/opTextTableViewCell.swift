@@ -13,10 +13,20 @@ class opTextTableViewCell: UITableViewCell {
     @IBOutlet var chatText: UILabel!
     @IBOutlet var chatView: UIView!
     
+    var inputCharacter : GameCharacter?
+    var delegate : ProfileImageDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         designCell()
+        let gesture : UIGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileButtonTapped))
+        profileImage.isUserInteractionEnabled = true
+        profileImage.addGestureRecognizer(gesture)
         // Initialization code
+    }
+    @objc func profileButtonTapped(){
+        if let character = inputCharacter{
+            delegate?.profileImageTapped(inputCharacter: character)
+        }
     }
     func designCell() {
 
