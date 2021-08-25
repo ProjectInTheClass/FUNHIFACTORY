@@ -525,14 +525,14 @@ extension mainGameViewController : arDelegate {
                 destination.recievedAR = arContent
             }
         }
-        else if segue.identifier == "NoteUserVC" || segue.identifier == "NoteHwiryoengVC" || segue.identifier == "NoteGameCharacterVC"{
+        else if segue.identifier == "NoteUserVC" || segue.identifier == "NoteHwiryeongVC" || segue.identifier == "NoteGameCharacterVC"{
             if segue.identifier == "NoteUserVC"{
                 let destintation = segue.destination as! NoteUserViewController
                 if let targetCharacter = sender as? GameCharacter{
                     destintation.recievedGameCharacter = targetCharacter
                 }
             }
-            else if segue.identifier == "NoteHwiryoengVC"{
+            else if segue.identifier == "NoteHwiryeongVC"{
                 let destintation = segue.destination as! NoteHeeryeongViewController
                 if let targetCharacter = sender as? GameCharacter{
                     destintation.recievedGameCharacter = targetCharacter
@@ -555,11 +555,13 @@ extension mainGameViewController : ProfileImageDelegate{
                 performSegue(withIdentifier: "NoteUserVC", sender: inputCharacter)
             }
             else{
-                performSegue(withIdentifier: "NoteHwiryoengVC", sender: inputCharacter)
+                if !inputCharacter.isLocked{
+                    performSegue(withIdentifier: "NoteHwiryeongVC", sender: inputCharacter)
+                }
             }
         }
         else{
-            if inputCharacter.description != "" {
+            if inputCharacter.description != "" && !inputCharacter.isLocked{
                 performSegue(withIdentifier: "NoteGameCharacterVC", sender: inputCharacter)
             }
         }
