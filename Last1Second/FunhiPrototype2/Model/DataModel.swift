@@ -641,9 +641,23 @@ struct Ending {
 
 //지도 뷰컨에서 사용할 전각 구조체
 struct Spots {
+    let number: String
     let name : String
     let images : [String]
     let description : String
+  
+ 
+  
+  init(number: String, name : String, images : [String], description : String) {
+    self.number = number
+    self.name = name
+    self.images = images
+    self.description = description
+  }
+  
+  init() {
+    self.init()
+  }
 }
 //MARK: 함수, Extension
 //-------------------------------------------------------------------------------------------------
