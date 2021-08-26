@@ -129,7 +129,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         if !MFMailComposeViewController.canSendMail() {return}
                 let emailVC = MFMailComposeViewController()
                 emailVC.mailComposeDelegate = self
-                emailVC.setToRecipients(["funfac@gmail.com"])
+                emailVC.setToRecipients(["funhifactory@gmail.com"])
                 //emailVC.setSubject("제목이 들어갈 자리입니다.")
                 //emailVC.setMessageBody("내용이 들어갈 자리입니다", isHTML: false)
                 present(emailVC, animated: true, completion: nil)

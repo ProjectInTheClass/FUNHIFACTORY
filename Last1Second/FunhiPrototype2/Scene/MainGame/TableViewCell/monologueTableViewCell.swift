@@ -15,11 +15,21 @@ class monologueTableViewCell: UITableViewCell {
     @IBOutlet var name: UILabel!
     @IBOutlet var profileImage: UIImageView!
     
+    var inputCharacter : GameCharacter?
+    var delegate : ProfileImageDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         monologueUI(cell: monologueCell)
         monologueUI(cell: monologueCircle)
+        let gesture : UIGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileButtonTapped))
+        profileImage.isUserInteractionEnabled = true
+        profileImage.addGestureRecognizer(gesture)
+    }
+    @objc func profileButtonTapped(){
+        if let character = inputCharacter{
+            delegate?.profileImageTapped(inputCharacter: character)
+        }
     }
     func chatUpdate(nickname:GameCharacterID, profile:CharacterFace, godchat : Bool, currentDanhee: GameCharacterID){
         switch godchat {

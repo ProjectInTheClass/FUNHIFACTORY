@@ -207,6 +207,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 }
                 else
                 {
+                    cell.cellBorderAndShadowView.backgroundColor = UIColor(red: 0.831, green: 0.886, blue: 0.933, alpha: 1)
                     cell.noticeIcon.isHidden = true
                 }
                 return cell
@@ -230,6 +231,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 }
                 else
                 {
+                    cell.cellBackgroundView.backgroundColor = UIColor(red: 0.725, green: 0.808, blue: 0.878, alpha: 1)
                     cell.noticeIcon.isHidden = true
                 }
                 return cell
@@ -246,7 +248,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             
             currentCase.isLocked ? cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: UIColor(red: 0.314, green: 0.471, blue: 0.6, alpha: 1), borderColor: UIColor(red: 0.416, green: 0.569, blue: 0.698, alpha: 1)) : cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: UIColor(red: 0.749, green: 0.824, blue: 0.894, alpha: 1), borderColor: UIColor(red: 0.749, green: 0.824, blue: 0.894, alpha: 1))
             currentCase.isLocked ? (cell.lockedView.isHidden = false) : (cell.lockedView.isHidden = true)
-            if (!currentCharacter.isChecked && !currentCharacter.isLocked)
+            if (!currentCase.isChecked && !currentCase.isLocked)
             {
                 cell.changeShadowAndBorder(view: cell.cellBackgroundView, shadowColor: UIColor.white, borderColor: UIColor.white)
                 cell.cellBackgroundView.backgroundColor = UIColor(red: 0.831, green: 0.886, blue: 0.933, alpha: 1)
@@ -254,6 +256,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             }
             else
             {
+                cell.cellBackgroundView.backgroundColor = UIColor(red: 0.725, green: 0.808, blue: 0.878, alpha: 1)
                 cell.noticeIcon.isHidden = true
             }
             return cell
