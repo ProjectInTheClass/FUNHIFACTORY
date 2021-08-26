@@ -192,11 +192,16 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                             cell.noticeIcon.isHidden = false
                         }
                     }
-                    if currentCharacter.profileImage.hasPrefix("danhee") && !currentCharacter.isChecked && !currentCharacter.isLocked
+                    if !currentCharacter.isChecked && !currentCharacter.isLocked
                     {
                         cell.changeShadowAndBorder(view: cell.cellBorderAndShadowView, shadowColor: UIColor.white, borderColor: UIColor.white)
                         cell.cellBorderAndShadowView.backgroundColor = UIColor(red: 0.831, green: 0.886, blue: 0.933, alpha: 1)
                         cell.noticeIcon.isHidden = false
+                    }
+                    else
+                    {
+                        cell.cellBorderAndShadowView.backgroundColor = UIColor(red: 0.725, green: 0.808, blue: 0.878, alpha: 1)
+                        cell.noticeIcon.isHidden = true
                     }
                 }
                 else if (!currentCharacter.isLocked && !currentCharacter.isChecked)
@@ -207,7 +212,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 }
                 else
                 {
-                    cell.cellBorderAndShadowView.backgroundColor = UIColor(red: 0.831, green: 0.886, blue: 0.933, alpha: 1)
+                    cell.cellBorderAndShadowView.backgroundColor = UIColor(red: 0.725, green: 0.808, blue: 0.878, alpha: 1)
                     cell.noticeIcon.isHidden = true
                 }
                 return cell
