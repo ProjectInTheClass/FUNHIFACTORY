@@ -55,11 +55,11 @@ class NoteCollectionViewLeftCell: UICollectionViewCell {
         designCell() 
     }
     func designCell() {
-        lockedView.layer.cornerRadius = 7
+        lockedView.layer.cornerRadius = 10
         achievementImageView.layer.cornerRadius = 7
         achievementImageView.layer.borderWidth = 3
         achievementImageView.layer.borderColor = UIColor(red: 0.587, green: 0.7, blue: 0.796, alpha: 1).cgColor
-        cellBackground.layer.cornerRadius = 7
+        cellBackground.layer.cornerRadius = 10
       
     }
     
