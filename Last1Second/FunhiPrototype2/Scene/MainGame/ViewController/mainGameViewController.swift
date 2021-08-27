@@ -369,6 +369,8 @@ class mainGameViewController: UIViewController, UITableViewDelegate, UITableView
     //가장 밑으로 스크롤해주는 함수
     func scrollToBottom(){
         guard player.currentChatArray.count != 0 else {return}
+        guard isChoiceOn == false else {return}
+        guard topBar.isHidden == true else {return}
         let indexPath = IndexPath(row: player.currentChatArray.count-1, section: 0)
         self.mainGameTableView.scrollToRow(at: indexPath, at: .bottom, animated: false) //true로 바꾸면 좀 더 천천히 내려가긴 하는데, 못 따라오는 경우도 있다.
     }
