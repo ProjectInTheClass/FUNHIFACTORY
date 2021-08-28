@@ -645,19 +645,8 @@ struct Spots {
     let name : String
     let images : [String]
     let description : String
-  
- 
-  
-  init(number: String, name : String, images : [String], description : String) {
-    self.number = number
-    self.name = name
-    self.images = images
-    self.description = description
-  }
-  
-  init() {
-    self.init()
-  }
+
+
 }
 //MARK: 함수, Extension
 //-------------------------------------------------------------------------------------------------

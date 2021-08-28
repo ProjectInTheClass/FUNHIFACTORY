@@ -12,8 +12,8 @@ class ImageViewerViewController: UIViewController {
     @IBOutlet weak var spotNameLabel: UILabel!
     @IBOutlet weak var imageViewCV: UICollectionView!
     
-    var currentSpotData : Spots = Spots()
-    var imageIndex = 0
+  var currentSpotData = Spots(number: "", name: "", images: [], description: "")
+  var imageIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()

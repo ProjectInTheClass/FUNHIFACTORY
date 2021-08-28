@@ -7,12 +7,16 @@
 
 import UIKit
 
+class MapButton: UIButton {
+  var index: Int?
+}
+
 class MapPlaceButton: UIView {
   
   @IBOutlet weak var place: UIImageView!
-  @IBOutlet weak var button: UIButton!
+  @IBOutlet weak var button: MapButton!
   
-
+  
   
   // 이 변수 값 VC에서 바꾸기.
   var isSelected: Bool = false {
