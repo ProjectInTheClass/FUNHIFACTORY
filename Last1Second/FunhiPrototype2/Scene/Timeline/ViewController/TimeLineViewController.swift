@@ -421,10 +421,13 @@ extension TimeLineViewController: UITableViewDataSource {
         switch section {
         case 1:
           headerView.sectionIconView.backgroundColor = .checkWay1Section
+          headerView.sectionLabel.textColor = .checkWay1Section
         case 2:
           headerView.sectionIconView.backgroundColor = .checkWay2Section
+          headerView.sectionLabel.textColor = .checkWay2Section
         default:
           headerView.sectionIconView.backgroundColor = .way0TrackColor
+          headerView.sectionLabel.textColor = .way0TrackColor
         }
           
 
