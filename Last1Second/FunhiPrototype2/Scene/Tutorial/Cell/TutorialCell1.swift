@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import Gifu
 
 class TutorialCell1: UICollectionViewCell {
   
-  @IBOutlet weak var fillImage: UIImageView!
+  @IBOutlet weak var fillImage: GIFImageView!
   @IBOutlet weak var desc: UILabel!
   
   override func awakeFromNib() {
