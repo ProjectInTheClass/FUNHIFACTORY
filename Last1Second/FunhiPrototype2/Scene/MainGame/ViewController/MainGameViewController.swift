@@ -137,8 +137,7 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
   }
   
   private func pushWithFadeIn(segue: String) {
-    fadeIn()
-    performSegue(withIdentifier: segue, sender: nil)
+    fadeIn(segue: "mainToHome")
   }
   
   @IBAction func goToHome(_ sender: Any) {
@@ -281,7 +280,7 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
     }
   }
   
-  private func fadeIn() {
+  private func fadeIn(segue: String) {
     isShowBlackView = false
     blackView.bounds = self.view.bounds
     blackView.center = self.view.center
@@ -292,8 +291,10 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
         self.blackView.alpha = 1
     } completion: { (Bool) in
         self.blackView.removeFromSuperview()
+      self.performSegue(withIdentifier: segue, sender: nil)
     }
   }
+  
   //가장 밑으로 스크롤해주는 함수
   func scrollToBottom() {
     guard player.currentChatArray.count != 0 else {return}
@@ -359,6 +360,10 @@ extension MainGameViewController: ArDelegate {
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "mainToHome" {
+      let destination = segue.destination as! HomeViewController
+      destination.isShowBlackView = true
+    }
     if segue.identifier == "goToARView" {
       let destination = segue.destination as! MaingameARViewController
       if let arContent = sender as? ArId {
@@ -384,6 +389,8 @@ extension MainGameViewController: ArDelegate {
           destintation.recievedGameCharacter = targetCharacter
         }
       }
+      
+      
     }
   }
 }
