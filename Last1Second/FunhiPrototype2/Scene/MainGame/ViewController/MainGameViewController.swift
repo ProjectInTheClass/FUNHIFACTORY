@@ -9,6 +9,16 @@ import UIKit
 import AVFoundation
 import AudioToolbox
 
+/*
+ [리팩토링한 방법 정리]
+ 1. 코드 정리 순서 : 일반 변수 -> 아웃렛 -> viewLifeCycle함수 -> 액션함수 -> 함수 -> 익스텐션
+ 2. 익스텐션: ArDelegate / UICollectionViewDelegate / UICollectionViewDataSource / UICollectionViewDelegateFlowLayout / ProfileImageDelegate 순으로 모두 분리해 둠(코드 위치 찾기 편하게 하기 위함)
+ 3. tap 간격을 가독성 목적으로 4스페이스 -> 2스페이스로 변경.(현업에서 이렇게 세팅하던데 좋더라구) (세팅 변경 방법 : preferences -> text Editing -> Display와 Indentation의 '4 space'를 모두 '2 space'로 변경)
+ 4. class 내부의 요소 간 간격 : 1줄
+ 5. class, extension 간 간격 : 2줄
+ 6. 코드의 기능별로 함수를 좀 만들어서 분리해 둠.(특히 viewDidLoad 내부 그렇게 해 놓음) 이것도 가독성을 위해서
+ */
+
 class MainGameViewController: UIViewController, UITableViewDelegate {
   
   // MARK: Outlet
@@ -543,7 +553,7 @@ extension MainGameViewController: UITableViewDataSource {
 }
 
 
-extension MainGameViewController : ProfileImageDelegate {
+extension MainGameViewController: ProfileImageDelegate {
   func profileImageTapped(inputCharacter: GameCharacter) {
     if inputCharacter.name == "이단희" || inputCharacter.name == "휘령"{
       if inputCharacter.name == "이단희" {
