@@ -13,7 +13,7 @@ class AnimationController : NSObject{
     var animator : UIViewPropertyAnimator?
     
     enum AnimationType {
-        case GoDownPresent, GoUpDismiss, GoRightPresent, GoLeftDismiss, MiddleScaleUp, fadeOut
+        case GoDownPresent, GoUpDismiss, GoRightPresent, GoLeftDismiss, MiddleScaleUp, fadeOut, GoLeftPresent, GoRightDismiss
     }
     init(animationDuration : Double, animationType : AnimationType) {
         self.animatonDuration = animationDuration
@@ -59,9 +59,47 @@ extension AnimationController : UIViewControllerAnimatedTransitioning{
             transitionContext.containerView.addSubview(toViewController.view)
             transitionContext.containerView.addSubview(fromViewController.view)
             fadeOutDismiss(with: transitionContext, viewToAnimate: fromViewController.view)
+        case .GoLeftPresent:
+            transitionContext.containerView.addSubview(toViewController.view)
+            goLeftPresent(with: transitionContext, viewToAnimate: toViewController.view)
+        case .GoRightDismiss:
+            transitionContext.containerView.addSubview(toViewController.view)
+            transitionContext.containerView.addSubview(fromViewController.view)
+            goRightDismiss(with: transitionContext, viewToAnimate: fromViewController.view)
         }
     }
     
+    func goLeftPresent(with transitionContext: UIViewControllerContextTransitioning, viewToAnimate: UIView)
+    {
+        let duration = transitionDuration(using: transitionContext)
+        let size = viewToAnimate.bounds.size
+        
+        viewToAnimate.clipsToBounds = true
+        viewToAnimate.frame = CGRect(x: -size.width, y: 0, width: size.width, height: size.height)
+        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: duration, delay: 0, options: [], animations:
+        {
+            viewToAnimate.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        }, completion:
+            { _ in
+                transitionContext.completeTransition(true)
+            })
+    }
+    func goRightDismiss(with transitionContext: UIViewControllerContextTransitioning, viewToAnimate: UIView)
+    {
+        let duration = transitionDuration(using: transitionContext)
+        let size = viewToAnimate.bounds.size
+        
+        viewToAnimate.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: duration, delay: 0, options: [], animations:
+            {
+                viewToAnimate.frame = CGRect(x: -size.width, y: 0, width: size.width, height: size.height)
+            }, completion:
+                { _ in
+                    transitionContext.completeTransition(true)
+                }
+        )
+        
+    }
     func goRightAnimation(with transitionContext: UIViewControllerContextTransitioning, viewToAnimate: UIView)
     {
         let duration = transitionDuration(using: transitionContext)
