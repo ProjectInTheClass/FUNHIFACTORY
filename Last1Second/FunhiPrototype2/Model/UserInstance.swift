@@ -25,7 +25,7 @@ var player = User(
      GameCharacter(name: "투어 가이드", profileImage: "guide", backGroundImage: "", description: "오늘 하루동안 저와 창덕궁 투어를\n함께하게 되어 반가워요!", infomation: [
                     Infomation(infomationID: .teacher1, isLocked: false, text: "우리 반이 현장체험학습으로 간 창덕궁에서 가이드를 맡은 사람이다."),
                     Infomation(infomationID: .teacher1, isLocked: false, text: "창덕궁에 대해 꽤나 애정이 있는 것처럼 보인다.")
-     ],isLocked: true, isChecked: false),
+     ],isLocked: true, isChecked: true),
      
      GameCharacter(name: "선생님", profileImage: "teacher", backGroundImage: "", description: "거기 너! 마음대로 돌아다니지 말랬지!!", infomation: [
                     Infomation(infomationID: .teacher1, isLocked: false, text: "우리 반 담임 선생님이다."),

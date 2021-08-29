@@ -136,26 +136,28 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
     }
   }
   
+  private func pushWithFadeIn(segue: String) {
+    fadeIn()
+    performSegue(withIdentifier: segue, sender: nil)
+  }
+  
   @IBAction func goToHome(_ sender: Any) {
-      performSegue(withIdentifier: "mainToHome", sender: nil)
+    pushWithFadeIn(segue: "mainToHome")
   }
   
   @IBAction func goToNote(_ sender: Any) {
     audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
-    pushWithAnimation()
-    performSegue(withIdentifier: "noteSegue", sender: nil)
+    pushWithAnimation(segue: "noteSegue")
   }
   
   @IBAction func goToAlbum(_ sender: Any) {
     audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
-    pushWithAnimation()
-    performSegue(withIdentifier: "albumSegue", sender: nil)
+    pushWithAnimation(segue: "albumSegue")
   }
   
   @IBAction func goToTimeline(_ sender: Any) {
     audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
-    pushWithAnimation()
-    performSegue(withIdentifier: "timelineSegue", sender: nil)
+    pushWithAnimation(segue: "timelineSegue")
   }
 
   @IBAction func goToSetting(_ sender: Any) {
@@ -199,13 +201,14 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
     present(VC, animated: true, completion: nil)
   }
   
-  private func pushWithAnimation() {
+  private func pushWithAnimation(segue: String) {
     let transition:CATransition = CATransition()
     transition.duration = 0.3
     transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
     transition.type = CATransitionType.moveIn
     transition.subtype = CATransitionSubtype.fromBottom
     self.navigationController!.view.layer.add(transition, forKey: kCATransition)
+    performSegue(withIdentifier: segue, sender: nil)
   }
   
   private func vibrate(vibrateIsOn : Bool){
@@ -250,7 +253,7 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
     notePopupView.setShadow(color: UIColor(red: 1, green: 1, blue: 1, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 4)
   }
   
-  private func updateButtons() {
+  func updateButtons() {
     readAllNotes ? (note.isNormal = true) : (note.isNormal = false)
     readAllAlbums ? (album.isNormal = true) : (album.isNormal = false)
     readAllNotification ? (menu.isNormal = true) : (menu.isNormal = false)
@@ -292,7 +295,7 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
     }
   }
   //가장 밑으로 스크롤해주는 함수
-  private func scrollToBottom() {
+  func scrollToBottom() {
     guard player.currentChatArray.count != 0 else {return}
     guard isChoiceOn == false else {return}
     guard pauseBar.isHidden == true else {return}
