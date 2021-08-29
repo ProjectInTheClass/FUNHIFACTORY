@@ -93,9 +93,9 @@ class MapViewController: UIViewController {
 extension MapViewController : UIViewControllerTransitioningDelegate{
     func animationController(forPresented presented: UIViewController,
                              presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AnimationController(animationDuration: 0.4, animationType: .GoRightPresent)
+        return AnimationController(animationDuration: 0.4, animationType: .GoLeftPresent)
     }
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AnimationController(animationDuration: 0.4, animationType: .GoLeftDismiss)
+        return AnimationController(animationDuration: 0.4, animationType: .GoRightDismiss)
     }
 }
