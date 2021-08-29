@@ -7,7 +7,7 @@
 var currentBGM : String = "mainGameBGM"
 import Foundation
 import AVFoundation
-extension mainGameViewController {
+extension MainGameViewController {
     
     
 }

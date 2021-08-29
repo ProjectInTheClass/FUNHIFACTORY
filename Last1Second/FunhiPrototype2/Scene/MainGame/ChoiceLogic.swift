@@ -9,7 +9,7 @@ import UIKit
 
 var isChoiceOn = false
 
-extension mainGameViewController{
+extension MainGameViewController{
     func chatUpdateTimer()
     {
         print("chatUpdateTimer 실행")

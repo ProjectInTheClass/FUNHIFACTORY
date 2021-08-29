@@ -154,12 +154,12 @@ class EPHistoryViewController: UIViewController, UITableViewDelegate, UITableVie
     */
 
 }
-extension EPHistoryViewController : arDelegate {
+extension EPHistoryViewController : ArDelegate {
 
     
-    func goToAR(arid: ARID) {
+    func goToAR(arid: ArId) {
         print("buttonClicked")
-        let dataToSend: ARID
+        let dataToSend: ArId
         dataToSend = arid
         performSegue(withIdentifier: "goToARView", sender: dataToSend)
     }
@@ -167,7 +167,7 @@ extension EPHistoryViewController : arDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToARView" {
             let destination = segue.destination as! MaingameARViewController
-            if let arContent = sender as? ARID {
+            if let arContent = sender as? ArId {
                 destination.recievedAR = arContent
             }
         }

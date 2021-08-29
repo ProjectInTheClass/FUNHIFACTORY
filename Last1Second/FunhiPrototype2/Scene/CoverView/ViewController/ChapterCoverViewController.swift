@@ -46,9 +46,9 @@ class ChapterCoverViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToMainGameSegue" {
-            let destination = segue.destination as! mainGameViewController
+            let destination = segue.destination as! MainGameViewController
             if let EPStartTrue = sender as? Bool {
-                destination.isStartOfEpisode = EPStartTrue
+                destination.isShowBlackView = EPStartTrue
             }
         }
     }

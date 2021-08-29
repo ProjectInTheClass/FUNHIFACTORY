@@ -368,7 +368,7 @@ struct Chat: Codable {
     }
 }
 
-enum ARID: String, Codable {
+enum ArId: String, Codable {
     case hidePocketInGround
     case hidePocketBetweenRocks
 }
@@ -381,11 +381,11 @@ struct OptionalOption: Codable {
     let caseToUnlock: NoteCaseID?
     let albumImageToUnlock: AlbumImageID?
     let checkPointToUnlock: CheckPointID?
-    let arContent: ARID?
+    let arContent: ArId?
     
 
     
-    init(achieve : AchievementID?, inform : InfomationID?, gamecharacter : GameCharacterID?, cases : NoteCaseID?, album : AlbumImageID?, check : CheckPointID?, ar : ARID?) {
+    init(achieve : AchievementID?, inform : InfomationID?, gamecharacter : GameCharacterID?, cases : NoteCaseID?, album : AlbumImageID?, check : CheckPointID?, ar : ArId?) {
         achievementToUnlock = achieve
         infomationToUnlock = inform
         gameCharacterToUnlock = gamecharacter
@@ -404,7 +404,7 @@ struct OptionalOption: Codable {
         caseToUnlock = (try? values.decode(NoteCaseID.self, forKey: .caseToUnlock)) ?? .none
         albumImageToUnlock = (try? values.decode(AlbumImageID.self, forKey: .albumImageToUnlock)) ?? .none
         checkPointToUnlock = (try? values.decode(CheckPointID.self, forKey: .checkPointToUnlock)) ?? .none
-        arContent = (try? values.decode(ARID.self, forKey: .arContent)) ?? .none
+        arContent = (try? values.decode(ArId.self, forKey: .arContent)) ?? .none
     }
 }
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension mainGameViewController{
+extension MainGameViewController{
     
   
     

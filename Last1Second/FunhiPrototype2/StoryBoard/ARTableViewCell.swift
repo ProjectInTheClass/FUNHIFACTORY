@@ -7,12 +7,13 @@
 
 import UIKit
 
-protocol arDelegate:AnyObject {
-    func goToAR(arid: ARID)
+protocol ArDelegate: AnyObject {
+    func goToAR(arid: ArId)
 }
+
 class ARTableViewCell: UITableViewCell {
 
-    var currentAR: ARID?
+    var currentAR: ArId?
     @IBOutlet weak var chatBox: UIView!
     @IBOutlet weak var chatLabel: UILabel!
     override func awakeFromNib() {
@@ -22,7 +23,7 @@ class ARTableViewCell: UITableViewCell {
         chatBox.layer.borderWidth = 3
         chatBox.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
     }
-    var delegate : arDelegate?
+    var delegate : ArDelegate?
     @IBAction func goToARView(_ sender: Any) {
     
         if let currentAR = currentAR {

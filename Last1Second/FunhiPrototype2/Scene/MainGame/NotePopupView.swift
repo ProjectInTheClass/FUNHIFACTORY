@@ -12,7 +12,7 @@ import UIKit
 var isNotePopupAnimationRunning: Bool = false
 
 // MARK: Achievement
-extension mainGameViewController {
+extension MainGameViewController {
   
   func checkAchievementInChoice(choiceIndex: Int) {
     let currentChoice = currentEpisode().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices[choiceIndex]
@@ -54,7 +54,7 @@ extension mainGameViewController {
 }
 
 // MARK: Note
-extension mainGameViewController {
+extension MainGameViewController {
   
   func checkGameCharacterInChoice(choiceIndex: Int) {
     let currentChoice = currentEpisode().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices[choiceIndex]
@@ -176,7 +176,7 @@ extension mainGameViewController {
 
 
 // MARK: Album
-extension mainGameViewController {
+extension MainGameViewController {
   
   func checkAlbumImageInChoice(choiceIndex: Int) {
     let currentChoice = currentEpisode().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.choices[choiceIndex]
@@ -218,7 +218,7 @@ extension mainGameViewController {
   }
 
 // MARK: Checkpoint
-extension mainGameViewController {
+extension MainGameViewController {
   
   func checkCheckPointInChat() {
     let currentChat = currentEpisode().storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]!.chats[player.indexNumber]

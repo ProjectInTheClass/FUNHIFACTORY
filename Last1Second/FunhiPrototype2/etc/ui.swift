@@ -8,22 +8,7 @@
 import Foundation
 import UIKit
 
-func maingameNotepopupViewDesign(popupView: UIView, parentView: UIView) {
-    
-    parentView.addSubview(popupView)
-    popupView.translatesAutoresizingMaskIntoConstraints = false
-    
-    popupView.centerXAnchor.constraint(equalTo: parentView.centerXAnchor).isActive = true
-    popupView.topAnchor.constraint(equalTo: parentView.topAnchor, constant: -70).isActive = true
 
-    
-    popupView.layer.cornerRadius = 7
-    
-    popupView.setBolder(color: UIColor(red: 0.788, green: 0.502, blue: 0.502, alpha: 1), width: 5)
-//    popupView.layer.shadowPath = UIBezierPath(rect: CGRect(x: -4, y: -4, width: popupView.bounds.width, height: popupView.bounds.height)).cgPath
- 
-    popupView.setShadow(color: UIColor(red: 1, green: 1, blue: 1, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 4)
-}
 
 func monologueUI(cell : UIView){
     cell.layer.borderWidth = 1.5

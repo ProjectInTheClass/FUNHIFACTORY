@@ -17,7 +17,7 @@ class MaingameARViewController: UIViewController {
     let groundAnchor = try! HidePocketInGround.loadGround()
     let rocksAnchor = try! HidePocketBetweenRocks.loadRock()
     
-    var recievedAR: ARID?
+    var recievedAR: ArId?
 
     
     override func viewDidLoad() {
