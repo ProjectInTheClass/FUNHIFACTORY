@@ -190,6 +190,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                             cell.changeShadowAndBorder(view: cell.cellBorderAndShadowView, shadowColor: UIColor.white, borderColor: UIColor.white)
                             cell.cellBorderAndShadowView.backgroundColor = UIColor(red: 0.831, green: 0.886, blue: 0.933, alpha: 1)
                             cell.noticeIcon.isHidden = false
+                            return cell
                         }
                     }
                     if !currentCharacter.isChecked && !currentCharacter.isLocked
@@ -200,6 +201,7 @@ class NoteViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                     }
                     else
                     {
+//                        cell.changeShadowAndBorder(view: cell.cellBorderAndShadowView, shadowColor: UIColor(red: 0.749, green: 0.824, blue: 0.894, alpha: 1), borderColor: UIColor(red: 0.749, green: 0.824, blue: 0.894, alpha: 1))
                         cell.cellBorderAndShadowView.backgroundColor = UIColor(red: 0.725, green: 0.808, blue: 0.878, alpha: 1)
                         cell.noticeIcon.isHidden = true
                     }
