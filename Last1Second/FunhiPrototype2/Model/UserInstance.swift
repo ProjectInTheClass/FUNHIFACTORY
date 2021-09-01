@@ -144,4 +144,5 @@ let extraCharacters : [GameCharacter] = [
   GameCharacter(name: "반란군 1", profileImage: "extra1", backGroundImage: "", description: "", infomation: [], isLocked: false, isChecked: true),
   GameCharacter(name: "반란군 2", profileImage: "extra2", backGroundImage: "", description: "", infomation: [], isLocked: false, isChecked: true),
   GameCharacter(name: "반란군 3", profileImage: "extra3", backGroundImage: "", description: "", infomation: [], isLocked: false, isChecked: true),
-  GameCharacter(name: "군사 대장", profileImage: "extra4", backGroundImage: "", description: "", infomation: [], isLocked: false, isChecked: true)]
+  GameCharacter(name: "군사 대장", profileImage: "extra4", backGroundImage: "", description: "", infomation: [], isLocked: false, isChecked: true),
+    GameCharacter(name: "군사 대장", profileImage: "extra5", backGroundImage: "", description: "", infomation: [], isLocked: false, isChecked: true)]

@@ -84,6 +84,8 @@ func findFaceImage(nickname:GameCharacterID, profile:CharacterFace, normalProfil
     case .igwi:
         switch profile {
         case .basic: return "igwi basic"
+        case .basictalk: return "igwi basic talk"
+        case .straight: return "igwi straight"
         default:
             return "none"
         }
