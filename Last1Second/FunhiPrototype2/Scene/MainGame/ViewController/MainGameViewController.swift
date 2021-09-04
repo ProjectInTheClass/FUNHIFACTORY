@@ -188,10 +188,10 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
   @IBAction func resumeTapped(_ sender: Any) {
     pauseBar.isHidden = true
     safeAreaTop.isHidden = true
-//  if timer == nil {
-      chatUpdateTimer()
-//  }
     audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+    if isChoiceOn == false{
+        chatUpdateTimer()
+    }
   }
   
   private func presentWithAnimation(vcIdentifier: String) {
@@ -347,7 +347,9 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
   }
     
   @objc func instantChatUpdate(_ gesture : UITapGestureRecognizer) {
-    chatUpdate()
+    if isChoiceOn == false{
+        chatUpdate()
+    }
   }
 }
 
@@ -399,8 +401,8 @@ extension MainGameViewController: ArDelegate {
 extension MainGameViewController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    guard isChoiceOn == false else {return}
     audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
-    
     if currentBlockOfDay().isGodChat == true
     {
       player.currentChatArray.append(Chat(text_: currentBlockOfDay().choices[indexPath.row].text, image_: "", type_: currentBlockOfDay().choices[indexPath.row].chatType, who_: currentBlockOfDay().choices[indexPath.row].who, characterFace_: currentBlockOfDay().choices[indexPath.row].characterFace, optionalOption_: currentBlockOfDay().choices[indexPath.row].optionalOption, animationOption_: .none, isGodChat_: true))
