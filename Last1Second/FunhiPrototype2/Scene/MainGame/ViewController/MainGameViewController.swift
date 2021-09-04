@@ -123,7 +123,6 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
       if let previousEpisodeID = previousEpisodeID, player.currentChatArray.count != 0 {
         player.currentEpisodes[strToIndex(str: previousEpisodeID)].chatHistory = player.currentChatArray
       }
-      player.currentChatArray.removeAll()
       fadeOut()
     }
     currentYear.text = "\(player.currentEpisodes[strToIndex(str: player.dayId)].episodeYear)년"
