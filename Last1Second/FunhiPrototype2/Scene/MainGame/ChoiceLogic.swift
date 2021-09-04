@@ -12,6 +12,9 @@ var isChoiceOn = false
 extension MainGameViewController {
     func chatUpdateTimer()
     {
+        if timer != nil{
+            timer.invalidate()
+        }
         print("chatUpdateTimer 실행")
         timer = Timer.scheduledTimer(withTimeInterval: player.setting.textSpeed, repeats: true, block: {timer in
             self.chatUpdate()
