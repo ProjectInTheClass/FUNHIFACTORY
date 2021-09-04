@@ -401,7 +401,7 @@ extension MainGameViewController: ArDelegate {
 extension MainGameViewController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard isChoiceOn == false else {return}
+    guard pauseBar.isHidden == true else {return}
     audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     if currentBlockOfDay().isGodChat == true
     {

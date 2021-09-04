@@ -155,7 +155,9 @@ extension MainGameViewController {
         safeAreaBottom.isHidden = false
         choiceCollectionView.reloadData()
         mainGameTableView.layoutIfNeeded()
-        mainGameTableView.contentOffset.y += 149
+        if !(player.currentChatArray.count == 1) && !player.currentChatArray.isEmpty{
+            mainGameTableView.contentOffset.y += 149
+        }
         scrollToBottom()
     }
     func closeChoiceBar(){
