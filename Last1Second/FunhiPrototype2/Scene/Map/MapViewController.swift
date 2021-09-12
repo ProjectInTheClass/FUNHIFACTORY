@@ -90,12 +90,21 @@ class MapViewController: UIViewController {
      Spots(number: "⑮", name: "옥류천", images: ["ongnyucheon1", "ongnyucheon2", "ongnyucheon3"], description: "옥류천은 후원 북쪽 가장 깊은 골짜기에 흐른다.\n1636년(인조 14)에 거대한 바위인 소요암을 깎아내고 그 위에 홈을 파서 작은 폭포를 만들었다.\n바위에 새겨진 '玉流川' 세 글자는 인조의 친필이다.")]
 }
 
-extension MapViewController : UIViewControllerTransitioningDelegate{
+extension MapViewController : UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController,
                              presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+      if mapPresentFromLeft {
         return AnimationController(animationDuration: 0.4, animationType: .GoLeftPresent)
+      } else {
+        return AnimationController(animationDuration: 0.4, animationType: .GoRightPresent)
+      }
     }
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+      if mapPresentFromLeft {
         return AnimationController(animationDuration: 0.4, animationType: .GoRightDismiss)
+      } else {
+        return AnimationController(animationDuration: 0.4, animationType: .GoLeftDismiss)
+      }
+        
     }
 }

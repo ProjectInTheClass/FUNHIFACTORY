@@ -100,6 +100,7 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
   }
   
   override func viewWillAppear(_ animated: Bool) {
+    mapPresentFromLeft = true
     closeChoiceBar()
     updateButtons()
     if let story = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]?.isGodChat
@@ -120,9 +121,6 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
       }
     }
     if isShowBlackView {
-      if let previousEpisodeID = previousEpisodeID, player.currentChatArray.count != 0 {
-        player.currentEpisodes[strToIndex(str: previousEpisodeID)].chatHistory = player.currentChatArray
-      }
       fadeOut()
     }
     currentYear.text = "\(player.currentEpisodes[strToIndex(str: player.dayId)].episodeYear)년"
@@ -497,7 +495,7 @@ extension MainGameViewController: UITableViewDataSource {
       //자신이 보냈을 때
       if target.type == .onlyText && target.who.info().name == "이단희"{
           print("자신텍스트 : \(player.currentChatArray[indexPath.row].text)")
-          let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! myTextTableViewCell
+          let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! MyTextTableViewCell
           cell.delegate = self
           cell.inputCharacter = target.who.info()
           cell.myTextCellUpdate(name: target.who, chat: chatText, profile: target.characterFace, godchat: target.isGodChat, currentDanhee: currentMainGameDanhee())
@@ -507,7 +505,7 @@ extension MainGameViewController: UITableViewDataSource {
       //상대가 보냈을 때
       else if target.type == .onlyText {
           print("상대텍스트 : \(player.currentChatArray[indexPath.row].text)")
-          let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! opTextTableViewCell
+          let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "opTextCell", for: indexPath) as! OpTextTableViewCell
           cell.profileNickname.textColor = .white
           cell.delegate = self
           cell.inputCharacter = target.who.info()
@@ -525,14 +523,14 @@ extension MainGameViewController: UITableViewDataSource {
       //행동 표시글 셀
       else if target.type == .sectionHeader{
           print("메인게임 - 섹션헤더 출력")
-          let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "sectionCell", for: indexPath) as! sectionTableViewCell
+          let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "sectionCell", for: indexPath) as! SectionTableViewCell
           cell.sectionUpdate(text:chatText, godchat: target.isGodChat)
           return cell
       }
       else if target.type == .monologue{
           print("속마음채팅 - \(player.currentChatArray[indexPath.row].text)")
                   
-          let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "monologue", for: indexPath) as! monologueTableViewCell
+          let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "monologue", for: indexPath) as! MonologueTableViewCell
           cell.delegate = self
           cell.inputCharacter = target.who.info()
           cell.monologueText.text = chatText

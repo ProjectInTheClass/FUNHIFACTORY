@@ -7,6 +7,9 @@
 //
 
 import UIKit
+
+var mapPresentFromLeft: Bool = true
+
 class AnimationController : NSObject{
     private let animatonDuration : Double
     private let animationType : AnimationType

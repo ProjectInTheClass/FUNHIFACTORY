@@ -1,5 +1,5 @@
 //
-//  myTextTableViewCell.swift
+//  MyTextTableViewCell.swift
 //  FunhiPrototype2
 //
 //  Created by 손영웅 on 2020/12/29.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class myTextTableViewCell: UITableViewCell {
+class MyTextTableViewCell: UITableViewCell {
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var profileNickname: UILabel!
     @IBOutlet var chatText: UILabel!

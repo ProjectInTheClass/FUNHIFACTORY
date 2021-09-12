@@ -1,5 +1,5 @@
 //
-//  monologueTableViewCell.swift
+//  MonologueTableViewCell.swift
 //  FunhiPrototype2
 //
 //  Created by 손영웅 on 2021/01/08.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class monologueTableViewCell: UITableViewCell {
+class MonologueTableViewCell: UITableViewCell {
     @IBOutlet var monologueText: UILabel!
     @IBOutlet var monologueCell: UIView!
     @IBOutlet var monologueView: UIView!

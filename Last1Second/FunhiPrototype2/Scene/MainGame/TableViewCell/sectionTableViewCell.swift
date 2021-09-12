@@ -1,5 +1,5 @@
 //
-//  sectionTableViewCell.swift
+//  SectionTableViewCell.swift
 //  FunhiPrototype2
 //
 //  Created by 손영웅 on 2020/12/29.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class sectionTableViewCell: UITableViewCell {
+class SectionTableViewCell: UITableViewCell {
 
     @IBOutlet var sectionText: UILabel!
     override func awakeFromNib() {
