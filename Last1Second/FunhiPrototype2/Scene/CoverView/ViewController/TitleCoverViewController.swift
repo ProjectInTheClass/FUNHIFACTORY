@@ -10,7 +10,6 @@ import AVFoundation
 class TitleCoverViewController: UIViewController {
 
   @IBOutlet weak var startButton: UIButton!
-  @IBOutlet weak var testLabel: UILabel!
   @IBOutlet var alertPopupView: UIView!
   @IBOutlet var elertPopupBoxView: UIView!
   @IBOutlet var alertPopupLabel: UILabel!
@@ -25,6 +24,11 @@ class TitleCoverViewController: UIViewController {
     alertPopupLabel.text = "게임 데이터를 다운로드합니다.\n 아래 버튼을 눌러주세요!\n\n네트워크 연결이 필요합니다. \n2.7 MB"
     alertPopupLabel.setLineSpacing(lineSpacing: 6)
     alertPopupLabel.textAlignment = .center
+    player.currentEpisodes[0].isCleared = true
+    for item in player.currentEpisodes[0].currentCharacterNote {
+        item.isLocked = false
+    }
+
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -38,6 +42,7 @@ class TitleCoverViewController: UIViewController {
     let number = Int.random(in: 0..<1)
     if number == 1{
       playBgm(put: "cover1")
+
     }
     else {
       playBgm(put: "cover2")
