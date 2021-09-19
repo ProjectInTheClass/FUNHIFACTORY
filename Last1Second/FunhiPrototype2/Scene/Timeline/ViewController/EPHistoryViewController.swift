@@ -19,7 +19,7 @@ class EPHistoryViewController: UIViewController {
   @IBOutlet var yearLabel: UILabel!
   
   var currentEpisode: Episode?
-  
+ 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.chatHistoryTableView.delegate = self
@@ -133,7 +133,7 @@ extension EPHistoryViewController: UITableViewDataSource, UITableViewDelegate, P
       let cell = chatHistoryTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! MyTextTableViewCell
       cell.delegate = self
       cell.inputCharacter = target.who.info()
-      cell.myTextCellUpdate(name: target.who, chat: chatText, profile: target.characterFace, godchat: target.isGodChat, currentDanhee: currentMainGameDanhee())
+      cell.myTextCellUpdate(name: target.who, chat: chatText, profile: target.characterFace, godchat: target.isGodChat, currentDanhee: currentHistoryDanhee())
 //            cell.layoutIfNeeded()
       return cell
     }
