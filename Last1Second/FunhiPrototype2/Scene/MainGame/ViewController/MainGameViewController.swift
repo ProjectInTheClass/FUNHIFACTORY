@@ -80,9 +80,6 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
     super.viewDidAppear(animated)
     print("퍼즈바 꺼졌는가? :\(pauseBar.isHidden), 초이스 켜졌는가? :\(isChoiceOn), 타이머 꺼졌는가? :\(timer==nil)")
 //      if !player.currentChatArray.isEmpty { scrollToBottom() }
-    if !pauseBar.isHidden{
-        pauseBar.isHidden = true
-    }
     if timer == nil{
       guard pauseBar.isHidden == true else {return}
       print("chatupdatetimer is executed")
@@ -125,6 +122,10 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
     }
     if isShowBlackView {
       fadeOut()
+    }
+    if !pauseBar.isHidden{
+        safeAreaTop.isHidden = true
+        pauseBar.isHidden = true
     }
     currentYear.text = "\(player.currentEpisodes[strToIndex(str: player.dayId)].episodeYear)년"
   }
