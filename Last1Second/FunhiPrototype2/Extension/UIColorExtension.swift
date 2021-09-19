@@ -8,6 +8,11 @@
 import UIKit
 
 extension UIColor {
+  
+  func codable() -> CodableColor {
+    return CodableColor(color: self)
+  }
+  
   static let way0TrackColor = UIColor(named: "way0Track")!
   static let way0ProgressColor = UIColor(named: "way0Progress")!
   static let way0CircleColor = UIColor(named: "way0Circle")!

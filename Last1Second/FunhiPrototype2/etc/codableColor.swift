@@ -46,9 +46,3 @@ extension CodableColor: Decodable {
 }
 
 
-
-public extension UIColor {
-    func codable() -> CodableColor {
-        return CodableColor(color: self)
-    }
-}

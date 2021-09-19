@@ -92,21 +92,6 @@ class ProgressView: UIView {
     if let view = Bundle.main.loadNibNamed("ProgressView", owner: self, options: nil)?.first as? UIView {
       addSubview(view)
       view.pinToEdges(inView: self)
-      
-      
     }
-  }
-  
-
-}
-
-extension UIView {
-  func pinToEdges(constant: CGFloat = 0, inView superview: UIView) {
-    self.translatesAutoresizingMaskIntoConstraints = false
-    
-    self.topAnchor.constraint(equalTo: superview.topAnchor, constant: constant).isActive = true
-    self.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: constant).isActive = true
-    self.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: constant).isActive = true
-    self.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: constant).isActive = true
   }
 }

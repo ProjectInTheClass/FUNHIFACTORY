@@ -57,19 +57,3 @@ func choiceCellUIUpdate(target view : UIView){
    
 }
 
-extension UIView {
-    func clearConstraints() {
-        for subview in self.subviews {
-            subview.clearConstraints()
-        }
-        self.removeConstraints(self.constraints)
-    }
-    
-    func fullScreen(to other: UIView) {
-        leadingAnchor.constraint(equalTo: other.leadingAnchor, constant: 0).isActive = true
-        trailingAnchor.constraint(equalTo: other.trailingAnchor, constant: 0).isActive = true
-        topAnchor.constraint(equalTo: other.topAnchor, constant: 0).isActive = true
-        bottomAnchor.constraint(equalTo: other.bottomAnchor, constant: 0).isActive = true
-    }
-}
-

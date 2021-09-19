@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIViewController {
+
   func pushWithAnimation(segue: String) {
     let transition:CATransition = CATransition()
     transition.duration = 0.3
@@ -27,6 +28,4 @@ extension UIViewController {
     self.navigationController!.view.layer.add(transition, forKey: kCATransition)
     self.navigationController?.popViewController(animated: false)
   }
-  
- 
 }

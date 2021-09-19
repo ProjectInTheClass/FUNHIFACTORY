@@ -702,36 +702,7 @@ open class CustomLabel : UILabel {
     
 }
 
-extension UILabel {
 
-    func setLineSpacing(lineSpacing: CGFloat) {
-
-        guard let labelText = self.text else { return }
-
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = lineSpacing
-        
-
-        let attributedString:NSMutableAttributedString
-        if let labelattributedText = self.attributedText {
-            attributedString = NSMutableAttributedString(attributedString: labelattributedText)
-        } else {
-            attributedString = NSMutableAttributedString(string: labelText)
-        }
-
-        // (Swift 4.2 and above) Line spacing attribute
-        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
-        self.attributedText = attributedString
-    }
-    func setCharacterSpacing(characterSpacing: CGFloat) {
-
-        guard let selfText = self.text else { return }
-        let attributedString = NSMutableAttributedString(string: selfText)
-        attributedString.addAttribute(NSAttributedString.Key.kern, value: characterSpacing, range: NSRange(location: 0, length: attributedString.length))
-        self.attributedText = attributedString
-     
-    }
-}
 // view 코너마다 다른 radius 값 주기 위한 extension
 extension UIBezierPath {
     convenience init(shouldRoundRect rect: CGRect, topLeftRadius: CGSize = .zero, topRightRadius: CGSize = .zero, bottomLeftRadius: CGSize = .zero, bottomRightRadius: CGSize = .zero){
@@ -884,20 +855,6 @@ func checkEnding(id : String) -> Ending
     }
 }
 
-extension UIView {
-    //뷰 섀도우 주는 코드 간단화한 함수
-    func setShadow(color: UIColor, offsetX: Int, offsetY: Int, opacity: Int, radius: Int) {
-        self.layer.shadowColor = color.cgColor
-        self.layer.shadowOffset = CGSize(width: offsetX, height: offsetY)
-        self.layer.shadowOpacity = Float(opacity)
-        self.layer.shadowRadius = CGFloat(radius)
-    }
-    
-    func setBolder(color: UIColor, width: Double) {
-        self.layer.borderColor = color.cgColor
-        self.layer.borderWidth = CGFloat(width)
-    }
-}
 
 func typingEffect(label : UILabel, str : String, loopTime : Double)
 {

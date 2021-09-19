@@ -20,4 +20,36 @@ extension UIView {
     tutorialView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
     tutorialView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
   }
+  
+  func pinToEdges(constant: CGFloat = 0, inView superview: UIView) {
+    self.translatesAutoresizingMaskIntoConstraints = false
+    self.topAnchor.constraint(equalTo: superview.topAnchor, constant: constant).isActive = true
+    self.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: constant).isActive = true
+    self.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: constant).isActive = true
+    self.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: constant).isActive = true
+  }
+  
+  func clearConstraints() {
+    subviews.forEach { $0.clearConstraints() }
+    self.removeConstraints(self.constraints)
+  }
+  
+  func fullScreen(to other: UIView) {
+    leadingAnchor.constraint(equalTo: other.leadingAnchor, constant: 0).isActive = true
+    trailingAnchor.constraint(equalTo: other.trailingAnchor, constant: 0).isActive = true
+    topAnchor.constraint(equalTo: other.topAnchor, constant: 0).isActive = true
+    bottomAnchor.constraint(equalTo: other.bottomAnchor, constant: 0).isActive = true
+  }
+  
+  func setShadow(color: UIColor, offsetX: Int, offsetY: Int, opacity: Int, radius: Int) {
+    self.layer.shadowColor = color.cgColor
+    self.layer.shadowOffset = CGSize(width: offsetX, height: offsetY)
+    self.layer.shadowOpacity = Float(opacity)
+    self.layer.shadowRadius = CGFloat(radius)
+  }
+  
+  func setBolder(color: UIColor, width: Double) {
+    self.layer.borderColor = color.cgColor
+    self.layer.borderWidth = CGFloat(width)
+  }
 }
