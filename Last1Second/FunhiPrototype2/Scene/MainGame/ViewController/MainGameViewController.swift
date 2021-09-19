@@ -201,15 +201,7 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
     present(VC, animated: true, completion: nil)
   }
   
-  private func pushWithAnimation(segue: String) {
-    let transition:CATransition = CATransition()
-    transition.duration = 0.3
-    transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
-    transition.type = CATransitionType.moveIn
-    transition.subtype = CATransitionSubtype.fromBottom
-    self.navigationController!.view.layer.add(transition, forKey: kCATransition)
-    performSegue(withIdentifier: segue, sender: nil)
-  }
+  
   
   private func vibrate(vibrateIsOn : Bool){
     guard vibrateIsOn == true else { return }

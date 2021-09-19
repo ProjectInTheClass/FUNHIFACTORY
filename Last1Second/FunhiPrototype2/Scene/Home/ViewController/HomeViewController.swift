@@ -115,13 +115,13 @@ class HomeViewController: UIViewController {
   }
 
   func pushMenuViewsAnimation() {
-      audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
-      let transition:CATransition = CATransition()
-        transition.duration = 0.3
-      transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
-      transition.type = CATransitionType.moveIn
-        transition.subtype = CATransitionSubtype.fromBottom
-        self.navigationController!.view.layer.add(transition, forKey: kCATransition)
+    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+    let transition:CATransition = CATransition()
+    transition.duration = 0.3
+    transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
+    transition.type = CATransitionType.moveIn
+    transition.subtype = CATransitionSubtype.fromBottom
+    self.navigationController!.view.layer.add(transition, forKey: kCATransition)
   }
 
       //---------------새로운 사건 보기 팝업쓰----------------

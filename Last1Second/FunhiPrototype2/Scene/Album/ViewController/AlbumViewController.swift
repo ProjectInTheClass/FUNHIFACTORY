@@ -20,8 +20,7 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard tableView == albumTableView else {
-      let cell = tableView.dequeueReusableCell(withIdentifier: "designTableViewCell", for: indexPath) as! DesignTableViewCell
-      cell.springImageView.image = UIImage(named: "note ring image")
+      let cell = tableView.dequeueReusableCell(withIdentifier: "SpringCell", for: indexPath) as! SpringCell
       return cell
     }
     let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell", for: indexPath) as! AlbumCell
