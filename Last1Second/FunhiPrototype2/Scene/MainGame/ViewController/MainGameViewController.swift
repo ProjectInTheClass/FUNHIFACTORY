@@ -45,7 +45,7 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
   @IBOutlet var mainGameTableView: UITableView!
   @IBOutlet var choiceBar: UIView!
   @IBOutlet var topBar: UIView!
-  @IBOutlet var notePopupView: UIView!
+  @IBOutlet var notePopupView: NotePopupView!
   @IBOutlet weak var notePopupViewTitle: UILabel!
   @IBOutlet weak var notePopupViewDescriptionLabel: UILabel!
   @IBOutlet var pauseBar: UIView!
@@ -248,9 +248,6 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
     notePopupView.translatesAutoresizingMaskIntoConstraints = false
     notePopupView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     notePopupView.topAnchor.constraint(equalTo: view.topAnchor, constant: -70).isActive = true
-    notePopupView.layer.cornerRadius = 7
-    notePopupView.setBolder(color: UIColor(red: 0.788, green: 0.502, blue: 0.502, alpha: 1), width: 5)
-    notePopupView.setShadow(color: UIColor(red: 1, green: 1, blue: 1, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 4)
   }
   
   func updateButtons() {
