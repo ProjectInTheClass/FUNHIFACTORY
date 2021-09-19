@@ -7,10 +7,6 @@
 
 import UIKit
 
-
-
-
-//-------------------뷰컨-------------
 class NoteHeeryeongViewController: UIViewController {
     
   var openedInfomation = [Infomation]()

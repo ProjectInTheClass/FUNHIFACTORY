@@ -64,7 +64,7 @@ class NoteViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     noteTableView.reloadData()
-    designButtons()
+    setupButtons()
   }
 
   @IBAction func backAction(_ sender: Any) {
@@ -123,7 +123,7 @@ class NoteViewController: UIViewController {
     }
   }
   
-  func designButtons() {
+  func setupButtons() {
     for button in pageButtons.enumerated() {
       let currentEpisode = player.currentEpisodes[button.offset]
       currentEpisode.isStarted ? button.element.setTitle(String(currentEpisode.episodeYear), for: .normal) : button.element.setTitle("????", for: .normal)
