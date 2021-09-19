@@ -7,10 +7,6 @@
 
 import UIKit
 
-
-
-
-
 class NoteGameCharacterViewController: UIViewController {
     
   @IBOutlet var nameLabel: UILabel!
@@ -31,7 +27,7 @@ class NoteGameCharacterViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     if let recievedGameCharacter = recievedGameCharacter {
-     updateView(gameCharacter: recievedGameCharacter)
+      updateView(gameCharacter: recievedGameCharacter)
     }
   }
   

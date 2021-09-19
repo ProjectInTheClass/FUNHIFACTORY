@@ -5,7 +5,7 @@
 //  Created by 최서연 on 2021/09/19.
 //
 
-import Foundation
+import UIKit
 
 extension UITableView {
   func updateHeaderViewHeight() {
