@@ -77,15 +77,14 @@
                                             <action selector="pauseTapped:" destination="58V-k4-uXR" eventType="touchUpInside" id="RuT-xf-Iv9"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSe-VI-9hD" userLabel="mapButton" customClass="FloatingButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdV-Lv-2mk" customClass="FloatingButton" customModule="FunhiPrototype2" customModuleProvider="target">
                                         <rect key="frame" x="16" y="13" width="42" height="42"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="42" id="2ku-QQ-pHv"/>
-                                            <constraint firstAttribute="width" constant="42" id="KNc-0R-esQ"/>
+                                            <constraint firstAttribute="height" constant="42" id="Z6l-V8-gvu"/>
+                                            <constraint firstAttribute="width" secondItem="hdV-Lv-2mk" secondAttribute="height" multiplier="1:1" id="h7x-Mn-Zkj"/>
                                         </constraints>
                                         <connections>
-                                            <action selector="goToMap:" destination="58V-k4-uXR" eventType="touchUpInside" id="SJL-pJ-vDt"/>
+                                            <action selector="goToTimeline:" destination="58V-k4-uXR" eventType="touchUpInside" id="nSU-Dk-PvZ"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000년" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrk-et-zzi">
@@ -99,11 +98,11 @@
                                 <constraints>
                                     <constraint firstItem="lrk-et-zzi" firstAttribute="top" secondItem="hr2-FU-J54" secondAttribute="top" constant="16" id="16F-hd-bc2"/>
                                     <constraint firstItem="9rX-GX-2pU" firstAttribute="centerY" secondItem="hr2-FU-J54" secondAttribute="centerY" id="2KR-hY-Jem"/>
+                                    <constraint firstItem="hdV-Lv-2mk" firstAttribute="centerY" secondItem="hr2-FU-J54" secondAttribute="centerY" id="AQg-3E-bHU"/>
                                     <constraint firstAttribute="trailing" secondItem="9rX-GX-2pU" secondAttribute="trailing" constant="16" id="Lex-Mh-xft"/>
                                     <constraint firstAttribute="height" constant="68" id="MMt-K1-ldj"/>
-                                    <constraint firstItem="uSe-VI-9hD" firstAttribute="leading" secondItem="hr2-FU-J54" secondAttribute="leading" constant="16" id="g11-j5-o4p"/>
-                                    <constraint firstItem="uSe-VI-9hD" firstAttribute="centerY" secondItem="hr2-FU-J54" secondAttribute="centerY" id="kV7-2r-BHb"/>
                                     <constraint firstItem="lrk-et-zzi" firstAttribute="centerX" secondItem="hr2-FU-J54" secondAttribute="centerX" id="q9n-Rw-5cf"/>
+                                    <constraint firstItem="hdV-Lv-2mk" firstAttribute="leading" secondItem="hr2-FU-J54" secondAttribute="leading" constant="16" id="tXZ-JP-mbg"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1X2-dM-NgP">
@@ -681,13 +680,14 @@
                                                     <action selector="goToAlbum:" destination="58V-k4-uXR" eventType="touchUpInside" id="Soe-if-DYp"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdV-Lv-2mk" customClass="FloatingButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSe-VI-9hD" userLabel="mapButton" customClass="FloatingButton" customModule="FunhiPrototype2" customModuleProvider="target">
                                                 <rect key="frame" x="216.5" y="0.0" width="42" height="42"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="hdV-Lv-2mk" secondAttribute="height" multiplier="1:1" id="h7x-Mn-Zkj"/>
+                                                    <constraint firstAttribute="width" secondItem="uSe-VI-9hD" secondAttribute="height" multiplier="1:1" id="fzj-Gw-mZS"/>
                                                 </constraints>
                                                 <connections>
-                                                    <action selector="goToTimeline:" destination="58V-k4-uXR" eventType="touchUpInside" id="nSU-Dk-PvZ"/>
+                                                    <action selector="goToMap:" destination="58V-k4-uXR" eventType="touchUpInside" id="SJL-pJ-vDt"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWN-b4-dw4" userLabel="settingButton" customClass="FloatingButton" customModule="FunhiPrototype2" customModuleProvider="target">
