@@ -76,14 +76,7 @@ enum Bgm : String, Codable {
 }
 
 // 프라퍼티 설명: 순차적으로 나오는 텍스트 블록, 선택지, 이거 깨면 달성되는 업적
-struct BlockOfDayEpisode: Codable {
-  let chats: [Chat]
-  let choices: [Choice]
-  let choiceSkip : Bool
-  let isGodChat : Bool
-  let backGroundMusic : Bgm
-  let currentRoute : Route
-}
+
 
 struct GameData {
   var stories: [String:Episode]
@@ -149,27 +142,7 @@ enum Route : String, Codable {
 }
 
 //json 파싱 전용 파일
-struct BlockOfDayEpisodeForJson: Codable {
-  let id : String
-  let chats: [Chat]
-  let choices: [Choice]
-  let choiceSkip : Bool
-  let isGodChat : Bool
-  let backGroundMusic : Bgm
-  let currentRoute : Route
-  
-  init(from decoder: Decoder) throws {
-    let values = try decoder.container(keyedBy: CodingKeys.self)
-    
-    id = (try? values.decode(String.self, forKey: .id)) ?? ""
-    chats = (try? values.decode([Chat].self, forKey: .chats)) ?? []
-    choices = (try? values.decode([Choice].self, forKey: .choices)) ?? []
-    choiceSkip = (try? values.decode(Bool.self, forKey: .choiceSkip)) ?? false
-    isGodChat = (try? values.decode(Bool.self, forKey: .isGodChat)) ?? false
-    backGroundMusic = (try? values.decode(Bgm.self, forKey: .backGroundMusic)) ?? .none
-    currentRoute   = (try? values.decode(Route.self, forKey: .currentRoute)) ?? .normal
-  }
-}
+
 
 func saveToFile() {
   let documentsDirectory =

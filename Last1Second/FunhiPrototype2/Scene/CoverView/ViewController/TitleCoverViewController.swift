@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+
 class TitleCoverViewController: UIViewController {
 
   @IBOutlet weak var startButton: UIButton!
@@ -24,11 +25,6 @@ class TitleCoverViewController: UIViewController {
     alertPopupLabel.text = "게임 데이터를 다운로드합니다.\n 아래 버튼을 눌러주세요!\n\n네트워크 연결이 필요합니다. \n2.7 MB"
     alertPopupLabel.setLineSpacing(lineSpacing: 6)
     alertPopupLabel.textAlignment = .center
-//    player.currentEpisodes[0].isCleared = true
-//    for item in player.currentEpisodes[0].currentCharacterNote {
-//        item.isLocked = false
-//    }
-
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -52,8 +48,6 @@ class TitleCoverViewController: UIViewController {
     print("현재 currentChatId: \(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)")
     print("현재 dayIndex: \(player.dayIndex)")
     checkForSuccessfulDownloadOfJson()
-    // 앱!!!! 앱스토어커넥트에 올릴 때는 꼭 주석처리해야 함!!! 앱 데이터 바꿔서 테스트해보고 싶을 때 사용하는 함수임!!
-    // 위치 : Scene > DataTest.swift에서 내부에 필요한 코드 추가해서 테스트 돌려보면 됨
 //    testData()
   }
   
@@ -152,10 +146,4 @@ class TitleCoverViewController: UIViewController {
       self?.tapLabel.alpha = 0.1
     }, completion: nil)
   }
-  
-  @IBAction func unwindToCover(_ unwindSegue: UIStoryboardSegue) {
-      _ = unwindSegue.source
-      // Use data from the view controller which initiated the unwind segue
-  }
-    
 }

@@ -49,7 +49,7 @@
                                             <imageReference key="image" image="white thick X" symbolScale="large"/>
                                         </state>
                                         <connections>
-                                            <action selector="backAction:" destination="I6q-v2-UFv" eventType="touchUpInside" id="pqY-mL-CVU"/>
+                                            <action selector="back:" destination="I6q-v2-UFv" eventType="touchUpInside" id="bMR-X2-01B"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -131,20 +131,20 @@
                     <navigationItem key="navigationItem" id="oCu-zx-kjz"/>
                     <connections>
                         <outlet property="alertBg" destination="dw7-8P-ivR" id="Pwm-WI-BWR"/>
-                        <outlet property="alertBox" destination="DCB-QM-fy4" id="DqJ-dO-88A"/>
-                        <outlet property="alertDesc" destination="gcF-bA-1J9" id="B5R-t4-9kr"/>
+                        <outlet property="alertBox" destination="DCB-QM-fy4" id="FW0-cP-K3T"/>
+                        <outlet property="alertDesc" destination="gcF-bA-1J9" id="Ilc-DJ-Y4U"/>
                         <outlet property="alertImage" destination="UTR-Yu-qax" id="qjT-he-y3h"/>
                         <outlet property="alertOk" destination="KHH-8I-pxe" id="5HS-Rw-o71"/>
                         <outlet property="checkPointTableView" destination="a75-UU-emd" id="SU3-kA-zcO"/>
                         <outlet property="epPopupBg" destination="JnP-uQ-FyI" id="B8o-zU-221"/>
                         <outlet property="epPopupBox" destination="mWD-7E-tE9" id="7GK-E1-brs"/>
-                        <outlet property="epPopupDesc" destination="pJ5-ea-WlE" id="5Sm-XH-t3z"/>
+                        <outlet property="epPopupDesc" destination="pJ5-ea-WlE" id="y3x-fh-Aa4"/>
                         <outlet property="epPopupExit" destination="6cx-L9-5Xh" id="4Hn-Hh-4ry"/>
                         <outlet property="epPopupTopBar" destination="3ue-JF-Ij6" id="gHg-ts-J2s"/>
                         <outlet property="epPopupYear" destination="vva-GU-rZV" id="X8w-vL-ZWU"/>
                         <outlet property="startPopupBg" destination="lZk-XA-YZi" id="yiL-gD-LxF"/>
-                        <outlet property="startPopupBox" destination="RvI-iH-WH1" id="pbE-Z5-khh"/>
-                        <outlet property="startPopupDesc" destination="n4f-aM-uvr" id="yK7-22-Ozm"/>
+                        <outlet property="startPopupBox" destination="RvI-iH-WH1" id="Gas-rl-zeX"/>
+                        <outlet property="startPopupDesc" destination="n4f-aM-uvr" id="PuB-yQ-FL6"/>
                         <outlet property="startPopupExit" destination="AyU-IW-LUw" id="hnf-zb-cvQ"/>
                         <outlet property="startPopupOk" destination="Xo4-8Z-Ers" id="c0B-Bj-vNT"/>
                         <outlet property="timelineTableView" destination="R4j-3v-I3Y" id="ApF-av-BvN"/>
@@ -180,7 +180,7 @@
                                                 <imageReference key="image" image="thin X icon" symbolScale="large"/>
                                             </state>
                                             <connections>
-                                                <action selector="selectedEpisodePopupExitButtonAction:" destination="I6q-v2-UFv" eventType="touchUpInside" id="asA-mm-esr"/>
+                                                <action selector="exitEpPopup:" destination="I6q-v2-UFv" eventType="touchUpInside" id="ntJ-dK-JBZ"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rFL-DO-ThW">
@@ -191,7 +191,7 @@
                                             </constraints>
                                             <state key="normal" image="record icon"/>
                                             <connections>
-                                                <action selector="openEpisodeHistoryAction:" destination="I6q-v2-UFv" eventType="touchUpInside" id="iSQ-Ds-KYo"/>
+                                                <action selector="openChatHistory:" destination="I6q-v2-UFv" eventType="touchUpInside" id="YCO-6T-XME"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -215,7 +215,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="276" height="82"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주인공" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJ5-ea-WlE">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주인공" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJ5-ea-WlE" customClass="AlertDescLabel" customModule="FunhiPrototype2" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="31" width="276" height="20"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="18"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -390,7 +390,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvI-iH-WH1">
+                        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvI-iH-WH1" customClass="AlertBox" customModule="FunhiPrototype2" customModuleProvider="target">
                             <rect key="frame" x="45" y="357" width="324" height="182"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="Nna-W7-tcG">
@@ -412,7 +412,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="continueButtonAction:" destination="I6q-v2-UFv" eventType="touchUpInside" id="ONH-TR-zIz"/>
+                                                        <action selector="okStartPopup:" destination="I6q-v2-UFv" eventType="touchUpInside" id="rfK-Tx-BrV"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -445,7 +445,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="exitButtonAction:" destination="I6q-v2-UFv" eventType="touchUpInside" id="ahu-Mx-AWJ"/>
+                                                        <action selector="exitStartPopup:" destination="I6q-v2-UFv" eventType="touchUpInside" id="dBI-99-fWs"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -467,22 +467,11 @@
                                         <constraint firstAttribute="height" constant="44" id="1aq-RO-rhq"/>
                                     </constraints>
                                 </stackView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주인공" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4f-aM-uvr">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주인공" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4f-aM-uvr" customClass="AlertDescLabel" customModule="FunhiPrototype2" customModuleProvider="target">
                                     <rect key="frame" x="27" y="54" width="270" height="18"/>
                                     <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="16"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                            <color key="value" systemColor="systemTealColor"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="0"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                            <integer key="value" value="50"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -495,17 +484,6 @@
                                 <constraint firstItem="Nna-W7-tcG" firstAttribute="leading" secondItem="RvI-iH-WH1" secondAttribute="leading" constant="24" id="gOC-WZ-ys0"/>
                                 <constraint firstAttribute="bottom" secondItem="Nna-W7-tcG" secondAttribute="bottom" constant="30" id="qXH-P2-o4j"/>
                             </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="10"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                    <color key="value" red="0.6470588235294118" green="0.73725490196078436" blue="0.81176470588235294" alpha="1" colorSpace="calibratedRGB"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                    <integer key="value" value="6"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
                     <viewLayoutGuide key="safeArea" id="AqA-uK-dgf"/>
@@ -520,10 +498,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="433" height="892"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DCB-QM-fy4">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DCB-QM-fy4" customClass="AlertBox" customModule="FunhiPrototype2" customModuleProvider="target">
                             <rect key="frame" x="45" y="336" width="343" height="220"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcF-bA-1J9">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcF-bA-1J9" customClass="AlertDescLabel" customModule="FunhiPrototype2" customModuleProvider="target">
                                     <rect key="frame" x="15" y="90" width="313" height="18"/>
                                     <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="16"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -545,7 +523,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
-                                                <action selector="thirdPopupOkayButtonTouched:" destination="I6q-v2-UFv" eventType="touchUpInside" id="pyJ-8a-n9d"/>
+                                                <action selector="exitAlert:" destination="I6q-v2-UFv" eventType="touchUpInside" id="aoN-bU-dWN"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -589,17 +567,6 @@
                                 <constraint firstItem="szu-Xh-cNL" firstAttribute="top" secondItem="gcF-bA-1J9" secondAttribute="bottom" constant="39" id="xom-fN-BsX"/>
                                 <constraint firstItem="UTR-Yu-qax" firstAttribute="top" secondItem="DCB-QM-fy4" secondAttribute="top" constant="21" id="yQz-gU-nZ1"/>
                             </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="10"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                    <color key="value" red="0.64705882349999999" green="0.73725490199999999" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                    <integer key="value" value="6"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
                     <viewLayoutGuide key="safeArea" id="yOp-rc-X7l"/>
@@ -1330,9 +1297,6 @@
         <image name="white thick X" width="306" height="306.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

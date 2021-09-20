@@ -17,18 +17,18 @@ class TimeLineViewController: UIViewController {
   @IBOutlet weak var epPopupTopBar: UIView!
   @IBOutlet weak var epPopupYear: UILabel!
   @IBOutlet weak var epPopupExit: UIButton!
-  @IBOutlet weak var epPopupDesc: UILabel!
+  @IBOutlet weak var epPopupDesc: AlertDescLabel!
   
   @IBOutlet var startPopupBg: UIView!
-  @IBOutlet var startPopupBox: UIView!
-  @IBOutlet weak var startPopupDesc: UILabel!
+  @IBOutlet var startPopupBox: AlertBox!
+  @IBOutlet weak var startPopupDesc: AlertDescLabel!
   @IBOutlet weak var startPopupOk: UIButton!
   @IBOutlet weak var startPopupExit: UIButton!
   
   @IBOutlet var alertBg: UIView!
-  @IBOutlet weak var alertBox: UIView!
+  @IBOutlet weak var alertBox: AlertBox!
   @IBOutlet weak var alertImage: UIImageView!
-  @IBOutlet var alertDesc: UILabel!
+  @IBOutlet var alertDesc: AlertDescLabel!
   @IBOutlet var alertOk: UIButton!
   
   var selectedEpisodeStoryBlockIndex = String()
@@ -61,12 +61,12 @@ class TimeLineViewController: UIViewController {
     }
   }
   
-  @IBAction func backAction(_ sender: Any) {
+  @IBAction func back(_ sender: Any) {
     popWithAnimation()
     audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
   }
   
-  @IBAction func openEpisodeHistoryAction(_ sender: Any) {
+  @IBAction func openChatHistory(_ sender: Any) {
     guard let currentEpisode = selectedEpisode else { return }
     if currentEpisode.chatHistory.count != 0 {
       let dataToSend = currentEpisode
@@ -77,11 +77,11 @@ class TimeLineViewController: UIViewController {
     }
   }
     
-  @IBAction func selectedEpisodePopupExitButtonAction(_ sender: Any) {
-    startPopupBg.removeFromSuperview()
+  @IBAction func exitEpPopup(_ sender: Any) {
+    epPopupBg.removeFromSuperview()
   }
   
-  @IBAction func continueButtonAction(_ sender: Any) {
+  @IBAction func okStartPopup(_ sender: Any) {
     guard let selectedEpisode = selectedEpisode else { return }
     let dataToSend = selectedEpisode
     player.currentEpisodes[strToIndex(str: player.dayId)].chatHistory = player.currentChatArray
@@ -94,11 +94,11 @@ class TimeLineViewController: UIViewController {
     performSegue(withIdentifier: "fromTimelineToMaingameSegue", sender: dataToSend)
   }
   
-  @IBAction func exitButtonAction(_ sender: Any) {
+  @IBAction func exitStartPopup(_ sender: Any) {
     startPopupBg.removeFromSuperview()
   }
 
-  @IBAction func thirdPopupOkayButtonTouched(_ sender: Any) {
+  @IBAction func exitAlert(_ sender: Any) {
     alertBg.removeFromSuperview()
   }
 
@@ -128,6 +128,24 @@ class TimeLineViewController: UIViewController {
   private func openEpPopup(ep: Episode) {
     selectedEpisode = ep
     self.view.addSubview(epPopupBg)
+    epPopupBg.pinToEdges(inView: self.view)
+    setupEpPopup(ep: ep)
+  }
+
+  private func openStartPopup() {
+    epPopupBg.removeFromSuperview()
+    self.view.addSubview(startPopupBg)
+    startPopupBg.pinToEdges(inView: self.view)
+    setupStartPopup()
+  }
+  
+  private func openAlert(isEnding: Bool) {
+    self.view.addSubview(alertBg)
+    alertBg.pinToEdges(inView: self.view)
+    setupAlert(isEnding: isEnding)
+  }
+  
+  private func setupEpPopup(ep: Episode) {
     epPopupYear.text = "\(ep.episodeYear)년 \(ep.episodePlace)"
     if ep.episodeID == "prologue" {
       epPopupDesc.text = "\(ep.episodeShortDesciption)\n\n"
@@ -136,18 +154,15 @@ class TimeLineViewController: UIViewController {
     }
   }
 
-  private func openStartPopup() {
-    epPopupBg.removeFromSuperview()
-    self.view.addSubview(startPopupBg)
+  private func setupStartPopup() {
     let desc = "현재 진행 중인 게임을 그만두고,\n선택한 지점부터 사건을 재시작하여\n이전 사건 기록이 사라집니다.\n\n계속하시겠습니까?"
     startPopupDesc.text = desc
   }
   
-  private func openAlert(isEndingCell: Bool) {
-    self.view.addSubview(alertBg)
+  private func setupAlert(isEnding: Bool) {
     let normalDesc = "아직 진행하지 않은 사건입니다.\n현재 진행하고 있는 사건을 완료한 후\n계속할 수 있습니다."
     let endingDesc = "이 에피소드는 모든 사건을 해결한 후에 진행할 수 있습니다."
-    if isEndingCell {
+    if isEnding {
       alertDesc.text = endingDesc
     } else {
       alertDesc.text = normalDesc
@@ -156,36 +171,10 @@ class TimeLineViewController: UIViewController {
   
   private func setupStyle() {
     topBarTitle.font = UIFont(name: "NanumSquareEB", size: 29)
-//    epPopupBg.pinToEdges(inView: self.view)
-//    startPopupBg.pinToEdges(inView: self.view)
-//    alertBg.pinToEdges(inView: self.view)
-    epPopupBg.center = self.view.center
-    epPopupBg.bounds = self.view.bounds
     epPopupBox.layer.cornerRadius = 10
     epPopupBox.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
     epPopupBox.layer.borderWidth = 4
     epPopupYear.textAlignment = .center
-    epPopupDesc.font = UIFont(name: "NanumSquareB", size: 16)
-    epPopupDesc.setLineSpacing(lineSpacing: 6)
-    epPopupDesc.textAlignment = .center
-    
-    startPopupBg.center = self.view.center
-    startPopupBg.bounds = self.view.bounds
-    startPopupBox.layer.cornerRadius = 20
-    startPopupBox.layer.borderWidth = 6
-    startPopupBox.layer.borderColor = UIColor(red:0.647, green: 0.737, blue: 0.812, alpha: 1).cgColor
-    epPopupDesc.font = UIFont(name: "NanumSquareEB", size: 16)
-    startPopupDesc.setLineSpacing(lineSpacing: 6)
-    startPopupDesc.textAlignment = .center
-    
-    alertBg.center = self.view.center
-    alertBg.bounds = self.view.bounds
-    alertBox.layer.cornerRadius = 20
-    alertBox.layer.borderWidth = 6
-    alertBox.layer.borderColor = UIColor(red:0.647, green: 0.737, blue: 0.812, alpha: 1).cgColor
-    epPopupDesc.font = UIFont(name: "NanumSquareEB", size: 16)
-    alertDesc.setLineSpacing(lineSpacing: 6)
-    alertDesc.textAlignment = .center
   }
 }
 
@@ -223,6 +212,7 @@ extension TimeLineViewController: UITableViewDataSource {
       case 1, 6:
         let cell = tableView.dequeueReusableCell(withIdentifier: "ClockCell", for: indexPath) as! ClockCell
         returnCell = cell
+        
       default:
         let timelineIndex = indexPath.row.toTimelineIndex()
         let ep = player.currentEpisodes[timelineIndex]
@@ -231,6 +221,7 @@ extension TimeLineViewController: UITableViewDataSource {
           let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodeCurrentCell", for: indexPath) as! EpisodeCurrentCell
           cell.configureCell(ep: ep, row: indexPath.row, index: timelineIndex)
           returnCell = cell
+          
         case false:
           let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodeCell", for: indexPath) as! EpisodeCell
           cell.configureCell(ep: ep, row: indexPath.row, index: timelineIndex)
@@ -289,9 +280,9 @@ extension TimeLineViewController: UITableViewDelegate {
       let ep = player.currentEpisodes[timelineIndex]
         guard ep.isStarted else {
           if timelineIndex == player.currentEpisodes.count-1 {
-            openAlert(isEndingCell: true)
+            openAlert(isEnding: true)
           } else {
-            openAlert(isEndingCell: false)
+            openAlert(isEnding: false)
           }
           return
         }
