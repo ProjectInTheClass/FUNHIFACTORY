@@ -1,5 +1,5 @@
 //
-//  EpisodeCell.swift
+//  Episodeswift
 //  FunhiPrototype2
 //
 //  Created by 최서연 on 2021/08/06.
@@ -57,7 +57,7 @@ class EpisodeCell: UITableViewCell {
       smallView.layer.borderColor = UIColor(red: 0.42, green: 0.498, blue: 0.58, alpha: 1).cgColor
     }
   
-  func setLine(indexPathRow index: Int) {
+  private func setLine(indexPathRow index: Int) {
     if index == 0 {
       self.lineTop.constant = 20
       self.lineBottom.constant = 0
@@ -67,6 +67,36 @@ class EpisodeCell: UITableViewCell {
     } else {
       self.lineTop.constant = 0
       self.lineBottom.constant = 0
+    }
+  }
+  
+  func configureCell(ep: Episode, row: Int, index: Int) {
+    let progressValue: CGFloat
+    episodePlace.text = ep.episodePlace
+    episodeYear.text = "\(ep.episodeYear)년"
+    episodePlaceImage.image = UIImage(named: ep.episodePlaceImage)
+    lockedView.isHidden = ep.isStarted
+    setLine(indexPathRow: row)
+    progressValue = setProgressValue(timelineIndex: index)
+    progressView.updateProgress(value: progressValue)
+    progressValue == 1.0 ?
+      (progressBackgroundView.isHidden = true) :
+      (progressBackgroundView.isHidden = false)
+    progressView.updateStateColor(subView: progressBackgroundView)
+    selectionStyle = .none
+  }
+  
+  private func setProgressValue(timelineIndex: Int) -> CGFloat {
+    let currentEp = player.currentEpisodes[timelineIndex]
+    // 100%
+    if currentEp.isCleared {
+      return CGFloat(1.0)
+    // 1~99%
+    } else if currentEp.storyBlocks.count != 0 {
+      return CGFloat((Double(Int(currentEp.currentStoryBlockIndex) ?? 0)/Double(currentEp.storyBlocks.count)))
+    // 0%
+    } else {
+      return CGFloat(0.0)
     }
   }
 }

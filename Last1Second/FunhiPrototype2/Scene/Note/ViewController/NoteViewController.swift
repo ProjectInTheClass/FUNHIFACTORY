@@ -53,11 +53,11 @@ class NoteViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.noteTableView.delegate = self
-    self.noteTableView.dataSource = self
-    self.designTableView.delegate = self
-    self.designTableView.dataSource = self
-    designObjects()
+    noteTableView.delegate = self
+    noteTableView.dataSource = self
+    designTableView.delegate = self
+    designTableView.dataSource = self
+    setupStyle()
     updateTitle(.character)
     updatePage(0)
   }
@@ -106,7 +106,7 @@ class NoteViewController: UIViewController {
     popupViewOff(popupView: casePopupBoxView, blackView: casePopupBackgroundView, priviousScale: 1.0, afterScale: 0.3)
   }
   
-  func updateTitle(_ title: Category) {
+  private func updateTitle(_ title: Category) {
     self.category = title
     category == .character ? updatePage(0) : updatePage(1)
     if category == .character {
@@ -123,7 +123,7 @@ class NoteViewController: UIViewController {
     }
   }
   
-  func setupButtons() {
+  private func setupButtons() {
     for button in pageButtons.enumerated() {
       let currentEpisode = player.currentEpisodes[button.offset]
       currentEpisode.isStarted ? button.element.setTitle(String(currentEpisode.episodeYear), for: .normal) : button.element.setTitle("????", for: .normal)
@@ -142,7 +142,7 @@ class NoteViewController: UIViewController {
     }
   }
   
-  func updatePage(_ page: Int) {
+  private func updatePage(_ page: Int) {
     currentNotePageInt = page
     pageButtons.enumerated().forEach { index, button in
       if index == currentNotePageInt {
@@ -231,7 +231,7 @@ extension NoteViewController: UITableViewDelegate {
 
 extension NoteViewController {
     
-  func designObjects() {
+  func setupStyle() {
     noteBackgroundView.backgroundColor = UIColor(red: 157/255, green: 181/255, blue: 203/255, alpha: 1)
     titleLabel.font = UIFont(name: "NanumSquareEB", size: 29)
     noteBackgroundView.layer.cornerRadius = 24

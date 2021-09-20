@@ -54,7 +54,7 @@ class TitleCoverViewController: UIViewController {
     checkForSuccessfulDownloadOfJson()
     // 앱!!!! 앱스토어커넥트에 올릴 때는 꼭 주석처리해야 함!!! 앱 데이터 바꿔서 테스트해보고 싶을 때 사용하는 함수임!!
     // 위치 : Scene > DataTest.swift에서 내부에 필요한 코드 추가해서 테스트 돌려보면 됨
-    testData()
+//    testData()
   }
   
   override func viewWillLayoutSubviews() {
