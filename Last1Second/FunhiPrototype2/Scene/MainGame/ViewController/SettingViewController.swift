@@ -108,9 +108,9 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         initializeAlert.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         initializeAlert.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     }
-    @IBAction func initConfirmButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "gotoCover", sender: nil)
-    }
+//    @IBAction func initConfirmButtonTapped(_ sender: Any) {
+//        performSegue(withIdentifier: "gotoCover", sender: nil)
+//    }
 
     @IBAction func yesButtonTapped(_ sender: Any) {
         print("게임 데이터가 초기화되었습니다.")

@@ -107,6 +107,10 @@ class TitleCoverViewController: UIViewController {
     alertPopupView.removeFromSuperview()
   }
   
+    @IBAction func unwindToMain(_ unwindSegue: UIStoryboardSegue) {
+        _ = unwindSegue.source
+    }
+    
   func designButton() {
     elertPopupBoxView.setBolder(color: UIColor(red: 0.647, green: 0.737, blue: 0.812, alpha: 1), width: 6)
   }
