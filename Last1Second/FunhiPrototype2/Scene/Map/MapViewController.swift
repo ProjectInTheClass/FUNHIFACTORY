@@ -94,14 +94,14 @@ extension MapViewController : UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController,
                              presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
       if mapPresentFromLeft {
-        return AnimationController(animationDuration: 0.4, animationType: .GoLeftPresent)
+        return AnimationController(animationDuration: 0.4, animationType: .GoDownPresent)
       } else {
         return AnimationController(animationDuration: 0.4, animationType: .GoRightPresent)
       }
     }
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
       if mapPresentFromLeft {
-        return AnimationController(animationDuration: 0.4, animationType: .GoRightDismiss)
+        return AnimationController(animationDuration: 0.4, animationType: .GoUpDismiss)
       } else {
         return AnimationController(animationDuration: 0.4, animationType: .GoLeftDismiss)
       }

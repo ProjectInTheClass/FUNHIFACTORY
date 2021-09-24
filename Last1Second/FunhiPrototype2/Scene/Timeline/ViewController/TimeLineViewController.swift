@@ -62,7 +62,7 @@ class TimeLineViewController: UIViewController {
   }
   
   @IBAction func back(_ sender: Any) {
-    popWithAnimation()
+    popWithAnimationFromLeft()
     audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
   }
   

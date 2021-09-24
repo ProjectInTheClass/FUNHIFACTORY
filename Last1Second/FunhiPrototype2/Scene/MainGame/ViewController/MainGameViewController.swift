@@ -157,7 +157,7 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
   
   @IBAction func goToTimeline(_ sender: Any) {
     audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
-    pushWithAnimation(segue: "timelineSegue")
+    pushWithAnimationFromLeft(segue: "timelineSegue")
   }
 
   @IBAction func goToSetting(_ sender: Any) {
