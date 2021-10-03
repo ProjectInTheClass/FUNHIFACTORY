@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -88,14 +88,23 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blue notice icon" translatesAutoresizingMaskIntoConstraints="NO" id="xKB-In-SWf">
+                                <rect key="frame" x="217.5" y="3" width="13.5" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="13.6" id="Rcl-qV-Fe6"/>
+                                    <constraint firstAttribute="height" constant="32" id="saN-8f-TPa"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Ub4-pR-IGS" firstAttribute="top" secondItem="Gyw-XI-FoJ" secondAttribute="bottom" constant="10" id="6bt-0c-fhE"/>
                             <constraint firstAttribute="trailing" secondItem="Gyw-XI-FoJ" secondAttribute="trailing" constant="17" id="KLF-OB-ZwU"/>
+                            <constraint firstItem="xKB-In-SWf" firstAttribute="trailing" secondItem="y9Q-hX-aEm" secondAttribute="trailing" constant="-34" id="Tnw-LX-jhw"/>
                             <constraint firstItem="Gyw-XI-FoJ" firstAttribute="leading" secondItem="XNF-hQ-6PO" secondAttribute="leading" constant="17" id="V7A-SW-yBI"/>
                             <constraint firstItem="Ub4-pR-IGS" firstAttribute="leading" secondItem="XNF-hQ-6PO" secondAttribute="leading" constant="10" id="VlG-se-BKh"/>
                             <constraint firstAttribute="trailing" secondItem="Ub4-pR-IGS" secondAttribute="trailing" constant="10" id="axJ-Kj-yYb"/>
+                            <constraint firstItem="xKB-In-SWf" firstAttribute="top" secondItem="y9Q-hX-aEm" secondAttribute="top" constant="-14" id="d44-LB-ybN"/>
                             <constraint firstItem="Gyw-XI-FoJ" firstAttribute="top" secondItem="XNF-hQ-6PO" secondAttribute="top" constant="17" id="myo-S7-ZCf"/>
                             <constraint firstAttribute="bottom" secondItem="Ub4-pR-IGS" secondAttribute="bottom" constant="11" id="nUK-ON-tIW"/>
                         </constraints>
@@ -111,15 +120,17 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="alarmIcon" destination="xKB-In-SWf" id="1TZ-1t-oAW"/>
                 <outlet property="albumImageNameLabel" destination="Ub4-pR-IGS" id="v02-kc-VNa"/>
                 <outlet property="albumImageView" destination="bm0-hg-K16" id="3HI-qZ-rMt"/>
                 <outlet property="albumImageViewBorderView" destination="Gyw-XI-FoJ" id="hR6-Yk-bBW"/>
-                <outlet property="lockedView" destination="y9Q-hX-aEm" id="j22-4h-9Pl"/>
+                <outlet property="lockedView" destination="y9Q-hX-aEm" id="VIw-Et-0R6"/>
             </connections>
             <point key="canvasLocation" x="667" y="87"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="blue notice icon" width="131" height="305.5"/>
         <image name="lock icon" width="387.5" height="447"/>
     </resources>
 </document>
