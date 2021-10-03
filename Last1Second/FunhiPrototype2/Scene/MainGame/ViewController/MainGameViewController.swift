@@ -352,17 +352,27 @@ extension MainGameViewController: ArDelegate {
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+    if segue.identifier == "timelineSegue" {
+      let destination = segue.destination as! TimeLineViewController
+      destination.backButtonState = .arrow
+    }
+    
     if segue.identifier == "mainToHome" {
       let destination = segue.destination as! HomeViewController
       destination.isShowBlackView = true
     }
+    
     if segue.identifier == "goToARView" {
       let destination = segue.destination as! MaingameARViewController
       if let arContent = sender as? ArId {
         destination.recievedAR = arContent
       }
     }
-    else if segue.identifier == "NoteUserVC" || segue.identifier == "NoteHwiryeongVC" || segue.identifier == "NoteGameCharacterVC"{
+    
+    else if segue.identifier == "NoteUserVC" ||
+            segue.identifier == "NoteHwiryeongVC" ||
+            segue.identifier == "NoteGameCharacterVC" {
       if segue.identifier == "NoteUserVC"{
         let destintation = segue.destination as! NoteUserViewController
         if let targetCharacter = sender as? GameCharacter{

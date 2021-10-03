@@ -31,6 +31,9 @@ class TimeLineViewController: UIViewController {
   @IBOutlet var alertDesc: AlertDescLabel!
   @IBOutlet var alertOk: UIButton!
   
+  @IBOutlet var backXButton: UIButton!
+  @IBOutlet var backClampButton: UIButton!
+  
   var selectedEpisodeStoryBlockIndex = String()
   var selectedEpisode: Episode? {
     didSet {
@@ -38,10 +41,18 @@ class TimeLineViewController: UIViewController {
     }
   }
   
+  enum BackButtonState {
+    case arrow
+    case x
+  }
+  
+  var backButtonState: BackButtonState = .x
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     setupTableView() 
     setupStyle()
+    updateBackButton()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -62,7 +73,7 @@ class TimeLineViewController: UIViewController {
   }
   
   @IBAction func back(_ sender: Any) {
-    popWithAnimationFromLeft()
+    back()
     audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
   }
   
@@ -175,6 +186,26 @@ class TimeLineViewController: UIViewController {
     epPopupBox.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
     epPopupBox.layer.borderWidth = 4
     epPopupYear.textAlignment = .center
+  }
+  
+  private func updateBackButton() {
+    switch backButtonState {
+    case .arrow:
+      backXButton.isHidden = true
+      backClampButton.isHidden = false
+    case .x:
+      backXButton.isHidden = false
+      backClampButton.isHidden = true
+    }
+  }
+  
+  private func back() {
+    switch backButtonState {
+    case .arrow:
+      popWithAnimationFromLeft()
+    case .x:
+      popWithAnimation()
+    }
   }
 }
 

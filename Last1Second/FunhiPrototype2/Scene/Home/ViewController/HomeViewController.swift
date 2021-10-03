@@ -100,6 +100,10 @@ class HomeViewController: UIViewController {
       let destination = segue.destination as! MainGameViewController
       destination.isShowBlackView = true
     }
+    if segue.identifier == "GoToTimeline" {
+      let destination = segue.destination as! TimeLineViewController
+      destination.backButtonState = .x
+    }
   }
   
   func designObjects() {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="I6q-v2-UFv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="I6q-v2-UFv">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -52,13 +52,29 @@
                                             <action selector="back:" destination="I6q-v2-UFv" eventType="touchUpInside" id="bMR-X2-01B"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgV-6I-EEB" userLabel="mapButton">
+                                        <rect key="frame" x="20" y="18.5" width="17" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="fgV-6I-EEB" secondAttribute="height" multiplier="16.84:24" id="Utu-g8-Cax"/>
+                                            <constraint firstAttribute="height" constant="24" id="fOo-ct-1ZO"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="previous icon" symbolScale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="back:" destination="I6q-v2-UFv" eventType="touchUpInside" id="aSY-5N-VDl"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.050980392156862744" green="0.10980392156862745" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="A6w-ZX-n3f" firstAttribute="centerY" secondItem="oa4-LP-NQT" secondAttribute="centerY" constant="3" id="AEo-u7-4SL"/>
                                     <constraint firstAttribute="height" constant="61" id="Hvj-SV-xoF"/>
+                                    <constraint firstItem="fgV-6I-EEB" firstAttribute="leading" secondItem="oa4-LP-NQT" secondAttribute="leading" constant="20" id="NjW-oA-Et2"/>
                                     <constraint firstAttribute="trailing" secondItem="A6w-ZX-n3f" secondAttribute="trailing" constant="20" id="RPl-5f-WIU"/>
                                     <constraint firstItem="cYE-rR-LMY" firstAttribute="centerY" secondItem="oa4-LP-NQT" secondAttribute="centerY" constant="3.5" id="ZGv-SJ-Fcw"/>
+                                    <constraint firstItem="fgV-6I-EEB" firstAttribute="centerY" secondItem="oa4-LP-NQT" secondAttribute="centerY" id="c8M-aG-G3c"/>
                                     <constraint firstItem="cYE-rR-LMY" firstAttribute="centerX" secondItem="oa4-LP-NQT" secondAttribute="centerX" id="s7G-C7-FJf"/>
                                 </constraints>
                             </view>
@@ -72,7 +88,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClockCell" rowHeight="71" id="PzP-BA-HbS" customClass="ClockCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="71"/>
+                                        <rect key="frame" x="0.0" y="64.5" width="414" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PzP-BA-HbS" id="jWP-gN-FW5">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="71"/>
@@ -135,6 +151,8 @@
                         <outlet property="alertDesc" destination="gcF-bA-1J9" id="Ilc-DJ-Y4U"/>
                         <outlet property="alertImage" destination="UTR-Yu-qax" id="qjT-he-y3h"/>
                         <outlet property="alertOk" destination="KHH-8I-pxe" id="5HS-Rw-o71"/>
+                        <outlet property="backClampButton" destination="fgV-6I-EEB" id="ReL-C9-gsD"/>
+                        <outlet property="backXButton" destination="A6w-ZX-n3f" id="Dvr-tQ-SnQ"/>
                         <outlet property="checkPointTableView" destination="a75-UU-emd" id="SU3-kA-zcO"/>
                         <outlet property="epPopupBg" destination="JnP-uQ-FyI" id="B8o-zU-221"/>
                         <outlet property="epPopupBox" destination="mWD-7E-tE9" id="7GK-E1-brs"/>
@@ -234,7 +252,7 @@
                                     </view>
                                     <prototypes>
                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="checkPointTableViewCell" id="dWB-j5-y4d" customClass="CheckPointTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="106.5" width="276" height="43"/>
+                                            <rect key="frame" x="0.0" y="126.5" width="276" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dWB-j5-y4d" id="sCZ-Hb-zho">
                                                 <rect key="frame" x="0.0" y="0.0" width="276" height="43"/>
@@ -654,7 +672,7 @@
                                 <color key="sectionIndexBackgroundColor" systemColor="systemYellowColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="monologue" id="71J-IC-AbE" customClass="MonologueTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="108"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="71J-IC-AbE" id="6CY-0T-foa">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
@@ -777,7 +795,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="separatorCell" rowHeight="83" id="Nlb-tL-rD6" customClass="SeparatorTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="132.5" width="414" height="83"/>
+                                        <rect key="frame" x="0.0" y="152.5" width="414" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nlb-tL-rD6" id="tqy-hf-FNx">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="83"/>
@@ -802,7 +820,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="opTextCell" id="10z-hR-v72" customClass="OpTextTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="215.5" width="414" height="108"/>
+                                        <rect key="frame" x="0.0" y="235.5" width="414" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="10z-hR-v72" id="Hvn-lu-j0n">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
@@ -887,7 +905,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myTextCell" id="8ok-7u-xgl" customClass="MyTextTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="323.5" width="414" height="108"/>
+                                        <rect key="frame" x="0.0" y="343.5" width="414" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8ok-7u-xgl" id="yGJ-l0-paD">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
@@ -973,7 +991,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="arTableViewCell" rowHeight="59" id="rFt-Au-owD" customClass="ARTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="431.5" width="414" height="59"/>
+                                        <rect key="frame" x="0.0" y="451.5" width="414" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rFt-Au-owD" id="5oD-cS-Xyg">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
@@ -1036,7 +1054,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sectionCell" rowHeight="63" id="cgb-M1-KlU" customClass="SectionTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="490.5" width="414" height="63"/>
+                                        <rect key="frame" x="0.0" y="510.5" width="414" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cgb-M1-KlU" id="5Nw-j6-UWl">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
@@ -1086,7 +1104,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="295" id="qdr-Na-rVZ" customClass="ImageTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="553.5" width="414" height="295"/>
+                                        <rect key="frame" x="0.0" y="573.5" width="414" height="295"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qdr-Na-rVZ" id="Kv3-pj-OJi">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="295"/>
