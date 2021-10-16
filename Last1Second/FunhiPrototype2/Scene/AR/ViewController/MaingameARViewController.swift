@@ -12,7 +12,7 @@ import RealityKit
 class MaingameARViewController: UIViewController {
 
     @IBOutlet weak var arView: ARView!
-    @IBOutlet weak var finishARButton: UIButton!
+    @IBOutlet weak var finishARButton: SoundButton!
     
     let groundAnchor = try! HidePocketInGround.loadGround()
     let rocksAnchor = try! HidePocketBetweenRocks.loadRock()

@@ -11,13 +11,13 @@ import MessageUI
 class SettingViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
     @IBOutlet var settingLabel: UILabel!
-    @IBOutlet var yesButton: UIButton!
-    @IBOutlet var noButton: UIButton!
+    @IBOutlet var yesButton: SoundButton!
+    @IBOutlet var noButton: SoundButton!
     @IBOutlet var bgmSlider: UISlider!
     @IBOutlet var effectMusicSlider: UISlider!
     @IBOutlet var initializeAlert: UIView!
     @IBOutlet var textSpeedSlider: UISlider!
-    @IBOutlet var initializeAlertButtons: [UIButton]!
+    @IBOutlet var initializeAlertButtons: [SoundButton]!
     @IBOutlet var initConfirmView: UIView!
     @IBOutlet var settingPropertyLabels: [UILabel]!
     
@@ -60,7 +60,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-        audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+//        audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     
     }
    
@@ -69,7 +69,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         guard let VC = storyboard?.instantiateViewController(identifier: "credit") else {return}
         VC.modalPresentationStyle = .fullScreen
         present(VC, animated: true, completion: nil)
-        audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+//       audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     }
     
     @IBAction func vibrateSwitchTapped(_ sender: Any) {

@@ -7,7 +7,8 @@
 
 import UIKit
 
-class FloatingButton: UIButton {
+
+class FloatingButton: SoundButton {
  
   lazy var bangImage: UIImageView = {
     let icon = UIImageView(image: UIImage(named: "red notice icon")!)

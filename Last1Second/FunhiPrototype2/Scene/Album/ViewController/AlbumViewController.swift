@@ -21,12 +21,12 @@ class AlbumViewController: UIViewController {
   @IBOutlet weak var albumPopupImageView: UIImageView!
   @IBOutlet weak var albumPopupDescriptionLabel: UILabel!
   
-  @IBOutlet weak var pageButton1: UIButton!
-  @IBOutlet weak var pageButton2: UIButton!
-  @IBOutlet weak var pageButton3: UIButton!
-  @IBOutlet weak var pageButton4: UIButton!
-  @IBOutlet weak var pageButton5: UIButton!
-  @IBOutlet var pageButtons: [UIButton]!
+  @IBOutlet weak var pageButton1: SoundButton!
+  @IBOutlet weak var pageButton2: SoundButton!
+  @IBOutlet weak var pageButton3: SoundButton!
+  @IBOutlet weak var pageButton4: SoundButton!
+  @IBOutlet weak var pageButton5: SoundButton!
+  @IBOutlet var pageButtons: [SoundButton]!
   
   var currentNotePageInt: Int = 0 {
     didSet {
@@ -51,7 +51,7 @@ class AlbumViewController: UIViewController {
   
   @IBAction func backAction(_ sender: Any) {
     popWithAnimation()
-    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+//    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
   }
 
   @IBAction func popupExitButton(_ sender: Any) {

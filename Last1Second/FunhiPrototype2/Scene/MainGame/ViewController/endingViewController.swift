@@ -25,7 +25,7 @@ class endingViewController: UIViewController {
     
     @IBOutlet var circleBorders: [UIView]!
     @IBOutlet var insideButtonViews: [UIView]!
-    @IBOutlet var floatingButtons: [UIButton]!
+    @IBOutlet var floatingButtons: [SoundButton]!
     
 //MARK: 팝업 뷰 OUTLET
     
@@ -33,7 +33,7 @@ class endingViewController: UIViewController {
     @IBOutlet var popupBox: UIView!
     @IBOutlet var popupLabel: UILabel!
     @IBOutlet var popupButtonShadows: [UIView]!
-    @IBOutlet var popupButtons: [UIButton]!
+    @IBOutlet var popupButtons: [SoundButton]!
 //MARK: 코드
 
     var buttonInput = 0

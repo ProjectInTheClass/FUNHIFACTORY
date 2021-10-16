@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MapButton: UIButton {
+class MapButton: SoundButton {
   var index: Int?
 }
 

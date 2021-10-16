@@ -10,7 +10,7 @@ import AVFoundation
 
 class TitleCoverViewController: UIViewController {
 
-  @IBOutlet weak var startButton: UIButton!
+  @IBOutlet weak var startButton: SoundButton!
   @IBOutlet var alertPopupView: UIView!
   @IBOutlet var elertPopupBoxView: UIView!
   @IBOutlet var alertPopupLabel: UILabel!

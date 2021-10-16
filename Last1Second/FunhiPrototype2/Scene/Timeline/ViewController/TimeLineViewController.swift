@@ -16,23 +16,23 @@ class TimeLineViewController: UIViewController {
   @IBOutlet weak var epPopupBox: UIView!
   @IBOutlet weak var epPopupTopBar: UIView!
   @IBOutlet weak var epPopupYear: UILabel!
-  @IBOutlet weak var epPopupExit: UIButton!
+  @IBOutlet weak var epPopupExit: SoundButton!
   @IBOutlet weak var epPopupDesc: AlertDescLabel!
   
   @IBOutlet var startPopupBg: UIView!
   @IBOutlet var startPopupBox: AlertBox!
   @IBOutlet weak var startPopupDesc: AlertDescLabel!
-  @IBOutlet weak var startPopupOk: UIButton!
-  @IBOutlet weak var startPopupExit: UIButton!
+  @IBOutlet weak var startPopupOk: SoundButton!
+  @IBOutlet weak var startPopupExit: SoundButton!
   
   @IBOutlet var alertBg: UIView!
   @IBOutlet weak var alertBox: AlertBox!
   @IBOutlet weak var alertImage: UIImageView!
   @IBOutlet var alertDesc: AlertDescLabel!
-  @IBOutlet var alertOk: UIButton!
+  @IBOutlet var alertOk: SoundButton!
   
-  @IBOutlet var backXButton: UIButton!
-  @IBOutlet var backClampButton: UIButton!
+  @IBOutlet var backXButton: SoundButton!
+  @IBOutlet var backClampButton: SoundButton!
   
   var selectedEpisodeStoryBlockIndex = String()
   var selectedEpisode: Episode? {
@@ -74,7 +74,7 @@ class TimeLineViewController: UIViewController {
   
   @IBAction func back(_ sender: Any) {
     back()
-    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+//    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
   }
   
   @IBAction func openChatHistory(_ sender: Any) {

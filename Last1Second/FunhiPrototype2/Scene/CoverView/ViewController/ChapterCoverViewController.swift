@@ -16,7 +16,7 @@ class ChapterCoverViewController: UIViewController {
   
   @IBOutlet var tapStackView: UIStackView!
   @IBOutlet weak var sandGlassImageView: UIImageView!
-  @IBOutlet weak var closeCoverButton: UIButton!
+  @IBOutlet weak var closeCoverButton: SoundButton!
   @IBOutlet weak var tapAndContinueLabel: UILabel!
   @IBOutlet var blackView: UIView!
   

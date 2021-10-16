@@ -120,7 +120,7 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
     @IBOutlet weak var selectedPopupTopbar: UIView!
     @IBOutlet weak var selectedPopupPlaceImage: UIImageView!
     @IBOutlet weak var selectedPopupDescriptionLabel: UILabel!
-    @IBOutlet weak var selectedPopupStartButtonOutlet: UIButton!
+    @IBOutlet weak var selectedPopupStartButtonOutlet: SoundButton!
     @IBOutlet weak var selectedPopupSupTitleLabel: UILabel!
     
     @IBAction func selectedPopupStartButton(_ sender: Any) {
@@ -208,7 +208,7 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
     @IBOutlet weak var lockedPopupBox: UIView!
     @IBOutlet weak var lockedPopupImageView: UIImageView!
     @IBOutlet var lockedPopupLabel: UILabel!
-    @IBOutlet var lockedPopupOkayButton: UIButton!
+    @IBOutlet var lockedPopupOkayButton: SoundButton!
     @IBAction func lockedPopupOkayButtonTouched(_ sender: Any) {
         lockedPopup.removeFromSuperview()
     }

@@ -17,11 +17,11 @@ class NoteViewController: UIViewController {
   @IBOutlet weak var noteTableView: UITableView!
   @IBOutlet var designTableView: UITableView!
   @IBOutlet var backgroundView: UIView!
-  @IBOutlet weak var exitButton: UIButton!
+  @IBOutlet weak var exitButton: SoundButton!
   @IBOutlet var titleLabel: UILabel!
   @IBOutlet weak var noteBackgroundView: UIView!
-  @IBOutlet var pageButtons: [UIButton]!
-  @IBOutlet var titleButtons: [UIButton]!
+  @IBOutlet var pageButtons: [SoundButton]!
+  @IBOutlet var titleButtons: [SoundButton]!
   @IBOutlet var casePopupBackgroundView: UIView!
   @IBOutlet weak var casePopupBoxView: UIView!
   @IBOutlet weak var casePopopBackgroundViewTopBar: UIView!
@@ -71,7 +71,7 @@ class NoteViewController: UIViewController {
     popWithAnimation()
     updateTitle(.character)
     updatePage(0)
-    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+//    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
   }
 
   @IBAction func characterButtonAction(_ sender: Any) {

@@ -70,7 +70,7 @@ class HomeViewController: UIViewController {
     guard let settingVC = storyboard?.instantiateViewController(identifier: "settings") else {return}
     settingVC.modalPresentationStyle = .fullScreen
     present(settingVC, animated: true, completion: nil)
-    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+//    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
   }
   
   @IBAction func goToMainGame(_ sender: Any) {
@@ -119,7 +119,7 @@ class HomeViewController: UIViewController {
   }
 
   func pushMenuViewsAnimation() {
-    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+    
     let transition:CATransition = CATransition()
     transition.duration = 0.3
     transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
