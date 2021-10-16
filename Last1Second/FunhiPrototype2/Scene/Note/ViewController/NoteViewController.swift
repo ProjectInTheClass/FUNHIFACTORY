@@ -71,7 +71,7 @@ class NoteViewController: UIViewController {
     popWithAnimation()
     updateTitle(.character)
     updatePage(0)
-//    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+
   }
 
   @IBAction func characterButtonAction(_ sender: Any) {

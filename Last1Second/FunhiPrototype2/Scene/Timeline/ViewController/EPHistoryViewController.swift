@@ -38,7 +38,7 @@ class EPHistoryViewController: UIViewController {
   }
   
   @IBAction func openMap(_ sender: Any) {
-//    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+
     presentWithAnimation(vcIdentifier: "MapVC")
   }
 

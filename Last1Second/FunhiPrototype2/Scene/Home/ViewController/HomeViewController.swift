@@ -70,7 +70,7 @@ class HomeViewController: UIViewController {
     guard let settingVC = storyboard?.instantiateViewController(identifier: "settings") else {return}
     settingVC.modalPresentationStyle = .fullScreen
     present(settingVC, animated: true, completion: nil)
-//    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+
   }
   
   @IBAction func goToMainGame(_ sender: Any) {

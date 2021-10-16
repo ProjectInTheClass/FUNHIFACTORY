@@ -74,7 +74,7 @@ class TimeLineViewController: UIViewController {
   
   @IBAction func back(_ sender: Any) {
     back()
-//    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+
   }
   
   @IBAction func openChatHistory(_ sender: Any) {

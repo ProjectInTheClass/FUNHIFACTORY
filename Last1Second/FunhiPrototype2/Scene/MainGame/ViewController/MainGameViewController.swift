@@ -146,27 +146,27 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
   }
   
   @IBAction func goToNote(_ sender: Any) {
-//    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+
     pushWithAnimation(segue: "noteSegue")
   }
   
   @IBAction func goToAlbum(_ sender: Any) {
-//    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+
     pushWithAnimation(segue: "albumSegue")
   }
   
   @IBAction func goToTimeline(_ sender: Any) {
-//    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+
     pushWithAnimationFromLeft(segue: "timelineSegue")
   }
 
   @IBAction func goToSetting(_ sender: Any) {
     presentWithAnimation(vcIdentifier: "settings")
-//    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+
   }
 
   @IBAction func goToMap(_ sender: Any) {
-//    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+
     presentWithAnimation(vcIdentifier: "MapVC")
   }
   
@@ -183,13 +183,13 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
     if timer != nil {
         timer.invalidate()
     }
-//    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+
   }
   
   @IBAction func resumeTapped(_ sender: Any) {
     pauseBar.isHidden = true
     safeAreaTop.isHidden = true
-//    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+
     if isChoiceOn == false{
         chatUpdateTimer()
     }
@@ -402,7 +402,6 @@ extension MainGameViewController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     guard pauseBar.isHidden == true else {return}
-//    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
     if currentBlockOfDay().isGodChat == true
     {
       player.currentChatArray.append(Chat(text_: currentBlockOfDay().choices[indexPath.row].text, image_: "", type_: currentBlockOfDay().choices[indexPath.row].chatType, who_: currentBlockOfDay().choices[indexPath.row].who, characterFace_: currentBlockOfDay().choices[indexPath.row].characterFace, optionalOption_: currentBlockOfDay().choices[indexPath.row].optionalOption, animationOption_: .none, isGodChat_: true))
@@ -599,7 +598,6 @@ extension MainGameViewController: ProfileImageDelegate {
 //                self.chatUpdateTimer()
 //            }
 //        })
-//        audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
 //    }
 
 //@IBAction func unwindToMainGame(_ unwindSegue: UIStoryboardSegue) {

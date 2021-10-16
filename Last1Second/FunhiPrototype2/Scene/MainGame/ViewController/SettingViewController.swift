@@ -60,7 +60,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-//        audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+
     
     }
    
@@ -69,7 +69,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
         guard let VC = storyboard?.instantiateViewController(identifier: "credit") else {return}
         VC.modalPresentationStyle = .fullScreen
         present(VC, animated: true, completion: nil)
-//       audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+
     }
     
     @IBAction func vibrateSwitchTapped(_ sender: Any) {

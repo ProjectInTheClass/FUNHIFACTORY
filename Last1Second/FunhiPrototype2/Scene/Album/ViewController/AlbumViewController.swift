@@ -51,7 +51,7 @@ class AlbumViewController: UIViewController {
   
   @IBAction func backAction(_ sender: Any) {
     popWithAnimation()
-//    audioConfigure(bgmName: "buttonTap", isBGM: false, ofType: "mp3")
+
   }
 
   @IBAction func popupExitButton(_ sender: Any) {
