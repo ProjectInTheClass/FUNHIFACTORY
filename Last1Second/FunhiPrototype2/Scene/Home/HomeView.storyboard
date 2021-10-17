@@ -94,13 +94,13 @@
                                 <rect key="frame" x="57" y="161" width="300" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5g-QR-htW">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="19.5"/>
                                         <fontDescription key="fontDescription" name="NEXONLv2GothicBold" family="NEXON Lv2 Gothic" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AyY-9g-bcc">
-                                        <rect key="frame" x="0.0" y="43.5" width="300" height="36.5"/>
+                                        <rect key="frame" x="0.0" y="49" width="300" height="31"/>
                                         <fontDescription key="fontDescription" name="GyeonggiBatangB" family="GyeonggiBatang" pointSize="31"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -273,7 +273,6 @@
                     <navigationItem key="navigationItem" id="yAa-6o-Dzk"/>
                     <connections>
                         <outlet property="album" destination="0eh-DM-T9S" id="y6G-M1-LKf"/>
-                        <outlet property="alertPopupBoxView" destination="jbM-gZ-CQi" id="OYd-pn-G5f"/>
                         <outlet property="alertPopupLabel" destination="1vB-oN-Y1A" id="741-wJ-QfC"/>
                         <outlet property="alertPopupView" destination="vYd-XE-8IL" id="IsF-3Q-FBm"/>
                         <outlet property="episodeDescriptionLabel" destination="Xha-bK-v77" id="Aab-zb-cwO"/>
@@ -292,10 +291,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="433" height="892"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbM-gZ-CQi">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbM-gZ-CQi" customClass="AlertBox" customModule="FunhiPrototype2" customModuleProvider="target">
                             <rect key="frame" x="45" y="336" width="343" height="220"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vB-oN-Y1A">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vB-oN-Y1A" customClass="AlertDescLabel" customModule="FunhiPrototype2" customModuleProvider="target">
                                     <rect key="frame" x="15" y="90" width="313" height="18"/>
                                     <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="16"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -361,17 +360,6 @@
                                 <constraint firstItem="lQA-Bs-6vP" firstAttribute="leading" secondItem="jbM-gZ-CQi" secondAttribute="leading" constant="23" id="oXH-wb-wbd"/>
                                 <constraint firstItem="P24-5m-xfh" firstAttribute="centerX" secondItem="jbM-gZ-CQi" secondAttribute="centerX" id="ydD-xi-JxW"/>
                             </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="10"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                    <color key="value" red="0.64705882349999999" green="0.73725490199999999" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                    <integer key="value" value="6"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
                     <viewLayoutGuide key="safeArea" id="7nO-Lj-9Wx"/>
@@ -484,7 +472,7 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jB2-s2-LGl">
-                                                                    <rect key="frame" x="58" y="69" width="36" height="36"/>
+                                                                    <rect key="frame" x="58" y="68" width="36" height="36"/>
                                                                     <color key="backgroundColor" red="0.33333333329999998" green="0.42745098040000001" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="36" id="4Ti-bO-CSM"/>
@@ -497,16 +485,16 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="pmN-yo-Ih4">
-                                                                    <rect key="frame" x="48" y="21" width="60" height="36"/>
+                                                                    <rect key="frame" x="48" y="21" width="60" height="35"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1592년" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nN0-S8-lWA">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="56" height="21"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="58.5" height="20.5"/>
                                                                             <fontDescription key="fontDescription" name="EBSHunminjeongeumSB" family="EBS Hunminjeongeum SB" pointSize="18"/>
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전각 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efB-2U-mGo">
-                                                                            <rect key="frame" x="0.0" y="23" width="41.5" height="13"/>
+                                                                            <rect key="frame" x="0.0" y="22.5" width="47" height="12.5"/>
                                                                             <fontDescription key="fontDescription" name="EBSHunminjeongeumSB" family="EBS Hunminjeongeum SB" pointSize="11"/>
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
@@ -517,7 +505,7 @@
                                                                     </constraints>
                                                                 </stackView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGh-1c-bPS" customClass="CircularProgressView" customModule="FunhiPrototype2" customModuleProvider="target">
-                                                                    <rect key="frame" x="60" y="71" width="32" height="32"/>
+                                                                    <rect key="frame" x="60" y="70" width="32" height="32"/>
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="32" id="3bn-Tc-0N4"/>
@@ -639,7 +627,6 @@
                     <navigationItem key="navigationItem" id="mmQ-rd-82I"/>
                     <connections>
                         <outlet property="lockedPopup" destination="aez-kC-EDX" id="3Lv-1R-t9M"/>
-                        <outlet property="lockedPopupBox" destination="zFI-wA-NBK" id="Scu-en-muw"/>
                         <outlet property="lockedPopupImageView" destination="5qr-ix-ov8" id="gwN-73-HwS"/>
                         <outlet property="lockedPopupLabel" destination="nQc-Cf-x0P" id="DSi-eO-8de"/>
                         <outlet property="lockedPopupOkayButton" destination="2Xa-jM-Dpt" id="Nuv-e9-4pc"/>
@@ -721,16 +708,16 @@
                                             </connections>
                                         </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="1je-RW-CN5">
-                                            <rect key="frame" x="123.5" y="12" width="80.5" height="51"/>
+                                            <rect key="frame" x="118" y="12.5" width="91.5" height="49.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000년" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOB-ne-LTN">
-                                                    <rect key="frame" x="0.0" y="0.0" width="80.5" height="30.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="91.5" height="29.5"/>
                                                     <fontDescription key="fontDescription" name="EBSHunminjeongeumSB" family="EBS Hunminjeongeum SB" pointSize="26"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000년" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSs-s2-JBL">
-                                                    <rect key="frame" x="17" y="33.5" width="46.5" height="17.5"/>
+                                                    <rect key="frame" x="19" y="32.5" width="53" height="17"/>
                                                     <fontDescription key="fontDescription" name="EBSHunminjeongeumSB" family="EBS Hunminjeongeum SB" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -796,7 +783,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="433" height="892"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zFI-wA-NBK">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zFI-wA-NBK" customClass="AlertBox" customModule="FunhiPrototype2" customModuleProvider="target">
                             <rect key="frame" x="45" y="336" width="343" height="220"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQc-Cf-x0P">
@@ -865,17 +852,6 @@
                                 <constraint firstItem="5qr-ix-ov8" firstAttribute="top" secondItem="zFI-wA-NBK" secondAttribute="top" constant="21" id="wKF-vS-Vdt"/>
                                 <constraint firstItem="8kq-7F-dCl" firstAttribute="leading" secondItem="zFI-wA-NBK" secondAttribute="leading" constant="23" id="zIq-hZ-2ZZ"/>
                             </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="10"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                    <color key="value" red="0.64705882349999999" green="0.73725490199999999" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                    <integer key="value" value="6"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
                     <viewLayoutGuide key="safeArea" id="gef-VW-Jw7"/>

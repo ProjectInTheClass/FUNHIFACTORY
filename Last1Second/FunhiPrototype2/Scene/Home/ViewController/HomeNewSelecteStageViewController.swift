@@ -169,9 +169,7 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
     
     lockedPopupLabel.setLineSpacing(6)
     lockedPopupLabel.textAlignment = .center
-    lockedPopupBox.layer.cornerRadius = 20
-    lockedPopupBox.layer.borderWidth = 6
-    lockedPopupBox.layer.borderColor = UIColor(red:0.647, green: 0.737, blue: 0.812, alpha: 1).cgColor
+    
     
     
     lockedPopupLabel.setLineSpacing(6)
@@ -206,7 +204,6 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
   
   
   @IBOutlet var lockedPopup: UIView!
-  @IBOutlet weak var lockedPopupBox: UIView!
   @IBOutlet weak var lockedPopupImageView: UIImageView!
   @IBOutlet var lockedPopupLabel: UILabel!
   @IBOutlet var lockedPopupOkayButton: SoundButton!

@@ -112,7 +112,7 @@ class HomeViewController: UIViewController {
     //-----팝업------------
     alertPopupView.bounds = self.view.bounds
     alertPopupView.center = self.view.center
-    alertPopupBoxView.setBolder(color: UIColor(red:0.647, green: 0.737, blue: 0.812, alpha: 1), width: 6)
+    
     alertPopupLabel.text = "아직 다른 사건들을 열 수 없습니다.\n프롤로그를 먼저 해결해주세요."
     alertPopupLabel.setLineSpacing(6)
     alertPopupLabel.textAlignment = .center
@@ -130,7 +130,6 @@ class HomeViewController: UIViewController {
 
       //---------------새로운 사건 보기 팝업쓰----------------
       @IBOutlet var alertPopupView: UIView!
-      @IBOutlet var alertPopupBoxView: UIView!
       @IBOutlet var alertPopupLabel: UILabel!
   
       @IBAction func alertPopupExitButtonAction(_ sender: Any) {
