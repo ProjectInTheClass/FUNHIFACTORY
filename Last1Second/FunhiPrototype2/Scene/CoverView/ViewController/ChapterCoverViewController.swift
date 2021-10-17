@@ -58,9 +58,9 @@ class ChapterCoverViewController: UIViewController {
   }
   
   private func designView() {
-    descriptionLabel.setLineSpacing(lineSpacing: 10)
+    descriptionLabel.setLineSpacing(10)
     descriptionLabel.textAlignment = .center
-    tapAndContinueLabel.setCharacterSpacing(characterSpacing: 5)
+    tapAndContinueLabel.setCharacterSpacing(5)
   }
   
   private func animateCover() {

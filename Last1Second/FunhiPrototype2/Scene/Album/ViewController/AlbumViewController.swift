@@ -91,7 +91,7 @@ class AlbumViewController: UIViewController {
   
   private func setupPopup() {
     albumPoopupTitleLabel.font = UIFont(name: "NanumSquareEB", size: 23)
-    albumPopupDescriptionLabel.setLineSpacing(lineSpacing: 6)
+    albumPopupDescriptionLabel.setLineSpacing(6)
     albumPopupDescriptionLabel.textAlignment = .center
     albumPopupBoxTopBarView.layer.cornerRadius = 16
     albumPopupBoxTopBarView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]

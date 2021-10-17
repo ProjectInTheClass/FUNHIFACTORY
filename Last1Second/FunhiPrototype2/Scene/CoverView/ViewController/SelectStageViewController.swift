@@ -112,7 +112,7 @@ class SelectStageViewController: UIViewController {
   
   func designPopup() {
       selectedPopupDescriptionLabel.font = UIFont(name: "NanumSquareB", size: 16)
-      selectedPopupDescriptionLabel.setLineSpacing(lineSpacing: 6)
+      selectedPopupDescriptionLabel.setLineSpacing(6)
       selectedPopupDescriptionLabel.textAlignment = .center
       selectedPopupBox.layer.borderWidth = 4
       selectedPopupBox.layer.borderColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 1).cgColor
@@ -120,11 +120,11 @@ class SelectStageViewController: UIViewController {
       selectedPopup.center = self.view.center
       selectedPopupTopbar.layer.cornerRadius = 10
       selectedPopupTopbar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-      lockedPopupLabel.setLineSpacing(lineSpacing: 6)
+      lockedPopupLabel.setLineSpacing(6)
       lockedPopupLabel.textAlignment = .center
       lockedPopupBox.layer.cornerRadius = 20
       lockedPopupBox.setBolder(color: UIColor(red:0.647, green: 0.737, blue: 0.812, alpha: 1), width: 6)
-      lockedPopupLabel.setLineSpacing(lineSpacing: 6)
+      lockedPopupLabel.setLineSpacing(6)
       lockedPopupLabel.textAlignment = .center
   }
   

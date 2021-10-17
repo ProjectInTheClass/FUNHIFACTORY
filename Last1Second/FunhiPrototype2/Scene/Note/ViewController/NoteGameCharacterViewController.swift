@@ -44,7 +44,7 @@ class NoteGameCharacterViewController: UIViewController {
     
   func designObjects() {
     nameLabel.font = UIFont(name: "NanumSquareEB", size: 29)
-    gameCharacterDescriptionLabel.setLineSpacing(lineSpacing: 10)
+    gameCharacterDescriptionLabel.setLineSpacing(10)
     gameCharacterDescriptionLabel.textAlignment = .center
     gameCharacterImageView.layer.cornerRadius = gameCharacterImageView.frame.width/2
   }

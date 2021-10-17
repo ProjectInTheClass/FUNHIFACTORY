@@ -62,7 +62,7 @@ class NoteHeeryeongViewController: UIViewController {
   func designObjects() {
     hwiryeongProfileImageView.layer.cornerRadius = hwiryeongProfileImageView.frame.width/2
     hwiryeongDescriptionLabel.font = UIFont(name: "GyeonggiBatangB", size: 17)
-    hwiryeongDescriptionLabel.setLineSpacing(lineSpacing: 10)
+    hwiryeongDescriptionLabel.setLineSpacing(10)
     hwiryeongDescriptionLabel.textAlignment = .center
     hwiryeongLabel.font = UIFont(name: "NanumSquareEB", size: 29)
   }

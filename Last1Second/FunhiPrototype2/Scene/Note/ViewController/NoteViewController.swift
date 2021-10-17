@@ -237,7 +237,7 @@ extension NoteViewController {
     noteBackgroundView.layer.cornerRadius = 24
     noteBackgroundView.setShadow(color: UIColor(red: 0.174, green: 0.292, blue: 0.404, alpha: 1), offsetX: 24, offsetY: -15, opacity: 1, radius: 0)
     noteBackgroundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-    caseLongDescriptionLabel.setLineSpacing(lineSpacing: 6)
+    caseLongDescriptionLabel.setLineSpacing(6)
     caseLongDescriptionLabel.textAlignment = .center
     casePopupBoxView.layer.cornerRadius = 14
     casePopupBoxView.setBolder(color: UIColor(red: 157/255, green: 181/255, blue: 203/255, alpha: 1), width: 4)

@@ -154,7 +154,7 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
   func designPopup() {
     
     selectedPopupDescriptionLabel.font = UIFont(name: "NanumSquareB", size: 16)
-    selectedPopupDescriptionLabel.setLineSpacing(lineSpacing: 6)
+    selectedPopupDescriptionLabel.setLineSpacing(6)
     selectedPopupDescriptionLabel.textAlignment = .center
     
     selectedPopupBox.layer.borderWidth = 4
@@ -167,14 +167,14 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
     selectedPopupTopbar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     
     
-    lockedPopupLabel.setLineSpacing(lineSpacing: 6)
+    lockedPopupLabel.setLineSpacing(6)
     lockedPopupLabel.textAlignment = .center
     lockedPopupBox.layer.cornerRadius = 20
     lockedPopupBox.layer.borderWidth = 6
     lockedPopupBox.layer.borderColor = UIColor(red:0.647, green: 0.737, blue: 0.812, alpha: 1).cgColor
     
     
-    lockedPopupLabel.setLineSpacing(lineSpacing: 6)
+    lockedPopupLabel.setLineSpacing(6)
     lockedPopupLabel.textAlignment = .center
   }
   

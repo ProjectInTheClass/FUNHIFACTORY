@@ -21,7 +21,7 @@ class NoteCollectionViewReusableCell: UICollectionViewCell {
   }
  
   private func setupStyle() {
-    gameCharacterDescriptionLabel.setLineSpacing(lineSpacing: 10)
+    gameCharacterDescriptionLabel.setLineSpacing(10)
     gameCharacterProfileImageView.layer.cornerRadius = gameCharacterProfileImageView.frame.width/2
   }
   

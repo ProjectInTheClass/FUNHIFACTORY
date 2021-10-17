@@ -30,7 +30,7 @@ class AlertDescLabel: UILabel {
   
   private func setupStyle() {
     font = UIFont(name: "NanumSquareB", size: 16)
-    setLineSpacing(lineSpacing: 6)
+    setLineSpacing(6)
     textAlignment = .center
   }
 }
