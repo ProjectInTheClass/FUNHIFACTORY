@@ -49,26 +49,48 @@ struct Episode: Codable, Equatable {
   var currentEpRoute: Route {
     get { return storyBlocks[currentStoryBlockIndex]?.currentRoute ?? .normal }
   }
-}
-
-extension Episode {
+  
+  init(episodeID: String, episodePlace: String, episodeYear: Int, episodeKingYear: String, episodeShortDesciption: String, episodeDesciption: String, episodePlaceImage: String, episodeCoverImage: String, isCleared: Bool, chatHistory: [Chat], storyBlocks: [String:BlockOfDayEpisode], currentCharacterNote: [GameCharacter], currentCaseNote: [NoteCase], currentAlbumImages: [AlbumImage], timelineCheckPoint: [[CheckPoint]], currentStoryBlockIndex: String) {
+    
+    self.episodeID = episodeID
+    self.episodePlace = episodePlace
+    self.episodeYear = episodeYear
+    self.episodeKingYear = episodeKingYear
+    self.episodeShortDesciption = episodeShortDesciption
+    self.episodeDesciption = episodeDesciption
+    self.episodePlaceImage = episodePlaceImage
+    self.episodeCoverImage = episodeCoverImage
+    self.isCleared = isCleared
+    self.chatHistory = chatHistory
+    self.storyBlocks = storyBlocks
+    self.currentCharacterNote = currentCharacterNote
+    self.currentCaseNote = currentCaseNote
+    self.currentAlbumImages = currentAlbumImages
+    self.timelineCheckPoint = timelineCheckPoint
+    self.currentStoryBlockIndex = currentStoryBlockIndex
+  }
+  
+  init(episodeID: String, episodePlace: String, episodeYear: Int, episodeKingYear: String, episodeShortDesciption: String, episodeDesciption: String, episodePlaceImage: String, episodeCoverImage: String, chatHistory: [Chat], storyBlocks: [String:BlockOfDayEpisode], currentCharacterNote: [GameCharacter], currentCaseNote: [NoteCase], currentAlbumImages: [AlbumImage], timelineCheckPoint: [[CheckPoint]], currentStoryBlockIndex: String) {
+    
+    self.init(episodeID: episodeID,
+              episodePlace: episodePlace,
+              episodeYear: episodeYear,
+              episodeKingYear: episodeKingYear,
+              episodeShortDesciption: episodeShortDesciption,
+              episodeDesciption: episodeDesciption,
+              episodePlaceImage: episodePlaceImage,
+              episodeCoverImage: episodeCoverImage,
+              isCleared: false,
+              chatHistory: chatHistory,
+              storyBlocks: storyBlocks,
+              currentCharacterNote: currentCharacterNote,
+              currentCaseNote: currentCaseNote,
+              currentAlbumImages: currentAlbumImages,
+              timelineCheckPoint: timelineCheckPoint,
+              currentStoryBlockIndex: currentStoryBlockIndex)
+  }
+  
   init() {
-    episodeID = ""
-    episodePlace = ""
-    episodeYear = 0
-    episodeKingYear = ""
-    episodeShortDesciption = ""
-    episodeDesciption = ""
-    episodePlaceImage = ""
-    episodeCoverImage = ""
-    chatHistory = []
-    isCleared = false
-    isStarted = false
-    storyBlocks = [:]
-    currentCharacterNote = []
-    currentCaseNote = []
-    currentAlbumImages = []
-    timelineCheckPoint = []
-    currentStoryBlockIndex = ""
+    self.init(episodeID: "", episodePlace: "", episodeYear: 0, episodeKingYear: "", episodeShortDesciption: "", episodeDesciption: "", episodePlaceImage: "", episodeCoverImage: "", isCleared: true, chatHistory: [], storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "")
   }
 }

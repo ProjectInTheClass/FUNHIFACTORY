@@ -307,6 +307,7 @@ extension TimeLineViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if tableView == timelineTableView && indexPath.row != 1 && indexPath.row != 6 {
+      playEffectSound(.buttonClick, type: .mp3)
       let timelineIndex = indexPath.row.toTimelineIndex()
       let ep = player.currentEpisodes[timelineIndex]
         guard ep.isStarted else {
@@ -318,6 +319,7 @@ extension TimeLineViewController: UITableViewDelegate {
           return
         }
         openEpPopup(ep: player.currentEpisodes[timelineIndex])
+      
       }
 
     if tableView == checkPointTableView {
@@ -326,6 +328,7 @@ extension TimeLineViewController: UITableViewDelegate {
       selectedEpisodeStoryBlockIndex = selectedEpisode.timelineCheckPoint[indexPath.section][indexPath.row].storyBlockIndex
       if !selectedCheckPoint.isLocked {
         openStartPopup()
+        playEffectSound(.buttonClick, type: .mp3)
       }
     }
   }

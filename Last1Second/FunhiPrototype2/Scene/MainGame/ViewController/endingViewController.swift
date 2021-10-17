@@ -52,7 +52,7 @@ class endingViewController: UIViewController {
             yearReasonStackView.setNeedsLayout()
             gameOverImageView.setNeedsLayout()
         }
-        audioConfigure(bgmName: "badending", isBGM: true, ofType: "mp3")
+      audioConfigure(bgmName: "badending", isBGM: true, ofType: .mp3)
         popupView.translatesAutoresizingMaskIntoConstraints = false
         endingDesign(ending: ending)
         blackView.backgroundColor = .black

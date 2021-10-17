@@ -233,6 +233,6 @@ func playBgm(put bgm : String){
     }
     else    //새로운 bgm이 들어왔을 때
     {
-        audioConfigure(bgmName: bgm, isBGM: true, ofType: "mp3")
+        audioConfigure(bgmName: bgm, isBGM: true, ofType: .mp3)
     }
 }

@@ -85,10 +85,10 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
       print("chatupdatetimer is executed")
       chatUpdateTimer()
       closeChoiceBar()
-      audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: "mp3")
+      audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: .mp3)
     } else {
       print("chatupdatetimer isn't executed")
-      audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: "mp3")
+      audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: .mp3)
       return
     }
   }

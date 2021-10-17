@@ -72,7 +72,7 @@ class SelectStageViewController: UIViewController {
   
   var selectedRowIndex: Int?
   
-  var selectedEP = Episode(episodeID: "", episodePlace: "", episodeYear: 0, episodeKingYear: "", episodeShortDesciption: "", episodeDesciption: "", episodePlaceImage: "", episodeCoverImage: "", isCleared: true, chatHistory: [], storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "")
+  var selectedEP = Episode()
   
   @IBAction func thirdPopupOkayButtonTouched(_ sender: Any) {
     lockedPopup.removeFromSuperview()
@@ -197,6 +197,7 @@ extension SelectStageViewController: UITableViewDelegate, UITableViewDataSource 
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    playEffectSound(.buttonClick, type: .mp3)
     let selectedStageIndex = indexPath.row + 1
     let dataToSend: Episode
     dataToSend = player.currentEpisodes[selectedStageIndex]
