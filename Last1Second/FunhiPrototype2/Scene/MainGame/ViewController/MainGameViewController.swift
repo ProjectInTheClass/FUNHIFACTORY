@@ -443,6 +443,7 @@ extension MainGameViewController: UICollectionViewDelegate {
 
     player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex = currentBlockOfDay().choices[indexPath.row].nextTextIndex
     player.indexNumber = 0
+    playEffectSound(.buttonClick, type: .mp3)
     closeChoiceBar()
     chatUpdateTimer()
   }
