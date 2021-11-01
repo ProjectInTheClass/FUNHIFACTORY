@@ -80,17 +80,17 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
     super.viewDidAppear(animated)
     print("퍼즈바 꺼졌는가? :\(pauseBar.isHidden), 초이스 켜졌는가? :\(isChoiceOn), 타이머 꺼졌는가? :\(timer==nil)")
 //      if !player.currentChatArray.isEmpty { scrollToBottom() }
-    if timer == nil{
+//    if timer == nil{
       guard pauseBar.isHidden == true else {return}
       print("chatupdatetimer is executed")
       chatUpdateTimer()
       closeChoiceBar()
       audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: .mp3)
-    } else {
-      print("chatupdatetimer isn't executed")
-      audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: .mp3)
-      return
-    }
+//    } else {
+//      print("chatupdatetimer isn't executed")
+//      audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: .mp3)
+//      return
+//    }
   }
   
   override func viewDidDisappear(_ animated: Bool) {

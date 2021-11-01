@@ -204,6 +204,7 @@ extension NoteViewController: UITableViewDelegate {
       if category == .character {
         let note = player.currentEpisodes[currentNotePageInt].currentCharacterNote[indexPath.row]
         guard !note.isLocked else { return }
+        playEffectSound(.buttonClick, type: .mp3)
         player.currentEpisodes[currentNotePageInt].currentCharacterNote[indexPath.row].isChecked = true
         let dataToSend = note
         //이단희 셀일 때
@@ -221,6 +222,7 @@ extension NoteViewController: UITableViewDelegate {
       if category == .history {
         let history = player.currentEpisodes[currentNotePageInt].currentCaseNote[indexPath.row]
         guard !history.isLocked else { return }
+        playEffectSound(.buttonClick, type: .mp3)
         caseNameLabel.text = history.title
         caseLongDescriptionLabel.text = history.longDescription
         popupViewOn(blackView: casePopupBackgroundView, popupView: casePopupBoxView, priviousScale: 0.6, afterScale: 1.0)
