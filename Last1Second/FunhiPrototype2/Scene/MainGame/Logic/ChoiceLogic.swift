@@ -172,7 +172,6 @@ extension MainGameViewController {
             safeAreaBottom.isHidden = true
             choiceBar.setNeedsUpdateConstraints()
             mainGameTableView.layoutIfNeeded()
-            //scrollToBottom(input: 0)
     }
     
     func checkEnterAnimation(){
