@@ -82,10 +82,7 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
       print("chatupdatetimer is executed")
       chatUpdateTimer()
       closeChoiceBar()
-      if (player.currentChatArray.count != 0)
-      {
-          scrollToBottom()
-      }
+//      print("퍼즈바 꺼졌는가? :\(pauseBar.isHidden), 초이스 켜졌는가? :\(isChoiceOn), 타이머 꺼졌는가? :\(timer==nil)")
       print("ischoice = \(isChoiceOn)")
       audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: .mp3)
   }
@@ -124,6 +121,7 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
         safeAreaTop.isHidden = true
         pauseBar.isHidden = true
     }
+    scrollToBottom()
     currentYear.text = "\(player.currentEpisodes[strToIndex(str: player.dayId)].episodeYear)년"
   }
 
