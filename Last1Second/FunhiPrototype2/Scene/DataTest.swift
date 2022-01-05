@@ -11,4 +11,5 @@ import Foundation
 func testData() {
   player.currentEpisodes[0].chatHistory = [Chat(text_: "", image_: "", type_: .onlyText, who_: .danhee, characterFace_: .angry1, optionalOption_: nil, animationOption_: .none, isGodChat_: false)]
     player.currentEpisodes[2].currentCharacterNote[1].isLocked = false
+  player.currentEpisodes[0].isCleared  = true
 }

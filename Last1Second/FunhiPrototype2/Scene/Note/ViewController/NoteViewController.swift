@@ -157,6 +157,8 @@ class NoteViewController: UIViewController {
 }
 
 
+// MARK: TableView DataSource
+
 extension NoteViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     var row = 0
@@ -198,6 +200,8 @@ extension NoteViewController: UITableViewDataSource {
   }
 }
 
+// MARK: TableView Delegate
+
 extension NoteViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if tableView == noteTableView {
@@ -223,6 +227,8 @@ extension NoteViewController: UITableViewDelegate {
         let history = player.currentEpisodes[currentNotePageInt].currentCaseNote[indexPath.row]
         guard !history.isLocked else { return }
         playEffectSound(.buttonClick, type: .mp3)
+        player.currentEpisodes[currentNotePageInt].currentCaseNote[indexPath.row].isChecked = true
+        tableView.reloadRows(at: [indexPath], with: .none)
         caseNameLabel.text = history.title
         caseLongDescriptionLabel.text = history.longDescription
         popupViewOn(blackView: casePopupBackgroundView, popupView: casePopupBoxView, priviousScale: 0.6, afterScale: 1.0)
