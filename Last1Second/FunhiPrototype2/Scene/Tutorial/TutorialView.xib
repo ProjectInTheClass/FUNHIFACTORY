@@ -84,7 +84,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1s-ZG-lOe">
                     <rect key="frame" x="0.0" y="813" width="414" height="28"/>
                     <subviews>
-                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="gb4-Dn-w5r">
+                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="gb4-Dn-w5r">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="28"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="pageIndicatorTintColor" red="0.44313725490196076" green="0.44705882352941173" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
@@ -103,10 +103,43 @@
                         <constraint firstAttribute="bottom" secondItem="gb4-Dn-w5r" secondAttribute="bottom" id="uUh-2p-7IX"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dev-8g-Zh2">
+                    <rect key="frame" x="372" y="428" width="26" height="40"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="26" id="QIm-QA-oqq"/>
+                        <constraint firstAttribute="height" constant="40" id="Whk-Wi-FOi"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Button" image="tutorial_next">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="moveNext:" destination="-1" eventType="touchUpInside" id="kkz-mt-Apz"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjA-Q0-4hO">
+                    <rect key="frame" x="16" y="428" width="26" height="40"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="26" id="WOj-iz-jAP"/>
+                        <constraint firstAttribute="height" constant="40" id="zIE-bI-q2d"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Button" image="tutorial_prev">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="movePrev:" destination="-1" eventType="touchUpInside" id="1EE-u5-siO"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="0.090196078430000007" green="0.090196078430000007" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Dev-8g-Zh2" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="0Wj-Mb-fbh"/>
                 <constraint firstItem="V1s-ZG-lOe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1g8-lY-HcV"/>
                 <constraint firstItem="1QH-Pa-25o" firstAttribute="top" secondItem="bdk-ns-eY0" secondAttribute="bottom" id="3cD-pT-R6d"/>
                 <constraint firstAttribute="bottom" secondItem="V1s-ZG-lOe" secondAttribute="bottom" constant="55" id="6Kw-Uh-rfQ"/>
@@ -115,6 +148,9 @@
                 <constraint firstItem="bdk-ns-eY0" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="IBQ-my-1cJ"/>
                 <constraint firstItem="bdk-ns-eY0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="NrH-nA-exV"/>
                 <constraint firstItem="bdk-ns-eY0" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="UHm-Q0-Okj"/>
+                <constraint firstItem="zjA-Q0-4hO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="ZLl-0O-Yi4"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Dev-8g-Zh2" secondAttribute="trailing" constant="16" id="a5R-cT-eYj"/>
+                <constraint firstItem="zjA-Q0-4hO" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="bBD-DC-akA"/>
                 <constraint firstItem="V1s-ZG-lOe" firstAttribute="top" secondItem="1QH-Pa-25o" secondAttribute="bottom" id="oVU-v2-GXx"/>
                 <constraint firstAttribute="trailing" secondItem="V1s-ZG-lOe" secondAttribute="trailing" id="zlQ-D3-NFJ"/>
             </constraints>
@@ -123,6 +159,8 @@
         </view>
     </objects>
     <resources>
+        <image name="tutorial_next" width="26" height="40"/>
+        <image name="tutorial_prev" width="26" height="40"/>
         <image name="white thick X" width="306" height="306.5"/>
     </resources>
 </document>

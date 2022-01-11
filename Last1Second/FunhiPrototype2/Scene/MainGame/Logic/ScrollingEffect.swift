@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension MainGameViewController{
+extension MainGameViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

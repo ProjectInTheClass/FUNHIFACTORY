@@ -19,6 +19,7 @@ class MapViewController: UIViewController {
     self.transitioningDelegate = self
     setupButtons()
     setupCurrentButton()
+    setupTutorial()
   }
     
   func setupCurrentButton() {
@@ -107,4 +108,15 @@ extension MapViewController : UIViewControllerTransitioningDelegate {
       }
         
     }
+}
+
+extension MapViewController {
+  func setupTutorial() {
+    let items: [TutorialStyle] = [
+      .singleImage(image: "map_11", desc: "현재 플레이하고 있는 사건의 위치를 보여줍니다."),
+      .singleFillImage(image: "map_22", desc: "알고 싶은 전각을 누르면 해당 전각에 대한 사진과 설명을 볼 수 있습니다.")
+    ]
+    
+    TutorialView.showTutorial(inView: view, items: items, type: .map)
+  }
 }

@@ -15,6 +15,11 @@ class TutorialCell3: UICollectionViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    desc.setLineSpacing(3)
   }
   
+  func configureCell(image: String, desc: String) {
+    self.image.animate(withGIFNamed: image)
+    self.desc.text = desc
+  }
 }

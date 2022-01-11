@@ -42,6 +42,7 @@ class AlbumViewController: UIViewController {
     self.designTableView.dataSource = self
     setupXib()
     setupPopup()
+    setupTutorial()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -194,5 +195,16 @@ extension AlbumViewController: UITableViewDelegate {
     player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].isChecked = true
     popupViewOn(blackView: albumPopupBackgroundView,popupView: albumPopupBoxView, titleLabel: albumPoopupTitleLabel, descriptionLabel: albumPopupDescriptionLabel, imageView: albumPopupImageView, priviousScale: 0.5, afterScale: 1.0, indexPath: indexPath)
     tableView.reloadData()
+  }
+}
+
+extension AlbumViewController {
+  func setupTutorial() {
+    let items: [TutorialStyle] = [
+      .singleFillImage(image: "album_11", desc: "자세히 보고 싶은 앨범 이미지를 클릭하면 자세히 볼 수 있습니다."),
+      .singleFillImage(image: "album_22", desc: "플레이한 사건들에 대한 앨범을 각각 볼 수 있습니다.")
+    ]
+    
+    TutorialView.showTutorial(inView: view, items: items, type: .album)
   }
 }

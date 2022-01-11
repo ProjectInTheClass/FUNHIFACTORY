@@ -52,6 +52,7 @@ class TimeLineViewController: UIViewController {
     super.viewDidLoad()
     setupTableView() 
     setupStyle()
+    setupTutorial()
     updateBackButton()
   }
   
@@ -331,5 +332,17 @@ extension TimeLineViewController: UITableViewDelegate {
         playEffectSound(.buttonClick, type: .mp3)
       }
     }
+  }
+}
+
+extension TimeLineViewController {
+  func setupTutorial() {
+    let items: [TutorialStyle] = [
+      .singleFillImage(image: "timeline_11", desc: "자세히 보고 싶은 사건 박스를 누르면 자세히 볼 수 있습니다."),
+      .singleFillImage(image: "timeline_22", desc: "플레이 중간에 저장된 체크 포인트에서부터 다시 시작할 수 있습니다."),
+      .singleFillImage(image: "timeline_33", desc: "플레이한 사건에 대한 기록을 다시 볼 수 있습니다.")
+    ]
+    
+    TutorialView.showTutorial(inView: view, items: items, type: .timeline)
   }
 }

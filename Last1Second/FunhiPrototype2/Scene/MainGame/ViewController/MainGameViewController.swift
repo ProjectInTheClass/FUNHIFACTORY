@@ -70,6 +70,7 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
     setupCollectionView()
     setupButtons()
     setupNotepopup()
+    setupTutorial()
     
     if let page = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]?.choices.count {
         initializePageControl(collectionView : choiceCollectionView, choiceBar : choiceBar, numberOfPages:page)
@@ -580,6 +581,18 @@ extension MainGameViewController: ProfileImageDelegate {
   }
 }
 
+extension MainGameViewController {
+  func setupTutorial() {
+    let items: [TutorialStyle] = [
+      .singleImage(image: "maingame_11", desc: "화면을 스와이프하여 선택지를 고를 수 있습니다."),
+      .singleFillImage(image: "maingame_22", desc: "캐릭터를 누르면 해당 캐릭터의 상세 정보를 볼 수 있습니다."),
+      .singleImage(image: "maingame_33", desc: "게임을 플레이하면서 얻은 정보들을 메뉴에서 찾아볼 수 있습니다."),
+      .singleFillImage(image: "maingame_44", desc: "현재 플레이하고 있는 사건을 보여줍니다."),
+    ]
+    
+    TutorialView.showTutorial(inView: view, items: items, type: .maingame)
+  }
+}
 //    @IBAction func closeMap(_ sender: Any) {
 //        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
 //

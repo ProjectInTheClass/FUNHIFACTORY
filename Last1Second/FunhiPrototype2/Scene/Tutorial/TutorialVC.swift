@@ -9,17 +9,50 @@ import UIKit
 
 class TutorialView: UIView {
   
+  
+  static func showTutorial(inView: UIView, items: [TutorialStyle], type: TutorialView.TutorialType) {
+    
+    switch type {
+    case .home:
+      guard !player.tutorialManager.homeOpen else { return }
+    case .maingame:
+      guard !player.tutorialManager.mainGameOpen else { return }
+    case .note:
+      guard !player.tutorialManager.noteOpen else { return }
+    case .album:
+      guard !player.tutorialManager.albumOpen else { return }
+    case .timeline:
+      guard !player.tutorialManager.timelineOpen else { return }
+    case .map:
+      guard !player.tutorialManager.mapOpen else { return }
+    }
+    
+    let tutoView = TutorialView(items: items)
+    inView.addSubview(tutoView)
+    tutoView.pinToEdges(inView: inView)
+  }
+  
+  enum TutorialType {
+    case home
+    case maingame
+    case note
+    case album
+    case timeline
+    case map
+  }
+  
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var pageView: UIPageControl!
   
   var items: [TutorialStyle] = [.doubleImages(image1: "", image2: "", desc: "")] {
     didSet {
-   //   collectionView.reloadData()
+      pageView.numberOfPages = items.count
+      //   collectionView.reloadData()
     }
   }
   var currentIndex: CGFloat = 0 {
     didSet {
-//      setupPageControl()
+      setupPageControl()
     }
   }
   var isOneStepPaging = true
@@ -32,6 +65,12 @@ class TutorialView: UIView {
   required init?(coder: NSCoder) {
     super.init(coder: coder)
     commonInit()
+  }
+  
+  convenience init(items: [TutorialStyle]) {
+    self.init()
+    self.items = items
+    self.pageView.numberOfPages = items.count
   }
   
   private func commonInit() {
@@ -50,7 +89,7 @@ class TutorialView: UIView {
   private func setupStyle() {
     
   }
- 
+  
   private func setupCollectionView() {
     collectionView.isPagingEnabled = true
   }
@@ -66,51 +105,81 @@ class TutorialView: UIView {
   }
   
   private func setupPageControl() {
-    pageView.numberOfPages = sampleData.count
+    pageView.numberOfPages = items.count
     pageView.currentPage = Int(currentIndex)
   }
-    @IBAction func touchPageControl(_ sender: Any) {
-        let rect = collectionView.layoutAttributesForItem(at: IndexPath(item: pageView.currentPage, section: 0))?.frame
-        collectionView.scrollRectToVisible(rect!, animated: true)
-    }
-    
+  
+  @IBAction func touchPageControl(_ sender: Any) {
+    let rect = collectionView.layoutAttributesForItem(at: IndexPath(item: pageView.currentPage, section: 0))?.frame
+    collectionView.scrollRectToVisible(rect!, animated: true)
+  }
+  
+  @IBAction func moveNext(_ sender: Any) {
+    guard pageView.currentPage < items.count else { return }
+    pageView.currentPage += 1
+    collectionView.scrollToNextCell(row: pageView.currentPage, section: 0)
+  }
+  
+  @IBAction func movePrev(_ sender: Any) {
+    guard pageView.currentPage > 0 else { return }
+    pageView.currentPage -= 1
+    collectionView.scrollToNextCell(row: pageView.currentPage, section: 0)
+  }
+  
   @IBAction func back(_ sender: Any) {
-    removeFromSuperview()
+    UIView.animate(withDuration: 0.2) { [weak self] in
+      self?.alpha = 0
+    } completion: { [weak self] _ in
+      self?.removeFromSuperview()
+    }
   }
 }
 
 extension TutorialView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return sampleData.count
+    return items.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    var cell = UICollectionViewCell()
-    switch sampleData[indexPath.row] {
+    switch items[indexPath.row] {
     case .singleFillImage(let image, let desc):
       let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "TutorialCell1", for: indexPath) as! TutorialCell1
-      cell1.fillImage.image = UIImage(named: image)
-      cell1.desc.text = desc
-      cell = cell1
+      cell1.configureCell(image: image, desc: desc)
+      return cell1
+      
     case .doubleImages(let image1, let image2, let desc):
       let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "TutorialCell2", for: indexPath) as! TutorialCell2
-      cell2.image1.image = UIImage(named: image1)
-      cell2.image2.image = UIImage(named: image2)
-      cell2.desc.text = desc
-      cell = cell2
+      cell2.configureCell(image: image1, image2: image2, desc: desc)
+      return cell2
+      
     case .singleImage(let image, let desc):
       let cell3 = collectionView.dequeueReusableCell(withReuseIdentifier: "TutorialCell3", for: indexPath) as! TutorialCell3
-      cell3.image.image = UIImage(named: image)
-      cell3.desc.text = desc
-      cell = cell3
+      cell3.configureCell(image: image, desc: desc)
+      return cell3
     }
     
-    return cell
+    
+    
   }
   
-
+  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize(width: self.bounds.width, height: collectionView.bounds.height)
+  }
+}
+
+extension UICollectionView {
+  
+  func scrollToNextCell(row: Int, section: Int) {
+    
+    let rect = layoutAttributesForItem(at: IndexPath(item: row, section: section))?.frame
+    
+    if let rect = rect {
+      scrollRectToVisible(rect, animated: true)
+    } else {
+      print("== paging하려는 collectionView의 IndexPath값이 유효하지 않습니다.")
+    }
+ 
   }
 }

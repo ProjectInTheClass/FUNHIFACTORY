@@ -58,6 +58,7 @@ class NoteViewController: UIViewController {
     designTableView.delegate = self
     designTableView.dataSource = self
     setupStyle()
+    
     updateTitle(.character)
     updatePage(0)
   }
@@ -65,6 +66,10 @@ class NoteViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     noteTableView.reloadData()
     setupButtons()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    setupTutorial()
   }
 
   @IBAction func backAction(_ sender: Any) {
@@ -309,5 +314,18 @@ extension NoteViewController {
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return UITableView.automaticDimension
+  }
+}
+
+extension NoteViewController {
+  func setupTutorial() {
+    let items: [TutorialStyle] = [
+      .singleFillImage(image: "note_11", desc: "플레이하면서 얻은 정보는 수첩에서 자세히 볼 수 있습니다."),
+      .singleFillImage(image: "note_22", desc: "자세히 보고 싶은 인물을 클릭하면 해당 인물의 상세 정보를 볼 수 있습니다."),
+      .singleFillImage(image: "note_33", desc: "자세히 보고 싶은 역사 사건을 클릭하면 해당 사건의 상세 정보를 볼 수 있습니다."),
+      .singleFillImage(image: "note_44", desc: "플레이한 사건들에 대한 정보를 각각 볼 수 있습니다."),
+    ]
+    
+    TutorialView.showTutorial(inView: view, items: items, type: .note)
   }
 }
