@@ -28,8 +28,14 @@ class TutorialView: UIView {
     }
     
     let tutoView = TutorialView(items: items)
+    
+    tutoView.alpha = 0
     inView.addSubview(tutoView)
     tutoView.pinToEdges(inView: inView)
+    
+    UIView.animate(withDuration: 0.2) {
+      tutoView.alpha = 1
+    }
   }
   
   enum TutorialType {

@@ -12,7 +12,6 @@ extension UILabel {
   func setLineSpacing(_ lineSpacing: CGFloat) {
     guard let labelText = self.text else { return }
     
-    
     let prevTextAlignment = textAlignment
     
     let paragraphStyle = NSMutableParagraphStyle()
@@ -35,4 +34,5 @@ extension UILabel {
     attributedString.addAttribute(NSAttributedString.Key.kern, value: characterSpacing, range: NSRange(location: 0, length: attributedString.length))
     self.attributedText = attributedString
   }
+  
 }

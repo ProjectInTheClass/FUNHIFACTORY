@@ -21,7 +21,8 @@ import AudioToolbox
 
 class MainGameViewController: UIViewController, UITableViewDelegate {
   
-  // MARK: Outlet
+  // MARK: varible
+  
   var alertTimer = Timer()
   var isShowBlackView: Bool = false
   var indexOfCellBeforeDragging = 0
@@ -34,6 +35,9 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
       }
     }
   }
+  
+  // MARK:  @IBOutlet var
+  
   @IBOutlet var choiceBarLine: UIView!
   @IBOutlet var normalChoiceCollectionViewLayout: UICollectionViewFlowLayout!
   @IBOutlet var currentYear: UILabel!
@@ -63,6 +67,7 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
   @IBOutlet weak var menu: FloatingButton!
   @IBOutlet weak var map: FloatingButton!
 
+  // MARK: View Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -133,9 +138,7 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
     }
   }
   
-  private func pushWithFadeIn(segue: String) {
-    fadeIn(segue: "mainToHome")
-  }
+  // MARK: @IBAction func
   
   @IBAction func goToHome(_ sender: Any) {
     pushWithFadeIn(segue: "mainToHome")
@@ -179,7 +182,6 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
     if timer != nil {
         timer.invalidate()
     }
-
   }
   
   @IBAction func resumeTapped(_ sender: Any) {
@@ -191,13 +193,17 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
     }
   }
   
+  // MARK: Function
+  
+  private func pushWithFadeIn(segue: String) {
+    fadeIn(segue: "mainToHome")
+  }
+  
   private func presentWithAnimation(vcIdentifier: String) {
     guard let VC = storyboard?.instantiateViewController(identifier: vcIdentifier) else {return}
     VC.modalPresentationStyle = .fullScreen
     present(VC, animated: true, completion: nil)
   }
-  
-  
   
   private func vibrate(vibrateIsOn : Bool){
     guard vibrateIsOn == true else { return }
@@ -339,7 +345,10 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
   }
 }
 
+// MARK: AR, Prepare
+
 extension MainGameViewController: ArDelegate {
+  
   func goToAR(arid: ArId) {
     print("buttonClicked")
     let dataToSend: ArId
@@ -387,12 +396,11 @@ extension MainGameViewController: ArDelegate {
           destintation.recievedGameCharacter = targetCharacter
         }
       }
-      
-      
     }
   }
 }
 
+// MARK: UICollectionViewDelegate
 
 extension MainGameViewController: UICollectionViewDelegate {
   
@@ -445,6 +453,7 @@ extension MainGameViewController: UICollectionViewDelegate {
   }
 }
 
+// MARK: UICollectionViewDataSource
 
 extension MainGameViewController: UICollectionViewDataSource {
   //선택지 collectionView
@@ -464,6 +473,7 @@ extension MainGameViewController: UICollectionViewDataSource {
   }
 }
 
+// MARK: UICollectionViewDelegateFlowLayout
 
 extension MainGameViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -472,7 +482,8 @@ extension MainGameViewController: UICollectionViewDelegateFlowLayout {
 }
 
 
-// MARK: UITableView
+// MARK: UITableView DataSource
+
 extension MainGameViewController: UITableViewDataSource {
   //스토리 테이블 뷰
   func numberOfSections(in tableView: UITableView) -> Int {
@@ -560,6 +571,7 @@ extension MainGameViewController: UITableViewDataSource {
   }
 }
 
+// MARK: ProfileImageDelegate
 
 extension MainGameViewController: ProfileImageDelegate {
   func profileImageTapped(inputCharacter: GameCharacter) {
@@ -581,6 +593,8 @@ extension MainGameViewController: ProfileImageDelegate {
   }
 }
 
+// MARK: Tutorial
+
 extension MainGameViewController {
   func setupTutorial() {
     let items: [TutorialStyle] = [
@@ -593,23 +607,3 @@ extension MainGameViewController {
     TutorialView.showTutorial(inView: view, items: items, type: .maingame)
   }
 }
-//    @IBAction func closeMap(_ sender: Any) {
-//        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
-//
-//            self.blackView.alpha = 0
-//        }, completion: {_ in
-//            print("퍼즈바 :\(self.pauseBar.isHidden), 초이스 :\(isChoiceOn), 타이머 :\(timer==nil)")
-//
-//            self.blackView.removeFromSuperview()
-//            if isChoiceOn == false// && timer == nil
-//            {
-//                guard self.pauseBar.isHidden == true else {return}
-//                self.chatUpdateTimer()
-//            }
-//        })
-//    }
-
-//@IBAction func unwindToMainGame(_ unwindSegue: UIStoryboardSegue) {
-//    _ = unwindSegue.source
-//    // Use data from the view controller which initiated the unwind segue
-//}

@@ -69,7 +69,10 @@ class NoteViewController: UIViewController {
   }
   
   override func viewDidAppear(_ animated: Bool) {
-    setupTutorial()
+    let time = DispatchTime.now() + .milliseconds(400)
+    DispatchQueue.main.asyncAfter(deadline: time) { [weak self] in
+      self?.setupTutorial()
+    }
   }
 
   @IBAction func backAction(_ sender: Any) {

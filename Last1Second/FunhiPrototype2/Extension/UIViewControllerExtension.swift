@@ -17,6 +17,7 @@ extension UIViewController {
     transition.subtype = CATransitionSubtype.fromBottom
     self.navigationController!.view.layer.add(transition, forKey: kCATransition)
     performSegue(withIdentifier: segue, sender: nil)
+    print("=======")
   }
   
   func pushWithAnimationFromLeft(segue: String) {
@@ -49,3 +50,16 @@ extension UIViewController {
     self.navigationController?.popViewController(animated: false)
   }
 }
+
+//extension UIViewController {
+//
+//  public func pushViewController(viewController: UIViewController,
+//                                 animated: Bool,
+//                                 completion: @escaping (() -> Void)?) {
+//    CATransaction.begin()
+//    CATransaction.setCompletionBlock(completion)
+//    pushViewController(viewController, animated: animated)
+//    CATransaction.commit()
+//  }
+//
+//}
