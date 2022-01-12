@@ -32,6 +32,6 @@ class NotePopupView: UIView {
     layer.cornerRadius = 7
     backgroundColor = UIColor(red: 0.834, green: 0.929, blue: 0.892, alpha: 1)
     setBolder(color: UIColor(red: 0.509, green: 0.721, blue: 0.638, alpha: 1), width: 5)
-    setShadow(color: UIColor(red: 0.835, green: 0.929, blue: 0.894, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 4)
+    setShadow(color: UIColor(red: 0.835, green: 0.929, blue: 0.894, alpha: 1), x: 0, y: 0, opacity: 1, radius: 4)
   }
 }

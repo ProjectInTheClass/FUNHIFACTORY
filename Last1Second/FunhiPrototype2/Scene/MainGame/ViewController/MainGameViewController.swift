@@ -69,13 +69,19 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
 
   // MARK: View Lifecycle
   
+  func stopTimerIfTutorialNotShowed() {
+    if !player.tutorialManager.mainGameOpen {
+      pauseTimer()
+    }
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     setupTableView()
     setupCollectionView()
     setupButtons()
     setupNotepopup()
-    setupTutorial()
+    
     
     if let page = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]?.choices.count {
         initializePageControl(collectionView : choiceCollectionView, choiceBar : choiceBar, numberOfPages:page)
@@ -86,27 +92,25 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
     super.viewDidAppear(animated)
       guard pauseBar.isHidden == true else {return}
       print("chatupdatetimer is executed")
-      chatUpdateTimer()
+      runTimer()
       closeChoiceBar()
-//      print("퍼즈바 꺼졌는가? :\(pauseBar.isHidden), 초이스 켜졌는가? :\(isChoiceOn), 타이머 꺼졌는가? :\(timer==nil)")
       print("ischoice = \(isChoiceOn)")
       audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: .mp3)
+    stopTimerIfTutorialNotShowed()
+    setupTutorial()
   }
   
   override func viewDidDisappear(_ animated: Bool) {
-    while timer != nil {
-      timer.invalidate()
-    }
+    pauseTimer()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     mapPresentFromLeft = true
     closeChoiceBar()
     updateButtons()
-    if let story = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]?.isGodChat
+    if let isGodChat = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]?.isGodChat
     {
-      if story == true
-      {
+      if isGodChat {
         myChoiceText.textColor = .black
         choiceBarLine.backgroundColor = UIColor(red: 0.243, green: 0.357, blue: 0.459, alpha: 1)
         mainGameTableView.backgroundColor = UIColor(red: 0.545, green: 0.631, blue: 0.71, alpha: 1)
@@ -179,17 +183,15 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
   @IBAction func pauseTapped(_ sender: Any) {
     pauseBar.isHidden = false
     safeAreaTop.isHidden = false
-    if timer != nil {
-        timer.invalidate()
-    }
+    pauseTimer()
   }
   
   @IBAction func resumeTapped(_ sender: Any) {
     pauseBar.isHidden = true
     safeAreaTop.isHidden = true
 
-    if isChoiceOn == false{
-        chatUpdateTimer()
+    if !isChoiceOn {
+      runTimer()
     }
   }
   
@@ -405,7 +407,7 @@ extension MainGameViewController: ArDelegate {
 extension MainGameViewController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard pauseBar.isHidden == true else {return}
+    guard pauseBar.isHidden == true else { return }
     if currentBlockOfDay().isGodChat == true
     {
       player.currentChatArray.append(Chat(text_: currentBlockOfDay().choices[indexPath.row].text, image_: "", type_: currentBlockOfDay().choices[indexPath.row].chatType, who_: currentBlockOfDay().choices[indexPath.row].who, characterFace_: currentBlockOfDay().choices[indexPath.row].characterFace, optionalOption_: currentBlockOfDay().choices[indexPath.row].optionalOption, animationOption_: .none, isGodChat_: true))
@@ -449,7 +451,7 @@ extension MainGameViewController: UICollectionViewDelegate {
     player.indexNumber = 0
     playEffectSound(.buttonClick, type: .mp3)
     closeChoiceBar()
-    chatUpdateTimer()
+    runTimer()
   }
 }
 
@@ -604,7 +606,7 @@ extension MainGameViewController {
       .singleFillImage(image: "maingame_44", desc: "현재 플레이하고 있는 사건을 보여줍니다."),
     ]
     
-    TutorialView.showTutorial(inView: view, items: items, type: .maingame)
+    TutorialView.showTutorial(inView: view, items: items, type: .maingame, closeHandler: { [weak self] in self?.runTimer() })
     player.tutorialManager.mainGameOpen = true
   }
 }

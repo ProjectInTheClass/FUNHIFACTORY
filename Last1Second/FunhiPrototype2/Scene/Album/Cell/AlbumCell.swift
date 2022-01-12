@@ -59,7 +59,7 @@ class AlbumCell: UITableViewCell {
       albumImageNameLabel.text = "???"
       lockedView.isHidden = false
       alarmIcon.isHidden = true
-      albumImageViewBorderView.setShadow(color: UIColor(red: 0.196, green: 0.4, blue: 0.576, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 5)
+      albumImageViewBorderView.setShadow(color: UIColor(red: 0.196, green: 0.4, blue: 0.576, alpha: 1), x: 0, y: 0, opacity: 1, radius: 5)
       albumImageViewBorderView.setBolder(color: UIColor(red: 0.416, green: 0.569, blue: 0.698, alpha: 1), width: 4)
       
     case .normal:
@@ -67,13 +67,13 @@ class AlbumCell: UITableViewCell {
       alarmIcon.isHidden = true
       let shadowColor = UIColor(red: 0.882, green: 0.933, blue: 0.984, alpha: 1)
       let bolderColor = UIColor(red: 0.749, green: 0.824, blue: 0.894, alpha: 1)
-      albumImageViewBorderView.setShadow(color: shadowColor, offsetX: 0, offsetY: 0, opacity: 1, radius: 5)
+      albumImageViewBorderView.setShadow(color: shadowColor, x: 0, y: 0, opacity: 1, radius: 5)
       albumImageViewBorderView.setBolder(color: bolderColor, width: 4)
       
     case .highlighted:
       lockedView.isHidden = true
       alarmIcon.isHidden = false
-      albumImageViewBorderView.setShadow(color: .white, offsetX: 0, offsetY: 0, opacity: 1, radius: 5)
+      albumImageViewBorderView.setShadow(color: .white, x: 0, y: 0, opacity: 1, radius: 5)
       albumImageViewBorderView.setBolder(color: .white, width: 4)
       
     }

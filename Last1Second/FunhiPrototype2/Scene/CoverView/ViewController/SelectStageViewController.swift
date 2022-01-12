@@ -37,10 +37,10 @@ class SelectStageTableViewCell: UITableViewCell {
         progressView.centerCircleColor = UIColor(red: 0.521, green: 0.646, blue: 0.771, alpha: 1)
       
         progressView.finishImageView.layer.cornerRadius = 3
-        progressView.finishImageView.setShadow(color: UIColor(red: 1, green: 1, blue: 1, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 5)
+        progressView.finishImageView.setShadow(color: UIColor(red: 1, green: 1, blue: 1, alpha: 1), x: 0, y: 0, opacity: 1, radius: 5)
         progressView.progressNumberString.font = UIFont(name: "NanumSquareEB", size: 10)
       
-        progressBackgroundView.setShadow(color: UIColor(red: 0.325, green: 0.455, blue: 0.584, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 4)
+        progressBackgroundView.setShadow(color: UIColor(red: 0.325, green: 0.455, blue: 0.584, alpha: 1), x: 0, y: 0, opacity: 1, radius: 4)
     }
       
    

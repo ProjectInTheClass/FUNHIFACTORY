@@ -58,13 +58,13 @@ class MapPlaceButton: UIView {
   private func updateStyle() {
     if isSelected {
       button.setBolder(color: UIColor(red: 0.6, green: 0.704, blue: 0.797, alpha: 1), width: 2)
-      button.setShadow(color: UIColor(red: 0.6, green: 0.704, blue: 0.797, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 16)
+      button.setShadow(color: UIColor(red: 0.6, green: 0.704, blue: 0.797, alpha: 1), x: 0, y: 0, opacity: 1, radius: 16)
       button.setTitleColor(UIColor(red: 0.039, green: 0.22, blue: 0.357, alpha: 1), for: .normal)
       button.backgroundColor = UIColor(red: 0.791, green: 0.857, blue: 0.912, alpha: 1)
       place.isHidden = false
     } else {
       button.setBolder(color: UIColor(red: 0.348, green: 0.499, blue: 0.625, alpha: 1), width: 2)
-      button.setShadow(color: UIColor(red: 0.478, green: 0.62, blue: 0.741, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 5)
+      button.setShadow(color: UIColor(red: 0.478, green: 0.62, blue: 0.741, alpha: 1), x: 0, y: 0, opacity: 1, radius: 5)
       button.setTitleColor(UIColor(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
       button.backgroundColor = UIColor(red: 0.268, green: 0.409, blue: 0.53, alpha: 1)
       place.isHidden = true

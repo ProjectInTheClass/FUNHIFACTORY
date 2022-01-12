@@ -108,8 +108,8 @@ class HomeViewController: UIViewController {
   }
   
   func designObjects() {
-    startGameButtonView.setShadow(color: UIColor(red: 0.784, green: 0.871, blue: 0.941, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 10)
-    selectNewEPButtonView.setShadow(color: UIColor(red: 0.592, green: 0.706, blue: 0.82, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 10)
+    startGameButtonView.setShadow(color: UIColor(red: 0.784, green: 0.871, blue: 0.941, alpha: 1), x: 0, y: 0, opacity: 1, radius: 10)
+    selectNewEPButtonView.setShadow(color: UIColor(red: 0.592, green: 0.706, blue: 0.82, alpha: 1), x: 0, y: 0, opacity: 1, radius: 10)
     //-----팝업------------
     alertPopupView.bounds = self.view.bounds
     alertPopupView.center = self.view.center

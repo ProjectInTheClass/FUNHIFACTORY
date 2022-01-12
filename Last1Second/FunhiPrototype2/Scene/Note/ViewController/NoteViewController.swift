@@ -247,7 +247,7 @@ extension NoteViewController {
     noteBackgroundView.backgroundColor = UIColor(red: 157/255, green: 181/255, blue: 203/255, alpha: 1)
     titleLabel.font = UIFont(name: "NanumSquareEB", size: 29)
     noteBackgroundView.layer.cornerRadius = 24
-    noteBackgroundView.setShadow(color: UIColor(red: 0.174, green: 0.292, blue: 0.404, alpha: 1), offsetX: 24, offsetY: -15, opacity: 1, radius: 0)
+    noteBackgroundView.setShadow(color: UIColor(red: 0.174, green: 0.292, blue: 0.404, alpha: 1), x: 24, y: -15, opacity: 1, radius: 0)
     noteBackgroundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     caseLongDescriptionLabel.setLineSpacing(6)
     caseLongDescriptionLabel.textAlignment = .center

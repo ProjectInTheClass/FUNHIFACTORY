@@ -8,18 +8,6 @@
 import UIKit
 
 extension UIView {
-  func showTutorial(items: [TutorialStyle]) {
-    viewWithTag(728)?.removeFromSuperview()
-    let tutorialView = TutorialView()
-    tutorialView.tag = 728
-    tutorialView.items = items
-    self.addSubview(tutorialView)
-    tutorialView.translatesAutoresizingMaskIntoConstraints = false
-    tutorialView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-    tutorialView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-    tutorialView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-    tutorialView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-  }
   
   func pinToEdges(constant: CGFloat = 0, inView superview: UIView) {
     self.translatesAutoresizingMaskIntoConstraints = false
@@ -41,9 +29,9 @@ extension UIView {
     bottomAnchor.constraint(equalTo: other.bottomAnchor, constant: 0).isActive = true
   }
   
-  func setShadow(color: UIColor, offsetX: Int, offsetY: Int, opacity: Int, radius: Int) {
+  func setShadow(color: UIColor, x: Int, y: Int, opacity: Int, radius: Int) {
     self.layer.shadowColor = color.cgColor
-    self.layer.shadowOffset = CGSize(width: offsetX, height: offsetY)
+    self.layer.shadowOffset = CGSize(width: x, height: y)
     self.layer.shadowOpacity = Float(opacity)
     self.layer.shadowRadius = CGFloat(radius)
   }

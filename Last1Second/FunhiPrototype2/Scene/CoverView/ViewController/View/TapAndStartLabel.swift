@@ -27,7 +27,7 @@ class TapAndStartLabel: UILabel {
     text = "탭하여 시작하기"
     font = UIFont(name: "NanumSquareR", size: 15)
     setCharacterSpacing(5)
-    setShadow(color: UIColor(red: 0, green: 0, blue: 0, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 5)
+    setShadow(color: UIColor(red: 0, green: 0, blue: 0, alpha: 1), x: 0, y: 0, opacity: 1, radius: 5)
     translatesAutoresizingMaskIntoConstraints = false
     textAlignment = .center
     textColor = .white

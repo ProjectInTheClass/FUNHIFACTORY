@@ -17,7 +17,6 @@ extension UIViewController {
     transition.subtype = CATransitionSubtype.fromBottom
     self.navigationController!.view.layer.add(transition, forKey: kCATransition)
     performSegue(withIdentifier: segue, sender: nil)
-    print("=======")
   }
   
   func pushWithAnimationFromLeft(segue: String) {

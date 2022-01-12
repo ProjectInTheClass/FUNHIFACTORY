@@ -65,7 +65,7 @@ class ProgressView: UIView {
   
   private func setupFinish() {
     circular.finishImageView.layer.cornerRadius = 3
-    circular.finishImageView.setShadow(color: UIColor(red: 1, green: 1, blue: 1, alpha: 1), offsetX: 0, offsetY: 0, opacity: 1, radius: 5)
+    circular.finishImageView.setShadow(color: UIColor(red: 1, green: 1, blue: 1, alpha: 1), x: 0, y: 0, opacity: 1, radius: 5)
   }
   
   private func updateStyle() {

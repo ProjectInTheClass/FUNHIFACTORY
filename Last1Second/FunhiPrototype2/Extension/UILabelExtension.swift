@@ -30,9 +30,14 @@ extension UILabel {
   
   func setCharacterSpacing(_ characterSpacing: CGFloat) {
     guard let selfText = self.text else { return }
+    
+    let prevTextAlignment = textAlignment
+    
     let attributedString = NSMutableAttributedString(string: selfText)
     attributedString.addAttribute(NSAttributedString.Key.kern, value: characterSpacing, range: NSRange(location: 0, length: attributedString.length))
     self.attributedText = attributedString
+    
+    textAlignment = prevTextAlignment
   }
   
 }
