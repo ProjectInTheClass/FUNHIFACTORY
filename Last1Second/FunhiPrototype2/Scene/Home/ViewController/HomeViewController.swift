@@ -169,10 +169,6 @@ class HomeViewController: UIViewController {
       self.performSegue(withIdentifier: segue, sender: nil)
     }
   }
-  
-  @IBAction func test(_ sender: Any) {
-    self.view.showTutorial(items: sampleData)
-  }
 }
 
 extension HomeViewController {
@@ -182,7 +178,7 @@ extension HomeViewController {
       .singleFillImage(image: "home_22", desc: "현재 플레이하고 있는 스토리 외에 다른 사건들을 볼 수 있습니다."),
       .singleImage(image: "home_33", desc: "게임을 플레이하면서 얻은 정보들을 메뉴에서 찾아볼 수 있습니다.")
     ]
-    
     TutorialView.showTutorial(inView: view, items: items, type: .home)
+    player.tutorialManager.homeOpen = true
   }
 }

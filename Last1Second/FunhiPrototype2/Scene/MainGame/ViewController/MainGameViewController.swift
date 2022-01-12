@@ -605,5 +605,6 @@ extension MainGameViewController {
     ]
     
     TutorialView.showTutorial(inView: view, items: items, type: .maingame)
+    player.tutorialManager.mainGameOpen = true
   }
 }

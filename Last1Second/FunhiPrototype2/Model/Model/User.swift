@@ -27,12 +27,10 @@ struct User: Codable {
   var currentChatArray: [Chat]
   var indexNumber = 0
   
-  var tutorialManager = TutorialManager.shared
+  var tutorialManager: TutorialManager
 }
 
 class TutorialManager: Codable {
-  
-  static var shared = TutorialManager()
   
   var mainGameOpen: Bool = false
   var noteOpen: Bool = false

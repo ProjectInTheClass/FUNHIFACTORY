@@ -19,7 +19,10 @@ class MapViewController: UIViewController {
     self.transitioningDelegate = self
     setupButtons()
     setupCurrentButton()
-    setupTutorial()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    showTutorial()
   }
     
   func setupCurrentButton() {
@@ -111,6 +114,13 @@ extension MapViewController : UIViewControllerTransitioningDelegate {
 }
 
 extension MapViewController {
+  
+  func showTutorial() {
+    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) { [weak self] in
+      self?.setupTutorial()
+    }
+  }
+  
   func setupTutorial() {
     let items: [TutorialStyle] = [
       .singleImage(image: "map_11", desc: "현재 플레이하고 있는 사건의 위치를 보여줍니다."),
@@ -118,5 +128,6 @@ extension MapViewController {
     ]
     
     TutorialView.showTutorial(inView: view, items: items, type: .map)
+    player.tutorialManager.mapOpen = true
   }
 }

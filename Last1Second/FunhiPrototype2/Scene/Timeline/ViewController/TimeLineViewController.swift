@@ -52,12 +52,15 @@ class TimeLineViewController: UIViewController {
     super.viewDidLoad()
     setupTableView() 
     setupStyle()
-    setupTutorial()
     updateBackButton()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     timelineTableView.reloadData()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    showTutorial()
   }
   
   override func viewDidLayoutSubviews() {
@@ -336,6 +339,13 @@ extension TimeLineViewController: UITableViewDelegate {
 }
 
 extension TimeLineViewController {
+  
+  func showTutorial() {
+    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400)) { [weak self] in
+      self?.setupTutorial()
+    }
+  }
+  
   func setupTutorial() {
     let items: [TutorialStyle] = [
       .singleFillImage(image: "timeline_11", desc: "자세히 보고 싶은 사건 박스를 누르면 자세히 볼 수 있습니다."),
@@ -344,5 +354,6 @@ extension TimeLineViewController {
     ]
     
     TutorialView.showTutorial(inView: view, items: items, type: .timeline)
+    player.tutorialManager.timelineOpen = true
   }
 }

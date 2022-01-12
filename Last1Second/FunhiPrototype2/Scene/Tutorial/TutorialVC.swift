@@ -38,6 +38,7 @@ class TutorialView: UIView {
     }
   }
   
+  
   enum TutorialType {
     case home
     case maingame

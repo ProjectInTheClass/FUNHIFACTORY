@@ -42,12 +42,15 @@ class AlbumViewController: UIViewController {
     self.designTableView.dataSource = self
     setupXib()
     setupPopup()
-    setupTutorial()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     updatePage(0)
     setupButtons()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    showTutorial()
   }
   
   @IBAction func backAction(_ sender: Any) {
@@ -199,6 +202,14 @@ extension AlbumViewController: UITableViewDelegate {
 }
 
 extension AlbumViewController {
+  
+  func showTutorial() {
+    guard !player.tutorialManager.albumOpen else { return }
+    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400)) { [weak self] in
+      self?.setupTutorial()
+    }
+  }
+  
   func setupTutorial() {
     let items: [TutorialStyle] = [
       .singleFillImage(image: "album_11", desc: "자세히 보고 싶은 앨범 이미지를 클릭하면 자세히 볼 수 있습니다."),
@@ -206,5 +217,6 @@ extension AlbumViewController {
     ]
     
     TutorialView.showTutorial(inView: view, items: items, type: .album)
+    player.tutorialManager.albumOpen = true
   }
 }

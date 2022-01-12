@@ -58,7 +58,6 @@ class NoteViewController: UIViewController {
     designTableView.delegate = self
     designTableView.dataSource = self
     setupStyle()
-    
     updateTitle(.character)
     updatePage(0)
   }
@@ -69,10 +68,7 @@ class NoteViewController: UIViewController {
   }
   
   override func viewDidAppear(_ animated: Bool) {
-    let time = DispatchTime.now() + .milliseconds(400)
-    DispatchQueue.main.asyncAfter(deadline: time) { [weak self] in
-      self?.setupTutorial()
-    }
+    showTutorial()
   }
 
   @IBAction func backAction(_ sender: Any) {
@@ -227,7 +223,7 @@ extension NoteViewController: UITableViewDelegate {
           performSegue(withIdentifier: "goToHwiryeongNoteView", sender: dataToSend)
         // 그 외 인물 셀일 때
         } else {
-          performSegue(withIdentifier: "sibal", sender: dataToSend)
+          performSegue(withIdentifier: "goToOtherCharactersView", sender: dataToSend)
         }
       }
       
@@ -301,7 +297,7 @@ extension NoteViewController {
         destination.recievedGameCharacter = gameCharacter
       }
     }
-    if segue.identifier == "sibal" {
+    if segue.identifier == "goToOtherCharactersView" {
       let destination = segue.destination as! NoteGameCharacterViewController
       if let gameCharacter = sender as? GameCharacter {
         destination.recievedGameCharacter = gameCharacter
@@ -318,9 +314,18 @@ extension NoteViewController {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return UITableView.automaticDimension
   }
+  
 }
 
 extension NoteViewController {
+  
+  func showTutorial() {
+    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400)) { [weak self] in
+      self?.setupTutorial()
+    }
+  }
+  
+  
   func setupTutorial() {
     let items: [TutorialStyle] = [
       .singleFillImage(image: "note_11", desc: "플레이하면서 얻은 정보는 수첩에서 자세히 볼 수 있습니다."),
@@ -330,5 +335,6 @@ extension NoteViewController {
     ]
     
     TutorialView.showTutorial(inView: view, items: items, type: .note)
+    player.tutorialManager.noteOpen = true
   }
 }
