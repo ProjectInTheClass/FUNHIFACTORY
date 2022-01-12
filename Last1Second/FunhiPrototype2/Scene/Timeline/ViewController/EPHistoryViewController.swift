@@ -167,7 +167,7 @@ extension EPHistoryViewController: UITableViewDataSource, UITableViewDelegate, P
           cell.inputCharacter = target.who.info()
           cell.monologueText.text = chatText
           cell.name.textColor = .white
-          cell.chatUpdate(nickname: target.who, profile: target.characterFace, godchat: target.isGodChat, currentDanhee: currentMainGameDanhee())
+          cell.chatUpdate(nickname: target.who, profile: target.characterFace, godchat: target.isGodChat, currentDanhee: currentHistoryDanhee())
           return cell
       }
       else if target.type == .ar{
