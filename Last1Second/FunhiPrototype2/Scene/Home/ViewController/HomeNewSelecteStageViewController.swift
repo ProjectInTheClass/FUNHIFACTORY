@@ -177,7 +177,7 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
   }
   
   //초기화 시키느라 이래 됨
-  var selectedEP = Episode(episodeID: "", episodePlace: "", episodeYear: 0, episodeKingYear: "", episodeShortDesciption: "", episodeDesciption: "", episodePlaceImage: "", episodeCoverImage: "", isCleared: true, chatHistory: [], storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "")
+  var selectedEP = Episode()
   
   func openStagePopup(indexPath: IndexPath) {
     let selectedStageIndex = indexPath.row + 1

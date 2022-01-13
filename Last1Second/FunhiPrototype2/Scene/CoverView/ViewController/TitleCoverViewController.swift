@@ -22,6 +22,11 @@ class TitleCoverViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupStyle()
+    player.currentEpisodes.forEach {
+      print("*\($0.episodeYear ) 데이터")
+      print("- ", $0.isStarted)
+      print("- ", $0.isCleared)
+    }
   }
   
   override func viewWillDisappear(_ animated: Bool) {
