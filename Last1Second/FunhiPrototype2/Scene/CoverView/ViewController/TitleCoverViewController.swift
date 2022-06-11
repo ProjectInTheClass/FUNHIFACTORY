@@ -87,14 +87,16 @@ class TitleCoverViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     setupCoverGif()
+    if player.userStore.isGameRestarted {
+      player.userStore.isGameRestarted = false
+      checkForSuccessfulDownloadOfJson()
+    }
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     playRandomBgm()
     printLog()
-    
-    //    testData()
   }
   
   override func viewWillDisappear(_ animated: Bool) {

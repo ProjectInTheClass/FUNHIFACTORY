@@ -113,6 +113,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
 //    }
 
     @IBAction func yesButtonTapped(_ sender: Any) {
+      player.userStore.isGameRestarted = true
         print("게임 데이터가 초기화되었습니다.")
         initializePlayer(paraPlayer: &player)
         self.view.bringSubviewToFront(blackView)

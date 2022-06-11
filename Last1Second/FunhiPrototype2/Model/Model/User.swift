@@ -40,4 +40,6 @@ class TutorialManager: Codable {
   var isMapTutorialOpened: Bool = false
   
   var isTitleCoverViewReleaseAlertOpened: Bool = false
+  
+  var isGameRestarted: Bool = false
 }
