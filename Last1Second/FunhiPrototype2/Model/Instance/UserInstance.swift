@@ -135,7 +135,7 @@ timelineCheckPoint: [
         Achievement(name: "희정당", image: "huijeongdang", id: .huijeongdang , isLocked: true),
         Achievement(name: "후원", image: "huwon_garden", id: .huwon_garden , isLocked: true),
         Achievement(name: "반란군", image: "revolt", id: .revolt , isLocked: true)],
-    dayIndex: 0, dayId: "prologue", currentChatId: "001", currentChatArray: [], tutorialManager: TutorialManager())
+    dayIndex: 0, dayId: "prologue", currentChatId: "001", currentChatArray: [], userStore: TutorialManager())
 
 var timer:Timer!
 

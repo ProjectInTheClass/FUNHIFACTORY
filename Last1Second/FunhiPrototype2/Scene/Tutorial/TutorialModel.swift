@@ -13,8 +13,8 @@ class TutorialModel {
   static var maingameOpened = false
   static var noteOpened = false
   static var albumOpened = false
-  static var timelineOpened = false
-  static var mapOpened = false
+  static var isTimelineTutorialOpeneded = false
+  static var isMapTutorialOpeneded = false
   
 }
 

@@ -128,6 +128,6 @@ extension MapViewController {
     ]
     
     TutorialView.showTutorial(inView: view, items: items, type: .map)
-    player.tutorialManager.mapOpen = true
+    player.userStore.isMapTutorialOpened = true
   }
 }

@@ -70,7 +70,7 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
   // MARK: View Lifecycle
   
   func stopTimerIfTutorialNotShowed() {
-    if !player.tutorialManager.mainGameOpen {
+    if !player.userStore.isMainGameTutorialOpened {
       pauseTimer()
     }
   }
@@ -619,6 +619,6 @@ extension MainGameViewController {
     ]
     
     TutorialView.showTutorial(inView: view, items: items, type: .maingame, closeHandler: { [weak self] in self?.runTimer() })
-    player.tutorialManager.mainGameOpen = true
+    player.userStore.isMainGameTutorialOpened = true
   }
 }

@@ -17,6 +17,8 @@ class TitleCoverViewController: UIViewController {
   @IBOutlet weak var alertPopupLabel: UILabel!
   @IBOutlet weak var coverImageView: GIFImageView!
   @IBOutlet weak var splashScreen: UIView!
+  @IBOutlet var releaseAlert: UIView!
+  @IBOutlet weak var releaseAlertDesc: UILabel!
   
   
   lazy var splashLogo: UIImageView = {
@@ -76,7 +78,12 @@ class TitleCoverViewController: UIViewController {
       print("- ", $0.isStarted)
       print("- ", $0.isCleared)
     }
-    playSplashScreen()
+    playSplashScreen() {
+      if !player.userStore.isTitleCoverViewReleaseAlertOpened {
+        self.openReleaseAlert()
+      }
+      
+    }
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -132,6 +139,8 @@ class TitleCoverViewController: UIViewController {
     alertPopupView.removeFromSuperview()
   }
   
+  
+  
   @IBAction func unwindToMain(_ unwindSegue: UIStoryboardSegue) {
     _ = unwindSegue.source
   }
@@ -166,6 +175,7 @@ class TitleCoverViewController: UIViewController {
     alertPopupLabel.text = "게임 데이터를 다운로드합니다.\n 아래 버튼을 눌러주세요!\n\n네트워크 연결이 필요합니다. \n2.7 MB"
     alertPopupLabel.setLineSpacing(6)
     alertPopupLabel.textAlignment = .center
+    releaseAlertDesc.setLineSpacing(6)
   }
   
   private func printLog() {
@@ -173,6 +183,10 @@ class TitleCoverViewController: UIViewController {
     print("현재 dayId: \(player.dayId)")
     print("현재 currentChatId: \(player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex)")
     print("현재 dayIndex: \(player.dayIndex)")
+  }
+  
+  @IBAction func closeReleaseAlert(_ sender: Any) {
+    closeReleaseAlert()
   }
   
   private func animateLight() {
@@ -193,7 +207,7 @@ class TitleCoverViewController: UIViewController {
     self.coverImageView.animate(withGIFNamed: "")
   }
   
-  private func playSplashScreen() {
+  private func playSplashScreen( completion: @escaping () -> Void) {
     splashScreen.addSubview(splashLogo)
     splashScreen.addSubview(splashPictionDesc)
     splashScreen.addSubview(splashSoundDesc)
@@ -244,6 +258,7 @@ class TitleCoverViewController: UIViewController {
                 
               } completion: { _ in
                 self.splashScreen.removeFromSuperview()
+                completion()
               }
             }
           }
@@ -252,4 +267,14 @@ class TitleCoverViewController: UIViewController {
     }
   }
   
+  func openReleaseAlert() {
+    self.view.addSubview(releaseAlert)
+    releaseAlert.pinToEdges(inView: view)
+    releaseAlertDesc.text = "안녕하세요! [마지막 1초] 개발팀입니다.\n저희 게임을 즐겨주셔서 정말 감사합니다. 그리고 스토리 업데이트가 늦어지는 점 진심으로 죄송합니다.\n\n[마지막 1초]는 예산 등의 문제로 이후 제작이 중단되었으나, 다행스럽게도 최근에 다시 제작할 수 있는 기회를 얻었습니다. 저희 개발팀은 18-19세 청소년 시기부터 시작하여 20-21세의 사회 초년생이 되었습니다. 현재 각자의 필드에서 활동하고 있어 내년 초까지 스토리 업데이트하는 것을 목표로 두고 작업하고 있습니다.\n\n다른 스토리를 플레이하고 싶어도 하실 수 없는 상황, 저희도 충분히 인지하고 있으며 조금만 기다려주시면 저희가 최대한 빠른 시일 내에 다시 찾아뵐 수 있도록 노력하겠습니다.감사합니다."
+  }
+  
+  private func closeReleaseAlert() {
+    player.userStore.isTitleCoverViewReleaseAlertOpened = true
+    releaseAlert.removeFromSuperview()
+  }
 }

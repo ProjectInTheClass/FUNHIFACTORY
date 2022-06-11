@@ -27,15 +27,17 @@ struct User: Codable {
   var currentChatArray: [Chat]
   var indexNumber = 0
   
-  var tutorialManager: TutorialManager
+  var userStore: TutorialManager
 }
 
 class TutorialManager: Codable {
   
-  var mainGameOpen: Bool = false
-  var noteOpen: Bool = false
-  var albumOpen: Bool = false
-  var timelineOpen: Bool = false
-  var homeOpen: Bool = false
-  var mapOpen: Bool = false
+  var isMainGameTutorialOpened: Bool = false
+  var isNoteTutorialOpened: Bool = false
+  var isAlbumTutorialOpened: Bool = false
+  var isTimelineTutorialOpened: Bool = false
+  var isHomeTutorialOpened: Bool = false
+  var isMapTutorialOpened: Bool = false
+  
+  var isTitleCoverViewReleaseAlertOpened: Bool = false
 }

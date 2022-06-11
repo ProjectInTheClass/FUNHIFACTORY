@@ -335,6 +335,6 @@ extension NoteViewController {
     ]
     
     TutorialView.showTutorial(inView: view, items: items, type: .note)
-    player.tutorialManager.noteOpen = true
+    player.userStore.isNoteTutorialOpened = true
   }
 }

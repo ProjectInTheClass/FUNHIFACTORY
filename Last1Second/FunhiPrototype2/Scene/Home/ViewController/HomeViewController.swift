@@ -179,6 +179,6 @@ extension HomeViewController {
       .singleImage(image: "home_33", desc: "게임을 플레이하면서 얻은 정보들을 메뉴에서 찾아볼 수 있습니다.")
     ]
     TutorialView.showTutorial(inView: view, items: items, type: .home)
-    player.tutorialManager.homeOpen = true
+    player.userStore.isHomeTutorialOpened = true
   }
 }

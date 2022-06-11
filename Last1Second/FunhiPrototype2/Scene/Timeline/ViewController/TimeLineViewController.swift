@@ -354,6 +354,6 @@ extension TimeLineViewController {
     ]
     
     TutorialView.showTutorial(inView: view, items: items, type: .timeline)
-    player.tutorialManager.timelineOpen = true
+    player.userStore.isTimelineTutorialOpened = true
   }
 }

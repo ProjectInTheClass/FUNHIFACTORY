@@ -139,17 +139,17 @@ class TutorialView: UIView {
     
     switch type {
     case .home:
-      guard !player.tutorialManager.homeOpen else { return }
+      guard !player.userStore.isHomeTutorialOpened else { return }
     case .maingame:
-      guard !player.tutorialManager.mainGameOpen else { return }
+      guard !player.userStore.isMainGameTutorialOpened else { return }
     case .note:
-      guard !player.tutorialManager.noteOpen else { return }
+      guard !player.userStore.isNoteTutorialOpened else { return }
     case .album:
-      guard !player.tutorialManager.albumOpen else { return }
+      guard !player.userStore.isAlbumTutorialOpened else { return }
     case .timeline:
-      guard !player.tutorialManager.timelineOpen else { return }
+      guard !player.userStore.isTimelineTutorialOpened else { return }
     case .map:
-      guard !player.tutorialManager.mapOpen else { return }
+      guard !player.userStore.isMapTutorialOpened else { return }
     }
     
     let tutoView = TutorialView(items: items)
@@ -166,17 +166,17 @@ class TutorialView: UIView {
     
     switch type {
     case .home:
-      guard !player.tutorialManager.homeOpen else { return }
+      guard !player.userStore.isHomeTutorialOpened else { return }
     case .maingame:
-      guard !player.tutorialManager.mainGameOpen else { return }
+      guard !player.userStore.isMainGameTutorialOpened else { return }
     case .note:
-      guard !player.tutorialManager.noteOpen else { return }
+      guard !player.userStore.isNoteTutorialOpened else { return }
     case .album:
-      guard !player.tutorialManager.albumOpen else { return }
+      guard !player.userStore.isAlbumTutorialOpened else { return }
     case .timeline:
-      guard !player.tutorialManager.timelineOpen else { return }
+      guard !player.userStore.isTimelineTutorialOpened else { return }
     case .map:
-      guard !player.tutorialManager.mapOpen else { return }
+      guard !player.userStore.isMapTutorialOpened else { return }
     }
     
     let tutoView = TutorialView(items: items)

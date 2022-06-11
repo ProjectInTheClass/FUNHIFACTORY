@@ -204,7 +204,7 @@ extension AlbumViewController: UITableViewDelegate {
 extension AlbumViewController {
   
   func showTutorial() {
-    guard !player.tutorialManager.albumOpen else { return }
+    guard !player.userStore.isAlbumTutorialOpened else { return }
     DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400)) { [weak self] in
       self?.setupTutorial()
     }
@@ -217,6 +217,6 @@ extension AlbumViewController {
     ]
     
     TutorialView.showTutorial(inView: view, items: items, type: .album)
-    player.tutorialManager.albumOpen = true
+    player.userStore.isAlbumTutorialOpened = true
   }
 }
