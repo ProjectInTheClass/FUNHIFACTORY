@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import Gifu
 
 class TitleCoverViewController: UIViewController {
   
@@ -14,6 +15,7 @@ class TitleCoverViewController: UIViewController {
   @IBOutlet weak var alertPopupView: UIView!
   @IBOutlet weak var elertPopupBoxView: UIView!
   @IBOutlet weak var alertPopupLabel: UILabel!
+  @IBOutlet weak var coverImageView: GIFImageView!
   
   var downloadAccept = false
   var tapLabel = UILabel()
@@ -33,6 +35,11 @@ class TitleCoverViewController: UIViewController {
     super.viewWillDisappear(animated)
     tapLabel.removeFromSuperview()
     self.view.layoutIfNeeded()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    setupCoverGif()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -136,5 +143,13 @@ class TitleCoverViewController: UIViewController {
     UILabel.animate(withDuration: 0.7, delay: 0.5, options: [.repeat, .autoreverse], animations: { [weak self] in
       self?.tapLabel.alpha = 0.1
     }, completion: nil)
+  }
+  
+  private func setupCoverGif() {
+    self.coverImageView.animate(withGIFNamed: "twenty")
+  }
+  
+  private func disappearCoverGif() {
+    self.coverImageView.animate(withGIFNamed: "")
   }
 }
