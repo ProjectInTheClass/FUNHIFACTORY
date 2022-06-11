@@ -72,6 +72,7 @@ class TitleCoverViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     setupStyle()
     player.currentEpisodes.forEach {
       print("*\($0.episodeYear ) 데이터")
@@ -79,17 +80,8 @@ class TitleCoverViewController: UIViewController {
       print("- ", $0.isCleared)
     }
     playSplashScreen() {
-      if !player.userStore.isTitleCoverViewReleaseAlertOpened {
-        self.openReleaseAlert()
-      }
-      
+      self.checkForSuccessfulDownloadOfJson()
     }
-  }
-  
-  override func viewWillDisappear(_ animated: Bool) {
-    super.viewWillDisappear(animated)
-    tapLabel.removeFromSuperview()
-    self.view.layoutIfNeeded()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -101,8 +93,14 @@ class TitleCoverViewController: UIViewController {
     super.viewDidAppear(animated)
     playRandomBgm()
     printLog()
-    checkForSuccessfulDownloadOfJson()
+    
     //    testData()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    tapLabel.removeFromSuperview()
+    self.view.layoutIfNeeded()
   }
   
   @IBAction func startAction(_ sender: Any) {
@@ -155,6 +153,9 @@ class TitleCoverViewController: UIViewController {
     if successDownload {
       print("**0, 2챕터 들어옴**")
       animateLight()
+      if !player.userStore.isTitleCoverViewReleaseAlertOpened {
+        self.openReleaseAlert()
+      }
     } else {
       print("**0, 2챕터 들어오지 않음, 재시도 필요**")
       openAlert()
