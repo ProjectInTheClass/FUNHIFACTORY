@@ -16,10 +16,57 @@ class TitleCoverViewController: UIViewController {
   @IBOutlet weak var elertPopupBoxView: UIView!
   @IBOutlet weak var alertPopupLabel: UILabel!
   @IBOutlet weak var coverImageView: GIFImageView!
+  @IBOutlet weak var splashScreen: UIView!
+  
+  
+  lazy var splashLogo: UIImageView = {
+    let image = UIImageView()
+    image.translatesAutoresizingMaskIntoConstraints = false
+    image.image = UIImage(named: "splash_logo")
+    image.contentMode = .scaleAspectFit
+    NSLayoutConstraint.activate([
+      image.widthAnchor.constraint(equalToConstant: 134),
+      image.heightAnchor.constraint(equalToConstant: 158)
+    ])
+    return image
+  }()
+  
+  lazy var splashSoundCharacter: UIImageView = {
+    let image = UIImageView()
+    image.translatesAutoresizingMaskIntoConstraints = false
+    image.image = UIImage(named: "splash_soundCharacter")
+    image.contentMode = .scaleAspectFit
+    NSLayoutConstraint.activate([
+      image.widthAnchor.constraint(equalTo: image.heightAnchor, multiplier: 414/528.27)
+    ])
+    return image
+  }()
+  
+  lazy var splashSoundDesc: UIImageView = {
+    let image = UIImageView()
+    image.translatesAutoresizingMaskIntoConstraints = false
+    image.image = UIImage(named: "splash_soundLabel")
+    image.contentMode = .scaleAspectFit
+    NSLayoutConstraint.activate([
+      image.widthAnchor.constraint(equalToConstant: 242),
+      image.heightAnchor.constraint(equalToConstant: 55)
+    ])
+    return image
+  }()
+  
+  lazy var splashPictionDesc: UIImageView = {
+    let image = UIImageView()
+    image.translatesAutoresizingMaskIntoConstraints = false
+    image.image = UIImage(named: "splash_pictionLabel")
+    image.contentMode = .scaleAspectFit
+    NSLayoutConstraint.activate([
+      image.widthAnchor.constraint(equalTo: image.heightAnchor, multiplier: 380/52)
+    ])
+    return image
+  }()
   
   var downloadAccept = false
   var tapLabel = UILabel()
-  var audioLabel = UILabel()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -29,6 +76,7 @@ class TitleCoverViewController: UIViewController {
       print("- ", $0.isStarted)
       print("- ", $0.isCleared)
     }
+    playSplashScreen()
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -97,7 +145,6 @@ class TitleCoverViewController: UIViewController {
     let successDownload = !player.currentEpisodes[0].storyBlocks.isEmpty && !player.currentEpisodes[2].storyBlocks.isEmpty
     if successDownload {
       print("**0, 2챕터 들어옴**")
-      setupAudioLabel()
       animateLight()
     } else {
       print("**0, 2챕터 들어오지 않음, 재시도 필요**")
@@ -128,16 +175,9 @@ class TitleCoverViewController: UIViewController {
     print("현재 dayIndex: \(player.dayIndex)")
   }
   
-  private func setupAudioLabel() {
-    audioLabel = AudioLabel()
-    self.view.addSubview(audioLabel)
-    audioLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-    audioLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -108).isActive = true
-  }
-  
   private func animateLight() {
     tapLabel = TapAndStartLabel()
-    self.view.addSubview(tapLabel)
+    self.coverImageView.addSubview(tapLabel)
     tapLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     tapLabel.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -64).isActive = true
     UILabel.animate(withDuration: 0.7, delay: 0.5, options: [.repeat, .autoreverse], animations: { [weak self] in
@@ -151,5 +191,70 @@ class TitleCoverViewController: UIViewController {
   
   private func disappearCoverGif() {
     self.coverImageView.animate(withGIFNamed: "")
+  }
+  
+  private func playSplashScreen() {
+    splashScreen.addSubview(splashLogo)
+    splashScreen.addSubview(splashPictionDesc)
+    splashScreen.addSubview(splashSoundDesc)
+    splashScreen.addSubview(splashSoundCharacter)
+    
+    NSLayoutConstraint.activate([
+      splashLogo.centerXAnchor.constraint(equalTo: splashScreen.centerXAnchor),
+      splashLogo.centerYAnchor.constraint(equalTo: splashScreen.centerYAnchor),
+      
+      splashPictionDesc.centerXAnchor.constraint(equalTo: splashScreen.centerXAnchor),
+      splashPictionDesc.centerYAnchor.constraint(equalTo: splashScreen.centerYAnchor),
+      
+      splashSoundCharacter.leadingAnchor.constraint(equalTo: splashScreen.leadingAnchor),
+      splashSoundCharacter.trailingAnchor.constraint(equalTo: splashScreen.trailingAnchor),
+      splashSoundCharacter.bottomAnchor.constraint(equalTo: splashScreen.bottomAnchor),
+      
+      splashSoundDesc.centerXAnchor.constraint(equalTo: splashScreen.centerXAnchor),
+      splashSoundDesc.bottomAnchor.constraint(equalTo: splashSoundCharacter.topAnchor, constant: -59)
+    ])
+    
+    splashLogo.alpha = 0
+    splashSoundCharacter.alpha = 0
+    splashSoundDesc.alpha = 0
+    splashPictionDesc.alpha = 0
+    
+    UIView.animate(withDuration: 1, delay: 0.3) {
+      self.splashLogo.alpha = 1
+    } completion: { _ in
+      
+      UIView.animate(withDuration: 1, delay: 0.3) {
+        self.splashLogo.alpha = 0
+      } completion: { _ in
+        
+        UIView.animate(withDuration: 1, delay: 0.3) {
+          self.splashPictionDesc.alpha = 1
+        } completion: { _ in
+          
+          UIView.animate(withDuration: 1) {
+            self.splashPictionDesc.alpha = 0
+          } completion: { _ in
+            
+            UIView.animate(withDuration: 1, delay: 0.3) {
+              self.splashSoundCharacter.alpha = 1
+              self.splashSoundDesc.alpha = 1
+            } completion: { _ in
+              
+              UIView.animate(withDuration: 1, delay: 0.3) {
+                self.splashSoundCharacter.alpha = 0
+                self.splashSoundDesc.alpha = 0
+              } completion: { _ in
+                UIView.animate(withDuration: 1.0) {
+                  
+                } completion: { _ in
+                  self.splashScreen.removeFromSuperview()
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
   }
 }

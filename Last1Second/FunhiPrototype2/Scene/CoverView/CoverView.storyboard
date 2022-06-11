@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -47,6 +48,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GPZ-zE-Umf" customClass="GIFImageView" customModule="Gifu">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="895.5"/>
+                                <color key="backgroundColor" name="way0CheckSection"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="GPZ-zE-Umf" secondAttribute="height" multiplier="428:926" id="Gwh-Np-mbu"/>
                                 </constraints>
@@ -63,17 +65,25 @@
                                     <action selector="startAction:" destination="kJc-iQ-Szc" eventType="touchUpInside" id="Xz9-Hi-MmH"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ds-pk-fbI" userLabel="Splash">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ipM-go-sY9"/>
                         <color key="backgroundColor" red="0.15294117647058825" green="0.16862745098039217" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="GPZ-zE-Umf" firstAttribute="trailing" secondItem="Dnq-0k-G5u" secondAttribute="trailing" id="0Bb-VU-5BE"/>
+                            <constraint firstItem="7ds-pk-fbI" firstAttribute="top" secondItem="Dnq-0k-G5u" secondAttribute="top" id="11e-ko-WPj"/>
                             <constraint firstItem="S4R-AN-iqx" firstAttribute="trailing" secondItem="Dnq-0k-G5u" secondAttribute="trailing" constant="-1" id="4cS-sV-6Vo"/>
+                            <constraint firstItem="7ds-pk-fbI" firstAttribute="trailing" secondItem="Dnq-0k-G5u" secondAttribute="trailing" id="92y-ny-VWR"/>
                             <constraint firstItem="GPZ-zE-Umf" firstAttribute="leading" secondItem="Dnq-0k-G5u" secondAttribute="leading" id="Eb3-bS-ujG"/>
                             <constraint firstItem="S4R-AN-iqx" firstAttribute="leading" secondItem="Dnq-0k-G5u" secondAttribute="leading" constant="-1" id="Jnn-fY-qbN"/>
                             <constraint firstAttribute="bottom" secondItem="S4R-AN-iqx" secondAttribute="bottom" id="Qw1-QT-yF6"/>
                             <constraint firstItem="S4R-AN-iqx" firstAttribute="top" secondItem="Dnq-0k-G5u" secondAttribute="top" id="aW5-HL-nSz"/>
                             <constraint firstItem="GPZ-zE-Umf" firstAttribute="top" secondItem="Dnq-0k-G5u" secondAttribute="top" id="eaR-6O-lDk"/>
+                            <constraint firstItem="7ds-pk-fbI" firstAttribute="leading" secondItem="Dnq-0k-G5u" secondAttribute="leading" id="mWN-J4-QDF"/>
+                            <constraint firstAttribute="bottom" secondItem="7ds-pk-fbI" secondAttribute="bottom" id="s8e-9u-Nls"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="LhN-MK-Amx"/>
@@ -82,6 +92,7 @@
                         <outlet property="alertPopupView" destination="pGt-OA-WEK" id="Twz-TJ-KQc"/>
                         <outlet property="coverImageView" destination="GPZ-zE-Umf" id="BRu-eF-YVQ"/>
                         <outlet property="elertPopupBoxView" destination="ann-ig-Jvp" id="WLG-rZ-ktC"/>
+                        <outlet property="splashScreen" destination="7ds-pk-fbI" id="Uug-om-Bgz"/>
                         <outlet property="startButton" destination="S4R-AN-iqx" id="r3Y-X9-OrS"/>
                         <segue destination="LDT-1T-9Vm" kind="show" identifier="goToSelectSelectSegue" animates="NO" id="mpB-tq-3CW"/>
                         <segue destination="wpo-Yq-ikf" kind="show" identifier="fromCoverToChapterCover" animates="NO" id="Wab-dm-ahv"/>
@@ -854,6 +865,9 @@
         <image name="lock icon" width="387.5" height="447"/>
         <image name="sandglass 1" width="68.5" height="115"/>
         <image name="thin X icon" width="254" height="254.5"/>
+        <namedColor name="way0CheckSection">
+            <color red="0.14900000393390656" green="0.23100000619888306" blue="0.3059999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
