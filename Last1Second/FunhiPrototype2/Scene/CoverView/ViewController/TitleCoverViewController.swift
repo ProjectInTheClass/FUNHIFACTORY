@@ -35,9 +35,9 @@ class TitleCoverViewController: UIViewController {
     let image = UIImageView()
     image.translatesAutoresizingMaskIntoConstraints = false
     image.image = UIImage(named: "splash_soundCharacter")
-    image.contentMode = .scaleAspectFit
+    image.contentMode = .scaleAspectFill
     NSLayoutConstraint.activate([
-      image.widthAnchor.constraint(equalTo: image.heightAnchor, multiplier: 414/528.27)
+      image.widthAnchor.constraint(equalTo: image.heightAnchor, multiplier: 414/538)
     ])
     return image
   }()
@@ -214,47 +214,42 @@ class TitleCoverViewController: UIViewController {
       splashSoundDesc.bottomAnchor.constraint(equalTo: splashSoundCharacter.topAnchor, constant: -59)
     ])
     
-    splashLogo.alpha = 0
+    splashLogo.alpha = 1
     splashSoundCharacter.alpha = 0
     splashSoundDesc.alpha = 0
     splashPictionDesc.alpha = 0
     
-    UIView.animate(withDuration: 1, delay: 0.3) {
-      self.splashLogo.alpha = 1
+    UIView.animate(withDuration: 1.5, delay: 3) {
+      self.splashLogo.alpha = 0
     } completion: { _ in
       
-      UIView.animate(withDuration: 1, delay: 0.3) {
-        self.splashLogo.alpha = 0
+      UIView.animate(withDuration: 1.5, delay: 0) {
+        self.splashPictionDesc.alpha = 1
       } completion: { _ in
         
-        UIView.animate(withDuration: 1, delay: 0.3) {
-          self.splashPictionDesc.alpha = 1
+        UIView.animate(withDuration: 1.5, delay: 3) {
+          self.splashPictionDesc.alpha = 0
         } completion: { _ in
           
-          UIView.animate(withDuration: 1) {
-            self.splashPictionDesc.alpha = 0
+          UIView.animate(withDuration: 1.5, delay: 00) {
+            self.splashSoundCharacter.alpha = 1
+            self.splashSoundDesc.alpha = 1
           } completion: { _ in
             
-            UIView.animate(withDuration: 1, delay: 0.3) {
-              self.splashSoundCharacter.alpha = 1
-              self.splashSoundDesc.alpha = 1
+            UIView.animate(withDuration: 1.5, delay: 3) {
+              self.splashSoundCharacter.alpha = 0
+              self.splashSoundDesc.alpha = 0
             } completion: { _ in
-              
-              UIView.animate(withDuration: 1, delay: 0.3) {
-                self.splashSoundCharacter.alpha = 0
-                self.splashSoundDesc.alpha = 0
+              UIView.animate(withDuration: 3.0) {
+                
               } completion: { _ in
-                UIView.animate(withDuration: 1.0) {
-                  
-                } completion: { _ in
-                  self.splashScreen.removeFromSuperview()
-                }
+                self.splashScreen.removeFromSuperview()
               }
             }
           }
         }
       }
     }
-    
   }
+  
 }
