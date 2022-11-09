@@ -6,54 +6,14 @@
 //
 
 import UIKit
+import Alamofire
 
-
-class SelectStageTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var cellBackground: UIView!
-    @IBOutlet weak var episodeYear: UILabel!
-    @IBOutlet weak var episodePlace: UILabel!
-    @IBOutlet weak var episodePlaceImage: UIImageView!
-    @IBOutlet weak var leftBox: UIView!
-    @IBOutlet weak var lockedView: UIView!
-    @IBOutlet var progressBackgroundView: UIView!
-    @IBOutlet var progressView: CircularProgressView!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        designButton()
-     
-
-    
-    func designButton() {
-        
-        lockedView.layer.cornerRadius = 12
-        leftBox.layer.cornerRadius = 8
-        leftBox.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
-        cellBackground.layer.cornerRadius = 8
-       
-        progressView.trackColor = UIColor(red: 0.333, green: 0.429, blue: 0.529, alpha: 1)
-        progressView.progressColor = UIColor(red: 0.78, green: 0.89, blue: 1, alpha: 1)
-        progressView.centerCircleColor = UIColor(red: 0.521, green: 0.646, blue: 0.771, alpha: 1)
-      
-        progressView.finishImageView.layer.cornerRadius = 3
-        progressView.finishImageView.setShadow(color: UIColor(red: 1, green: 1, blue: 1, alpha: 1), x: 0, y: 0, opacity: 1, radius: 5)
-        progressView.progressNumberString.font = UIFont(name: "NanumSquareEB", size: 10)
-      
-        progressBackgroundView.setShadow(color: UIColor(red: 0.325, green: 0.455, blue: 0.584, alpha: 1), x: 0, y: 0, opacity: 1, radius: 4)
-    }
-      
-   
-      
-      
-  }
-
-}
-  
 
 
 class SelectStageViewController: UIViewController {
     
+  var epis: [CompactEpisode]?
+  
   @IBOutlet weak var selectedPopupBox: UIView!
   @IBOutlet var selectedPopup: UIView!
   @IBOutlet weak var selectedPopupYearLabel: UILabel!
@@ -74,6 +34,7 @@ class SelectStageViewController: UIViewController {
   
   var selectedEP = Episode()
   
+  
   @IBAction func thirdPopupOkayButtonTouched(_ sender: Any) {
     closeLockedPopup()
   }
@@ -93,6 +54,54 @@ class SelectStageViewController: UIViewController {
     selectStageTableView.dataSource = self
     designPopup()
   }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    Task {
+          if let titles = await getSinarios() {
+
+              self.epis = titles
+            for (i, item) in self.epis!.enumerated() {
+              await self.epis?[i].loadStory()
+              }
+
+          }
+        }
+  }
+  
+  private func getSinarios() async -> [CompactEpisode]? {
+      let result = await AF.request(EpisodeRouter.episodes)
+        .serializingDecodable(EpisodesResDto.self).result
+
+      switch result {
+      case let .success(res):
+        let names = res.toModel().names.map { $0.fileName }.filter({ $0.contains(".json") })
+        print("Github sinarios:", names.joined(separator: ", "))
+//        episodes.text = names.joined(separator: ", ")
+        print(names.joined(separator: ", "))
+        
+        return res.toModel().names
+      case .failure(let error):
+        print("Github Error:", error)
+        return nil
+      }
+    }
+    
+    private func getSinariosDetail(name: String) async {
+      let result = await AF.request(EpisodeDetailRouter.episode(name))
+        .serializingDecodable([BlockOfDayEpisodeForJson].self).result
+
+      switch result {
+      case let .success(res):
+        print("Github Detail sinario:", res.first?.chats.first ?? "")
+//        let new = "\(episodes.text ?? "")\n유효한 시나리오"
+        print("유효한 시나리오")
+//        episodes.text = new
+      case .failure(let error):
+        print("Github Detail Error:", error)
+//        episodes.text = "\(episodes.text ?? "")\n유효하지 않은 시나리오"
+        print("유효하지 않은 시나리오")
+      }
+    }
   
   func updateCurrentEpisode() {
     previousEpisodeID = player.dayId
@@ -170,6 +179,8 @@ class SelectStageViewController: UIViewController {
   private func closeLockedPopup() {
     lockedPopup.removeFromSuperview()
   }
+  
+  
 }
 
 extension SelectStageViewController: UITableViewDelegate, UITableViewDataSource {
@@ -200,15 +211,24 @@ extension SelectStageViewController: UITableViewDelegate, UITableViewDataSource 
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    playEffectSound(.buttonClick, type: .mp3)
-    let selectedStageIndex = indexPath.row + 1
-    let dataToSend: Episode
-    dataToSend = player.currentEpisodes[selectedStageIndex]
-    player.dayIndex = selectedStageIndex
-    let epID = dataToSend.episodeID
-    if epID == "ending" { openLockedPopup(isEpiloguePopup: true) }
-    else if epID == "1592" || epID == "1803" || epID == "1918"{ openLockedPopup(isEpiloguePopup: false) }
-    else { openStagePopup(indexPath: indexPath) }
+//    playEffectSound(.buttonClick, type: .mp3)
+//    let selectedStageIndex = indexPath.row + 1
+//    let dataToSend: Episode
+//    dataToSend = player.currentEpisodes[selectedStageIndex]
+//    player.dayIndex = selectedStageIndex
+//    let epID = dataToSend.episodeID
+//    if epID == "ending" { openLockedPopup(isEpiloguePopup: true) }
+//    else if epID == "1592" || epID == "1803" || epID == "1918"{ openLockedPopup(isEpiloguePopup: false) }
+//    else { openStagePopup(indexPath: indexPath) }
+    
+    let storyboard = UIStoryboard(name: "MainGame", bundle: nil)
+    let vc = storyboard.instantiateViewController(withIdentifier: "UIViewController-58V-k4-uXR") as! MainGameViewController
+    var episode = epis?[1].toEpisode() ?? Episode()
+    episode.currentStoryBlockIndex = "001"
+    
+    vc.episode = episode
+    
+    navigationController?.pushViewController(vc, animated: true)
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

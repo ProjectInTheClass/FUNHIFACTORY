@@ -11,6 +11,8 @@ struct Episode: Codable, Equatable {
   static func == (lhs: Episode, rhs: Episode) -> Bool {
     return lhs.episodeID == rhs.episodeID
   }
+  
+  var fileName: String? = nil
 
   let episodeID: String
   
@@ -92,5 +94,27 @@ struct Episode: Codable, Equatable {
   
   init() {
     self.init(episodeID: "", episodePlace: "", episodeYear: 0, episodeKingYear: "", episodeShortDesciption: "", episodeDesciption: "", episodePlaceImage: "", episodeCoverImage: "", isCleared: true, chatHistory: [], storyBlocks: [:], currentCharacterNote: [], currentCaseNote: [], currentAlbumImages: [], timelineCheckPoint: [], currentStoryBlockIndex: "")
+  }
+  
+  init(storyBlocks: [BlockOfDayEpisode]) {
+    self.init()
+    var blocksDict = [String: BlockOfDayEpisode]()
+    storyBlocks.forEach {
+      blocksDict[$0.id] = $0
+    }
+    self.storyBlocks = blocksDict
+  }
+  
+  
+  var currentBlockOfDay: BlockOfDayEpisode {
+    return self.storyBlocks[currentStoryBlockIndex]!
+  }
+
+  var currentChatAmount: Int {
+    return currentBlockOfDay.chats.count
+  }
+
+  var currentChatType: ChatType {
+    return currentBlockOfDay.chats[player.indexNumber].type
   }
 }

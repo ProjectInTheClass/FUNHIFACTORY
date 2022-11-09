@@ -8,6 +8,7 @@
 import Foundation
 
 struct BlockOfDayEpisode: Codable {
+  let id: String
   let chats: [Chat]
   let choices: [Choice]
   let choiceSkip : Bool
@@ -36,4 +37,14 @@ struct BlockOfDayEpisodeForJson: Codable {
     backGroundMusic = (try? values.decode(Bgm.self, forKey: .backGroundMusic)) ?? .none
     currentRoute   = (try? values.decode(Route.self, forKey: .currentRoute)) ?? .normal
   }
+  
+  func toBlockOfDayEpisode() -> BlockOfDayEpisode {
+    return BlockOfDayEpisode(id: id,
+                             chats: chats,
+                             choices: choices,
+                             choiceSkip: choiceSkip,
+                             isGodChat: isGodChat,
+                             backGroundMusic: backGroundMusic,
+                             currentRoute: currentRoute)
+    }
 }

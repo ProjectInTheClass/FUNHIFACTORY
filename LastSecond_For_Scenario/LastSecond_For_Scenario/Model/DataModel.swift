@@ -31,17 +31,17 @@ func currentEpisode() -> Episode{
   return player.currentEpisodes[strToIndex(str: player.dayId)]
 }
 
-func currentBlockOfDay() -> BlockOfDayEpisode{
-  return currentEpisode().storyBlocks[currentEpisode().currentStoryBlockIndex]!
-}
+//func currentBlockOfDay() -> BlockOfDayEpisode{
+//  return currentEpisode().storyBlocks[currentEpisode().currentStoryBlockIndex]!
+//}
 
-func currentChatAmount() -> Int{
-  return currentBlockOfDay().chats.count
-}
-
-func currentChatType() -> ChatType{
-  return currentEpisode().storyBlocks[currentEpisode().currentStoryBlockIndex]!.chats[player.indexNumber].type
-}
+//func currentChatAmount() -> Int{
+//  return currentBlockOfDay().chats.count
+//}
+//
+//func currentChatType() -> ChatType{
+//  return currentEpisode().storyBlocks[currentEpisode().currentStoryBlockIndex]!.chats[player.indexNumber].type
+//}
 
 enum ScreenAnimation: String, Codable {
   case none
