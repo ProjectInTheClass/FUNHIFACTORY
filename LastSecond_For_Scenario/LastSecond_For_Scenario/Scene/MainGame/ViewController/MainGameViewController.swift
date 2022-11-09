@@ -66,7 +66,6 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
   @IBOutlet weak var home: FloatingButton!
   @IBOutlet weak var note: FloatingButton!
   @IBOutlet weak var album: FloatingButton!
-  @IBOutlet weak var timeline: FloatingButton!
   @IBOutlet weak var setting: FloatingButton!
   @IBOutlet weak var menu: FloatingButton!
   @IBOutlet weak var map: FloatingButton!
@@ -99,8 +98,8 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
     closeChoiceBar()
     print("ischoice = \(isChoiceOn)")
     audioConfigure(bgmName: "mainGameBGM", isBGM: true, ofType: .mp3)
-    stopTimerIfTutorialNotShowed()
-    setupTutorial()
+//    stopTimerIfTutorialNotShowed()
+//    setupTutorial()
   }
   
   override func viewDidDisappear(_ animated: Bool) {
@@ -133,7 +132,7 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
       pauseBar.isHidden = true
     }
     scrollToBottom()
-    currentYear.text = "\(episode.episodeYear)년"
+    currentYear.text = episode.fileName ?? ""
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -144,7 +143,8 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
   // MARK: @IBAction func
   
   @IBAction func goToHome(_ sender: Any) {
-    pushWithFadeIn(segue: "mainToHome")
+//    pushWithFadeIn(segue: "mainToHome")
+    navigationController?.popViewController(animated: true)
   }
   
   @IBAction func goToNote(_ sender: Any) {
@@ -226,7 +226,6 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
     home.setImages(nor: "HomeNormal", not: "HomeNormal")
     note.setImages(nor: "NoteNormal", not: "NoteHighlighted")
     album.setImages(nor: "AlbumNormal", not: "AlbumHighlighted")
-    timeline.setImages(nor: "TimelineNormal", not: "TimelineNormal")
     setting.setImages(nor: "SettingNormal", not: "SettingNormal")
     map.setImages(nor: "MapNormal", not: "MapNormal")
     menu.setImages(nor: "MenuNormal", not: "MenuHighlighted")

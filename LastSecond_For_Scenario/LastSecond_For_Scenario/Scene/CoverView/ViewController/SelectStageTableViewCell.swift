@@ -10,12 +10,13 @@ import UIKit
 class SelectStageTableViewCell: UITableViewCell {
   @IBOutlet weak var cellBackground: UIView!
   @IBOutlet weak var episodeYear: UILabel!
-  @IBOutlet weak var episodePlace: UILabel!
+  @IBOutlet weak var invalidDesc: UILabel!
   @IBOutlet weak var episodePlaceImage: UIImageView!
   @IBOutlet weak var leftBox: UIView!
   @IBOutlet weak var lockedView: UIView!
   @IBOutlet var progressBackgroundView: UIView!
   @IBOutlet var progressView: CircularProgressView!
+  
 
   override func awakeFromNib() {
     super.awakeFromNib()

@@ -24,7 +24,7 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
     let selectedStageIndex = indexPath.row + 1
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "selectStageTableViewCell", for: indexPath) as! SelectStageTableViewCell
-    cell.episodePlace.text = player.currentEpisodes[selectedStageIndex].episodePlace
+//    cell.episodePlace.text = player.currentEpisodes[selectedStageIndex].episodePlace
     cell.episodeYear.text = "\(player.currentEpisodes[selectedStageIndex].episodeYear)년"
     cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[selectedStageIndex].episodePlaceImage)
     cell.progressView.updateStateColor(subView: cell.progressBackgroundView)
@@ -210,9 +210,6 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
   @IBAction func lockedPopupOkayButtonTouched(_ sender: Any) {
     lockedPopup.removeFromSuperview()
   }
-  
-  
-  
   
   func openLockedPopup(isEpiloguePopup: Bool) {
     lockedPopup.center = self.view.center

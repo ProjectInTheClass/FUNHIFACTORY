@@ -117,4 +117,8 @@ struct Episode: Codable, Equatable {
   var currentChatType: ChatType {
     return currentBlockOfDay.chats[player.indexNumber].type
   }
+  
+  var isTestEnable: Bool {
+    !storyBlocks.isEmpty
+  }
 }

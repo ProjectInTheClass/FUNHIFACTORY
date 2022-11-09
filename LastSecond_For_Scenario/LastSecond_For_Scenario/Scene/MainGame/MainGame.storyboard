@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="58V-k4-uXR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="58V-k4-uXR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -58,15 +58,15 @@
         <!--Main Game View Controller-->
         <scene sceneID="VNi-lB-Xde">
             <objects>
-                <viewController storyboardIdentifier="UIViewController-58V-k4-uXR" id="58V-k4-uXR" customClass="MainGameViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UIViewController-58V-k4-uXR" id="58V-k4-uXR" customClass="MainGameViewController" customModule="LastSecond_For_Scenario" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Atd-3g-ohX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hr2-FU-J54" userLabel="TopBar">
-                                <rect key="frame" x="0.0" y="44" width="414" height="68"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="68"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9rX-GX-2pU" userLabel="PauseButton" customClass="FloatingButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9rX-GX-2pU" userLabel="PauseButton" customClass="FloatingButton" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                                         <rect key="frame" x="356" y="13" width="42" height="42"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -75,16 +75,6 @@
                                         </constraints>
                                         <connections>
                                             <action selector="pauseTapped:" destination="58V-k4-uXR" eventType="touchUpInside" id="RuT-xf-Iv9"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdV-Lv-2mk" customClass="FloatingButton" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="13" width="42" height="42"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="42" id="Z6l-V8-gvu"/>
-                                            <constraint firstAttribute="width" secondItem="hdV-Lv-2mk" secondAttribute="height" multiplier="1:1" id="h7x-Mn-Zkj"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="goToTimeline:" destination="58V-k4-uXR" eventType="touchUpInside" id="nSU-Dk-PvZ"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000년" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrk-et-zzi">
@@ -98,20 +88,18 @@
                                 <constraints>
                                     <constraint firstItem="lrk-et-zzi" firstAttribute="top" secondItem="hr2-FU-J54" secondAttribute="top" constant="16" id="16F-hd-bc2"/>
                                     <constraint firstItem="9rX-GX-2pU" firstAttribute="centerY" secondItem="hr2-FU-J54" secondAttribute="centerY" id="2KR-hY-Jem"/>
-                                    <constraint firstItem="hdV-Lv-2mk" firstAttribute="centerY" secondItem="hr2-FU-J54" secondAttribute="centerY" id="AQg-3E-bHU"/>
                                     <constraint firstAttribute="trailing" secondItem="9rX-GX-2pU" secondAttribute="trailing" constant="16" id="Lex-Mh-xft"/>
                                     <constraint firstAttribute="height" constant="68" id="MMt-K1-ldj"/>
                                     <constraint firstItem="lrk-et-zzi" firstAttribute="centerX" secondItem="hr2-FU-J54" secondAttribute="centerX" id="q9n-Rw-5cf"/>
-                                    <constraint firstItem="hdV-Lv-2mk" firstAttribute="leading" secondItem="hr2-FU-J54" secondAttribute="leading" constant="16" id="tXZ-JP-mbg"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1X2-dM-NgP">
-                                <rect key="frame" x="0.0" y="112" width="414" height="1027"/>
+                                <rect key="frame" x="0.0" y="116" width="414" height="1023"/>
                                 <color key="backgroundColor" red="0.070588235294117646" green="0.14901960784313725" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" systemColor="systemYellowColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="monologue" id="LYc-Lq-h5R" customClass="MonologueTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="108"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="monologue" id="LYc-Lq-h5R" customClass="MonologueTableViewCell" customModule="LastSecond_For_Scenario" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LYc-Lq-h5R" id="Syf-va-gW4">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
@@ -226,8 +214,8 @@
                                             <outlet property="profileImage" destination="53G-ZR-hGZ" id="mqr-lD-j4l"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="separatorCell" rowHeight="83" id="gD9-L8-Azv" customClass="SeparatorTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="152.5" width="414" height="83"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="separatorCell" rowHeight="83" id="gD9-L8-Azv" customClass="SeparatorTableViewCell" customModule="LastSecond_For_Scenario" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="158" width="414" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gD9-L8-Azv" id="JlC-LW-DBU">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="83"/>
@@ -251,8 +239,8 @@
                                             <outlet property="separatorImage" destination="F65-xf-3az" id="Xtu-kR-Q5Y"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="opTextCell" id="Nov-1r-Adf" customClass="OpTextTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="235.5" width="414" height="108"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="opTextCell" id="Nov-1r-Adf" customClass="OpTextTableViewCell" customModule="LastSecond_For_Scenario" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="241" width="414" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nov-1r-Adf" id="b24-r2-tta">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
@@ -329,8 +317,8 @@
                                             <outlet property="profileNickname" destination="vep-Zh-itH" id="k0d-E4-v0D"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myTextCell" id="kt2-Sg-BDC" customClass="MyTextTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="343.5" width="414" height="108"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myTextCell" id="kt2-Sg-BDC" customClass="MyTextTableViewCell" customModule="LastSecond_For_Scenario" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="349" width="414" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kt2-Sg-BDC" id="6Hh-cW-zfM">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
@@ -408,8 +396,8 @@
                                             <outlet property="profileNickname" destination="Tyh-sK-xPZ" id="bTF-wm-jl3"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="arTableViewCell" rowHeight="59" id="daJ-Ci-VFo" customClass="ARTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="451.5" width="414" height="59"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="arTableViewCell" rowHeight="59" id="daJ-Ci-VFo" customClass="ARTableViewCell" customModule="LastSecond_For_Scenario" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="457" width="414" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="daJ-Ci-VFo" id="vXh-7m-aMd">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
@@ -471,8 +459,8 @@
                                             <outlet property="chatLabel" destination="ugD-HN-ElC" id="eVu-7z-mUY"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sectionCell" rowHeight="63" id="Jfh-0f-HBh" customClass="SectionTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="510.5" width="414" height="63"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sectionCell" rowHeight="63" id="Jfh-0f-HBh" customClass="SectionTableViewCell" customModule="LastSecond_For_Scenario" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="516" width="414" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jfh-0f-HBh" id="yQW-Pn-ft0">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
@@ -514,8 +502,8 @@
                                             <outlet property="sectionText" destination="oX6-rE-Tks" id="Yef-fq-UTv"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="295" id="Hw8-Vw-pVe" customClass="ImageTableViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="573.5" width="414" height="295"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="295" id="Hw8-Vw-pVe" customClass="ImageTableViewCell" customModule="LastSecond_For_Scenario" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="579" width="414" height="295"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hw8-Vw-pVe" id="szc-Qo-WDf">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="295"/>
@@ -540,7 +528,7 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCP-5p-JQh">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
                                 <color key="backgroundColor" red="0.047465547919999997" green="0.1073321924" blue="0.15145206450000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yGJ-yh-i0j">
@@ -560,7 +548,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="choiceCell" id="Xqx-6d-gcV" customClass="choiceCollectionViewCell" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="choiceCell" id="Xqx-6d-gcV" customClass="choiceCollectionViewCell" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="1" width="414" height="99"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3SX-Wk-oKM">
@@ -648,12 +636,12 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKf-Xv-7eK">
-                                <rect key="frame" x="0.0" y="44" width="414" height="68"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="68"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rkz-sw-KrV">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rkz-sw-KrV">
                                         <rect key="frame" x="21" y="13" width="330.5" height="42"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5g-oq-KE8" userLabel="homeButton" customClass="FloatingButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5g-oq-KE8" userLabel="homeButton" customClass="FloatingButton" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="E5g-oq-KE8" secondAttribute="height" multiplier="1:1" id="PYh-de-51b"/>
@@ -662,8 +650,8 @@
                                                     <action selector="goToHome:" destination="58V-k4-uXR" eventType="touchUpInside" id="7AN-hC-XpE"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFX-Iz-c1M" customClass="FloatingButton" customModule="FunhiPrototype2" customModuleProvider="target">
-                                                <rect key="frame" x="72" y="0.0" width="42" height="42"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFX-Iz-c1M" customClass="FloatingButton" customModule="LastSecond_For_Scenario" customModuleProvider="target">
+                                                <rect key="frame" x="46" y="0.0" width="42" height="42"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="gFX-Iz-c1M" secondAttribute="height" multiplier="1:1" id="KwS-fR-yzs"/>
                                                 </constraints>
@@ -671,8 +659,8 @@
                                                     <action selector="goToNote:" destination="58V-k4-uXR" eventType="touchUpInside" id="1rm-7T-ynO"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URY-uY-Jso" customClass="FloatingButton" customModule="FunhiPrototype2" customModuleProvider="target">
-                                                <rect key="frame" x="144" y="0.0" width="42" height="42"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URY-uY-Jso" customClass="FloatingButton" customModule="LastSecond_For_Scenario" customModuleProvider="target">
+                                                <rect key="frame" x="46" y="0.0" width="42" height="42"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="URY-uY-Jso" secondAttribute="height" multiplier="1:1" id="7Tp-VG-98D"/>
                                                 </constraints>
@@ -680,8 +668,8 @@
                                                     <action selector="goToAlbum:" destination="58V-k4-uXR" eventType="touchUpInside" id="Soe-if-DYp"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSe-VI-9hD" userLabel="mapButton" customClass="FloatingButton" customModule="FunhiPrototype2" customModuleProvider="target">
-                                                <rect key="frame" x="216.5" y="0.0" width="42" height="42"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSe-VI-9hD" userLabel="mapButton" customClass="FloatingButton" customModule="LastSecond_For_Scenario" customModuleProvider="target">
+                                                <rect key="frame" x="46" y="0.0" width="42" height="42"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="uSe-VI-9hD" secondAttribute="height" multiplier="1:1" id="fzj-Gw-mZS"/>
@@ -690,8 +678,8 @@
                                                     <action selector="goToMap:" destination="58V-k4-uXR" eventType="touchUpInside" id="SJL-pJ-vDt"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWN-b4-dw4" userLabel="settingButton" customClass="FloatingButton" customModule="FunhiPrototype2" customModuleProvider="target">
-                                                <rect key="frame" x="288.5" y="0.0" width="42" height="42"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWN-b4-dw4" userLabel="settingButton" customClass="FloatingButton" customModule="LastSecond_For_Scenario" customModuleProvider="target">
+                                                <rect key="frame" x="46" y="0.0" width="42" height="42"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="hWN-b4-dw4" secondAttribute="height" multiplier="1:1" id="aZK-ZA-cWT"/>
                                                 </constraints>
@@ -699,12 +687,16 @@
                                                     <action selector="goToSetting:" destination="58V-k4-uXR" eventType="touchUpInside" id="OsH-NY-T6L"/>
                                                 </connections>
                                             </button>
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="246" horizontalCompressionResistancePriority="747" translatesAutoresizingMaskIntoConstraints="NO" id="Vc6-z2-ocf">
+                                                <rect key="frame" x="50" y="0.0" width="280.5" height="42"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="szN-Jt-APr" userLabel="resume">
                                         <rect key="frame" x="377.5" y="24" width="20" height="20"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60A-tB-e7o" userLabel="resumeButton" customClass="SoundButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60A-tB-e7o" userLabel="resumeButton" customClass="SoundButton" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                                 <connections>
                                                     <action selector="resumeTapped:" destination="58V-k4-uXR" eventType="touchUpInside" id="61V-WL-uaB"/>
@@ -759,7 +751,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JOh-Ng-h5F">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hXv-Ri-jsW">
@@ -831,7 +823,6 @@
                         <outlet property="safeAreaBottom" destination="mSf-yh-8kK" id="gAq-MC-W25"/>
                         <outlet property="safeAreaTop" destination="JOh-Ng-h5F" id="ucp-eg-6zP"/>
                         <outlet property="setting" destination="hWN-b4-dw4" id="31O-Ig-eQu"/>
-                        <outlet property="timeline" destination="hdV-Lv-2mk" id="uM4-C2-lgs"/>
                         <outlet property="topBar" destination="hr2-FU-J54" id="vd7-Qb-21X"/>
                         <outlet property="wholeView" destination="Atd-3g-ohX" id="xPY-ch-KoB"/>
                         <segue destination="NYb-GR-gaT" kind="show" identifier="goToARView" id="tkT-wW-Rbo"/>
@@ -852,7 +843,7 @@
                     <viewLayoutGuide key="safeArea" id="nES-84-Uu1"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <view contentMode="scaleToFill" id="bqs-CT-rOt" customClass="NotePopupView" customModule="FunhiPrototype2" customModuleProvider="target">
+                <view contentMode="scaleToFill" id="bqs-CT-rOt" customClass="NotePopupView" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="89"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -883,20 +874,20 @@
                 </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nKe-H5-t52" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3718.840579710145" y="-731.25"/>
+            <point key="canvasLocation" x="3717" y="-737"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="zMK-4P-pvq">
             <objects>
-                <viewController storyboardIdentifier="settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="huL-hd-yMs" customClass="SettingViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="huL-hd-yMs" customClass="SettingViewController" customModule="LastSecond_For_Scenario" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rIa-W4-Jiq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ruB-S2-ZGY" userLabel="topBar">
-                                <rect key="frame" x="0.0" y="44" width="414" height="68"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="68"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qnd-Z6-Xq2" customClass="SoundButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qnd-Z6-Xq2" customClass="SoundButton" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                                         <rect key="frame" x="371" y="23" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="3Xo-Xm-23S"/>
@@ -929,11 +920,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o9g-7w-sGB" userLabel="topSafeArea">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
                                 <color key="backgroundColor" red="0.050980392156862744" green="0.10980392156862745" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWB-nA-V9k">
-                                <rect key="frame" x="0.0" y="112" width="414" height="750"/>
+                                <rect key="frame" x="0.0" y="116" width="414" height="746"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zrr-lD-g3e" userLabel="contentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="757"/>
@@ -956,7 +947,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="c8s-aV-vFf">
                                                                 <rect key="frame" x="0.0" y="24" width="366" height="47"/>
                                                                 <subviews>
-                                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="muF-D4-ZcN" customClass="CustomSlider" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="muF-D4-ZcN" customClass="CustomSlider" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                                                                         <rect key="frame" x="-2" y="0.0" width="370" height="27.5"/>
                                                                         <color key="tintColor" red="0.47968131720000001" green="0.51557523149999995" blue="0.535259716" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1005,7 +996,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mII-6y-sk0">
                                                                 <rect key="frame" x="0.0" y="23.5" width="366" height="47.5"/>
                                                                 <subviews>
-                                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="I0O-hX-I2c" customClass="CustomSlider" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="I0O-hX-I2c" customClass="CustomSlider" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                                                                         <rect key="frame" x="-2" y="0.0" width="370" height="28"/>
                                                                         <color key="tintColor" red="0.47968131720000001" green="0.51557523149999995" blue="0.535259716" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1050,7 +1041,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vLt-n7-2H9">
                                                                 <rect key="frame" x="0.0" y="22.5" width="366" height="48.5"/>
                                                                 <subviews>
-                                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="0.80000000000000004" maxValue="3.5" translatesAutoresizingMaskIntoConstraints="NO" id="dNO-ru-l5m" customClass="CustomSlider" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="0.80000000000000004" maxValue="3.5" translatesAutoresizingMaskIntoConstraints="NO" id="dNO-ru-l5m" customClass="CustomSlider" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                                                                         <rect key="frame" x="-2" y="0.0" width="370" height="34"/>
                                                                         <color key="tintColor" red="0.47968131720000001" green="0.51557523149999995" blue="0.535259716" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1091,7 +1082,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DIr-yd-db3">
                                                         <rect key="frame" x="0.0" y="0.0" width="154.5" height="57"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmD-Bu-Seq" customClass="SoundButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmD-Bu-Seq" customClass="SoundButton" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                                                                 <rect key="frame" x="1" y="0.0" width="152.5" height="50.5"/>
                                                                 <color key="backgroundColor" red="0.73333333333333328" green="0.83529411764705885" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="20"/>
@@ -1149,7 +1140,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6o-1M-aQl">
                                                         <rect key="frame" x="200.5" y="0.0" width="154.5" height="57"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPu-En-K6s" customClass="SoundButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPu-En-K6s" customClass="SoundButton" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                                                                 <rect key="frame" x="1" y="0.0" width="152.5" height="50.5"/>
                                                                 <color key="backgroundColor" red="0.73333333333333328" green="0.83529411764705885" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="20"/>
@@ -1233,7 +1224,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWa-b7-48n">
                                                 <rect key="frame" x="62" y="639" width="304" height="57"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Taj-0E-aC6" customClass="SoundButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Taj-0E-aC6" customClass="SoundButton" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                                                         <rect key="frame" x="2" y="-2.5" width="300" height="53"/>
                                                         <color key="backgroundColor" red="0.73333333333333328" green="0.83529411764705885" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="20"/>
@@ -1384,7 +1375,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdG-H3-5Vh" customClass="SoundButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdG-H3-5Vh" customClass="SoundButton" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                             <rect key="frame" x="27.5" y="144" width="274" height="41"/>
                             <color key="backgroundColor" red="0.79215686269999996" green="0.85882352939999995" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -1483,7 +1474,7 @@
                             <color key="textColor" white="0.0" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgj-P9-K7w" customClass="SoundButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgj-P9-K7w" customClass="SoundButton" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                             <rect key="frame" x="26" y="181" width="124" height="41"/>
                             <color key="backgroundColor" red="0.792156862745098" green="0.85882352941176465" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -1503,7 +1494,7 @@
                                 <action selector="yesButtonTapped:" destination="huL-hd-yMs" eventType="touchUpInside" id="Rhh-pP-mfe"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iz9-Co-SwR" customClass="SoundButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iz9-Co-SwR" customClass="SoundButton" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                             <rect key="frame" x="181" y="181" width="124" height="41"/>
                             <color key="backgroundColor" red="0.792156862745098" green="0.85882352941176465" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -1572,7 +1563,7 @@
         <!--Credit View Controller-->
         <scene sceneID="1UI-2z-w8q">
             <objects>
-                <viewController storyboardIdentifier="credit" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Cd-47-cRm" customClass="CreditViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="credit" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Cd-47-cRm" customClass="CreditViewController" customModule="LastSecond_For_Scenario" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6NL-Lc-EMm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1580,7 +1571,7 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B7K-t8-PEk" userLabel="topBar">
                                 <rect key="frame" x="0.0" y="44" width="414" height="68"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0A0-Ct-z0i" customClass="SoundButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0A0-Ct-z0i" customClass="SoundButton" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                                         <rect key="frame" x="16" y="18" width="17" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="17" id="I6J-Um-a4D"/>
@@ -1613,11 +1604,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C1M-q9-VTN" userLabel="safeAreaTop">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
                                 <color key="backgroundColor" red="0.050980392156862744" green="0.10980392156862745" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQd-Cb-LL6">
-                                <rect key="frame" x="0.0" y="105" width="414" height="757"/>
+                                <rect key="frame" x="0.0" y="109" width="414" height="753"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ekp-cm-Nzr">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="757"/>
@@ -1637,7 +1628,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="TwM-Vd-iwZ">
                                                                 <rect key="frame" x="0.0" y="122" width="94" height="34"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DuT-ND-x44" customClass="SoundButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DuT-ND-x44" customClass="SoundButton" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="DuT-ND-x44" secondAttribute="height" multiplier="1:1" id="Ymw-Hz-Ndv"/>
@@ -1649,7 +1640,7 @@
                                                                             <action selector="instaButtonTapped:" destination="9Cd-47-cRm" eventType="touchUpInside" id="VJT-e1-7Y6"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYL-Ay-kIt" customClass="SoundButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYL-Ay-kIt" customClass="SoundButton" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                                                                         <rect key="frame" x="60" y="0.0" width="34" height="34"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="34" id="SdE-ml-Uls"/>
@@ -1881,7 +1872,7 @@
         <!--Ending View Controller-->
         <scene sceneID="m7i-MG-7ed">
             <objects>
-                <viewController restorationIdentifier="Ending" storyboardIdentifier="Ending" id="o6w-Ff-HrJ" customClass="endingViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="Ending" storyboardIdentifier="Ending" id="o6w-Ff-HrJ" customClass="endingViewController" customModule="LastSecond_For_Scenario" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R5U-gN-pUY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1890,10 +1881,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yh-QR-vQ5">
-                                <rect key="frame" x="0.0" y="-13" width="414" height="932"/>
+                                <rect key="frame" x="0.0" y="-9" width="414" height="928"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="yIQ-pY-Fyq">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="yIQ-pY-Fyq">
                                 <rect key="frame" x="108.5" y="365" width="197" height="65"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4SM-Sz-y31">
@@ -1921,7 +1912,7 @@
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="65" id="l7T-gg-R5f"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="DkA-ui-Szy">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="DkA-ui-Szy">
                                 <rect key="frame" x="20" y="530" width="374" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="SbT-GU-yln"/>
@@ -1930,7 +1921,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uVY-GU-VE1">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uVY-GU-VE1">
                                 <rect key="frame" x="57" y="98" width="300" height="238"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="uVY-GU-VE1" secondAttribute="height" multiplier="300:238" id="JcZ-PO-2Rl"/>
@@ -1943,7 +1934,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0GI-sM-nlA">
                                         <rect key="frame" x="102.5" y="0.0" width="159" height="80"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tRD-nZ-Sza" customClass="SoundButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tRD-nZ-Sza" customClass="SoundButton" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                                                 <rect key="frame" x="4" y="-1" width="151" height="74"/>
                                                 <color key="backgroundColor" red="0.83921568629999999" green="0.92156862750000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal">
@@ -2015,7 +2006,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Q5-PW-Lni">
                                                 <rect key="frame" x="0.0" y="0.0" width="159" height="80"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tOG-WC-v0r" customClass="SoundButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tOG-WC-v0r" customClass="SoundButton" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                                                         <rect key="frame" x="4" y="-1" width="151" height="74"/>
                                                         <color key="backgroundColor" red="0.83921568629999999" green="0.92156862750000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal">
@@ -2084,7 +2075,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XvZ-fi-cVw">
                                                 <rect key="frame" x="204" y="0.0" width="159" height="80"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HS7-6d-m9G" customClass="SoundButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HS7-6d-m9G" customClass="SoundButton" customModule="LastSecond_For_Scenario" customModuleProvider="target">
                                                         <rect key="frame" x="4" y="-1" width="151" height="74"/>
                                                         <color key="backgroundColor" red="0.83921568629999999" green="0.92156862750000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal">
@@ -2157,7 +2148,7 @@
                                     <constraint firstAttribute="width" secondItem="qGf-6m-aJe" secondAttribute="height" multiplier="364:183" priority="750" id="9nc-hH-XGZ"/>
                                 </constraints>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w3W-4u-IN5">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w3W-4u-IN5">
                                 <rect key="frame" x="197" y="462" width="20" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="Yli-Ys-SgG"/>
@@ -2403,7 +2394,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ka3-Pt-7qY"/>
+        <segue reference="USe-dh-gZr"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="blue emergency" width="670.5" height="670.5"/>
