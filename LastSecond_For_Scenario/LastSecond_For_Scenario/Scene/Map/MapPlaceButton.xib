@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NanumSquareExtraBold.ttf">
+            <string>NanumSquareEB</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapPlaceButton" customModule="FunhiPrototype2" customModuleProvider="target">
+            <connections>
+                <outlet property="button" destination="THv-GZ-V4v" id="MSS-DJ-6We"/>
+                <outlet property="place" destination="knE-kz-Mgb" id="qLX-jP-uCI"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Jn-wu-vun" userLabel="spotButtonView">
+            <rect key="frame" x="0.0" y="0.0" width="79" height="36"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="THv-GZ-V4v" customClass="MapButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="79" height="36"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="16"/>
+                    <state key="normal" title="① 돈화문">
+                        <color key="titleColor" red="0.72865039109999996" green="0.83672636749999996" blue="0.91417491439999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </state>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="positionIcon" translatesAutoresizingMaskIntoConstraints="NO" id="knE-kz-Mgb">
+                    <rect key="frame" x="8" y="-24" width="19.5" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="CUA-a8-2aW"/>
+                        <constraint firstAttribute="width" constant="19.5" id="xpK-hH-3ds"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="THv-GZ-V4v" firstAttribute="leading" secondItem="2Jn-wu-vun" secondAttribute="leading" id="OIC-DX-3hn"/>
+                <constraint firstItem="knE-kz-Mgb" firstAttribute="top" secondItem="2Jn-wu-vun" secondAttribute="top" constant="-24" id="UUk-2Y-Uq6"/>
+                <constraint firstItem="THv-GZ-V4v" firstAttribute="top" secondItem="2Jn-wu-vun" secondAttribute="top" id="es7-uJ-MoU"/>
+                <constraint firstAttribute="bottom" secondItem="THv-GZ-V4v" secondAttribute="bottom" id="fhN-8r-487"/>
+                <constraint firstAttribute="trailing" secondItem="THv-GZ-V4v" secondAttribute="trailing" id="km9-T0-683"/>
+                <constraint firstItem="knE-kz-Mgb" firstAttribute="leading" secondItem="2Jn-wu-vun" secondAttribute="leading" constant="8" id="mLG-fV-ZZh"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-315.21739130434787" y="302.67857142857139"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="positionIcon" width="278.5" height="425"/>
+    </resources>
+</document>

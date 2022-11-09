@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NanumSquareExtraBold.ttf">
+            <string>NanumSquareEB</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Map View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="MapVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="MapViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fi5-Po-2Iv">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="105"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지도" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6i-qG-I1U">
+                                        <rect key="frame" x="180.5" y="64" width="53" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="53" id="ZJL-eB-oJK"/>
+                                            <constraint firstAttribute="height" constant="33" id="yN0-UC-cnP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="29"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fcz-kU-bDL" customClass="SoundButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                        <rect key="frame" x="372" y="70" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="22" id="A0X-Qe-LRA"/>
+                                            <constraint firstAttribute="height" constant="22" id="t0T-i7-tL4"/>
+                                        </constraints>
+                                        <state key="normal" image="thick X"/>
+                                        <connections>
+                                            <action selector="goBack:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="kgp-Uf-070"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.047465547919999997" green="0.1073321924" blue="0.15145206450000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Fcz-kU-bDL" secondAttribute="trailing" constant="20" id="23W-DM-Qff"/>
+                                    <constraint firstItem="s6i-qG-I1U" firstAttribute="centerX" secondItem="fi5-Po-2Iv" secondAttribute="centerX" id="8ca-zG-okI"/>
+                                    <constraint firstItem="s6i-qG-I1U" firstAttribute="top" secondItem="fi5-Po-2Iv" secondAttribute="top" constant="64" id="L2y-1G-XNO"/>
+                                    <constraint firstAttribute="height" constant="105" id="Uh5-nn-Ioo"/>
+                                    <constraint firstItem="Fcz-kU-bDL" firstAttribute="top" secondItem="fi5-Po-2Iv" secondAttribute="top" constant="70" id="nfD-pr-PE8"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="second map" translatesAutoresizingMaskIntoConstraints="NO" id="xQy-WC-OAh">
+                                <rect key="frame" x="28" y="125" width="358" height="443.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xQy-WC-OAh" secondAttribute="height" multiplier="354:438" id="IcW-RP-5yy"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="oU3-KK-hUh">
+                                <rect key="frame" x="30" y="598.5" width="354" height="254.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="49" translatesAutoresizingMaskIntoConstraints="NO" id="vbb-mJ-zMf">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="30"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Dk-ke-9lE" customClass="MapPlaceButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="85.5" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="3Dk-ke-9lE" secondAttribute="height" multiplier="17:6" id="jPX-uM-NwM"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FDB-D8-SOC" customClass="MapPlaceButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                <rect key="frame" x="134.5" y="0.0" width="85" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="FDB-D8-SOC" secondAttribute="height" multiplier="17:6" id="tv0-Vf-4BF"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="no3-E9-nzj" customClass="MapPlaceButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                <rect key="frame" x="268.5" y="0.0" width="85.5" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="no3-E9-nzj" secondAttribute="height" multiplier="17:6" id="fn5-Cm-nVM"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="49" translatesAutoresizingMaskIntoConstraints="NO" id="vdB-XC-qyf">
+                                        <rect key="frame" x="0.0" y="56" width="354" height="30"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TeF-Iw-sua" customClass="MapPlaceButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="85.5" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="TeF-Iw-sua" secondAttribute="height" multiplier="17:6" id="aGv-LZ-edQ"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jrO-yc-DEF" customClass="MapPlaceButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                <rect key="frame" x="134.5" y="0.0" width="85" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="jrO-yc-DEF" secondAttribute="height" multiplier="17:6" id="f6Y-tW-4qF"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Abp-IO-u7i" customClass="MapPlaceButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                <rect key="frame" x="268.5" y="0.0" width="85.5" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Abp-IO-u7i" secondAttribute="height" multiplier="17:6" id="flO-6p-rQW"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="49" translatesAutoresizingMaskIntoConstraints="NO" id="L5k-8z-7Dj">
+                                        <rect key="frame" x="0.0" y="112" width="354" height="30.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvv-DQ-11B" customClass="MapPlaceButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="85.5" height="30.5"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="uvv-DQ-11B" secondAttribute="height" multiplier="17:6" id="aRq-Lq-SU3"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNf-PU-1Ch" customClass="MapPlaceButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                <rect key="frame" x="134.5" y="0.0" width="85" height="30.5"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="pNf-PU-1Ch" secondAttribute="height" multiplier="17:6" id="3CT-r7-mb6"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DXH-Cm-jaL" customClass="MapPlaceButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                <rect key="frame" x="268.5" y="0.0" width="85.5" height="30.5"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="DXH-Cm-jaL" secondAttribute="height" multiplier="17:6" id="90s-U5-O0C"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="49" translatesAutoresizingMaskIntoConstraints="NO" id="aJq-c2-2K8">
+                                        <rect key="frame" x="0.0" y="168.5" width="354" height="30"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tzw-fM-J8N" customClass="MapPlaceButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="85.5" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Tzw-fM-J8N" secondAttribute="height" multiplier="17:6" id="erM-1H-cAS"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="40t-fs-OwV" customClass="MapPlaceButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                <rect key="frame" x="134.5" y="0.0" width="85" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="40t-fs-OwV" secondAttribute="height" multiplier="17:6" id="Bq0-kw-IF2"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0th-ql-hXo" customClass="MapPlaceButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                <rect key="frame" x="268.5" y="0.0" width="85.5" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="0th-ql-hXo" secondAttribute="height" multiplier="17:6" id="wOx-PU-3x0"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="49" translatesAutoresizingMaskIntoConstraints="NO" id="KVL-qi-CuD">
+                                        <rect key="frame" x="0.0" y="224.5" width="354" height="30"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XfC-Kk-oqb" customClass="MapPlaceButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="85.5" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="XfC-Kk-oqb" secondAttribute="height" multiplier="17:6" id="ffc-Jg-YCf"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GN9-ne-2h4" customClass="MapPlaceButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                <rect key="frame" x="134.5" y="0.0" width="85" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="GN9-ne-2h4" secondAttribute="height" multiplier="17:6" id="M6N-Ti-Zcj"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kz6-Zo-OHV" customClass="MapPlaceButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                                <rect key="frame" x="268.5" y="0.0" width="85.5" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Kz6-Zo-OHV" secondAttribute="height" multiplier="17:6" id="xZo-n2-gHK"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" red="0.064391784369999996" green="0.14681586620000001" blue="0.21209269759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="oU3-KK-hUh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="5bs-lH-IKk"/>
+                            <constraint firstItem="fi5-Po-2Iv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="5tc-Qd-zRA"/>
+                            <constraint firstAttribute="trailing" secondItem="oU3-KK-hUh" secondAttribute="trailing" constant="30" id="BE8-9k-fDn"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="fi5-Po-2Iv" secondAttribute="trailing" id="Cjh-w3-tnt"/>
+                            <constraint firstItem="oU3-KK-hUh" firstAttribute="top" secondItem="xQy-WC-OAh" secondAttribute="bottom" constant="30" id="aWE-PF-otu"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="oU3-KK-hUh" secondAttribute="bottom" constant="9" id="iOn-Jj-gGb"/>
+                            <constraint firstItem="xQy-WC-OAh" firstAttribute="top" secondItem="fi5-Po-2Iv" secondAttribute="bottom" constant="20" id="owi-br-elQ"/>
+                            <constraint firstItem="xQy-WC-OAh" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="xKY-eE-QYc"/>
+                            <constraint firstItem="fi5-Po-2Iv" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="yJR-gz-JEv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapImage" destination="xQy-WC-OAh" id="rAL-IG-Q0c"/>
+                        <outletCollection property="spotButtons" destination="3Dk-ke-9lE" collectionClass="NSMutableArray" id="QWz-wy-Mfo"/>
+                        <outletCollection property="spotButtons" destination="FDB-D8-SOC" collectionClass="NSMutableArray" id="AwK-EY-IEy"/>
+                        <outletCollection property="spotButtons" destination="no3-E9-nzj" collectionClass="NSMutableArray" id="Flg-93-RBz"/>
+                        <outletCollection property="spotButtons" destination="TeF-Iw-sua" collectionClass="NSMutableArray" id="1C6-kN-9lP"/>
+                        <outletCollection property="spotButtons" destination="jrO-yc-DEF" collectionClass="NSMutableArray" id="hXQ-e8-pIU"/>
+                        <outletCollection property="spotButtons" destination="Abp-IO-u7i" collectionClass="NSMutableArray" id="BdW-jA-PBc"/>
+                        <outletCollection property="spotButtons" destination="uvv-DQ-11B" collectionClass="NSMutableArray" id="9FA-Ib-hRG"/>
+                        <outletCollection property="spotButtons" destination="pNf-PU-1Ch" collectionClass="NSMutableArray" id="KHC-W4-ZAK"/>
+                        <outletCollection property="spotButtons" destination="DXH-Cm-jaL" collectionClass="NSMutableArray" id="fGJ-h1-7vh"/>
+                        <outletCollection property="spotButtons" destination="Tzw-fM-J8N" collectionClass="NSMutableArray" id="JOY-N5-xoZ"/>
+                        <outletCollection property="spotButtons" destination="40t-fs-OwV" collectionClass="NSMutableArray" id="hbk-PS-yHu"/>
+                        <outletCollection property="spotButtons" destination="0th-ql-hXo" collectionClass="NSMutableArray" id="UU8-ig-k4C"/>
+                        <outletCollection property="spotButtons" destination="XfC-Kk-oqb" collectionClass="NSMutableArray" id="0yM-st-Wdv"/>
+                        <outletCollection property="spotButtons" destination="GN9-ne-2h4" collectionClass="NSMutableArray" id="ul9-EW-COS"/>
+                        <outletCollection property="spotButtons" destination="Kz6-Zo-OHV" collectionClass="NSMutableArray" id="JfD-BV-jzW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="116.51785714285714"/>
+        </scene>
+        <!--Image Viewer View Controller-->
+        <scene sceneID="pwU-U1-YDb">
+            <objects>
+                <viewController storyboardIdentifier="imageViewer" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QPA-Wi-yaP" customClass="ImageViewerViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lKv-Gs-l6b">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wVG-8M-rmd">
+                                <rect key="frame" x="0.0" y="112" width="414" height="784"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="YW9-4T-oKd">
+                                    <size key="itemSize" width="414" height="784"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="UEf-eV-EsN" customClass="SpotImageCell" customModule="FunhiPrototype2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="784"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kjW-hX-u5B">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="784"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hbn-To-3xw">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="784"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="hbn-To-3xw" firstAttribute="leading" secondItem="kjW-hX-u5B" secondAttribute="leading" id="21X-qq-Rcw"/>
+                                                <constraint firstAttribute="bottom" secondItem="hbn-To-3xw" secondAttribute="bottom" id="FXW-q2-2L1"/>
+                                                <constraint firstItem="hbn-To-3xw" firstAttribute="top" secondItem="kjW-hX-u5B" secondAttribute="top" id="ik0-Sf-hRf"/>
+                                                <constraint firstAttribute="trailing" secondItem="hbn-To-3xw" secondAttribute="trailing" id="shR-OT-iZp"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="414" height="784"/>
+                                        <connections>
+                                            <outlet property="spotImage" destination="hbn-To-3xw" id="9dc-Nf-rTP"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8A-wn-Pvp" userLabel="rightArrow" customClass="SoundButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                <rect key="frame" x="372" y="484" width="26" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="26" id="2Hp-72-vey"/>
+                                    <constraint firstAttribute="width" secondItem="b8A-wn-Pvp" secondAttribute="height" multiplier="13:20" id="xUA-ID-mNY"/>
+                                </constraints>
+                                <state key="normal" image="right clamp icon"/>
+                                <connections>
+                                    <action selector="nextImage:" destination="QPA-Wi-yaP" eventType="touchUpInside" id="xRm-fE-kdC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIV-hQ-N9I" userLabel="leftArrow" customClass="SoundButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                <rect key="frame" x="16" y="484" width="26" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="oIV-hQ-N9I" secondAttribute="height" multiplier="13:20" id="aEO-Lb-G8Q"/>
+                                    <constraint firstAttribute="width" constant="26" id="euu-dI-dNb"/>
+                                </constraints>
+                                <state key="normal" image="clamp icon"/>
+                                <connections>
+                                    <action selector="previousImage:" destination="QPA-Wi-yaP" eventType="touchUpInside" id="3qz-8v-tNb"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLE-q7-nuY">
+                                <rect key="frame" x="0.0" y="44" width="414" height="68"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전각 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36I-fQ-Osk">
+                                        <rect key="frame" x="150.5" y="21" width="113" height="33"/>
+                                        <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="29"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0v-Fs-3Mx" customClass="SoundButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                        <rect key="frame" x="372" y="26" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="22" id="sh9-hF-CvR"/>
+                                            <constraint firstAttribute="height" constant="22" id="t2b-0h-6Yz"/>
+                                        </constraints>
+                                        <state key="normal" image="black thin X icon"/>
+                                        <connections>
+                                            <action selector="goBack:" destination="QPA-Wi-yaP" eventType="touchUpInside" id="dpS-mX-f3a"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.66084581610000004" green="0.74075812100000005" blue="0.81716758010000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="36I-fQ-Osk" firstAttribute="centerX" secondItem="OLE-q7-nuY" secondAttribute="centerX" id="E18-v9-NtV"/>
+                                    <constraint firstAttribute="bottom" secondItem="36I-fQ-Osk" secondAttribute="bottom" constant="14" id="Mww-p3-Z7U"/>
+                                    <constraint firstItem="36I-fQ-Osk" firstAttribute="top" secondItem="OLE-q7-nuY" secondAttribute="top" constant="21" id="Q9R-g2-ZKV"/>
+                                    <constraint firstItem="L0v-Fs-3Mx" firstAttribute="top" secondItem="OLE-q7-nuY" secondAttribute="top" constant="26" id="TE4-3O-KI9"/>
+                                    <constraint firstAttribute="bottom" secondItem="L0v-Fs-3Mx" secondAttribute="bottom" constant="20" id="f22-5P-xFr"/>
+                                    <constraint firstAttribute="trailing" secondItem="L0v-Fs-3Mx" secondAttribute="trailing" constant="20" id="skW-ue-UOF"/>
+                                    <constraint firstAttribute="height" constant="68" id="yuk-Du-BjD"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ggK-V8-OcV"/>
+                        <color key="backgroundColor" red="0.66084581610000004" green="0.74075812100000005" blue="0.81716758010000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="oIV-hQ-N9I" firstAttribute="centerY" secondItem="lKv-Gs-l6b" secondAttribute="centerY" constant="56" id="CFb-ex-4dp"/>
+                            <constraint firstItem="OLE-q7-nuY" firstAttribute="leading" secondItem="ggK-V8-OcV" secondAttribute="leading" id="Edx-R2-Lpf"/>
+                            <constraint firstItem="ggK-V8-OcV" firstAttribute="trailing" secondItem="wVG-8M-rmd" secondAttribute="trailing" id="HZD-99-7rL"/>
+                            <constraint firstItem="ggK-V8-OcV" firstAttribute="trailing" secondItem="b8A-wn-Pvp" secondAttribute="trailing" constant="16" id="KDl-J3-9ES"/>
+                            <constraint firstItem="oIV-hQ-N9I" firstAttribute="leading" secondItem="ggK-V8-OcV" secondAttribute="leading" constant="16" id="N6r-Zg-eVr"/>
+                            <constraint firstItem="wVG-8M-rmd" firstAttribute="top" secondItem="OLE-q7-nuY" secondAttribute="bottom" id="P1C-tq-WXd"/>
+                            <constraint firstItem="OLE-q7-nuY" firstAttribute="top" secondItem="ggK-V8-OcV" secondAttribute="top" id="bcD-fB-6oK"/>
+                            <constraint firstItem="b8A-wn-Pvp" firstAttribute="centerY" secondItem="lKv-Gs-l6b" secondAttribute="centerY" constant="56" id="g0y-PX-JzH"/>
+                            <constraint firstItem="ggK-V8-OcV" firstAttribute="trailing" secondItem="OLE-q7-nuY" secondAttribute="trailing" id="jMK-oo-G5g"/>
+                            <constraint firstItem="wVG-8M-rmd" firstAttribute="leading" secondItem="ggK-V8-OcV" secondAttribute="leading" id="p2e-CU-hy8"/>
+                            <constraint firstAttribute="bottom" secondItem="wVG-8M-rmd" secondAttribute="bottom" id="vuE-jW-heO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Yqm-ZO-lmJ"/>
+                    <connections>
+                        <outlet property="imageViewCV" destination="wVG-8M-rmd" id="7wW-TY-irr"/>
+                        <outlet property="spotNameLabel" destination="36I-fQ-Osk" id="ln2-sj-zfe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kch-Zm-svE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="871.01449275362324" y="122.54464285714285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="black thin X icon" width="254.5" height="254.5"/>
+        <image name="clamp icon" width="218.5" height="347.5"/>
+        <image name="right clamp icon" width="218.5" height="347.5"/>
+        <image name="second map" width="1279" height="1514.5"/>
+        <image name="thick X" width="306.5" height="306.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

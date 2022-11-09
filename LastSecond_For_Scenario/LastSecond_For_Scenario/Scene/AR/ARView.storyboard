@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="R0u-Xe-KaX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NanumSquareExtraBold.ttf">
+            <string>NanumSquareEB</string>
+        </array>
+        <array key="NotoSansCJKkr-Black.otf">
+            <string>NotoSansCJKkr-Black</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--MaingameAR View Controller-->
+        <scene sceneID="Wcm-Wd-8F2">
+            <objects>
+                <viewController storyboardIdentifier="arView" id="R0u-Xe-KaX" customClass="MaingameARViewController" customModule="FunhiPrototype2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sX0-BC-cJn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arView multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="arView" translatesAutoresizingMaskIntoConstraints="NO" id="q9k-K4-vVN">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </arView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B0K-TV-WSC">
+                                <rect key="frame" x="137" y="812" width="140" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="EH7-OY-LCD" customClass="SoundButton" customModule="FunhiPrototype2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="30"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Black" family="Noto Sans CJK KR" pointSize="17"/>
+                                        <state key="normal" title="마쳤다면 누르기"/>
+                                        <connections>
+                                            <action selector="finishARButtonAction:" destination="R0u-Xe-KaX" eventType="touchUpInside" id="nX5-V1-nbE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="9wV-dU-Uaj"/>
+                                    <constraint firstItem="EH7-OY-LCD" firstAttribute="top" secondItem="B0K-TV-WSC" secondAttribute="top" id="IrA-6u-Dtl"/>
+                                    <constraint firstAttribute="trailing" secondItem="EH7-OY-LCD" secondAttribute="trailing" id="KJZ-ZB-mLI"/>
+                                    <constraint firstAttribute="bottom" secondItem="EH7-OY-LCD" secondAttribute="bottom" id="L87-qV-Q9A"/>
+                                    <constraint firstItem="EH7-OY-LCD" firstAttribute="leading" secondItem="B0K-TV-WSC" secondAttribute="leading" id="PwB-mZ-nR0"/>
+                                    <constraint firstAttribute="width" constant="140" id="uzs-H3-e3h"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iGc-BF-Vzg">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="화면을 움직이다 보면 증강현실이 나타납니다!" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1d-M7-qun">
+                                        <rect key="frame" x="76.5" y="54.5" width="261" height="15.5"/>
+                                        <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="14"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="N1d-M7-qun" secondAttribute="bottom" constant="10" id="4or-Fi-KLR"/>
+                                    <constraint firstAttribute="height" constant="80" id="HtR-Wi-iIq"/>
+                                    <constraint firstItem="N1d-M7-qun" firstAttribute="centerX" secondItem="iGc-BF-Vzg" secondAttribute="centerX" id="lA7-jf-V7U"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="v9m-vu-wHF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="q9k-K4-vVN" firstAttribute="leading" secondItem="v9m-vu-wHF" secondAttribute="leading" id="5YM-L3-2t6"/>
+                            <constraint firstAttribute="bottom" secondItem="q9k-K4-vVN" secondAttribute="bottom" id="5mE-j8-ZE9"/>
+                            <constraint firstItem="v9m-vu-wHF" firstAttribute="trailing" secondItem="q9k-K4-vVN" secondAttribute="trailing" id="BwM-2m-GEp"/>
+                            <constraint firstItem="B0K-TV-WSC" firstAttribute="centerX" secondItem="sX0-BC-cJn" secondAttribute="centerX" id="K0j-6W-aYN"/>
+                            <constraint firstItem="iGc-BF-Vzg" firstAttribute="trailing" secondItem="v9m-vu-wHF" secondAttribute="trailing" id="X1y-1Y-Td1"/>
+                            <constraint firstItem="v9m-vu-wHF" firstAttribute="bottom" secondItem="B0K-TV-WSC" secondAttribute="bottom" constant="20" id="fR2-uj-w9N"/>
+                            <constraint firstItem="iGc-BF-Vzg" firstAttribute="leading" secondItem="v9m-vu-wHF" secondAttribute="leading" id="rHh-le-b94"/>
+                            <constraint firstItem="iGc-BF-Vzg" firstAttribute="top" secondItem="sX0-BC-cJn" secondAttribute="top" id="shd-vT-94E"/>
+                            <constraint firstItem="q9k-K4-vVN" firstAttribute="top" secondItem="sX0-BC-cJn" secondAttribute="top" id="veH-uT-a95"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="arView" destination="q9k-K4-vVN" id="V32-Rq-134"/>
+                        <outlet property="finishARButton" destination="EH7-OY-LCD" id="vAY-yP-oY8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TuF-a8-5ns" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-388.40579710144931" y="-372.32142857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
