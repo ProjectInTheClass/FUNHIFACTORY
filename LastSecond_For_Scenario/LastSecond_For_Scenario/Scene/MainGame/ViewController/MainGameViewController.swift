@@ -28,7 +28,7 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
   var episode: Episode!
   var chatList: [Chat] = []
   // TODO: 아래 정체 알아야 함...
-  var indexNumber: Int = 0
+  var chatIndex: Int = 0
   
   var currentBlock: BlockOfDayEpisode {
     return episode.storyBlocks[episode.currentStoryBlockIndex]!
@@ -143,8 +143,15 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
   // MARK: @IBAction func
   
   @IBAction func goToHome(_ sender: Any) {
-//    pushWithFadeIn(segue: "mainToHome")
-    navigationController?.popViewController(animated: true)
+    
+    let sheet = UIAlertController(title: "나갈 거임?", message: "마스터앱은 세이브같은 거 없어유", preferredStyle: .alert)
+
+    sheet.addAction(UIAlertAction(title: "나갈게", style: .default, handler: { [weak self] _ in
+      self?.navigationController?.popViewController(animated: true)}))
+
+    sheet.addAction(UIAlertAction(title: "안 나갈랭", style: .cancel, handler: { _ in print("yes 클릭") }))
+
+    present(sheet, animated: true)
   }
   
   @IBAction func goToNote(_ sender: Any) {
@@ -448,7 +455,7 @@ extension MainGameViewController: UICollectionViewDelegate {
     
     episode.currentStoryBlockIndex = currentBlock.choices[indexPath.row].nextTextIndex
     
-    indexNumber = 0
+    chatIndex = 0
     
     playEffectSound(.buttonClick, type: .mp3)
     
@@ -679,13 +686,13 @@ extension MainGameViewController {
   }
   
   func chatUpdate() {
-    print("스토리 \(indexNumber)/\(episode.currentChatAmount)")
+    print("스토리 \(chatIndex)/\(episode.currentChatAmount)")
     playBgm(put: currentBlock.backGroundMusic.info())
-    if indexNumber != episode.currentChatAmount {
+    if chatIndex != episode.currentChatAmount {
       checkEnterAnimation()
     }
     // 게임 오버 시 뜰 배드엔딩 창 띄우기.
-    if indexNumber == episode.currentChatAmount, currentBlock.choices[0].nextTextIndex.hasPrefix("ending") {
+    if chatIndex == episode.currentChatAmount, currentBlock.choices[0].nextTextIndex.hasPrefix("ending") {
       episode.currentStoryBlockIndex = currentBlock.choices[0].nextTextIndex
       print("타이머 여부 :\(timer == nil)")
       if timer != nil {
@@ -700,7 +707,7 @@ extension MainGameViewController {
       UIView.animate(withDuration: 2.0) {
         self.blackView.alpha = 1
       } completion: { [self] _ in
-        indexNumber = 0
+        chatIndex = 0
         chatList.removeAll()
         self.mainGameTableView.reloadData()
         self.performSegue(withIdentifier: "badEnding", sender: nil)
@@ -709,7 +716,7 @@ extension MainGameViewController {
       return
     }
     // 에피소드를 깼을 때
-    else if indexNumber == episode.currentChatAmount, currentBlock.choices[0].nextTextIndex == "episodeSuccess" {
+    else if chatIndex == episode.currentChatAmount, currentBlock.choices[0].nextTextIndex == "episodeSuccess" {
       pauseTimer()
       episode.isCleared = true
       print("\(episode.episodeID) 클리어")
@@ -717,12 +724,12 @@ extension MainGameViewController {
       
       navigationController?.popViewController(animated: true)
     }
-    else if indexNumber < episode.currentChatAmount, currentBlock.chats[indexNumber].type != .ar {
+    else if chatIndex < episode.currentChatAmount, currentBlock.chats[chatIndex].type != .ar {
       // 일반적인 채팅
-      chatList.append(currentBlock.chats[indexNumber])
+      chatList.append(currentBlock.chats[chatIndex])
       mainGameTableView.insertRows(at: [IndexPath(row: chatList.count - 1, section: 0)], with: .none)
     }
-    else if indexNumber == episode.currentChatAmount, currentBlock.choiceSkip == false {
+    else if chatIndex == episode.currentChatAmount, currentBlock.choiceSkip == false {
       // 선택지가 나올 때
       pauseTimer()
       print("invalidate")
@@ -730,7 +737,7 @@ extension MainGameViewController {
       choiceUpdate()
       return
     }
-    else if indexNumber == episode.currentChatAmount, currentBlock.choiceSkip == true {
+    else if chatIndex == episode.currentChatAmount, currentBlock.choiceSkip == true {
       // 선택지 없이 바로 다음 스토리블럭으로 갈 때
       if currentBlock.isGodChat != episode.storyBlocks[currentBlock.choices[0].nextTextIndex]!.isGodChat
       {
@@ -751,15 +758,15 @@ extension MainGameViewController {
         mainGameTableView.insertRows(at: [IndexPath(row: chatList.count - 1, section: 0)], with: .none)
       }
       episode.currentStoryBlockIndex = currentBlock.choices[0].nextTextIndex
-      indexNumber = 0
+      chatIndex = 0
       chatUpdate()
       scrollToBottom()
       return
     }
-    else if indexNumber < episode.currentChatAmount, currentBlock.chats[indexNumber].type == .ar
+    else if chatIndex < episode.currentChatAmount, currentBlock.chats[chatIndex].type == .ar
     {
       pauseTimer()
-      chatList.append(currentBlock.chats[indexNumber])
+      chatList.append(currentBlock.chats[chatIndex])
       mainGameTableView.insertRows(at: [IndexPath(row: chatList.count - 1, section: 0)], with: .none)
     }
     
@@ -772,7 +779,7 @@ extension MainGameViewController {
 //    checkAlbumImageInChat()
 //    checkCheckPointInChat()
     updateButtons()
-    indexNumber += 1
+    chatIndex += 1
     scrollToBottom()
   }
   
@@ -807,7 +814,7 @@ extension MainGameViewController {
   }
   
   func checkEnterAnimation() {
-    if let animation = episode.storyBlocks[episode.currentStoryBlockIndex]?.chats[indexNumber].animationOption
+    if let animation = episode.storyBlocks[episode.currentStoryBlockIndex]?.chats[chatIndex].animationOption
     {
       if animation != .none {
         pauseTimer()
