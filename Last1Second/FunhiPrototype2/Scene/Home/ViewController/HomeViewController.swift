@@ -59,7 +59,16 @@ class HomeViewController: UIViewController {
   }
   
   @IBAction func goToAlbum(_ sender: Any) {
-    pushMenuViewsAnimation()
+    let vc = AlbumVC()
+    
+    let transition = CATransition()
+    transition.duration = 0.3
+    transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
+    transition.type = CATransitionType.moveIn
+    transition.subtype = CATransitionSubtype.fromBottom
+    self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+    
+    navigationController?.pushViewController(vc, animated: false)
   }
   
   @IBAction func goToTimeline(_ sender: Any) {
@@ -67,11 +76,9 @@ class HomeViewController: UIViewController {
   }
   
   @IBAction func goToSetting(_ sender: Any) {
-//        pushMenuViewsAnimation()
     guard let settingVC = storyboard?.instantiateViewController(identifier: "settings") else {return}
     settingVC.modalPresentationStyle = .fullScreen
     present(settingVC, animated: true, completion: nil)
-
   }
   
   @IBAction func goToMainGame(_ sender: Any) {

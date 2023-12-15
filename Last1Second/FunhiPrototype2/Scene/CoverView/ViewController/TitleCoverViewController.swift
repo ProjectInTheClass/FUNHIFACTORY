@@ -79,9 +79,10 @@ class TitleCoverViewController: UIViewController {
       print("- ", $0.isStarted)
       print("- ", $0.isCleared)
     }
-    playSplashScreen() {
+//    playSplashScreen() {
       self.checkForSuccessfulDownloadOfJson()
-    }
+//    }
+    splashScreen.removeFromSuperview()
   }
   
   override func viewWillAppear(_ animated: Bool) {

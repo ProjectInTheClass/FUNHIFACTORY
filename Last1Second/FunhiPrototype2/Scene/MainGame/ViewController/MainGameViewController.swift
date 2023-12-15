@@ -152,8 +152,16 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
   }
   
   @IBAction func goToAlbum(_ sender: Any) {
+    let vc = AlbumVC()
     
-    pushWithAnimation(segue: "albumSegue")
+    let transition = CATransition()
+    transition.duration = 0.3
+    transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
+    transition.type = CATransitionType.moveIn
+    transition.subtype = CATransitionSubtype.fromBottom
+    self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+    
+    navigationController?.pushViewController(vc, animated: false)
   }
   
   @IBAction func goToTimeline(_ sender: Any) {

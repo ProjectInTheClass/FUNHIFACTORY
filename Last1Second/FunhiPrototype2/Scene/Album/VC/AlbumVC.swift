@@ -1,5 +1,5 @@
 //
-//  AlbumViewController.swift
+//  AlbumVC.swift
 //  FunhiPrototype2
 //
 //  Created by 최서연 on 2021/01/07.
@@ -7,19 +7,12 @@
 
 import UIKit
 
-class AlbumViewController: UIViewController {
+class AlbumVC: UIViewController {
     
   @IBOutlet var albumLabel: UILabel!
   @IBOutlet weak var albumTableView: UITableView!
   @IBOutlet weak var designTableView: UITableView!
   @IBOutlet weak var albumBackgroundView: UIView!
-  
-  @IBOutlet var albumPopupBackgroundView: UIView!
-  @IBOutlet weak var albumPopupBoxTopBarView: UIView!
-  @IBOutlet var albumPopupBoxView: UIView!
-  @IBOutlet weak var albumPoopupTitleLabel: UILabel!
-  @IBOutlet weak var albumPopupImageView: UIImageView!
-  @IBOutlet weak var albumPopupDescriptionLabel: UILabel!
   
   @IBOutlet weak var pageButton1: SoundButton!
   @IBOutlet weak var pageButton2: SoundButton!
@@ -35,13 +28,8 @@ class AlbumViewController: UIViewController {
   }
   
   override func viewDidLoad() {
-    super.viewDidLoad()
-    self.albumTableView.delegate = self
-    self.albumTableView.dataSource = self
-    self.designTableView.delegate = self
-    self.designTableView.dataSource = self
-    setupXib()
-    setupPopup()
+    setupTableView()
+    
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -55,11 +43,6 @@ class AlbumViewController: UIViewController {
   
   @IBAction func backAction(_ sender: Any) {
     popWithAnimation()
-
-  }
-
-  @IBAction func popupExitButton(_ sender: Any) {
-    popupViewOff(popupView: albumPopupBoxView, blackView: albumPopupBackgroundView, priviousScale: 1.0, afterScale: 0.2)
   }
   
   @IBAction func pageButton1Action(_ sender: Any) {
@@ -82,8 +65,14 @@ class AlbumViewController: UIViewController {
     updatePage(4)
   }
     
-  private func setupXib() {
+  private func setupTableView() {
     albumTableView.register(UINib(nibName: "AlbumCell", bundle: nil), forCellReuseIdentifier: "AlbumCell")
+    designTableView.register(UINib(nibName: "SpringCell", bundle: nil), forCellReuseIdentifier: "SpringCell")
+    
+    albumTableView.delegate = self
+    albumTableView.dataSource = self
+    designTableView.delegate = self
+    designTableView.dataSource = self
   }
   
   private func setupStyle() {
@@ -91,16 +80,6 @@ class AlbumViewController: UIViewController {
     albumBackgroundView.layer.cornerRadius = 24
     albumBackgroundView.setShadow(color: UIColor(red: 0.174, green: 0.292, blue: 0.404, alpha: 1), x: 24, y: -15, opacity: 1, radius: 0)
     albumBackgroundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-  }
-  
-  private func setupPopup() {
-    albumPoopupTitleLabel.font = UIFont(name: "NanumSquareEB", size: 23)
-    albumPopupDescriptionLabel.setLineSpacing(6)
-    albumPopupDescriptionLabel.textAlignment = .center
-    albumPopupBoxTopBarView.layer.cornerRadius = 16
-    albumPopupBoxTopBarView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-    albumPopupBoxView.layer.cornerRadius = 16
-    albumPopupBoxView.setBolder(color: UIColor(red: 0.616, green: 0.71, blue: 0.796, alpha: 1), width: 4)
   }
     
   private func setupButtons() {
@@ -130,44 +109,17 @@ class AlbumViewController: UIViewController {
     }
   }
   
-  private func popupViewOn(blackView: UIView, popupView: UIView,titleLabel: UILabel, descriptionLabel: UILabel, imageView: UIImageView, priviousScale: CGFloat, afterScale: CGFloat, indexPath: IndexPath) {
-    let backgroundView = self.view!
-    let currentAlbumImage = player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row]
-    titleLabel.text = currentAlbumImage.title
-    imageView.image = UIImage(named: currentAlbumImage.image)
-    descriptionLabel.text = currentAlbumImage.description
-    backgroundView.addSubview(blackView)
-    backgroundView.bringSubviewToFront(blackView)
-    blackView.bounds = self.view.bounds
-    blackView.center = self.view.center
-    popupView.isHidden = false
-    popupView.alpha = 0
-    blackView.alpha = 1
-    popupView.transform = CGAffineTransform(scaleX: priviousScale, y: priviousScale)
-   
-    UIView.animate(withDuration: 0.2) {
-      popupView.transform = CGAffineTransform(scaleX: afterScale, y: afterScale)
-      popupView.alpha = 1
-    }
-  }
+  private func showPopup(indexPath: IndexPath) {
+    let popup = AlbumAlertView()
+    let image = player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row]
     
-  private func popupViewOff(popupView: UIView, blackView: UIView, priviousScale: CGFloat, afterScale: CGFloat) {
-    popupView.transform = CGAffineTransform(scaleX: priviousScale, y: priviousScale)
-    
-    UIView.animate(withDuration: 0.2) {
-      popupView.transform = CGAffineTransform(scaleX: afterScale, y: afterScale)
-      popupView.alpha = 0
-    } completion: { (Bool) in
-      UIView.animate(withDuration: 0.1) {
-        blackView.alpha = 0
-      } completion: { (Bool) in
-        blackView.removeFromSuperview()
-      }
-    }
+    view.addSubview(popup)
+    popup.pinToEdges(inView: view)
+    popup.configure(image: image)
   }
 }
 
-extension AlbumViewController: UITableViewDataSource {
+extension AlbumVC: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if tableView == designTableView {
       return 20
@@ -189,19 +141,19 @@ extension AlbumViewController: UITableViewDataSource {
  
 }
 
-extension AlbumViewController: UITableViewDelegate {
+extension AlbumVC: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     guard tableView != designTableView,
           !player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].isLocked else { return }
     
     playEffectSound(.buttonClick, type: .mp3)
     player.currentEpisodes[currentNotePageInt].currentAlbumImages[indexPath.row].isChecked = true
-    popupViewOn(blackView: albumPopupBackgroundView,popupView: albumPopupBoxView, titleLabel: albumPoopupTitleLabel, descriptionLabel: albumPopupDescriptionLabel, imageView: albumPopupImageView, priviousScale: 0.5, afterScale: 1.0, indexPath: indexPath)
+    showPopup(indexPath: indexPath)
     tableView.reloadData()
   }
 }
 
-extension AlbumViewController {
+extension AlbumVC {
   
   func showTutorial() {
     guard !player.userStore.isAlbumTutorialOpened else { return }

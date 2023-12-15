@@ -79,17 +79,3 @@ class NoteHistoryCell: UITableViewCell {
 }
 
 
-class SpringCell: UITableViewCell {
-  
-  @IBOutlet weak var springImage: UIImageView!
-  
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    setupStyle()
-  }
-  
-  private func setupStyle() {
-    selectionStyle = .none
-    springImage.image = UIImage(named: "note ring image")
-  }
-}
