@@ -22,7 +22,7 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
     let selectedStageIndex = indexPath.row + 1
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "selectStageTableViewCell", for: indexPath) as! SelectStageTableViewCell
-    cell.configure2()
+    cell.configure2(selectedStageIndex: selectedStageIndex, selectedRowIndex: selectedRowIndex)
     return cell
   }
   
