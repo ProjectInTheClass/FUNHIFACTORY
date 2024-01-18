@@ -33,7 +33,7 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
     
     // 엔딩 잠금
     if player.currentEpisodes[selectedStageIndex].episodeID == "ending" {
-      cell.lockedView.isHidden = checkEndingOpenTiming(playerEpisodes: player.currentEpisodes)
+      cell.lockedView.isHidden = EpisodeService.isEdingOpen()
     } else {
       cell.lockedView.isHidden = true
     }
@@ -227,17 +227,6 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
     }
     
     lockedPopupLabel.text = popupText
-  }
-  
-  func checkEndingOpenTiming(playerEpisodes: [Episode]) -> Bool {
-    var endingOpen: Bool = true
-    // 만약 에피소드 중 한 개라도 클리어 안 되어있으면 엔딩열림여부 false 될 것임
-    for ep in playerEpisodes {
-      if ep.episodeID != "ending" && !ep.isCleared {
-        endingOpen = false
-      }
-    }
-    return endingOpen
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
