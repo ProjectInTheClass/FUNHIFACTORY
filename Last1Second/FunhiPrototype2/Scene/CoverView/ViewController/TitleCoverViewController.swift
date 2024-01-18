@@ -16,7 +16,7 @@ class TitleCoverViewController: UIViewController {
   @IBOutlet weak var elertPopupBoxView: UIView!
   @IBOutlet weak var alertPopupLabel: UILabel!
   @IBOutlet weak var coverImageView: GIFImageView!
-  @IBOutlet weak var splashScreen: UIView!
+  @IBOutlet var splashScreen: UIView!
   @IBOutlet var releaseAlert: UIView!
   @IBOutlet weak var releaseAlertDesc: UILabel!
   
@@ -82,14 +82,12 @@ class TitleCoverViewController: UIViewController {
     
 #if DEBUG
     checkForSuccessfulDownloadOfJson()
+    splashScreen.removeFromSuperview()
 #else
     playSplashScreen() { [weak self] in
       self?.checkForSuccessfulDownloadOfJson()
     }
 #endif
-    
-   
-    splashScreen.removeFromSuperview()
   }
   
   override func viewWillAppear(_ animated: Bool) {
