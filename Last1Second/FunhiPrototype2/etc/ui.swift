@@ -50,8 +50,7 @@ func chatToGodUIUpdate(hwiryeong view : UIView){
 func choiceCellUIUpdate(target view : UIView){
   
 
-    view.layer.cornerRadius = 22.41
-    view.translatesAutoresizingMaskIntoConstraints = false
+   
     //view.widthAnchor.constraint(equalToConstant: 344).isActive = true
     //view.heightAnchor.constraint(equalToConstant: 45).isActive = true
    
