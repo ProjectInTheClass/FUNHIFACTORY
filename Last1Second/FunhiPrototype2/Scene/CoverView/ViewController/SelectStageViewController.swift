@@ -63,6 +63,34 @@ class SelectStageTableViewCell: UITableViewCell {
       cellBackground.backgroundColor = .darkGray
     }
   }
+  
+  func configure2(selectedStageIndex: Int, selectedRowIndex: Int?) {
+    configure(selectedStageIndex: selectedStageIndex, selectedRowIndex: selectedRowIndex)
+    
+    
+    //현재 스토리블럭 인덱스 int로 변환 잘 되었다면
+    if let currentStoryBlockIndex = Int(player.currentEpisodes[selectedStageIndex].currentStoryBlockIndex) {
+      print("currentStoryBlockIndex: \(currentStoryBlockIndex)")
+      
+      let currentEpisodeTotalStoryBlockCount = player.currentEpisodes[selectedStageIndex].storyBlocks.count
+      
+      let progressValue: Double
+      player.currentEpisodes[selectedStageIndex].isCleared ? (progressValue = 1.0) : (progressValue = (Double(currentStoryBlockIndex)/Double(currentEpisodeTotalStoryBlockCount)))
+      //에피소드 스토리 블럭 안 비어있다면
+      if currentEpisodeTotalStoryBlockCount != 0 {
+        //프로그레스원 값 업뎃하기
+        print("currentStoryBlockIndex/currentEpisodeTotalStoryBlockCount: \(Double(currentStoryBlockIndex)/Double(currentEpisodeTotalStoryBlockCount))")
+        progressView.updateProgress(value: CGFloat(progressValue))
+        progressValue == 1.0 ? (progressBackgroundView.isHidden = true) : (progressBackgroundView.isHidden = false)
+        
+      } else {
+        progressView.updateProgress(value: CGFloat(0))
+      }
+      
+    } else {
+      progressView.updateProgress(value: CGFloat(0))
+    }
+  }
 }
   
 class SelectStageViewController: UIViewController {

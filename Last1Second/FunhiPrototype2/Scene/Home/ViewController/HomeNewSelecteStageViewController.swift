@@ -11,8 +11,6 @@ var previousEpisodeID: String?
 
 class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
   
-  
-  
   func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
@@ -24,50 +22,7 @@ class HomeNewSelecteStageViewController: UIViewController,UITableViewDelegate, U
     let selectedStageIndex = indexPath.row + 1
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "selectStageTableViewCell", for: indexPath) as! SelectStageTableViewCell
-    cell.episodePlace.text = player.currentEpisodes[selectedStageIndex].episodePlace
-    cell.episodeYear.text = "\(player.currentEpisodes[selectedStageIndex].episodeYear)년"
-    cell.episodePlaceImage.image = UIImage(named: player.currentEpisodes[selectedStageIndex].episodePlaceImage)
-    cell.progressView.updateStateColor(subView: cell.progressBackgroundView)
-    // 완료/미완료한 체크박스 이미지 이름 : trueClear / falseClear
-    
-    
-    // 엔딩 잠금
-    if player.currentEpisodes[selectedStageIndex].episodeID == "ending" {
-      cell.lockedView.isHidden = EpisodeService.isEdingOpen()
-    } else {
-      cell.lockedView.isHidden = true
-    }
-    if selectedRowIndex != nil && selectedRowIndex == selectedStageIndex {
-      cell.cellBackground.backgroundColor = .darkGray
-    }else{
-      
-    }
-    
-    
-    
-    //현재 스토리블럭 인덱스 int로 변환 잘 되었다면
-    if let currentStoryBlockIndex = Int(player.currentEpisodes[selectedStageIndex].currentStoryBlockIndex) {
-      print("currentStoryBlockIndex: \(currentStoryBlockIndex)")
-      
-      let currentEpisodeTotalStoryBlockCount = player.currentEpisodes[selectedStageIndex].storyBlocks.count
-      
-      let progressValue: Double
-      player.currentEpisodes[selectedStageIndex].isCleared ? (progressValue = 1.0) : (progressValue = (Double(currentStoryBlockIndex)/Double(currentEpisodeTotalStoryBlockCount)))
-      //에피소드 스토리 블럭 안 비어있다면
-      if currentEpisodeTotalStoryBlockCount != 0 {
-        //프로그레스원 값 업뎃하기
-        print("currentStoryBlockIndex/currentEpisodeTotalStoryBlockCount: \(Double(currentStoryBlockIndex)/Double(currentEpisodeTotalStoryBlockCount))")
-        cell.progressView.updateProgress(value: CGFloat(progressValue))
-        progressValue == 1.0 ? (cell.progressBackgroundView.isHidden = true) : (cell.progressBackgroundView.isHidden = false)
-        
-      } else {
-        cell.progressView.updateProgress(value: CGFloat(0))
-      }
-      
-    } else {
-      cell.progressView.updateProgress(value: CGFloat(0))
-    }
-    cell.selectionStyle = .none
+    cell.configure2()
     return cell
   }
   
