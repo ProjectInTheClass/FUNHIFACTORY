@@ -9,8 +9,8 @@ import UIKit
 
 class ChoiceItem: UICollectionViewCell {
   @IBOutlet var choiceLabel: UILabel!
-  @IBOutlet var choiceInCell: UIView!
-  @IBOutlet weak var choiceCellShadowView: UIView!
+  @IBOutlet var box: UIView!
+  @IBOutlet weak var shadow: UIView!
   
   let radius = 22.41
   
@@ -24,12 +24,12 @@ class ChoiceItem: UICollectionViewCell {
   }
   
   private func updateLayout() {
-    choiceInCell.bringSubviewToFront(choiceLabel)
+    box.bringSubviewToFront(choiceLabel)
   }
   
   private func updateStyle() {
-    choiceCellShadowView.layer.cornerRadius = radius
-    choiceInCell.layer.cornerRadius = radius
-    choiceInCell.translatesAutoresizingMaskIntoConstraints = false
+    shadow.layer.cornerRadius = radius
+    box.layer.cornerRadius = radius
+    box.translatesAutoresizingMaskIntoConstraints = false
   }
 }

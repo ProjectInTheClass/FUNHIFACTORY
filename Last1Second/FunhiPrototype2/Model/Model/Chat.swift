@@ -15,7 +15,7 @@ struct Chat: Codable {
   let characterFace : CharacterFace
   let optionalOption: OptionalOption?
   let animationOption : ScreenAnimation
-  let isGodChat : Bool
+  let isGod : Bool
 }
 
 enum ChatType: String, Codable{
@@ -31,7 +31,7 @@ enum ChatType: String, Codable{
 
 extension Chat {
   
-  init(text_ : String, image_ : String, type_ : ChatType, who_ : GameCharacterID, characterFace_ : CharacterFace, optionalOption_ : OptionalOption?, animationOption_ : ScreenAnimation, isGodChat_ : Bool) {
+  init(text_ : String, image_ : String, type_ : ChatType, who_ : GameCharacterID, characterFace_ : CharacterFace, optionalOption_ : OptionalOption?, animationOption_ : ScreenAnimation, isGod_ : Bool) {
     text = text_
     image = image_
     type = type_
@@ -39,7 +39,7 @@ extension Chat {
     characterFace = characterFace_
     optionalOption = optionalOption_
     animationOption = animationOption_
-    isGodChat = isGodChat_
+    isGod = isGod_
   }
     
   init(from decoder: Decoder) throws {
@@ -52,7 +52,7 @@ extension Chat {
     characterFace = (try? values.decode(CharacterFace.self, forKey: .characterFace)) ?? .basic
     optionalOption = (try? values.decode(OptionalOption.self, forKey: .optionalOption))
     animationOption = (try? values.decode(ScreenAnimation.self, forKey: .animationOption)) ?? .none
-    isGodChat = (try? values.decode(Bool.self, forKey: .isGodChat)) ?? false
+    isGod = (try? values.decode(Bool.self, forKey: .isGod)) ?? false
   }
 }
 

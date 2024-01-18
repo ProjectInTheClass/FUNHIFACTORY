@@ -8,32 +8,32 @@
 import UIKit
 
 protocol ArDelegate: AnyObject {
-    func goToAR(arid: ArId)
+  func goToAR(arid: ArId)
 }
 
 class ARTableViewCell: UITableViewCell {
+  var currentAR: ArId?
+  var delegate: ArDelegate?
+  
+  @IBOutlet weak var box: UIView!
+  @IBOutlet weak var title: UILabel!
+  
+  override func awakeFromNib() {
+    setupStyle()
+  }
+  
+  private func setupStyle() {
+    title.text = "AR로 이동하기"
+    box.layer.cornerRadius = 10
+    box.layer.borderWidth = 3
+    box.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+  }
 
-    var currentAR: ArId?
-    @IBOutlet weak var chatBox: UIView!
-    @IBOutlet weak var chatLabel: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        chatLabel.text = "AR로 이동하기"
-        chatBox.layer.cornerRadius = 10
-        chatBox.layer.borderWidth = 3
-        chatBox.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+  @IBAction func goToARView(_ sender: Any) {
+    if let currentAR = currentAR {
+      delegate?.goToAR(arid: currentAR)
+    } else {
+      print("AR 셀 내부에 저장된 콘텐츠 없음")
     }
-    var delegate : ArDelegate?
-    @IBAction func goToARView(_ sender: Any) {
-    
-        if let currentAR = currentAR {
-            delegate?.goToAR(arid: currentAR)
-        } else {
-            print("AR 셀 내부에 저장된 콘텐츠 없음")
-        }
-        
-    
-      
-    }
-    
+  }
 }

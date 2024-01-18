@@ -94,12 +94,12 @@ extension MainGameViewController {
     else if player.indexNumber == currentChatAmount() && currentBlockOfDay().choiceSkip == true
     {
       //선택지 없이 바로 다음 스토리블럭으로 갈 때
-      if (currentBlockOfDay().isGodChat != currentEpisode().storyBlocks[currentBlockOfDay().choices[0].nextTextIndex]!.isGodChat)
+      if (currentBlockOfDay().isGod != currentEpisode().storyBlocks[currentBlockOfDay().choices[0].nextTextIndex]!.isGod)
       {
         
-        if (currentBlockOfDay().isGodChat == true)
+        if (currentBlockOfDay().isGod == true)
         {
-          player.currentChatArray.append(Chat(text_: "", image_: "", type_: .endGodChat, who_: .danhee, characterFace_: .none, optionalOption_: nil, animationOption_: .none, isGodChat_: false))
+          player.currentChatArray.append(Chat(text_: "", image_: "", type_: .endGodChat, who_: .danhee, characterFace_: .none, optionalOption_: nil, animationOption_: .none, isGod_: false))
           myChoiceText.textColor = .white
           self.view.backgroundColor = UIColor(red: 0.07, green: 0.15, blue: 0.22, alpha: 1)
           mainGameTableView.backgroundColor =  UIColor(red: 0.07, green: 0.15, blue: 0.22, alpha: 1)
@@ -108,7 +108,7 @@ extension MainGameViewController {
         else
         {
           mainGameTableView.backgroundColor = UIColor(red: 0.545, green: 0.631, blue: 0.71, alpha: 1)
-          player.currentChatArray.append(Chat(text_: "", image_: "", type_: .startGodChat, who_: .danhee, characterFace_: .none, optionalOption_: nil, animationOption_: .none, isGodChat_: true))
+          player.currentChatArray.append(Chat(text_: "", image_: "", type_: .startGodChat, who_: .danhee, characterFace_: .none, optionalOption_: nil, animationOption_: .none, isGod_: true))
           self.view.backgroundColor = UIColor(red: 0.545, green: 0.631, blue: 0.71, alpha: 1)
           myChoiceText.textColor = .black
           choiceBarLine.backgroundColor = UIColor(red: 0.243, green: 0.357, blue: 0.459, alpha: 1)

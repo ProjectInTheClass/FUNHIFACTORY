@@ -11,7 +11,7 @@ struct BlockOfDayEpisode: Codable {
   let chats: [Chat]
   let choices: [Choice]
   let choiceSkip : Bool
-  let isGodChat : Bool
+  let isGod : Bool
   let backGroundMusic : Bgm
   let currentRoute : Route
 }
@@ -21,7 +21,7 @@ struct BlockOfDayEpisodeForJson: Codable {
   let chats: [Chat]
   let choices: [Choice]
   let choiceSkip : Bool
-  let isGodChat : Bool
+  let isGod : Bool
   let backGroundMusic : Bgm
   let currentRoute : Route
   
@@ -32,7 +32,7 @@ struct BlockOfDayEpisodeForJson: Codable {
     chats = (try? values.decode([Chat].self, forKey: .chats)) ?? []
     choices = (try? values.decode([Choice].self, forKey: .choices)) ?? []
     choiceSkip = (try? values.decode(Bool.self, forKey: .choiceSkip)) ?? false
-    isGodChat = (try? values.decode(Bool.self, forKey: .isGodChat)) ?? false
+    isGod = (try? values.decode(Bool.self, forKey: .isGod)) ?? false
     backGroundMusic = (try? values.decode(Bgm.self, forKey: .backGroundMusic)) ?? .none
     currentRoute   = (try? values.decode(Route.self, forKey: .currentRoute)) ?? .normal
   }

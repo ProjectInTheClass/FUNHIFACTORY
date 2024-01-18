@@ -108,9 +108,9 @@ class MainGameViewController: UIViewController, UITableViewDelegate {
     mapPresentFromLeft = true
     closeChoiceBar()
     updateButtons()
-    if let isGodChat = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]?.isGodChat
+    if let isGod = player.currentEpisodes[strToIndex(str: player.dayId)].storyBlocks[player.currentEpisodes[strToIndex(str: player.dayId)].currentStoryBlockIndex]?.isGod
     {
-      if isGodChat {
+      if isGod {
         myChoiceText.textColor = .black
         choiceBarLine.backgroundColor = UIColor(red: 0.243, green: 0.357, blue: 0.459, alpha: 1)
         mainGameTableView.backgroundColor = UIColor(red: 0.545, green: 0.631, blue: 0.71, alpha: 1)
@@ -405,7 +405,7 @@ extension MainGameViewController: ArDelegate {
 extension MainGameViewController: UICollectionViewDelegate {
   
   func insertNewChat(choiceRow: Int) {
-    let isGodChat = currentBlockOfDay().isGodChat
+    let isGod = currentBlockOfDay().isGod
     let choice = currentBlockOfDay().choices[choiceRow]
     player.currentChatArray.append(
       Chat(
@@ -416,7 +416,7 @@ extension MainGameViewController: UICollectionViewDelegate {
         characterFace_: choice.characterFace,
         optionalOption_: choice.optionalOption,
         animationOption_: .none,
-        isGodChat_: isGodChat))
+        isGod_: isGod))
     mainGameTableView.insertRows(at: [IndexPath(row: player.currentChatArray.count - 1, section: 0)], with: .none)
   }
   
@@ -428,13 +428,13 @@ extension MainGameViewController: UICollectionViewDelegate {
     
     insertNewChat(choiceRow: indexPath.row)
     
-    let isGodChat = currentBlockOfDay().isGodChat
+    let isGod = currentBlockOfDay().isGod
     let choice = currentBlockOfDay().choices[indexPath.row]
-    let isStartOrEndPoint = isGodChat != currentEpisode().storyBlocks[choice.nextTextIndex]!.isGodChat
+    let isStartOrEndPoint = isGod != currentEpisode().storyBlocks[choice.nextTextIndex]!.isGod
     if isStartOrEndPoint {
-      player.currentChatArray.append(Chat(text_: "", image_: "", type_: (isGodChat ? .endGodChat : .startGodChat), who_: .danhee, characterFace_: .none, optionalOption_: nil, animationOption_: .none, isGodChat_: isGodChat))
+      player.currentChatArray.append(Chat(text_: "", image_: "", type_: (isGod ? .endGodChat : .startGodChat), who_: .danhee, characterFace_: .none, optionalOption_: nil, animationOption_: .none, isGod_: isGod))
       
-      if isGodChat {
+      if isGod {
         let bgColor = UIColor(red: 0.07, green: 0.15, blue: 0.22, alpha: 1)
         myChoiceText.textColor = .white
         mainGameTableView.backgroundColor = bgColor
@@ -530,7 +530,7 @@ extension MainGameViewController: UITableViewDataSource {
       let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! MyTextTableViewCell
       cell.delegate = self
       cell.inputCharacter = target.who.info()
-      cell.myTextCellUpdate(name: target.who, chat: chatText, profile: target.characterFace, godchat: target.isGodChat, currentDanhee: currentMainGameDanhee())
+      cell.myTextCellUpdate(name: target.who, chat: chatText, profile: target.characterFace, godchat: target.isGod, currentDanhee: currentMainGameDanhee())
       //            cell.layoutIfNeeded()
       return cell
     }
@@ -541,7 +541,7 @@ extension MainGameViewController: UITableViewDataSource {
       cell.profileNickname.textColor = .white
       cell.delegate = self
       cell.inputCharacter = target.who.info()
-      cell.opTextCellUpdate(name: target.who, chat: chatText,normalProfile: target.who.info().profileImage, mainProfile: target.characterFace, isLocked: target.who.info().isLocked, godchat: target.isGodChat)
+      cell.configure(name: target.who, chat: chatText,normalProfile: target.who.info().profileImage, mainProfile: target.characterFace, isLocked: target.who.info().isLocked, godchat: target.isGod)
       cell.contentView.setNeedsDisplay()
       return cell
     }
@@ -549,14 +549,14 @@ extension MainGameViewController: UITableViewDataSource {
     else if target.type == .untouchableImage {
       print("메인게임 - 이미지 출력")
       let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! ImageTableViewCell
-      cell.imageUpdate(mainImage: target.image, godchat: target.isGodChat)
+      cell.imageUpdate(mainImage: target.image, godchat: target.isGod)
       return cell
     }
     //행동 표시글 셀
     else if target.type == .sectionHeader {
       print("메인게임 - 섹션헤더 출력")
       let cell = mainGameTableView.dequeueReusableCell(withIdentifier: "sectionCell", for: indexPath) as! SectionTableViewCell
-      cell.sectionUpdate(text:chatText, godchat: target.isGodChat)
+      cell.updateStyle(text: chatText, isGod: target.isGod)
       return cell
     }
     else if target.type == .monologue {
@@ -567,7 +567,7 @@ extension MainGameViewController: UITableViewDataSource {
       cell.inputCharacter = target.who.info()
       cell.monologueText.text = chatText
       cell.name.textColor = .white
-      cell.chatUpdate(nickname: target.who, profile: target.characterFace, godchat: target.isGodChat, currentDanhee: currentMainGameDanhee())
+      cell.chatUpdate(nickname: target.who, profile: target.characterFace, godchat: target.isGod, currentDanhee: currentMainGameDanhee())
       return cell
     }
     else if target.type == .ar{

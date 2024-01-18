@@ -133,7 +133,7 @@ extension EPHistoryViewController: UITableViewDataSource, UITableViewDelegate, P
       let cell = chatHistoryTableView.dequeueReusableCell(withIdentifier: "myTextCell", for: indexPath) as! MyTextTableViewCell
       cell.delegate = self
       cell.inputCharacter = target.who.info()
-      cell.myTextCellUpdate(name: target.who, chat: chatText, profile: target.characterFace, godchat: target.isGodChat, currentDanhee: currentHistoryDanhee())
+      cell.myTextCellUpdate(name: target.who, chat: chatText, profile: target.characterFace, godchat: target.isGod, currentDanhee: currentHistoryDanhee())
 //            cell.layoutIfNeeded()
       return cell
     }
@@ -143,7 +143,7 @@ extension EPHistoryViewController: UITableViewDataSource, UITableViewDelegate, P
           cell.profileNickname.textColor = .white
           cell.delegate = self
           cell.inputCharacter = target.who.info()
-          cell.opTextCellUpdate(name: target.who, chat: chatText,normalProfile: target.who.info().profileImage, mainProfile: target.characterFace, isLocked: target.who.info().isLocked, godchat: target.isGodChat)
+          cell.configure(name: target.who, chat: chatText,normalProfile: target.who.info().profileImage, mainProfile: target.characterFace, isLocked: target.who.info().isLocked, godchat: target.isGod)
           cell.contentView.setNeedsDisplay()
           return cell
       }
@@ -151,14 +151,14 @@ extension EPHistoryViewController: UITableViewDataSource, UITableViewDelegate, P
       else if target.type == .untouchableImage {
           print("메인게임 - 이미지 출력")
           let cell = chatHistoryTableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! ImageTableViewCell
-          cell.imageUpdate(mainImage: target.image, godchat: target.isGodChat)
+          cell.imageUpdate(mainImage: target.image, godchat: target.isGod)
           return cell
       }
       //행동 표시글 셀
       else if target.type == .sectionHeader{
           print("메인게임 - 섹션헤더 출력")
           let cell = chatHistoryTableView.dequeueReusableCell(withIdentifier: "sectionCell", for: indexPath) as! SectionTableViewCell
-          cell.sectionUpdate(text:chatText, godchat: target.isGodChat)
+          cell.updateStyle(text: chatText, isGod: target.isGod)
           return cell
       }
       else if target.type == .monologue{
@@ -167,7 +167,7 @@ extension EPHistoryViewController: UITableViewDataSource, UITableViewDelegate, P
           cell.inputCharacter = target.who.info()
           cell.monologueText.text = chatText
           cell.name.textColor = .white
-          cell.chatUpdate(nickname: target.who, profile: target.characterFace, godchat: target.isGodChat, currentDanhee: currentHistoryDanhee())
+          cell.chatUpdate(nickname: target.who, profile: target.characterFace, godchat: target.isGod, currentDanhee: currentHistoryDanhee())
           return cell
       }
       else if target.type == .ar{
