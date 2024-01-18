@@ -26,14 +26,20 @@ class ChapterCoverViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-//    designView()
+    
+    #if RELEASE
+    designView()
+    #endif
     
     self.tapStackView.isHidden = false
     self.closeCoverButton.isHidden = false
   }
   
   override func viewWillAppear(_ animated: Bool) {
-//    animateCover()
+#if RELEASE
+    animateCover()
+#endif
+    
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
